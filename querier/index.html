@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Documentation for the querier.">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>querier</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/rainbow.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href=".">querier</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="examples/examples/" class="nav-link">Quickstart examples</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="documentation/queries/" class="dropdown-item">Queries</a>
+</li>
+                                    
+<li>
+    <a href="documentation/querier/" class="dropdown-item">Wrapper</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="CONTRIBUTING/" class="nav-link">Contributing</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="LICENSE/" class="nav-link">License</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Techtonique/querier" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#querier" class="nav-link">querier</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#presentation" class="nav-link">Presentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#installation" class="nav-link">Installation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="querier">querier</h1>
+<p><img alt="PyPI" src="https://img.shields.io/pypi/v/querier" /> <a href="https://github.com/thierrymoudiki/querier/blob/master/LICENSE"><img alt="PyPI - License" src="https://img.shields.io/pypi/l/querier" /></a> <a href="https://pepy.tech/project/querier"><img alt="Downloads" src="https://pepy.tech/badge/querier" /></a></p>
+<p>Welcome to <strong>querier</strong>'s website.</p>
+<h2 id="presentation">Presentation</h2>
+<p>Data Frames are widely used and useful structures for data wrangling. The <code>querier</code>  exposes a query language for Python <code>pandas</code> Data Frames, inspired from SQL's relational databases querying logic. </p>
+<p>There are currently <strong>9 main types of operations</strong> available in the <code>querier</code>, with no plan to extend that list much further (to maintain a relatively simple mental model). These verbs will look familiar to <code>dplyr</code> users, but the implementation (<code>numpy</code>, <code>pandas</code> and <code>SQLite3</code> is used) and functions' signatures are different: </p>
+<ul>
+<li><code>concat</code>: <strong>concatenates 2 Data Frames</strong>, either horizontally or vertically</li>
+<li><code>delete</code>: <strong>deletes rows</strong> from a Data Frame based on given criteria</li>
+<li><code>drop</code>: <strong>drops columns</strong> from a Data Frame</li>
+<li><code>filtr</code>: <strong>filters rows</strong> of the Data Frame based on given criteria</li>
+<li><code>join</code>: <strong>joins 2 Data Frames</strong> based on given criteria (available for <em>completeness</em> of the interface, this operation is already straightforward in pandas)</li>
+<li><code>select</code>: <strong>selects columns</strong> from the Data Frame</li>
+<li><code>summarize</code>: obtains <strong>summaries of data</strong> based on grouping columns</li>
+<li><code>update</code>: <strong>updates a column</strong>, using an operation given by the user</li>
+<li><code>request</code>: for operations more complex than the previous 8 ones, makes it possible to use a <strong>SQL query on the Data Frame</strong></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>From Pypi: </li>
+</ul>
+<pre><code class="bash">pip install querier 
+</code></pre>
+
+<ul>
+<li>From Github, for the development version: </li>
+</ul>
+<pre><code class="bash">pip install git+https://github.com/thierrymoudiki/querier.git
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2020-09-12 02:39:21.164093+00:00
+-->

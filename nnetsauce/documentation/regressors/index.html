@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Regressors - nnetsauce</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/rainbow.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="../..">nnetsauce</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Quickstart examples <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../examples/classification/" class="dropdown-item">Classification</a>
+</li>
+                                    
+<li>
+    <a href="../../examples/regression/" class="dropdown-item">Regression</a>
+</li>
+                                    
+<li>
+    <a href="../../examples/time_series_examples/" class="dropdown-item">Time series</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../classifiers/" class="dropdown-item">Classifiers</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Regressors</a>
+</li>
+                                    
+<li>
+    <a href="../time_series/" class="dropdown-item">Time series</a>
+</li>
+                                    
+<li>
+    <a href="../scoring_metrics/" class="dropdown-item">Scoring metrics</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../CONTRIBUTING/" class="nav-link">Contributing</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../LICENSE/" class="nav-link">License</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../REFERENCES/" class="nav-link">References</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../classifiers/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../time_series/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Techtonique/nnetsauce" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#regressors" class="nav-link">Regressors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="regressors">Regressors</h1>
+<p><em>In alphabetical order</em></p>
+<p>All models possess methods <code>fit</code>, <code>predict</code>, and <code>score</code>. Methods <code>predict</code> and <code>score</code> are only documented for the first model; the <strong>same principles apply subsequently</strong>. For scoring metrics, refer to <a href="../scoring_metrics/">scoring metrics</a>. </p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L14">[source]</a></span></p>
+<h3 id="baseregressor">BaseRegressor</h3>
+<pre><code class="python">nnetsauce.BaseRegressor(
+    n_hidden_features=5,
+    activation_name=&quot;relu&quot;,
+    a=0.01,
+    nodes_sim=&quot;sobol&quot;,
+    bias=True,
+    dropout=0,
+    direct_link=True,
+    n_clusters=2,
+    cluster_encode=True,
+    type_clust=&quot;kmeans&quot;,
+    type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
+    col_sample=1,
+    row_sample=1,
+    seed=123,
+    backend=&quot;cpu&quot;,
+)
+</code></pre>
+
+<p>Random Vector Functional Link Network regression without shrinkage </p>
+<p>Attributes:       </p>
+<pre><code>n_hidden_features: int
+    number of nodes in the hidden layer
+
+activation_name: str
+    activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
+
+a: float
+    hyperparameter for 'prelu' or 'elu' activation function
+
+nodes_sim: str
+    type of simulation for hidden layer nodes: 'sobol', 'hammersley', 'halton', 
+    'uniform'
+
+bias: boolean
+    indicates if the hidden layer contains a bias term (True) or 
+    not (False)
+
+dropout: float
+    regularization parameter; (random) percentage of nodes dropped out 
+    of the training
+
+direct_link: boolean
+    indicates if the original features are included (True) in model's 
+    fitting or not (False)
+
+n_clusters: int
+    number of clusters for type_clust='kmeans' or type_clust='gmm' 
+    clustering (could be 0: no clustering)
+
+cluster_encode: bool
+    defines how the variable containing clusters is treated (default is one-hot);
+    if `False`, then labels are used, without one-hot encoding
+
+type_clust: str
+    type of clustering method: currently k-means ('kmeans') or Gaussian 
+    Mixture Model ('gmm')
+
+type_scaling: a tuple of 3 strings
+    scaling methods for inputs, hidden layer, and clustering respectively
+    (and when relevant). 
+    Currently available: standardization ('std') or MinMax scaling ('minmax')
+
+col_sample: float
+    percentage of features randomly chosen for training
+
+row_sample: float
+    percentage of rows chosen for training, by stratified bootstrapping
+
+seed: int 
+    reproducibility seed for nodes_sim=='uniform', clustering and dropout
+
+backend: str
+    "cpu" or "gpu" or "tpu"
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L114">[source]</a></span></p>
+<h3 id="fit">fit</h3>
+<pre><code class="python">BaseRegressor.fit(X, y, **kwargs)
+</code></pre>
+
+<p>Fit BaseRegressor to training data (X, y)</p>
+<p>Args:</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features
+
+y: array-like, shape = [n_samples]
+    Target values
+
+**kwargs: additional parameters to be passed to self.cook_training_set
+</code></pre>
+<p>Returns:</p>
+<pre><code>self: object
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L143">[source]</a></span></p>
+<h3 id="predict">predict</h3>
+<pre><code class="python">BaseRegressor.predict(X, **kwargs)
+</code></pre>
+
+<p>Predict test data X.</p>
+<p>Args</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features
+
+**kwargs: additional parameters to be passed to self.cook_test_set
+</code></pre>
+<p>Returns:</p>
+<pre><code>model predictions: {array-like}
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L180">[source]</a></span></p>
+<h3 id="score">score</h3>
+<pre><code class="python">BaseRegressor.score(X, y, scoring=None, **kwargs)
+</code></pre>
+
+<p>Score the model on test set features X and response y. </p>
+<p>Args:</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features
+
+y: array-like, shape = [n_samples]
+    Target values
+
+scoring: str
+    must be in ('explained_variance', 'neg_mean_absolute_error', 
+                'neg_mean_squared_error', 'neg_mean_squared_log_error', 
+                'neg_median_absolute_error', 'r2')
+
+**kwargs: additional parameters to be passed to scoring functions
+</code></pre>
+<p>Returns: </p>
+<p>model scores: {array-like}</p>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvflRegressor.py#L14">[source]</a></span></p>
+<h3 id="bayesianrvflregressor">BayesianRVFLRegressor</h3>
+<pre><code class="python">nnetsauce.BayesianRVFLRegressor(
+    n_hidden_features=5,
+    activation_name=&quot;relu&quot;,
+    a=0.01,
+    nodes_sim=&quot;sobol&quot;,
+    bias=True,
+    dropout=0,
+    direct_link=True,
+    n_clusters=2,
+    cluster_encode=True,
+    type_clust=&quot;kmeans&quot;,
+    type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
+    col_sample=1,
+    row_sample=1,
+    seed=123,
+    s=0.1,
+    sigma=0.05,
+    beta=None,
+    Sigma=None,
+    GCV=None,
+    return_std=True,
+    backend=&quot;cpu&quot;,
+)
+</code></pre>
+
+<p>Bayesian Random Vector Functional Link Network regression with one prior</p>
+<p>Attributes: </p>
+<pre><code>n_hidden_features: int
+    number of nodes in the hidden layer
+
+activation_name: str
+    activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
+
+a: float
+    hyperparameter for 'prelu' or 'elu' activation function
+
+nodes_sim: str
+    type of simulation for the nodes: 'sobol', 'hammersley', 'halton', 'uniform'
+
+bias: boolean
+    indicates if the hidden layer contains a bias term (True) or not (False)
+
+dropout: float
+    regularization parameter; (random) percentage of nodes dropped out 
+    of the training
+
+direct_link: boolean
+    indicates if the original features are included (True) in model''s fitting or not (False)
+
+n_clusters: int
+    number of clusters for 'kmeans' or 'gmm' clustering (could be 0: no clustering)
+
+cluster_encode: bool
+    defines how the variable containing clusters is treated (default is one-hot)
+    if `False`, then labels are used, without one-hot encoding
+
+type_clust: str
+    type of clustering method: currently k-means ('kmeans') or Gaussian Mixture Model ('gmm')
+
+type_scaling: a tuple of 3 strings
+    scaling methods for inputs, hidden layer, and clustering respectively
+    (and when relevant). 
+    Currently available: standardization ('std') or MinMax scaling ('minmax')
+
+col_sample: float
+    percentage of features randomly chosen for training
+
+row_sample: float
+    percentage of rows chosen for training, by stratified bootstrapping
+
+seed: int 
+    reproducibility seed for nodes_sim=='uniform'
+
+s: float
+    std. dev. of regression parameters in Bayesian Ridge Regression
+
+sigma: float
+    std. dev. of residuals in Bayesian Ridge Regression
+
+beta: array-like
+    regression''s fitted parameters
+
+Sigma: array-like
+    covariance of the distribution of fitted parameters
+
+GCV: float
+    return_std: boolean
+
+backend: str
+    "cpu" or "gpu" or "tpu"
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvflRegressor.py#L136">[source]</a></span></p>
+<h3 id="fit_1">fit</h3>
+<pre><code class="python">BayesianRVFLRegressor.fit(X, y, **kwargs)
+</code></pre>
+
+<p>Fit BayesianRVFLRegressor to training data (X, y).</p>
+<p>Args:</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features.
+
+y: array-like, shape = [n_samples]
+    Target values.
+
+**kwargs: additional parameters to be passed to 
+        self.cook_training_set
+</code></pre>
+<p>Returns: </p>
+<pre><code>self: object
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvfl2Regressor.py#L14">[source]</a></span></p>
+<h3 id="bayesianrvfl2regressor">BayesianRVFL2Regressor</h3>
+<pre><code class="python">nnetsauce.BayesianRVFL2Regressor(
+    n_hidden_features=5,
+    activation_name=&quot;relu&quot;,
+    a=0.01,
+    nodes_sim=&quot;sobol&quot;,
+    bias=True,
+    dropout=0,
+    direct_link=True,
+    n_clusters=0,
+    cluster_encode=True,
+    type_clust=&quot;kmeans&quot;,
+    type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
+    col_sample=1,
+    row_sample=1,
+    seed=123,
+    s1=0.1,
+    s2=0.1,
+    sigma=0.05,
+    beta=None,
+    Sigma=None,
+    GCV=None,
+    return_std=True,
+    backend=&quot;cpu&quot;,
+)
+</code></pre>
+
+<p>Bayesian Random Vector Functional Link Network regression with two priors</p>
+<p>Attributes: </p>
+<pre><code>n_hidden_features: int
+    number of nodes in the hidden layer
+
+activation_name: str
+    activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
+
+a: float
+    hyperparameter for 'prelu' or 'elu' activation function
+
+nodes_sim: str
+    type of simulation for the nodes: 'sobol', 'hammersley', 'halton', 'uniform'
+
+bias: boolean
+    indicates if the hidden layer contains a bias term (True) or not (False)
+
+dropout: float
+    regularization parameter; (random) percentage of nodes dropped out 
+    of the training
+
+direct_link: boolean
+    indicates if the original features are included (True) in model''s fitting or not (False)
+
+n_clusters: int
+    number of clusters for 'kmeans' or 'gmm' clustering (could be 0: no clustering)
+
+cluster_encode: bool
+    defines how the variable containing clusters is treated (default is one-hot)
+    if `False`, then labels are used, without one-hot encoding
+
+type_clust: str
+    type of clustering method: currently k-means ('kmeans') or Gaussian Mixture Model ('gmm')
+
+type_scaling: a tuple of 3 strings
+    scaling methods for inputs, hidden layer, and clustering respectively
+    (and when relevant). 
+    Currently available: standardization ('std') or MinMax scaling ('minmax')
+
+col_sample: float
+    percentage of features randomly chosen for training
+
+row_sample: float
+    percentage of rows chosen for training, by stratified bootstrapping
+
+seed: int 
+    reproducibility seed for nodes_sim=='uniform'
+
+s1: float
+    std. dev. of init. regression parameters in Bayesian Ridge Regression
+
+s2: float
+    std. dev. of augmented regression parameters in Bayesian Ridge Regression
+
+sigma: float
+    std. dev. of residuals in Bayesian Ridge Regression
+
+beta: array-like
+    regression''s fitted parameters
+
+Sigma: array-like
+    covariance of the distribution of fitted parameters
+
+GCV: float
+    return_std: boolean
+
+backend: str
+    "cpu" or "gpu" or "tpu"
+</code></pre>
+<p>References:       </p>
+<pre><code>- [1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at: 
+  https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvfl2Regressor.py#L148">[source]</a></span></p>
+<h3 id="fit_2">fit</h3>
+<pre><code class="python">BayesianRVFL2Regressor.fit(X, y, **kwargs)
+</code></pre>
+
+<p>Fit BayesianRVFL2Regressor to training data (X, y)</p>
+<p>Args:        </p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features
+
+y: array-like, shape = [n_samples]
+    Target values
+
+**kwargs: additional parameters to be passed to 
+        self.cook_training_set
+</code></pre>
+<p>Returns: </p>
+<pre><code>self: object
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/custom/customRegressor.py#L12">[source]</a></span></p>
+<h3 id="customregressor">CustomRegressor</h3>
+<pre><code class="python">nnetsauce.CustomRegressor(
+    obj,
+    n_hidden_features=5,
+    activation_name=&quot;relu&quot;,
+    a=0.01,
+    nodes_sim=&quot;sobol&quot;,
+    bias=True,
+    dropout=0,
+    direct_link=True,
+    n_clusters=2,
+    cluster_encode=True,
+    type_clust=&quot;kmeans&quot;,
+    type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
+    col_sample=1,
+    row_sample=1,
+    seed=123,
+    backend=&quot;cpu&quot;,
+)
+</code></pre>
+
+<p>Custom Regression model </p>
+<p>This class is used to 'augment' any regression model with transformed features.</p>
+<p>Attributes:</p>
+<pre><code>obj: object
+    any object containing a method fit (obj.fit()) and a method predict 
+    (obj.predict())
+
+n_hidden_features: int
+    number of nodes in the hidden layer
+
+activation_name: str
+    activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
+
+a: float
+    hyperparameter for 'prelu' or 'elu' activation function
+
+nodes_sim: str
+    type of simulation for the nodes: 'sobol', 'hammersley', 'halton', 
+    'uniform'
+
+bias: boolean
+    indicates if the hidden layer contains a bias term (True) or not 
+    (False)
+
+dropout: float
+    regularization parameter; (random) percentage of nodes dropped out 
+    of the training
+
+direct_link: boolean
+    indicates if the original predictors are included (True) in model's 
+    fitting or not (False)
+
+n_clusters: int
+    number of clusters for 'kmeans' or 'gmm' clustering (could be 0: 
+        no clustering)
+
+cluster_encode: bool
+    defines how the variable containing clusters is treated (default is one-hot)
+    if `False`, then labels are used, without one-hot encoding
+
+type_clust: str
+    type of clustering method: currently k-means ('kmeans') or Gaussian 
+    Mixture Model ('gmm')
+
+type_scaling: a tuple of 3 strings
+    scaling methods for inputs, hidden layer, and clustering respectively
+    (and when relevant). 
+    Currently available: standardization ('std') or MinMax scaling ('minmax')
+
+col_sample: float
+    percentage of covariates randomly chosen for training
+
+row_sample: float
+    percentage of rows chosen for training, by stratified bootstrapping
+
+seed: int 
+    reproducibility seed for nodes_sim=='uniform'
+
+type_fit: str
+    'regression'
+
+backend: str
+    "cpu" or "gpu" or "tpu"
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/custom/customRegressor.py#L125">[source]</a></span></p>
+<h3 id="fit_3">fit</h3>
+<pre><code class="python">CustomRegressor.fit(X, y, sample_weight=None, **kwargs)
+</code></pre>
+
+<p>Fit custom model to training data (X, y).</p>
+<p>Args:</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features.
+
+y: array-like, shape = [n_samples]
+    Target values.
+
+**kwargs: additional parameters to be passed to 
+    self.cook_training_set or self.obj.fit
+</code></pre>
+<p>Returns: </p>
+<pre><code>self: object
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmRegressor.py#L19">[source]</a></span></p>
+<h3 id="glmregressor">GLMRegressor</h3>
+<pre><code class="python">nnetsauce.GLMRegressor(
+    n_hidden_features=5,
+    lambda1=0.01,
+    alpha1=0.5,
+    lambda2=0.01,
+    alpha2=0.5,
+    family=&quot;gaussian&quot;,
+    activation_name=&quot;relu&quot;,
+    a=0.01,
+    nodes_sim=&quot;sobol&quot;,
+    bias=True,
+    dropout=0,
+    direct_link=True,
+    n_clusters=2,
+    cluster_encode=True,
+    type_clust=&quot;kmeans&quot;,
+    type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
+    optimizer=Optimizer(),
+    seed=123,
+)
+</code></pre>
+
+<p>Generalized 'linear' models using quasi-randomized networks (regression)</p>
+<p>Attributes:</p>
+<pre><code>n_hidden_features: int
+    number of nodes in the hidden layer
+
+lambda1: float
+    regularization parameter for GLM coefficients on original features
+
+alpha1: float
+    controls compromize between l1 and l2 norm of GLM coefficients on original features
+
+lambda2: float
+    regularization parameter for GLM coefficients on nonlinear features
+
+alpha2: float
+    controls compromize between l1 and l2 norm of GLM coefficients on nonlinear features
+
+activation_name: str
+    activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
+
+a: float
+    hyperparameter for 'prelu' or 'elu' activation function
+
+nodes_sim: str
+    type of simulation for the nodes: 'sobol', 'hammersley', 'halton', 
+    'uniform'
+
+bias: boolean
+    indicates if the hidden layer contains a bias term (True) or not 
+    (False)
+
+dropout: float
+    regularization parameter; (random) percentage of nodes dropped out 
+    of the training
+
+direct_link: boolean
+    indicates if the original predictors are included (True) in model's 
+    fitting or not (False)
+
+n_clusters: int
+    number of clusters for 'kmeans' or 'gmm' clustering (could be 0: 
+        no clustering)
+
+cluster_encode: bool
+    defines how the variable containing clusters is treated (default is one-hot)
+    if `False`, then labels are used, without one-hot encoding
+
+type_clust: str
+    type of clustering method: currently k-means ('kmeans') or Gaussian 
+    Mixture Model ('gmm')
+
+type_scaling: a tuple of 3 strings
+    scaling methods for inputs, hidden layer, and clustering respectively
+    (and when relevant). 
+    Currently available: standardization ('std') or MinMax scaling ('minmax')
+
+optimizer: object 
+    optimizer, from class nnetsauce.utils.Optimizer
+
+seed: int 
+    reproducibility seed for nodes_sim=='uniform'
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmRegressor.py#L272">[source]</a></span></p>
+<h3 id="fit_4">fit</h3>
+<pre><code class="python">GLMRegressor.fit(
+    X, y, learning_rate=0.01, decay=0.1, batch_prop=1, tolerance=1e-05, optimizer=None, verbose=0, **kwargs
+)
+</code></pre>
+
+<p>Fit GLM model to training data (X, y).</p>
+<p>Args:</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features.
+
+y: array-like, shape = [n_samples]
+    Target values.
+
+**kwargs: additional parameters to be passed to 
+        self.cook_training_set or self.obj.fit
+</code></pre>
+<p>Returns:</p>
+<pre><code>self: object
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Regressor.py#L19">[source]</a></span></p>
+<h3 id="ridge2regressor">Ridge2Regressor</h3>
+<pre><code class="python">nnetsauce.Ridge2Regressor(
+    n_hidden_features=5,
+    activation_name=&quot;relu&quot;,
+    a=0.01,
+    nodes_sim=&quot;sobol&quot;,
+    bias=True,
+    dropout=0,
+    n_clusters=2,
+    cluster_encode=True,
+    type_clust=&quot;kmeans&quot;,
+    type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
+    col_sample=1,
+    row_sample=1,
+    lambda1=0.1,
+    lambda2=0.1,
+    seed=123,
+    backend=&quot;cpu&quot;,
+)
+</code></pre>
+
+<p>Ridge regression with 2 regularization parameters derived from class Ridge</p>
+<p>Attributes: </p>
+<pre><code>n_hidden_features: int
+    number of nodes in the hidden layer
+
+activation_name: str
+    activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
+
+a: float
+    hyperparameter for 'prelu' or 'elu' activation function
+
+nodes_sim: str
+    type of simulation for the nodes: 'sobol', 'hammersley', 'halton', 
+    'uniform'
+
+bias: boolean
+    indicates if the hidden layer contains a bias term (True) or not 
+    (False)
+
+dropout: float
+    regularization parameter; (random) percentage of nodes dropped out 
+    of the training
+
+n_clusters: int
+    number of clusters for 'kmeans' or 'gmm' clustering (could be 0: 
+        no clustering)
+
+cluster_encode: bool
+    defines how the variable containing clusters is treated (default is one-hot)
+    if `False`, then labels are used, without one-hot encoding
+
+type_clust: str
+    type of clustering method: currently k-means ('kmeans') or Gaussian 
+    Mixture Model ('gmm')
+
+type_scaling: a tuple of 3 strings
+    scaling methods for inputs, hidden layer, and clustering respectively
+    (and when relevant). 
+    Currently available: standardization ('std') or MinMax scaling ('minmax')
+
+col_sample: float
+    percentage of covariates randomly chosen for training
+
+row_sample: float
+    percentage of rows chosen for training, by stratified bootstrapping
+
+lambda1: float
+    regularization parameter on direct link
+
+lambda2: float
+    regularization parameter on hidden layer
+
+seed: int 
+    reproducibility seed for nodes_sim=='uniform'
+
+backend: str
+    'cpu' or 'gpu' or 'tpu'
+</code></pre>
+<p>References: </p>
+<pre><code>- [1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at: 
+https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Regressor.py#L131">[source]</a></span></p>
+<h3 id="fit_5">fit</h3>
+<pre><code class="python">Ridge2Regressor.fit(X, y, **kwargs)
+</code></pre>
+
+<p>Fit Ridge model to training data (X, y).           </p>
+<p>Args:</p>
+<pre><code>X: {array-like}, shape = [n_samples, n_features]
+    Training vectors, where n_samples is the number 
+    of samples and n_features is the number of features.
+
+y: array-like, shape = [n_samples]
+    Target values.
+
+**kwargs: additional parameters to be passed to 
+        self.cook_training_set or self.obj.fit
+</code></pre>
+<p>Returns: </p>
+<pre><code>self: object
+</code></pre>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
