@@ -99,14 +99,6 @@
             
             <li class="nav-item" data-level="1"><a href="#querier" class="nav-link">Querier</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#parameters" class="nav-link">Parameters</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -121,19 +113,24 @@
 </code></pre>
 
 <p>A wrapper for chaining the querier's atomic operations, which are currently:
-<code>concat</code>, <code>delete</code>, <code>drop</code>, <code>filtr</code>, <code>join</code>, <code>select</code>, <code>summarize</code>,
-<code>update</code>, <code>request</code></p>
-<h2 id="parameters">Parameters</h2>
-<p>df: a data frame
-    a data frame (optional)</p>
-<p>source: str
-    a csv file path, sql database path, or mongo db uri</p>
-<p>db: str
-    database name, if <code>source</code> is a mongo db uri</p>
-<p>table: str
-    name of the table/collection, if <code>source</code> is provided and is a database</p>
-<h2 id="examples">Examples</h2>
-<p>https://github.com/thierrymoudiki/querier/tree/master/querier/demo</p>
+   <code>concat</code>, <code>delete</code>, <code>drop</code>, <code>filtr</code>, <code>join</code>, <code>select</code>, <code>summarize</code>,
+   <code>update</code>, <code>request</code></p>
+<p>Attributes: </p>
+<pre><code>df: a data frame
+    a data frame (optional)
+
+source: str
+    a csv file path, sql database path, or mongo db uri
+
+db: str
+    database name, if `source` is a mongo db uri
+
+table: str
+    name of the table/collection, if `source` is provided and is a database
+</code></pre>
+<p>Examples:</p>
+<pre><code>https://github.com/thierrymoudiki/querier/tree/master/querier/demo
+</code></pre>
 <hr /></div>
             </div>
         </div>

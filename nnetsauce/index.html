@@ -114,7 +114,7 @@
             
             <li class="nav-item" data-level="1"><a href="#nnetsauce" class="nav-link">nnetsauce</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#installing" class="nav-link">Installing</a>
+            <li class="nav-item" data-level="2"><a href="#installing-for-python-and-r" class="nav-link">Installing (for Python and R)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -138,7 +138,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="nnetsauce">nnetsauce</h1>
-<p><img alt="PyPI" src="https://img.shields.io/pypi/v/nnetsauce" /> <a href="https://github.com/thierrymoudiki/nnetsauce/blob/master/LICENSE"><img alt="PyPI - License" src="https://img.shields.io/pypi/l/nnetsauce" /></a> <a href="https://pepy.tech/project/nnetsauce"><img alt="Downloads" src="https://pepy.tech/badge/nnetsauce" /></a></p>
+<p><img alt="PyPI" src="https://img.shields.io/pypi/v/nnetsauce" /> <a href="https://github.com/thierrymoudiki/nnetsauce/blob/master/LICENSE"><img alt="PyPI - License" src="https://img.shields.io/pypi/l/nnetsauce" /></a> <a href="https://pepy.tech/project/nnetsauce"><img alt="Downloads" src="https://pepy.tech/badge/nnetsauce" /></a> <a href="https://github.com/Techtonique/nnetsauce"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/Techtonique/nnetsauce" /></a></p>
 <p>Welcome to <strong>nnetsauce</strong>'s website.</p>
 <p><em>nnetsauce</em> does Statistical/Machine Learning (ML) using advanced combinations of randomized and quasi-randomized neural networks layers. It contains models for regression, classification, and time series forecasting. Every ML model in nnetsauce is based on components g(XW + b), where:</p>
 <ul>
@@ -150,7 +150,7 @@
 <p><strong>nnetsauce</strong>’s source code is <a href="https://github.com/Techtonique/nnetsauce">available on GitHub</a>. </p>
 <p>You can read posts about nnetsauce <a href="https://thierrymoudiki.github.io/blog/#QuasiRandomizedNN">in this blog</a>, and for current references, feel free consult the section: <a href="REFERENCES/">References</a>.</p>
 <p>Looking for a specific function? You can also use the <strong>search</strong> function available in the navigation bar.</p>
-<h2 id="installing">Installing</h2>
+<h2 id="installing-for-python-and-r">Installing (for Python and R)</h2>
 <h3 id="python">Python</h3>
 <ul>
 <li><strong>1st method</strong>: by using <code>pip</code> at the command line for the stable version</li>
@@ -161,7 +161,13 @@
 <ul>
 <li><strong>2nd method</strong>: from Github, for the development version</li>
 </ul>
-<pre><code class="bash">pip install git+https://github.com/thierrymoudiki/nnetsauce.git
+<pre><code class="bash">pip install git+https://github.com/Techtonique/nnetsauce.git
+</code></pre>
+
+<p>or </p>
+<pre><code class="bash">git clone https://github.com/Techtonique/nnetsauce.git
+cd nnetsauce
+make install
 </code></pre>
 
 <h3 id="r">R</h3>
@@ -169,10 +175,11 @@
 <li><strong>1st method</strong>: From Github, in R console:</li>
 </ul>
 <pre><code class="r">library(devtools)
-devtools::install_github(&quot;thierrymoudiki/nnetsauce/R-package&quot;)
+devtools::install_github(&quot;Techtonique/nnetsauce/R-package&quot;)
 library(nnetsauce)
 </code></pre>
 
+<p><strong>General rule for using the package in R</strong>:  object accesses with <code>.</code>'s are replaced by <code>$</code>'s. See also <a href="#quick-start">Quick start</a>.</p>
 <h2 id="quickstart">Quickstart</h2>
 <p>Examples of use: </p>
 <ul>
@@ -289,5 +296,5 @@ library(nnetsauce)
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-09-17 22:35:07.689607+00:00
+Build Date UTC : 2020-10-01 19:24:05.011853+00:00
 -->
