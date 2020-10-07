@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-10-07T08:44Z
+last_built: 2020-10-07T09:05Z
 urls:
   reference: https://techtonique.github.io/ESGtoolkit//reference
   article: https://techtonique.github.io/ESGtoolkit//articles
