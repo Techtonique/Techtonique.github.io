@@ -1,0 +1,41 @@
+Package: ggplot2
+Version: 3.3.2
+Depends: R (>= 3.2)
+Imports: digest, glue, grDevices, grid, gtable (>= 0.1.1), isoband, MASS, mgcv,
+         rlang (>= 0.3.0), scales (>= 0.5.0), stats, tibble, withr (>= 2.0.0)
+Suggests: covr, dplyr, ggplot2movies, hexbin, Hmisc, knitr, lattice, mapproj,
+         maps, maptools, multcomp, munsell, nlme, profvis, quantreg,
+         RColorBrewer, rgeos, rmarkdown, rpart, sf (>= 0.7-3), svglite (>=
+         1.2.0.9001), testthat (>= 2.1.0), vdiffr (>= 0.3.0)
+Enhances: sp
+License: GPL-2 | file LICENSE
+
+Package: gridExtra
+Version: 2.3
+Imports: gtable, grid, grDevices, graphics, utils
+Suggests: ggplot2, egg, lattice, knitr, testthat
+License: GPL (>= 2)
+
+Package: reshape2
+Version: 1.4.4
+Depends: R (>= 3.1)
+Imports: plyr (>= 1.8.1), Rcpp, stringr
+LinkingTo: Rcpp
+Suggests: covr, lattice, testthat (>= 0.8.0)
+License: MIT + file LICENSE
+Archs: i386, x64
+
+Package: VineCopula
+Version: 2.4.0
+Depends: R (>= 3.1.0)
+Imports: graphics, grDevices, stats, utils, MASS, mvtnorm, methods, ADGofTest,
+         lattice, parallel
+Suggests: CDVine, TSP, shiny, testthat, numDeriv, kdecopula (>= 0.8.0), network
+License: GPL (>= 2)
+Archs: i386, x64
+
+Package: ycinterextra
+Version: 0.1
+Depends: compiler, methods
+Imports: graphics, mcGlobaloptim
+License: GPL-2 | GPL-3
