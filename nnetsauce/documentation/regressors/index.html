@@ -669,6 +669,9 @@ lambda2: float
 alpha2: float
     controls compromize between l1 and l2 norm of GLM coefficients on nonlinear features
 
+family: str
+    "gaussian", "laplace" or "poisson" (for now)
+
 activation_name: str
     activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'
 
@@ -715,7 +718,7 @@ seed: int
     reproducibility seed for nodes_sim=='uniform'
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmRegressor.py#L272">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmRegressor.py#L173">[source]</a></span></p>
 <h3 id="fit_4">fit</h3>
 <pre><code class="python">GLMRegressor.fit(
     X, y, learning_rate=0.01, decay=0.1, batch_prop=1, tolerance=1e-05, optimizer=None, verbose=0, **kwargs
