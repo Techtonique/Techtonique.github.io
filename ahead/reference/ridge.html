@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -151,16 +151,18 @@
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 <span class='kw'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span> ; <span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
-<span class='kw'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='kw'>n</span> <span class='op'>*</span> <span class='kw'>p</span>), <span class='kw'>n</span>, <span class='kw'>p</span>) <span class='co'># no intercept!</span>
+<span class='kw'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='kw'>n</span> <span class='op'>*</span> <span class='kw'>p</span>), <span class='kw'>n</span>, <span class='kw'>p</span>)
 <span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='kw'>n</span>)
 
 <span class='kw'>fit_obj</span> <span class='op'>&lt;-</span> <span class='kw'>ahead</span>::<span class='fu'>ridge</span>(<span class='kw'>X</span>, <span class='kw'>y</span>)
 
 <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(mfrow=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
 
-<span class='fu'><a href='https://rdrr.io/r/graphics/matplot.html'>matplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>lambda</span>), <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span>(<span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>coef</span>), type = <span class='st'>'l'</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/matplot.html'>matplot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>lambda</span>), <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span>(<span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>coef</span>), type = <span class='st'>'l'</span>,
+main=<span class='st'>"coefficients \n f(lambda)"</span>)
 
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>lambda</span>), <span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>GCV</span>, type=<span class='st'>'l'</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>lambda</span>), <span class='kw'>fit_obj</span><span class='op'>$</span><span class='kw'>GCV</span>, type=<span class='st'>'l'</span>,
+main=<span class='st'>"GCV error"</span>)
 </div><div class='img'><img src='ridge-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
