@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -137,6 +137,7 @@
   h = <span class='fl'>5</span>,
   level = <span class='fl'>95</span>,
   B = <span class='fl'>250</span>,
+  cl = <span class='kw'>NULL</span>,
   dist = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"student"</span>, <span class='st'>"gaussian"</span>),
   seed = <span class='fl'>123</span>
 )</pre>
@@ -159,6 +160,10 @@
     <tr>
       <th>B</th>
       <td><p>number of simulations for `arima.sim`</p></td>
+    </tr>
+    <tr>
+      <th>cl</th>
+      <td><p>an integer; the number of clusters for parallel execution</p></td>
     </tr>
     <tr>
       <th>dist</th>

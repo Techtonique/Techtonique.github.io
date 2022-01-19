@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -143,10 +143,12 @@
   a = <span class='fl'>0.01</span>,
   lambda_1 = <span class='fl'>0.1</span>,
   lambda_2 = <span class='fl'>0.1</span>,
+  dropout = <span class='fl'>0</span>,
   type_forecast = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"recursive"</span>, <span class='st'>"direct"</span>),
   type_pi = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gaussian"</span>, <span class='st'>"bootstrap"</span>),
   seed = <span class='fl'>1</span>,
-  B = <span class='fl'>100</span>
+  B = <span class='fl'>100</span>,
+  cl = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -193,6 +195,10 @@
       <td><p>Regularization parameter for transformed predictors</p></td>
     </tr>
     <tr>
+      <th>dropout</th>
+      <td><p>dropout regularization parameter (dropping nodes in hidden layer)</p></td>
+    </tr>
+    <tr>
       <th>type_forecast</th>
       <td><p>Recursive or direct forecast</p></td>
     </tr>
@@ -207,6 +213,10 @@
     <tr>
       <th>B</th>
       <td><p>Number of bootstrap replications for <code>type_pi == 'bootstrap'</code></p></td>
+    </tr>
+    <tr>
+      <th>cl</th>
+      <td><p>an integer; the number of clusters for parallel execution, for <code>type_pi == 'bootstrap'</code></p></td>
     </tr>
     </table>
 
