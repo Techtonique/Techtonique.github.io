@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predict from Ridge regression — predict.ridge • ahead</title>
+<title>Changelog • ahead</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,7 @@
 
 
 
-<meta property="og:title" content="Predict from Ridge regression — predict.ridge" />
-<meta property="og:description" content="Predict from Ridge regression" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -59,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -126,58 +125,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Predict from Ridge regression</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Techtonique/ahead/R/ridge.R'><code>R/ridge.R</code></a></small>
-    <div class="hidden name"><code>predict.ridge.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/Techtonique/ahead/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Predict from Ridge regression</p>
-    </div>
-
-    <pre class="usage"><span class='co'># S3 method for ridge</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='kw'>object</span>, <span class='kw'>newx</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>object fitted by function `ridge`</p></td>
-    </tr>
-    <tr>
-      <th>newx</th>
-      <td><p>new examples</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>predicted values for <code>newx</code></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-
-<span class='kw'>n</span> <span class='op'>&lt;-</span> <span class='fl'>100</span> ; <span class='kw'>p</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
-<span class='kw'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='kw'>n</span> <span class='op'>*</span> <span class='kw'>p</span>), <span class='kw'>n</span>, <span class='kw'>p</span>) <span class='co'># no intercept!</span>
-<span class='kw'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='kw'>n</span>)
-
-<span class='kw'>fit_obj</span> <span class='op'>&lt;-</span> <span class='kw'>ahead</span>::<span class='fu'><a href='ridge.html'>ridge</a></span>(<span class='kw'>X</span>, <span class='kw'>y</span>)
-
-<span class='kw'>n_test</span> <span class='op'>&lt;-</span> <span class='fl'>10</span>
-
-<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='kw'>fit_obj</span>, newx=<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='kw'>n_test</span> <span class='op'>*</span> <span class='kw'>p</span>), <span class='kw'>n_test</span>, <span class='kw'>p</span>))
-</div><div class='output co'>#&gt;  [1] 0.1204651 0.1204651 0.1204651 0.1204651 0.1204651 0.1204651 0.1204651
-#&gt;  [8] 0.1204651 0.1204651 0.1204651</div><div class='input'>
-
-</div></pre>
+    <div id="version-050" class="section level1">
+<h1 class="page-header" data-toc-text="0.5.0">
+<a href="#version-050" class="anchor"></a>version 0.5.0</h1>
+<ul>
+<li>add dropout regularization to <code>ridge2f</code>
+</li>
+<li>parallel execution for <code>type_pi == bootstrap</code> in <code>ridge2f</code> (done in R /!, experimental)</li>
+</ul>
+</div>
+    <div id="version-042" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.2">
+<a href="#version-042" class="anchor"></a>version 0.4.2</h1>
+<ul>
+<li>new attributes mean, lower bound, upper bound forecast as numpy arrays</li>
+</ul>
+</div>
+    <div id="version-041" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.1">
+<a href="#version-041" class="anchor"></a>version 0.4.1</h1>
+<ul>
+<li>use <code>get_frequency</code> to get series frequency as a number</li>
+<li>create a function <code>get_tscv_indices</code> for getting time series cross-validation indices</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
