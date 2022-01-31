@@ -158,7 +158,6 @@
     cluster_encode=True,
     type_clust=&quot;kmeans&quot;,
     type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
-    col_sample=1,
     lags=1,
     seed=123,
     backend=&quot;cpu&quot;,
@@ -210,9 +209,6 @@ type_scaling: a tuple of 3 strings.
     (and when relevant).
     Currently available: standardization ('std') or MinMax scaling ('minmax').
 
-col_sample: float.
-    percentage of covariates randomly chosen for training.
-
 lags: int.
     number of lags used for each time series.
 
@@ -223,7 +219,7 @@ backend: str.
     "cpu" or "gpu" or "tpu".
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L130">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L125">[source]</a></span></p>
 <h3 id="fit">fit</h3>
 <pre><code class="language-python">MTS.fit(X, xreg=None)
 </code></pre>
@@ -245,7 +241,7 @@ xreg: {array-like}, shape = [n_samples, n_features_xreg]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L212">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L207">[source]</a></span></p>
 <h3 id="predict">predict</h3>
 <pre><code class="language-python">MTS.predict(h=5, level=95, new_xreg=None, **kwargs)
 </code></pre>

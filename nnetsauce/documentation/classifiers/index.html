@@ -764,8 +764,6 @@ y: array-like, shape = [n_samples]
     cluster_encode=True,
     type_clust=&quot;kmeans&quot;,
     type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
-    col_sample=1,
-    row_sample=1,
     lambda1=0.1,
     lambda2=0.1,
     seed=123,
@@ -816,12 +814,6 @@ type_scaling: a tuple of 3 strings
     (and when relevant).
     Currently available: standardization ('std') or MinMax scaling ('minmax')
 
-col_sample: float
-    percentage of covariates randomly chosen for training
-
-row_sample: float
-    percentage of rows chosen for training, by stratified bootstrapping
-
 lambda1: float
     regularization parameter on direct link
 
@@ -842,7 +834,7 @@ https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for
 https://www.researchgate.net/publication/334706878_Multinomial_logistic_regression_using_quasi-randomized_networks
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Classifier.py#L271">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Classifier.py#L261">[source]</a></span></p>
 <h3 id="fit_5">fit</h3>
 <pre><code class="language-python">Ridge2Classifier.fit(X, y, solver=&quot;L-BFGS-B&quot;, **kwargs)
 </code></pre>
@@ -940,7 +932,7 @@ backend: str
 https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2MultitaskClassifier.py#L123">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2MultitaskClassifier.py#L121">[source]</a></span></p>
 <h3 id="fit_6">fit</h3>
 <pre><code class="language-python">Ridge2MultitaskClassifier.fit(X, y, **kwargs)
 </code></pre>
