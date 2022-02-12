@@ -171,7 +171,7 @@
 )
 </code></pre>
 <p>AdaBoost Classification (SAMME) model class derived from class Boosting</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>obj: object
     any object containing a method fit (obj.fit()) and a method predict
     (obj.predict())
@@ -245,13 +245,63 @@ method: str
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Attributes:</p>
+<pre><code>alpha_: list
+    AdaBoost coefficients alpha_m
+
+base_learners_: dict
+    a dictionary containing the base learners
+</code></pre>
+<p>Examples:</p>
+<p>See also <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/adaboost_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/adaboost_classification.py</a></p>
+<pre><code class="language-python">import nnetsauce as ns
+import numpy as np
+from sklearn.datasets import load_breast_cancer
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from time import time
+
+breast_cancer = load_breast_cancer()
+Z = breast_cancer.data
+t = breast_cancer.target
+np.random.seed(123)
+X_train, X_test, y_train, y_test = train_test_split(Z, t, test_size=0.2)
+
+# SAMME.R
+clf = LogisticRegression(solver='liblinear', multi_class = 'ovr', 
+                        random_state=123)
+fit_obj = ns.AdaBoostClassifier(clf, 
+                                n_hidden_features=int(11.22338867), 
+                                direct_link=True,
+                                n_estimators=250, learning_rate=0.01126343,
+                                col_sample=0.72684326, row_sample=0.86429443,
+                                dropout=0.63078613, n_clusters=2,
+                                type_clust=&quot;gmm&quot;,
+                                verbose=1, seed = 123, 
+                                method=&quot;SAMME.R&quot;)  
+
+start = time() 
+fit_obj.fit(X_train, y_train) 
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+start = time() 
+print(fit_obj.score(X_test, y_test))
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+preds = fit_obj.predict(X_test)                        
+
+print(fit_obj.score(X_test, y_test, scoring=&quot;roc_auc&quot;))
+print(metrics.classification_report(preds, y_test))
+
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L156">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L212">[source]</a></span></p>
 <h3 id="fit">fit</h3>
 <pre><code class="language-python">AdaBoostClassifier.fit(X, y, sample_weight=None, **kwargs)
 </code></pre>
 <p>Fit Boosting model to training data (X, y).</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features.
@@ -266,12 +316,12 @@ y: array-like, shape = [n_samples]
 <pre><code> self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L327">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L383">[source]</a></span></p>
 <h3 id="predict">predict</h3>
 <pre><code class="language-python">AdaBoostClassifier.predict(X, **kwargs)
 </code></pre>
 <p>Predict test data X.</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features.
@@ -283,12 +333,12 @@ y: array-like, shape = [n_samples]
 <pre><code>model predictions: {array-like}
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L346">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L402">[source]</a></span></p>
 <h3 id="predict_proba">predict_proba</h3>
 <pre><code class="language-python">AdaBoostClassifier.predict_proba(X, **kwargs)
 </code></pre>
 <p>Predict probabilities for test data X.</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features.
@@ -300,12 +350,12 @@ y: array-like, shape = [n_samples]
 <pre><code>probability estimates for test data: {array-like}
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L425">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/boosting/adaBoostClassifier.py#L481">[source]</a></span></p>
 <h3 id="score">score</h3>
 <pre><code class="language-python">AdaBoostClassifier.score(X, y, scoring=None, **kwargs)
 </code></pre>
 <p>Score the model on test set features X and response y.</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features
@@ -375,7 +425,7 @@ dropout: float
     of the training
 
 direct_link: boolean
-    indicates if the original predictors are included (True) in model's
+    indicates if the original predictors are included (True) in model''s
     fitting or not (False)
 
 n_clusters: int
@@ -407,13 +457,58 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Examples:</p>
+<pre><code class="language-python">import nnetsauce as ns
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_digits
+from time import time
+
+digits = load_digits()
+X = digits.data
+y = digits.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
+                                                    random_state=123)
+
+# layer 1 (base layer) ----    
+layer1_regr = RandomForestClassifier(n_estimators=10, random_state=123)
+
+start = time() 
+
+layer1_regr.fit(X_train, y_train)
+
+# Accuracy in layer 1
+print(layer1_regr.score(X_test, y_test))
+
+# layer 2 using layer 1 ----
+layer2_regr = ns.CustomClassifier(obj = layer1_regr, n_hidden_features=5, 
+                        direct_link=True, bias=True, 
+                        nodes_sim='uniform', activation_name='relu', 
+                        n_clusters=2, seed=123)
+layer2_regr.fit(X_train, y_train)
+
+# Accuracy in layer 2
+print(layer2_regr.score(X_test, y_test))
+
+# layer 3 using layer 2 ----
+layer3_regr = ns.CustomClassifier(obj = layer2_regr, n_hidden_features=10, 
+                        direct_link=True, bias=True, dropout=0.7,
+                        nodes_sim='uniform', activation_name='relu', 
+                        n_clusters=2, seed=123)
+layer3_regr.fit(X_train, y_train)
+
+# Accuracy in layer 3
+print(layer3_regr.score(X_test, y_test))
+
+print(f&quot;Elapsed {time() - start}&quot;)  
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/custom/customClassifier.py#L120">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/custom/customClassifier.py#L168">[source]</a></span></p>
 <h3 id="fit_1">fit</h3>
 <pre><code class="language-python">CustomClassifier.fit(X, y, sample_weight=None, **kwargs)
 </code></pre>
 <p>Fit custom model to training data (X, y).</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features.
@@ -452,7 +547,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Generalized 'linear' models using quasi-randomized networks (classification)</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -513,8 +608,14 @@ optimizer: object
 seed: int
     reproducibility seed for nodes_sim=='uniform'
 </code></pre>
+<p>Attributes:</p>
+<pre><code>beta_: vector
+    regression coefficients
+</code></pre>
+<p>Examples:</p>
+<p>See <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_classification.py</a>    </p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmClassifier.py#L198">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmClassifier.py#L207">[source]</a></span></p>
 <h3 id="fit_2">fit</h3>
 <pre><code class="language-python">GLMClassifier.fit(
     X, y, learning_rate=0.01, decay=0.1, batch_prop=1, tolerance=1e-05, optimizer=None, verbose=1, **kwargs
@@ -558,7 +659,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Multitask Classification model based on regression models, with shared covariates</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>obj: object
     any object (must be a regression model) containing a method fit (obj.fit())
     and a method predict (obj.predict())
@@ -617,12 +718,49 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
-<p>References:</p>
-<pre><code>[1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at:
-https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+<p>Attributes:</p>
+<pre><code>fit_objs_: dict
+    objects adjusted to each individual time series
+
+n_classes_: int
+    number of classes for the classifier
+</code></pre>
+<p>Examples:</p>
+<p>See also <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/mtask_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/mtask_classification.py</a></p>
+<pre><code class="language-python">import nnetsauce as ns
+import numpy as np
+from sklearn.datasets import load_breast_cancer
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from time import time
+
+breast_cancer = load_breast_cancer()
+Z = breast_cancer.data
+t = breast_cancer.target
+
+X_train, X_test, y_train, y_test = train_test_split(Z, t, test_size=0.2, 
+                                                    random_state=123+2*10)
+
+# Linear Regression is used 
+regr = LinearRegression()
+fit_obj = ns.MultitaskClassifier(regr, n_hidden_features=5, 
+                            n_clusters=2, type_clust=&quot;gmm&quot;)
+
+start = time()
+fit_obj.fit(X_train, y_train)
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+print(fit_obj.score(X_test, y_test))
+print(fit_obj.score(X_test, y_test, scoring=&quot;roc_auc&quot;))
+
+start = time()
+preds = fit_obj.predict(X_test)
+print(f&quot;Elapsed {time() - start}&quot;) 
+print(metrics.classification_report(preds, y_test))
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/multitask/multitaskClassifier.py#L129">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/multitask/multitaskClassifier.py#L170">[source]</a></span></p>
 <h3 id="fit_3">fit</h3>
 <pre><code class="language-python">MultitaskClassifier.fit(X, y, sample_weight=None, **kwargs)
 </code></pre>
@@ -667,7 +805,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Randomized 'Bagging' Classification model</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>obj: object
     any object containing a method fit (obj.fit()) and a method predict
     (obj.predict())
@@ -729,8 +867,48 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Attributes:</p>
+<pre><code>voter_: dict
+    dictionary containing all the fitted base-learners
+</code></pre>
+<p>Examples:</p>
+<p>See also <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/randombag_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/randombag_classification.py</a></p>
+<pre><code class="language-python">import nnetsauce as ns
+from sklearn.datasets import load_breast_cancer
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from time import time
+
+
+breast_cancer = load_breast_cancer()
+Z = breast_cancer.data
+t = breast_cancer.target
+np.random.seed(123)
+X_train, X_test, y_train, y_test = train_test_split(Z, t, test_size=0.2)
+
+# decision tree
+clf = DecisionTreeClassifier(max_depth=2, random_state=123)
+fit_obj = ns.RandomBagClassifier(clf, n_hidden_features=2,
+                                direct_link=True,
+                                n_estimators=100, 
+                                col_sample=0.9, row_sample=0.9,
+                                dropout=0.3, n_clusters=0, verbose=1)
+
+start = time()
+fit_obj.fit(X_train, y_train)
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+print(fit_obj.score(X_test, y_test))
+print(fit_obj.score(X_test, y_test, scoring=&quot;roc_auc&quot;))
+
+start = time()
+preds = fit_obj.predict(X_test)
+print(f&quot;Elapsed {time() - start}&quot;) 
+print(metrics.classification_report(preds, y_test))    
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/randombag/_randomBagClassifier.py#L136">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/randombag/_randomBagClassifier.py#L182">[source]</a></span></p>
 <h3 id="fit_4">fit</h3>
 <pre><code class="language-python">RandomBagClassifier.fit(X, y, **kwargs)
 </code></pre>
@@ -771,7 +949,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Multinomial logit classification with 2 regularization parameters</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -826,15 +1004,50 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
-<p>References:</p>
-<pre><code>- [1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at:
-https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+<p>Attributes:</p>
+<pre><code>beta_: {array-like}
+    regression coefficients
+</code></pre>
+<p>Examples:</p>
+<p>See also <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/ridge_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/ridge_classification.py</a></p>
+<pre><code class="language-python">import nnetsauce as ns
+import numpy as np
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from time import time
 
-- [2] Moudiki, T. (2019). Multinomial logistic regression using quasi-randomized networks. Available at:
-https://www.researchgate.net/publication/334706878_Multinomial_logistic_regression_using_quasi-randomized_networks
+
+breast_cancer = load_breast_cancer()
+X = breast_cancer.data
+y = breast_cancer.target
+
+# split data into training test and test set
+np.random.seed(123)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# create the model with nnetsauce
+fit_obj = ns.Ridge2Classifier(lambda1 = 6.90185578e+04, 
+                            lambda2 = 3.17392781e+02, 
+                            n_hidden_features=95, 
+                            n_clusters=2, 
+                            dropout = 3.62817383e-01,
+                            type_clust = &quot;gmm&quot;)
+
+# fit the model on training set
+start = time()
+fit_obj.fit(X_train, y_train)
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+# get the accuracy on test set
+start = time()
+print(fit_obj.score(X_test, y_test))
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+# get area under the curve on test set (auc)
+print(fit_obj.score(X_test, y_test, scoring=&quot;roc_auc&quot;))    
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Classifier.py#L261">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Classifier.py#L301">[source]</a></span></p>
 <h3 id="fit_5">fit</h3>
 <pre><code class="language-python">Ridge2Classifier.fit(X, y, solver=&quot;L-BFGS-B&quot;, **kwargs)
 </code></pre>
@@ -876,7 +1089,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Multitask Ridge classification with 2 regularization parameters</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -927,12 +1140,44 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
-<p>References:</p>
-<pre><code>- [1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at:
-https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+<p>Attributes:</p>
+<pre><code>beta_: {array-like}
+    regression coefficients
+</code></pre>
+<p>Examples:</p>
+<p>See also <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/ridgemtask_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/ridgemtask_classification.py</a></p>
+<pre><code class="language-python">import nnetsauce as ns
+import numpy as np
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from time import time
+
+breast_cancer = load_breast_cancer()
+Z = breast_cancer.data
+t = breast_cancer.target
+np.random.seed(123)
+X_train, X_test, y_train, y_test = train_test_split(Z, t, test_size=0.2)
+
+fit_obj = ns.Ridge2MultitaskClassifier(n_hidden_features=int(9.83730469e+01), 
+                                dropout=4.31054687e-01, 
+                                n_clusters=int(1.71484375e+00),
+                                lambda1=1.24023438e+01, lambda2=7.30263672e+03)
+
+start = time()
+fit_obj.fit(X_train, y_train)
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+print(fit_obj.score(X_test, y_test))
+print(fit_obj.score(X_test, y_test, scoring=&quot;roc_auc&quot;))
+
+start = time()
+preds = fit_obj.predict(X_test)
+print(f&quot;Elapsed {time() - start}&quot;) 
+print(metrics.classification_report(preds, y_test))    
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2MultitaskClassifier.py#L121">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2MultitaskClassifier.py#L157">[source]</a></span></p>
 <h3 id="fit_6">fit</h3>
 <pre><code class="language-python">Ridge2MultitaskClassifier.fit(X, y, **kwargs)
 </code></pre>
@@ -977,7 +1222,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Randomized 'Bagging' Classification model</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>obj: object
     any object containing a method fit (obj.fit()) and a method predict
     (obj.predict())
@@ -1039,8 +1284,48 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Attributes:</p>
+<pre><code>voter_: dict
+    dictionary containing all the fitted base-learners
+</code></pre>
+<p>Examples:</p>
+<p>See also <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/randombag_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/randombag_classification.py</a></p>
+<pre><code class="language-python">import nnetsauce as ns
+from sklearn.datasets import load_breast_cancer
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+from time import time
+
+
+breast_cancer = load_breast_cancer()
+Z = breast_cancer.data
+t = breast_cancer.target
+np.random.seed(123)
+X_train, X_test, y_train, y_test = train_test_split(Z, t, test_size=0.2)
+
+# decision tree
+clf = DecisionTreeClassifier(max_depth=2, random_state=123)
+fit_obj = ns.RandomBagClassifier(clf, n_hidden_features=2,
+                                direct_link=True,
+                                n_estimators=100, 
+                                col_sample=0.9, row_sample=0.9,
+                                dropout=0.3, n_clusters=0, verbose=1)
+
+start = time()
+fit_obj.fit(X_train, y_train)
+print(f&quot;Elapsed {time() - start}&quot;) 
+
+print(fit_obj.score(X_test, y_test))
+print(fit_obj.score(X_test, y_test, scoring=&quot;roc_auc&quot;))
+
+start = time()
+preds = fit_obj.predict(X_test)
+print(f&quot;Elapsed {time() - start}&quot;) 
+print(metrics.classification_report(preds, y_test))    
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/randombag/_randomBagClassifier.py#L136">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/randombag/_randomBagClassifier.py#L182">[source]</a></span></p>
 <h3 id="fit_7">fit</h3>
 <pre><code class="language-python">RandomBagClassifier.fit(X, y, **kwargs)
 </code></pre>

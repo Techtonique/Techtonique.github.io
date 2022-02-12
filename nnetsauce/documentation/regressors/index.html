@@ -164,7 +164,7 @@
 )
 </code></pre>
 <p>Random Vector Functional Link Network regression without shrinkage</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -219,13 +219,20 @@ seed: int
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Attributes:</p>
+<pre><code>beta_: vector
+    regression coefficients
+
+GCV_: float
+    Generalized Cross-Validation error
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L114">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L122">[source]</a></span></p>
 <h3 id="fit">fit</h3>
 <pre><code class="language-python">BaseRegressor.fit(X, y, **kwargs)
 </code></pre>
 <p>Fit BaseRegressor to training data (X, y)</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features
@@ -239,12 +246,12 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L145">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L153">[source]</a></span></p>
 <h3 id="predict">predict</h3>
 <pre><code class="language-python">BaseRegressor.predict(X, **kwargs)
 </code></pre>
 <p>Predict test data X.</p>
-<p>Args</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features
@@ -255,12 +262,12 @@ y: array-like, shape = [n_samples]
 <pre><code>model predictions: {array-like}
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L182">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/base/baseRegressor.py#L190">[source]</a></span></p>
 <h3 id="score">score</h3>
 <pre><code class="language-python">BaseRegressor.score(X, y, scoring=None, **kwargs)
 </code></pre>
 <p>Score the model on test set features X and response y.</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features
@@ -295,15 +302,12 @@ scoring: str
     seed=123,
     s=0.1,
     sigma=0.05,
-    beta=None,
-    Sigma=None,
-    GCV=None,
     return_std=True,
     backend=&quot;cpu&quot;,
 )
 </code></pre>
 <p>Bayesian Random Vector Functional Link Network regression with one prior</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -350,25 +354,35 @@ s: float
 sigma: float
     std. dev. of residuals in Bayesian Ridge Regression
 
-beta: array-like
-    regression''s fitted parameters
-
-Sigma: array-like
-    covariance of the distribution of fitted parameters
-
-GCV: float
-    return_std: boolean
+return_std: boolean
+    if True, uncertainty around predictions is evaluated
 
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Attributes:</p>
+<pre><code>beta_: array-like
+    regression''s coefficients
+
+Sigma_: array-like
+    covariance of the distribution of fitted parameters
+
+GCV_: float
+    Generalized cross-validation error
+
+y_mean_: float
+    average response
+</code></pre>
+<p>Examples:</p>
+<pre><code class="language-python">TBD
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvflRegressor.py#L126">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvflRegressor.py#L137">[source]</a></span></p>
 <h3 id="fit_1">fit</h3>
 <pre><code class="language-python">BayesianRVFLRegressor.fit(X, y, **kwargs)
 </code></pre>
 <p>Fit BayesianRVFLRegressor to training data (X, y).</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features.
@@ -401,15 +415,12 @@ y: array-like, shape = [n_samples]
     s1=0.1,
     s2=0.1,
     sigma=0.05,
-    beta=None,
-    Sigma=None,
-    GCV=None,
     return_std=True,
     backend=&quot;cpu&quot;,
 )
 </code></pre>
 <p>Bayesian Random Vector Functional Link Network regression with two priors</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -459,29 +470,35 @@ s2: float
 sigma: float
     std. dev. of residuals in Bayesian Ridge Regression
 
-beta: array-like
-    regression''s fitted parameters
-
-Sigma: array-like
-    covariance of the distribution of fitted parameters
-
-GCV: float
-    return_std: boolean
+return_std: boolean
+    if True, uncertainty around predictions is evaluated
 
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
-<p>References:</p>
-<pre><code>- [1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at:
-  https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+<p>Attributes:</p>
+<pre><code>beta_: array-like
+    regression''s coefficients
+
+Sigma_: array-like
+    covariance of the distribution of fitted parameters
+
+GCV_: float
+    Generalized cross-validation error
+
+y_mean_: float
+    average response
+</code></pre>
+<p>Examples:</p>
+<pre><code class="language-python">TBD
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvfl2Regressor.py#L138">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/rvfl/bayesianrvfl2Regressor.py#L143">[source]</a></span></p>
 <h3 id="fit_2">fit</h3>
 <pre><code class="language-python">BayesianRVFL2Regressor.fit(X, y, **kwargs)
 </code></pre>
 <p>Fit BayesianRVFL2Regressor to training data (X, y)</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features
@@ -519,7 +536,7 @@ y: array-like, shape = [n_samples]
 </code></pre>
 <p>Custom Regression model</p>
 <p>This class is used to 'augment' any regression model with transformed features.</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>obj: object
     any object containing a method fit (obj.fit()) and a method predict
     (obj.predict())
@@ -581,13 +598,16 @@ type_fit: str
 backend: str
     "cpu" or "gpu" or "tpu"
 </code></pre>
+<p>Examples:</p>
+<pre><code class="language-python">TBD
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/custom/customRegressor.py#L125">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/custom/customRegressor.py#L131">[source]</a></span></p>
 <h3 id="fit_3">fit</h3>
 <pre><code class="language-python">CustomRegressor.fit(X, y, sample_weight=None, **kwargs)
 </code></pre>
 <p>Fit custom model to training data (X, y).</p>
-<p>Args:</p>
+<p>Parameters:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
     Training vectors, where n_samples is the number
     of samples and n_features is the number of features.
@@ -690,8 +710,14 @@ optimizer: object
 seed: int
     reproducibility seed for nodes_sim=='uniform'
 </code></pre>
+<p>Attributes:</p>
+<pre><code>beta_: vector
+    regression coefficients
+</code></pre>
+<p>Examples:</p>
+<p>See <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_regression.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_regression.py</a></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmRegressor.py#L175">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/glm/glmRegressor.py#L184">[source]</a></span></p>
 <h3 id="fit_4">fit</h3>
 <pre><code class="language-python">GLMRegressor.fit(
     X, y, learning_rate=0.01, decay=0.1, batch_prop=1, tolerance=1e-05, optimizer=None, verbose=0, **kwargs
@@ -733,7 +759,7 @@ y: array-like, shape = [n_samples]
 )
 </code></pre>
 <p>Ridge regression with 2 regularization parameters derived from class Ridge</p>
-<p>Attributes:</p>
+<p>Parameters:</p>
 <pre><code>n_hidden_features: int
     number of nodes in the hidden layer
 
@@ -784,12 +810,15 @@ seed: int
 backend: str
     'cpu' or 'gpu' or 'tpu'
 </code></pre>
-<p>References:</p>
-<pre><code>- [1] Moudiki, T. (2020). Quasi-randomized networks for regression and classification, with two shrinkage parameters. Available at:
-https://www.researchgate.net/publication/339512391_Quasi-randomized_networks_for_regression_and_classification_with_two_shrinkage_parameters
+<p>Attributes:</p>
+<pre><code>beta_: {array-like}
+    regression coefficients
+
+y_mean_: float
+    average response
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Regressor.py#L121">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/ridge2/ridge2Regressor.py#L124">[source]</a></span></p>
 <h3 id="fit_5">fit</h3>
 <pre><code class="language-python">Ridge2Regressor.fit(X, y, **kwargs)
 </code></pre>
