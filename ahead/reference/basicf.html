@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • ahead</title>
+<title>Basic forecasting (mean, median, random walk) — basicf • ahead</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Basic forecasting (mean, median, random walk) — basicf" />
+<meta property="og:description" content="Basic forecasting functions for multivariate time series" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -125,18 +126,84 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Basic forecasting (mean, median, random walk)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Techtonique/ahead/R/basic.R'><code>R/basic.R</code></a></small>
+    <div class="hidden name"><code>basicf.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="ahead-vignette.html">Introduction to R package `ahead`</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>Basic forecasting functions for multivariate time series</p>
     </div>
+
+    <pre class="usage"><span class='fu'>basicf</span>(
+  <span class='kw'>y</span>,
+  h = <span class='fl'>5</span>,
+  level = <span class='fl'>95</span>,
+  method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mean"</span>, <span class='st'>"median"</span>, <span class='st'>"rw"</span>),
+  type_pi = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gaussian"</span>, <span class='st'>"bootstrap"</span>),
+  seed = <span class='fl'>1</span>,
+  B = <span class='fl'>100</span>
+)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>y</th>
+      <td><p>A multivariate time series of class <code>ts</code> or a matrix</p></td>
+    </tr>
+    <tr>
+      <th>h</th>
+      <td><p>Forecasting horizon</p></td>
+    </tr>
+    <tr>
+      <th>level</th>
+      <td><p>Confidence level for prediction intervals</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>forecasting method, either "mean", "median", or random walk ("rw")</p></td>
+    </tr>
+    <tr>
+      <th>type_pi</th>
+      <td><p>type of prediction interval currently, "gaussian" or "bootstrap"</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>reproducibility seed for <code>type_pi == 'bootstrap'</code></p></td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td><p>Number of bootstrap replications for <code>type_pi == 'bootstrap'</code></p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>res</span> <span class='op'>&lt;-</span> <span class='kw'>ahead</span>::<span class='fu'>basicf</span>(<span class='kw'>fpp</span>::<span class='kw'><a href='https://rdrr.io/pkg/fpp/man/insurance.html'>insurance</a></span>, h=<span class='fl'>10</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(mfrow=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>res</span>, <span class='st'>"TV.advert"</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>res</span>, <span class='st'>"Quotes"</span>)
+</div><div class='img'><img src='basicf-1.png' alt='' width='700' height='433' /></div><div class='input'>
+
+<span class='kw'>res</span> <span class='op'>&lt;-</span> <span class='kw'>ahead</span>::<span class='fu'>basicf</span>(<span class='kw'>fpp</span>::<span class='kw'><a href='https://rdrr.io/pkg/fpp/man/insurance.html'>insurance</a></span>, method=<span class='st'>"rw"</span>, h=<span class='fl'>10</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(mfrow=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>res</span>, <span class='st'>"TV.advert"</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span>(<span class='kw'>res</span>, <span class='st'>"Quotes"</span>)
+</div><div class='img'><img src='basicf-2.png' alt='' width='700' height='433' /></div><div class='input'>
+
+</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
