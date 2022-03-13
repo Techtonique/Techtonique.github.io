@@ -143,7 +143,7 @@
 <h1 id="time-series-models">Time series models</h1>
 <p><em>In alphabetical order</em></p>
 <p>All models possess methods: <code>fit</code>, <code>predict</code>.</p>
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L15">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L16">[source]</a></span></p>
 <h3 id="mts">MTS</h3>
 <pre><code class="language-python">nnetsauce.MTS(
     obj,
@@ -242,10 +242,14 @@ preds_std_: {array-like}
 
 return_std_: boolean
     return uncertainty or not (set in predict)
+
+df_: data frame
+    the input data frame, in case a data.frame is provided to `fit`
 </code></pre>
 <p>Examples:</p>
+<p>Example 1:</p>
 <pre><code class="language-python">import nnetsauce as ns
-import numpy as np    
+import numpy as np
 from sklearn import linear_model
 np.random.seed(123)
 
@@ -265,8 +269,32 @@ print(obj_MTS.predict(return_std=True, level=80))
 
 print(obj_MTS.predict(return_std=True, level=95))
 </code></pre>
+<p>Example 2:</p>
+<pre><code class="language-python">import nnetsauce as ns
+import numpy as np
+from sklearn import linear_model
+
+dataset = {
+'date' : ['2001-01-01', '2002-01-01', '2003-01-01', '2004-01-01', '2005-01-01'],
+'series1' : [34, 30, 35.6, 33.3, 38.1],
+'series2' : [4, 5.5, 5.6, 6.3, 5.1],
+'series3' : [100, 100.5, 100.6, 100.2, 100.1]}
+df = pd.DataFrame(dataset).set_index('date')
+print(df)
+
+# Adjust Bayesian Ridge
+regr5 = linear_model.BayesianRidge()
+obj_MTS = ns.MTS(regr5, lags = 1, n_hidden_features=5)
+obj_MTS.fit(df)
+print(obj_MTS.predict())
+
+# with credible intervals
+print(obj_MTS.predict(return_std=True, level=80))
+
+print(obj_MTS.predict(return_std=True, level=95))
+</code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L178">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L211">[source]</a></span></p>
 <h3 id="fit">fit</h3>
 <pre><code class="language-python">MTS.fit(X, xreg=None)
 </code></pre>
@@ -288,7 +316,7 @@ xreg: {array-like}, shape = [n_samples, n_features_xreg]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L259">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L296">[source]</a></span></p>
 <h3 id="predict">predict</h3>
 <pre><code class="language-python">MTS.predict(h=5, level=95, new_xreg=None, **kwargs)
 </code></pre>
@@ -309,7 +337,9 @@ new_xreg: {array-like}, shape = [n_samples = h, n_new_xreg]
         self.cook_test_set
 </code></pre>
 <p>Returns:</p>
-<pre><code>model predictions for horizon = h: {array-like}
+<pre><code>model predictions for horizon = h: {array-like}, data frame or tuple.
+Standard deviation and prediction intervals are returned when
+`obj.predict` can return standard deviation
 </code></pre>
 <hr /></div>
             </div>
