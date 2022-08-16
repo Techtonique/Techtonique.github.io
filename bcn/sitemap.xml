@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://techtonique.github.io/bcn//index.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/bcn.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/breast_cancer.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/digits.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/penguins.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/predict.bcn.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/random_search.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//reference/wine.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/bcn//articles/bcn-intro.html</loc>
+  </url>
+</urlset>
