@@ -12,11 +12,11 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/rainbow.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
 
         <script src="js/jquery-1.10.2.min.js" defer></script>
         <script src="js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -82,7 +82,7 @@
                                 <a href="REFERENCES/" class="nav-link">References</a>
                             </li>
                             <li class="navitem">
-                                <a href="../" class="nav-link">Techtonique</a>
+                                <a href="./" class="nav-link">Techtonique</a>
                             </li>
                         </ul>
 
@@ -148,24 +148,21 @@
 <ul>
 <li><strong>1st method</strong>: by using <code>pip</code> at the command line for the stable version</li>
 </ul>
-<pre><code class="bash">pip install mlsauce
+<pre><code class="language-bash">pip install mlsauce
 </code></pre>
-
 <ul>
 <li><strong>2nd method</strong>: from Github, for the development version</li>
 </ul>
-<pre><code class="bash">pip install git+https://github.com/Techtonique/mlsauce.git
+<pre><code class="language-bash">pip install git+https://github.com/Techtonique/mlsauce.git
 </code></pre>
-
 <h3 id="r">R</h3>
 <ul>
 <li><strong>1st method</strong>: From Github, in R console:</li>
 </ul>
-<pre><code class="r">library(devtools)
+<pre><code class="language-r">library(devtools)
 devtools::install_github(&quot;Techtonique/mlsauce/R-package&quot;)
 library(mlsauce)
 </code></pre>
-
 <h2 id="quickstart">Quickstart</h2>
 <ul>
 <li><a href="https://thierrymoudiki.github.io/blog/#AdaOpt">AdaOpt: probabilistic classifier based on a mix of multivariable optimization and a nearest neighbors algorithm</a></li>
@@ -218,16 +215,13 @@ library(mlsauce)
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
@@ -278,6 +272,6 @@ library(mlsauce)
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2020-10-12 18:58:24.966553+00:00
+MkDocs version : 1.3.1
+Build Date UTC : 2022-08-18 18:26:32.857551+00:00
 -->

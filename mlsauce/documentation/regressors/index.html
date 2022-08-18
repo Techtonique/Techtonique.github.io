@@ -12,11 +12,11 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/rainbow.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -82,7 +82,7 @@
                                 <a href="../../REFERENCES/" class="nav-link">References</a>
                             </li>
                             <li class="navitem">
-                                <a href="../../../" class="nav-link">Techtonique</a>
+                                <a href="../../" class="nav-link">Techtonique</a>
                             </li>
                         </ul>
 
@@ -134,11 +134,10 @@
 
 <h1 id="regressors">Regressors</h1>
 <p><em>In alphabetical order</em></p>
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/lasso/_lasso.py#L16">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/lasso/_lasso.py#L16">[source]</a></span></p>
 <h3 id="lassoregressor">LassoRegressor</h3>
-<pre><code class="python">mlsauce.LassoRegressor(reg_lambda=0.1, max_iter=10, tol=0.001, backend=&quot;cpu&quot;)
+<pre><code class="language-python">mlsauce.LassoRegressor(reg_lambda=0.1, max_iter=10, tol=0.001, backend=&quot;cpu&quot;)
 </code></pre>
-
 <p>Lasso.</p>
 <p>Attributes:</p>
 <pre><code>reg_lambda: float
@@ -154,11 +153,10 @@ backend: str
     type of backend; must be in ('cpu', 'gpu', 'tpu').
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/lasso/_lasso.py#L56">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/lasso/_lasso.py#L56">[source]</a></span></p>
 <h3 id="fit">fit</h3>
-<pre><code class="python">LassoRegressor.fit(X, y, **kwargs)
+<pre><code class="language-python">LassoRegressor.fit(X, y, **kwargs)
 </code></pre>
-
 <p>Fit matrixops (classifier) to training data (X, y)</p>
 <p>Args: </p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
@@ -174,11 +172,10 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object.
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/lasso/_lasso.py#L138">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/lasso/_lasso.py#L139">[source]</a></span></p>
 <h3 id="predict">predict</h3>
-<pre><code class="python">LassoRegressor.predict(X, **kwargs)
+<pre><code class="language-python">LassoRegressor.predict(X, **kwargs)
 </code></pre>
-
 <p>Predict test data X.</p>
 <p>Args:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
@@ -191,9 +188,9 @@ y: array-like, shape = [n_samples]
 <pre><code>model predictions: {array-like}
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/booster/_booster_regressor.py#L10">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/booster/_booster_regressor.py#L9">[source]</a></span></p>
 <h3 id="lsboostregressor">LSBoostRegressor</h3>
-<pre><code class="python">mlsauce.LSBoostRegressor(
+<pre><code class="language-python">mlsauce.LSBoostRegressor(
     n_estimators=100,
     learning_rate=0.1,
     n_hidden_features=5,
@@ -207,9 +204,9 @@ y: array-like, shape = [n_samples]
     seed=123,
     backend=&quot;cpu&quot;,
     solver=&quot;ridge&quot;,
+    activation=&quot;relu&quot;,
 )
 </code></pre>
-
 <p>LSBoost regressor.</p>
 <p>Attributes: </p>
 <pre><code>n_estimators: int
@@ -252,13 +249,15 @@ backend: str
 
 solver: str    
     type of 'weak' learner; currently in ('ridge', 'lasso')
+
+activation: str
+    activation function: currently 'relu', 'relu6', 'sigmoid', 'tanh'
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/booster/_booster_regressor.py#L109">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/booster/_booster_regressor.py#L113">[source]</a></span></p>
 <h3 id="fit_1">fit</h3>
-<pre><code class="python">LSBoostRegressor.fit(X, y, **kwargs)
+<pre><code class="language-python">LSBoostRegressor.fit(X, y, **kwargs)
 </code></pre>
-
 <p>Fit Booster (regressor) to training data (X, y)</p>
 <p>Args:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
@@ -274,11 +273,10 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object.
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/booster/_booster_regressor.py#L148">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/booster/_booster_regressor.py#L155">[source]</a></span></p>
 <h3 id="predict_1">predict</h3>
-<pre><code class="python">LSBoostRegressor.predict(X, **kwargs)
+<pre><code class="language-python">LSBoostRegressor.predict(X, **kwargs)
 </code></pre>
-
 <p>Predict probabilities for test data X.</p>
 <p>Args:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
@@ -292,11 +290,10 @@ y: array-like, shape = [n_samples]
 <pre><code>probability estimates for test data: {array-like}
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/ridge/_ridge.py#L15">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/ridge/_ridge.py#L15">[source]</a></span></p>
 <h3 id="ridgeregressor">RidgeRegressor</h3>
-<pre><code class="python">mlsauce.RidgeRegressor(reg_lambda=0.1, backend=&quot;cpu&quot;)
+<pre><code class="language-python">mlsauce.RidgeRegressor(reg_lambda=0.1, backend=&quot;cpu&quot;)
 </code></pre>
-
 <p>Ridge.</p>
 <p>Attributes:</p>
 <pre><code>reg_lambda: float
@@ -306,11 +303,10 @@ backend: str
     type of backend; must be in ('cpu', 'gpu', 'tpu')
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/ridge/_ridge.py#L47">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/ridge/_ridge.py#L47">[source]</a></span></p>
 <h3 id="fit_2">fit</h3>
-<pre><code class="python">RidgeRegressor.fit(X, y, **kwargs)
+<pre><code class="language-python">RidgeRegressor.fit(X, y, **kwargs)
 </code></pre>
-
 <p>Fit matrixops (classifier) to training data (X, y)</p>
 <p>Args:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
@@ -326,11 +322,10 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object.
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/mlsauce/ridge/_ridge.py#L88">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/mlsauce/blob/master/mlsauce/ridge/_ridge.py#L89">[source]</a></span></p>
 <h3 id="predict_2">predict</h3>
-<pre><code class="python">RidgeRegressor.predict(X, **kwargs)
+<pre><code class="language-python">RidgeRegressor.predict(X, **kwargs)
 </code></pre>
-
 <p>Predict test data X.</p>
 <p>Args:</p>
 <pre><code>X: {array-like}, shape = [n_samples, n_features]
@@ -365,16 +360,13 @@ y: array-like, shape = [n_samples]
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
