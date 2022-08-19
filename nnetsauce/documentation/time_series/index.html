@@ -143,7 +143,7 @@
 <h1 id="time-series-models">Time series models</h1>
 <p><em>In alphabetical order</em></p>
 <p>All models possess methods: <code>fit</code>, <code>predict</code>.</p>
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L16">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/mts/mts.py#L16">[source]</a></span></p>
 <h3 id="mts">MTS</h3>
 <pre><code class="language-python">nnetsauce.MTS(
     obj,
@@ -163,7 +163,7 @@
     backend=&quot;cpu&quot;,
 )
 </code></pre>
-<p>Univariate and multivariate time series (MTS) forecasting with Quasi-Randomized networks</p>
+<p>Univariate and multivariate time series (MTS) forecasting with Quasi-Randomized networks (Work in progress /!)</p>
 <p>Parameters:</p>
 <pre><code>obj: object.
     any object containing a method fit (obj.fit()) and a method predict
@@ -294,7 +294,7 @@ print(obj_MTS.predict(return_std=True, level=80))
 print(obj_MTS.predict(return_std=True, level=95))
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L211">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/mts/mts.py#L211">[source]</a></span></p>
 <h3 id="fit">fit</h3>
 <pre><code class="language-python">MTS.fit(X, xreg=None)
 </code></pre>
@@ -316,7 +316,7 @@ xreg: {array-like}, shape = [n_samples, n_features_xreg]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/nnetsauce/mts/mts.py#L296">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/mts/mts.py#L298">[source]</a></span></p>
 <h3 id="predict">predict</h3>
 <pre><code class="language-python">MTS.predict(h=5, level=95, new_xreg=None, **kwargs)
 </code></pre>
