@@ -12,11 +12,11 @@
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/rainbow.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -65,7 +65,7 @@
                                 <a href="../../LICENSE/" class="nav-link">License</a>
                             </li>
                             <li class="navitem">
-                                <a href="../../../" class="nav-link">Techtonique</a>
+                                <a href="../../" class="nav-link">Techtonique</a>
                             </li>
                         </ul>
 
@@ -108,14 +108,6 @@
             
             <li class="nav-item" data-level="1"><a href="#querier" class="nav-link">Querier</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#parameters" class="nav-link">Parameters</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -124,25 +116,29 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="querier">Querier</h1>
-<p><span style="float:right;"><a href="https://github.com/Techtonique/querier/querier/wrapper/wrapper.py#L27">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/querier/blob/master/querier/wrapper/wrapper.py#L27">[source]</a></span></p>
 <h3 id="querier_1">Querier</h3>
-<pre><code class="python">querier.Querier(df=None, source=None, db=None, table=None, **kwargs)
+<pre><code class="language-python">querier.Querier(df=None, source=None, db=None, table=None, **kwargs)
 </code></pre>
-
 <p>A wrapper for chaining the querier's atomic operations, which are currently:
-<code>concat</code>, <code>delete</code>, <code>drop</code>, <code>filtr</code>, <code>join</code>, <code>select</code>, <code>summarize</code>,
-<code>update</code>, <code>request</code></p>
-<h2 id="parameters">Parameters</h2>
-<p>df: a data frame
-    a data frame (optional)</p>
-<p>source: str
-    a csv file path, sql database path, or mongo db uri</p>
-<p>db: str
-    database name, if <code>source</code> is a mongo db uri</p>
-<p>table: str
-    name of the table/collection, if <code>source</code> is provided and is a database</p>
-<h2 id="examples">Examples</h2>
-<p>https://github.com/thierrymoudiki/querier/tree/master/querier/demo</p>
+   <code>concat</code>, <code>delete</code>, <code>drop</code>, <code>filtr</code>, <code>join</code>, <code>select</code>, <code>summarize</code>,
+   <code>update</code>, <code>request</code></p>
+<p>Attributes: </p>
+<pre><code>df: a data frame
+    a data frame (optional)
+
+source: str
+    a csv file path, sql database path, or mongo db uri
+
+db: str
+    database name, if `source` is a mongo db uri
+
+table: str
+    name of the table/collection, if `source` is provided and is a database
+</code></pre>
+<p>Examples:</p>
+<pre><code>https://github.com/thierrymoudiki/querier/tree/master/querier/demo
+</code></pre>
 <hr /></div>
             </div>
         </div>
@@ -166,16 +162,13 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
+                <p>From here you can search these documents. Enter your search terms below.</p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results"></div>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
             </div>
             <div class="modal-footer">
             </div>
