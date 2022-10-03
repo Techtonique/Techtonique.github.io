@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>License - Techtonique/teller</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>PredictionInterval - Techtonique/teller</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="..">Techtonique/teller</a>
+                <a class="navbar-brand" href="../..">Techtonique/teller</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,33 +34,33 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../quickstart/" class="nav-link">Quickstart examples</a>
+                                <a href="../../quickstart/" class="nav-link">Quickstart examples</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../documentation/comparator/" class="dropdown-item">Comparator</a>
+    <a href="../comparator/" class="dropdown-item">Comparator</a>
 </li>
                                     
 <li>
-    <a href="../documentation/explainer/" class="dropdown-item">Explainer</a>
+    <a href="../explainer/" class="dropdown-item">Explainer</a>
 </li>
                                     
 <li>
-    <a href="../documentation/prediction_interval/" class="dropdown-item">PredictionInterval</a>
+    <a href="./" class="dropdown-item active">PredictionInterval</a>
 </li>
                                 </ul>
                             </li>
                             <li class="navitem">
-                                <a href="../CONTRIBUTING/" class="nav-link">Contributing</a>
-                            </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">License</a>
+                                <a href="../../CONTRIBUTING/" class="nav-link">Contributing</a>
                             </li>
                             <li class="navitem">
-                                <a href="../" class="nav-link">Techtonique</a>
+                                <a href="../../LICENSE/" class="nav-link">License</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../" class="nav-link">Techtonique</a>
                             </li>
                         </ul>
 
@@ -71,12 +71,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../CONTRIBUTING/" class="nav-link">
+                                <a rel="prev" href="../explainer/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../../CONTRIBUTING/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -100,40 +100,69 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#predictioninterval" class="nav-link">PredictionInterval</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>The Clear BSD License</p>
-<p>Copyright (c) [2019] [Thierry Moudiki]
-All rights reserved.</p>
-<p>Redistribution and use in source and binary forms, with or without
-modification, are permitted (subject to the limitations in the disclaimer
-below) provided that the following conditions are met:</p>
-<pre><code> * Redistributions of source code must retain the above copyright notice,
- this list of conditions and the following disclaimer.
-
- * Redistributions in binary form must reproduce the above copyright
- notice, this list of conditions and the following disclaimer in the
- documentation and/or other materials provided with the distribution.
-
- * Neither the name of the copyright holder nor the names of its
- contributors may be used to endorse or promote products derived from this
- software without specific prior written permission.
+<h1 id="predictioninterval">PredictionInterval</h1>
+<p><em>Obtain prediction intervals for input models</em></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/teller/blob/master/teller/predictioninterval/predictioninterval.py#L13">[source]</a></span></p>
+<h3 id="predictioninterval_1">PredictionInterval</h3>
+<pre><code class="language-python">teller.PredictionInterval(obj, method=&quot;splitconformal&quot;, level=0.95, seed=123)
 </code></pre>
-<p>NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY
-THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
-CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.</p></div>
+<p>Class PredictionInterval: Obtain prediction intervals.</p>
+<p>Attributes:</p>
+<pre><code>obj: an object;
+    fitted object containing methods `fit` and `predict`
+
+method: a string;
+    method for constructing the prediction intervals. 
+    Currently "splitconformal" (default) and "localconformal"
+
+level: a float;                
+    Confidence level for prediction intervals. Default is 0.95, 
+    equivalent to a miscoverage error of 0.05
+
+seed: an integer;
+    Reproducibility of fit (there's a random split between fitting and calibration data)
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/teller/blob/master/teller/predictioninterval/predictioninterval.py#L43">[source]</a></span></p>
+<h3 id="fit">fit</h3>
+<pre><code class="language-python">PredictionInterval.fit(X, y)
+</code></pre>
+<p>Fit the <code>method</code> to training data (X, y).           </p>
+<p>Args:</p>
+<pre><code>X: array-like, shape = [n_samples, n_features]; 
+    Training set vectors, where n_samples is the number 
+    of samples and n_features is the number of features.
+
+y: array-like, shape = [n_samples, ]; Target values.
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/teller/blob/master/teller/predictioninterval/predictioninterval.py#L89">[source]</a></span></p>
+<h3 id="predict">predict</h3>
+<pre><code class="language-python">PredictionInterval.predict(X, return_pi=False)
+</code></pre>
+<p>Obtain predictions and prediction intervals            </p>
+<p>Args: </p>
+<pre><code>X: array-like, shape = [n_samples, n_features]; 
+    Testing set vectors, where n_samples is the number 
+    of samples and n_features is the number of features.
+
+return_pi: boolean               
+    Whether the prediction interval is returned or not. 
+    Default is False, for compatibility with other _estimators_.
+    If True, a tuple containing the predictions + lower and upper 
+    bounds is returned.
+</code></pre>
+<hr /></div>
             </div>
         </div>
 
@@ -142,11 +171,11 @@ POSSIBILITY OF SUCH DAMAGE.</p></div>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
