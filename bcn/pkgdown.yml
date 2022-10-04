@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   bcn-intro: bcn-intro.html
-last_built: 2022-08-16T15:30Z
+last_built: 2022-10-04T06:13Z
 urls:
   reference: https://techtonique.github.io/bcn//reference
   article: https://techtonique.github.io/bcn//articles

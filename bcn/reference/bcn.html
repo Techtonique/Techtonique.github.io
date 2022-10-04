@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bcn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
   col_sample = <span class='fl'>1</span>,
   lam = <span class='fl'>0.1</span>,
   r = <span class='fl'>0.3</span>,
-  tol = <span class='fl'>1e-10</span>,
+  tol = <span class='fl'>0</span>,
   type_optim = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"nlminb"</span>, <span class='st'>"bobyqa"</span>, <span class='st'>"nmkb"</span>, <span class='st'>"hjkb"</span>, <span class='st'>"randomsearch"</span>),
   activation = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sigmoid"</span>, <span class='st'>"tanh"</span>),
   hidden_layer_bias = <span class='fl'>TRUE</span>,
@@ -178,11 +178,11 @@
     </tr>
     <tr>
       <th>lam</th>
-      <td><p>a numeric, defining lower and upper bounds neural network's weights</p></td>
+      <td><p>a numeric, defining lower and upper bounds for neural network's weights</p></td>
     </tr>
     <tr>
       <th>r</th>
-      <td><p>a numeric, usually 0.99, 0.999, 0.999 etc.</p></td>
+      <td><p>a numeric, with 0 &lt; r &lt; 1. Controls the convergence rate of residuals.</p></td>
     </tr>
     <tr>
       <th>tol</th>
