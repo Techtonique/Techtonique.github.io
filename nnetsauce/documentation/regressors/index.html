@@ -72,6 +72,10 @@
 </li>
                                     
 <li>
+    <a href="../optimizers/" class="dropdown-item">Optimizers</a>
+</li>
+                                    
+<li>
     <a href="../time_series/" class="dropdown-item">Time series</a>
 </li>
                                     
@@ -106,7 +110,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../time_series/" class="nav-link">
+                                <a rel="next" href="../optimizers/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -622,7 +626,7 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmRegressor.py#L18">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmRegressor.py#L12">[source]</a></span></p>
 <h3 id="glmregressor">GLMRegressor</h3>
 <pre><code class="language-python">nnetsauce.GLMRegressor(
     n_hidden_features=5,
@@ -641,7 +645,7 @@ y: array-like, shape = [n_samples]
     cluster_encode=True,
     type_clust=&quot;kmeans&quot;,
     type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
-    optimizer=Optimizer(),
+    optimizer=None,
     seed=123,
 )
 </code></pre>
@@ -705,7 +709,7 @@ type_scaling: a tuple of 3 strings
     Currently available: standardization ('std') or MinMax scaling ('minmax')
 
 optimizer: object
-    optimizer, from class nnetsauce.utils.Optimizer
+    optimizer, from nnetsauce's class Optimizer (must be not None)
 
 seed: int
     reproducibility seed for nodes_sim=='uniform'
@@ -717,11 +721,9 @@ seed: int
 <p>Examples:</p>
 <p>See <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_regression.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_regression.py</a></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmRegressor.py#L184">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmRegressor.py#L179">[source]</a></span></p>
 <h3 id="fit_4">fit</h3>
-<pre><code class="language-python">GLMRegressor.fit(
-    X, y, learning_rate=0.01, decay=0.1, batch_prop=1, tolerance=1e-05, optimizer=None, verbose=0, **kwargs
-)
+<pre><code class="language-python">GLMRegressor.fit(X, y, **kwargs)
 </code></pre>
 <p>Fit GLM model to training data (X, y).</p>
 <p>Args:</p>
@@ -739,7 +741,7 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/_randomBagRegressor.py#L18">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/randomBagRegressor.py#L17">[source]</a></span></p>
 <h3 id="randombagregressor">RandomBagRegressor</h3>
 <pre><code class="language-python">nnetsauce.RandomBagRegressor(
     obj,
@@ -856,7 +858,7 @@ print(np.sqrt(obj2.score(X_test, y_test))) # RMSE
 
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/_randomBagRegressor.py#L170">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/randomBagRegressor.py#L169">[source]</a></span></p>
 <h3 id="fit_5">fit</h3>
 <pre><code class="language-python">RandomBagRegressor.fit(X, y, **kwargs)
 </code></pre>

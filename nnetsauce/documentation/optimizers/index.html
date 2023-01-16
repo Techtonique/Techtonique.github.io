@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Scoring metrics - Techtonique/nnetsauce</title>
+        <title>Optimizers - Techtonique/nnetsauce</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 </li>
                                     
 <li>
-    <a href="../optimizers/" class="dropdown-item">Optimizers</a>
+    <a href="./" class="dropdown-item active">Optimizers</a>
 </li>
                                     
 <li>
@@ -80,7 +80,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Scoring metrics</a>
+    <a href="../scoring_metrics/" class="dropdown-item">Scoring metrics</a>
 </li>
                                 </ul>
                             </li>
@@ -105,12 +105,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../time_series/" class="nav-link">
+                                <a rel="prev" href="../regressors/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../CONTRIBUTING/" class="nav-link">
+                                <a rel="next" href="../time_series/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -135,16 +135,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#scoring-metrics" class="nav-link">Scoring metrics</a>
+            <li class="nav-item" data-level="1"><a href="#optimizers" class="nav-link">Optimizers</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#regression-metrics" class="nav-link">Regression metrics</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#classification-metrics" class="nav-link">Classification metrics</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -152,55 +144,88 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="scoring-metrics">Scoring metrics</h1>
-<h2 id="regression-metrics">Regression metrics</h2>
-<ul>
-<li>
-<p><strong>explained_variance</strong>: Explained variance regression score function</p>
-</li>
-<li>
-<p><strong>mean_absolute_error</strong>: Mean absolute error regression loss</p>
-</li>
-<li>
-<p><strong>mean_squared_error</strong>: Mean squared error regression loss</p>
-</li>
-<li>
-<p><strong>mean_squared_log_error</strong>: Mean squared logarithmic error regression loss</p>
-</li>
-<li>
-<p><strong>median_absolute_error</strong>: Median absolute error regression loss</p>
-</li>
-<li>
-<p><strong>r2</strong>: R^2 (coefficient of determination) regression score function.</p>
-</li>
-</ul>
-<h2 id="classification-metrics">Classification metrics</h2>
-<ul>
-<li>
-<p><strong>accuracy</strong>: Accuracy classification score.</p>
-</li>
-<li>
-<p><strong>average_precision</strong>: Compute average precision (AP) from prediction scores</p>
-</li>
-<li>
-<p><strong>brier_score_loss</strong>: Compute the Brier score.</p>
-</li>
-<li>
-<p><strong>f1_score</strong>: Compute the F1 score, also known as balanced F-score or F-measure</p>
-</li>
-<li>
-<p><strong>neg_log_loss</strong>: Negative Log loss, aka logistic loss or cross-entropy loss.</p>
-</li>
-<li>
-<p><strong>precision</strong>: Compute the precision</p>
-</li>
-<li>
-<p><strong>recall</strong>: Compute the recall</p>
-</li>
-<li>
-<p><strong>roc_auc</strong>: Compute Area Under the Curve (AUC) using the trapezoidal rule</p>
-</li>
-</ul></div>
+<h1 id="optimizers">Optimizers</h1>
+<p>Optimizers for loss functions in <code>GLMs</code></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/optimizers/optimizer.py#L7">[source]</a></span></p>
+<h3 id="optimizer">Optimizer</h3>
+<pre><code class="language-python">nnetsauce.Optimizer(
+    type_optim=&quot;sgd&quot;,
+    num_iters=100,
+    learning_rate=0.01,
+    batch_prop=1.0,
+    learning_method=&quot;momentum&quot;,
+    randomization=&quot;strat&quot;,
+    mass=0.9,
+    decay=0.1,
+    tolerance=0.001,
+    verbose=1,
+)
+</code></pre>
+<p>Optimizer class</p>
+<p>Attributes:</p>
+<pre><code>type_optim: str
+    type of optimizer, (currently) either 'sgd' (stochastic minibatch gradient descent)
+    or 'scd' (stochastic minibatch coordinate descent)
+
+num_iters: int
+    number of iterations of the optimizer
+
+learning_rate: float
+    step size
+
+batch_prop: float
+    proportion of the initial data used at each optimization step
+
+learning_method: str
+    "poly" - learning rate decreasing as a polynomial function
+    of # of iterations (default)
+    "exp" - learning rate decreasing as an exponential function
+    of # of iterations
+    "momentum" - gradient descent using momentum
+
+randomization: str
+    type of randomization applied at each step
+    "strat" - stratified subsampling (default)
+    "shuffle" - random subsampling
+
+mass: float
+    mass on velocity, for `method` == "momentum"
+
+decay: float
+    coefficient of decrease of the learning rate for
+    `method` == "poly" and `method` == "exp"
+
+tolerance: float
+    early stopping parameter (convergence of loss function)
+
+verbose: int
+    controls verbosity of gradient descent
+    0 - nothing is printed
+    1 - a progress bar is printed
+    2 - successive loss function values are printed
+</code></pre>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/optimizers/optimizer.py#L83">[source]</a></span></p>
+<h3 id="fit">fit</h3>
+<pre><code class="language-python">Optimizer.fit(loss_func, response, x0, **kwargs)
+</code></pre>
+<p>Fit GLM model to training data (X, y).</p>
+<p>Args:</p>
+<pre><code>loss_func: loss function
+
+response: array-like, shape = [n_samples]
+target variable (used for subsampling)
+
+x0: array-like, shape = [n_features]
+    initial value provided to the optimizer
+
+**kwargs: additional parameters to be passed to
+        loss function
+</code></pre>
+<p>Returns:</p>
+<pre><code>self: object
+</code></pre>
+<hr /></div>
             </div>
         </div>
 

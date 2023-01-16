@@ -72,6 +72,10 @@
 </li>
                                     
 <li>
+    <a href="../optimizers/" class="dropdown-item">Optimizers</a>
+</li>
+                                    
+<li>
     <a href="../time_series/" class="dropdown-item">Time series</a>
 </li>
                                     
@@ -523,7 +527,7 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmClassifier.py#L18">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmClassifier.py#L15">[source]</a></span></p>
 <h3 id="glmclassifier">GLMClassifier</h3>
 <pre><code class="language-python">nnetsauce.GLMClassifier(
     n_hidden_features=5,
@@ -542,7 +546,7 @@ y: array-like, shape = [n_samples]
     cluster_encode=True,
     type_clust=&quot;kmeans&quot;,
     type_scaling=(&quot;std&quot;, &quot;std&quot;, &quot;std&quot;),
-    optimizer=Optimizer(),
+    optimizer=None,
     seed=123,
 )
 </code></pre>
@@ -603,7 +607,7 @@ type_scaling: a tuple of 3 strings
     Currently available: standardization ('std') or MinMax scaling ('minmax')
 
 optimizer: object
-    optimizer, from class nnetsauce.utils.Optimizer
+    optimizer, from nnetsauce's class Optimizer (must be not None)
 
 seed: int
     reproducibility seed for nodes_sim=='uniform'
@@ -615,11 +619,9 @@ seed: int
 <p>Examples:</p>
 <p>See <a href="https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_classification.py">https://github.com/Techtonique/nnetsauce/blob/master/examples/glm_classification.py</a></p>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmClassifier.py#L207">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/glm/glmClassifier.py#L205">[source]</a></span></p>
 <h3 id="fit_2">fit</h3>
-<pre><code class="language-python">GLMClassifier.fit(
-    X, y, learning_rate=0.01, decay=0.1, batch_prop=1, tolerance=1e-05, optimizer=None, verbose=1, **kwargs
-)
+<pre><code class="language-python">GLMClassifier.fit(X, y, **kwargs)
 </code></pre>
 <p>Fit GLM model to training data (X, y).</p>
 <p>Args:</p>
@@ -780,7 +782,7 @@ y: array-like, shape = [n_samples]
 <pre><code>self: object
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/_randomBagClassifier.py#L18">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/randomBagClassifier.py#L17">[source]</a></span></p>
 <h3 id="randombagclassifier">RandomBagClassifier</h3>
 <pre><code class="language-python">nnetsauce.RandomBagClassifier(
     obj,
@@ -908,7 +910,7 @@ print(f&quot;Elapsed {time() - start}&quot;)
 print(metrics.classification_report(preds, y_test))
 </code></pre>
 <hr />
-<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/_randomBagClassifier.py#L182">[source]</a></span></p>
+<p><span style="float:right;"><a href="https://github.com/Techtonique/nnetsauce/blob/master/nnetsauce/randombag/randomBagClassifier.py#L181">[source]</a></span></p>
 <h3 id="fit_4">fit</h3>
 <pre><code class="language-python">RandomBagClassifier.fit(X, y, **kwargs)
 </code></pre>
