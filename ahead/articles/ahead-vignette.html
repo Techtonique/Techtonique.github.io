@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Techtonique/">
+  <a href="https://github.com/Techtonique/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,136 +78,147 @@
 
       
 
-      </header><script src="ahead-vignette_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to R package <code>ahead</code>
+      <h1 data-toc-skip>Introduction to R package
+<code>ahead</code>
 </h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Techtonique/ahead/vignettes/ahead-vignette.Rmd"><code>vignettes/ahead-vignette.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Techtonique/ahead/vignettes/ahead-vignette.Rmd" class="external-link"><code>vignettes/ahead-vignette.Rmd</code></a></small>
       <div class="hidden name"><code>ahead-vignette.Rmd</code></div>
 
     </div>
 
     
     
-<p><code>ahead</code> is a package for <strong>univariate</strong> and <strong>multivariate time series forecasting</strong>. Five forecasting methods are implemented so far, as of October 13th, 2021.</p>
+<p><code>ahead</code> is a package for <strong>univariate</strong> and
+<strong>multivariate time series forecasting</strong>. Five forecasting
+methods are implemented so far, as of October 13th, 2021.</p>
 <ul>
 <li>
-<code>armagarchf</code>: <strong>univariate</strong> time series forecasting method using simulation of an ARMA(1, 1) - GARCH(1, 1)</li>
+<code>armagarchf</code>: <strong>univariate</strong> time series
+forecasting method using simulation of an ARMA(1, 1) - GARCH(1, 1)</li>
 <li>
-<code>dynrmf</code>: <strong>univariate</strong> time series forecasting method adapted from <a href="https://otexts.com/fpp2/nnetar.html#neural-network-autoregression"><code>forecast::nnetar</code></a> to support any Statistical/Machine learning model (such as Ridge Regression, Random Forest, Support Vector Machines, etc)</li>
+<code>dynrmf</code>: <strong>univariate</strong> time series
+forecasting method adapted from <a href="https://otexts.com/fpp2/nnetar.html#neural-network-autoregression" class="external-link"><code>forecast::nnetar</code></a>
+to support any Statistical/Machine learning model (such as Ridge
+Regression, Random Forest, Support Vector Machines, etc)</li>
 <li>
-<code>eatf</code>: <strong>univariate</strong> time series forecasting method based on combinations of <code><a href="https://rdrr.io/pkg/forecast/man/ets.html">forecast::ets</a></code>, <code><a href="https://rdrr.io/pkg/forecast/man/auto.arima.html">forecast::auto.arima</a></code>, and <code><a href="https://rdrr.io/pkg/forecast/man/thetaf.html">forecast::thetaf</a></code>
+<code>eatf</code>: <strong>univariate</strong> time series
+forecasting method based on combinations of <code><a href="https://pkg.robjhyndman.com/forecast/reference/ets.html" class="external-link">forecast::ets</a></code>,
+<code><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">forecast::auto.arima</a></code>, and
+<code><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">forecast::thetaf</a></code>
 </li>
 <li>
-<code>ridge2f</code>: <strong>multivariate</strong> time series forecasting method, based on <strong>quasi-randomized networks</strong> and presented in <a href="https://www.mdpi.com/2227-9091/6/1/22">this paper</a>
+<code>ridge2f</code>: <strong>multivariate</strong> time series
+forecasting method, based on <strong>quasi-randomized networks</strong>
+and presented in <a href="https://www.mdpi.com/2227-9091/6/1/22" class="external-link">this
+paper</a>
 </li>
 <li>
-<code>varf</code>: <strong>multivariate</strong> time series forecasting method using Vector AutoRegressive model (VAR, mostly here for benchmarking purpose)</li>
+<code>varf</code>: <strong>multivariate</strong> time series
+forecasting method using Vector AutoRegressive model (VAR, mostly here
+for benchmarking purpose)</li>
 </ul>
 <p>Here’s how to install the package:</p>
 <ul>
 <li>
-<p><strong>1st method</strong>: from <a href="https://ropensci.org/r-universe/">R-universe</a></p>
+<p><strong>1st method</strong>: from <a href="https://ropensci.org/r-universe/" class="external-link">R-universe</a></p>
 <p>In R console:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(repos = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
-    techtonique = <span class="st">'https://techtonique.r-universe.dev'</span>,
-    CRAN = <span class="st">'https://cloud.r-project.org'</span>))
-
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"ahead"</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    techtonique <span class="op">=</span> <span class="st">'https://techtonique.r-universe.dev'</span>,</span>
+<span>    CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ahead"</span><span class="op">)</span></span></code></pre></div>
 </li>
 <li>
 <p><strong>2nd method</strong>: from Github</p>
 <p>In R console:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span>(<span class="st">"Techtonique/ahead"</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Techtonique/ahead"</span><span class="op">)</span></span></code></pre></div>
 <p>Or</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"Techtonique/ahead"</span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Techtonique/ahead"</span><span class="op">)</span></span></code></pre></div>
 </li>
 </ul>
 <p>And here are the packages that will be used in this vignette:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">ahead</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://otexts.com/fpp">fpp</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">datasets</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests">randomForest</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">e1071</span>)
-</pre></div>
-<div id="univariate-time-series" class="section level1">
-<h1 class="hasAnchor">
-<a href="#univariate-time-series" class="anchor"></a>Univariate time series</h1>
-<p>In this section, we illustrate <code>dynrmf</code> forecasting, with Random Forest and SVM. Do not hesitate to type <code><a href="../reference/dynrmf.html">?dynrmf</a></code>, <code><a href="../reference/armagarchf.html">?armagarchf</a></code> or <code><a href="../reference/eatf.html">?eatf</a></code> in R console for more details and examples.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-
-<span class="co"># Plotting forecasts</span>
-<span class="co"># With a Random Forest regressor, an horizon of 20, </span>
-<span class="co"># and a 95% prediction interval</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span>(<span class="kw">fdeaths</span>, h=<span class="fl">20</span>, level=<span class="fl">95</span>, fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>,
-      fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(ntree = <span class="fl">50</span>), predict_func = <span class="kw">predict</span>))
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://otexts.com/fpp/" class="external-link">fpp</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/" class="external-link">randomForest</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="univariate-time-series">Univariate time series<a class="anchor" aria-label="anchor" href="#univariate-time-series"></a>
+</h2>
+<p>In this section, we illustrate <code>dynrmf</code> forecasting, with
+Random Forest and SVM. Do not hesitate to type <code><a href="../reference/dynrmf.html">?dynrmf</a></code>,
+<code><a href="../reference/armagarchf.html">?armagarchf</a></code> or <code><a href="../reference/eatf.html">?eatf</a></code> in R console for more
+details and examples.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Plotting forecasts</span></span>
+<span><span class="co"># With a Random Forest regressor, an horizon of 20, </span></span>
+<span><span class="co"># and a 95% prediction interval</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span><span class="op">(</span><span class="va">fdeaths</span>, h<span class="op">=</span><span class="fl">20</span>, level<span class="op">=</span><span class="fl">95</span>, fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>,</span>
+<span>      fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>, predict_func <span class="op">=</span> <span class="va">predict</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-
-<span class="co"># With a Support Vector Machine regressor, an horizon of 20, </span>
-<span class="co"># and a 95% prediction interval</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span>(<span class="kw">fdeaths</span>, h=<span class="fl">20</span>, level=<span class="fl">95</span>, fit_func = <span class="kw">e1071</span>::<span class="kw"><a href="https://rdrr.io/pkg/e1071/man/svm.html">svm</a></span>,
-fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(kernel = <span class="st">"linear"</span>), predict_func = <span class="kw">predict</span>))
-</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># With a Support Vector Machine regressor, an horizon of 20, </span></span>
+<span><span class="co"># and a 95% prediction interval</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span><span class="op">(</span><span class="va">fdeaths</span>, h<span class="op">=</span><span class="fl">20</span>, level<span class="op">=</span><span class="fl">95</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>,</span>
+<span>fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>kernel <span class="op">=</span> <span class="st">"linear"</span><span class="op">)</span>, predict_func <span class="op">=</span> <span class="va">predict</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-3-2.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span>(<span class="kw">Nile</span>, h=<span class="fl">20</span>, level=<span class="fl">95</span>, fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>,
-      fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(ntree = <span class="fl">50</span>), predict_func = <span class="kw">predict</span>))
-</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, level<span class="op">=</span><span class="fl">95</span>, fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>,</span>
+<span>      fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>, predict_func <span class="op">=</span> <span class="va">predict</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-3-3.png" width="700"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span>(<span class="kw">Nile</span>, h=<span class="fl">20</span>, level=<span class="fl">95</span>, fit_func = <span class="kw">e1071</span>::<span class="kw"><a href="https://rdrr.io/pkg/e1071/man/svm.html">svm</a></span>,
-fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(kernel = <span class="st">"linear"</span>), predict_func = <span class="kw">predict</span>))
-</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/dynrmf.html">dynrmf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, level<span class="op">=</span><span class="fl">95</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>,</span>
+<span>fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>kernel <span class="op">=</span> <span class="st">"linear"</span><span class="op">)</span>, predict_func <span class="op">=</span> <span class="va">predict</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-3-4.png" width="700"></p>
-<p>For more advanced examples on <code>dynrmf</code>, you can read this <a href="https://thierrymoudiki.github.io/blog/2021/12/20/r/forecasting/ahead-more-examples">blog post</a>.</p>
+<p>For more advanced examples on <code>dynrmf</code>, you can read this
+<a href="https://thierrymoudiki.github.io/blog/2021/12/20/r/forecasting/ahead-more-examples" class="external-link">blog
+post</a>.</p>
 </div>
-<div id="multivariate-time-series" class="section level1">
-<h1 class="hasAnchor">
-<a href="#multivariate-time-series" class="anchor"></a>Multivariate time series</h1>
-<p>In this section, we illustrate <code>ridge2f</code> and <code>varf</code> forecasting. Do not hesitate to type <code><a href="../reference/ridge2f.html">?ridge2f</a></code> or <code><a href="../reference/varf.html">?varf</a></code> in R console for more details on both functions.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="co"># Forecast using ridge2</span>
-<span class="co"># With 2 time series lags, an horizon of 10, </span>
-<span class="co"># and a 95% prediction interval</span>
- <span class="kw">fit_obj_ridge2</span> <span class="op">&lt;-</span> <span class="kw">ahead</span>::<span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span>(<span class="kw">fpp</span>::<span class="kw"><a href="https://rdrr.io/pkg/fpp/man/insurance.html">insurance</a></span>, lags = <span class="fl">2</span>,
-                                  h = <span class="fl">10</span>, level = <span class="fl">95</span>)
-
-
-<span class="co"># Forecast using VAR</span>
- <span class="kw">fit_obj_VAR</span> <span class="op">&lt;-</span> <span class="kw">ahead</span>::<span class="fu"><a href="../reference/varf.html">varf</a></span>(<span class="kw">fpp</span>::<span class="kw"><a href="https://rdrr.io/pkg/fpp/man/insurance.html">insurance</a></span>, lags = <span class="fl">2</span>,
-                            h = <span class="fl">10</span>, level = <span class="fl">95</span>)
-
- 
-<span class="co"># Plotting forecasts </span>
-<span class="co"># fpp::insurance contains 2 time series, Quotes and TV.advert </span>
- <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">fit_obj_ridge2</span>, <span class="st">"Quotes"</span>)
-</pre></div>
+<div class="section level2">
+<h2 id="multivariate-time-series">Multivariate time series<a class="anchor" aria-label="anchor" href="#multivariate-time-series"></a>
+</h2>
+<p>In this section, we illustrate <code>ridge2f</code> and
+<code>varf</code> forecasting. Do not hesitate to type
+<code><a href="../reference/ridge2f.html">?ridge2f</a></code> or <code><a href="../reference/varf.html">?varf</a></code> in R console for more
+details on both functions.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Forecast using ridge2</span></span>
+<span><span class="co"># With 2 time series lags, an horizon of 10, </span></span>
+<span><span class="co"># and a 95% prediction interval</span></span>
+<span> <span class="va">fit_obj_ridge2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, lags <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                                  h <span class="op">=</span> <span class="fl">10</span>, level <span class="op">=</span> <span class="fl">95</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Forecast using VAR</span></span>
+<span> <span class="va">fit_obj_VAR</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/varf.html">varf</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, lags <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>                            h <span class="op">=</span> <span class="fl">10</span>, level <span class="op">=</span> <span class="fl">95</span><span class="op">)</span></span>
+<span></span>
+<span> </span>
+<span><span class="co"># Plotting forecasts </span></span>
+<span><span class="co"># fpp::insurance contains 2 time series, Quotes and TV.advert </span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj_ridge2</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
- <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">fit_obj_VAR</span>, <span class="st">"Quotes"</span>)
-</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj_VAR</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-4-2.png" width="700"></p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
- <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">fit_obj_ridge2</span>, <span class="st">"TV.advert"</span>)
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj_ridge2</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-4-3.png" width="700"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
- <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span>(<span class="kw">fit_obj_VAR</span>, <span class="st">"TV.advert"</span>)
-</pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj_VAR</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-vignette_files/figure-html/unnamed-chunk-4-4.png" width="700"></p>
 </div>
   </div>
@@ -227,11 +234,13 @@ fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://thierrymoudiki.github.io/">T. Moudiki</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://thierrymoudiki.github.io/" class="external-link">T. Moudiki</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -239,6 +248,8 @@ fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a
 
   
 
+
+  
 
   </body>
 </html>
