@@ -71,7 +71,8 @@
 <span>  h <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">95</span>,</span>
 <span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span>, <span class="st">"rw"</span><span class="op">)</span>,</span>
-<span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"bootstrap"</span><span class="op">)</span>,</span>
+<span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"bootstrap"</span>, <span class="st">"blockbootstrap"</span><span class="op">)</span>,</span>
+<span>  block_length <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">100</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -99,12 +100,46 @@
 <dd><p>type of prediction interval currently, "gaussian" or "bootstrap"</p></dd>
 
 
+<dt>block_length</dt>
+<dd><p>length of block for circular block bootstrap (<code>type_pi == 'blockbootstrap'</code>)</p></dd>
+
+
 <dt>seed</dt>
 <dd><p>reproducibility seed for <code>type_pi == 'bootstrap'</code></p></dd>
 
 
 <dt>B</dt>
 <dd><p>Number of bootstrap replications for <code>type_pi == 'bootstrap'</code></p></dd>
+
+</dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>An object of class "mtsforecast"; a list containing the following elements:</p>
+<dl><dt>method</dt>
+<dd><p>The name of the forecasting method as a character string</p></dd>
+
+<dt>mean</dt>
+<dd><p>Point forecasts for the time series</p></dd>
+
+<dt>lower</dt>
+<dd><p>Lower bound for prediction interval</p></dd>
+
+<dt>upper</dt>
+<dd><p>Upper bound for prediction interval</p></dd>
+
+<dt>sims</dt>
+<dd><p>Model simulations for bootstrapping (basic, or block)</p></dd>
+
+<dt>x</dt>
+<dd><p>The original time series</p></dd>
+
+<dt>residuals</dt>
+<dd><p>Residuals from the fitted model</p></dd>
+
+<dt>coefficients</dt>
+<dd><p>Regression coefficients for <code>type_pi == 'gaussian'</code> for now</p></dd>
 
 </dl></div>
 
@@ -124,6 +159,43 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="basicf-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># block bootstrap</span></span></span>
+<span class="r-in"><span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, h<span class="op">=</span><span class="fl">10</span>, type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">res5</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, h<span class="op">=</span><span class="fl">10</span>, type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, B<span class="op">=</span><span class="fl">10</span>,</span></span>
+<span class="r-in"><span>                      block_length <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">res3</span><span class="op">$</span><span class="va">sims</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Quotes TV.advert</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> May 2005  9.69184  6.340490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jun 2005  9.12098  6.272510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jul 2005 12.97065  7.212725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aug 2005 12.97065  7.212725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sep 2005 13.28780  8.402730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Oct 2005 15.88901  9.844505</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nov 2005 12.30076  7.963540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dec 2005 12.93375  8.244881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jan 2006 12.64484  7.920675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Feb 2006 15.93515  8.957255</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">res5</span><span class="op">$</span><span class="va">sims</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Quotes TV.advert</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> May 2005 12.97065  7.212725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jun 2005 15.38714  9.443570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jul 2005 13.22957  7.534250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aug 2005 12.97065  7.212725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sep 2005 11.72288  6.415215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Oct 2005 10.06177  5.806990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nov 2005 10.82279  6.203600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dec 2005 13.28707  7.586430</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jan 2006  9.69184  6.340490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Feb 2006 10.30415  6.939995</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="basicf-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
