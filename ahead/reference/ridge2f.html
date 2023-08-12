@@ -32,6 +32,12 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/ahead-loess-forecasting.html">Prediction intervals for Loess forecasting (simulation-based)</a>
+    </li>
+    <li>
+      <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
+    </li>
+    <li>
       <a href="../articles/ahead-vignette.html">Introduction to R package `ahead`</a>
     </li>
   </ul></li>
@@ -84,7 +90,11 @@
 <span>  block_length <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">100L</span>,</span>
-<span>  cl <span class="op">=</span> <span class="fl">1L</span></span>
+<span>  type_aggregation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span><span class="op">)</span>,</span>
+<span>  centers <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type_clustering <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kmeans"</span>, <span class="st">"hclust"</span><span class="op">)</span>,</span>
+<span>  cl <span class="op">=</span> <span class="fl">1L</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -123,7 +133,7 @@
 
 
 <dt>a</dt>
-<dd><p>hyperparameter for activation function "leakyrelu", "elu"</p></dd>
+<dd><p>Hyperparameter for activation function "leakyrelu", "elu"</p></dd>
 
 
 <dt>lambda_1</dt>
@@ -143,23 +153,39 @@
 
 
 <dt>type_pi</dt>
-<dd><p>type of prediction interval currently "gaussian" or (independent) "bootstrap" or (circular) "blockbootstrap"</p></dd>
+<dd><p>Type of prediction interval currently "gaussian" or (independent) "bootstrap" or (circular) "blockbootstrap"</p></dd>
 
 
 <dt>block_length</dt>
-<dd><p>length of block for circular block bootstrap (<code>type_pi == 'blockbootstrap'</code>)</p></dd>
+<dd><p>Length of block for circular block bootstrap (<code>type_pi == 'blockbootstrap'</code>)</p></dd>
 
 
 <dt>seed</dt>
-<dd><p>reproducibility seed for <code>type_pi == 'bootstrap'</code> or <code>type_pi == 'blockbootstrap'</code></p></dd>
+<dd><p>Reproducibility seed for random stuff</p></dd>
 
 
 <dt>B</dt>
 <dd><p>Number of bootstrap replications for <code>type_pi == 'bootstrap'</code> or <code>type_pi == 'blockbootstrap'</code></p></dd>
 
 
+<dt>type_aggregation</dt>
+<dd><p>Type of aggregation, ONLY for bootstrapping; either "mean" or "median"</p></dd>
+
+
+<dt>centers</dt>
+<dd><p>Number of clusters for <code>type_clustering</code></p></dd>
+
+
+<dt>type_clustering</dt>
+<dd><p>"kmeans" (K-Means clustering) or "hclust" (Hierarchical clustering)</p></dd>
+
+
 <dt>cl</dt>
-<dd><p>an integer; the number of clusters for parallel execution, for <code>type_pi == 'bootstrap'</code> or <code>type_pi == 'blockbootstrap'</code></p></dd>
+<dd><p>An integer; the number of clusters for parallel execution, for <code>type_pi == 'bootstrap'</code> or <code>type_pi == 'blockbootstrap'</code></p></dd>
+
+
+<dt>...</dt>
+<dd><p>Additional parameters to be passed <code><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></code> or <code><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></code></p></dd>
 
 </dl></div>
     <div id="value">

@@ -32,6 +32,12 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/ahead-loess-forecasting.html">Prediction intervals for Loess forecasting (simulation-based)</a>
+    </li>
+    <li>
+      <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
+    </li>
+    <li>
       <a href="../articles/ahead-vignette.html">Introduction to R package `ahead`</a>
     </li>
   </ul></li>
@@ -72,8 +78,10 @@
 <span>  level <span class="op">=</span> <span class="fl">95</span>,</span>
 <span>  span <span class="op">=</span> <span class="fl">0.75</span>,</span>
 <span>  degree <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bootstrap"</span>, <span class="st">"blockbootstrap"</span><span class="op">)</span>,</span>
 <span>  b <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">250</span>,</span>
+<span>  type_aggregation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span><span class="op">)</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -100,12 +108,20 @@
 <dd><p>the degree of the polynomials to be used, normally 1 or 2. (Degree 0 is also allowed, but see <code><a href="https://rdrr.io/r/stats/loess.html" class="external-link">stats::loess</a></code>)</p></dd>
 
 
+<dt>type_pi</dt>
+<dd><p>Type of prediction interval currently (independent) "bootstrap" or (circular) "blockbootstrap"</p></dd>
+
+
 <dt>b</dt>
 <dd><p>block length for circular block bootstrap</p></dd>
 
 
 <dt>B</dt>
 <dd><p>number of bootstrap replications</p></dd>
+
+
+<dt>type_aggregation</dt>
+<dd><p>Type of aggregation, ONLY for bootstrapping; either "mean" or "median"</p></dd>
 
 
 <dt>seed</dt>
