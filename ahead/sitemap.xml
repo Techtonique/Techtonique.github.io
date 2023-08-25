@@ -13,6 +13,9 @@
     <loc>https://techtonique.github.io/ahead/articles/ahead-loess-forecasting.html</loc>
   </url>
   <url>
+    <loc>https://techtonique.github.io/ahead/articles/ahead-plotting-functions.html</loc>
+  </url>
+  <url>
     <loc>https://techtonique.github.io/ahead/articles/ahead-ridge2-prediction-intervals.html</loc>
   </url>
   <url>
@@ -43,6 +46,12 @@
     <loc>https://techtonique.github.io/ahead/reference/eatf.html</loc>
   </url>
   <url>
+    <loc>https://techtonique.github.io/ahead/reference/getreturns.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/ahead/reference/getsimulations.html</loc>
+  </url>
+  <url>
     <loc>https://techtonique.github.io/ahead/reference/index.html</loc>
   </url>
   <url>
@@ -50,6 +59,9 @@
   </url>
   <url>
     <loc>https://techtonique.github.io/ahead/reference/plot.mtsforecast.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/ahead/reference/plot.pairs.html</loc>
   </url>
   <url>
     <loc>https://techtonique.github.io/ahead/reference/predict.ridge.html</loc>

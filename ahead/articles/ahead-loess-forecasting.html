@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -51,6 +51,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/ahead-loess-forecasting.html">Prediction intervals for Loess forecasting (simulation-based)</a>
+    </li>
+    <li>
+      <a href="../articles/ahead-plotting-functions.html">Plotting functions</a>
     </li>
     <li>
       <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
@@ -152,25 +155,25 @@ hyperparameters will have to be tuned.</p>
 <code>ahead::loessf</code> on Nile dataset<a class="anchor" aria-label="anchor" href="#aheadloessf-on-nile-dataset"></a>
 </h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
 <span>            type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>,</span>
 <span>            type_aggregation <span class="op">=</span> <span class="st">"mean"</span>,</span>
 <span>            level<span class="op">=</span><span class="fl">95</span>, B<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-loess-forecasting_files/figure-html/bootstrap-mean-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
 <span>            type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>,</span>
 <span>            type_aggregation <span class="op">=</span> <span class="st">"median"</span>,</span>
 <span>            level<span class="op">=</span><span class="fl">95</span>, B<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-loess-forecasting_files/figure-html/bootstrap-median-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
 <span>            type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>,</span>
 <span>            type_aggregation <span class="op">=</span> <span class="st">"mean"</span>,</span>
 <span>            level<span class="op">=</span><span class="fl">95</span>, B<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-loess-forecasting_files/figure-html/blockbootstrap-mean-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/loessf.html">loessf</a></span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">20</span>, </span>
 <span>            type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>,</span>
 <span>            type_aggregation <span class="op">=</span> <span class="st">"median"</span>,</span>
 <span>            level<span class="op">=</span><span class="fl">95</span>, B<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
