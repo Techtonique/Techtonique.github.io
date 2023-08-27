@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,29 +33,26 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crossvalidation</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/boxplots.html">boxplots for model performance</a>
+    </li>
+    <li>
       <a href="../articles/quickstart.html">quickstart</a>
     </li>
   </ul>
@@ -61,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Techtonique/crossvalidation/">
+  <a href="https://github.com/Techtonique/crossvalidation/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -76,187 +75,611 @@
 
       
 
-      </header><script src="quickstart_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>quickstart</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Techtonique/crossvalidation/blob/master/vignettes/quickstart.Rmd"><code>vignettes/quickstart.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Techtonique/crossvalidation/blob/HEAD/vignettes/quickstart.Rmd" class="external-link"><code>vignettes/quickstart.Rmd</code></a></small>
       <div class="hidden name"><code>quickstart.Rmd</code></div>
 
     </div>
 
     
     
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://glmnet.stanford.edu" class="external-link">glmnet</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Loading required package: Matrix</span></span></code></pre>
+<pre><code><span><span class="co">## Loaded glmnet 4.1-7</span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dmlc/xgboost" class="external-link">xgboost</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://Matrix.R-forge.R-project.org/" class="external-link">Matrix</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/" class="external-link">randomForest</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## randomForest 4.7-1.1</span></span></code></pre>
+<pre><code><span><span class="co">## Type rfNews() to see new features/changes/bug fixes.</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
+<span><span class="co">##   method            from</span></span>
+<span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
 <p>Examples for regression, time series, and classification.</p>
-<div id="regression" class="section level2">
-<h2 class="hasAnchor">
-<a href="#regression" class="anchor"></a>Regression</h2>
-<div id="create-a-dataset" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-a-dataset" class="anchor"></a>Create a dataset</h3>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># dataset</span>
- <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
- <span class="kw">n</span> <span class="op">&lt;-</span> <span class="fl">100</span> ; <span class="kw">p</span> <span class="op">&lt;-</span> <span class="fl">5</span>
- <span class="kw">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="kw">n</span> <span class="op">*</span> <span class="kw">p</span>), <span class="kw">n</span>, <span class="kw">p</span>)
- <span class="kw">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="kw">n</span>)
-</pre></div>
+<div class="section level2">
+<h2 id="regression">Regression<a class="anchor" aria-label="anchor" href="#regression"></a>
+</h2>
+<div class="section level3">
+<h3 id="create-a-dataset">Create a dataset<a class="anchor" aria-label="anchor" href="#create-a-dataset"></a>
+</h3>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># dataset</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span> <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span> ; <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span> <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">p</span><span class="op">)</span>, <span class="va">n</span>, <span class="va">p</span><span class="op">)</span></span>
+<span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="cross-validation-for-a-few-models" class="section level3">
-<h3 class="hasAnchor">
-<a href="#cross-validation-for-a-few-models" class="anchor"></a>Cross-validation for a few models</h3>
+<div class="section level3">
+<h3 id="cross-validation-for-a-few-models">Cross-validation for a few models<a class="anchor" aria-label="anchor" href="#cross-validation-for-a-few-models"></a>
+</h3>
 <p><strong>Linear model</strong></p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-
-<span class="co"># 'X' contains the explanatory variables</span>
-<span class="co"># 'y' is the response</span>
-<span class="co"># 'k' is the number of folds in k-fold cross-validation</span>
-<span class="co"># 'repeats' is the number of repeats of the k-fold cross-validation procedure</span>
-
-<span class="co"># linear model example -----</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>)
-
-<span class="co"># linear model example, with validation set</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>, p = <span class="fl">0.8</span>)
-</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 'X' contains the explanatory variables</span></span>
+<span><span class="co"># 'y' is the response</span></span>
+<span><span class="co"># 'k' is the number of folds in k-fold cross-validation</span></span>
+<span><span class="co"># 'repeats' is the number of repeats of the k-fold cross-validation procedure</span></span>
+<span></span>
+<span><span class="co"># linear model example -----</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0657917 0.7188426 1.0338031</span></span>
+<span><span class="co">## fold_2 1.0253419 0.6820600 0.7632532</span></span>
+<span><span class="co">## fold_3 0.8726629 1.0294080 0.7830872</span></span>
+<span><span class="co">## fold_4 0.8899336 1.2441376 0.9776853</span></span>
+<span><span class="co">## fold_5 0.9724975 1.0578021 1.0921075</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.9472276</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.15799</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 0.9776853</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.8727   Min.   :0.6821   Min.   :0.7633  </span></span>
+<span><span class="co">##  1st Qu.:0.8899   1st Qu.:0.7188   1st Qu.:0.7831  </span></span>
+<span><span class="co">##  Median :0.9725   Median :1.0294   Median :0.9777  </span></span>
+<span><span class="co">##  Mean   :0.9652   Mean   :0.9465   Mean   :0.9300  </span></span>
+<span><span class="co">##  3rd Qu.:1.0253   3rd Qu.:1.0578   3rd Qu.:1.0338  </span></span>
+<span><span class="co">##  Max.   :1.0658   Max.   :1.2441   Max.   :1.0921</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># linear model example, with validation set</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, p <span class="op">=</span> <span class="fl">0.8</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##                    repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_training_1   0.8589887 0.6618209 0.8028635</span></span>
+<span><span class="co">## fold_validation_1 1.0689051 1.1206828 1.1719136</span></span>
+<span><span class="co">## fold_training_2   0.7093379 1.0424256 0.9199860</span></span>
+<span><span class="co">## fold_validation_2 1.0827333 1.1363834 1.0731990</span></span>
+<span><span class="co">## fold_training_3   1.0489754 1.1053316 1.1602932</span></span>
+<span><span class="co">## fold_validation_3 1.2271907 1.1456095 1.0881138</span></span>
+<span><span class="co">## fold_training_4   0.9703262 0.9576335 0.8823505</span></span>
+<span><span class="co">## fold_validation_4 1.1098708 1.0933379 1.0563444</span></span>
+<span><span class="co">## fold_training_5   1.0689683 0.9692094 1.1509957</span></span>
+<span><span class="co">## fold_validation_5 1.0925497 1.0641650 1.1304265</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_training</span></span>
+<span><span class="co">## [1] 0.9539671</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_validation</span></span>
+<span><span class="co">## [1] 1.110762</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_training</span></span>
+<span><span class="co">## [1] 0.1507651</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_validation</span></span>
+<span><span class="co">## [1] 0.04619929</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_training</span></span>
+<span><span class="co">## [1] 0.9692094</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_validation</span></span>
+<span><span class="co">## [1] 1.093338</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_training</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.7093   Min.   :0.6618   Min.   :0.8029  </span></span>
+<span><span class="co">##  1st Qu.:0.8590   1st Qu.:0.9576   1st Qu.:0.8824  </span></span>
+<span><span class="co">##  Median :0.9703   Median :0.9692   Median :0.9200  </span></span>
+<span><span class="co">##  Mean   :0.9313   Mean   :0.9473   Mean   :0.9833  </span></span>
+<span><span class="co">##  3rd Qu.:1.0490   3rd Qu.:1.0424   3rd Qu.:1.1510  </span></span>
+<span><span class="co">##  Max.   :1.0690   Max.   :1.1053   Max.   :1.1603  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_validation</span></span>
+<span><span class="co">##     repeat_1        repeat_2        repeat_3    </span></span>
+<span><span class="co">##  Min.   :1.069   Min.   :1.064   Min.   :1.056  </span></span>
+<span><span class="co">##  1st Qu.:1.083   1st Qu.:1.093   1st Qu.:1.073  </span></span>
+<span><span class="co">##  Median :1.093   Median :1.121   Median :1.088  </span></span>
+<span><span class="co">##  Mean   :1.116   Mean   :1.112   Mean   :1.104  </span></span>
+<span><span class="co">##  3rd Qu.:1.110   3rd Qu.:1.136   3rd Qu.:1.130  </span></span>
+<span><span class="co">##  Max.   :1.227   Max.   :1.146   Max.   :1.172</span></span></code></pre>
 <p><strong>glmnet</strong></p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co"># glmnet example -----</span>
-
-<span class="co"># fit glmnet, with alpha = 1, lambda = 0.1</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="kw"><a href="https://glmnet.stanford.edu">glmnet</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="kw"><a href="http://Matrix.R-forge.R-project.org">Matrix</a></span>)
-
- <span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
- fit_func = <span class="kw">glmnet</span>::<span class="kw"><a href="https://rdrr.io/pkg/glmnet/man/glmnet.html">glmnet</a></span>, predict_func = <span class="kw">predict.glmnet</span>,
- packages = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"glmnet"</span>, <span class="st">"Matrix"</span>), fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(alpha = <span class="fl">0.5</span>, lambda = <span class="fl">0.1</span>))
-
-<span class="co"># fit glmnet, with alpha = 0, lambda = 0.01</span>
-
- <span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
- fit_func = <span class="kw">glmnet</span>::<span class="kw"><a href="https://rdrr.io/pkg/glmnet/man/glmnet.html">glmnet</a></span>, predict_func = <span class="kw">predict.glmnet</span>,
- packages = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"glmnet"</span>, <span class="st">"Matrix"</span>), fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(alpha = <span class="fl">0</span>, lambda = <span class="fl">0.01</span>))
-
- <span class="co"># fit glmnet, with alpha = 0, lambda = 0.01, with validation set</span>
-
- <span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">2</span>, p = <span class="fl">0.8</span>,
- fit_func = <span class="kw">glmnet</span>::<span class="kw"><a href="https://rdrr.io/pkg/glmnet/man/glmnet.html">glmnet</a></span>, predict_func = <span class="kw">predict.glmnet</span>,
- packages = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"glmnet"</span>, <span class="st">"Matrix"</span>), fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(alpha = <span class="fl">0</span>, lambda = <span class="fl">0.01</span>))
-</pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># glmnet example -----</span></span>
+<span></span>
+<span><span class="co"># fit glmnet, with alpha = 1, lambda = 0.1</span></span>
+<span></span>
+<span> <span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span> fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span>, predict_func <span class="op">=</span> <span class="va">predict.glmnet</span>,</span>
+<span> packages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"glmnet"</span>, <span class="st">"Matrix"</span><span class="op">)</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span>, lambda <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0514770 0.7505046 1.0142623</span></span>
+<span><span class="co">## fold_2 1.0195407 0.6996108 0.7214830</span></span>
+<span><span class="co">## fold_3 0.8858994 1.0033483 0.7838630</span></span>
+<span><span class="co">## fold_4 0.8101031 1.2110573 0.9747158</span></span>
+<span><span class="co">## fold_5 0.9562564 1.0257926 1.0952526</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.9335445</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.1511116</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 0.9747158</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.8101   Min.   :0.6996   Min.   :0.7215  </span></span>
+<span><span class="co">##  1st Qu.:0.8859   1st Qu.:0.7505   1st Qu.:0.7839  </span></span>
+<span><span class="co">##  Median :0.9563   Median :1.0033   Median :0.9747  </span></span>
+<span><span class="co">##  Mean   :0.9447   Mean   :0.9381   Mean   :0.9179  </span></span>
+<span><span class="co">##  3rd Qu.:1.0195   3rd Qu.:1.0258   3rd Qu.:1.0143  </span></span>
+<span><span class="co">##  Max.   :1.0515   Max.   :1.2111   Max.   :1.0953</span></span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># fit glmnet, with alpha = 0, lambda = 0.01</span></span>
+<span></span>
+<span> <span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span> fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span>, predict_func <span class="op">=</span> <span class="va">predict.glmnet</span>,</span>
+<span> packages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"glmnet"</span>, <span class="st">"Matrix"</span><span class="op">)</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span>, lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0605785 0.7192835 1.0253503</span></span>
+<span><span class="co">## fold_2 1.0266807 0.6757645 0.7594241</span></span>
+<span><span class="co">## fold_3 0.8895544 1.0344944 0.7733901</span></span>
+<span><span class="co">## fold_4 0.8938092 1.2470820 1.0042933</span></span>
+<span><span class="co">## fold_5 0.9641163 1.0703400 1.0952784</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.949296</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.160505</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 1.004293</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.8896   Min.   :0.6758   Min.   :0.7594  </span></span>
+<span><span class="co">##  1st Qu.:0.8938   1st Qu.:0.7193   1st Qu.:0.7734  </span></span>
+<span><span class="co">##  Median :0.9641   Median :1.0345   Median :1.0043  </span></span>
+<span><span class="co">##  Mean   :0.9669   Mean   :0.9494   Mean   :0.9315  </span></span>
+<span><span class="co">##  3rd Qu.:1.0267   3rd Qu.:1.0703   3rd Qu.:1.0254  </span></span>
+<span><span class="co">##  Max.   :1.0606   Max.   :1.2471   Max.   :1.0953</span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span> <span class="co"># fit glmnet, with alpha = 0, lambda = 0.01, with validation set</span></span>
+<span></span>
+<span> <span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">2</span>, p <span class="op">=</span> <span class="fl">0.8</span>, </span>
+<span>                              show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span> fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span>, predict_func <span class="op">=</span> <span class="va">predict.glmnet</span>,</span>
+<span> packages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"glmnet"</span>, <span class="st">"Matrix"</span><span class="op">)</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span>, lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##                    repeat_1  repeat_2</span></span>
+<span><span class="co">## fold_training_1   0.8581977 0.6617929</span></span>
+<span><span class="co">## fold_validation_1 1.0648167 1.1204975</span></span>
+<span><span class="co">## fold_training_2   0.7000929 1.0383779</span></span>
+<span><span class="co">## fold_validation_2 1.0683314 1.1451865</span></span>
+<span><span class="co">## fold_training_3   1.0515575 1.1083551</span></span>
+<span><span class="co">## fold_validation_3 1.1922896 1.1370166</span></span>
+<span><span class="co">## fold_training_4   0.9847907 0.9510162</span></span>
+<span><span class="co">## fold_validation_4 1.0888078 1.0477593</span></span>
+<span><span class="co">## fold_training_5   1.0600201 0.9665769</span></span>
+<span><span class="co">## fold_validation_5 1.0568172 1.0571621</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_training</span></span>
+<span><span class="co">## [1] 0.9380778</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_validation</span></span>
+<span><span class="co">## [1] 1.097868</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_training</span></span>
+<span><span class="co">## [1] 0.1525031</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_validation</span></span>
+<span><span class="co">## [1] 0.04841842</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_training</span></span>
+<span><span class="co">## [1] 0.9756838</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_validation</span></span>
+<span><span class="co">## [1] 1.07857</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_training</span></span>
+<span><span class="co">##     repeat_1         repeat_2     </span></span>
+<span><span class="co">##  Min.   :0.7001   Min.   :0.6618  </span></span>
+<span><span class="co">##  1st Qu.:0.8582   1st Qu.:0.9510  </span></span>
+<span><span class="co">##  Median :0.9848   Median :0.9666  </span></span>
+<span><span class="co">##  Mean   :0.9309   Mean   :0.9452  </span></span>
+<span><span class="co">##  3rd Qu.:1.0516   3rd Qu.:1.0384  </span></span>
+<span><span class="co">##  Max.   :1.0600   Max.   :1.1084  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_validation</span></span>
+<span><span class="co">##     repeat_1        repeat_2    </span></span>
+<span><span class="co">##  Min.   :1.057   Min.   :1.048  </span></span>
+<span><span class="co">##  1st Qu.:1.065   1st Qu.:1.057  </span></span>
+<span><span class="co">##  Median :1.068   Median :1.120  </span></span>
+<span><span class="co">##  Mean   :1.094   Mean   :1.102  </span></span>
+<span><span class="co">##  3rd Qu.:1.089   3rd Qu.:1.137  </span></span>
+<span><span class="co">##  Max.   :1.192   Max.   :1.145</span></span></code></pre>
 <p><strong>Random Forest</strong></p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co"># randomForest example -----</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="kw"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests">randomForest</a></span>)
-
-<span class="co"># fit randomForest with mtry = 2</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
-fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>, predict_func = <span class="kw">predict</span>,
-packages = <span class="st">"randomForest"</span>, fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(mtry = <span class="fl">2</span>))
-
-<span class="co"># fit randomForest with mtry = 4</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
-fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>, predict_func = <span class="kw">predict</span>,
-packages = <span class="st">"randomForest"</span>, fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(mtry = <span class="fl">4</span>))
-
-<span class="co"># fit randomForest with mtry = 4, with validation set</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">2</span>, p = <span class="fl">0.8</span>,
-fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>, predict_func = <span class="kw">predict</span>,
-packages = <span class="st">"randomForest"</span>, fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(mtry = <span class="fl">4</span>))
-</pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># randomForest example -----</span></span>
+<span></span>
+<span><span class="co"># fit randomForest with mtry = 2</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>packages <span class="op">=</span> <span class="st">"randomForest"</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0932266 0.8306226 1.0178042</span></span>
+<span><span class="co">## fold_2 1.0016687 0.8546975 0.8257244</span></span>
+<span><span class="co">## fold_3 0.8960080 1.1016916 0.7720573</span></span>
+<span><span class="co">## fold_4 0.7837822 1.2375085 1.0627761</span></span>
+<span><span class="co">## fold_5 0.9827901 1.0636167 1.1402827</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.9776172</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.1429053</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 1.001669</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.7838   Min.   :0.8306   Min.   :0.7721  </span></span>
+<span><span class="co">##  1st Qu.:0.8960   1st Qu.:0.8547   1st Qu.:0.8257  </span></span>
+<span><span class="co">##  Median :0.9828   Median :1.0636   Median :1.0178  </span></span>
+<span><span class="co">##  Mean   :0.9515   Mean   :1.0176   Mean   :0.9637  </span></span>
+<span><span class="co">##  3rd Qu.:1.0017   3rd Qu.:1.1017   3rd Qu.:1.0628  </span></span>
+<span><span class="co">##  Max.   :1.0932   Max.   :1.2375   Max.   :1.1403</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># fit randomForest with mtry = 4</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>packages <span class="op">=</span> <span class="st">"randomForest"</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0938938 0.8294432 1.0274141</span></span>
+<span><span class="co">## fold_2 0.9948985 0.8837450 0.8508324</span></span>
+<span><span class="co">## fold_3 0.8830305 1.1455328 0.7690735</span></span>
+<span><span class="co">## fold_4 0.8326955 1.2709843 1.0781753</span></span>
+<span><span class="co">## fold_5 0.9802129 1.0722765 1.1277285</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.9893291</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.1440225</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 0.9948985</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.8327   Min.   :0.8294   Min.   :0.7691  </span></span>
+<span><span class="co">##  1st Qu.:0.8830   1st Qu.:0.8837   1st Qu.:0.8508  </span></span>
+<span><span class="co">##  Median :0.9802   Median :1.0723   Median :1.0274  </span></span>
+<span><span class="co">##  Mean   :0.9569   Mean   :1.0404   Mean   :0.9706  </span></span>
+<span><span class="co">##  3rd Qu.:0.9949   3rd Qu.:1.1455   3rd Qu.:1.0782  </span></span>
+<span><span class="co">##  Max.   :1.0939   Max.   :1.2710   Max.   :1.1277</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># fit randomForest with mtry = 4, with validation set</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">2</span>, p <span class="op">=</span> <span class="fl">0.8</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>packages <span class="op">=</span> <span class="st">"randomForest"</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##                    repeat_1  repeat_2</span></span>
+<span><span class="co">## fold_training_1   0.8159825 0.7779928</span></span>
+<span><span class="co">## fold_validation_1 0.6071914 0.7095150</span></span>
+<span><span class="co">## fold_training_2   0.8055798 0.9620625</span></span>
+<span><span class="co">## fold_validation_2 0.6124228 0.6857506</span></span>
+<span><span class="co">## fold_training_3   1.0334201 1.1550091</span></span>
+<span><span class="co">## fold_validation_3 0.9720091 0.9593153</span></span>
+<span><span class="co">## fold_training_4   0.9259389 1.0479121</span></span>
+<span><span class="co">## fold_validation_4 0.6447842 0.6833361</span></span>
+<span><span class="co">## fold_training_5   0.9795790 0.9959987</span></span>
+<span><span class="co">## fold_validation_5 0.8065167 0.6781677</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_training</span></span>
+<span><span class="co">## [1] 0.9499476</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_validation</span></span>
+<span><span class="co">## [1] 0.7359009</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_training</span></span>
+<span><span class="co">## [1] 0.1205054</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_validation</span></span>
+<span><span class="co">## [1] 0.1333626</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_training</span></span>
+<span><span class="co">## [1] 0.9708207</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_validation</span></span>
+<span><span class="co">## [1] 0.6845434</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_training</span></span>
+<span><span class="co">##     repeat_1         repeat_2     </span></span>
+<span><span class="co">##  Min.   :0.8056   Min.   :0.7780  </span></span>
+<span><span class="co">##  1st Qu.:0.8160   1st Qu.:0.9621  </span></span>
+<span><span class="co">##  Median :0.9259   Median :0.9960  </span></span>
+<span><span class="co">##  Mean   :0.9121   Mean   :0.9878  </span></span>
+<span><span class="co">##  3rd Qu.:0.9796   3rd Qu.:1.0479  </span></span>
+<span><span class="co">##  Max.   :1.0334   Max.   :1.1550  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_validation</span></span>
+<span><span class="co">##     repeat_1         repeat_2     </span></span>
+<span><span class="co">##  Min.   :0.6072   Min.   :0.6782  </span></span>
+<span><span class="co">##  1st Qu.:0.6124   1st Qu.:0.6833  </span></span>
+<span><span class="co">##  Median :0.6448   Median :0.6858  </span></span>
+<span><span class="co">##  Mean   :0.7286   Mean   :0.7432  </span></span>
+<span><span class="co">##  3rd Qu.:0.8065   3rd Qu.:0.7095  </span></span>
+<span><span class="co">##  Max.   :0.9720   Max.   :0.9593</span></span></code></pre>
 <p><strong>xgboost</strong></p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="co"># xgboost example -----</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="kw"><a href="https://github.com/dmlc/xgboost">xgboost</a></span>)
-
-<span class="co"># The response and covariates are named 'label' and 'data'</span>
-<span class="co"># So, we do this:</span>
-
-<span class="kw">f_xgboost</span> <span class="op">&lt;-</span> <span class="fu">function</span>(<span class="kw">x</span>, <span class="kw">y</span>, <span class="kw">...</span>) <span class="kw">xgboost</span>::<span class="fu"><a href="https://rdrr.io/pkg/xgboost/man/xgb.train.html">xgboost</a></span>(data = <span class="kw">x</span>, label = <span class="kw">y</span>, <span class="kw">...</span>)
-
-<span class="co"># fit xgboost with nrounds = 5</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
-  fit_func = <span class="kw">f_xgboost</span>, predict_func = <span class="kw">predict</span>,
-   packages = <span class="st">"xgboost"</span>, fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(nrounds = <span class="fl">5</span>,
-   verbose = <span class="fl">FALSE</span>))
-
-<span class="co"># fit xgboost with nrounds = 10</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
-  fit_func = <span class="kw">f_xgboost</span>, predict_func = <span class="kw">predict</span>,
-   packages = <span class="st">"xgboost"</span>, fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(nrounds = <span class="fl">10</span>,
-   verbose = <span class="fl">FALSE</span>))
-
-<span class="co"># fit xgboost with nrounds = 10, with validation set</span>
-
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">2</span>, p = <span class="fl">0.8</span>,
-  fit_func = <span class="kw">f_xgboost</span>, predict_func = <span class="kw">predict</span>,
-   packages = <span class="st">"xgboost"</span>, fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(nrounds = <span class="fl">10</span>,
-   verbose = <span class="fl">FALSE</span>))
-</pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># xgboost example -----</span></span>
+<span></span>
+<span><span class="co"># The response and covariates are named 'label' and 'data'</span></span>
+<span><span class="co"># So, we do this:</span></span>
+<span></span>
+<span><span class="va">f_xgboost</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">xgboost</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/xgboost/man/xgb.train.html" class="external-link">xgboost</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">x</span>, label <span class="op">=</span> <span class="va">y</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fit xgboost with nrounds = 5</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  fit_func <span class="op">=</span> <span class="va">f_xgboost</span>, predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>   packages <span class="op">=</span> <span class="st">"xgboost"</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nrounds <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>   verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0618781 0.7934194 1.1900606</span></span>
+<span><span class="co">## fold_2 0.9843552 0.8976441 0.7811620</span></span>
+<span><span class="co">## fold_3 1.0453996 1.2422247 0.7457622</span></span>
+<span><span class="co">## fold_4 0.7264478 1.3522984 0.9835989</span></span>
+<span><span class="co">## fold_5 1.0235773 1.0813265 1.1978533</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 1.007134</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.1911201</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 1.023577</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.7264   Min.   :0.7934   Min.   :0.7458  </span></span>
+<span><span class="co">##  1st Qu.:0.9844   1st Qu.:0.8976   1st Qu.:0.7812  </span></span>
+<span><span class="co">##  Median :1.0236   Median :1.0813   Median :0.9836  </span></span>
+<span><span class="co">##  Mean   :0.9683   Mean   :1.0734   Mean   :0.9797  </span></span>
+<span><span class="co">##  3rd Qu.:1.0454   3rd Qu.:1.2422   3rd Qu.:1.1901  </span></span>
+<span><span class="co">##  Max.   :1.0619   Max.   :1.3523   Max.   :1.1979</span></span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># fit xgboost with nrounds = 10</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  fit_func <span class="op">=</span> <span class="va">f_xgboost</span>, predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>   packages <span class="op">=</span> <span class="st">"xgboost"</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nrounds <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>   verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 1.0658784 0.7836507 1.2662420</span></span>
+<span><span class="co">## fold_2 0.9968874 0.9484756 0.7958286</span></span>
+<span><span class="co">## fold_3 1.0444959 1.2541543 0.7130956</span></span>
+<span><span class="co">## fold_4 0.8412503 1.3478651 1.1406648</span></span>
+<span><span class="co">## fold_5 1.0178454 1.1320386 1.2381301</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 1.0391</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.1950815</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 1.044496</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.8413   Min.   :0.7837   Min.   :0.7131  </span></span>
+<span><span class="co">##  1st Qu.:0.9969   1st Qu.:0.9485   1st Qu.:0.7958  </span></span>
+<span><span class="co">##  Median :1.0178   Median :1.1320   Median :1.1407  </span></span>
+<span><span class="co">##  Mean   :0.9933   Mean   :1.0932   Mean   :1.0308  </span></span>
+<span><span class="co">##  3rd Qu.:1.0445   3rd Qu.:1.2542   3rd Qu.:1.2381  </span></span>
+<span><span class="co">##  Max.   :1.0659   Max.   :1.3479   Max.   :1.2662</span></span></code></pre>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># fit xgboost with nrounds = 10, with validation set</span></span>
+<span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">2</span>, p <span class="op">=</span> <span class="fl">0.8</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  fit_func <span class="op">=</span> <span class="va">f_xgboost</span>, predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>   packages <span class="op">=</span> <span class="st">"xgboost"</span>, fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>nrounds <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>   verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##                    repeat_1  repeat_2</span></span>
+<span><span class="co">## fold_training_1   0.7448843 0.8539725</span></span>
+<span><span class="co">## fold_validation_1 0.3889456 0.7549903</span></span>
+<span><span class="co">## fold_training_2   0.7627843 1.1084452</span></span>
+<span><span class="co">## fold_validation_2 0.5865502 0.6016042</span></span>
+<span><span class="co">## fold_training_3   1.1758940 1.1011674</span></span>
+<span><span class="co">## fold_validation_3 1.0291986 0.8007670</span></span>
+<span><span class="co">## fold_training_4   1.0463162 1.1637320</span></span>
+<span><span class="co">## fold_validation_4 0.8800788 0.5981181</span></span>
+<span><span class="co">## fold_training_5   0.9523677 1.0585674</span></span>
+<span><span class="co">## fold_validation_5 0.6689611 0.6313575</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_training</span></span>
+<span><span class="co">## [1] 0.9968131</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean_validation</span></span>
+<span><span class="co">## [1] 0.6940571</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_training</span></span>
+<span><span class="co">## [1] 0.1599181</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_validation</span></span>
+<span><span class="co">## [1] 0.1791918</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_training</span></span>
+<span><span class="co">## [1] 1.052442</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median_validation</span></span>
+<span><span class="co">## [1] 0.6501593</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_training</span></span>
+<span><span class="co">##     repeat_1         repeat_2    </span></span>
+<span><span class="co">##  Min.   :0.7449   Min.   :0.854  </span></span>
+<span><span class="co">##  1st Qu.:0.7628   1st Qu.:1.059  </span></span>
+<span><span class="co">##  Median :0.9524   Median :1.101  </span></span>
+<span><span class="co">##  Mean   :0.9364   Mean   :1.057  </span></span>
+<span><span class="co">##  3rd Qu.:1.0463   3rd Qu.:1.108  </span></span>
+<span><span class="co">##  Max.   :1.1759   Max.   :1.164  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary_validation</span></span>
+<span><span class="co">##     repeat_1         repeat_2     </span></span>
+<span><span class="co">##  Min.   :0.3889   Min.   :0.5981  </span></span>
+<span><span class="co">##  1st Qu.:0.5866   1st Qu.:0.6016  </span></span>
+<span><span class="co">##  Median :0.6690   Median :0.6314  </span></span>
+<span><span class="co">##  Mean   :0.7107   Mean   :0.6774  </span></span>
+<span><span class="co">##  3rd Qu.:0.8801   3rd Qu.:0.7550  </span></span>
+<span><span class="co">##  Max.   :1.0292   Max.   :0.8008</span></span></code></pre>
 </div>
 </div>
-<div id="time-series" class="section level2">
-<h2 class="hasAnchor">
-<a href="#time-series" class="anchor"></a>Time series</h2>
+<div class="section level2">
+<h2 id="time-series">Time series<a class="anchor" aria-label="anchor" href="#time-series"></a>
+</h2>
 <p><strong>Theta method (time series)</strong></p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="kw"><a href="https://pkg.robjhyndman.com/forecast">forecast</a></span>)
-<span class="kw">res</span> <span class="op">&lt;-</span> <span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ts.html">crossval_ts</a></span>(y=<span class="kw">AirPassengers</span>, initial_window = <span class="fl">10</span>, fcast_func = <span class="kw">thetaf</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums.html">colMeans</a></span>(<span class="kw">res</span>))
-</pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ts.html">crossval_ts</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">AirPassengers</span>, initial_window <span class="op">=</span> <span class="fl">10</span>, fcast_func <span class="op">=</span> <span class="va">thetaf</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##           ME         RMSE          MAE          MPE         MAPE </span></span>
+<span><span class="co">##  2.657082195 51.427170382 46.511874693  0.003423843  0.155428590</span></span></code></pre>
 </div>
-<div id="classification" class="section level2">
-<h2 class="hasAnchor">
-<a href="#classification" class="anchor"></a>Classification</h2>
-<pre><code><a href="https://www.stat.berkeley.edu/~breiman/RandomForests">library(randomForest)</a></code></pre>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="co"># Input data </span>
-
-<span class="co"># Transforming model response into a factor</span>
-<span class="kw">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="kw">iris</span><span class="op">$</span><span class="kw">Species</span>))
-<span class="co"># Explanatory variables </span>
-<span class="kw">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span>(<span class="kw">iris</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"Petal.Length"</span>, <span class="st">"Petal.Width"</span>)])
-</pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="co"># 5-fold cross-validation repeated 3 times</span>
-<span class="co"># default error metric, when y is a factor: accuracy</span>
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
-                             fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>, 
-                             predict_func = <span class="kw">predict</span>,
-                             fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(mtry = <span class="fl">2</span>),
-                             packages = <span class="st">"randomForest"</span>)
-</pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="co"># We can specify custom error metrics for crossvalidation::crossval_ml</span>
-<span class="co"># here, the error rate </span>
-<span class="kw">eval_metric</span> <span class="op">&lt;-</span> <span class="fu">function</span> (<span class="kw">preds</span>, <span class="kw">actual</span>)
-{
- <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">preds</span>) <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="kw">actual</span>))
-  <span class="kw">res</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="kw">preds</span> <span class="op">==</span> <span class="kw">actual</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">res</span>) <span class="op">&lt;-</span> <span class="st">"error rate"</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/function.html">return</a></span>(<span class="kw">res</span>)
-}
-
-<span class="co"># specify `eval_metric` argument for measuring the error rate</span>
-<span class="co"># instead of the (default) accuracy </span>
-<span class="kw">crossvalidation</span>::<span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span>(x = <span class="kw">X</span>, y = <span class="kw">y</span>, k = <span class="fl">5</span>, repeats = <span class="fl">3</span>,
-                             fit_func = <span class="kw">randomForest</span>::<span class="kw"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span>, 
-                             predict_func = <span class="kw">predict</span>,
-                             fit_params = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(mtry = <span class="fl">2</span>),
-                             packages = <span class="st">"randomForest"</span>, 
-                             eval_metric=<span class="kw">eval_metric</span>)
-</pre></div>
+<div class="section level2">
+<h2 id="classification">Classification<a class="anchor" aria-label="anchor" href="#classification"></a>
+</h2>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Input data </span></span>
+<span></span>
+<span><span class="co"># Transforming model response into a factor</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Explanatory variables </span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"Petal.Length"</span>, <span class="st">"Petal.Width"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># 5-fold cross-validation repeated 3 times</span></span>
+<span><span class="co"># default error metric, when y is a factor: accuracy</span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                             fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, </span>
+<span>                             predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>                             fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                             packages <span class="op">=</span> <span class="st">"randomForest"</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##         repeat_1  repeat_2  repeat_3</span></span>
+<span><span class="co">## fold_1 0.9666667 0.9666667 1.0000000</span></span>
+<span><span class="co">## fold_2 0.9666667 0.9000000 0.9333333</span></span>
+<span><span class="co">## fold_3 1.0000000 0.9666667 0.9333333</span></span>
+<span><span class="co">## fold_4 0.9333333 1.0000000 0.9333333</span></span>
+<span><span class="co">## fold_5 0.9333333 0.9333333 0.9666667</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.9555556</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.02999118</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 0.9666667</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1         repeat_2         repeat_3     </span></span>
+<span><span class="co">##  Min.   :0.9333   Min.   :0.9000   Min.   :0.9333  </span></span>
+<span><span class="co">##  1st Qu.:0.9333   1st Qu.:0.9333   1st Qu.:0.9333  </span></span>
+<span><span class="co">##  Median :0.9667   Median :0.9667   Median :0.9333  </span></span>
+<span><span class="co">##  Mean   :0.9600   Mean   :0.9533   Mean   :0.9533  </span></span>
+<span><span class="co">##  3rd Qu.:0.9667   3rd Qu.:0.9667   3rd Qu.:0.9667  </span></span>
+<span><span class="co">##  Max.   :1.0000   Max.   :1.0000   Max.   :1.0000</span></span></code></pre>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># We can specify custom error metrics for crossvalidation::crossval_ml</span></span>
+<span><span class="co"># here, the error rate </span></span>
+<span><span class="va">eval_metric</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">preds</span>, <span class="va">actual</span><span class="op">)</span></span>
+<span><span class="op">{</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">preds</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">actual</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">preds</span> <span class="op">==</span> <span class="va">actual</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"error rate"</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># specify `eval_metric` argument for measuring the error rate</span></span>
+<span><span class="co"># instead of the (default) accuracy </span></span>
+<span><span class="fu">crossvalidation</span><span class="fu">::</span><span class="fu"><a href="../reference/crossval_ml.html">crossval_ml</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span>, k <span class="op">=</span> <span class="fl">5</span>, repeats <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                             fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, </span>
+<span>                             predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>                             fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                             packages <span class="op">=</span> <span class="st">"randomForest"</span>, </span>
+<span>                             eval_metric<span class="op">=</span><span class="va">eval_metric</span>, </span>
+<span>                             show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $folds</span></span>
+<span><span class="co">##          repeat_1   repeat_2   repeat_3</span></span>
+<span><span class="co">## fold_1 0.03333333 0.03333333 0.00000000</span></span>
+<span><span class="co">## fold_2 0.03333333 0.10000000 0.06666667</span></span>
+<span><span class="co">## fold_3 0.00000000 0.03333333 0.06666667</span></span>
+<span><span class="co">## fold_4 0.06666667 0.00000000 0.06666667</span></span>
+<span><span class="co">## fold_5 0.06666667 0.06666667 0.03333333</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mean</span></span>
+<span><span class="co">## [1] 0.04444444</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd</span></span>
+<span><span class="co">## [1] 0.02999118</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $median</span></span>
+<span><span class="co">## [1] 0.03333333</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $summary</span></span>
+<span><span class="co">##     repeat_1          repeat_2          repeat_3      </span></span>
+<span><span class="co">##  Min.   :0.00000   Min.   :0.00000   Min.   :0.00000  </span></span>
+<span><span class="co">##  1st Qu.:0.03333   1st Qu.:0.03333   1st Qu.:0.03333  </span></span>
+<span><span class="co">##  Median :0.03333   Median :0.03333   Median :0.06667  </span></span>
+<span><span class="co">##  Mean   :0.04000   Mean   :0.04667   Mean   :0.04667  </span></span>
+<span><span class="co">##  3rd Qu.:0.06667   3rd Qu.:0.06667   3rd Qu.:0.06667  </span></span>
+<span><span class="co">##  Max.   :0.06667   Max.   :0.10000   Max.   :0.06667</span></span></code></pre>
 </div>
   </div>
 
@@ -271,11 +694,13 @@ packages = <span class="st">"randomForest"</span>, fit_params = <span class="fu"
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://thierrymoudiki.github.io/">T. Moudiki</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://thierrymoudiki.github.io/" class="external-link">T. Moudiki</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -283,6 +708,8 @@ packages = <span class="st">"randomForest"</span>, fit_params = <span class="fu"
 
   
 
+
+  
 
   </body>
 </html>
