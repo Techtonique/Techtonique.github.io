@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
       </span>
     </div>
 
@@ -51,6 +51,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/ahead-loess-forecasting.html">Prediction intervals for Loess forecasting (simulation-based)</a>
+    </li>
+    <li>
+      <a href="../articles/ahead-neutralize.html">Risk-neutralize simulations</a>
     </li>
     <li>
       <a href="../articles/ahead-plotting-functions.html">Plotting functions</a>
@@ -104,17 +107,17 @@ series (simulation-based)</h1>
 <p><code>ahead</code> is a package for <strong>univariate</strong> and
 <strong>multivariate time series forecasting</strong>, with uncertainty
 quantification (R and <a href="https://techtonique.github.io/ahead_python/">Python</a>).</p>
-<p>The model used is in this demo is the one presented in <a href="https://www.mdpi.com/2227-9091/6/1/22" class="external-link">this paper</a>, and has
+<p>The model used in this demo is the one presented in <a href="https://www.mdpi.com/2227-9091/6/1/22" class="external-link">this paper</a>, and has
 actually been significantly improved since 2018, as you’ll see here.</p>
-<p>Currently for this model (as of 2023-08-12), for <strong>uncertainty
-quantification</strong>, options are a Gaussian distribution for the
-residuals or bootstrap aggregation:</p>
+<p>Currently for this model (as of 2023-08-28), for <strong>uncertainty
+quantification</strong>, I have:</p>
 <ul>
-<li>Gaussian</li>
-<li>Independent <strong>bootstrap</strong>
-</li>
+<li>Gaussian distribution</li>
+<li>Independent <strong>bootstrap</strong> simulation</li>
 <li>Multivariate circular <strong>block bootstrap</strong>
-</li>
+simulation</li>
+<li>Multivariate moving block bootstrap simulation</li>
+<li>Copula simulation</li>
 <li>
 <strong>More options to come</strong> in the future.</li>
 </ul>
@@ -132,6 +135,8 @@ bootstrap</strong>
 <li>3 - Prediction intervals based on <strong>block
 bootstrap</strong>
 </li>
+<li>4 - Prediction intervals based on moving block bootstrap</li>
+<li>5 - Prediction intervals based on R-Vine copula simulation</li>
 </ul>
 <div class="section level2">
 <h2 id="install-ahead">0 - Install <code>ahead</code><a class="anchor" aria-label="anchor" href="#install-ahead"></a>
@@ -339,15 +344,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res1</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-default-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res1</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res1</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-default-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors">1 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
@@ -516,15 +520,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res2</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-xreg-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res2</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res2</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-xreg-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-and-k-means-clustering">1 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">centers</span> <span class="op">&lt;-</span> <span class="fl">2L</span></span>
 <span><span class="op">(</span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
@@ -695,15 +698,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-xreg-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-xreg-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-k-means-clustering">1 - 4 With K-Means clustering<a class="anchor" aria-label="anchor" href="#with-k-means-clustering"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">centers</span> <span class="op">&lt;-</span> <span class="fl">2L</span></span>
 <span><span class="op">(</span><span class="va">res10</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, centers <span class="op">=</span> <span class="va">centers</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
@@ -873,10 +875,9 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res10</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res10</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res10</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/gaussian-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -885,7 +886,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <div class="section level3">
 <h3 id="with-default-parameters-1">2 - 1 With default parameters<a class="anchor" aria-label="anchor" href="#with-default-parameters-1"></a>
 </h3>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">B</span> <span class="op">&lt;-</span> <span class="fl">10L</span> <span class="co"># number of bootstrap replications -- increase this</span></span>
 <span><span class="op">(</span><span class="va">res4</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -1173,15 +1174,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res4</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-default-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res4</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res4</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-default-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-1">2 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors-1"></a>
 </h3>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res5</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
@@ -1468,15 +1468,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-xreg-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-xreg-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-and-k-means-clustering-1">2 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering-1"></a>
 </h3>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res6</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -1764,15 +1763,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res6</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-xreg-clustering-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res6</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res6</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-xreg-clustering-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-k-means-clustering-1">2 - 4 With K-Means clustering<a class="anchor" aria-label="anchor" href="#with-k-means-clustering-1"></a>
 </h3>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">centers</span> <span class="op">&lt;-</span> <span class="fl">2L</span></span>
 <span><span class="op">(</span><span class="va">res11</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
@@ -2061,10 +2059,9 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res11</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res11</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res11</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/bootstrap-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -2073,7 +2070,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <div class="section level3">
 <h3 id="with-default-parameters-2">3 - 1 With default parameters<a class="anchor" aria-label="anchor" href="#with-default-parameters-2"></a>
 </h3>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">block_length</span> <span class="op">&lt;-</span> <span class="fl">5L</span></span>
 <span><span class="op">(</span><span class="va">res7</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
@@ -2363,15 +2360,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res7</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-default-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res7</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res7</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-default-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-2">3 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors-2"></a>
 </h3>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res8</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
@@ -2660,15 +2656,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res8</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-xreg-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res8</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res8</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-xreg-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-and-k-means-clustering-2">3 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering-2"></a>
 </h3>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res9</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
@@ -2958,15 +2953,14 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res9</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-xreg-clustering-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res9</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res9</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-xreg-clustering-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-k-means-clustering-2">3 - 4 With K-Means clustering<a class="anchor" aria-label="anchor" href="#with-k-means-clustering-2"></a>
 </h3>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res12</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
@@ -3256,16 +3250,15 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res12</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res12</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res12</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="using-the-median-instead-of-the-mean-in-bootstrap-aggregation">3 - 5 Using the median instead of the mean in bootstrap
 aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead-of-the-mean-in-bootstrap-aggregation"></a>
 </h3>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res13</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
@@ -3556,10 +3549,9 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res13</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-median-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res13</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res13</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/blockbootstrap-median-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -3568,7 +3560,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <div class="section level3">
 <h3 id="with-default-parameters-3">4 - 1 With default parameters<a class="anchor" aria-label="anchor" href="#with-default-parameters-3"></a>
 </h3>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">block_length</span> <span class="op">&lt;-</span> <span class="fl">5L</span></span>
 <span><span class="op">(</span><span class="va">res16</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
@@ -3858,15 +3850,14 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res16</span>, <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-default-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res16</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res16</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-default-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-3">4 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors-3"></a>
 </h3>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res8</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
@@ -4155,15 +4146,14 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res8</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-xreg-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res8</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res8</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-xreg-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-external-regressors-and-k-means-clustering-3">4 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering-3"></a>
 </h3>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res15</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
@@ -4453,15 +4443,14 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res15</span>, <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-xreg-clustering-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res15</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res15</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-xreg-clustering-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="with-k-means-clustering-3">4 - 4 With K-Means clustering<a class="anchor" aria-label="anchor" href="#with-k-means-clustering-3"></a>
 </h3>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res12</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
@@ -4751,16 +4740,15 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res12</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res12</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res12</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="using-the-median-instead-of-the-mean-in-bootstrap-aggregation-1">4 - 5 Using the median instead of the mean in bootstrap
 aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead-of-the-mean-in-bootstrap-aggregation-1"></a>
 </h3>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res14</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
@@ -5051,16 +5039,15 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res14</span>, <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-median-kmeans-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res14</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res14</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/movingblockbootstrap-median-kmeans-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
 <h2 id="prediction-intervals-based-on-r-vine-copula-simulation">5 - Prediction intervals based on R-Vine copula simulation<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on-r-vine-copula-simulation"></a>
 </h2>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"rvinecopula"</span>, </span>
 <span>                         B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -5326,6 +5313,31 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [38,]  0.89317411  0.77051186</span></span>
 <span><span class="co">#&gt; [39,] -1.54622760 -0.71981400</span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $copula</span></span>
+<span><span class="co">#&gt; $copula$params</span></span>
+<span><span class="co">#&gt; $copula$params$Quotes</span></span>
+<span><span class="co">#&gt;        mean             sd      </span></span>
+<span><span class="co">#&gt;   -4.555373e-16    1.409030e+00 </span></span>
+<span><span class="co">#&gt;  ( 2.256254e-01) ( 1.595412e-01)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $copula$params$TV.advert</span></span>
+<span><span class="co">#&gt;        mean             sd      </span></span>
+<span><span class="co">#&gt;   -2.959900e-16    9.751965e-01 </span></span>
+<span><span class="co">#&gt;  ( 1.561564e-01) ( 1.104193e-01)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $copula$distro</span></span>
+<span><span class="co">#&gt; [1] "normal"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $copula$RVM_U</span></span>
+<span><span class="co">#&gt; C-vine copula with the following pair-copulas:</span></span>
+<span><span class="co">#&gt; Tree 1:</span></span>
+<span><span class="co">#&gt; 1,2  Gumbel (par = 4.19, tau = 0.76) </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; 1 &lt;-&gt; Quotes,   2 &lt;-&gt; TV.advert,   1 &lt;-&gt; Quotes,</span></span>
+<span><span class="co">#&gt; 2 &lt;-&gt; TV.advert</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $margins</span></span>
 <span><span class="co">#&gt; [1] "gaussian"</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -5335,10 +5347,9 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span></span>
 <span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/RVineCopula-1.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span>
-<span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-prediction-intervals_files/figure-html/RVineCopula-2.png" width="691.2"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
   </div>
 

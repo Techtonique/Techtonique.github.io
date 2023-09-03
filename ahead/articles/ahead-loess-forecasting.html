@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
       </span>
     </div>
 
@@ -51,6 +51,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/ahead-loess-forecasting.html">Prediction intervals for Loess forecasting (simulation-based)</a>
+    </li>
+    <li>
+      <a href="../articles/ahead-neutralize.html">Risk-neutralize simulations</a>
     </li>
     <li>
       <a href="../articles/ahead-plotting-functions.html">Plotting functions</a>
@@ -107,14 +110,14 @@ quantification (R and <a href="https://techtonique.github.io/ahead_python/">Pyth
 <p>The model used in this demo is <code><a href="https://rdrr.io/r/stats/loess.html" class="external-link">stats::loess</a></code> (Local
 Polynomial Regression Fitting), <strong>adapted to univariate
 forecasting</strong> in <code><a href="../reference/loessf.html">ahead::loessf</a></code>.</p>
-<p>Currently for this model (as of 2023-08-12), for <strong>uncertainty
-quantification</strong>, options are based on bootstrap aggregation of
-the residuals:</p>
+<p>Currently for this model (as of 2023-08-28), for <strong>uncertainty
+quantification</strong>, options are:</p>
 <ul>
-<li>Independent <strong>bootstrap</strong>
-</li>
-<li>Multivariate circular <strong>block bootstrap</strong>
-</li>
+<li>Independent <strong>bootstrap</strong> of the residuals</li>
+<li>Multivariate circular <strong>block bootstrap</strong> of the
+residuals</li>
+<li>Multivariate moving block bootstrap of the residuals</li>
+<li>Adjustment of a copula to the residuals</li>
 <li>
 <strong>More options to come</strong> in the future.</li>
 </ul>

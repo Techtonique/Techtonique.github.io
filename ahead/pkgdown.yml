@@ -3,10 +3,11 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   ahead-loess-forecasting: ahead-loess-forecasting.html
+  ahead-neutralize: ahead-neutralize.html
   ahead-plotting-functions: ahead-plotting-functions.html
   ahead-ridge2-prediction-intervals: ahead-ridge2-prediction-intervals.html
   ahead-vignette: ahead-vignette.html
-last_built: 2023-08-25T11:14Z
+last_built: 2023-09-03T22:36Z
 urls:
   reference: https://techtonique.github.io/ahead/reference
   article: https://techtonique.github.io/ahead/articles
