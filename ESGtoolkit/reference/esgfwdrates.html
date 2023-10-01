@@ -24,7 +24,7 @@ in no-arbitrage short rate models, to fit the yield curve exactly."><!-- mathjax
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ESGtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
       </span>
     </div>
 
@@ -70,7 +70,7 @@ in no-arbitrage short rate models, to fit the yield curve exactly.</p>
 <span>  <span class="va">n</span>,</span>
 <span>  <span class="va">horizon</span>,</span>
 <span>  out.frequency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"annual"</span>, <span class="st">"semi-annual"</span>, <span class="st">"quarterly"</span>, <span class="st">"monthly"</span>, <span class="st">"weekly"</span>, <span class="st">"daily"</span><span class="op">)</span>,</span>
-<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fmm"</span>, <span class="st">"periodic"</span>, <span class="st">"natural"</span>, <span class="st">"monoH.FC"</span>, <span class="st">"hyman"</span><span class="op">)</span>,</span>
+<span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fmm"</span>, <span class="st">"periodic"</span>, <span class="st">"natural"</span>, <span class="st">"monoH.FC"</span>, <span class="st">"hyman"</span>, <span class="st">"HCSPL"</span>, <span class="st">"SW"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -100,7 +100,7 @@ in no-arbitrage short rate models, to fit the yield curve exactly.</p>
 
 <dt>method</dt>
 <dd><p>specifies the type of spline to be used for interpolation. Possible values are "fmm", "natural", "periodic", "monoH.FC" and "hyman".
-See <code><a href="https://rdrr.io/r/stats/splinefun.html" class="external-link">spline</a></code>.</p></dd>
+See <code><a href="https://rdrr.io/r/stats/splinefun.html" class="external-link">spline</a></code>; "HCSPL" (Hermite cubic spline) or "SW" (Smith-Wilson)</p></dd>
 
 
 <dt>...</dt>
