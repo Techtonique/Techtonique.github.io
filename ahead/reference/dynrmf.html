@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
       </span>
     </div>
 
@@ -184,6 +184,8 @@ package version 8.14, &lt;URL: https://pkg.robjhyndman.com/forecast/&gt;. <br></
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/" class="external-link">randomForest</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">dynrmf</span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">20</span>, level<span class="op">=</span><span class="fl">95</span>, fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>,</span></span>
 <span class="r-in"><span>     fit_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span>, predict_func <span class="op">=</span> <span class="va">predict</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -202,6 +204,8 @@ package version 8.14, &lt;URL: https://pkg.robjhyndman.com/forecast/&gt;. <br></
 <span class="r-in"><span><span class="co"># Example 2: with SVM</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">dynrmf</span><span class="op">(</span><span class="va">fdeaths</span>, h<span class="op">=</span><span class="fl">20</span>, level<span class="op">=</span><span class="fl">95</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>,</span></span>

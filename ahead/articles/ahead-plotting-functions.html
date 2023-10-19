@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
       </span>
     </div>
 
@@ -142,23 +142,45 @@ hyperparameters will have to be tuned.</p>
 <div class="section level2">
 <h2 id="forecasting-and-plot-predictions">Forecasting and plot predictions<a class="anchor" aria-label="anchor" href="#forecasting-and-plot-predictions"></a>
 </h2>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, h <span class="op">=</span> <span class="fl">7</span>, type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, B <span class="op">=</span> <span class="fl">10</span>, </span>
-<span>                      block_length <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>obj <span class="ot">&lt;-</span> ahead<span class="sc">::</span><span class="fu">ridge2f</span>(fpp<span class="sc">::</span>insurance, <span class="at">h =</span> <span class="dv">7</span>, <span class="at">type_pi =</span> <span class="st">"blockbootstrap"</span>, <span class="at">B =</span> <span class="dv">10</span>, </span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>                      <span class="at">block_length =</span> <span class="dv">5</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  <span class="er">|</span>                                                                      <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="er">|=======</span>                                                               <span class="er">|</span>  <span class="dv">10</span>%</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  <span class="er">|==============</span>                                                        <span class="er">|</span>  <span class="dv">20</span>%</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>  <span class="er">|=====================</span>                                                 <span class="er">|</span>  <span class="dv">30</span>%</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>  <span class="er">|============================</span>                                          <span class="er">|</span>  <span class="dv">40</span>%</span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>  <span class="er">|===================================</span>                                   <span class="er">|</span>  <span class="dv">50</span>%</span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>  <span class="er">|==========================================</span>                            <span class="er">|</span>  <span class="dv">60</span>%</span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>  <span class="er">|=================================================</span>                     <span class="er">|</span>  <span class="dv">70</span>%</span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>  <span class="er">|========================================================</span>              <span class="er">|</span>  <span class="dv">80</span>%</span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a>  <span class="er">|===============================================================</span>       <span class="er">|</span>  <span class="dv">90</span>%</span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a>  <span class="er">|======================================================================|</span> <span class="dv">100</span>%</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type_graph <span class="op">=</span> <span class="st">"sims"</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"sims"</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Predictive simulations \n for Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-4-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type_graph <span class="op">=</span> <span class="st">"dist"</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for Quotes"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-4-2.png" width="691.2"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type_graph <span class="op">=</span> <span class="st">"sims"</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-5-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://geobosh.github.io/fGarchDoc/reference/methods-plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type_graph <span class="op">=</span> <span class="st">"dist"</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"dist"</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-5-2.png" width="691.2"></p>
 </div>
