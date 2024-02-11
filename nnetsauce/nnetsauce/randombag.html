@@ -7,8 +7,10 @@
     <title>nnetsauce.randombag API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
-    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#ffffcc}.pdoc-code{background:#f8f8f8;}.pdoc-code .c{color:#3D7B7B; font-style:italic}.pdoc-code .err{border:1px solid #FF0000}.pdoc-code .k{color:#008000; font-weight:bold}.pdoc-code .o{color:#666666}.pdoc-code .ch{color:#3D7B7B; font-style:italic}.pdoc-code .cm{color:#3D7B7B; font-style:italic}.pdoc-code .cp{color:#9C6500}.pdoc-code .cpf{color:#3D7B7B; font-style:italic}.pdoc-code .c1{color:#3D7B7B; font-style:italic}.pdoc-code .cs{color:#3D7B7B; font-style:italic}.pdoc-code .gd{color:#A00000}.pdoc-code .ge{font-style:italic}.pdoc-code .gr{color:#E40000}.pdoc-code .gh{color:#000080; font-weight:bold}.pdoc-code .gi{color:#008400}.pdoc-code .go{color:#717171}.pdoc-code .gp{color:#000080; font-weight:bold}.pdoc-code .gs{font-weight:bold}.pdoc-code .gu{color:#800080; font-weight:bold}.pdoc-code .gt{color:#0044DD}.pdoc-code .kc{color:#008000; font-weight:bold}.pdoc-code .kd{color:#008000; font-weight:bold}.pdoc-code .kn{color:#008000; font-weight:bold}.pdoc-code .kp{color:#008000}.pdoc-code .kr{color:#008000; font-weight:bold}.pdoc-code .kt{color:#B00040}.pdoc-code .m{color:#666666}.pdoc-code .s{color:#BA2121}.pdoc-code .na{color:#687822}.pdoc-code .nb{color:#008000}.pdoc-code .nc{color:#0000FF; font-weight:bold}.pdoc-code .no{color:#880000}.pdoc-code .nd{color:#AA22FF}.pdoc-code .ni{color:#717171; font-weight:bold}.pdoc-code .ne{color:#CB3F38; font-weight:bold}.pdoc-code .nf{color:#0000FF}.pdoc-code .nl{color:#767600}.pdoc-code .nn{color:#0000FF; font-weight:bold}.pdoc-code .nt{color:#008000; font-weight:bold}.pdoc-code .nv{color:#19177C}.pdoc-code .ow{color:#AA22FF; font-weight:bold}.pdoc-code .w{color:#bbbbbb}.pdoc-code .mb{color:#666666}.pdoc-code .mf{color:#666666}.pdoc-code .mh{color:#666666}.pdoc-code .mi{color:#666666}.pdoc-code .mo{color:#666666}.pdoc-code .sa{color:#BA2121}.pdoc-code .sb{color:#BA2121}.pdoc-code .sc{color:#BA2121}.pdoc-code .dl{color:#BA2121}.pdoc-code .sd{color:#BA2121; font-style:italic}.pdoc-code .s2{color:#BA2121}.pdoc-code .se{color:#AA5D1F; font-weight:bold}.pdoc-code .sh{color:#BA2121}.pdoc-code .si{color:#A45A77; font-weight:bold}.pdoc-code .sx{color:#008000}.pdoc-code .sr{color:#A45A77}.pdoc-code .s1{color:#BA2121}.pdoc-code .ss{color:#19177C}.pdoc-code .bp{color:#008000}.pdoc-code .fm{color:#0000FF}.pdoc-code .vc{color:#19177C}.pdoc-code .vg{color:#19177C}.pdoc-code .vi{color:#19177C}.pdoc-code .vm{color:#19177C}.pdoc-code .il{color:#666666}</style>
-    <style>/*! theme.css */:root{--pdoc-background:#fff;}.pdoc{--text:#212529;--muted:#6c757d;--link:#3660a5;--link-hover:#1659c5;--code:#f8f8f8;--active:#fff598;--accent:#eee;--accent2:#c1c1c1;--nav-hover:rgba(255, 255, 255, 0.5);--name:#0066BB;--def:#008800;--annotation:#007020;}</style>
+    <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
+    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
+    <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
+    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
     <style>/*! layout.css */html, body{width:100%;height:100%;}html, main{scroll-behavior:smooth;}body{background-color:var(--pdoc-background);}@media (max-width:769px){#navtoggle{cursor:pointer;position:absolute;width:50px;height:40px;top:1rem;right:1rem;border-color:var(--text);color:var(--text);display:flex;opacity:0.8;z-index:999;}#navtoggle:hover{opacity:1;}#togglestate + div{display:none;}#togglestate:checked + div{display:inherit;}main, header{padding:2rem 3vw;}header + main{margin-top:-3rem;}.git-button{display:none !important;}nav input[type="search"]{max-width:77%;}nav input[type="search"]:first-child{margin-top:-6px;}nav input[type="search"]:valid ~ *{display:none !important;}}@media (min-width:770px){:root{--sidebar-width:clamp(12.5rem, 28vw, 22rem);}nav{position:fixed;overflow:auto;height:100vh;width:var(--sidebar-width);}main, header{padding:3rem 2rem 3rem calc(var(--sidebar-width) + 3rem);width:calc(54rem + var(--sidebar-width));max-width:100%;}header + main{margin-top:-4rem;}#navtoggle{display:none;}}#togglestate{position:absolute;height:0;opacity:0;}nav.pdoc{--pad:clamp(0.5rem, 2vw, 1.75rem);--indent:1.5rem;background-color:var(--accent);border-right:1px solid var(--accent2);box-shadow:0 0 20px rgba(50, 50, 50, .2) inset;padding:0 0 0 var(--pad);overflow-wrap:anywhere;scrollbar-width:thin; scrollbar-color:var(--accent2) transparent; z-index:1}nav.pdoc::-webkit-scrollbar{width:.4rem; }nav.pdoc::-webkit-scrollbar-thumb{background-color:var(--accent2); }nav.pdoc > div{padding:var(--pad) 0;}nav.pdoc .module-list-button{display:inline-flex;align-items:center;color:var(--text);border-color:var(--muted);margin-bottom:1rem;}nav.pdoc .module-list-button:hover{border-color:var(--text);}nav.pdoc input[type=search]{display:block;outline-offset:0;width:calc(100% - var(--pad));}nav.pdoc .logo{max-width:calc(100% - var(--pad));max-height:35vh;display:block;margin:0 auto 1rem;transform:translate(calc(-.5 * var(--pad)), 0);}nav.pdoc ul{list-style:none;padding-left:0;}nav.pdoc > div > ul{margin-left:calc(0px - var(--pad));}nav.pdoc li a{padding:.2rem 0 .2rem calc(var(--pad) + var(--indent));}nav.pdoc > div > ul > li > a{padding-left:var(--pad);}nav.pdoc li{transition:all 100ms;}nav.pdoc li:hover{background-color:var(--nav-hover);}nav.pdoc a, nav.pdoc a:hover{color:var(--text);}nav.pdoc a{display:block;}nav.pdoc > h2:first-of-type{margin-top:1.5rem;}nav.pdoc .class:before{content:"class ";color:var(--muted);}nav.pdoc .function:after{content:"()";color:var(--muted);}nav.pdoc footer:before{content:"";display:block;width:calc(100% - var(--pad));border-top:solid var(--accent2) 1px;margin-top:1.5rem;padding-top:.5rem;}nav.pdoc footer{font-size:small;}</style>
     <style>/*! content.css */.pdoc{color:var(--text);box-sizing:border-box;line-height:1.5;background:none;}.pdoc .pdoc-button{cursor:pointer;display:inline-block;border:solid black 1px;border-radius:2px;font-size:.75rem;padding:calc(0.5em - 1px) 1em;transition:100ms all;}.pdoc .pdoc-alert{padding:1rem 1rem 1rem calc(1.5rem + 24px);border:1px solid transparent;border-radius:.25rem;background-repeat:no-repeat;background-position:1rem center;margin-bottom:1rem;}.pdoc .pdoc-alert > *:last-child{margin-bottom:0;}.pdoc .pdoc-alert-note {color:#084298;background-color:#cfe2ff;border-color:#b6d4fe;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23084298%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2016A8%208%200%201%200%208%200a8%208%200%200%200%200%2016zm.93-9.412-1%204.705c-.07.34.029.533.304.533.194%200%20.487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703%200-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381%202.29-.287zM8%205.5a1%201%200%201%201%200-2%201%201%200%200%201%200%202z%22/%3E%3C/svg%3E");}.pdoc .pdoc-alert-warning{color:#664d03;background-color:#fff3cd;border-color:#ffecb5;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23664d03%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.982%201.566a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767L8.982%201.566zM8%205c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%205.995A.905.905%200%200%201%208%205zm.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2z%22/%3E%3C/svg%3E");}.pdoc .pdoc-alert-danger{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.52.359A.5.5%200%200%201%206%200h4a.5.5%200%200%201%20.474.658L8.694%206H12.5a.5.5%200%200%201%20.395.807l-7%209a.5.5%200%200%201-.873-.454L6.823%209.5H3.5a.5.5%200%200%201-.48-.641l2.5-8.5z%22/%3E%3C/svg%3E");}.pdoc .visually-hidden{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0, 0, 0, 0) !important;white-space:nowrap !important;border:0 !important;}.pdoc h1, .pdoc h2, .pdoc h3{font-weight:300;margin:.3em 0;padding:.2em 0;}.pdoc > section:not(.module-info) h1{font-size:1.5rem;font-weight:500;}.pdoc > section:not(.module-info) h2{font-size:1.4rem;font-weight:500;}.pdoc > section:not(.module-info) h3{font-size:1.3rem;font-weight:500;}.pdoc > section:not(.module-info) h4{font-size:1.2rem;}.pdoc > section:not(.module-info) h5{font-size:1.1rem;}.pdoc a{text-decoration:none;color:var(--link);}.pdoc a:hover{color:var(--link-hover);}.pdoc blockquote{margin-left:2rem;}.pdoc pre{border-top:1px solid var(--accent2);border-bottom:1px solid var(--accent2);margin-top:0;margin-bottom:1em;padding:.5rem 0 .5rem .5rem;overflow-x:auto;background-color:var(--code);}.pdoc code{color:var(--text);padding:.2em .4em;margin:0;font-size:85%;background-color:var(--accent);border-radius:6px;}.pdoc a > code{color:inherit;}.pdoc pre > code{display:inline-block;font-size:inherit;background:none;border:none;padding:0;}.pdoc > section:not(.module-info){margin-bottom:1.5rem;}.pdoc .modulename{margin-top:0;font-weight:bold;}.pdoc .modulename a{color:var(--link);transition:100ms all;}.pdoc .git-button{float:right;border:solid var(--link) 1px;}.pdoc .git-button:hover{background-color:var(--link);color:var(--pdoc-background);}.view-source-toggle-state,.view-source-toggle-state ~ .pdoc-code{display:none;}.view-source-toggle-state:checked ~ .pdoc-code{display:block;}.view-source-button{display:inline-block;float:right;font-size:.75rem;line-height:1.5rem;color:var(--muted);padding:0 .4rem 0 1.3rem;cursor:pointer;text-indent:-2px;}.view-source-button > span{visibility:hidden;}.module-info .view-source-button{float:none;display:flex;justify-content:flex-end;margin:-1.2rem .4rem -.2rem 0;}.view-source-button::before{position:absolute;content:"View Source";display:list-item;list-style-type:disclosure-closed;}.view-source-toggle-state:checked ~ .attr .view-source-button::before,.view-source-toggle-state:checked ~ .view-source-button::before{list-style-type:disclosure-open;}.pdoc .docstring{margin-bottom:1.5rem;}.pdoc section:not(.module-info) .docstring{margin-left:clamp(0rem, 5vw - 2rem, 1rem);}.pdoc .docstring .pdoc-code{margin-left:1em;margin-right:1em;}.pdoc h1:target,.pdoc h2:target,.pdoc h3:target,.pdoc h4:target,.pdoc h5:target,.pdoc h6:target,.pdoc .pdoc-code > pre > span:target{background-color:var(--active);box-shadow:-1rem 0 0 0 var(--active);}.pdoc .pdoc-code > pre > span:target{display:block;}.pdoc div:target > .attr,.pdoc section:target > .attr,.pdoc dd:target > a{background-color:var(--active);}.pdoc *{scroll-margin:2rem;}.pdoc .pdoc-code .linenos{user-select:none;}.pdoc .attr:hover{filter:contrast(0.95);}.pdoc section, .pdoc .classattr{position:relative;}.pdoc .headerlink{--width:clamp(1rem, 3vw, 2rem);position:absolute;top:0;left:calc(0rem - var(--width));transition:all 100ms ease-in-out;opacity:0;}.pdoc .headerlink::before{content:"#";display:block;text-align:center;width:var(--width);height:2.3rem;line-height:2.3rem;font-size:1.5rem;}.pdoc .attr:hover ~ .headerlink,.pdoc *:target > .headerlink,.pdoc .headerlink:hover{opacity:1;}.pdoc .attr{display:block;margin:.5rem 0 .5rem;padding:.4rem .4rem .4rem 1rem;background-color:var(--accent);overflow-x:auto;}.pdoc .classattr{margin-left:2rem;}.pdoc .name{color:var(--name);font-weight:bold;}.pdoc .def{color:var(--def);font-weight:bold;}.pdoc .signature{background-color:transparent;}.pdoc .param, .pdoc .return-annotation{white-space:pre;}.pdoc .signature.multiline .param{display:block;}.pdoc .signature.condensed .param{display:inline-block;}.pdoc .annotation{color:var(--annotation);}.pdoc .view-value-toggle-state,.pdoc .view-value-toggle-state ~ .default_value{display:none;}.pdoc .view-value-toggle-state:checked ~ .default_value{display:inherit;}.pdoc .view-value-button{font-size:.5rem;vertical-align:middle;border-style:dashed;margin-top:-0.1rem;}.pdoc .view-value-button:hover{background:white;}.pdoc .view-value-button::before{content:"show";text-align:center;width:2.2em;display:inline-block;}.pdoc .view-value-toggle-state:checked ~ .view-value-button::before{content:"hide";}.pdoc .inherited{margin-left:2rem;}.pdoc .inherited dt{font-weight:700;}.pdoc .inherited dt, .pdoc .inherited dd{display:inline;margin-left:0;margin-bottom:.5rem;}.pdoc .inherited dd:not(:last-child):after{content:", ";}.pdoc .inherited .class:before{content:"class ";}.pdoc .inherited .function a:after{content:"()";}.pdoc .search-result .docstring{overflow:auto;max-height:25vh;}.pdoc .search-result.focused > .attr{background-color:var(--active);}.pdoc .attribution{margin-top:2rem;display:block;opacity:0.5;transition:all 200ms;filter:grayscale(100%);}.pdoc .attribution:hover{opacity:1;filter:grayscale(0%);}.pdoc .attribution img{margin-left:5px;height:35px;vertical-align:middle;width:70px;transition:all 200ms;}.pdoc table{display:block;width:max-content;max-width:100%;overflow:auto;margin-bottom:1rem;}.pdoc table th{font-weight:600;}.pdoc table th, .pdoc table td{padding:6px 13px;border:1px solid var(--accent2);}</style>
     <style>/*! custom.css */</style></head>
@@ -28,85 +30,65 @@
 
 
 
-            <h2>API Documentation</h2>
+            <h2>API Documentation</h2>            
                 <ul class="memberlist">
             <li>
                     <a class="class" href="#RandomBagClassifier">RandomBagClassifier</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#RandomBagClassifier.__init__">RandomBagClassifier</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagClassifier.type_fit">type_fit</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagClassifier.verbose">verbose</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagClassifier.n_jobs">n_jobs</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagClassifier.voter_">voter_</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.fit">fit</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.predict">predict</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.predict_proba">predict_proba</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.score">score</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.set_predict_request">set_predict_request</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.set_predict_proba_request">set_predict_proba_request</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagClassifier.set_score_request">set_score_request</a>
                         </li>
                 </ul>
 
+                
             </li>
             <li>
                     <a class="class" href="#RandomBagRegressor">RandomBagRegressor</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#RandomBagRegressor.__init__">RandomBagRegressor</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagRegressor.type_fit">type_fit</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagRegressor.verbose">verbose</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagRegressor.n_jobs">n_jobs</a>
                         </li>
                         <li>
-                                <a class="variable" href="#RandomBagRegressor.voter_">voter_</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagRegressor.fit">fit</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagRegressor.predict">predict</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagRegressor.score">score</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagRegressor.set_predict_request">set_predict_request</a>
                         </li>
                         <li>
-                                <a class="function" href="#RandomBagRegressor.set_score_request">set_score_request</a>
                         </li>
                 </ul>
 
+                
             </li>
     </ul>
 
@@ -387,7 +369,7 @@
 </span><span id="RandomBagClassifier-254"><a href="#RandomBagClassifier-254"><span class="linenos">254</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">voter_</span> <span class="o">=</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span> <span class="n">elt</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">elt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">voters_list</span><span class="p">)}</span>
 </span><span id="RandomBagClassifier-255"><a href="#RandomBagClassifier-255"><span class="linenos">255</span></a>
 </span><span id="RandomBagClassifier-256"><a href="#RandomBagClassifier-256"><span class="linenos">256</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voter_</span><span class="p">)</span>
-</span><span id="RandomBagClassifier-257"><a href="#RandomBagClassifier-257"><span class="linenos">257</span></a>
+</span><span id="RandomBagClassifier-257"><a href="#RandomBagClassifier-257"><span class="linenos">257</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </span><span id="RandomBagClassifier-258"><a href="#RandomBagClassifier-258"><span class="linenos">258</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span><span id="RandomBagClassifier-259"><a href="#RandomBagClassifier-259"><span class="linenos">259</span></a>
 </span><span id="RandomBagClassifier-260"><a href="#RandomBagClassifier-260"><span class="linenos">260</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -511,7 +493,7 @@
 </span><span id="RandomBagClassifier-378"><a href="#RandomBagClassifier-378"><span class="linenos">378</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
 </span><span id="RandomBagClassifier-379"><a href="#RandomBagClassifier-379"><span class="linenos">379</span></a>
 </span><span id="RandomBagClassifier-380"><a href="#RandomBagClassifier-380"><span class="linenos">380</span></a><span class="sd">        Args:</span>
-</span><span id="RandomBagClassifier-381"><a href="#RandomBagClassifier-381"><span class="linenos">381</span></a><span class="sd">        </span>
+</span><span id="RandomBagClassifier-381"><a href="#RandomBagClassifier-381"><span class="linenos">381</span></a>
 </span><span id="RandomBagClassifier-382"><a href="#RandomBagClassifier-382"><span class="linenos">382</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="RandomBagClassifier-383"><a href="#RandomBagClassifier-383"><span class="linenos">383</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
 </span><span id="RandomBagClassifier-384"><a href="#RandomBagClassifier-384"><span class="linenos">384</span></a><span class="sd">                of samples and n_features is the number of features</span>
@@ -523,11 +505,11 @@
 </span><span id="RandomBagClassifier-390"><a href="#RandomBagClassifier-390"><span class="linenos">390</span></a><span class="sd">                must be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, \</span>
 </span><span id="RandomBagClassifier-391"><a href="#RandomBagClassifier-391"><span class="linenos">391</span></a><span class="sd">                            &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, \</span>
 </span><span id="RandomBagClassifier-392"><a href="#RandomBagClassifier-392"><span class="linenos">392</span></a><span class="sd">                            &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)</span>
-</span><span id="RandomBagClassifier-393"><a href="#RandomBagClassifier-393"><span class="linenos">393</span></a><span class="sd">            </span>
+</span><span id="RandomBagClassifier-393"><a href="#RandomBagClassifier-393"><span class="linenos">393</span></a>
 </span><span id="RandomBagClassifier-394"><a href="#RandomBagClassifier-394"><span class="linenos">394</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="RandomBagClassifier-395"><a href="#RandomBagClassifier-395"><span class="linenos">395</span></a><span class="sd">               </span>
+</span><span id="RandomBagClassifier-395"><a href="#RandomBagClassifier-395"><span class="linenos">395</span></a>
 </span><span id="RandomBagClassifier-396"><a href="#RandomBagClassifier-396"><span class="linenos">396</span></a><span class="sd">        Returns: </span>
-</span><span id="RandomBagClassifier-397"><a href="#RandomBagClassifier-397"><span class="linenos">397</span></a><span class="sd">        </span>
+</span><span id="RandomBagClassifier-397"><a href="#RandomBagClassifier-397"><span class="linenos">397</span></a>
 </span><span id="RandomBagClassifier-398"><a href="#RandomBagClassifier-398"><span class="linenos">398</span></a><span class="sd">            model scores: {array-like}</span>
 </span><span id="RandomBagClassifier-399"><a href="#RandomBagClassifier-399"><span class="linenos">399</span></a>
 </span><span id="RandomBagClassifier-400"><a href="#RandomBagClassifier-400"><span class="linenos">400</span></a><span class="sd">        &quot;&quot;&quot;</span>
@@ -691,114 +673,8 @@ backend: str
 </div>
 
 
-                            <div id="RandomBagClassifier.__init__" class="classattr">
-                                        <input id="RandomBagClassifier.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="name">RandomBagClassifier</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span>,</span><span class="param">	<span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span>,</span><span class="param">	<span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">activation_name</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span>,</span><span class="param">	<span class="n">a</span><span class="o">=</span><span class="mf">0.01</span>,</span><span class="param">	<span class="n">nodes_sim</span><span class="o">=</span><span class="s1">&#39;sobol&#39;</span>,</span><span class="param">	<span class="n">bias</span><span class="o">=</span><span class="kc">True</span>,</span><span class="param">	<span class="n">dropout</span><span class="o">=</span><span class="mi">0</span>,</span><span class="param">	<span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span>,</span><span class="param">	<span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span>,</span><span class="param">	<span class="n">type_clust</span><span class="o">=</span><span class="s1">&#39;kmeans&#39;</span>,</span><span class="param">	<span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">)</span>,</span><span class="param">	<span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="o">=</span><span class="mi">123</span>,</span><span class="param">	<span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span></span>)</span>
-
-                <label class="view-source-button" for="RandomBagClassifier.__init__-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RandomBagClassifier.__init__-134"><a href="#RandomBagClassifier.__init__-134"><span class="linenos">134</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="RandomBagClassifier.__init__-135"><a href="#RandomBagClassifier.__init__-135"><span class="linenos">135</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-136"><a href="#RandomBagClassifier.__init__-136"><span class="linenos">136</span></a>        <span class="n">obj</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-137"><a href="#RandomBagClassifier.__init__-137"><span class="linenos">137</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-138"><a href="#RandomBagClassifier.__init__-138"><span class="linenos">138</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-139"><a href="#RandomBagClassifier.__init__-139"><span class="linenos">139</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-140"><a href="#RandomBagClassifier.__init__-140"><span class="linenos">140</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-141"><a href="#RandomBagClassifier.__init__-141"><span class="linenos">141</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-142"><a href="#RandomBagClassifier.__init__-142"><span class="linenos">142</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-143"><a href="#RandomBagClassifier.__init__-143"><span class="linenos">143</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-144"><a href="#RandomBagClassifier.__init__-144"><span class="linenos">144</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-145"><a href="#RandomBagClassifier.__init__-145"><span class="linenos">145</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-146"><a href="#RandomBagClassifier.__init__-146"><span class="linenos">146</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-147"><a href="#RandomBagClassifier.__init__-147"><span class="linenos">147</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-148"><a href="#RandomBagClassifier.__init__-148"><span class="linenos">148</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
-</span><span id="RandomBagClassifier.__init__-149"><a href="#RandomBagClassifier.__init__-149"><span class="linenos">149</span></a>        <span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-150"><a href="#RandomBagClassifier.__init__-150"><span class="linenos">150</span></a>        <span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-151"><a href="#RandomBagClassifier.__init__-151"><span class="linenos">151</span></a>        <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-152"><a href="#RandomBagClassifier.__init__-152"><span class="linenos">152</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-153"><a href="#RandomBagClassifier.__init__-153"><span class="linenos">153</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-154"><a href="#RandomBagClassifier.__init__-154"><span class="linenos">154</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-155"><a href="#RandomBagClassifier.__init__-155"><span class="linenos">155</span></a>    <span class="p">):</span>
-</span><span id="RandomBagClassifier.__init__-156"><a href="#RandomBagClassifier.__init__-156"><span class="linenos">156</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="RandomBagClassifier.__init__-157"><a href="#RandomBagClassifier.__init__-157"><span class="linenos">157</span></a>            <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-158"><a href="#RandomBagClassifier.__init__-158"><span class="linenos">158</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-159"><a href="#RandomBagClassifier.__init__-159"><span class="linenos">159</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-160"><a href="#RandomBagClassifier.__init__-160"><span class="linenos">160</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-161"><a href="#RandomBagClassifier.__init__-161"><span class="linenos">161</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-162"><a href="#RandomBagClassifier.__init__-162"><span class="linenos">162</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-163"><a href="#RandomBagClassifier.__init__-163"><span class="linenos">163</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-164"><a href="#RandomBagClassifier.__init__-164"><span class="linenos">164</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-165"><a href="#RandomBagClassifier.__init__-165"><span class="linenos">165</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-166"><a href="#RandomBagClassifier.__init__-166"><span class="linenos">166</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-167"><a href="#RandomBagClassifier.__init__-167"><span class="linenos">167</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-168"><a href="#RandomBagClassifier.__init__-168"><span class="linenos">168</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-169"><a href="#RandomBagClassifier.__init__-169"><span class="linenos">169</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-170"><a href="#RandomBagClassifier.__init__-170"><span class="linenos">170</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="n">col_sample</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-171"><a href="#RandomBagClassifier.__init__-171"><span class="linenos">171</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="n">row_sample</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-172"><a href="#RandomBagClassifier.__init__-172"><span class="linenos">172</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-173"><a href="#RandomBagClassifier.__init__-173"><span class="linenos">173</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-</span><span id="RandomBagClassifier.__init__-174"><a href="#RandomBagClassifier.__init__-174"><span class="linenos">174</span></a>        <span class="p">)</span>
-</span><span id="RandomBagClassifier.__init__-175"><a href="#RandomBagClassifier.__init__-175"><span class="linenos">175</span></a>
-</span><span id="RandomBagClassifier.__init__-176"><a href="#RandomBagClassifier.__init__-176"><span class="linenos">176</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-</span><span id="RandomBagClassifier.__init__-177"><a href="#RandomBagClassifier.__init__-177"><span class="linenos">177</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-</span><span id="RandomBagClassifier.__init__-178"><a href="#RandomBagClassifier.__init__-178"><span class="linenos">178</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
-</span><span id="RandomBagClassifier.__init__-179"><a href="#RandomBagClassifier.__init__-179"><span class="linenos">179</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">voter_</span> <span class="o">=</span> <span class="p">{}</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="RandomBagClassifier.type_fit" class="classattr">
-                                <div class="attr variable">
-            <span class="name">type_fit</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.type_fit"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagClassifier.verbose" class="classattr">
-                                <div class="attr variable">
-            <span class="name">verbose</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.verbose"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagClassifier.n_jobs" class="classattr">
-                                <div class="attr variable">
-            <span class="name">n_jobs</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.n_jobs"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagClassifier.voter_" class="classattr">
-                                <div class="attr variable">
-            <span class="name">voter_</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.voter_"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagClassifier.fit" class="classattr">
-                                        <input id="RandomBagClassifier.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                <div id="RandomBagClassifier.fit" class="classattr">
+                                            <input id="RandomBagClassifier.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -884,7 +760,7 @@ backend: str
 </span><span id="RandomBagClassifier.fit-254"><a href="#RandomBagClassifier.fit-254"><span class="linenos">254</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">voter_</span> <span class="o">=</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span> <span class="n">elt</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">elt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">voters_list</span><span class="p">)}</span>
 </span><span id="RandomBagClassifier.fit-255"><a href="#RandomBagClassifier.fit-255"><span class="linenos">255</span></a>
 </span><span id="RandomBagClassifier.fit-256"><a href="#RandomBagClassifier.fit-256"><span class="linenos">256</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voter_</span><span class="p">)</span>
-</span><span id="RandomBagClassifier.fit-257"><a href="#RandomBagClassifier.fit-257"><span class="linenos">257</span></a>
+</span><span id="RandomBagClassifier.fit-257"><a href="#RandomBagClassifier.fit-257"><span class="linenos">257</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </span><span id="RandomBagClassifier.fit-258"><a href="#RandomBagClassifier.fit-258"><span class="linenos">258</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span></pre></div>
 
@@ -911,9 +787,9 @@ y: array-like, shape = [n_samples]
 </div>
 
 
-                            </div>
-                            <div id="RandomBagClassifier.predict" class="classattr">
-                                        <input id="RandomBagClassifier.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="RandomBagClassifier.predict" class="classattr">
+                                            <input id="RandomBagClassifier.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -963,9 +839,9 @@ y: array-like, shape = [n_samples]
 </div>
 
 
-                            </div>
-                            <div id="RandomBagClassifier.predict_proba" class="classattr">
-                                        <input id="RandomBagClassifier.predict_proba-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="RandomBagClassifier.predict_proba" class="classattr">
+                                            <input id="RandomBagClassifier.predict_proba-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -1094,9 +970,9 @@ y: array-like, shape = [n_samples]
 </div>
 
 
-                            </div>
-                            <div id="RandomBagClassifier.score" class="classattr">
-                                        <input id="RandomBagClassifier.score-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="RandomBagClassifier.score" class="classattr">
+                                            <input id="RandomBagClassifier.score-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -1110,7 +986,7 @@ y: array-like, shape = [n_samples]
 </span><span id="RandomBagClassifier.score-378"><a href="#RandomBagClassifier.score-378"><span class="linenos">378</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
 </span><span id="RandomBagClassifier.score-379"><a href="#RandomBagClassifier.score-379"><span class="linenos">379</span></a>
 </span><span id="RandomBagClassifier.score-380"><a href="#RandomBagClassifier.score-380"><span class="linenos">380</span></a><span class="sd">        Args:</span>
-</span><span id="RandomBagClassifier.score-381"><a href="#RandomBagClassifier.score-381"><span class="linenos">381</span></a><span class="sd">        </span>
+</span><span id="RandomBagClassifier.score-381"><a href="#RandomBagClassifier.score-381"><span class="linenos">381</span></a>
 </span><span id="RandomBagClassifier.score-382"><a href="#RandomBagClassifier.score-382"><span class="linenos">382</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="RandomBagClassifier.score-383"><a href="#RandomBagClassifier.score-383"><span class="linenos">383</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
 </span><span id="RandomBagClassifier.score-384"><a href="#RandomBagClassifier.score-384"><span class="linenos">384</span></a><span class="sd">                of samples and n_features is the number of features</span>
@@ -1122,11 +998,11 @@ y: array-like, shape = [n_samples]
 </span><span id="RandomBagClassifier.score-390"><a href="#RandomBagClassifier.score-390"><span class="linenos">390</span></a><span class="sd">                must be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, \</span>
 </span><span id="RandomBagClassifier.score-391"><a href="#RandomBagClassifier.score-391"><span class="linenos">391</span></a><span class="sd">                            &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, \</span>
 </span><span id="RandomBagClassifier.score-392"><a href="#RandomBagClassifier.score-392"><span class="linenos">392</span></a><span class="sd">                            &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)</span>
-</span><span id="RandomBagClassifier.score-393"><a href="#RandomBagClassifier.score-393"><span class="linenos">393</span></a><span class="sd">            </span>
+</span><span id="RandomBagClassifier.score-393"><a href="#RandomBagClassifier.score-393"><span class="linenos">393</span></a>
 </span><span id="RandomBagClassifier.score-394"><a href="#RandomBagClassifier.score-394"><span class="linenos">394</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="RandomBagClassifier.score-395"><a href="#RandomBagClassifier.score-395"><span class="linenos">395</span></a><span class="sd">               </span>
+</span><span id="RandomBagClassifier.score-395"><a href="#RandomBagClassifier.score-395"><span class="linenos">395</span></a>
 </span><span id="RandomBagClassifier.score-396"><a href="#RandomBagClassifier.score-396"><span class="linenos">396</span></a><span class="sd">        Returns: </span>
-</span><span id="RandomBagClassifier.score-397"><a href="#RandomBagClassifier.score-397"><span class="linenos">397</span></a><span class="sd">        </span>
+</span><span id="RandomBagClassifier.score-397"><a href="#RandomBagClassifier.score-397"><span class="linenos">397</span></a>
 </span><span id="RandomBagClassifier.score-398"><a href="#RandomBagClassifier.score-398"><span class="linenos">398</span></a><span class="sd">            model scores: {array-like}</span>
 </span><span id="RandomBagClassifier.score-399"><a href="#RandomBagClassifier.score-399"><span class="linenos">399</span></a>
 </span><span id="RandomBagClassifier.score-400"><a href="#RandomBagClassifier.score-400"><span class="linenos">400</span></a><span class="sd">        &quot;&quot;&quot;</span>
@@ -1199,218 +1075,8 @@ scoring: str
 </div>
 
 
-                            </div>
-                            <div id="RandomBagClassifier.set_predict_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_predict_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.set_predict_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code>set_fit_request</code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="RandomBagClassifier.set_predict_proba_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_predict_proba_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.set_predict_proba_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code>set_fit_request</code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="RandomBagClassifier.set_score_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_score_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagClassifier.set_score_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code>set_fit_request</code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt>nnetsauce.randombag.bag.RandomBag</dt>
-                                <dd id="RandomBagClassifier.obj" class="variable">obj</dd>
-                <dd id="RandomBagClassifier.n_estimators" class="variable">n_estimators</dd>
-
-            </div>
-            <div><dt>nnetsauce.base.base.Base</dt>
-                                <dd id="RandomBagClassifier.n_hidden_features" class="variable">n_hidden_features</dd>
-                <dd id="RandomBagClassifier.activation_name" class="variable">activation_name</dd>
-                <dd id="RandomBagClassifier.a" class="variable">a</dd>
-                <dd id="RandomBagClassifier.nodes_sim" class="variable">nodes_sim</dd>
-                <dd id="RandomBagClassifier.bias" class="variable">bias</dd>
-                <dd id="RandomBagClassifier.seed" class="variable">seed</dd>
-                <dd id="RandomBagClassifier.backend" class="variable">backend</dd>
-                <dd id="RandomBagClassifier.dropout" class="variable">dropout</dd>
-                <dd id="RandomBagClassifier.direct_link" class="variable">direct_link</dd>
-                <dd id="RandomBagClassifier.cluster_encode" class="variable">cluster_encode</dd>
-                <dd id="RandomBagClassifier.type_clust" class="variable">type_clust</dd>
-                <dd id="RandomBagClassifier.type_scaling" class="variable">type_scaling</dd>
-                <dd id="RandomBagClassifier.col_sample" class="variable">col_sample</dd>
-                <dd id="RandomBagClassifier.row_sample" class="variable">row_sample</dd>
-                <dd id="RandomBagClassifier.n_clusters" class="variable">n_clusters</dd>
-                <dd id="RandomBagClassifier.subsampler_" class="variable">subsampler_</dd>
-                <dd id="RandomBagClassifier.index_col_" class="variable">index_col_</dd>
-                <dd id="RandomBagClassifier.index_row_" class="variable">index_row_</dd>
-                <dd id="RandomBagClassifier.clustering_obj_" class="variable">clustering_obj_</dd>
-                <dd id="RandomBagClassifier.clustering_scaler_" class="variable">clustering_scaler_</dd>
-                <dd id="RandomBagClassifier.nn_scaler_" class="variable">nn_scaler_</dd>
-                <dd id="RandomBagClassifier.scaler_" class="variable">scaler_</dd>
-                <dd id="RandomBagClassifier.encoder_" class="variable">encoder_</dd>
-                <dd id="RandomBagClassifier.W_" class="variable">W_</dd>
-                <dd id="RandomBagClassifier.X_" class="variable">X_</dd>
-                <dd id="RandomBagClassifier.y_" class="variable">y_</dd>
-                <dd id="RandomBagClassifier.y_mean_" class="variable">y_mean_</dd>
-                <dd id="RandomBagClassifier.beta_" class="variable">beta_</dd>
-                <dd id="RandomBagClassifier.activation_func" class="variable">activation_func</dd>
-                <dd id="RandomBagClassifier.encode_clusters" class="function">encode_clusters</dd>
-                <dd id="RandomBagClassifier.create_layer" class="function">create_layer</dd>
-                <dd id="RandomBagClassifier.cook_training_set" class="function">cook_training_set</dd>
-                <dd id="RandomBagClassifier.cook_test_set" class="function">cook_test_set</dd>
-
-            </div>
-            <div><dt>sklearn.base.BaseEstimator</dt>
-                                <dd id="RandomBagClassifier.get_params" class="function">get_params</dd>
-                <dd id="RandomBagClassifier.set_params" class="function">set_params</dd>
-
-            </div>
-            <div><dt>sklearn.utils._metadata_requests._MetadataRequester</dt>
-                                <dd id="RandomBagClassifier.get_metadata_routing" class="function">get_metadata_routing</dd>
-
-            </div>
-                                </dl>
-                            </div>
+                                </div>
+                        
                 </section>
                 <section id="RandomBagRegressor">
                             <input id="RandomBagRegressor-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -1699,7 +1365,7 @@ the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</
 </span><span id="RandomBagRegressor-291"><a href="#RandomBagRegressor-291"><span class="linenos">291</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
 </span><span id="RandomBagRegressor-292"><a href="#RandomBagRegressor-292"><span class="linenos">292</span></a>
 </span><span id="RandomBagRegressor-293"><a href="#RandomBagRegressor-293"><span class="linenos">293</span></a><span class="sd">        Args:</span>
-</span><span id="RandomBagRegressor-294"><a href="#RandomBagRegressor-294"><span class="linenos">294</span></a><span class="sd">        </span>
+</span><span id="RandomBagRegressor-294"><a href="#RandomBagRegressor-294"><span class="linenos">294</span></a>
 </span><span id="RandomBagRegressor-295"><a href="#RandomBagRegressor-295"><span class="linenos">295</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="RandomBagRegressor-296"><a href="#RandomBagRegressor-296"><span class="linenos">296</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
 </span><span id="RandomBagRegressor-297"><a href="#RandomBagRegressor-297"><span class="linenos">297</span></a><span class="sd">                of samples and n_features is the number of features</span>
@@ -1711,13 +1377,13 @@ the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</
 </span><span id="RandomBagRegressor-303"><a href="#RandomBagRegressor-303"><span class="linenos">303</span></a><span class="sd">                must be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, \</span>
 </span><span id="RandomBagRegressor-304"><a href="#RandomBagRegressor-304"><span class="linenos">304</span></a><span class="sd">                            &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, \</span>
 </span><span id="RandomBagRegressor-305"><a href="#RandomBagRegressor-305"><span class="linenos">305</span></a><span class="sd">                            &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)</span>
-</span><span id="RandomBagRegressor-306"><a href="#RandomBagRegressor-306"><span class="linenos">306</span></a><span class="sd">            </span>
+</span><span id="RandomBagRegressor-306"><a href="#RandomBagRegressor-306"><span class="linenos">306</span></a>
 </span><span id="RandomBagRegressor-307"><a href="#RandomBagRegressor-307"><span class="linenos">307</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="RandomBagRegressor-308"><a href="#RandomBagRegressor-308"><span class="linenos">308</span></a><span class="sd">               </span>
+</span><span id="RandomBagRegressor-308"><a href="#RandomBagRegressor-308"><span class="linenos">308</span></a>
 </span><span id="RandomBagRegressor-309"><a href="#RandomBagRegressor-309"><span class="linenos">309</span></a><span class="sd">        Returns: </span>
-</span><span id="RandomBagRegressor-310"><a href="#RandomBagRegressor-310"><span class="linenos">310</span></a><span class="sd">        </span>
+</span><span id="RandomBagRegressor-310"><a href="#RandomBagRegressor-310"><span class="linenos">310</span></a>
 </span><span id="RandomBagRegressor-311"><a href="#RandomBagRegressor-311"><span class="linenos">311</span></a><span class="sd">            model scores: {array-like}</span>
-</span><span id="RandomBagRegressor-312"><a href="#RandomBagRegressor-312"><span class="linenos">312</span></a><span class="sd">            </span>
+</span><span id="RandomBagRegressor-312"><a href="#RandomBagRegressor-312"><span class="linenos">312</span></a>
 </span><span id="RandomBagRegressor-313"><a href="#RandomBagRegressor-313"><span class="linenos">313</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RandomBagRegressor-314"><a href="#RandomBagRegressor-314"><span class="linenos">314</span></a>
 </span><span id="RandomBagRegressor-315"><a href="#RandomBagRegressor-315"><span class="linenos">315</span></a>        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1855,114 +1521,8 @@ backend: str
 </div>
 
 
-                            <div id="RandomBagRegressor.__init__" class="classattr">
-                                        <input id="RandomBagRegressor.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="name">RandomBagRegressor</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">obj</span>,</span><span class="param">	<span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span>,</span><span class="param">	<span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">activation_name</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span>,</span><span class="param">	<span class="n">a</span><span class="o">=</span><span class="mf">0.01</span>,</span><span class="param">	<span class="n">nodes_sim</span><span class="o">=</span><span class="s1">&#39;sobol&#39;</span>,</span><span class="param">	<span class="n">bias</span><span class="o">=</span><span class="kc">True</span>,</span><span class="param">	<span class="n">dropout</span><span class="o">=</span><span class="mi">0</span>,</span><span class="param">	<span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span>,</span><span class="param">	<span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span>,</span><span class="param">	<span class="n">type_clust</span><span class="o">=</span><span class="s1">&#39;kmeans&#39;</span>,</span><span class="param">	<span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">)</span>,</span><span class="param">	<span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="o">=</span><span class="mi">123</span>,</span><span class="param">	<span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span></span>)</span>
-
-                <label class="view-source-button" for="RandomBagRegressor.__init__-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="RandomBagRegressor.__init__-122"><a href="#RandomBagRegressor.__init__-122"><span class="linenos">122</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="RandomBagRegressor.__init__-123"><a href="#RandomBagRegressor.__init__-123"><span class="linenos">123</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-124"><a href="#RandomBagRegressor.__init__-124"><span class="linenos">124</span></a>        <span class="n">obj</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-125"><a href="#RandomBagRegressor.__init__-125"><span class="linenos">125</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-126"><a href="#RandomBagRegressor.__init__-126"><span class="linenos">126</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-127"><a href="#RandomBagRegressor.__init__-127"><span class="linenos">127</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-128"><a href="#RandomBagRegressor.__init__-128"><span class="linenos">128</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-129"><a href="#RandomBagRegressor.__init__-129"><span class="linenos">129</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-130"><a href="#RandomBagRegressor.__init__-130"><span class="linenos">130</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-131"><a href="#RandomBagRegressor.__init__-131"><span class="linenos">131</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-132"><a href="#RandomBagRegressor.__init__-132"><span class="linenos">132</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-133"><a href="#RandomBagRegressor.__init__-133"><span class="linenos">133</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-134"><a href="#RandomBagRegressor.__init__-134"><span class="linenos">134</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-135"><a href="#RandomBagRegressor.__init__-135"><span class="linenos">135</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-136"><a href="#RandomBagRegressor.__init__-136"><span class="linenos">136</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
-</span><span id="RandomBagRegressor.__init__-137"><a href="#RandomBagRegressor.__init__-137"><span class="linenos">137</span></a>        <span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-138"><a href="#RandomBagRegressor.__init__-138"><span class="linenos">138</span></a>        <span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-139"><a href="#RandomBagRegressor.__init__-139"><span class="linenos">139</span></a>        <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-140"><a href="#RandomBagRegressor.__init__-140"><span class="linenos">140</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-141"><a href="#RandomBagRegressor.__init__-141"><span class="linenos">141</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-142"><a href="#RandomBagRegressor.__init__-142"><span class="linenos">142</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-143"><a href="#RandomBagRegressor.__init__-143"><span class="linenos">143</span></a>    <span class="p">):</span>
-</span><span id="RandomBagRegressor.__init__-144"><a href="#RandomBagRegressor.__init__-144"><span class="linenos">144</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="RandomBagRegressor.__init__-145"><a href="#RandomBagRegressor.__init__-145"><span class="linenos">145</span></a>            <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-146"><a href="#RandomBagRegressor.__init__-146"><span class="linenos">146</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-147"><a href="#RandomBagRegressor.__init__-147"><span class="linenos">147</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-148"><a href="#RandomBagRegressor.__init__-148"><span class="linenos">148</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-149"><a href="#RandomBagRegressor.__init__-149"><span class="linenos">149</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-150"><a href="#RandomBagRegressor.__init__-150"><span class="linenos">150</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-151"><a href="#RandomBagRegressor.__init__-151"><span class="linenos">151</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-152"><a href="#RandomBagRegressor.__init__-152"><span class="linenos">152</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-153"><a href="#RandomBagRegressor.__init__-153"><span class="linenos">153</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-154"><a href="#RandomBagRegressor.__init__-154"><span class="linenos">154</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-155"><a href="#RandomBagRegressor.__init__-155"><span class="linenos">155</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-156"><a href="#RandomBagRegressor.__init__-156"><span class="linenos">156</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-157"><a href="#RandomBagRegressor.__init__-157"><span class="linenos">157</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-158"><a href="#RandomBagRegressor.__init__-158"><span class="linenos">158</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="n">col_sample</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-159"><a href="#RandomBagRegressor.__init__-159"><span class="linenos">159</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="n">row_sample</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-160"><a href="#RandomBagRegressor.__init__-160"><span class="linenos">160</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-161"><a href="#RandomBagRegressor.__init__-161"><span class="linenos">161</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-</span><span id="RandomBagRegressor.__init__-162"><a href="#RandomBagRegressor.__init__-162"><span class="linenos">162</span></a>        <span class="p">)</span>
-</span><span id="RandomBagRegressor.__init__-163"><a href="#RandomBagRegressor.__init__-163"><span class="linenos">163</span></a>
-</span><span id="RandomBagRegressor.__init__-164"><a href="#RandomBagRegressor.__init__-164"><span class="linenos">164</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;regression&quot;</span>
-</span><span id="RandomBagRegressor.__init__-165"><a href="#RandomBagRegressor.__init__-165"><span class="linenos">165</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-</span><span id="RandomBagRegressor.__init__-166"><a href="#RandomBagRegressor.__init__-166"><span class="linenos">166</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
-</span><span id="RandomBagRegressor.__init__-167"><a href="#RandomBagRegressor.__init__-167"><span class="linenos">167</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">voter_</span> <span class="o">=</span> <span class="p">{}</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="RandomBagRegressor.type_fit" class="classattr">
-                                <div class="attr variable">
-            <span class="name">type_fit</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.type_fit"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagRegressor.verbose" class="classattr">
-                                <div class="attr variable">
-            <span class="name">verbose</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.verbose"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagRegressor.n_jobs" class="classattr">
-                                <div class="attr variable">
-            <span class="name">n_jobs</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.n_jobs"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagRegressor.voter_" class="classattr">
-                                <div class="attr variable">
-            <span class="name">voter_</span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.voter_"></a>
-    
-    
-
-                            </div>
-                            <div id="RandomBagRegressor.fit" class="classattr">
-                                        <input id="RandomBagRegressor.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                <div id="RandomBagRegressor.fit" class="classattr">
+                                            <input id="RandomBagRegressor.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -2070,9 +1630,9 @@ y: array-like, shape = [n_samples]
 </div>
 
 
-                            </div>
-                            <div id="RandomBagRegressor.predict" class="classattr">
-                                        <input id="RandomBagRegressor.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="RandomBagRegressor.predict" class="classattr">
+                                            <input id="RandomBagRegressor.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -2150,9 +1710,9 @@ y: array-like, shape = [n_samples]
 </div>
 
 
-                            </div>
-                            <div id="RandomBagRegressor.score" class="classattr">
-                                        <input id="RandomBagRegressor.score-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="RandomBagRegressor.score" class="classattr">
+                                            <input id="RandomBagRegressor.score-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -2166,7 +1726,7 @@ y: array-like, shape = [n_samples]
 </span><span id="RandomBagRegressor.score-291"><a href="#RandomBagRegressor.score-291"><span class="linenos">291</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
 </span><span id="RandomBagRegressor.score-292"><a href="#RandomBagRegressor.score-292"><span class="linenos">292</span></a>
 </span><span id="RandomBagRegressor.score-293"><a href="#RandomBagRegressor.score-293"><span class="linenos">293</span></a><span class="sd">        Args:</span>
-</span><span id="RandomBagRegressor.score-294"><a href="#RandomBagRegressor.score-294"><span class="linenos">294</span></a><span class="sd">        </span>
+</span><span id="RandomBagRegressor.score-294"><a href="#RandomBagRegressor.score-294"><span class="linenos">294</span></a>
 </span><span id="RandomBagRegressor.score-295"><a href="#RandomBagRegressor.score-295"><span class="linenos">295</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="RandomBagRegressor.score-296"><a href="#RandomBagRegressor.score-296"><span class="linenos">296</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
 </span><span id="RandomBagRegressor.score-297"><a href="#RandomBagRegressor.score-297"><span class="linenos">297</span></a><span class="sd">                of samples and n_features is the number of features</span>
@@ -2178,13 +1738,13 @@ y: array-like, shape = [n_samples]
 </span><span id="RandomBagRegressor.score-303"><a href="#RandomBagRegressor.score-303"><span class="linenos">303</span></a><span class="sd">                must be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, \</span>
 </span><span id="RandomBagRegressor.score-304"><a href="#RandomBagRegressor.score-304"><span class="linenos">304</span></a><span class="sd">                            &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, \</span>
 </span><span id="RandomBagRegressor.score-305"><a href="#RandomBagRegressor.score-305"><span class="linenos">305</span></a><span class="sd">                            &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)</span>
-</span><span id="RandomBagRegressor.score-306"><a href="#RandomBagRegressor.score-306"><span class="linenos">306</span></a><span class="sd">            </span>
+</span><span id="RandomBagRegressor.score-306"><a href="#RandomBagRegressor.score-306"><span class="linenos">306</span></a>
 </span><span id="RandomBagRegressor.score-307"><a href="#RandomBagRegressor.score-307"><span class="linenos">307</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="RandomBagRegressor.score-308"><a href="#RandomBagRegressor.score-308"><span class="linenos">308</span></a><span class="sd">               </span>
+</span><span id="RandomBagRegressor.score-308"><a href="#RandomBagRegressor.score-308"><span class="linenos">308</span></a>
 </span><span id="RandomBagRegressor.score-309"><a href="#RandomBagRegressor.score-309"><span class="linenos">309</span></a><span class="sd">        Returns: </span>
-</span><span id="RandomBagRegressor.score-310"><a href="#RandomBagRegressor.score-310"><span class="linenos">310</span></a><span class="sd">        </span>
+</span><span id="RandomBagRegressor.score-310"><a href="#RandomBagRegressor.score-310"><span class="linenos">310</span></a>
 </span><span id="RandomBagRegressor.score-311"><a href="#RandomBagRegressor.score-311"><span class="linenos">311</span></a><span class="sd">            model scores: {array-like}</span>
-</span><span id="RandomBagRegressor.score-312"><a href="#RandomBagRegressor.score-312"><span class="linenos">312</span></a><span class="sd">            </span>
+</span><span id="RandomBagRegressor.score-312"><a href="#RandomBagRegressor.score-312"><span class="linenos">312</span></a>
 </span><span id="RandomBagRegressor.score-313"><a href="#RandomBagRegressor.score-313"><span class="linenos">313</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="RandomBagRegressor.score-314"><a href="#RandomBagRegressor.score-314"><span class="linenos">314</span></a>
 </span><span id="RandomBagRegressor.score-315"><a href="#RandomBagRegressor.score-315"><span class="linenos">315</span></a>        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -2244,166 +1804,8 @@ scoring: str
 </div>
 
 
-                            </div>
-                            <div id="RandomBagRegressor.set_predict_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_predict_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.set_predict_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code>set_fit_request</code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="RandomBagRegressor.set_score_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_score_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#RandomBagRegressor.set_score_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code>set_fit_request</code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt>nnetsauce.randombag.bag.RandomBag</dt>
-                                <dd id="RandomBagRegressor.obj" class="variable">obj</dd>
-                <dd id="RandomBagRegressor.n_estimators" class="variable">n_estimators</dd>
-
-            </div>
-            <div><dt>nnetsauce.base.base.Base</dt>
-                                <dd id="RandomBagRegressor.n_hidden_features" class="variable">n_hidden_features</dd>
-                <dd id="RandomBagRegressor.activation_name" class="variable">activation_name</dd>
-                <dd id="RandomBagRegressor.a" class="variable">a</dd>
-                <dd id="RandomBagRegressor.nodes_sim" class="variable">nodes_sim</dd>
-                <dd id="RandomBagRegressor.bias" class="variable">bias</dd>
-                <dd id="RandomBagRegressor.seed" class="variable">seed</dd>
-                <dd id="RandomBagRegressor.backend" class="variable">backend</dd>
-                <dd id="RandomBagRegressor.dropout" class="variable">dropout</dd>
-                <dd id="RandomBagRegressor.direct_link" class="variable">direct_link</dd>
-                <dd id="RandomBagRegressor.cluster_encode" class="variable">cluster_encode</dd>
-                <dd id="RandomBagRegressor.type_clust" class="variable">type_clust</dd>
-                <dd id="RandomBagRegressor.type_scaling" class="variable">type_scaling</dd>
-                <dd id="RandomBagRegressor.col_sample" class="variable">col_sample</dd>
-                <dd id="RandomBagRegressor.row_sample" class="variable">row_sample</dd>
-                <dd id="RandomBagRegressor.n_clusters" class="variable">n_clusters</dd>
-                <dd id="RandomBagRegressor.subsampler_" class="variable">subsampler_</dd>
-                <dd id="RandomBagRegressor.index_col_" class="variable">index_col_</dd>
-                <dd id="RandomBagRegressor.index_row_" class="variable">index_row_</dd>
-                <dd id="RandomBagRegressor.clustering_obj_" class="variable">clustering_obj_</dd>
-                <dd id="RandomBagRegressor.clustering_scaler_" class="variable">clustering_scaler_</dd>
-                <dd id="RandomBagRegressor.nn_scaler_" class="variable">nn_scaler_</dd>
-                <dd id="RandomBagRegressor.scaler_" class="variable">scaler_</dd>
-                <dd id="RandomBagRegressor.encoder_" class="variable">encoder_</dd>
-                <dd id="RandomBagRegressor.W_" class="variable">W_</dd>
-                <dd id="RandomBagRegressor.X_" class="variable">X_</dd>
-                <dd id="RandomBagRegressor.y_" class="variable">y_</dd>
-                <dd id="RandomBagRegressor.y_mean_" class="variable">y_mean_</dd>
-                <dd id="RandomBagRegressor.beta_" class="variable">beta_</dd>
-                <dd id="RandomBagRegressor.activation_func" class="variable">activation_func</dd>
-                <dd id="RandomBagRegressor.encode_clusters" class="function">encode_clusters</dd>
-                <dd id="RandomBagRegressor.create_layer" class="function">create_layer</dd>
-                <dd id="RandomBagRegressor.cook_training_set" class="function">cook_training_set</dd>
-                <dd id="RandomBagRegressor.cook_test_set" class="function">cook_test_set</dd>
-
-            </div>
-            <div><dt>sklearn.base.BaseEstimator</dt>
-                                <dd id="RandomBagRegressor.get_params" class="function">get_params</dd>
-                <dd id="RandomBagRegressor.set_params" class="function">set_params</dd>
-
-            </div>
-            <div><dt>sklearn.utils._metadata_requests._MetadataRequester</dt>
-                                <dd id="RandomBagRegressor.get_metadata_routing" class="function">get_metadata_routing</dd>
-
-            </div>
-                                </dl>
-                            </div>
+                                </div>
+                        
                 </section>
     </main>
 <script>
