@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 14.4.0"/>
+    <meta name="generator" content="pdoc 14.5.0"/>
     <title>nnetsauce.glm API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -53,8 +53,6 @@
                         </li>
                         <li>
                         </li>
-                        <li>
-                        </li>
                 </ul>
 
                 
@@ -62,8 +60,6 @@
             <li>
                     <a class="class" href="#GLMRegressor">GLMRegressor</a>
                             <ul class="memberlist">
-                        <li>
-                        </li>
                         <li>
                         </li>
                         <li>
@@ -335,183 +331,116 @@
 </span><span id="GLMClassifier-222"><a href="#GLMClassifier-222"><span class="linenos">222</span></a>            <span class="n">y</span>
 </span><span id="GLMClassifier-223"><a href="#GLMClassifier-223"><span class="linenos">223</span></a>        <span class="p">),</span> <span class="s2">&quot;y must contain only integers&quot;</span>  <span class="c1"># change is_factor and subsampling everywhere</span>
 </span><span id="GLMClassifier-224"><a href="#GLMClassifier-224"><span class="linenos">224</span></a>
-</span><span id="GLMClassifier-225"><a href="#GLMClassifier-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="GLMClassifier-225"><a href="#GLMClassifier-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="c1"># for compatibility with sklearn</span>
 </span><span id="GLMClassifier-226"><a href="#GLMClassifier-226"><span class="linenos">226</span></a>
-</span><span id="GLMClassifier-227"><a href="#GLMClassifier-227"><span class="linenos">227</span></a>        <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</span><span id="GLMClassifier-227"><a href="#GLMClassifier-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="GLMClassifier-228"><a href="#GLMClassifier-228"><span class="linenos">228</span></a>
-</span><span id="GLMClassifier-229"><a href="#GLMClassifier-229"><span class="linenos">229</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="GLMClassifier-229"><a href="#GLMClassifier-229"><span class="linenos">229</span></a>        <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 </span><span id="GLMClassifier-230"><a href="#GLMClassifier-230"><span class="linenos">230</span></a>
-</span><span id="GLMClassifier-231"><a href="#GLMClassifier-231"><span class="linenos">231</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</span><span id="GLMClassifier-231"><a href="#GLMClassifier-231"><span class="linenos">231</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </span><span id="GLMClassifier-232"><a href="#GLMClassifier-232"><span class="linenos">232</span></a>
-</span><span id="GLMClassifier-233"><a href="#GLMClassifier-233"><span class="linenos">233</span></a>        <span class="n">output_y</span><span class="p">,</span> <span class="n">scaled_Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_training_set</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier-233"><a href="#GLMClassifier-233"><span class="linenos">233</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 </span><span id="GLMClassifier-234"><a href="#GLMClassifier-234"><span class="linenos">234</span></a>
-</span><span id="GLMClassifier-235"><a href="#GLMClassifier-235"><span class="linenos">235</span></a>        <span class="c1"># Y = mo.one_hot_encode2(output_y, self.n_classes)</span>
-</span><span id="GLMClassifier-236"><a href="#GLMClassifier-236"><span class="linenos">236</span></a>        <span class="n">Y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">one_hot_encode</span><span class="p">(</span><span class="n">output_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span>
-</span><span id="GLMClassifier-237"><a href="#GLMClassifier-237"><span class="linenos">237</span></a>
-</span><span id="GLMClassifier-238"><a href="#GLMClassifier-238"><span class="linenos">238</span></a>        <span class="c1"># initialization</span>
-</span><span id="GLMClassifier-239"><a href="#GLMClassifier-239"><span class="linenos">239</span></a>        <span class="n">beta_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">scaled_Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMClassifier-240"><a href="#GLMClassifier-240"><span class="linenos">240</span></a>
-</span><span id="GLMClassifier-241"><a href="#GLMClassifier-241"><span class="linenos">241</span></a>        <span class="c1"># optimization</span>
-</span><span id="GLMClassifier-242"><a href="#GLMClassifier-242"><span class="linenos">242</span></a>        <span class="c1"># fit(self, loss_func, response, x0, **kwargs):</span>
-</span><span id="GLMClassifier-243"><a href="#GLMClassifier-243"><span class="linenos">243</span></a>        <span class="c1"># loss_func(self, beta, group_index, X, y,</span>
-</span><span id="GLMClassifier-244"><a href="#GLMClassifier-244"><span class="linenos">244</span></a>        <span class="c1">#          row_index=None, type_loss=&quot;gaussian&quot;,</span>
-</span><span id="GLMClassifier-245"><a href="#GLMClassifier-245"><span class="linenos">245</span></a>        <span class="c1">#          **kwargs)</span>
-</span><span id="GLMClassifier-246"><a href="#GLMClassifier-246"><span class="linenos">246</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-</span><span id="GLMClassifier-247"><a href="#GLMClassifier-247"><span class="linenos">247</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">loss_func</span><span class="p">,</span>
-</span><span id="GLMClassifier-248"><a href="#GLMClassifier-248"><span class="linenos">248</span></a>            <span class="n">response</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-</span><span id="GLMClassifier-249"><a href="#GLMClassifier-249"><span class="linenos">249</span></a>            <span class="n">x0</span><span class="o">=</span><span class="n">beta_</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">),</span>
-</span><span id="GLMClassifier-250"><a href="#GLMClassifier-250"><span class="linenos">250</span></a>            <span class="n">group_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">group_index</span><span class="p">,</span>
-</span><span id="GLMClassifier-251"><a href="#GLMClassifier-251"><span class="linenos">251</span></a>            <span class="n">X</span><span class="o">=</span><span class="n">scaled_Z</span><span class="p">,</span>
-</span><span id="GLMClassifier-252"><a href="#GLMClassifier-252"><span class="linenos">252</span></a>            <span class="n">Y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span>
-</span><span id="GLMClassifier-253"><a href="#GLMClassifier-253"><span class="linenos">253</span></a>            <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-</span><span id="GLMClassifier-254"><a href="#GLMClassifier-254"><span class="linenos">254</span></a>            <span class="n">type_loss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">family</span><span class="p">,</span>
-</span><span id="GLMClassifier-255"><a href="#GLMClassifier-255"><span class="linenos">255</span></a>        <span class="p">)</span>
-</span><span id="GLMClassifier-256"><a href="#GLMClassifier-256"><span class="linenos">256</span></a>
-</span><span id="GLMClassifier-257"><a href="#GLMClassifier-257"><span class="linenos">257</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMClassifier-258"><a href="#GLMClassifier-258"><span class="linenos">258</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span id="GLMClassifier-259"><a href="#GLMClassifier-259"><span class="linenos">259</span></a>
-</span><span id="GLMClassifier-260"><a href="#GLMClassifier-260"><span class="linenos">260</span></a>        <span class="k">return</span> <span class="bp">self</span>
+</span><span id="GLMClassifier-235"><a href="#GLMClassifier-235"><span class="linenos">235</span></a>        <span class="n">output_y</span><span class="p">,</span> <span class="n">scaled_Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_training_set</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier-236"><a href="#GLMClassifier-236"><span class="linenos">236</span></a>
+</span><span id="GLMClassifier-237"><a href="#GLMClassifier-237"><span class="linenos">237</span></a>        <span class="c1"># Y = mo.one_hot_encode2(output_y, self.n_classes)</span>
+</span><span id="GLMClassifier-238"><a href="#GLMClassifier-238"><span class="linenos">238</span></a>        <span class="n">Y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">one_hot_encode</span><span class="p">(</span><span class="n">output_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span>
+</span><span id="GLMClassifier-239"><a href="#GLMClassifier-239"><span class="linenos">239</span></a>
+</span><span id="GLMClassifier-240"><a href="#GLMClassifier-240"><span class="linenos">240</span></a>        <span class="c1"># initialization</span>
+</span><span id="GLMClassifier-241"><a href="#GLMClassifier-241"><span class="linenos">241</span></a>        <span class="n">beta_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">scaled_Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="GLMClassifier-242"><a href="#GLMClassifier-242"><span class="linenos">242</span></a>
+</span><span id="GLMClassifier-243"><a href="#GLMClassifier-243"><span class="linenos">243</span></a>        <span class="c1"># optimization</span>
+</span><span id="GLMClassifier-244"><a href="#GLMClassifier-244"><span class="linenos">244</span></a>        <span class="c1"># fit(self, loss_func, response, x0, **kwargs):</span>
+</span><span id="GLMClassifier-245"><a href="#GLMClassifier-245"><span class="linenos">245</span></a>        <span class="c1"># loss_func(self, beta, group_index, X, y,</span>
+</span><span id="GLMClassifier-246"><a href="#GLMClassifier-246"><span class="linenos">246</span></a>        <span class="c1">#          row_index=None, type_loss=&quot;gaussian&quot;,</span>
+</span><span id="GLMClassifier-247"><a href="#GLMClassifier-247"><span class="linenos">247</span></a>        <span class="c1">#          **kwargs)</span>
+</span><span id="GLMClassifier-248"><a href="#GLMClassifier-248"><span class="linenos">248</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+</span><span id="GLMClassifier-249"><a href="#GLMClassifier-249"><span class="linenos">249</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">loss_func</span><span class="p">,</span>
+</span><span id="GLMClassifier-250"><a href="#GLMClassifier-250"><span class="linenos">250</span></a>            <span class="n">response</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+</span><span id="GLMClassifier-251"><a href="#GLMClassifier-251"><span class="linenos">251</span></a>            <span class="n">x0</span><span class="o">=</span><span class="n">beta_</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">),</span>
+</span><span id="GLMClassifier-252"><a href="#GLMClassifier-252"><span class="linenos">252</span></a>            <span class="n">group_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">group_index</span><span class="p">,</span>
+</span><span id="GLMClassifier-253"><a href="#GLMClassifier-253"><span class="linenos">253</span></a>            <span class="n">X</span><span class="o">=</span><span class="n">scaled_Z</span><span class="p">,</span>
+</span><span id="GLMClassifier-254"><a href="#GLMClassifier-254"><span class="linenos">254</span></a>            <span class="n">Y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span>
+</span><span id="GLMClassifier-255"><a href="#GLMClassifier-255"><span class="linenos">255</span></a>            <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+</span><span id="GLMClassifier-256"><a href="#GLMClassifier-256"><span class="linenos">256</span></a>            <span class="n">type_loss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">family</span><span class="p">,</span>
+</span><span id="GLMClassifier-257"><a href="#GLMClassifier-257"><span class="linenos">257</span></a>        <span class="p">)</span>
+</span><span id="GLMClassifier-258"><a href="#GLMClassifier-258"><span class="linenos">258</span></a>
+</span><span id="GLMClassifier-259"><a href="#GLMClassifier-259"><span class="linenos">259</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="GLMClassifier-260"><a href="#GLMClassifier-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </span><span id="GLMClassifier-261"><a href="#GLMClassifier-261"><span class="linenos">261</span></a>
-</span><span id="GLMClassifier-262"><a href="#GLMClassifier-262"><span class="linenos">262</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMClassifier-263"><a href="#GLMClassifier-263"><span class="linenos">263</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
-</span><span id="GLMClassifier-264"><a href="#GLMClassifier-264"><span class="linenos">264</span></a>
-</span><span id="GLMClassifier-265"><a href="#GLMClassifier-265"><span class="linenos">265</span></a><span class="sd">        Args:</span>
+</span><span id="GLMClassifier-262"><a href="#GLMClassifier-262"><span class="linenos">262</span></a>        <span class="k">return</span> <span class="bp">self</span>
+</span><span id="GLMClassifier-263"><a href="#GLMClassifier-263"><span class="linenos">263</span></a>
+</span><span id="GLMClassifier-264"><a href="#GLMClassifier-264"><span class="linenos">264</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GLMClassifier-265"><a href="#GLMClassifier-265"><span class="linenos">265</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
 </span><span id="GLMClassifier-266"><a href="#GLMClassifier-266"><span class="linenos">266</span></a>
-</span><span id="GLMClassifier-267"><a href="#GLMClassifier-267"><span class="linenos">267</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMClassifier-268"><a href="#GLMClassifier-268"><span class="linenos">268</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GLMClassifier-269"><a href="#GLMClassifier-269"><span class="linenos">269</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GLMClassifier-270"><a href="#GLMClassifier-270"><span class="linenos">270</span></a>
-</span><span id="GLMClassifier-271"><a href="#GLMClassifier-271"><span class="linenos">271</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GLMClassifier-272"><a href="#GLMClassifier-272"><span class="linenos">272</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="GLMClassifier-273"><a href="#GLMClassifier-273"><span class="linenos">273</span></a>
-</span><span id="GLMClassifier-274"><a href="#GLMClassifier-274"><span class="linenos">274</span></a><span class="sd">        Returns:</span>
+</span><span id="GLMClassifier-267"><a href="#GLMClassifier-267"><span class="linenos">267</span></a><span class="sd">        Args:</span>
+</span><span id="GLMClassifier-268"><a href="#GLMClassifier-268"><span class="linenos">268</span></a>
+</span><span id="GLMClassifier-269"><a href="#GLMClassifier-269"><span class="linenos">269</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GLMClassifier-270"><a href="#GLMClassifier-270"><span class="linenos">270</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GLMClassifier-271"><a href="#GLMClassifier-271"><span class="linenos">271</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GLMClassifier-272"><a href="#GLMClassifier-272"><span class="linenos">272</span></a>
+</span><span id="GLMClassifier-273"><a href="#GLMClassifier-273"><span class="linenos">273</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GLMClassifier-274"><a href="#GLMClassifier-274"><span class="linenos">274</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="GLMClassifier-275"><a href="#GLMClassifier-275"><span class="linenos">275</span></a>
-</span><span id="GLMClassifier-276"><a href="#GLMClassifier-276"><span class="linenos">276</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="GLMClassifier-276"><a href="#GLMClassifier-276"><span class="linenos">276</span></a><span class="sd">        Returns:</span>
 </span><span id="GLMClassifier-277"><a href="#GLMClassifier-277"><span class="linenos">277</span></a>
-</span><span id="GLMClassifier-278"><a href="#GLMClassifier-278"><span class="linenos">278</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GLMClassifier-278"><a href="#GLMClassifier-278"><span class="linenos">278</span></a><span class="sd">            model predictions: {array-like}</span>
 </span><span id="GLMClassifier-279"><a href="#GLMClassifier-279"><span class="linenos">279</span></a>
-</span><span id="GLMClassifier-280"><a href="#GLMClassifier-280"><span class="linenos">280</span></a>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="GLMClassifier-280"><a href="#GLMClassifier-280"><span class="linenos">280</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="GLMClassifier-281"><a href="#GLMClassifier-281"><span class="linenos">281</span></a>
-</span><span id="GLMClassifier-282"><a href="#GLMClassifier-282"><span class="linenos">282</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMClassifier-283"><a href="#GLMClassifier-283"><span class="linenos">283</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
-</span><span id="GLMClassifier-284"><a href="#GLMClassifier-284"><span class="linenos">284</span></a>
-</span><span id="GLMClassifier-285"><a href="#GLMClassifier-285"><span class="linenos">285</span></a><span class="sd">        Args:</span>
+</span><span id="GLMClassifier-282"><a href="#GLMClassifier-282"><span class="linenos">282</span></a>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="GLMClassifier-283"><a href="#GLMClassifier-283"><span class="linenos">283</span></a>
+</span><span id="GLMClassifier-284"><a href="#GLMClassifier-284"><span class="linenos">284</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GLMClassifier-285"><a href="#GLMClassifier-285"><span class="linenos">285</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
 </span><span id="GLMClassifier-286"><a href="#GLMClassifier-286"><span class="linenos">286</span></a>
-</span><span id="GLMClassifier-287"><a href="#GLMClassifier-287"><span class="linenos">287</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMClassifier-288"><a href="#GLMClassifier-288"><span class="linenos">288</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GLMClassifier-289"><a href="#GLMClassifier-289"><span class="linenos">289</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GLMClassifier-290"><a href="#GLMClassifier-290"><span class="linenos">290</span></a>
-</span><span id="GLMClassifier-291"><a href="#GLMClassifier-291"><span class="linenos">291</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GLMClassifier-292"><a href="#GLMClassifier-292"><span class="linenos">292</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="GLMClassifier-293"><a href="#GLMClassifier-293"><span class="linenos">293</span></a>
-</span><span id="GLMClassifier-294"><a href="#GLMClassifier-294"><span class="linenos">294</span></a><span class="sd">        Returns:</span>
+</span><span id="GLMClassifier-287"><a href="#GLMClassifier-287"><span class="linenos">287</span></a><span class="sd">        Args:</span>
+</span><span id="GLMClassifier-288"><a href="#GLMClassifier-288"><span class="linenos">288</span></a>
+</span><span id="GLMClassifier-289"><a href="#GLMClassifier-289"><span class="linenos">289</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GLMClassifier-290"><a href="#GLMClassifier-290"><span class="linenos">290</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GLMClassifier-291"><a href="#GLMClassifier-291"><span class="linenos">291</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GLMClassifier-292"><a href="#GLMClassifier-292"><span class="linenos">292</span></a>
+</span><span id="GLMClassifier-293"><a href="#GLMClassifier-293"><span class="linenos">293</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GLMClassifier-294"><a href="#GLMClassifier-294"><span class="linenos">294</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="GLMClassifier-295"><a href="#GLMClassifier-295"><span class="linenos">295</span></a>
-</span><span id="GLMClassifier-296"><a href="#GLMClassifier-296"><span class="linenos">296</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
+</span><span id="GLMClassifier-296"><a href="#GLMClassifier-296"><span class="linenos">296</span></a><span class="sd">        Returns:</span>
 </span><span id="GLMClassifier-297"><a href="#GLMClassifier-297"><span class="linenos">297</span></a>
-</span><span id="GLMClassifier-298"><a href="#GLMClassifier-298"><span class="linenos">298</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GLMClassifier-299"><a href="#GLMClassifier-299"><span class="linenos">299</span></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="GLMClassifier-300"><a href="#GLMClassifier-300"><span class="linenos">300</span></a>            <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMClassifier-301"><a href="#GLMClassifier-301"><span class="linenos">301</span></a>            <span class="n">new_X</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">rbind</span><span class="p">(</span>
-</span><span id="GLMClassifier-302"><a href="#GLMClassifier-302"><span class="linenos">302</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
-</span><span id="GLMClassifier-303"><a href="#GLMClassifier-303"><span class="linenos">303</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
-</span><span id="GLMClassifier-304"><a href="#GLMClassifier-304"><span class="linenos">304</span></a>            <span class="p">)</span>
-</span><span id="GLMClassifier-305"><a href="#GLMClassifier-305"><span class="linenos">305</span></a>
-</span><span id="GLMClassifier-306"><a href="#GLMClassifier-306"><span class="linenos">306</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">new_X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier-298"><a href="#GLMClassifier-298"><span class="linenos">298</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
+</span><span id="GLMClassifier-299"><a href="#GLMClassifier-299"><span class="linenos">299</span></a>
+</span><span id="GLMClassifier-300"><a href="#GLMClassifier-300"><span class="linenos">300</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GLMClassifier-301"><a href="#GLMClassifier-301"><span class="linenos">301</span></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="GLMClassifier-302"><a href="#GLMClassifier-302"><span class="linenos">302</span></a>            <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="GLMClassifier-303"><a href="#GLMClassifier-303"><span class="linenos">303</span></a>            <span class="n">new_X</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">rbind</span><span class="p">(</span>
+</span><span id="GLMClassifier-304"><a href="#GLMClassifier-304"><span class="linenos">304</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
+</span><span id="GLMClassifier-305"><a href="#GLMClassifier-305"><span class="linenos">305</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
+</span><span id="GLMClassifier-306"><a href="#GLMClassifier-306"><span class="linenos">306</span></a>            <span class="p">)</span>
 </span><span id="GLMClassifier-307"><a href="#GLMClassifier-307"><span class="linenos">307</span></a>
-</span><span id="GLMClassifier-308"><a href="#GLMClassifier-308"><span class="linenos">308</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="GLMClassifier-309"><a href="#GLMClassifier-309"><span class="linenos">309</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="GLMClassifier-310"><a href="#GLMClassifier-310"><span class="linenos">310</span></a>
-</span><span id="GLMClassifier-311"><a href="#GLMClassifier-311"><span class="linenos">311</span></a>        <span class="n">ZB</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">safe_sparse_dot</span><span class="p">(</span>
-</span><span id="GLMClassifier-312"><a href="#GLMClassifier-312"><span class="linenos">312</span></a>            <span class="n">Z</span><span class="p">,</span>
-</span><span id="GLMClassifier-313"><a href="#GLMClassifier-313"><span class="linenos">313</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
-</span><span id="GLMClassifier-314"><a href="#GLMClassifier-314"><span class="linenos">314</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span>
-</span><span id="GLMClassifier-315"><a href="#GLMClassifier-315"><span class="linenos">315</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden_features</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="GLMClassifier-316"><a href="#GLMClassifier-316"><span class="linenos">316</span></a>            <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-</span><span id="GLMClassifier-317"><a href="#GLMClassifier-317"><span class="linenos">317</span></a>        <span class="p">)</span>
-</span><span id="GLMClassifier-318"><a href="#GLMClassifier-318"><span class="linenos">318</span></a>
-</span><span id="GLMClassifier-319"><a href="#GLMClassifier-319"><span class="linenos">319</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;logit&quot;</span><span class="p">:</span>
-</span><span id="GLMClassifier-320"><a href="#GLMClassifier-320"><span class="linenos">320</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
-</span><span id="GLMClassifier-321"><a href="#GLMClassifier-321"><span class="linenos">321</span></a>
-</span><span id="GLMClassifier-322"><a href="#GLMClassifier-322"><span class="linenos">322</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier-308"><a href="#GLMClassifier-308"><span class="linenos">308</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">new_X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier-309"><a href="#GLMClassifier-309"><span class="linenos">309</span></a>
+</span><span id="GLMClassifier-310"><a href="#GLMClassifier-310"><span class="linenos">310</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="GLMClassifier-311"><a href="#GLMClassifier-311"><span class="linenos">311</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier-312"><a href="#GLMClassifier-312"><span class="linenos">312</span></a>
+</span><span id="GLMClassifier-313"><a href="#GLMClassifier-313"><span class="linenos">313</span></a>        <span class="n">ZB</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">safe_sparse_dot</span><span class="p">(</span>
+</span><span id="GLMClassifier-314"><a href="#GLMClassifier-314"><span class="linenos">314</span></a>            <span class="n">Z</span><span class="p">,</span>
+</span><span id="GLMClassifier-315"><a href="#GLMClassifier-315"><span class="linenos">315</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+</span><span id="GLMClassifier-316"><a href="#GLMClassifier-316"><span class="linenos">316</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span>
+</span><span id="GLMClassifier-317"><a href="#GLMClassifier-317"><span class="linenos">317</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden_features</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">,</span>
+</span><span id="GLMClassifier-318"><a href="#GLMClassifier-318"><span class="linenos">318</span></a>            <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+</span><span id="GLMClassifier-319"><a href="#GLMClassifier-319"><span class="linenos">319</span></a>        <span class="p">)</span>
+</span><span id="GLMClassifier-320"><a href="#GLMClassifier-320"><span class="linenos">320</span></a>
+</span><span id="GLMClassifier-321"><a href="#GLMClassifier-321"><span class="linenos">321</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;logit&quot;</span><span class="p">:</span>
+</span><span id="GLMClassifier-322"><a href="#GLMClassifier-322"><span class="linenos">322</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
 </span><span id="GLMClassifier-323"><a href="#GLMClassifier-323"><span class="linenos">323</span></a>
-</span><span id="GLMClassifier-324"><a href="#GLMClassifier-324"><span class="linenos">324</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;expit&quot;</span><span class="p">:</span>
-</span><span id="GLMClassifier-325"><a href="#GLMClassifier-325"><span class="linenos">325</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">expit</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
-</span><span id="GLMClassifier-326"><a href="#GLMClassifier-326"><span class="linenos">326</span></a>
-</span><span id="GLMClassifier-327"><a href="#GLMClassifier-327"><span class="linenos">327</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier-324"><a href="#GLMClassifier-324"><span class="linenos">324</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier-325"><a href="#GLMClassifier-325"><span class="linenos">325</span></a>
+</span><span id="GLMClassifier-326"><a href="#GLMClassifier-326"><span class="linenos">326</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;expit&quot;</span><span class="p">:</span>
+</span><span id="GLMClassifier-327"><a href="#GLMClassifier-327"><span class="linenos">327</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">expit</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
 </span><span id="GLMClassifier-328"><a href="#GLMClassifier-328"><span class="linenos">328</span></a>
-</span><span id="GLMClassifier-329"><a href="#GLMClassifier-329"><span class="linenos">329</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;erf&quot;</span><span class="p">:</span>
-</span><span id="GLMClassifier-330"><a href="#GLMClassifier-330"><span class="linenos">330</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="n">ZB</span><span class="p">))</span>
-</span><span id="GLMClassifier-331"><a href="#GLMClassifier-331"><span class="linenos">331</span></a>
-</span><span id="GLMClassifier-332"><a href="#GLMClassifier-332"><span class="linenos">332</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier-329"><a href="#GLMClassifier-329"><span class="linenos">329</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier-330"><a href="#GLMClassifier-330"><span class="linenos">330</span></a>
+</span><span id="GLMClassifier-331"><a href="#GLMClassifier-331"><span class="linenos">331</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;erf&quot;</span><span class="p">:</span>
+</span><span id="GLMClassifier-332"><a href="#GLMClassifier-332"><span class="linenos">332</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="n">ZB</span><span class="p">))</span>
 </span><span id="GLMClassifier-333"><a href="#GLMClassifier-333"><span class="linenos">333</span></a>
-</span><span id="GLMClassifier-334"><a href="#GLMClassifier-334"><span class="linenos">334</span></a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMClassifier-335"><a href="#GLMClassifier-335"><span class="linenos">335</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
-</span><span id="GLMClassifier-336"><a href="#GLMClassifier-336"><span class="linenos">336</span></a>
-</span><span id="GLMClassifier-337"><a href="#GLMClassifier-337"><span class="linenos">337</span></a><span class="sd">        Args:</span>
-</span><span id="GLMClassifier-338"><a href="#GLMClassifier-338"><span class="linenos">338</span></a>
-</span><span id="GLMClassifier-339"><a href="#GLMClassifier-339"><span class="linenos">339</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMClassifier-340"><a href="#GLMClassifier-340"><span class="linenos">340</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
-</span><span id="GLMClassifier-341"><a href="#GLMClassifier-341"><span class="linenos">341</span></a><span class="sd">                of samples and n_features is the number of features</span>
-</span><span id="GLMClassifier-342"><a href="#GLMClassifier-342"><span class="linenos">342</span></a>
-</span><span id="GLMClassifier-343"><a href="#GLMClassifier-343"><span class="linenos">343</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GLMClassifier-344"><a href="#GLMClassifier-344"><span class="linenos">344</span></a><span class="sd">                Target values</span>
-</span><span id="GLMClassifier-345"><a href="#GLMClassifier-345"><span class="linenos">345</span></a>
-</span><span id="GLMClassifier-346"><a href="#GLMClassifier-346"><span class="linenos">346</span></a><span class="sd">            scoring: str</span>
-</span><span id="GLMClassifier-347"><a href="#GLMClassifier-347"><span class="linenos">347</span></a><span class="sd">                must be in (&#39;accuracy&#39;, &#39;average_precision&#39;, \</span>
-</span><span id="GLMClassifier-348"><a href="#GLMClassifier-348"><span class="linenos">348</span></a><span class="sd">                            &#39;brier_score_loss&#39;, &#39;f1&#39;, &#39;f1_micro&#39;, \</span>
-</span><span id="GLMClassifier-349"><a href="#GLMClassifier-349"><span class="linenos">349</span></a><span class="sd">                            &#39;f1_macro&#39;, &#39;f1_weighted&#39;,  &#39;f1_samples&#39;, \</span>
-</span><span id="GLMClassifier-350"><a href="#GLMClassifier-350"><span class="linenos">350</span></a><span class="sd">                            &#39;neg_log_loss&#39;, &#39;precision&#39;, &#39;recall&#39;, \</span>
-</span><span id="GLMClassifier-351"><a href="#GLMClassifier-351"><span class="linenos">351</span></a><span class="sd">                            &#39;roc_auc&#39;)</span>
-</span><span id="GLMClassifier-352"><a href="#GLMClassifier-352"><span class="linenos">352</span></a>
-</span><span id="GLMClassifier-353"><a href="#GLMClassifier-353"><span class="linenos">353</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="GLMClassifier-354"><a href="#GLMClassifier-354"><span class="linenos">354</span></a>
-</span><span id="GLMClassifier-355"><a href="#GLMClassifier-355"><span class="linenos">355</span></a><span class="sd">        Returns: </span>
-</span><span id="GLMClassifier-356"><a href="#GLMClassifier-356"><span class="linenos">356</span></a>
-</span><span id="GLMClassifier-357"><a href="#GLMClassifier-357"><span class="linenos">357</span></a><span class="sd">            model scores: {array-like}</span>
-</span><span id="GLMClassifier-358"><a href="#GLMClassifier-358"><span class="linenos">358</span></a>
-</span><span id="GLMClassifier-359"><a href="#GLMClassifier-359"><span class="linenos">359</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GLMClassifier-360"><a href="#GLMClassifier-360"><span class="linenos">360</span></a>
-</span><span id="GLMClassifier-361"><a href="#GLMClassifier-361"><span class="linenos">361</span></a>        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="GLMClassifier-362"><a href="#GLMClassifier-362"><span class="linenos">362</span></a>
-</span><span id="GLMClassifier-363"><a href="#GLMClassifier-363"><span class="linenos">363</span></a>        <span class="k">if</span> <span class="n">scoring</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="GLMClassifier-364"><a href="#GLMClassifier-364"><span class="linenos">364</span></a>            <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span>
-</span><span id="GLMClassifier-365"><a href="#GLMClassifier-365"><span class="linenos">365</span></a>
-</span><span id="GLMClassifier-366"><a href="#GLMClassifier-366"><span class="linenos">366</span></a>        <span class="c1"># check inputs</span>
-</span><span id="GLMClassifier-367"><a href="#GLMClassifier-367"><span class="linenos">367</span></a>        <span class="k">assert</span> <span class="n">scoring</span> <span class="ow">in</span> <span class="p">(</span>
-</span><span id="GLMClassifier-368"><a href="#GLMClassifier-368"><span class="linenos">368</span></a>            <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-369"><a href="#GLMClassifier-369"><span class="linenos">369</span></a>            <span class="s2">&quot;average_precision&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-370"><a href="#GLMClassifier-370"><span class="linenos">370</span></a>            <span class="s2">&quot;brier_score_loss&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-371"><a href="#GLMClassifier-371"><span class="linenos">371</span></a>            <span class="s2">&quot;f1&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-372"><a href="#GLMClassifier-372"><span class="linenos">372</span></a>            <span class="s2">&quot;f1_micro&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-373"><a href="#GLMClassifier-373"><span class="linenos">373</span></a>            <span class="s2">&quot;f1_macro&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-374"><a href="#GLMClassifier-374"><span class="linenos">374</span></a>            <span class="s2">&quot;f1_weighted&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-375"><a href="#GLMClassifier-375"><span class="linenos">375</span></a>            <span class="s2">&quot;f1_samples&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-376"><a href="#GLMClassifier-376"><span class="linenos">376</span></a>            <span class="s2">&quot;neg_log_loss&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-377"><a href="#GLMClassifier-377"><span class="linenos">377</span></a>            <span class="s2">&quot;precision&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-378"><a href="#GLMClassifier-378"><span class="linenos">378</span></a>            <span class="s2">&quot;recall&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-379"><a href="#GLMClassifier-379"><span class="linenos">379</span></a>            <span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier-380"><a href="#GLMClassifier-380"><span class="linenos">380</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;scoring&#39; should be in (&#39;accuracy&#39;, &#39;average_precision&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier-381"><a href="#GLMClassifier-381"><span class="linenos">381</span></a><span class="s2">                           &#39;brier_score_loss&#39;, &#39;f1&#39;, &#39;f1_micro&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier-382"><a href="#GLMClassifier-382"><span class="linenos">382</span></a><span class="s2">                           &#39;f1_macro&#39;, &#39;f1_weighted&#39;,  &#39;f1_samples&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier-383"><a href="#GLMClassifier-383"><span class="linenos">383</span></a><span class="s2">                           &#39;neg_log_loss&#39;, &#39;precision&#39;, &#39;recall&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier-384"><a href="#GLMClassifier-384"><span class="linenos">384</span></a><span class="s2">                           &#39;roc_auc&#39;)&quot;</span>
-</span><span id="GLMClassifier-385"><a href="#GLMClassifier-385"><span class="linenos">385</span></a>
-</span><span id="GLMClassifier-386"><a href="#GLMClassifier-386"><span class="linenos">386</span></a>        <span class="n">scoring_options</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GLMClassifier-387"><a href="#GLMClassifier-387"><span class="linenos">387</span></a>            <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-388"><a href="#GLMClassifier-388"><span class="linenos">388</span></a>            <span class="s2">&quot;average_precision&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">average_precision_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-389"><a href="#GLMClassifier-389"><span class="linenos">389</span></a>            <span class="s2">&quot;brier_score_loss&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">brier_score_loss</span><span class="p">,</span>
-</span><span id="GLMClassifier-390"><a href="#GLMClassifier-390"><span class="linenos">390</span></a>            <span class="s2">&quot;f1&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-391"><a href="#GLMClassifier-391"><span class="linenos">391</span></a>            <span class="s2">&quot;f1_micro&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-392"><a href="#GLMClassifier-392"><span class="linenos">392</span></a>            <span class="s2">&quot;f1_macro&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-393"><a href="#GLMClassifier-393"><span class="linenos">393</span></a>            <span class="s2">&quot;f1_weighted&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-394"><a href="#GLMClassifier-394"><span class="linenos">394</span></a>            <span class="s2">&quot;f1_samples&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-395"><a href="#GLMClassifier-395"><span class="linenos">395</span></a>            <span class="s2">&quot;neg_log_loss&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">log_loss</span><span class="p">,</span>
-</span><span id="GLMClassifier-396"><a href="#GLMClassifier-396"><span class="linenos">396</span></a>            <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">precision_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-397"><a href="#GLMClassifier-397"><span class="linenos">397</span></a>            <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">recall_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-398"><a href="#GLMClassifier-398"><span class="linenos">398</span></a>            <span class="s2">&quot;roc_auc&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">,</span>
-</span><span id="GLMClassifier-399"><a href="#GLMClassifier-399"><span class="linenos">399</span></a>        <span class="p">}</span>
-</span><span id="GLMClassifier-400"><a href="#GLMClassifier-400"><span class="linenos">400</span></a>
-</span><span id="GLMClassifier-401"><a href="#GLMClassifier-401"><span class="linenos">401</span></a>        <span class="k">return</span> <span class="n">scoring_options</span><span class="p">[</span><span class="n">scoring</span><span class="p">](</span><span class="n">y</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier-334"><a href="#GLMClassifier-334"><span class="linenos">334</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -628,42 +557,44 @@ seed: int
 </span><span id="GLMClassifier.fit-222"><a href="#GLMClassifier.fit-222"><span class="linenos">222</span></a>            <span class="n">y</span>
 </span><span id="GLMClassifier.fit-223"><a href="#GLMClassifier.fit-223"><span class="linenos">223</span></a>        <span class="p">),</span> <span class="s2">&quot;y must contain only integers&quot;</span>  <span class="c1"># change is_factor and subsampling everywhere</span>
 </span><span id="GLMClassifier.fit-224"><a href="#GLMClassifier.fit-224"><span class="linenos">224</span></a>
-</span><span id="GLMClassifier.fit-225"><a href="#GLMClassifier.fit-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="GLMClassifier.fit-225"><a href="#GLMClassifier.fit-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="c1"># for compatibility with sklearn</span>
 </span><span id="GLMClassifier.fit-226"><a href="#GLMClassifier.fit-226"><span class="linenos">226</span></a>
-</span><span id="GLMClassifier.fit-227"><a href="#GLMClassifier.fit-227"><span class="linenos">227</span></a>        <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</span><span id="GLMClassifier.fit-227"><a href="#GLMClassifier.fit-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="GLMClassifier.fit-228"><a href="#GLMClassifier.fit-228"><span class="linenos">228</span></a>
-</span><span id="GLMClassifier.fit-229"><a href="#GLMClassifier.fit-229"><span class="linenos">229</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="GLMClassifier.fit-229"><a href="#GLMClassifier.fit-229"><span class="linenos">229</span></a>        <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 </span><span id="GLMClassifier.fit-230"><a href="#GLMClassifier.fit-230"><span class="linenos">230</span></a>
-</span><span id="GLMClassifier.fit-231"><a href="#GLMClassifier.fit-231"><span class="linenos">231</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</span><span id="GLMClassifier.fit-231"><a href="#GLMClassifier.fit-231"><span class="linenos">231</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </span><span id="GLMClassifier.fit-232"><a href="#GLMClassifier.fit-232"><span class="linenos">232</span></a>
-</span><span id="GLMClassifier.fit-233"><a href="#GLMClassifier.fit-233"><span class="linenos">233</span></a>        <span class="n">output_y</span><span class="p">,</span> <span class="n">scaled_Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_training_set</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier.fit-233"><a href="#GLMClassifier.fit-233"><span class="linenos">233</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 </span><span id="GLMClassifier.fit-234"><a href="#GLMClassifier.fit-234"><span class="linenos">234</span></a>
-</span><span id="GLMClassifier.fit-235"><a href="#GLMClassifier.fit-235"><span class="linenos">235</span></a>        <span class="c1"># Y = mo.one_hot_encode2(output_y, self.n_classes)</span>
-</span><span id="GLMClassifier.fit-236"><a href="#GLMClassifier.fit-236"><span class="linenos">236</span></a>        <span class="n">Y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">one_hot_encode</span><span class="p">(</span><span class="n">output_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span>
-</span><span id="GLMClassifier.fit-237"><a href="#GLMClassifier.fit-237"><span class="linenos">237</span></a>
-</span><span id="GLMClassifier.fit-238"><a href="#GLMClassifier.fit-238"><span class="linenos">238</span></a>        <span class="c1"># initialization</span>
-</span><span id="GLMClassifier.fit-239"><a href="#GLMClassifier.fit-239"><span class="linenos">239</span></a>        <span class="n">beta_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">scaled_Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMClassifier.fit-240"><a href="#GLMClassifier.fit-240"><span class="linenos">240</span></a>
-</span><span id="GLMClassifier.fit-241"><a href="#GLMClassifier.fit-241"><span class="linenos">241</span></a>        <span class="c1"># optimization</span>
-</span><span id="GLMClassifier.fit-242"><a href="#GLMClassifier.fit-242"><span class="linenos">242</span></a>        <span class="c1"># fit(self, loss_func, response, x0, **kwargs):</span>
-</span><span id="GLMClassifier.fit-243"><a href="#GLMClassifier.fit-243"><span class="linenos">243</span></a>        <span class="c1"># loss_func(self, beta, group_index, X, y,</span>
-</span><span id="GLMClassifier.fit-244"><a href="#GLMClassifier.fit-244"><span class="linenos">244</span></a>        <span class="c1">#          row_index=None, type_loss=&quot;gaussian&quot;,</span>
-</span><span id="GLMClassifier.fit-245"><a href="#GLMClassifier.fit-245"><span class="linenos">245</span></a>        <span class="c1">#          **kwargs)</span>
-</span><span id="GLMClassifier.fit-246"><a href="#GLMClassifier.fit-246"><span class="linenos">246</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-</span><span id="GLMClassifier.fit-247"><a href="#GLMClassifier.fit-247"><span class="linenos">247</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">loss_func</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-248"><a href="#GLMClassifier.fit-248"><span class="linenos">248</span></a>            <span class="n">response</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-249"><a href="#GLMClassifier.fit-249"><span class="linenos">249</span></a>            <span class="n">x0</span><span class="o">=</span><span class="n">beta_</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">),</span>
-</span><span id="GLMClassifier.fit-250"><a href="#GLMClassifier.fit-250"><span class="linenos">250</span></a>            <span class="n">group_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">group_index</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-251"><a href="#GLMClassifier.fit-251"><span class="linenos">251</span></a>            <span class="n">X</span><span class="o">=</span><span class="n">scaled_Z</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-252"><a href="#GLMClassifier.fit-252"><span class="linenos">252</span></a>            <span class="n">Y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-253"><a href="#GLMClassifier.fit-253"><span class="linenos">253</span></a>            <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-254"><a href="#GLMClassifier.fit-254"><span class="linenos">254</span></a>            <span class="n">type_loss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">family</span><span class="p">,</span>
-</span><span id="GLMClassifier.fit-255"><a href="#GLMClassifier.fit-255"><span class="linenos">255</span></a>        <span class="p">)</span>
-</span><span id="GLMClassifier.fit-256"><a href="#GLMClassifier.fit-256"><span class="linenos">256</span></a>
-</span><span id="GLMClassifier.fit-257"><a href="#GLMClassifier.fit-257"><span class="linenos">257</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMClassifier.fit-258"><a href="#GLMClassifier.fit-258"><span class="linenos">258</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span id="GLMClassifier.fit-259"><a href="#GLMClassifier.fit-259"><span class="linenos">259</span></a>
-</span><span id="GLMClassifier.fit-260"><a href="#GLMClassifier.fit-260"><span class="linenos">260</span></a>        <span class="k">return</span> <span class="bp">self</span>
+</span><span id="GLMClassifier.fit-235"><a href="#GLMClassifier.fit-235"><span class="linenos">235</span></a>        <span class="n">output_y</span><span class="p">,</span> <span class="n">scaled_Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_training_set</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier.fit-236"><a href="#GLMClassifier.fit-236"><span class="linenos">236</span></a>
+</span><span id="GLMClassifier.fit-237"><a href="#GLMClassifier.fit-237"><span class="linenos">237</span></a>        <span class="c1"># Y = mo.one_hot_encode2(output_y, self.n_classes)</span>
+</span><span id="GLMClassifier.fit-238"><a href="#GLMClassifier.fit-238"><span class="linenos">238</span></a>        <span class="n">Y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">one_hot_encode</span><span class="p">(</span><span class="n">output_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span>
+</span><span id="GLMClassifier.fit-239"><a href="#GLMClassifier.fit-239"><span class="linenos">239</span></a>
+</span><span id="GLMClassifier.fit-240"><a href="#GLMClassifier.fit-240"><span class="linenos">240</span></a>        <span class="c1"># initialization</span>
+</span><span id="GLMClassifier.fit-241"><a href="#GLMClassifier.fit-241"><span class="linenos">241</span></a>        <span class="n">beta_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">scaled_Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="GLMClassifier.fit-242"><a href="#GLMClassifier.fit-242"><span class="linenos">242</span></a>
+</span><span id="GLMClassifier.fit-243"><a href="#GLMClassifier.fit-243"><span class="linenos">243</span></a>        <span class="c1"># optimization</span>
+</span><span id="GLMClassifier.fit-244"><a href="#GLMClassifier.fit-244"><span class="linenos">244</span></a>        <span class="c1"># fit(self, loss_func, response, x0, **kwargs):</span>
+</span><span id="GLMClassifier.fit-245"><a href="#GLMClassifier.fit-245"><span class="linenos">245</span></a>        <span class="c1"># loss_func(self, beta, group_index, X, y,</span>
+</span><span id="GLMClassifier.fit-246"><a href="#GLMClassifier.fit-246"><span class="linenos">246</span></a>        <span class="c1">#          row_index=None, type_loss=&quot;gaussian&quot;,</span>
+</span><span id="GLMClassifier.fit-247"><a href="#GLMClassifier.fit-247"><span class="linenos">247</span></a>        <span class="c1">#          **kwargs)</span>
+</span><span id="GLMClassifier.fit-248"><a href="#GLMClassifier.fit-248"><span class="linenos">248</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+</span><span id="GLMClassifier.fit-249"><a href="#GLMClassifier.fit-249"><span class="linenos">249</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">loss_func</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-250"><a href="#GLMClassifier.fit-250"><span class="linenos">250</span></a>            <span class="n">response</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-251"><a href="#GLMClassifier.fit-251"><span class="linenos">251</span></a>            <span class="n">x0</span><span class="o">=</span><span class="n">beta_</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">),</span>
+</span><span id="GLMClassifier.fit-252"><a href="#GLMClassifier.fit-252"><span class="linenos">252</span></a>            <span class="n">group_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">group_index</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-253"><a href="#GLMClassifier.fit-253"><span class="linenos">253</span></a>            <span class="n">X</span><span class="o">=</span><span class="n">scaled_Z</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-254"><a href="#GLMClassifier.fit-254"><span class="linenos">254</span></a>            <span class="n">Y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-255"><a href="#GLMClassifier.fit-255"><span class="linenos">255</span></a>            <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-256"><a href="#GLMClassifier.fit-256"><span class="linenos">256</span></a>            <span class="n">type_loss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">family</span><span class="p">,</span>
+</span><span id="GLMClassifier.fit-257"><a href="#GLMClassifier.fit-257"><span class="linenos">257</span></a>        <span class="p">)</span>
+</span><span id="GLMClassifier.fit-258"><a href="#GLMClassifier.fit-258"><span class="linenos">258</span></a>
+</span><span id="GLMClassifier.fit-259"><a href="#GLMClassifier.fit-259"><span class="linenos">259</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="GLMClassifier.fit-260"><a href="#GLMClassifier.fit-260"><span class="linenos">260</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span id="GLMClassifier.fit-261"><a href="#GLMClassifier.fit-261"><span class="linenos">261</span></a>
+</span><span id="GLMClassifier.fit-262"><a href="#GLMClassifier.fit-262"><span class="linenos">262</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span></pre></div>
 
 
@@ -701,25 +632,25 @@ y: array-like, shape = [n_samples]
 
     </div>
     <a class="headerlink" href="#GLMClassifier.predict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GLMClassifier.predict-262"><a href="#GLMClassifier.predict-262"><span class="linenos">262</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMClassifier.predict-263"><a href="#GLMClassifier.predict-263"><span class="linenos">263</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
-</span><span id="GLMClassifier.predict-264"><a href="#GLMClassifier.predict-264"><span class="linenos">264</span></a>
-</span><span id="GLMClassifier.predict-265"><a href="#GLMClassifier.predict-265"><span class="linenos">265</span></a><span class="sd">        Args:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GLMClassifier.predict-264"><a href="#GLMClassifier.predict-264"><span class="linenos">264</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GLMClassifier.predict-265"><a href="#GLMClassifier.predict-265"><span class="linenos">265</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
 </span><span id="GLMClassifier.predict-266"><a href="#GLMClassifier.predict-266"><span class="linenos">266</span></a>
-</span><span id="GLMClassifier.predict-267"><a href="#GLMClassifier.predict-267"><span class="linenos">267</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMClassifier.predict-268"><a href="#GLMClassifier.predict-268"><span class="linenos">268</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GLMClassifier.predict-269"><a href="#GLMClassifier.predict-269"><span class="linenos">269</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GLMClassifier.predict-270"><a href="#GLMClassifier.predict-270"><span class="linenos">270</span></a>
-</span><span id="GLMClassifier.predict-271"><a href="#GLMClassifier.predict-271"><span class="linenos">271</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GLMClassifier.predict-272"><a href="#GLMClassifier.predict-272"><span class="linenos">272</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="GLMClassifier.predict-273"><a href="#GLMClassifier.predict-273"><span class="linenos">273</span></a>
-</span><span id="GLMClassifier.predict-274"><a href="#GLMClassifier.predict-274"><span class="linenos">274</span></a><span class="sd">        Returns:</span>
+</span><span id="GLMClassifier.predict-267"><a href="#GLMClassifier.predict-267"><span class="linenos">267</span></a><span class="sd">        Args:</span>
+</span><span id="GLMClassifier.predict-268"><a href="#GLMClassifier.predict-268"><span class="linenos">268</span></a>
+</span><span id="GLMClassifier.predict-269"><a href="#GLMClassifier.predict-269"><span class="linenos">269</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GLMClassifier.predict-270"><a href="#GLMClassifier.predict-270"><span class="linenos">270</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GLMClassifier.predict-271"><a href="#GLMClassifier.predict-271"><span class="linenos">271</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GLMClassifier.predict-272"><a href="#GLMClassifier.predict-272"><span class="linenos">272</span></a>
+</span><span id="GLMClassifier.predict-273"><a href="#GLMClassifier.predict-273"><span class="linenos">273</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GLMClassifier.predict-274"><a href="#GLMClassifier.predict-274"><span class="linenos">274</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="GLMClassifier.predict-275"><a href="#GLMClassifier.predict-275"><span class="linenos">275</span></a>
-</span><span id="GLMClassifier.predict-276"><a href="#GLMClassifier.predict-276"><span class="linenos">276</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="GLMClassifier.predict-276"><a href="#GLMClassifier.predict-276"><span class="linenos">276</span></a><span class="sd">        Returns:</span>
 </span><span id="GLMClassifier.predict-277"><a href="#GLMClassifier.predict-277"><span class="linenos">277</span></a>
-</span><span id="GLMClassifier.predict-278"><a href="#GLMClassifier.predict-278"><span class="linenos">278</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GLMClassifier.predict-278"><a href="#GLMClassifier.predict-278"><span class="linenos">278</span></a><span class="sd">            model predictions: {array-like}</span>
 </span><span id="GLMClassifier.predict-279"><a href="#GLMClassifier.predict-279"><span class="linenos">279</span></a>
-</span><span id="GLMClassifier.predict-280"><a href="#GLMClassifier.predict-280"><span class="linenos">280</span></a>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="GLMClassifier.predict-280"><a href="#GLMClassifier.predict-280"><span class="linenos">280</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GLMClassifier.predict-281"><a href="#GLMClassifier.predict-281"><span class="linenos">281</span></a>
+</span><span id="GLMClassifier.predict-282"><a href="#GLMClassifier.predict-282"><span class="linenos">282</span></a>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -754,57 +685,57 @@ y: array-like, shape = [n_samples]
 
     </div>
     <a class="headerlink" href="#GLMClassifier.predict_proba"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GLMClassifier.predict_proba-282"><a href="#GLMClassifier.predict_proba-282"><span class="linenos">282</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMClassifier.predict_proba-283"><a href="#GLMClassifier.predict_proba-283"><span class="linenos">283</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
-</span><span id="GLMClassifier.predict_proba-284"><a href="#GLMClassifier.predict_proba-284"><span class="linenos">284</span></a>
-</span><span id="GLMClassifier.predict_proba-285"><a href="#GLMClassifier.predict_proba-285"><span class="linenos">285</span></a><span class="sd">        Args:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GLMClassifier.predict_proba-284"><a href="#GLMClassifier.predict_proba-284"><span class="linenos">284</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GLMClassifier.predict_proba-285"><a href="#GLMClassifier.predict_proba-285"><span class="linenos">285</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
 </span><span id="GLMClassifier.predict_proba-286"><a href="#GLMClassifier.predict_proba-286"><span class="linenos">286</span></a>
-</span><span id="GLMClassifier.predict_proba-287"><a href="#GLMClassifier.predict_proba-287"><span class="linenos">287</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMClassifier.predict_proba-288"><a href="#GLMClassifier.predict_proba-288"><span class="linenos">288</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GLMClassifier.predict_proba-289"><a href="#GLMClassifier.predict_proba-289"><span class="linenos">289</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GLMClassifier.predict_proba-290"><a href="#GLMClassifier.predict_proba-290"><span class="linenos">290</span></a>
-</span><span id="GLMClassifier.predict_proba-291"><a href="#GLMClassifier.predict_proba-291"><span class="linenos">291</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GLMClassifier.predict_proba-292"><a href="#GLMClassifier.predict_proba-292"><span class="linenos">292</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="GLMClassifier.predict_proba-293"><a href="#GLMClassifier.predict_proba-293"><span class="linenos">293</span></a>
-</span><span id="GLMClassifier.predict_proba-294"><a href="#GLMClassifier.predict_proba-294"><span class="linenos">294</span></a><span class="sd">        Returns:</span>
+</span><span id="GLMClassifier.predict_proba-287"><a href="#GLMClassifier.predict_proba-287"><span class="linenos">287</span></a><span class="sd">        Args:</span>
+</span><span id="GLMClassifier.predict_proba-288"><a href="#GLMClassifier.predict_proba-288"><span class="linenos">288</span></a>
+</span><span id="GLMClassifier.predict_proba-289"><a href="#GLMClassifier.predict_proba-289"><span class="linenos">289</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GLMClassifier.predict_proba-290"><a href="#GLMClassifier.predict_proba-290"><span class="linenos">290</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GLMClassifier.predict_proba-291"><a href="#GLMClassifier.predict_proba-291"><span class="linenos">291</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GLMClassifier.predict_proba-292"><a href="#GLMClassifier.predict_proba-292"><span class="linenos">292</span></a>
+</span><span id="GLMClassifier.predict_proba-293"><a href="#GLMClassifier.predict_proba-293"><span class="linenos">293</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GLMClassifier.predict_proba-294"><a href="#GLMClassifier.predict_proba-294"><span class="linenos">294</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="GLMClassifier.predict_proba-295"><a href="#GLMClassifier.predict_proba-295"><span class="linenos">295</span></a>
-</span><span id="GLMClassifier.predict_proba-296"><a href="#GLMClassifier.predict_proba-296"><span class="linenos">296</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
+</span><span id="GLMClassifier.predict_proba-296"><a href="#GLMClassifier.predict_proba-296"><span class="linenos">296</span></a><span class="sd">        Returns:</span>
 </span><span id="GLMClassifier.predict_proba-297"><a href="#GLMClassifier.predict_proba-297"><span class="linenos">297</span></a>
-</span><span id="GLMClassifier.predict_proba-298"><a href="#GLMClassifier.predict_proba-298"><span class="linenos">298</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GLMClassifier.predict_proba-299"><a href="#GLMClassifier.predict_proba-299"><span class="linenos">299</span></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="GLMClassifier.predict_proba-300"><a href="#GLMClassifier.predict_proba-300"><span class="linenos">300</span></a>            <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMClassifier.predict_proba-301"><a href="#GLMClassifier.predict_proba-301"><span class="linenos">301</span></a>            <span class="n">new_X</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">rbind</span><span class="p">(</span>
-</span><span id="GLMClassifier.predict_proba-302"><a href="#GLMClassifier.predict_proba-302"><span class="linenos">302</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
-</span><span id="GLMClassifier.predict_proba-303"><a href="#GLMClassifier.predict_proba-303"><span class="linenos">303</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
-</span><span id="GLMClassifier.predict_proba-304"><a href="#GLMClassifier.predict_proba-304"><span class="linenos">304</span></a>            <span class="p">)</span>
-</span><span id="GLMClassifier.predict_proba-305"><a href="#GLMClassifier.predict_proba-305"><span class="linenos">305</span></a>
-</span><span id="GLMClassifier.predict_proba-306"><a href="#GLMClassifier.predict_proba-306"><span class="linenos">306</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">new_X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier.predict_proba-298"><a href="#GLMClassifier.predict_proba-298"><span class="linenos">298</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
+</span><span id="GLMClassifier.predict_proba-299"><a href="#GLMClassifier.predict_proba-299"><span class="linenos">299</span></a>
+</span><span id="GLMClassifier.predict_proba-300"><a href="#GLMClassifier.predict_proba-300"><span class="linenos">300</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GLMClassifier.predict_proba-301"><a href="#GLMClassifier.predict_proba-301"><span class="linenos">301</span></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="GLMClassifier.predict_proba-302"><a href="#GLMClassifier.predict_proba-302"><span class="linenos">302</span></a>            <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="GLMClassifier.predict_proba-303"><a href="#GLMClassifier.predict_proba-303"><span class="linenos">303</span></a>            <span class="n">new_X</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">rbind</span><span class="p">(</span>
+</span><span id="GLMClassifier.predict_proba-304"><a href="#GLMClassifier.predict_proba-304"><span class="linenos">304</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
+</span><span id="GLMClassifier.predict_proba-305"><a href="#GLMClassifier.predict_proba-305"><span class="linenos">305</span></a>                <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">),</span>
+</span><span id="GLMClassifier.predict_proba-306"><a href="#GLMClassifier.predict_proba-306"><span class="linenos">306</span></a>            <span class="p">)</span>
 </span><span id="GLMClassifier.predict_proba-307"><a href="#GLMClassifier.predict_proba-307"><span class="linenos">307</span></a>
-</span><span id="GLMClassifier.predict_proba-308"><a href="#GLMClassifier.predict_proba-308"><span class="linenos">308</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="GLMClassifier.predict_proba-309"><a href="#GLMClassifier.predict_proba-309"><span class="linenos">309</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="GLMClassifier.predict_proba-310"><a href="#GLMClassifier.predict_proba-310"><span class="linenos">310</span></a>
-</span><span id="GLMClassifier.predict_proba-311"><a href="#GLMClassifier.predict_proba-311"><span class="linenos">311</span></a>        <span class="n">ZB</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">safe_sparse_dot</span><span class="p">(</span>
-</span><span id="GLMClassifier.predict_proba-312"><a href="#GLMClassifier.predict_proba-312"><span class="linenos">312</span></a>            <span class="n">Z</span><span class="p">,</span>
-</span><span id="GLMClassifier.predict_proba-313"><a href="#GLMClassifier.predict_proba-313"><span class="linenos">313</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
-</span><span id="GLMClassifier.predict_proba-314"><a href="#GLMClassifier.predict_proba-314"><span class="linenos">314</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span>
-</span><span id="GLMClassifier.predict_proba-315"><a href="#GLMClassifier.predict_proba-315"><span class="linenos">315</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden_features</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="GLMClassifier.predict_proba-316"><a href="#GLMClassifier.predict_proba-316"><span class="linenos">316</span></a>            <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-</span><span id="GLMClassifier.predict_proba-317"><a href="#GLMClassifier.predict_proba-317"><span class="linenos">317</span></a>        <span class="p">)</span>
-</span><span id="GLMClassifier.predict_proba-318"><a href="#GLMClassifier.predict_proba-318"><span class="linenos">318</span></a>
-</span><span id="GLMClassifier.predict_proba-319"><a href="#GLMClassifier.predict_proba-319"><span class="linenos">319</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;logit&quot;</span><span class="p">:</span>
-</span><span id="GLMClassifier.predict_proba-320"><a href="#GLMClassifier.predict_proba-320"><span class="linenos">320</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
-</span><span id="GLMClassifier.predict_proba-321"><a href="#GLMClassifier.predict_proba-321"><span class="linenos">321</span></a>
-</span><span id="GLMClassifier.predict_proba-322"><a href="#GLMClassifier.predict_proba-322"><span class="linenos">322</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier.predict_proba-308"><a href="#GLMClassifier.predict_proba-308"><span class="linenos">308</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">new_X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier.predict_proba-309"><a href="#GLMClassifier.predict_proba-309"><span class="linenos">309</span></a>
+</span><span id="GLMClassifier.predict_proba-310"><a href="#GLMClassifier.predict_proba-310"><span class="linenos">310</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="GLMClassifier.predict_proba-311"><a href="#GLMClassifier.predict_proba-311"><span class="linenos">311</span></a>            <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GLMClassifier.predict_proba-312"><a href="#GLMClassifier.predict_proba-312"><span class="linenos">312</span></a>
+</span><span id="GLMClassifier.predict_proba-313"><a href="#GLMClassifier.predict_proba-313"><span class="linenos">313</span></a>        <span class="n">ZB</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">safe_sparse_dot</span><span class="p">(</span>
+</span><span id="GLMClassifier.predict_proba-314"><a href="#GLMClassifier.predict_proba-314"><span class="linenos">314</span></a>            <span class="n">Z</span><span class="p">,</span>
+</span><span id="GLMClassifier.predict_proba-315"><a href="#GLMClassifier.predict_proba-315"><span class="linenos">315</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+</span><span id="GLMClassifier.predict_proba-316"><a href="#GLMClassifier.predict_proba-316"><span class="linenos">316</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">,</span>
+</span><span id="GLMClassifier.predict_proba-317"><a href="#GLMClassifier.predict_proba-317"><span class="linenos">317</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_hidden_features</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">,</span>
+</span><span id="GLMClassifier.predict_proba-318"><a href="#GLMClassifier.predict_proba-318"><span class="linenos">318</span></a>            <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+</span><span id="GLMClassifier.predict_proba-319"><a href="#GLMClassifier.predict_proba-319"><span class="linenos">319</span></a>        <span class="p">)</span>
+</span><span id="GLMClassifier.predict_proba-320"><a href="#GLMClassifier.predict_proba-320"><span class="linenos">320</span></a>
+</span><span id="GLMClassifier.predict_proba-321"><a href="#GLMClassifier.predict_proba-321"><span class="linenos">321</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;logit&quot;</span><span class="p">:</span>
+</span><span id="GLMClassifier.predict_proba-322"><a href="#GLMClassifier.predict_proba-322"><span class="linenos">322</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
 </span><span id="GLMClassifier.predict_proba-323"><a href="#GLMClassifier.predict_proba-323"><span class="linenos">323</span></a>
-</span><span id="GLMClassifier.predict_proba-324"><a href="#GLMClassifier.predict_proba-324"><span class="linenos">324</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;expit&quot;</span><span class="p">:</span>
-</span><span id="GLMClassifier.predict_proba-325"><a href="#GLMClassifier.predict_proba-325"><span class="linenos">325</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">expit</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
-</span><span id="GLMClassifier.predict_proba-326"><a href="#GLMClassifier.predict_proba-326"><span class="linenos">326</span></a>
-</span><span id="GLMClassifier.predict_proba-327"><a href="#GLMClassifier.predict_proba-327"><span class="linenos">327</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier.predict_proba-324"><a href="#GLMClassifier.predict_proba-324"><span class="linenos">324</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier.predict_proba-325"><a href="#GLMClassifier.predict_proba-325"><span class="linenos">325</span></a>
+</span><span id="GLMClassifier.predict_proba-326"><a href="#GLMClassifier.predict_proba-326"><span class="linenos">326</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;expit&quot;</span><span class="p">:</span>
+</span><span id="GLMClassifier.predict_proba-327"><a href="#GLMClassifier.predict_proba-327"><span class="linenos">327</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="n">expit</span><span class="p">(</span><span class="n">ZB</span><span class="p">)</span>
 </span><span id="GLMClassifier.predict_proba-328"><a href="#GLMClassifier.predict_proba-328"><span class="linenos">328</span></a>
-</span><span id="GLMClassifier.predict_proba-329"><a href="#GLMClassifier.predict_proba-329"><span class="linenos">329</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;erf&quot;</span><span class="p">:</span>
-</span><span id="GLMClassifier.predict_proba-330"><a href="#GLMClassifier.predict_proba-330"><span class="linenos">330</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="n">ZB</span><span class="p">))</span>
-</span><span id="GLMClassifier.predict_proba-331"><a href="#GLMClassifier.predict_proba-331"><span class="linenos">331</span></a>
-</span><span id="GLMClassifier.predict_proba-332"><a href="#GLMClassifier.predict_proba-332"><span class="linenos">332</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier.predict_proba-329"><a href="#GLMClassifier.predict_proba-329"><span class="linenos">329</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="GLMClassifier.predict_proba-330"><a href="#GLMClassifier.predict_proba-330"><span class="linenos">330</span></a>
+</span><span id="GLMClassifier.predict_proba-331"><a href="#GLMClassifier.predict_proba-331"><span class="linenos">331</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">family</span> <span class="o">==</span> <span class="s2">&quot;erf&quot;</span><span class="p">:</span>
+</span><span id="GLMClassifier.predict_proba-332"><a href="#GLMClassifier.predict_proba-332"><span class="linenos">332</span></a>            <span class="n">exp_ZB</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="n">ZB</span><span class="p">))</span>
+</span><span id="GLMClassifier.predict_proba-333"><a href="#GLMClassifier.predict_proba-333"><span class="linenos">333</span></a>
+</span><span id="GLMClassifier.predict_proba-334"><a href="#GLMClassifier.predict_proba-334"><span class="linenos">334</span></a>            <span class="k">return</span> <span class="n">exp_ZB</span> <span class="o">/</span> <span class="n">exp_ZB</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -823,113 +754,6 @@ y: array-like, shape = [n_samples]
 <p>Returns:</p>
 
 <pre><code>probability estimates for test data: {array-like}
-</code></pre>
-</div>
-
-
-                                </div>
-                                <div id="GLMClassifier.score" class="classattr">
-                                            <input id="GLMClassifier.score-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">score</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">y</span>, </span><span class="param"><span class="n">scoring</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="GLMClassifier.score-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GLMClassifier.score"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GLMClassifier.score-334"><a href="#GLMClassifier.score-334"><span class="linenos">334</span></a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMClassifier.score-335"><a href="#GLMClassifier.score-335"><span class="linenos">335</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
-</span><span id="GLMClassifier.score-336"><a href="#GLMClassifier.score-336"><span class="linenos">336</span></a>
-</span><span id="GLMClassifier.score-337"><a href="#GLMClassifier.score-337"><span class="linenos">337</span></a><span class="sd">        Args:</span>
-</span><span id="GLMClassifier.score-338"><a href="#GLMClassifier.score-338"><span class="linenos">338</span></a>
-</span><span id="GLMClassifier.score-339"><a href="#GLMClassifier.score-339"><span class="linenos">339</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMClassifier.score-340"><a href="#GLMClassifier.score-340"><span class="linenos">340</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
-</span><span id="GLMClassifier.score-341"><a href="#GLMClassifier.score-341"><span class="linenos">341</span></a><span class="sd">                of samples and n_features is the number of features</span>
-</span><span id="GLMClassifier.score-342"><a href="#GLMClassifier.score-342"><span class="linenos">342</span></a>
-</span><span id="GLMClassifier.score-343"><a href="#GLMClassifier.score-343"><span class="linenos">343</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GLMClassifier.score-344"><a href="#GLMClassifier.score-344"><span class="linenos">344</span></a><span class="sd">                Target values</span>
-</span><span id="GLMClassifier.score-345"><a href="#GLMClassifier.score-345"><span class="linenos">345</span></a>
-</span><span id="GLMClassifier.score-346"><a href="#GLMClassifier.score-346"><span class="linenos">346</span></a><span class="sd">            scoring: str</span>
-</span><span id="GLMClassifier.score-347"><a href="#GLMClassifier.score-347"><span class="linenos">347</span></a><span class="sd">                must be in (&#39;accuracy&#39;, &#39;average_precision&#39;, \</span>
-</span><span id="GLMClassifier.score-348"><a href="#GLMClassifier.score-348"><span class="linenos">348</span></a><span class="sd">                            &#39;brier_score_loss&#39;, &#39;f1&#39;, &#39;f1_micro&#39;, \</span>
-</span><span id="GLMClassifier.score-349"><a href="#GLMClassifier.score-349"><span class="linenos">349</span></a><span class="sd">                            &#39;f1_macro&#39;, &#39;f1_weighted&#39;,  &#39;f1_samples&#39;, \</span>
-</span><span id="GLMClassifier.score-350"><a href="#GLMClassifier.score-350"><span class="linenos">350</span></a><span class="sd">                            &#39;neg_log_loss&#39;, &#39;precision&#39;, &#39;recall&#39;, \</span>
-</span><span id="GLMClassifier.score-351"><a href="#GLMClassifier.score-351"><span class="linenos">351</span></a><span class="sd">                            &#39;roc_auc&#39;)</span>
-</span><span id="GLMClassifier.score-352"><a href="#GLMClassifier.score-352"><span class="linenos">352</span></a>
-</span><span id="GLMClassifier.score-353"><a href="#GLMClassifier.score-353"><span class="linenos">353</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="GLMClassifier.score-354"><a href="#GLMClassifier.score-354"><span class="linenos">354</span></a>
-</span><span id="GLMClassifier.score-355"><a href="#GLMClassifier.score-355"><span class="linenos">355</span></a><span class="sd">        Returns: </span>
-</span><span id="GLMClassifier.score-356"><a href="#GLMClassifier.score-356"><span class="linenos">356</span></a>
-</span><span id="GLMClassifier.score-357"><a href="#GLMClassifier.score-357"><span class="linenos">357</span></a><span class="sd">            model scores: {array-like}</span>
-</span><span id="GLMClassifier.score-358"><a href="#GLMClassifier.score-358"><span class="linenos">358</span></a>
-</span><span id="GLMClassifier.score-359"><a href="#GLMClassifier.score-359"><span class="linenos">359</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GLMClassifier.score-360"><a href="#GLMClassifier.score-360"><span class="linenos">360</span></a>
-</span><span id="GLMClassifier.score-361"><a href="#GLMClassifier.score-361"><span class="linenos">361</span></a>        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="GLMClassifier.score-362"><a href="#GLMClassifier.score-362"><span class="linenos">362</span></a>
-</span><span id="GLMClassifier.score-363"><a href="#GLMClassifier.score-363"><span class="linenos">363</span></a>        <span class="k">if</span> <span class="n">scoring</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="GLMClassifier.score-364"><a href="#GLMClassifier.score-364"><span class="linenos">364</span></a>            <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span>
-</span><span id="GLMClassifier.score-365"><a href="#GLMClassifier.score-365"><span class="linenos">365</span></a>
-</span><span id="GLMClassifier.score-366"><a href="#GLMClassifier.score-366"><span class="linenos">366</span></a>        <span class="c1"># check inputs</span>
-</span><span id="GLMClassifier.score-367"><a href="#GLMClassifier.score-367"><span class="linenos">367</span></a>        <span class="k">assert</span> <span class="n">scoring</span> <span class="ow">in</span> <span class="p">(</span>
-</span><span id="GLMClassifier.score-368"><a href="#GLMClassifier.score-368"><span class="linenos">368</span></a>            <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-369"><a href="#GLMClassifier.score-369"><span class="linenos">369</span></a>            <span class="s2">&quot;average_precision&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-370"><a href="#GLMClassifier.score-370"><span class="linenos">370</span></a>            <span class="s2">&quot;brier_score_loss&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-371"><a href="#GLMClassifier.score-371"><span class="linenos">371</span></a>            <span class="s2">&quot;f1&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-372"><a href="#GLMClassifier.score-372"><span class="linenos">372</span></a>            <span class="s2">&quot;f1_micro&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-373"><a href="#GLMClassifier.score-373"><span class="linenos">373</span></a>            <span class="s2">&quot;f1_macro&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-374"><a href="#GLMClassifier.score-374"><span class="linenos">374</span></a>            <span class="s2">&quot;f1_weighted&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-375"><a href="#GLMClassifier.score-375"><span class="linenos">375</span></a>            <span class="s2">&quot;f1_samples&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-376"><a href="#GLMClassifier.score-376"><span class="linenos">376</span></a>            <span class="s2">&quot;neg_log_loss&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-377"><a href="#GLMClassifier.score-377"><span class="linenos">377</span></a>            <span class="s2">&quot;precision&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-378"><a href="#GLMClassifier.score-378"><span class="linenos">378</span></a>            <span class="s2">&quot;recall&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-379"><a href="#GLMClassifier.score-379"><span class="linenos">379</span></a>            <span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-380"><a href="#GLMClassifier.score-380"><span class="linenos">380</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;scoring&#39; should be in (&#39;accuracy&#39;, &#39;average_precision&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier.score-381"><a href="#GLMClassifier.score-381"><span class="linenos">381</span></a><span class="s2">                           &#39;brier_score_loss&#39;, &#39;f1&#39;, &#39;f1_micro&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier.score-382"><a href="#GLMClassifier.score-382"><span class="linenos">382</span></a><span class="s2">                           &#39;f1_macro&#39;, &#39;f1_weighted&#39;,  &#39;f1_samples&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier.score-383"><a href="#GLMClassifier.score-383"><span class="linenos">383</span></a><span class="s2">                           &#39;neg_log_loss&#39;, &#39;precision&#39;, &#39;recall&#39;, </span><span class="se">\</span>
-</span><span id="GLMClassifier.score-384"><a href="#GLMClassifier.score-384"><span class="linenos">384</span></a><span class="s2">                           &#39;roc_auc&#39;)&quot;</span>
-</span><span id="GLMClassifier.score-385"><a href="#GLMClassifier.score-385"><span class="linenos">385</span></a>
-</span><span id="GLMClassifier.score-386"><a href="#GLMClassifier.score-386"><span class="linenos">386</span></a>        <span class="n">scoring_options</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GLMClassifier.score-387"><a href="#GLMClassifier.score-387"><span class="linenos">387</span></a>            <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-388"><a href="#GLMClassifier.score-388"><span class="linenos">388</span></a>            <span class="s2">&quot;average_precision&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">average_precision_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-389"><a href="#GLMClassifier.score-389"><span class="linenos">389</span></a>            <span class="s2">&quot;brier_score_loss&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">brier_score_loss</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-390"><a href="#GLMClassifier.score-390"><span class="linenos">390</span></a>            <span class="s2">&quot;f1&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-391"><a href="#GLMClassifier.score-391"><span class="linenos">391</span></a>            <span class="s2">&quot;f1_micro&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-392"><a href="#GLMClassifier.score-392"><span class="linenos">392</span></a>            <span class="s2">&quot;f1_macro&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-393"><a href="#GLMClassifier.score-393"><span class="linenos">393</span></a>            <span class="s2">&quot;f1_weighted&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-394"><a href="#GLMClassifier.score-394"><span class="linenos">394</span></a>            <span class="s2">&quot;f1_samples&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">f1_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-395"><a href="#GLMClassifier.score-395"><span class="linenos">395</span></a>            <span class="s2">&quot;neg_log_loss&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">log_loss</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-396"><a href="#GLMClassifier.score-396"><span class="linenos">396</span></a>            <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">precision_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-397"><a href="#GLMClassifier.score-397"><span class="linenos">397</span></a>            <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">recall_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-398"><a href="#GLMClassifier.score-398"><span class="linenos">398</span></a>            <span class="s2">&quot;roc_auc&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">,</span>
-</span><span id="GLMClassifier.score-399"><a href="#GLMClassifier.score-399"><span class="linenos">399</span></a>        <span class="p">}</span>
-</span><span id="GLMClassifier.score-400"><a href="#GLMClassifier.score-400"><span class="linenos">400</span></a>
-</span><span id="GLMClassifier.score-401"><a href="#GLMClassifier.score-401"><span class="linenos">401</span></a>        <span class="k">return</span> <span class="n">scoring_options</span><span class="p">[</span><span class="n">scoring</span><span class="p">](</span><span class="n">y</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Score the model on test set features X and response y. </p>
-
-<p>Args:</p>
-
-<pre><code>X: {array-like}, shape = [n_samples, n_features]
-    Training vectors, where n_samples is the number 
-    of samples and n_features is the number of features
-
-y: array-like, shape = [n_samples]
-    Target values
-
-scoring: str
-    must be in ('accuracy', 'average_precision',                             'brier_score_loss', 'f1', 'f1_micro',                             'f1_macro', 'f1_weighted',  'f1_samples',                             'neg_log_loss', 'precision', 'recall',                             'roc_auc')
-
-**kwargs: additional parameters to be passed to scoring functions
-</code></pre>
-
-<p>Returns: </p>
-
-<pre><code>model scores: {array-like}
 </code></pre>
 </div>
 
@@ -1198,62 +1022,6 @@ scoring: str
 </span><span id="GLMRegressor-261"><a href="#GLMRegressor-261"><span class="linenos">261</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_mean_</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
 </span><span id="GLMRegressor-262"><a href="#GLMRegressor-262"><span class="linenos">262</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">cook_test_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_</span>
 </span><span id="GLMRegressor-263"><a href="#GLMRegressor-263"><span class="linenos">263</span></a>        <span class="p">)</span>
-</span><span id="GLMRegressor-264"><a href="#GLMRegressor-264"><span class="linenos">264</span></a>
-</span><span id="GLMRegressor-265"><a href="#GLMRegressor-265"><span class="linenos">265</span></a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMRegressor-266"><a href="#GLMRegressor-266"><span class="linenos">266</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
-</span><span id="GLMRegressor-267"><a href="#GLMRegressor-267"><span class="linenos">267</span></a>
-</span><span id="GLMRegressor-268"><a href="#GLMRegressor-268"><span class="linenos">268</span></a><span class="sd">        Args:</span>
-</span><span id="GLMRegressor-269"><a href="#GLMRegressor-269"><span class="linenos">269</span></a>
-</span><span id="GLMRegressor-270"><a href="#GLMRegressor-270"><span class="linenos">270</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMRegressor-271"><a href="#GLMRegressor-271"><span class="linenos">271</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
-</span><span id="GLMRegressor-272"><a href="#GLMRegressor-272"><span class="linenos">272</span></a><span class="sd">                of samples and n_features is the number of features</span>
-</span><span id="GLMRegressor-273"><a href="#GLMRegressor-273"><span class="linenos">273</span></a>
-</span><span id="GLMRegressor-274"><a href="#GLMRegressor-274"><span class="linenos">274</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GLMRegressor-275"><a href="#GLMRegressor-275"><span class="linenos">275</span></a><span class="sd">                Target values</span>
-</span><span id="GLMRegressor-276"><a href="#GLMRegressor-276"><span class="linenos">276</span></a>
-</span><span id="GLMRegressor-277"><a href="#GLMRegressor-277"><span class="linenos">277</span></a><span class="sd">            scoring: str</span>
-</span><span id="GLMRegressor-278"><a href="#GLMRegressor-278"><span class="linenos">278</span></a><span class="sd">                must be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, \</span>
-</span><span id="GLMRegressor-279"><a href="#GLMRegressor-279"><span class="linenos">279</span></a><span class="sd">                            &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, \</span>
-</span><span id="GLMRegressor-280"><a href="#GLMRegressor-280"><span class="linenos">280</span></a><span class="sd">                            &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)</span>
-</span><span id="GLMRegressor-281"><a href="#GLMRegressor-281"><span class="linenos">281</span></a>
-</span><span id="GLMRegressor-282"><a href="#GLMRegressor-282"><span class="linenos">282</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="GLMRegressor-283"><a href="#GLMRegressor-283"><span class="linenos">283</span></a>
-</span><span id="GLMRegressor-284"><a href="#GLMRegressor-284"><span class="linenos">284</span></a><span class="sd">        Returns: </span>
-</span><span id="GLMRegressor-285"><a href="#GLMRegressor-285"><span class="linenos">285</span></a>
-</span><span id="GLMRegressor-286"><a href="#GLMRegressor-286"><span class="linenos">286</span></a><span class="sd">            model scores: {array-like}</span>
-</span><span id="GLMRegressor-287"><a href="#GLMRegressor-287"><span class="linenos">287</span></a>
-</span><span id="GLMRegressor-288"><a href="#GLMRegressor-288"><span class="linenos">288</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GLMRegressor-289"><a href="#GLMRegressor-289"><span class="linenos">289</span></a>
-</span><span id="GLMRegressor-290"><a href="#GLMRegressor-290"><span class="linenos">290</span></a>        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="GLMRegressor-291"><a href="#GLMRegressor-291"><span class="linenos">291</span></a>
-</span><span id="GLMRegressor-292"><a href="#GLMRegressor-292"><span class="linenos">292</span></a>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">:</span>  <span class="c1"># if there are std. devs in the predictions</span>
-</span><span id="GLMRegressor-293"><a href="#GLMRegressor-293"><span class="linenos">293</span></a>            <span class="n">preds</span> <span class="o">=</span> <span class="n">preds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMRegressor-294"><a href="#GLMRegressor-294"><span class="linenos">294</span></a>
-</span><span id="GLMRegressor-295"><a href="#GLMRegressor-295"><span class="linenos">295</span></a>        <span class="k">if</span> <span class="n">scoring</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="GLMRegressor-296"><a href="#GLMRegressor-296"><span class="linenos">296</span></a>            <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;neg_mean_squared_error&quot;</span>
-</span><span id="GLMRegressor-297"><a href="#GLMRegressor-297"><span class="linenos">297</span></a>
-</span><span id="GLMRegressor-298"><a href="#GLMRegressor-298"><span class="linenos">298</span></a>        <span class="c1"># check inputs</span>
-</span><span id="GLMRegressor-299"><a href="#GLMRegressor-299"><span class="linenos">299</span></a>        <span class="k">assert</span> <span class="n">scoring</span> <span class="ow">in</span> <span class="p">(</span>
-</span><span id="GLMRegressor-300"><a href="#GLMRegressor-300"><span class="linenos">300</span></a>            <span class="s2">&quot;explained_variance&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor-301"><a href="#GLMRegressor-301"><span class="linenos">301</span></a>            <span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor-302"><a href="#GLMRegressor-302"><span class="linenos">302</span></a>            <span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor-303"><a href="#GLMRegressor-303"><span class="linenos">303</span></a>            <span class="s2">&quot;neg_mean_squared_log_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor-304"><a href="#GLMRegressor-304"><span class="linenos">304</span></a>            <span class="s2">&quot;neg_median_absolute_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor-305"><a href="#GLMRegressor-305"><span class="linenos">305</span></a>            <span class="s2">&quot;r2&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor-306"><a href="#GLMRegressor-306"><span class="linenos">306</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;scoring&#39; should be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, </span><span class="se">\</span>
-</span><span id="GLMRegressor-307"><a href="#GLMRegressor-307"><span class="linenos">307</span></a><span class="s2">                           &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, </span><span class="se">\</span>
-</span><span id="GLMRegressor-308"><a href="#GLMRegressor-308"><span class="linenos">308</span></a><span class="s2">                           &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)&quot;</span>
-</span><span id="GLMRegressor-309"><a href="#GLMRegressor-309"><span class="linenos">309</span></a>
-</span><span id="GLMRegressor-310"><a href="#GLMRegressor-310"><span class="linenos">310</span></a>        <span class="n">scoring_options</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GLMRegressor-311"><a href="#GLMRegressor-311"><span class="linenos">311</span></a>            <span class="s2">&quot;explained_variance&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">explained_variance_score</span><span class="p">,</span>
-</span><span id="GLMRegressor-312"><a href="#GLMRegressor-312"><span class="linenos">312</span></a>            <span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">,</span>
-</span><span id="GLMRegressor-313"><a href="#GLMRegressor-313"><span class="linenos">313</span></a>            <span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">,</span>
-</span><span id="GLMRegressor-314"><a href="#GLMRegressor-314"><span class="linenos">314</span></a>            <span class="s2">&quot;neg_mean_squared_log_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">mean_squared_log_error</span><span class="p">,</span>
-</span><span id="GLMRegressor-315"><a href="#GLMRegressor-315"><span class="linenos">315</span></a>            <span class="s2">&quot;neg_median_absolute_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">median_absolute_error</span><span class="p">,</span>
-</span><span id="GLMRegressor-316"><a href="#GLMRegressor-316"><span class="linenos">316</span></a>            <span class="s2">&quot;r2&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">r2_score</span><span class="p">,</span>
-</span><span id="GLMRegressor-317"><a href="#GLMRegressor-317"><span class="linenos">317</span></a>        <span class="p">}</span>
-</span><span id="GLMRegressor-318"><a href="#GLMRegressor-318"><span class="linenos">318</span></a>
-</span><span id="GLMRegressor-319"><a href="#GLMRegressor-319"><span class="linenos">319</span></a>        <span class="k">return</span> <span class="n">scoring_options</span><span class="p">[</span><span class="n">scoring</span><span class="p">](</span><span class="n">y</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1489,100 +1257,6 @@ y: array-like, shape = [n_samples]
 <p>Returns:</p>
 
 <pre><code>model predictions: {array-like}
-</code></pre>
-</div>
-
-
-                                </div>
-                                <div id="GLMRegressor.score" class="classattr">
-                                            <input id="GLMRegressor.score-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">score</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">y</span>, </span><span class="param"><span class="n">scoring</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="GLMRegressor.score-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GLMRegressor.score"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GLMRegressor.score-265"><a href="#GLMRegressor.score-265"><span class="linenos">265</span></a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GLMRegressor.score-266"><a href="#GLMRegressor.score-266"><span class="linenos">266</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot; Score the model on test set features X and response y. </span>
-</span><span id="GLMRegressor.score-267"><a href="#GLMRegressor.score-267"><span class="linenos">267</span></a>
-</span><span id="GLMRegressor.score-268"><a href="#GLMRegressor.score-268"><span class="linenos">268</span></a><span class="sd">        Args:</span>
-</span><span id="GLMRegressor.score-269"><a href="#GLMRegressor.score-269"><span class="linenos">269</span></a>
-</span><span id="GLMRegressor.score-270"><a href="#GLMRegressor.score-270"><span class="linenos">270</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GLMRegressor.score-271"><a href="#GLMRegressor.score-271"><span class="linenos">271</span></a><span class="sd">                Training vectors, where n_samples is the number </span>
-</span><span id="GLMRegressor.score-272"><a href="#GLMRegressor.score-272"><span class="linenos">272</span></a><span class="sd">                of samples and n_features is the number of features</span>
-</span><span id="GLMRegressor.score-273"><a href="#GLMRegressor.score-273"><span class="linenos">273</span></a>
-</span><span id="GLMRegressor.score-274"><a href="#GLMRegressor.score-274"><span class="linenos">274</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GLMRegressor.score-275"><a href="#GLMRegressor.score-275"><span class="linenos">275</span></a><span class="sd">                Target values</span>
-</span><span id="GLMRegressor.score-276"><a href="#GLMRegressor.score-276"><span class="linenos">276</span></a>
-</span><span id="GLMRegressor.score-277"><a href="#GLMRegressor.score-277"><span class="linenos">277</span></a><span class="sd">            scoring: str</span>
-</span><span id="GLMRegressor.score-278"><a href="#GLMRegressor.score-278"><span class="linenos">278</span></a><span class="sd">                must be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, \</span>
-</span><span id="GLMRegressor.score-279"><a href="#GLMRegressor.score-279"><span class="linenos">279</span></a><span class="sd">                            &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, \</span>
-</span><span id="GLMRegressor.score-280"><a href="#GLMRegressor.score-280"><span class="linenos">280</span></a><span class="sd">                            &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)</span>
-</span><span id="GLMRegressor.score-281"><a href="#GLMRegressor.score-281"><span class="linenos">281</span></a>
-</span><span id="GLMRegressor.score-282"><a href="#GLMRegressor.score-282"><span class="linenos">282</span></a><span class="sd">            **kwargs: additional parameters to be passed to scoring functions</span>
-</span><span id="GLMRegressor.score-283"><a href="#GLMRegressor.score-283"><span class="linenos">283</span></a>
-</span><span id="GLMRegressor.score-284"><a href="#GLMRegressor.score-284"><span class="linenos">284</span></a><span class="sd">        Returns: </span>
-</span><span id="GLMRegressor.score-285"><a href="#GLMRegressor.score-285"><span class="linenos">285</span></a>
-</span><span id="GLMRegressor.score-286"><a href="#GLMRegressor.score-286"><span class="linenos">286</span></a><span class="sd">            model scores: {array-like}</span>
-</span><span id="GLMRegressor.score-287"><a href="#GLMRegressor.score-287"><span class="linenos">287</span></a>
-</span><span id="GLMRegressor.score-288"><a href="#GLMRegressor.score-288"><span class="linenos">288</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GLMRegressor.score-289"><a href="#GLMRegressor.score-289"><span class="linenos">289</span></a>
-</span><span id="GLMRegressor.score-290"><a href="#GLMRegressor.score-290"><span class="linenos">290</span></a>        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="GLMRegressor.score-291"><a href="#GLMRegressor.score-291"><span class="linenos">291</span></a>
-</span><span id="GLMRegressor.score-292"><a href="#GLMRegressor.score-292"><span class="linenos">292</span></a>        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">:</span>  <span class="c1"># if there are std. devs in the predictions</span>
-</span><span id="GLMRegressor.score-293"><a href="#GLMRegressor.score-293"><span class="linenos">293</span></a>            <span class="n">preds</span> <span class="o">=</span> <span class="n">preds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="GLMRegressor.score-294"><a href="#GLMRegressor.score-294"><span class="linenos">294</span></a>
-</span><span id="GLMRegressor.score-295"><a href="#GLMRegressor.score-295"><span class="linenos">295</span></a>        <span class="k">if</span> <span class="n">scoring</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="GLMRegressor.score-296"><a href="#GLMRegressor.score-296"><span class="linenos">296</span></a>            <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;neg_mean_squared_error&quot;</span>
-</span><span id="GLMRegressor.score-297"><a href="#GLMRegressor.score-297"><span class="linenos">297</span></a>
-</span><span id="GLMRegressor.score-298"><a href="#GLMRegressor.score-298"><span class="linenos">298</span></a>        <span class="c1"># check inputs</span>
-</span><span id="GLMRegressor.score-299"><a href="#GLMRegressor.score-299"><span class="linenos">299</span></a>        <span class="k">assert</span> <span class="n">scoring</span> <span class="ow">in</span> <span class="p">(</span>
-</span><span id="GLMRegressor.score-300"><a href="#GLMRegressor.score-300"><span class="linenos">300</span></a>            <span class="s2">&quot;explained_variance&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-301"><a href="#GLMRegressor.score-301"><span class="linenos">301</span></a>            <span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-302"><a href="#GLMRegressor.score-302"><span class="linenos">302</span></a>            <span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-303"><a href="#GLMRegressor.score-303"><span class="linenos">303</span></a>            <span class="s2">&quot;neg_mean_squared_log_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-304"><a href="#GLMRegressor.score-304"><span class="linenos">304</span></a>            <span class="s2">&quot;neg_median_absolute_error&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-305"><a href="#GLMRegressor.score-305"><span class="linenos">305</span></a>            <span class="s2">&quot;r2&quot;</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-306"><a href="#GLMRegressor.score-306"><span class="linenos">306</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;scoring&#39; should be in (&#39;explained_variance&#39;, &#39;neg_mean_absolute_error&#39;, </span><span class="se">\</span>
-</span><span id="GLMRegressor.score-307"><a href="#GLMRegressor.score-307"><span class="linenos">307</span></a><span class="s2">                           &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, </span><span class="se">\</span>
-</span><span id="GLMRegressor.score-308"><a href="#GLMRegressor.score-308"><span class="linenos">308</span></a><span class="s2">                           &#39;neg_median_absolute_error&#39;, &#39;r2&#39;)&quot;</span>
-</span><span id="GLMRegressor.score-309"><a href="#GLMRegressor.score-309"><span class="linenos">309</span></a>
-</span><span id="GLMRegressor.score-310"><a href="#GLMRegressor.score-310"><span class="linenos">310</span></a>        <span class="n">scoring_options</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GLMRegressor.score-311"><a href="#GLMRegressor.score-311"><span class="linenos">311</span></a>            <span class="s2">&quot;explained_variance&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">explained_variance_score</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-312"><a href="#GLMRegressor.score-312"><span class="linenos">312</span></a>            <span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-313"><a href="#GLMRegressor.score-313"><span class="linenos">313</span></a>            <span class="s2">&quot;neg_mean_squared_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-314"><a href="#GLMRegressor.score-314"><span class="linenos">314</span></a>            <span class="s2">&quot;neg_mean_squared_log_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">mean_squared_log_error</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-315"><a href="#GLMRegressor.score-315"><span class="linenos">315</span></a>            <span class="s2">&quot;neg_median_absolute_error&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">median_absolute_error</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-316"><a href="#GLMRegressor.score-316"><span class="linenos">316</span></a>            <span class="s2">&quot;r2&quot;</span><span class="p">:</span> <span class="n">skm2</span><span class="o">.</span><span class="n">r2_score</span><span class="p">,</span>
-</span><span id="GLMRegressor.score-317"><a href="#GLMRegressor.score-317"><span class="linenos">317</span></a>        <span class="p">}</span>
-</span><span id="GLMRegressor.score-318"><a href="#GLMRegressor.score-318"><span class="linenos">318</span></a>
-</span><span id="GLMRegressor.score-319"><a href="#GLMRegressor.score-319"><span class="linenos">319</span></a>        <span class="k">return</span> <span class="n">scoring_options</span><span class="p">[</span><span class="n">scoring</span><span class="p">](</span><span class="n">y</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Score the model on test set features X and response y. </p>
-
-<p>Args:</p>
-
-<pre><code>X: {array-like}, shape = [n_samples, n_features]
-    Training vectors, where n_samples is the number 
-    of samples and n_features is the number of features
-
-y: array-like, shape = [n_samples]
-    Target values
-
-scoring: str
-    must be in ('explained_variance', 'neg_mean_absolute_error',                             'neg_mean_squared_error', 'neg_mean_squared_log_error',                             'neg_median_absolute_error', 'r2')
-
-**kwargs: additional parameters to be passed to scoring functions
-</code></pre>
-
-<p>Returns: </p>
-
-<pre><code>model scores: {array-like}
 </code></pre>
 </div>
 
