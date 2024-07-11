@@ -1020,184 +1020,203 @@ scoring: str
 </span><span id="DeepMTS-62"><a href="#DeepMTS-62"><span class="linenos"> 62</span></a><span class="sd">        lags: int.</span>
 </span><span id="DeepMTS-63"><a href="#DeepMTS-63"><span class="linenos"> 63</span></a><span class="sd">            number of lags used for each time series.</span>
 </span><span id="DeepMTS-64"><a href="#DeepMTS-64"><span class="linenos"> 64</span></a>
-</span><span id="DeepMTS-65"><a href="#DeepMTS-65"><span class="linenos"> 65</span></a><span class="sd">        replications: int.</span>
-</span><span id="DeepMTS-66"><a href="#DeepMTS-66"><span class="linenos"> 66</span></a><span class="sd">            number of replications (if needed, for predictive simulation). Default is &#39;None&#39;.</span>
-</span><span id="DeepMTS-67"><a href="#DeepMTS-67"><span class="linenos"> 67</span></a>
-</span><span id="DeepMTS-68"><a href="#DeepMTS-68"><span class="linenos"> 68</span></a><span class="sd">        kernel: str.</span>
-</span><span id="DeepMTS-69"><a href="#DeepMTS-69"><span class="linenos"> 69</span></a><span class="sd">            the kernel to use for residuals density estimation (used for predictive simulation). Currently, either &#39;gaussian&#39; or &#39;tophat&#39;.</span>
-</span><span id="DeepMTS-70"><a href="#DeepMTS-70"><span class="linenos"> 70</span></a>
-</span><span id="DeepMTS-71"><a href="#DeepMTS-71"><span class="linenos"> 71</span></a><span class="sd">        agg: str.</span>
-</span><span id="DeepMTS-72"><a href="#DeepMTS-72"><span class="linenos"> 72</span></a><span class="sd">            either &quot;mean&quot; or &quot;median&quot; for simulation of bootstrap aggregating</span>
-</span><span id="DeepMTS-73"><a href="#DeepMTS-73"><span class="linenos"> 73</span></a>
-</span><span id="DeepMTS-74"><a href="#DeepMTS-74"><span class="linenos"> 74</span></a><span class="sd">        seed: int.</span>
-</span><span id="DeepMTS-75"><a href="#DeepMTS-75"><span class="linenos"> 75</span></a><span class="sd">            reproducibility seed for nodes_sim==&#39;uniform&#39; or predictive simulation.</span>
-</span><span id="DeepMTS-76"><a href="#DeepMTS-76"><span class="linenos"> 76</span></a>
-</span><span id="DeepMTS-77"><a href="#DeepMTS-77"><span class="linenos"> 77</span></a><span class="sd">        backend: str.</span>
-</span><span id="DeepMTS-78"><a href="#DeepMTS-78"><span class="linenos"> 78</span></a><span class="sd">            &quot;cpu&quot; or &quot;gpu&quot; or &quot;tpu&quot;.</span>
-</span><span id="DeepMTS-79"><a href="#DeepMTS-79"><span class="linenos"> 79</span></a>
-</span><span id="DeepMTS-80"><a href="#DeepMTS-80"><span class="linenos"> 80</span></a><span class="sd">        verbose: int.</span>
-</span><span id="DeepMTS-81"><a href="#DeepMTS-81"><span class="linenos"> 81</span></a><span class="sd">            0: not printing; 1: printing</span>
-</span><span id="DeepMTS-82"><a href="#DeepMTS-82"><span class="linenos"> 82</span></a>
-</span><span id="DeepMTS-83"><a href="#DeepMTS-83"><span class="linenos"> 83</span></a><span class="sd">        show_progress: bool.</span>
-</span><span id="DeepMTS-84"><a href="#DeepMTS-84"><span class="linenos"> 84</span></a><span class="sd">            True: progress bar when fitting each series; False: no progress bar when fitting each series</span>
-</span><span id="DeepMTS-85"><a href="#DeepMTS-85"><span class="linenos"> 85</span></a>
-</span><span id="DeepMTS-86"><a href="#DeepMTS-86"><span class="linenos"> 86</span></a><span class="sd">    Attributes:</span>
+</span><span id="DeepMTS-65"><a href="#DeepMTS-65"><span class="linenos"> 65</span></a><span class="sd">        type_pi: str.</span>
+</span><span id="DeepMTS-66"><a href="#DeepMTS-66"><span class="linenos"> 66</span></a><span class="sd">            type of prediction interval; currently:</span>
+</span><span id="DeepMTS-67"><a href="#DeepMTS-67"><span class="linenos"> 67</span></a><span class="sd">            - &quot;gaussian&quot;: simple, fast, but: assumes stationarity of Gaussian in-sample residuals and independence in the multivariate case</span>
+</span><span id="DeepMTS-68"><a href="#DeepMTS-68"><span class="linenos"> 68</span></a><span class="sd">            - &quot;kde&quot;: based on Kernel Density Estimation of in-sample residuals</span>
+</span><span id="DeepMTS-69"><a href="#DeepMTS-69"><span class="linenos"> 69</span></a><span class="sd">            - &quot;bootstrap&quot;: based on independent bootstrap of in-sample residuals</span>
+</span><span id="DeepMTS-70"><a href="#DeepMTS-70"><span class="linenos"> 70</span></a><span class="sd">            - &quot;block-bootstrap&quot;: based on basic block bootstrap of in-sample residuals</span>
+</span><span id="DeepMTS-71"><a href="#DeepMTS-71"><span class="linenos"> 71</span></a><span class="sd">            - &quot;scp-kde&quot;: Sequential split conformal prediction with Kernel Density Estimation of calibrated residuals</span>
+</span><span id="DeepMTS-72"><a href="#DeepMTS-72"><span class="linenos"> 72</span></a><span class="sd">            - &quot;scp-bootstrap&quot;: Sequential split conformal prediction with independent bootstrap of calibrated residuals</span>
+</span><span id="DeepMTS-73"><a href="#DeepMTS-73"><span class="linenos"> 73</span></a><span class="sd">            - &quot;scp-block-bootstrap&quot;: Sequential split conformal prediction with basic block bootstrap of calibrated residuals</span>
+</span><span id="DeepMTS-74"><a href="#DeepMTS-74"><span class="linenos"> 74</span></a><span class="sd">            - &quot;scp2-kde&quot;: Sequential split conformal prediction with Kernel Density Estimation of standardized calibrated residuals</span>
+</span><span id="DeepMTS-75"><a href="#DeepMTS-75"><span class="linenos"> 75</span></a><span class="sd">            - &quot;scp2-bootstrap&quot;: Sequential split conformal prediction with independent bootstrap of standardized calibrated residuals</span>
+</span><span id="DeepMTS-76"><a href="#DeepMTS-76"><span class="linenos"> 76</span></a><span class="sd">            - &quot;scp2-block-bootstrap&quot;: Sequential split conformal prediction with basic block bootstrap of standardized calibrated residuals</span>
+</span><span id="DeepMTS-77"><a href="#DeepMTS-77"><span class="linenos"> 77</span></a>
+</span><span id="DeepMTS-78"><a href="#DeepMTS-78"><span class="linenos"> 78</span></a><span class="sd">        block_size: int.</span>
+</span><span id="DeepMTS-79"><a href="#DeepMTS-79"><span class="linenos"> 79</span></a><span class="sd">            size of block for &#39;type_pi&#39; in (&quot;block-bootstrap&quot;, &quot;scp-block-bootstrap&quot;, &quot;scp2-block-bootstrap&quot;).</span>
+</span><span id="DeepMTS-80"><a href="#DeepMTS-80"><span class="linenos"> 80</span></a><span class="sd">            Default is round(3.15*(n_residuals^1/3))</span>
+</span><span id="DeepMTS-81"><a href="#DeepMTS-81"><span class="linenos"> 81</span></a>
+</span><span id="DeepMTS-82"><a href="#DeepMTS-82"><span class="linenos"> 82</span></a><span class="sd">        replications: int.</span>
+</span><span id="DeepMTS-83"><a href="#DeepMTS-83"><span class="linenos"> 83</span></a><span class="sd">            number of replications (if needed, for predictive simulation). Default is &#39;None&#39;.</span>
+</span><span id="DeepMTS-84"><a href="#DeepMTS-84"><span class="linenos"> 84</span></a>
+</span><span id="DeepMTS-85"><a href="#DeepMTS-85"><span class="linenos"> 85</span></a><span class="sd">        kernel: str.</span>
+</span><span id="DeepMTS-86"><a href="#DeepMTS-86"><span class="linenos"> 86</span></a><span class="sd">            the kernel to use for residuals density estimation (used for predictive simulation). Currently, either &#39;gaussian&#39; or &#39;tophat&#39;.</span>
 </span><span id="DeepMTS-87"><a href="#DeepMTS-87"><span class="linenos"> 87</span></a>
-</span><span id="DeepMTS-88"><a href="#DeepMTS-88"><span class="linenos"> 88</span></a><span class="sd">        fit_objs_: dict</span>
-</span><span id="DeepMTS-89"><a href="#DeepMTS-89"><span class="linenos"> 89</span></a><span class="sd">            objects adjusted to each individual time series</span>
+</span><span id="DeepMTS-88"><a href="#DeepMTS-88"><span class="linenos"> 88</span></a><span class="sd">        agg: str.</span>
+</span><span id="DeepMTS-89"><a href="#DeepMTS-89"><span class="linenos"> 89</span></a><span class="sd">            either &quot;mean&quot; or &quot;median&quot; for simulation of bootstrap aggregating</span>
 </span><span id="DeepMTS-90"><a href="#DeepMTS-90"><span class="linenos"> 90</span></a>
-</span><span id="DeepMTS-91"><a href="#DeepMTS-91"><span class="linenos"> 91</span></a><span class="sd">        y_: {array-like}</span>
-</span><span id="DeepMTS-92"><a href="#DeepMTS-92"><span class="linenos"> 92</span></a><span class="sd">            DeepMTS responses (most recent observations first)</span>
+</span><span id="DeepMTS-91"><a href="#DeepMTS-91"><span class="linenos"> 91</span></a><span class="sd">        seed: int.</span>
+</span><span id="DeepMTS-92"><a href="#DeepMTS-92"><span class="linenos"> 92</span></a><span class="sd">            reproducibility seed for nodes_sim==&#39;uniform&#39; or predictive simulation.</span>
 </span><span id="DeepMTS-93"><a href="#DeepMTS-93"><span class="linenos"> 93</span></a>
-</span><span id="DeepMTS-94"><a href="#DeepMTS-94"><span class="linenos"> 94</span></a><span class="sd">        X_: {array-like}</span>
-</span><span id="DeepMTS-95"><a href="#DeepMTS-95"><span class="linenos"> 95</span></a><span class="sd">            DeepMTS lags</span>
+</span><span id="DeepMTS-94"><a href="#DeepMTS-94"><span class="linenos"> 94</span></a><span class="sd">        backend: str.</span>
+</span><span id="DeepMTS-95"><a href="#DeepMTS-95"><span class="linenos"> 95</span></a><span class="sd">            &quot;cpu&quot; or &quot;gpu&quot; or &quot;tpu&quot;.</span>
 </span><span id="DeepMTS-96"><a href="#DeepMTS-96"><span class="linenos"> 96</span></a>
-</span><span id="DeepMTS-97"><a href="#DeepMTS-97"><span class="linenos"> 97</span></a><span class="sd">        xreg_: {array-like}</span>
-</span><span id="DeepMTS-98"><a href="#DeepMTS-98"><span class="linenos"> 98</span></a><span class="sd">            external regressors</span>
+</span><span id="DeepMTS-97"><a href="#DeepMTS-97"><span class="linenos"> 97</span></a><span class="sd">        verbose: int.</span>
+</span><span id="DeepMTS-98"><a href="#DeepMTS-98"><span class="linenos"> 98</span></a><span class="sd">            0: not printing; 1: printing</span>
 </span><span id="DeepMTS-99"><a href="#DeepMTS-99"><span class="linenos"> 99</span></a>
-</span><span id="DeepMTS-100"><a href="#DeepMTS-100"><span class="linenos">100</span></a><span class="sd">        y_means_: dict</span>
-</span><span id="DeepMTS-101"><a href="#DeepMTS-101"><span class="linenos">101</span></a><span class="sd">            a dictionary of each series mean values</span>
+</span><span id="DeepMTS-100"><a href="#DeepMTS-100"><span class="linenos">100</span></a><span class="sd">        show_progress: bool.</span>
+</span><span id="DeepMTS-101"><a href="#DeepMTS-101"><span class="linenos">101</span></a><span class="sd">            True: progress bar when fitting each series; False: no progress bar when fitting each series</span>
 </span><span id="DeepMTS-102"><a href="#DeepMTS-102"><span class="linenos">102</span></a>
-</span><span id="DeepMTS-103"><a href="#DeepMTS-103"><span class="linenos">103</span></a><span class="sd">        preds_: {array-like}</span>
-</span><span id="DeepMTS-104"><a href="#DeepMTS-104"><span class="linenos">104</span></a><span class="sd">            successive model predictions</span>
-</span><span id="DeepMTS-105"><a href="#DeepMTS-105"><span class="linenos">105</span></a>
-</span><span id="DeepMTS-106"><a href="#DeepMTS-106"><span class="linenos">106</span></a><span class="sd">        preds_std_: {array-like}</span>
-</span><span id="DeepMTS-107"><a href="#DeepMTS-107"><span class="linenos">107</span></a><span class="sd">            standard deviation around the predictions</span>
-</span><span id="DeepMTS-108"><a href="#DeepMTS-108"><span class="linenos">108</span></a>
-</span><span id="DeepMTS-109"><a href="#DeepMTS-109"><span class="linenos">109</span></a><span class="sd">        return_std_: boolean</span>
-</span><span id="DeepMTS-110"><a href="#DeepMTS-110"><span class="linenos">110</span></a><span class="sd">            return uncertainty or not (set in predict)</span>
-</span><span id="DeepMTS-111"><a href="#DeepMTS-111"><span class="linenos">111</span></a>
-</span><span id="DeepMTS-112"><a href="#DeepMTS-112"><span class="linenos">112</span></a><span class="sd">        df_: data frame</span>
-</span><span id="DeepMTS-113"><a href="#DeepMTS-113"><span class="linenos">113</span></a><span class="sd">            the input data frame, in case a data.frame is provided to `fit`</span>
-</span><span id="DeepMTS-114"><a href="#DeepMTS-114"><span class="linenos">114</span></a>
-</span><span id="DeepMTS-115"><a href="#DeepMTS-115"><span class="linenos">115</span></a><span class="sd">    Examples:</span>
+</span><span id="DeepMTS-103"><a href="#DeepMTS-103"><span class="linenos">103</span></a><span class="sd">    Attributes:</span>
+</span><span id="DeepMTS-104"><a href="#DeepMTS-104"><span class="linenos">104</span></a>
+</span><span id="DeepMTS-105"><a href="#DeepMTS-105"><span class="linenos">105</span></a><span class="sd">        fit_objs_: dict</span>
+</span><span id="DeepMTS-106"><a href="#DeepMTS-106"><span class="linenos">106</span></a><span class="sd">            objects adjusted to each individual time series</span>
+</span><span id="DeepMTS-107"><a href="#DeepMTS-107"><span class="linenos">107</span></a>
+</span><span id="DeepMTS-108"><a href="#DeepMTS-108"><span class="linenos">108</span></a><span class="sd">        y_: {array-like}</span>
+</span><span id="DeepMTS-109"><a href="#DeepMTS-109"><span class="linenos">109</span></a><span class="sd">            DeepMTS responses (most recent observations first)</span>
+</span><span id="DeepMTS-110"><a href="#DeepMTS-110"><span class="linenos">110</span></a>
+</span><span id="DeepMTS-111"><a href="#DeepMTS-111"><span class="linenos">111</span></a><span class="sd">        X_: {array-like}</span>
+</span><span id="DeepMTS-112"><a href="#DeepMTS-112"><span class="linenos">112</span></a><span class="sd">            DeepMTS lags</span>
+</span><span id="DeepMTS-113"><a href="#DeepMTS-113"><span class="linenos">113</span></a>
+</span><span id="DeepMTS-114"><a href="#DeepMTS-114"><span class="linenos">114</span></a><span class="sd">        xreg_: {array-like}</span>
+</span><span id="DeepMTS-115"><a href="#DeepMTS-115"><span class="linenos">115</span></a><span class="sd">            external regressors</span>
 </span><span id="DeepMTS-116"><a href="#DeepMTS-116"><span class="linenos">116</span></a>
-</span><span id="DeepMTS-117"><a href="#DeepMTS-117"><span class="linenos">117</span></a><span class="sd">    Example 1:</span>
-</span><span id="DeepMTS-118"><a href="#DeepMTS-118"><span class="linenos">118</span></a>
-</span><span id="DeepMTS-119"><a href="#DeepMTS-119"><span class="linenos">119</span></a><span class="sd">        ```python</span>
-</span><span id="DeepMTS-120"><a href="#DeepMTS-120"><span class="linenos">120</span></a><span class="sd">        import nnetsauce as ns</span>
-</span><span id="DeepMTS-121"><a href="#DeepMTS-121"><span class="linenos">121</span></a><span class="sd">        import numpy as np</span>
-</span><span id="DeepMTS-122"><a href="#DeepMTS-122"><span class="linenos">122</span></a><span class="sd">        from sklearn import linear_model</span>
-</span><span id="DeepMTS-123"><a href="#DeepMTS-123"><span class="linenos">123</span></a><span class="sd">        np.random.seed(123)</span>
-</span><span id="DeepMTS-124"><a href="#DeepMTS-124"><span class="linenos">124</span></a>
-</span><span id="DeepMTS-125"><a href="#DeepMTS-125"><span class="linenos">125</span></a><span class="sd">        M = np.random.rand(10, 3)</span>
-</span><span id="DeepMTS-126"><a href="#DeepMTS-126"><span class="linenos">126</span></a><span class="sd">        M[:,0] = 10*M[:,0]</span>
-</span><span id="DeepMTS-127"><a href="#DeepMTS-127"><span class="linenos">127</span></a><span class="sd">        M[:,2] = 25*M[:,2]</span>
-</span><span id="DeepMTS-128"><a href="#DeepMTS-128"><span class="linenos">128</span></a><span class="sd">        print(M)</span>
-</span><span id="DeepMTS-129"><a href="#DeepMTS-129"><span class="linenos">129</span></a>
-</span><span id="DeepMTS-130"><a href="#DeepMTS-130"><span class="linenos">130</span></a><span class="sd">        # Adjust Bayesian Ridge</span>
-</span><span id="DeepMTS-131"><a href="#DeepMTS-131"><span class="linenos">131</span></a><span class="sd">        regr4 = linear_model.BayesianRidge()</span>
-</span><span id="DeepMTS-132"><a href="#DeepMTS-132"><span class="linenos">132</span></a><span class="sd">        obj_DeepMTS = ns.DeepMTS(regr4, lags = 1, n_hidden_features=5)</span>
-</span><span id="DeepMTS-133"><a href="#DeepMTS-133"><span class="linenos">133</span></a><span class="sd">        obj_DeepMTS.fit(M)</span>
-</span><span id="DeepMTS-134"><a href="#DeepMTS-134"><span class="linenos">134</span></a><span class="sd">        print(obj_DeepMTS.predict())</span>
+</span><span id="DeepMTS-117"><a href="#DeepMTS-117"><span class="linenos">117</span></a><span class="sd">        y_means_: dict</span>
+</span><span id="DeepMTS-118"><a href="#DeepMTS-118"><span class="linenos">118</span></a><span class="sd">            a dictionary of each series mean values</span>
+</span><span id="DeepMTS-119"><a href="#DeepMTS-119"><span class="linenos">119</span></a>
+</span><span id="DeepMTS-120"><a href="#DeepMTS-120"><span class="linenos">120</span></a><span class="sd">        preds_: {array-like}</span>
+</span><span id="DeepMTS-121"><a href="#DeepMTS-121"><span class="linenos">121</span></a><span class="sd">            successive model predictions</span>
+</span><span id="DeepMTS-122"><a href="#DeepMTS-122"><span class="linenos">122</span></a>
+</span><span id="DeepMTS-123"><a href="#DeepMTS-123"><span class="linenos">123</span></a><span class="sd">        preds_std_: {array-like}</span>
+</span><span id="DeepMTS-124"><a href="#DeepMTS-124"><span class="linenos">124</span></a><span class="sd">            standard deviation around the predictions</span>
+</span><span id="DeepMTS-125"><a href="#DeepMTS-125"><span class="linenos">125</span></a>
+</span><span id="DeepMTS-126"><a href="#DeepMTS-126"><span class="linenos">126</span></a><span class="sd">        return_std_: boolean</span>
+</span><span id="DeepMTS-127"><a href="#DeepMTS-127"><span class="linenos">127</span></a><span class="sd">            return uncertainty or not (set in predict)</span>
+</span><span id="DeepMTS-128"><a href="#DeepMTS-128"><span class="linenos">128</span></a>
+</span><span id="DeepMTS-129"><a href="#DeepMTS-129"><span class="linenos">129</span></a><span class="sd">        df_: data frame</span>
+</span><span id="DeepMTS-130"><a href="#DeepMTS-130"><span class="linenos">130</span></a><span class="sd">            the input data frame, in case a data.frame is provided to `fit`</span>
+</span><span id="DeepMTS-131"><a href="#DeepMTS-131"><span class="linenos">131</span></a>
+</span><span id="DeepMTS-132"><a href="#DeepMTS-132"><span class="linenos">132</span></a><span class="sd">    Examples:</span>
+</span><span id="DeepMTS-133"><a href="#DeepMTS-133"><span class="linenos">133</span></a>
+</span><span id="DeepMTS-134"><a href="#DeepMTS-134"><span class="linenos">134</span></a><span class="sd">    Example 1:</span>
 </span><span id="DeepMTS-135"><a href="#DeepMTS-135"><span class="linenos">135</span></a>
-</span><span id="DeepMTS-136"><a href="#DeepMTS-136"><span class="linenos">136</span></a><span class="sd">        # with credible intervals</span>
-</span><span id="DeepMTS-137"><a href="#DeepMTS-137"><span class="linenos">137</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=80))</span>
-</span><span id="DeepMTS-138"><a href="#DeepMTS-138"><span class="linenos">138</span></a>
-</span><span id="DeepMTS-139"><a href="#DeepMTS-139"><span class="linenos">139</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=95))</span>
-</span><span id="DeepMTS-140"><a href="#DeepMTS-140"><span class="linenos">140</span></a><span class="sd">        ```</span>
+</span><span id="DeepMTS-136"><a href="#DeepMTS-136"><span class="linenos">136</span></a><span class="sd">        ```python</span>
+</span><span id="DeepMTS-137"><a href="#DeepMTS-137"><span class="linenos">137</span></a><span class="sd">        import nnetsauce as ns</span>
+</span><span id="DeepMTS-138"><a href="#DeepMTS-138"><span class="linenos">138</span></a><span class="sd">        import numpy as np</span>
+</span><span id="DeepMTS-139"><a href="#DeepMTS-139"><span class="linenos">139</span></a><span class="sd">        from sklearn import linear_model</span>
+</span><span id="DeepMTS-140"><a href="#DeepMTS-140"><span class="linenos">140</span></a><span class="sd">        np.random.seed(123)</span>
 </span><span id="DeepMTS-141"><a href="#DeepMTS-141"><span class="linenos">141</span></a>
-</span><span id="DeepMTS-142"><a href="#DeepMTS-142"><span class="linenos">142</span></a><span class="sd">    Example 2:</span>
-</span><span id="DeepMTS-143"><a href="#DeepMTS-143"><span class="linenos">143</span></a>
-</span><span id="DeepMTS-144"><a href="#DeepMTS-144"><span class="linenos">144</span></a><span class="sd">        ```python</span>
-</span><span id="DeepMTS-145"><a href="#DeepMTS-145"><span class="linenos">145</span></a><span class="sd">        import nnetsauce as ns</span>
-</span><span id="DeepMTS-146"><a href="#DeepMTS-146"><span class="linenos">146</span></a><span class="sd">        import numpy as np</span>
-</span><span id="DeepMTS-147"><a href="#DeepMTS-147"><span class="linenos">147</span></a><span class="sd">        from sklearn import linear_model</span>
-</span><span id="DeepMTS-148"><a href="#DeepMTS-148"><span class="linenos">148</span></a>
-</span><span id="DeepMTS-149"><a href="#DeepMTS-149"><span class="linenos">149</span></a><span class="sd">        dataset = {</span>
-</span><span id="DeepMTS-150"><a href="#DeepMTS-150"><span class="linenos">150</span></a><span class="sd">        &#39;date&#39; : [&#39;2001-01-01&#39;, &#39;2002-01-01&#39;, &#39;2003-01-01&#39;, &#39;2004-01-01&#39;, &#39;2005-01-01&#39;],</span>
-</span><span id="DeepMTS-151"><a href="#DeepMTS-151"><span class="linenos">151</span></a><span class="sd">        &#39;series1&#39; : [34, 30, 35.6, 33.3, 38.1],</span>
-</span><span id="DeepMTS-152"><a href="#DeepMTS-152"><span class="linenos">152</span></a><span class="sd">        &#39;series2&#39; : [4, 5.5, 5.6, 6.3, 5.1],</span>
-</span><span id="DeepMTS-153"><a href="#DeepMTS-153"><span class="linenos">153</span></a><span class="sd">        &#39;series3&#39; : [100, 100.5, 100.6, 100.2, 100.1]}</span>
-</span><span id="DeepMTS-154"><a href="#DeepMTS-154"><span class="linenos">154</span></a><span class="sd">        df = pd.DataFrame(dataset).set_index(&#39;date&#39;)</span>
-</span><span id="DeepMTS-155"><a href="#DeepMTS-155"><span class="linenos">155</span></a><span class="sd">        print(df)</span>
-</span><span id="DeepMTS-156"><a href="#DeepMTS-156"><span class="linenos">156</span></a>
-</span><span id="DeepMTS-157"><a href="#DeepMTS-157"><span class="linenos">157</span></a><span class="sd">        # Adjust Bayesian Ridge</span>
-</span><span id="DeepMTS-158"><a href="#DeepMTS-158"><span class="linenos">158</span></a><span class="sd">        regr5 = linear_model.BayesianRidge()</span>
-</span><span id="DeepMTS-159"><a href="#DeepMTS-159"><span class="linenos">159</span></a><span class="sd">        obj_DeepMTS = ns.DeepMTS(regr5, lags = 1, n_hidden_features=5)</span>
-</span><span id="DeepMTS-160"><a href="#DeepMTS-160"><span class="linenos">160</span></a><span class="sd">        obj_DeepMTS.fit(df)</span>
-</span><span id="DeepMTS-161"><a href="#DeepMTS-161"><span class="linenos">161</span></a><span class="sd">        print(obj_DeepMTS.predict())</span>
-</span><span id="DeepMTS-162"><a href="#DeepMTS-162"><span class="linenos">162</span></a>
-</span><span id="DeepMTS-163"><a href="#DeepMTS-163"><span class="linenos">163</span></a><span class="sd">        # with credible intervals</span>
-</span><span id="DeepMTS-164"><a href="#DeepMTS-164"><span class="linenos">164</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=80))</span>
+</span><span id="DeepMTS-142"><a href="#DeepMTS-142"><span class="linenos">142</span></a><span class="sd">        M = np.random.rand(10, 3)</span>
+</span><span id="DeepMTS-143"><a href="#DeepMTS-143"><span class="linenos">143</span></a><span class="sd">        M[:,0] = 10*M[:,0]</span>
+</span><span id="DeepMTS-144"><a href="#DeepMTS-144"><span class="linenos">144</span></a><span class="sd">        M[:,2] = 25*M[:,2]</span>
+</span><span id="DeepMTS-145"><a href="#DeepMTS-145"><span class="linenos">145</span></a><span class="sd">        print(M)</span>
+</span><span id="DeepMTS-146"><a href="#DeepMTS-146"><span class="linenos">146</span></a>
+</span><span id="DeepMTS-147"><a href="#DeepMTS-147"><span class="linenos">147</span></a><span class="sd">        # Adjust Bayesian Ridge</span>
+</span><span id="DeepMTS-148"><a href="#DeepMTS-148"><span class="linenos">148</span></a><span class="sd">        regr4 = linear_model.BayesianRidge()</span>
+</span><span id="DeepMTS-149"><a href="#DeepMTS-149"><span class="linenos">149</span></a><span class="sd">        obj_DeepMTS = ns.DeepMTS(regr4, lags = 1, n_hidden_features=5)</span>
+</span><span id="DeepMTS-150"><a href="#DeepMTS-150"><span class="linenos">150</span></a><span class="sd">        obj_DeepMTS.fit(M)</span>
+</span><span id="DeepMTS-151"><a href="#DeepMTS-151"><span class="linenos">151</span></a><span class="sd">        print(obj_DeepMTS.predict())</span>
+</span><span id="DeepMTS-152"><a href="#DeepMTS-152"><span class="linenos">152</span></a>
+</span><span id="DeepMTS-153"><a href="#DeepMTS-153"><span class="linenos">153</span></a><span class="sd">        # with credible intervals</span>
+</span><span id="DeepMTS-154"><a href="#DeepMTS-154"><span class="linenos">154</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=80))</span>
+</span><span id="DeepMTS-155"><a href="#DeepMTS-155"><span class="linenos">155</span></a>
+</span><span id="DeepMTS-156"><a href="#DeepMTS-156"><span class="linenos">156</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=95))</span>
+</span><span id="DeepMTS-157"><a href="#DeepMTS-157"><span class="linenos">157</span></a><span class="sd">        ```</span>
+</span><span id="DeepMTS-158"><a href="#DeepMTS-158"><span class="linenos">158</span></a>
+</span><span id="DeepMTS-159"><a href="#DeepMTS-159"><span class="linenos">159</span></a><span class="sd">    Example 2:</span>
+</span><span id="DeepMTS-160"><a href="#DeepMTS-160"><span class="linenos">160</span></a>
+</span><span id="DeepMTS-161"><a href="#DeepMTS-161"><span class="linenos">161</span></a><span class="sd">        ```python</span>
+</span><span id="DeepMTS-162"><a href="#DeepMTS-162"><span class="linenos">162</span></a><span class="sd">        import nnetsauce as ns</span>
+</span><span id="DeepMTS-163"><a href="#DeepMTS-163"><span class="linenos">163</span></a><span class="sd">        import numpy as np</span>
+</span><span id="DeepMTS-164"><a href="#DeepMTS-164"><span class="linenos">164</span></a><span class="sd">        from sklearn import linear_model</span>
 </span><span id="DeepMTS-165"><a href="#DeepMTS-165"><span class="linenos">165</span></a>
-</span><span id="DeepMTS-166"><a href="#DeepMTS-166"><span class="linenos">166</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=95))</span>
-</span><span id="DeepMTS-167"><a href="#DeepMTS-167"><span class="linenos">167</span></a><span class="sd">        ```</span>
-</span><span id="DeepMTS-168"><a href="#DeepMTS-168"><span class="linenos">168</span></a>
-</span><span id="DeepMTS-169"><a href="#DeepMTS-169"><span class="linenos">169</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="DeepMTS-170"><a href="#DeepMTS-170"><span class="linenos">170</span></a>
-</span><span id="DeepMTS-171"><a href="#DeepMTS-171"><span class="linenos">171</span></a>    <span class="c1"># construct the object -----</span>
-</span><span id="DeepMTS-172"><a href="#DeepMTS-172"><span class="linenos">172</span></a>
-</span><span id="DeepMTS-173"><a href="#DeepMTS-173"><span class="linenos">173</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="DeepMTS-174"><a href="#DeepMTS-174"><span class="linenos">174</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="DeepMTS-175"><a href="#DeepMTS-175"><span class="linenos">175</span></a>        <span class="n">obj</span><span class="p">,</span>
-</span><span id="DeepMTS-176"><a href="#DeepMTS-176"><span class="linenos">176</span></a>        <span class="n">n_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="DeepMTS-177"><a href="#DeepMTS-177"><span class="linenos">177</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-</span><span id="DeepMTS-178"><a href="#DeepMTS-178"><span class="linenos">178</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
-</span><span id="DeepMTS-179"><a href="#DeepMTS-179"><span class="linenos">179</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-</span><span id="DeepMTS-180"><a href="#DeepMTS-180"><span class="linenos">180</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="DeepMTS-181"><a href="#DeepMTS-181"><span class="linenos">181</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepMTS-182"><a href="#DeepMTS-182"><span class="linenos">182</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="DeepMTS-183"><a href="#DeepMTS-183"><span class="linenos">183</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepMTS-184"><a href="#DeepMTS-184"><span class="linenos">184</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-</span><span id="DeepMTS-185"><a href="#DeepMTS-185"><span class="linenos">185</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepMTS-186"><a href="#DeepMTS-186"><span class="linenos">186</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
-</span><span id="DeepMTS-187"><a href="#DeepMTS-187"><span class="linenos">187</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
-</span><span id="DeepMTS-188"><a href="#DeepMTS-188"><span class="linenos">188</span></a>        <span class="n">lags</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="DeepMTS-189"><a href="#DeepMTS-189"><span class="linenos">189</span></a>        <span class="n">type_pi</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span>
-</span><span id="DeepMTS-190"><a href="#DeepMTS-190"><span class="linenos">190</span></a>        <span class="n">replications</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="DeepMTS-191"><a href="#DeepMTS-191"><span class="linenos">191</span></a>        <span class="n">kernel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="DeepMTS-192"><a href="#DeepMTS-192"><span class="linenos">192</span></a>        <span class="n">agg</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
-</span><span id="DeepMTS-193"><a href="#DeepMTS-193"><span class="linenos">193</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="DeepMTS-194"><a href="#DeepMTS-194"><span class="linenos">194</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-</span><span id="DeepMTS-195"><a href="#DeepMTS-195"><span class="linenos">195</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="DeepMTS-196"><a href="#DeepMTS-196"><span class="linenos">196</span></a>        <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepMTS-197"><a href="#DeepMTS-197"><span class="linenos">197</span></a>    <span class="p">):</span>
-</span><span id="DeepMTS-198"><a href="#DeepMTS-198"><span class="linenos">198</span></a>        <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">lags</span><span class="p">)</span> <span class="o">==</span> <span class="n">lags</span><span class="p">,</span> <span class="s2">&quot;parameter &#39;lags&#39; should be an integer&quot;</span>
-</span><span id="DeepMTS-199"><a href="#DeepMTS-199"><span class="linenos">199</span></a>        <span class="k">assert</span> <span class="n">n_layers</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;must have n_layers &gt;= 2&quot;</span>
-</span><span id="DeepMTS-200"><a href="#DeepMTS-200"><span class="linenos">200</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_layers</span><span class="p">)</span>
-</span><span id="DeepMTS-201"><a href="#DeepMTS-201"><span class="linenos">201</span></a>
-</span><span id="DeepMTS-202"><a href="#DeepMTS-202"><span class="linenos">202</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">DeepRegressor</span><span class="p">(</span>
-</span><span id="DeepMTS-203"><a href="#DeepMTS-203"><span class="linenos">203</span></a>            <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span>
-</span><span id="DeepMTS-204"><a href="#DeepMTS-204"><span class="linenos">204</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="DeepMTS-205"><a href="#DeepMTS-205"><span class="linenos">205</span></a>            <span class="n">n_layers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span><span class="p">,</span>
-</span><span id="DeepMTS-206"><a href="#DeepMTS-206"><span class="linenos">206</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
-</span><span id="DeepMTS-207"><a href="#DeepMTS-207"><span class="linenos">207</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
-</span><span id="DeepMTS-208"><a href="#DeepMTS-208"><span class="linenos">208</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
-</span><span id="DeepMTS-209"><a href="#DeepMTS-209"><span class="linenos">209</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
-</span><span id="DeepMTS-210"><a href="#DeepMTS-210"><span class="linenos">210</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
-</span><span id="DeepMTS-211"><a href="#DeepMTS-211"><span class="linenos">211</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
-</span><span id="DeepMTS-212"><a href="#DeepMTS-212"><span class="linenos">212</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
-</span><span id="DeepMTS-213"><a href="#DeepMTS-213"><span class="linenos">213</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="DeepMTS-214"><a href="#DeepMTS-214"><span class="linenos">214</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
-</span><span id="DeepMTS-215"><a href="#DeepMTS-215"><span class="linenos">215</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
-</span><span id="DeepMTS-216"><a href="#DeepMTS-216"><span class="linenos">216</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
-</span><span id="DeepMTS-217"><a href="#DeepMTS-217"><span class="linenos">217</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="DeepMTS-218"><a href="#DeepMTS-218"><span class="linenos">218</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-</span><span id="DeepMTS-219"><a href="#DeepMTS-219"><span class="linenos">219</span></a>        <span class="p">)</span>
-</span><span id="DeepMTS-220"><a href="#DeepMTS-220"><span class="linenos">220</span></a>
-</span><span id="DeepMTS-221"><a href="#DeepMTS-221"><span class="linenos">221</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="DeepMTS-222"><a href="#DeepMTS-222"><span class="linenos">222</span></a>            <span class="n">obj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span>
-</span><span id="DeepMTS-223"><a href="#DeepMTS-223"><span class="linenos">223</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
-</span><span id="DeepMTS-224"><a href="#DeepMTS-224"><span class="linenos">224</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
-</span><span id="DeepMTS-225"><a href="#DeepMTS-225"><span class="linenos">225</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
-</span><span id="DeepMTS-226"><a href="#DeepMTS-226"><span class="linenos">226</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
-</span><span id="DeepMTS-227"><a href="#DeepMTS-227"><span class="linenos">227</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
-</span><span id="DeepMTS-228"><a href="#DeepMTS-228"><span class="linenos">228</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
-</span><span id="DeepMTS-229"><a href="#DeepMTS-229"><span class="linenos">229</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
-</span><span id="DeepMTS-230"><a href="#DeepMTS-230"><span class="linenos">230</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="DeepMTS-231"><a href="#DeepMTS-231"><span class="linenos">231</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
-</span><span id="DeepMTS-232"><a href="#DeepMTS-232"><span class="linenos">232</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
-</span><span id="DeepMTS-233"><a href="#DeepMTS-233"><span class="linenos">233</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
-</span><span id="DeepMTS-234"><a href="#DeepMTS-234"><span class="linenos">234</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="DeepMTS-235"><a href="#DeepMTS-235"><span class="linenos">235</span></a>            <span class="n">type_pi</span><span class="o">=</span><span class="n">type_pi</span><span class="p">,</span>
-</span><span id="DeepMTS-236"><a href="#DeepMTS-236"><span class="linenos">236</span></a>            <span class="n">replications</span><span class="o">=</span><span class="n">replications</span><span class="p">,</span>
-</span><span id="DeepMTS-237"><a href="#DeepMTS-237"><span class="linenos">237</span></a>            <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span>
-</span><span id="DeepMTS-238"><a href="#DeepMTS-238"><span class="linenos">238</span></a>            <span class="n">agg</span><span class="o">=</span><span class="n">agg</span><span class="p">,</span>
-</span><span id="DeepMTS-239"><a href="#DeepMTS-239"><span class="linenos">239</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-</span><span id="DeepMTS-240"><a href="#DeepMTS-240"><span class="linenos">240</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="DeepMTS-241"><a href="#DeepMTS-241"><span class="linenos">241</span></a>            <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-</span><span id="DeepMTS-242"><a href="#DeepMTS-242"><span class="linenos">242</span></a>        <span class="p">)</span>
+</span><span id="DeepMTS-166"><a href="#DeepMTS-166"><span class="linenos">166</span></a><span class="sd">        dataset = {</span>
+</span><span id="DeepMTS-167"><a href="#DeepMTS-167"><span class="linenos">167</span></a><span class="sd">        &#39;date&#39; : [&#39;2001-01-01&#39;, &#39;2002-01-01&#39;, &#39;2003-01-01&#39;, &#39;2004-01-01&#39;, &#39;2005-01-01&#39;],</span>
+</span><span id="DeepMTS-168"><a href="#DeepMTS-168"><span class="linenos">168</span></a><span class="sd">        &#39;series1&#39; : [34, 30, 35.6, 33.3, 38.1],</span>
+</span><span id="DeepMTS-169"><a href="#DeepMTS-169"><span class="linenos">169</span></a><span class="sd">        &#39;series2&#39; : [4, 5.5, 5.6, 6.3, 5.1],</span>
+</span><span id="DeepMTS-170"><a href="#DeepMTS-170"><span class="linenos">170</span></a><span class="sd">        &#39;series3&#39; : [100, 100.5, 100.6, 100.2, 100.1]}</span>
+</span><span id="DeepMTS-171"><a href="#DeepMTS-171"><span class="linenos">171</span></a><span class="sd">        df = pd.DataFrame(dataset).set_index(&#39;date&#39;)</span>
+</span><span id="DeepMTS-172"><a href="#DeepMTS-172"><span class="linenos">172</span></a><span class="sd">        print(df)</span>
+</span><span id="DeepMTS-173"><a href="#DeepMTS-173"><span class="linenos">173</span></a>
+</span><span id="DeepMTS-174"><a href="#DeepMTS-174"><span class="linenos">174</span></a><span class="sd">        # Adjust Bayesian Ridge</span>
+</span><span id="DeepMTS-175"><a href="#DeepMTS-175"><span class="linenos">175</span></a><span class="sd">        regr5 = linear_model.BayesianRidge()</span>
+</span><span id="DeepMTS-176"><a href="#DeepMTS-176"><span class="linenos">176</span></a><span class="sd">        obj_DeepMTS = ns.DeepMTS(regr5, lags = 1, n_hidden_features=5)</span>
+</span><span id="DeepMTS-177"><a href="#DeepMTS-177"><span class="linenos">177</span></a><span class="sd">        obj_DeepMTS.fit(df)</span>
+</span><span id="DeepMTS-178"><a href="#DeepMTS-178"><span class="linenos">178</span></a><span class="sd">        print(obj_DeepMTS.predict())</span>
+</span><span id="DeepMTS-179"><a href="#DeepMTS-179"><span class="linenos">179</span></a>
+</span><span id="DeepMTS-180"><a href="#DeepMTS-180"><span class="linenos">180</span></a><span class="sd">        # with credible intervals</span>
+</span><span id="DeepMTS-181"><a href="#DeepMTS-181"><span class="linenos">181</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=80))</span>
+</span><span id="DeepMTS-182"><a href="#DeepMTS-182"><span class="linenos">182</span></a>
+</span><span id="DeepMTS-183"><a href="#DeepMTS-183"><span class="linenos">183</span></a><span class="sd">        print(obj_DeepMTS.predict(return_std=True, level=95))</span>
+</span><span id="DeepMTS-184"><a href="#DeepMTS-184"><span class="linenos">184</span></a><span class="sd">        ```</span>
+</span><span id="DeepMTS-185"><a href="#DeepMTS-185"><span class="linenos">185</span></a>
+</span><span id="DeepMTS-186"><a href="#DeepMTS-186"><span class="linenos">186</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="DeepMTS-187"><a href="#DeepMTS-187"><span class="linenos">187</span></a>
+</span><span id="DeepMTS-188"><a href="#DeepMTS-188"><span class="linenos">188</span></a>    <span class="c1"># construct the object -----</span>
+</span><span id="DeepMTS-189"><a href="#DeepMTS-189"><span class="linenos">189</span></a>
+</span><span id="DeepMTS-190"><a href="#DeepMTS-190"><span class="linenos">190</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="DeepMTS-191"><a href="#DeepMTS-191"><span class="linenos">191</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="DeepMTS-192"><a href="#DeepMTS-192"><span class="linenos">192</span></a>        <span class="n">obj</span><span class="p">,</span>
+</span><span id="DeepMTS-193"><a href="#DeepMTS-193"><span class="linenos">193</span></a>        <span class="n">n_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="DeepMTS-194"><a href="#DeepMTS-194"><span class="linenos">194</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+</span><span id="DeepMTS-195"><a href="#DeepMTS-195"><span class="linenos">195</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="DeepMTS-196"><a href="#DeepMTS-196"><span class="linenos">196</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+</span><span id="DeepMTS-197"><a href="#DeepMTS-197"><span class="linenos">197</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
+</span><span id="DeepMTS-198"><a href="#DeepMTS-198"><span class="linenos">198</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepMTS-199"><a href="#DeepMTS-199"><span class="linenos">199</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="DeepMTS-200"><a href="#DeepMTS-200"><span class="linenos">200</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepMTS-201"><a href="#DeepMTS-201"><span class="linenos">201</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+</span><span id="DeepMTS-202"><a href="#DeepMTS-202"><span class="linenos">202</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepMTS-203"><a href="#DeepMTS-203"><span class="linenos">203</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
+</span><span id="DeepMTS-204"><a href="#DeepMTS-204"><span class="linenos">204</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
+</span><span id="DeepMTS-205"><a href="#DeepMTS-205"><span class="linenos">205</span></a>        <span class="n">lags</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="DeepMTS-206"><a href="#DeepMTS-206"><span class="linenos">206</span></a>        <span class="n">type_pi</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span>
+</span><span id="DeepMTS-207"><a href="#DeepMTS-207"><span class="linenos">207</span></a>        <span class="n">block_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="DeepMTS-208"><a href="#DeepMTS-208"><span class="linenos">208</span></a>        <span class="n">replications</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="DeepMTS-209"><a href="#DeepMTS-209"><span class="linenos">209</span></a>        <span class="n">kernel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="DeepMTS-210"><a href="#DeepMTS-210"><span class="linenos">210</span></a>        <span class="n">agg</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+</span><span id="DeepMTS-211"><a href="#DeepMTS-211"><span class="linenos">211</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+</span><span id="DeepMTS-212"><a href="#DeepMTS-212"><span class="linenos">212</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+</span><span id="DeepMTS-213"><a href="#DeepMTS-213"><span class="linenos">213</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="DeepMTS-214"><a href="#DeepMTS-214"><span class="linenos">214</span></a>        <span class="n">show_progress</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepMTS-215"><a href="#DeepMTS-215"><span class="linenos">215</span></a>    <span class="p">):</span>
+</span><span id="DeepMTS-216"><a href="#DeepMTS-216"><span class="linenos">216</span></a>        <span class="k">assert</span> <span class="nb">int</span><span class="p">(</span><span class="n">lags</span><span class="p">)</span> <span class="o">==</span> <span class="n">lags</span><span class="p">,</span> <span class="s2">&quot;parameter &#39;lags&#39; should be an integer&quot;</span>
+</span><span id="DeepMTS-217"><a href="#DeepMTS-217"><span class="linenos">217</span></a>        <span class="k">assert</span> <span class="n">n_layers</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;must have n_layers &gt;= 2&quot;</span>
+</span><span id="DeepMTS-218"><a href="#DeepMTS-218"><span class="linenos">218</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_layers</span><span class="p">)</span>
+</span><span id="DeepMTS-219"><a href="#DeepMTS-219"><span class="linenos">219</span></a>
+</span><span id="DeepMTS-220"><a href="#DeepMTS-220"><span class="linenos">220</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">DeepRegressor</span><span class="p">(</span>
+</span><span id="DeepMTS-221"><a href="#DeepMTS-221"><span class="linenos">221</span></a>            <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span>
+</span><span id="DeepMTS-222"><a href="#DeepMTS-222"><span class="linenos">222</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="DeepMTS-223"><a href="#DeepMTS-223"><span class="linenos">223</span></a>            <span class="n">n_layers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span><span class="p">,</span>
+</span><span id="DeepMTS-224"><a href="#DeepMTS-224"><span class="linenos">224</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
+</span><span id="DeepMTS-225"><a href="#DeepMTS-225"><span class="linenos">225</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
+</span><span id="DeepMTS-226"><a href="#DeepMTS-226"><span class="linenos">226</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+</span><span id="DeepMTS-227"><a href="#DeepMTS-227"><span class="linenos">227</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
+</span><span id="DeepMTS-228"><a href="#DeepMTS-228"><span class="linenos">228</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
+</span><span id="DeepMTS-229"><a href="#DeepMTS-229"><span class="linenos">229</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+</span><span id="DeepMTS-230"><a href="#DeepMTS-230"><span class="linenos">230</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
+</span><span id="DeepMTS-231"><a href="#DeepMTS-231"><span class="linenos">231</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
+</span><span id="DeepMTS-232"><a href="#DeepMTS-232"><span class="linenos">232</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
+</span><span id="DeepMTS-233"><a href="#DeepMTS-233"><span class="linenos">233</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
+</span><span id="DeepMTS-234"><a href="#DeepMTS-234"><span class="linenos">234</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
+</span><span id="DeepMTS-235"><a href="#DeepMTS-235"><span class="linenos">235</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="DeepMTS-236"><a href="#DeepMTS-236"><span class="linenos">236</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
+</span><span id="DeepMTS-237"><a href="#DeepMTS-237"><span class="linenos">237</span></a>        <span class="p">)</span>
+</span><span id="DeepMTS-238"><a href="#DeepMTS-238"><span class="linenos">238</span></a>
+</span><span id="DeepMTS-239"><a href="#DeepMTS-239"><span class="linenos">239</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="DeepMTS-240"><a href="#DeepMTS-240"><span class="linenos">240</span></a>            <span class="n">obj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">,</span>
+</span><span id="DeepMTS-241"><a href="#DeepMTS-241"><span class="linenos">241</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
+</span><span id="DeepMTS-242"><a href="#DeepMTS-242"><span class="linenos">242</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
+</span><span id="DeepMTS-243"><a href="#DeepMTS-243"><span class="linenos">243</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+</span><span id="DeepMTS-244"><a href="#DeepMTS-244"><span class="linenos">244</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
+</span><span id="DeepMTS-245"><a href="#DeepMTS-245"><span class="linenos">245</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
+</span><span id="DeepMTS-246"><a href="#DeepMTS-246"><span class="linenos">246</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+</span><span id="DeepMTS-247"><a href="#DeepMTS-247"><span class="linenos">247</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
+</span><span id="DeepMTS-248"><a href="#DeepMTS-248"><span class="linenos">248</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
+</span><span id="DeepMTS-249"><a href="#DeepMTS-249"><span class="linenos">249</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
+</span><span id="DeepMTS-250"><a href="#DeepMTS-250"><span class="linenos">250</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
+</span><span id="DeepMTS-251"><a href="#DeepMTS-251"><span class="linenos">251</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
+</span><span id="DeepMTS-252"><a href="#DeepMTS-252"><span class="linenos">252</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="DeepMTS-253"><a href="#DeepMTS-253"><span class="linenos">253</span></a>            <span class="n">type_pi</span><span class="o">=</span><span class="n">type_pi</span><span class="p">,</span>
+</span><span id="DeepMTS-254"><a href="#DeepMTS-254"><span class="linenos">254</span></a>            <span class="n">block_size</span><span class="o">=</span><span class="n">block_size</span><span class="p">,</span>
+</span><span id="DeepMTS-255"><a href="#DeepMTS-255"><span class="linenos">255</span></a>            <span class="n">replications</span><span class="o">=</span><span class="n">replications</span><span class="p">,</span>
+</span><span id="DeepMTS-256"><a href="#DeepMTS-256"><span class="linenos">256</span></a>            <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span>
+</span><span id="DeepMTS-257"><a href="#DeepMTS-257"><span class="linenos">257</span></a>            <span class="n">agg</span><span class="o">=</span><span class="n">agg</span><span class="p">,</span>
+</span><span id="DeepMTS-258"><a href="#DeepMTS-258"><span class="linenos">258</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
+</span><span id="DeepMTS-259"><a href="#DeepMTS-259"><span class="linenos">259</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="DeepMTS-260"><a href="#DeepMTS-260"><span class="linenos">260</span></a>            <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
+</span><span id="DeepMTS-261"><a href="#DeepMTS-261"><span class="linenos">261</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -1254,6 +1273,23 @@ type_scaling: a tuple of 3 strings.
 
 lags: int.
     number of lags used for each time series.
+
+type_pi: str.
+    type of prediction interval; currently:
+    - "gaussian": simple, fast, but: assumes stationarity of Gaussian in-sample residuals and independence in the multivariate case
+    - "kde": based on Kernel Density Estimation of in-sample residuals
+    - "bootstrap": based on independent bootstrap of in-sample residuals
+    - "block-bootstrap": based on basic block bootstrap of in-sample residuals
+    - "scp-kde": Sequential split conformal prediction with Kernel Density Estimation of calibrated residuals
+    - "scp-bootstrap": Sequential split conformal prediction with independent bootstrap of calibrated residuals
+    - "scp-block-bootstrap": Sequential split conformal prediction with basic block bootstrap of calibrated residuals
+    - "scp2-kde": Sequential split conformal prediction with Kernel Density Estimation of standardized calibrated residuals
+    - "scp2-bootstrap": Sequential split conformal prediction with independent bootstrap of standardized calibrated residuals
+    - "scp2-block-bootstrap": Sequential split conformal prediction with basic block bootstrap of standardized calibrated residuals
+
+block_size: int.
+    size of block for 'type_pi' in ("block-bootstrap", "scp-block-bootstrap", "scp2-block-bootstrap").
+    Default is round(3.15*(n_residuals^1/3))
 
 replications: int.
     number of replications (if needed, for predictive simulation). Default is 'None'.
