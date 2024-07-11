@@ -978,7 +978,7 @@ y: array-like, shape = [n_samples]
 </span><span id="CustomRegressor-67"><a href="#CustomRegressor-67"><span class="linenos"> 67</span></a><span class="sd">            Currently available: standardization (&#39;std&#39;) or MinMax scaling (&#39;minmax&#39;)</span>
 </span><span id="CustomRegressor-68"><a href="#CustomRegressor-68"><span class="linenos"> 68</span></a>
 </span><span id="CustomRegressor-69"><a href="#CustomRegressor-69"><span class="linenos"> 69</span></a><span class="sd">        type_pi: str.</span>
-</span><span id="CustomRegressor-70"><a href="#CustomRegressor-70"><span class="linenos"> 70</span></a><span class="sd">            type of prediction interval; currently &quot;kde&quot; (default) or &quot;bootstrap&quot;.</span>
+</span><span id="CustomRegressor-70"><a href="#CustomRegressor-70"><span class="linenos"> 70</span></a><span class="sd">            type of prediction interval; currently &quot;kde&quot; (default).</span>
 </span><span id="CustomRegressor-71"><a href="#CustomRegressor-71"><span class="linenos"> 71</span></a><span class="sd">            Used only in `self.predict`, for `self.replications` &gt; 0 and `self.kernel`</span>
 </span><span id="CustomRegressor-72"><a href="#CustomRegressor-72"><span class="linenos"> 72</span></a><span class="sd">            in (&#39;gaussian&#39;, &#39;tophat&#39;). Default is `None`.</span>
 </span><span id="CustomRegressor-73"><a href="#CustomRegressor-73"><span class="linenos"> 73</span></a>
@@ -1275,7 +1275,7 @@ type_scaling: a tuple of 3 strings
     Currently available: standardization ('std') or MinMax scaling ('minmax')
 
 type_pi: str.
-    type of prediction interval; currently "kde" (default) or "bootstrap".
+    type of prediction interval; currently "kde" (default).
     Used only in `self.predict`, for `self.replications` &gt; 0 and `self.kernel`
     in ('gaussian', 'tophat'). Default is `None`.
 
