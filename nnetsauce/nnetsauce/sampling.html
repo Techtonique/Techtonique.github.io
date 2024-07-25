@@ -55,6 +55,8 @@
 
                 
             </li>
+            <li>
+            </li>
     </ul>
 
 
@@ -77,8 +79,9 @@
                         <label class="view-source-button" for="mod-sampling-view-source"><span>View Source</span></label>
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span> <span class="nn">.rowsubsampling</span> <span class="kn">import</span> <span class="n">SubSampler</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SubSampler&quot;</span><span class="p">]</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="kn">from</span> <span class="nn">.copulas</span> <span class="kn">import</span> <span class="n">vinecopula_sample</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SubSampler&quot;</span><span class="p">,</span> <span class="s2">&quot;vinecopula_sample&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -234,6 +237,35 @@
 
                                 </div>
                         
+                </section>
+                <section id="vinecopula_sample">
+                            <input id="vinecopula_sample-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">vinecopula_sample</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">x</span>, </span><span class="param"><span class="n">n_samples</span><span class="o">=</span><span class="mi">10</span>, </span><span class="param"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;vine-tll&#39;</span>, </span><span class="param"><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="vinecopula_sample-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#vinecopula_sample"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="vinecopula_sample-6"><a href="#vinecopula_sample-6"><span class="linenos"> 6</span></a><span class="k">def</span> <span class="nf">vinecopula_sample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;vine-tll&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">):</span>
+</span><span id="vinecopula_sample-7"><a href="#vinecopula_sample-7"><span class="linenos"> 7</span></a>    <span class="n">u</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">to_pseudo_obs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="vinecopula_sample-8"><a href="#vinecopula_sample-8"><span class="linenos"> 8</span></a>    <span class="n">method_name</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;scp-vine-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="vinecopula_sample-9"><a href="#vinecopula_sample-9"><span class="linenos"> 9</span></a>    <span class="n">method_name</span> <span class="o">=</span> <span class="n">method_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;scp2-vine-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="vinecopula_sample-10"><a href="#vinecopula_sample-10"><span class="linenos">10</span></a>    <span class="n">method_name</span> <span class="o">=</span> <span class="n">method_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;vine-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="vinecopula_sample-11"><a href="#vinecopula_sample-11"><span class="linenos">11</span></a>    <span class="n">controls</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">FitControlsVinecop</span><span class="p">(</span>
+</span><span id="vinecopula_sample-12"><a href="#vinecopula_sample-12"><span class="linenos">12</span></a>        <span class="n">family_set</span><span class="o">=</span><span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">BicopFamily</span><span class="p">,</span> <span class="n">method_name</span><span class="p">)]</span>
+</span><span id="vinecopula_sample-13"><a href="#vinecopula_sample-13"><span class="linenos">13</span></a>    <span class="p">)</span>
+</span><span id="vinecopula_sample-14"><a href="#vinecopula_sample-14"><span class="linenos">14</span></a>    <span class="n">cop</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Vinecop</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="n">controls</span><span class="p">)</span>
+</span><span id="vinecopula_sample-15"><a href="#vinecopula_sample-15"><span class="linenos">15</span></a>    <span class="n">u_sim</span> <span class="o">=</span> <span class="n">cop</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">seeds</span><span class="o">=</span><span class="p">[</span><span class="n">random_state</span><span class="p">])</span>
+</span><span id="vinecopula_sample-16"><a href="#vinecopula_sample-16"><span class="linenos">16</span></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="vinecopula_sample-17"><a href="#vinecopula_sample-17"><span class="linenos">17</span></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">u_sim</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span>
+</span></pre></div>
+
+
+    
+
                 </section>
     </main>
 <script>
