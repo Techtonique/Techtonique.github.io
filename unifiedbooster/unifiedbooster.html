@@ -147,111 +147,114 @@ unifiedbooster    </h1>
 </span><span id="GBDT-25"><a href="#GBDT-25"><span class="linenos"> 25</span></a>
 </span><span id="GBDT-26"><a href="#GBDT-26"><span class="linenos"> 26</span></a><span class="sd">        seed: int</span>
 </span><span id="GBDT-27"><a href="#GBDT-27"><span class="linenos"> 27</span></a><span class="sd">            reproducibility seed</span>
-</span><span id="GBDT-28"><a href="#GBDT-28"><span class="linenos"> 28</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="GBDT-29"><a href="#GBDT-29"><span class="linenos"> 29</span></a>
-</span><span id="GBDT-30"><a href="#GBDT-30"><span class="linenos"> 30</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GBDT-31"><a href="#GBDT-31"><span class="linenos"> 31</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="GBDT-32"><a href="#GBDT-32"><span class="linenos"> 32</span></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
-</span><span id="GBDT-33"><a href="#GBDT-33"><span class="linenos"> 33</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-</span><span id="GBDT-34"><a href="#GBDT-34"><span class="linenos"> 34</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-</span><span id="GBDT-35"><a href="#GBDT-35"><span class="linenos"> 35</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="GBDT-36"><a href="#GBDT-36"><span class="linenos"> 36</span></a>        <span class="n">rowsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GBDT-37"><a href="#GBDT-37"><span class="linenos"> 37</span></a>        <span class="n">colsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GBDT-38"><a href="#GBDT-38"><span class="linenos"> 38</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="GBDT-39"><a href="#GBDT-39"><span class="linenos"> 39</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="GBDT-40"><a href="#GBDT-40"><span class="linenos"> 40</span></a>        <span class="o">**</span><span class="n">kwargs</span>
-</span><span id="GBDT-41"><a href="#GBDT-41"><span class="linenos"> 41</span></a>    <span class="p">):</span>
-</span><span id="GBDT-42"><a href="#GBDT-42"><span class="linenos"> 42</span></a>
-</span><span id="GBDT-43"><a href="#GBDT-43"><span class="linenos"> 43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">=</span> <span class="n">model_type</span>
-</span><span id="GBDT-44"><a href="#GBDT-44"><span class="linenos"> 44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_estimators</span>
-</span><span id="GBDT-45"><a href="#GBDT-45"><span class="linenos"> 45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
-</span><span id="GBDT-46"><a href="#GBDT-46"><span class="linenos"> 46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span>
-</span><span id="GBDT-47"><a href="#GBDT-47"><span class="linenos"> 47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span> <span class="o">=</span> <span class="n">rowsample</span>
-</span><span id="GBDT-48"><a href="#GBDT-48"><span class="linenos"> 48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span> <span class="o">=</span> <span class="n">colsample</span>
-</span><span id="GBDT-49"><a href="#GBDT-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-</span><span id="GBDT-50"><a href="#GBDT-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
-</span><span id="GBDT-51"><a href="#GBDT-51"><span class="linenos"> 51</span></a>
-</span><span id="GBDT-52"><a href="#GBDT-52"><span class="linenos"> 52</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
-</span><span id="GBDT-53"><a href="#GBDT-53"><span class="linenos"> 53</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GBDT-54"><a href="#GBDT-54"><span class="linenos"> 54</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GBDT-55"><a href="#GBDT-55"><span class="linenos"> 55</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GBDT-56"><a href="#GBDT-56"><span class="linenos"> 56</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="GBDT-57"><a href="#GBDT-57"><span class="linenos"> 57</span></a>                <span class="s2">&quot;colsample_bynode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="GBDT-58"><a href="#GBDT-58"><span class="linenos"> 58</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GBDT-59"><a href="#GBDT-59"><span class="linenos"> 59</span></a>                <span class="s2">&quot;verbosity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="GBDT-60"><a href="#GBDT-60"><span class="linenos"> 60</span></a>                <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDT-61"><a href="#GBDT-61"><span class="linenos"> 61</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDT-62"><a href="#GBDT-62"><span class="linenos"> 62</span></a>            <span class="p">}</span>
-</span><span id="GBDT-63"><a href="#GBDT-63"><span class="linenos"> 63</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lightgbm&quot;</span><span class="p">:</span>
-</span><span id="GBDT-64"><a href="#GBDT-64"><span class="linenos"> 64</span></a>            <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span>
-</span><span id="GBDT-65"><a href="#GBDT-65"><span class="linenos"> 65</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GBDT-66"><a href="#GBDT-66"><span class="linenos"> 66</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GBDT-67"><a href="#GBDT-67"><span class="linenos"> 67</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GBDT-68"><a href="#GBDT-68"><span class="linenos"> 68</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="GBDT-69"><a href="#GBDT-69"><span class="linenos"> 69</span></a>                <span class="s2">&quot;feature_fraction_bynode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="GBDT-70"><a href="#GBDT-70"><span class="linenos"> 70</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GBDT-71"><a href="#GBDT-71"><span class="linenos"> 71</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="n">verbose</span><span class="p">,</span>  <span class="c1"># keep this way</span>
-</span><span id="GBDT-72"><a href="#GBDT-72"><span class="linenos"> 72</span></a>                <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDT-73"><a href="#GBDT-73"><span class="linenos"> 73</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDT-74"><a href="#GBDT-74"><span class="linenos"> 74</span></a>            <span class="p">}</span>
-</span><span id="GBDT-75"><a href="#GBDT-75"><span class="linenos"> 75</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;catboost&quot;</span><span class="p">:</span>
-</span><span id="GBDT-76"><a href="#GBDT-76"><span class="linenos"> 76</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GBDT-77"><a href="#GBDT-77"><span class="linenos"> 77</span></a>                <span class="s2">&quot;iterations&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GBDT-78"><a href="#GBDT-78"><span class="linenos"> 78</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GBDT-79"><a href="#GBDT-79"><span class="linenos"> 79</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="GBDT-80"><a href="#GBDT-80"><span class="linenos"> 80</span></a>                <span class="s2">&quot;rsm&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="GBDT-81"><a href="#GBDT-81"><span class="linenos"> 81</span></a>                <span class="s2">&quot;depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GBDT-82"><a href="#GBDT-82"><span class="linenos"> 82</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="GBDT-83"><a href="#GBDT-83"><span class="linenos"> 83</span></a>                <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDT-84"><a href="#GBDT-84"><span class="linenos"> 84</span></a>                <span class="s2">&quot;bootstrap_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bernoulli&quot;</span><span class="p">,</span>
-</span><span id="GBDT-85"><a href="#GBDT-85"><span class="linenos"> 85</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDT-86"><a href="#GBDT-86"><span class="linenos"> 86</span></a>            <span class="p">}</span>
-</span><span id="GBDT-87"><a href="#GBDT-87"><span class="linenos"> 87</span></a>
-</span><span id="GBDT-88"><a href="#GBDT-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GBDT-89"><a href="#GBDT-89"><span class="linenos"> 89</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
+</span><span id="GBDT-28"><a href="#GBDT-28"><span class="linenos"> 28</span></a>
+</span><span id="GBDT-29"><a href="#GBDT-29"><span class="linenos"> 29</span></a><span class="sd">        **kwargs: dict</span>
+</span><span id="GBDT-30"><a href="#GBDT-30"><span class="linenos"> 30</span></a><span class="sd">            additional parameters to be passed to the class</span>
+</span><span id="GBDT-31"><a href="#GBDT-31"><span class="linenos"> 31</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="GBDT-32"><a href="#GBDT-32"><span class="linenos"> 32</span></a>
+</span><span id="GBDT-33"><a href="#GBDT-33"><span class="linenos"> 33</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="GBDT-34"><a href="#GBDT-34"><span class="linenos"> 34</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="GBDT-35"><a href="#GBDT-35"><span class="linenos"> 35</span></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
+</span><span id="GBDT-36"><a href="#GBDT-36"><span class="linenos"> 36</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span><span id="GBDT-37"><a href="#GBDT-37"><span class="linenos"> 37</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+</span><span id="GBDT-38"><a href="#GBDT-38"><span class="linenos"> 38</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="GBDT-39"><a href="#GBDT-39"><span class="linenos"> 39</span></a>        <span class="n">rowsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="GBDT-40"><a href="#GBDT-40"><span class="linenos"> 40</span></a>        <span class="n">colsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="GBDT-41"><a href="#GBDT-41"><span class="linenos"> 41</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="GBDT-42"><a href="#GBDT-42"><span class="linenos"> 42</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+</span><span id="GBDT-43"><a href="#GBDT-43"><span class="linenos"> 43</span></a>        <span class="o">**</span><span class="n">kwargs</span>
+</span><span id="GBDT-44"><a href="#GBDT-44"><span class="linenos"> 44</span></a>    <span class="p">):</span>
+</span><span id="GBDT-45"><a href="#GBDT-45"><span class="linenos"> 45</span></a>
+</span><span id="GBDT-46"><a href="#GBDT-46"><span class="linenos"> 46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">=</span> <span class="n">model_type</span>
+</span><span id="GBDT-47"><a href="#GBDT-47"><span class="linenos"> 47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_estimators</span>
+</span><span id="GBDT-48"><a href="#GBDT-48"><span class="linenos"> 48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
+</span><span id="GBDT-49"><a href="#GBDT-49"><span class="linenos"> 49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span>
+</span><span id="GBDT-50"><a href="#GBDT-50"><span class="linenos"> 50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span> <span class="o">=</span> <span class="n">rowsample</span>
+</span><span id="GBDT-51"><a href="#GBDT-51"><span class="linenos"> 51</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span> <span class="o">=</span> <span class="n">colsample</span>
+</span><span id="GBDT-52"><a href="#GBDT-52"><span class="linenos"> 52</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+</span><span id="GBDT-53"><a href="#GBDT-53"><span class="linenos"> 53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+</span><span id="GBDT-54"><a href="#GBDT-54"><span class="linenos"> 54</span></a>
+</span><span id="GBDT-55"><a href="#GBDT-55"><span class="linenos"> 55</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
+</span><span id="GBDT-56"><a href="#GBDT-56"><span class="linenos"> 56</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="GBDT-57"><a href="#GBDT-57"><span class="linenos"> 57</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="GBDT-58"><a href="#GBDT-58"><span class="linenos"> 58</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="GBDT-59"><a href="#GBDT-59"><span class="linenos"> 59</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="GBDT-60"><a href="#GBDT-60"><span class="linenos"> 60</span></a>                <span class="s2">&quot;colsample_bynode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="GBDT-61"><a href="#GBDT-61"><span class="linenos"> 61</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="GBDT-62"><a href="#GBDT-62"><span class="linenos"> 62</span></a>                <span class="s2">&quot;verbosity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="GBDT-63"><a href="#GBDT-63"><span class="linenos"> 63</span></a>                <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="GBDT-64"><a href="#GBDT-64"><span class="linenos"> 64</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDT-65"><a href="#GBDT-65"><span class="linenos"> 65</span></a>            <span class="p">}</span>
+</span><span id="GBDT-66"><a href="#GBDT-66"><span class="linenos"> 66</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lightgbm&quot;</span><span class="p">:</span>
+</span><span id="GBDT-67"><a href="#GBDT-67"><span class="linenos"> 67</span></a>            <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span>
+</span><span id="GBDT-68"><a href="#GBDT-68"><span class="linenos"> 68</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="GBDT-69"><a href="#GBDT-69"><span class="linenos"> 69</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="GBDT-70"><a href="#GBDT-70"><span class="linenos"> 70</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="GBDT-71"><a href="#GBDT-71"><span class="linenos"> 71</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="GBDT-72"><a href="#GBDT-72"><span class="linenos"> 72</span></a>                <span class="s2">&quot;feature_fraction_bynode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="GBDT-73"><a href="#GBDT-73"><span class="linenos"> 73</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="GBDT-74"><a href="#GBDT-74"><span class="linenos"> 74</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="n">verbose</span><span class="p">,</span>  <span class="c1"># keep this way</span>
+</span><span id="GBDT-75"><a href="#GBDT-75"><span class="linenos"> 75</span></a>                <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="GBDT-76"><a href="#GBDT-76"><span class="linenos"> 76</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDT-77"><a href="#GBDT-77"><span class="linenos"> 77</span></a>            <span class="p">}</span>
+</span><span id="GBDT-78"><a href="#GBDT-78"><span class="linenos"> 78</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;catboost&quot;</span><span class="p">:</span>
+</span><span id="GBDT-79"><a href="#GBDT-79"><span class="linenos"> 79</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="GBDT-80"><a href="#GBDT-80"><span class="linenos"> 80</span></a>                <span class="s2">&quot;iterations&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="GBDT-81"><a href="#GBDT-81"><span class="linenos"> 81</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="GBDT-82"><a href="#GBDT-82"><span class="linenos"> 82</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="GBDT-83"><a href="#GBDT-83"><span class="linenos"> 83</span></a>                <span class="s2">&quot;rsm&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="GBDT-84"><a href="#GBDT-84"><span class="linenos"> 84</span></a>                <span class="s2">&quot;depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="GBDT-85"><a href="#GBDT-85"><span class="linenos"> 85</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="GBDT-86"><a href="#GBDT-86"><span class="linenos"> 86</span></a>                <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="GBDT-87"><a href="#GBDT-87"><span class="linenos"> 87</span></a>                <span class="s2">&quot;bootstrap_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bernoulli&quot;</span><span class="p">,</span>
+</span><span id="GBDT-88"><a href="#GBDT-88"><span class="linenos"> 88</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDT-89"><a href="#GBDT-89"><span class="linenos"> 89</span></a>            <span class="p">}</span>
 </span><span id="GBDT-90"><a href="#GBDT-90"><span class="linenos"> 90</span></a>
-</span><span id="GBDT-91"><a href="#GBDT-91"><span class="linenos"> 91</span></a><span class="sd">        Parameters:</span>
-</span><span id="GBDT-92"><a href="#GBDT-92"><span class="linenos"> 92</span></a>
-</span><span id="GBDT-93"><a href="#GBDT-93"><span class="linenos"> 93</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT-94"><a href="#GBDT-94"><span class="linenos"> 94</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT-95"><a href="#GBDT-95"><span class="linenos"> 95</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT-96"><a href="#GBDT-96"><span class="linenos"> 96</span></a>
-</span><span id="GBDT-97"><a href="#GBDT-97"><span class="linenos"> 97</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GBDT-98"><a href="#GBDT-98"><span class="linenos"> 98</span></a><span class="sd">                Target values.</span>
+</span><span id="GBDT-91"><a href="#GBDT-91"><span class="linenos"> 91</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GBDT-92"><a href="#GBDT-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
+</span><span id="GBDT-93"><a href="#GBDT-93"><span class="linenos"> 93</span></a>
+</span><span id="GBDT-94"><a href="#GBDT-94"><span class="linenos"> 94</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT-95"><a href="#GBDT-95"><span class="linenos"> 95</span></a>
+</span><span id="GBDT-96"><a href="#GBDT-96"><span class="linenos"> 96</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT-97"><a href="#GBDT-97"><span class="linenos"> 97</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT-98"><a href="#GBDT-98"><span class="linenos"> 98</span></a><span class="sd">                of samples and n_features is the number of features.</span>
 </span><span id="GBDT-99"><a href="#GBDT-99"><span class="linenos"> 99</span></a>
-</span><span id="GBDT-100"><a href="#GBDT-100"><span class="linenos">100</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT-101"><a href="#GBDT-101"><span class="linenos">101</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
+</span><span id="GBDT-100"><a href="#GBDT-100"><span class="linenos">100</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
+</span><span id="GBDT-101"><a href="#GBDT-101"><span class="linenos">101</span></a><span class="sd">                Target values.</span>
 </span><span id="GBDT-102"><a href="#GBDT-102"><span class="linenos">102</span></a>
-</span><span id="GBDT-103"><a href="#GBDT-103"><span class="linenos">103</span></a><span class="sd">        Returns:</span>
-</span><span id="GBDT-104"><a href="#GBDT-104"><span class="linenos">104</span></a>
-</span><span id="GBDT-105"><a href="#GBDT-105"><span class="linenos">105</span></a><span class="sd">            self: object</span>
-</span><span id="GBDT-106"><a href="#GBDT-106"><span class="linenos">106</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT-103"><a href="#GBDT-103"><span class="linenos">103</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT-104"><a href="#GBDT-104"><span class="linenos">104</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
+</span><span id="GBDT-105"><a href="#GBDT-105"><span class="linenos">105</span></a>
+</span><span id="GBDT-106"><a href="#GBDT-106"><span class="linenos">106</span></a><span class="sd">        Returns:</span>
 </span><span id="GBDT-107"><a href="#GBDT-107"><span class="linenos">107</span></a>
-</span><span id="GBDT-108"><a href="#GBDT-108"><span class="linenos">108</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
-</span><span id="GBDT-109"><a href="#GBDT-109"><span class="linenos">109</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT-110"><a href="#GBDT-110"><span class="linenos">110</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
-</span><span id="GBDT-111"><a href="#GBDT-111"><span class="linenos">111</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
-</span><span id="GBDT-112"><a href="#GBDT-112"><span class="linenos">112</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT-113"><a href="#GBDT-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="GBDT-114"><a href="#GBDT-114"><span class="linenos">114</span></a>
-</span><span id="GBDT-115"><a href="#GBDT-115"><span class="linenos">115</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GBDT-116"><a href="#GBDT-116"><span class="linenos">116</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
+</span><span id="GBDT-108"><a href="#GBDT-108"><span class="linenos">108</span></a><span class="sd">            self: object</span>
+</span><span id="GBDT-109"><a href="#GBDT-109"><span class="linenos">109</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT-110"><a href="#GBDT-110"><span class="linenos">110</span></a>
+</span><span id="GBDT-111"><a href="#GBDT-111"><span class="linenos">111</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
+</span><span id="GBDT-112"><a href="#GBDT-112"><span class="linenos">112</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT-113"><a href="#GBDT-113"><span class="linenos">113</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
+</span><span id="GBDT-114"><a href="#GBDT-114"><span class="linenos">114</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+</span><span id="GBDT-115"><a href="#GBDT-115"><span class="linenos">115</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT-116"><a href="#GBDT-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="GBDT-117"><a href="#GBDT-117"><span class="linenos">117</span></a>
-</span><span id="GBDT-118"><a href="#GBDT-118"><span class="linenos">118</span></a><span class="sd">        Parameters:</span>
-</span><span id="GBDT-119"><a href="#GBDT-119"><span class="linenos">119</span></a>
-</span><span id="GBDT-120"><a href="#GBDT-120"><span class="linenos">120</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT-121"><a href="#GBDT-121"><span class="linenos">121</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT-122"><a href="#GBDT-122"><span class="linenos">122</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT-123"><a href="#GBDT-123"><span class="linenos">123</span></a>
-</span><span id="GBDT-124"><a href="#GBDT-124"><span class="linenos">124</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT-125"><a href="#GBDT-125"><span class="linenos">125</span></a><span class="sd">                    self.cook_test_set</span>
+</span><span id="GBDT-118"><a href="#GBDT-118"><span class="linenos">118</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="GBDT-119"><a href="#GBDT-119"><span class="linenos">119</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
+</span><span id="GBDT-120"><a href="#GBDT-120"><span class="linenos">120</span></a>
+</span><span id="GBDT-121"><a href="#GBDT-121"><span class="linenos">121</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT-122"><a href="#GBDT-122"><span class="linenos">122</span></a>
+</span><span id="GBDT-123"><a href="#GBDT-123"><span class="linenos">123</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT-124"><a href="#GBDT-124"><span class="linenos">124</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT-125"><a href="#GBDT-125"><span class="linenos">125</span></a><span class="sd">                of samples and n_features is the number of features.</span>
 </span><span id="GBDT-126"><a href="#GBDT-126"><span class="linenos">126</span></a>
-</span><span id="GBDT-127"><a href="#GBDT-127"><span class="linenos">127</span></a><span class="sd">        Returns:</span>
-</span><span id="GBDT-128"><a href="#GBDT-128"><span class="linenos">128</span></a>
-</span><span id="GBDT-129"><a href="#GBDT-129"><span class="linenos">129</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="GBDT-130"><a href="#GBDT-130"><span class="linenos">130</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT-127"><a href="#GBDT-127"><span class="linenos">127</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT-128"><a href="#GBDT-128"><span class="linenos">128</span></a><span class="sd">                    self.cook_test_set</span>
+</span><span id="GBDT-129"><a href="#GBDT-129"><span class="linenos">129</span></a>
+</span><span id="GBDT-130"><a href="#GBDT-130"><span class="linenos">130</span></a><span class="sd">        Returns:</span>
 </span><span id="GBDT-131"><a href="#GBDT-131"><span class="linenos">131</span></a>
-</span><span id="GBDT-132"><a href="#GBDT-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="GBDT-132"><a href="#GBDT-132"><span class="linenos">132</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="GBDT-133"><a href="#GBDT-133"><span class="linenos">133</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT-134"><a href="#GBDT-134"><span class="linenos">134</span></a>
+</span><span id="GBDT-135"><a href="#GBDT-135"><span class="linenos">135</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -276,6 +279,9 @@ verbose: int
 
 seed: int
     reproducibility seed
+
+**kwargs: dict
+    additional parameters to be passed to the class
 </code></pre>
 </div>
 
@@ -291,32 +297,32 @@ seed: int
 
     </div>
     <a class="headerlink" href="#GBDT.fit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.fit-88"><a href="#GBDT.fit-88"><span class="linenos"> 88</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GBDT.fit-89"><a href="#GBDT.fit-89"><span class="linenos"> 89</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
-</span><span id="GBDT.fit-90"><a href="#GBDT.fit-90"><span class="linenos"> 90</span></a>
-</span><span id="GBDT.fit-91"><a href="#GBDT.fit-91"><span class="linenos"> 91</span></a><span class="sd">        Parameters:</span>
-</span><span id="GBDT.fit-92"><a href="#GBDT.fit-92"><span class="linenos"> 92</span></a>
-</span><span id="GBDT.fit-93"><a href="#GBDT.fit-93"><span class="linenos"> 93</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT.fit-94"><a href="#GBDT.fit-94"><span class="linenos"> 94</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT.fit-95"><a href="#GBDT.fit-95"><span class="linenos"> 95</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT.fit-96"><a href="#GBDT.fit-96"><span class="linenos"> 96</span></a>
-</span><span id="GBDT.fit-97"><a href="#GBDT.fit-97"><span class="linenos"> 97</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GBDT.fit-98"><a href="#GBDT.fit-98"><span class="linenos"> 98</span></a><span class="sd">                Target values.</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.fit-91"><a href="#GBDT.fit-91"><span class="linenos"> 91</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GBDT.fit-92"><a href="#GBDT.fit-92"><span class="linenos"> 92</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
+</span><span id="GBDT.fit-93"><a href="#GBDT.fit-93"><span class="linenos"> 93</span></a>
+</span><span id="GBDT.fit-94"><a href="#GBDT.fit-94"><span class="linenos"> 94</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT.fit-95"><a href="#GBDT.fit-95"><span class="linenos"> 95</span></a>
+</span><span id="GBDT.fit-96"><a href="#GBDT.fit-96"><span class="linenos"> 96</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT.fit-97"><a href="#GBDT.fit-97"><span class="linenos"> 97</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT.fit-98"><a href="#GBDT.fit-98"><span class="linenos"> 98</span></a><span class="sd">                of samples and n_features is the number of features.</span>
 </span><span id="GBDT.fit-99"><a href="#GBDT.fit-99"><span class="linenos"> 99</span></a>
-</span><span id="GBDT.fit-100"><a href="#GBDT.fit-100"><span class="linenos">100</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT.fit-101"><a href="#GBDT.fit-101"><span class="linenos">101</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
+</span><span id="GBDT.fit-100"><a href="#GBDT.fit-100"><span class="linenos">100</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
+</span><span id="GBDT.fit-101"><a href="#GBDT.fit-101"><span class="linenos">101</span></a><span class="sd">                Target values.</span>
 </span><span id="GBDT.fit-102"><a href="#GBDT.fit-102"><span class="linenos">102</span></a>
-</span><span id="GBDT.fit-103"><a href="#GBDT.fit-103"><span class="linenos">103</span></a><span class="sd">        Returns:</span>
-</span><span id="GBDT.fit-104"><a href="#GBDT.fit-104"><span class="linenos">104</span></a>
-</span><span id="GBDT.fit-105"><a href="#GBDT.fit-105"><span class="linenos">105</span></a><span class="sd">            self: object</span>
-</span><span id="GBDT.fit-106"><a href="#GBDT.fit-106"><span class="linenos">106</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT.fit-103"><a href="#GBDT.fit-103"><span class="linenos">103</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT.fit-104"><a href="#GBDT.fit-104"><span class="linenos">104</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
+</span><span id="GBDT.fit-105"><a href="#GBDT.fit-105"><span class="linenos">105</span></a>
+</span><span id="GBDT.fit-106"><a href="#GBDT.fit-106"><span class="linenos">106</span></a><span class="sd">        Returns:</span>
 </span><span id="GBDT.fit-107"><a href="#GBDT.fit-107"><span class="linenos">107</span></a>
-</span><span id="GBDT.fit-108"><a href="#GBDT.fit-108"><span class="linenos">108</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
-</span><span id="GBDT.fit-109"><a href="#GBDT.fit-109"><span class="linenos">109</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT.fit-110"><a href="#GBDT.fit-110"><span class="linenos">110</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
-</span><span id="GBDT.fit-111"><a href="#GBDT.fit-111"><span class="linenos">111</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
-</span><span id="GBDT.fit-112"><a href="#GBDT.fit-112"><span class="linenos">112</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT.fit-113"><a href="#GBDT.fit-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GBDT.fit-108"><a href="#GBDT.fit-108"><span class="linenos">108</span></a><span class="sd">            self: object</span>
+</span><span id="GBDT.fit-109"><a href="#GBDT.fit-109"><span class="linenos">109</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT.fit-110"><a href="#GBDT.fit-110"><span class="linenos">110</span></a>
+</span><span id="GBDT.fit-111"><a href="#GBDT.fit-111"><span class="linenos">111</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
+</span><span id="GBDT.fit-112"><a href="#GBDT.fit-112"><span class="linenos">112</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT.fit-113"><a href="#GBDT.fit-113"><span class="linenos">113</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
+</span><span id="GBDT.fit-114"><a href="#GBDT.fit-114"><span class="linenos">114</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+</span><span id="GBDT.fit-115"><a href="#GBDT.fit-115"><span class="linenos">115</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT.fit-116"><a href="#GBDT.fit-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -354,24 +360,24 @@ y: array-like, shape = [n_samples]
 
     </div>
     <a class="headerlink" href="#GBDT.predict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.predict-115"><a href="#GBDT.predict-115"><span class="linenos">115</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GBDT.predict-116"><a href="#GBDT.predict-116"><span class="linenos">116</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
-</span><span id="GBDT.predict-117"><a href="#GBDT.predict-117"><span class="linenos">117</span></a>
-</span><span id="GBDT.predict-118"><a href="#GBDT.predict-118"><span class="linenos">118</span></a><span class="sd">        Parameters:</span>
-</span><span id="GBDT.predict-119"><a href="#GBDT.predict-119"><span class="linenos">119</span></a>
-</span><span id="GBDT.predict-120"><a href="#GBDT.predict-120"><span class="linenos">120</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT.predict-121"><a href="#GBDT.predict-121"><span class="linenos">121</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT.predict-122"><a href="#GBDT.predict-122"><span class="linenos">122</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT.predict-123"><a href="#GBDT.predict-123"><span class="linenos">123</span></a>
-</span><span id="GBDT.predict-124"><a href="#GBDT.predict-124"><span class="linenos">124</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT.predict-125"><a href="#GBDT.predict-125"><span class="linenos">125</span></a><span class="sd">                    self.cook_test_set</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.predict-118"><a href="#GBDT.predict-118"><span class="linenos">118</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="GBDT.predict-119"><a href="#GBDT.predict-119"><span class="linenos">119</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
+</span><span id="GBDT.predict-120"><a href="#GBDT.predict-120"><span class="linenos">120</span></a>
+</span><span id="GBDT.predict-121"><a href="#GBDT.predict-121"><span class="linenos">121</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT.predict-122"><a href="#GBDT.predict-122"><span class="linenos">122</span></a>
+</span><span id="GBDT.predict-123"><a href="#GBDT.predict-123"><span class="linenos">123</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT.predict-124"><a href="#GBDT.predict-124"><span class="linenos">124</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT.predict-125"><a href="#GBDT.predict-125"><span class="linenos">125</span></a><span class="sd">                of samples and n_features is the number of features.</span>
 </span><span id="GBDT.predict-126"><a href="#GBDT.predict-126"><span class="linenos">126</span></a>
-</span><span id="GBDT.predict-127"><a href="#GBDT.predict-127"><span class="linenos">127</span></a><span class="sd">        Returns:</span>
-</span><span id="GBDT.predict-128"><a href="#GBDT.predict-128"><span class="linenos">128</span></a>
-</span><span id="GBDT.predict-129"><a href="#GBDT.predict-129"><span class="linenos">129</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="GBDT.predict-130"><a href="#GBDT.predict-130"><span class="linenos">130</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT.predict-127"><a href="#GBDT.predict-127"><span class="linenos">127</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT.predict-128"><a href="#GBDT.predict-128"><span class="linenos">128</span></a><span class="sd">                    self.cook_test_set</span>
+</span><span id="GBDT.predict-129"><a href="#GBDT.predict-129"><span class="linenos">129</span></a>
+</span><span id="GBDT.predict-130"><a href="#GBDT.predict-130"><span class="linenos">130</span></a><span class="sd">        Returns:</span>
 </span><span id="GBDT.predict-131"><a href="#GBDT.predict-131"><span class="linenos">131</span></a>
-</span><span id="GBDT.predict-132"><a href="#GBDT.predict-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="GBDT.predict-132"><a href="#GBDT.predict-132"><span class="linenos">132</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="GBDT.predict-133"><a href="#GBDT.predict-133"><span class="linenos">133</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT.predict-134"><a href="#GBDT.predict-134"><span class="linenos">134</span></a>
+</span><span id="GBDT.predict-135"><a href="#GBDT.predict-135"><span class="linenos">135</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -431,100 +437,103 @@ y: array-like, shape = [n_samples]
 </span><span id="GBDTClassifier-33"><a href="#GBDTClassifier-33"><span class="linenos"> 33</span></a><span class="sd">        seed: int</span>
 </span><span id="GBDTClassifier-34"><a href="#GBDTClassifier-34"><span class="linenos"> 34</span></a><span class="sd">            reproducibility seed</span>
 </span><span id="GBDTClassifier-35"><a href="#GBDTClassifier-35"><span class="linenos"> 35</span></a>
-</span><span id="GBDTClassifier-36"><a href="#GBDTClassifier-36"><span class="linenos"> 36</span></a><span class="sd">    Examples:</span>
-</span><span id="GBDTClassifier-37"><a href="#GBDTClassifier-37"><span class="linenos"> 37</span></a>
-</span><span id="GBDTClassifier-38"><a href="#GBDTClassifier-38"><span class="linenos"> 38</span></a><span class="sd">    ```python</span>
-</span><span id="GBDTClassifier-39"><a href="#GBDTClassifier-39"><span class="linenos"> 39</span></a><span class="sd">    import unifiedbooster as ub</span>
-</span><span id="GBDTClassifier-40"><a href="#GBDTClassifier-40"><span class="linenos"> 40</span></a><span class="sd">    from sklearn.datasets import load_iris</span>
-</span><span id="GBDTClassifier-41"><a href="#GBDTClassifier-41"><span class="linenos"> 41</span></a><span class="sd">    from sklearn.model_selection import train_test_split</span>
-</span><span id="GBDTClassifier-42"><a href="#GBDTClassifier-42"><span class="linenos"> 42</span></a><span class="sd">    from sklearn.metrics import accuracy_score</span>
-</span><span id="GBDTClassifier-43"><a href="#GBDTClassifier-43"><span class="linenos"> 43</span></a>
-</span><span id="GBDTClassifier-44"><a href="#GBDTClassifier-44"><span class="linenos"> 44</span></a><span class="sd">    # Load dataset</span>
-</span><span id="GBDTClassifier-45"><a href="#GBDTClassifier-45"><span class="linenos"> 45</span></a><span class="sd">    iris = load_iris()</span>
-</span><span id="GBDTClassifier-46"><a href="#GBDTClassifier-46"><span class="linenos"> 46</span></a><span class="sd">    X, y = iris.data, iris.target</span>
-</span><span id="GBDTClassifier-47"><a href="#GBDTClassifier-47"><span class="linenos"> 47</span></a>
-</span><span id="GBDTClassifier-48"><a href="#GBDTClassifier-48"><span class="linenos"> 48</span></a><span class="sd">    # Split dataset into training and testing sets</span>
-</span><span id="GBDTClassifier-49"><a href="#GBDTClassifier-49"><span class="linenos"> 49</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="GBDTClassifier-36"><a href="#GBDTClassifier-36"><span class="linenos"> 36</span></a><span class="sd">        **kwargs: dict</span>
+</span><span id="GBDTClassifier-37"><a href="#GBDTClassifier-37"><span class="linenos"> 37</span></a><span class="sd">            additional parameters to be passed to the class</span>
+</span><span id="GBDTClassifier-38"><a href="#GBDTClassifier-38"><span class="linenos"> 38</span></a>
+</span><span id="GBDTClassifier-39"><a href="#GBDTClassifier-39"><span class="linenos"> 39</span></a><span class="sd">    Examples:</span>
+</span><span id="GBDTClassifier-40"><a href="#GBDTClassifier-40"><span class="linenos"> 40</span></a>
+</span><span id="GBDTClassifier-41"><a href="#GBDTClassifier-41"><span class="linenos"> 41</span></a><span class="sd">    ```python</span>
+</span><span id="GBDTClassifier-42"><a href="#GBDTClassifier-42"><span class="linenos"> 42</span></a><span class="sd">    import unifiedbooster as ub</span>
+</span><span id="GBDTClassifier-43"><a href="#GBDTClassifier-43"><span class="linenos"> 43</span></a><span class="sd">    from sklearn.datasets import load_iris</span>
+</span><span id="GBDTClassifier-44"><a href="#GBDTClassifier-44"><span class="linenos"> 44</span></a><span class="sd">    from sklearn.model_selection import train_test_split</span>
+</span><span id="GBDTClassifier-45"><a href="#GBDTClassifier-45"><span class="linenos"> 45</span></a><span class="sd">    from sklearn.metrics import accuracy_score</span>
+</span><span id="GBDTClassifier-46"><a href="#GBDTClassifier-46"><span class="linenos"> 46</span></a>
+</span><span id="GBDTClassifier-47"><a href="#GBDTClassifier-47"><span class="linenos"> 47</span></a><span class="sd">    # Load dataset</span>
+</span><span id="GBDTClassifier-48"><a href="#GBDTClassifier-48"><span class="linenos"> 48</span></a><span class="sd">    iris = load_iris()</span>
+</span><span id="GBDTClassifier-49"><a href="#GBDTClassifier-49"><span class="linenos"> 49</span></a><span class="sd">    X, y = iris.data, iris.target</span>
 </span><span id="GBDTClassifier-50"><a href="#GBDTClassifier-50"><span class="linenos"> 50</span></a>
-</span><span id="GBDTClassifier-51"><a href="#GBDTClassifier-51"><span class="linenos"> 51</span></a><span class="sd">    # Initialize the unified regressor (example with XGBoost)</span>
-</span><span id="GBDTClassifier-52"><a href="#GBDTClassifier-52"><span class="linenos"> 52</span></a><span class="sd">    regressor1 = ub.GBDTClassifier(model_type=&#39;xgboost&#39;)</span>
-</span><span id="GBDTClassifier-53"><a href="#GBDTClassifier-53"><span class="linenos"> 53</span></a><span class="sd">    #regressor2 = ub.GBDTClassifier(model_type=&#39;catboost&#39;)</span>
-</span><span id="GBDTClassifier-54"><a href="#GBDTClassifier-54"><span class="linenos"> 54</span></a><span class="sd">    regressor3 = ub.GBDTClassifier(model_type=&#39;lightgbm&#39;)</span>
-</span><span id="GBDTClassifier-55"><a href="#GBDTClassifier-55"><span class="linenos"> 55</span></a>
-</span><span id="GBDTClassifier-56"><a href="#GBDTClassifier-56"><span class="linenos"> 56</span></a><span class="sd">    # Fit the model</span>
-</span><span id="GBDTClassifier-57"><a href="#GBDTClassifier-57"><span class="linenos"> 57</span></a><span class="sd">    regressor1.fit(X_train, y_train)</span>
-</span><span id="GBDTClassifier-58"><a href="#GBDTClassifier-58"><span class="linenos"> 58</span></a><span class="sd">    #regressor2.fit(X_train, y_train)</span>
-</span><span id="GBDTClassifier-59"><a href="#GBDTClassifier-59"><span class="linenos"> 59</span></a><span class="sd">    regressor3.fit(X_train, y_train)</span>
-</span><span id="GBDTClassifier-60"><a href="#GBDTClassifier-60"><span class="linenos"> 60</span></a>
-</span><span id="GBDTClassifier-61"><a href="#GBDTClassifier-61"><span class="linenos"> 61</span></a><span class="sd">    # Predict on the test set</span>
-</span><span id="GBDTClassifier-62"><a href="#GBDTClassifier-62"><span class="linenos"> 62</span></a><span class="sd">    y_pred1 = regressor1.predict(X_test)</span>
-</span><span id="GBDTClassifier-63"><a href="#GBDTClassifier-63"><span class="linenos"> 63</span></a><span class="sd">    #y_pred2 = regressor2.predict(X_test)</span>
-</span><span id="GBDTClassifier-64"><a href="#GBDTClassifier-64"><span class="linenos"> 64</span></a><span class="sd">    y_pred3 = regressor3.predict(X_test)</span>
-</span><span id="GBDTClassifier-65"><a href="#GBDTClassifier-65"><span class="linenos"> 65</span></a>
-</span><span id="GBDTClassifier-66"><a href="#GBDTClassifier-66"><span class="linenos"> 66</span></a><span class="sd">    # Evaluate the model</span>
-</span><span id="GBDTClassifier-67"><a href="#GBDTClassifier-67"><span class="linenos"> 67</span></a><span class="sd">    accuracy1 = accuracy_score(y_test, y_pred1)</span>
-</span><span id="GBDTClassifier-68"><a href="#GBDTClassifier-68"><span class="linenos"> 68</span></a><span class="sd">    #accuracy2 = accuracy_score(y_test, y_pred2)</span>
-</span><span id="GBDTClassifier-69"><a href="#GBDTClassifier-69"><span class="linenos"> 69</span></a><span class="sd">    accuracy3 = accuracy_score(y_test, y_pred3)</span>
-</span><span id="GBDTClassifier-70"><a href="#GBDTClassifier-70"><span class="linenos"> 70</span></a><span class="sd">    print(f&quot;Classification Accuracy xgboost: {accuracy1:.2f}&quot;)</span>
-</span><span id="GBDTClassifier-71"><a href="#GBDTClassifier-71"><span class="linenos"> 71</span></a><span class="sd">    #print(f&quot;Classification Accuracy catboost: {accuracy2:.2f}&quot;)</span>
-</span><span id="GBDTClassifier-72"><a href="#GBDTClassifier-72"><span class="linenos"> 72</span></a><span class="sd">    print(f&quot;Classification Accuracy lightgbm: {accuracy3:.2f}&quot;)</span>
-</span><span id="GBDTClassifier-73"><a href="#GBDTClassifier-73"><span class="linenos"> 73</span></a><span class="sd">    ```</span>
-</span><span id="GBDTClassifier-74"><a href="#GBDTClassifier-74"><span class="linenos"> 74</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="GBDTClassifier-75"><a href="#GBDTClassifier-75"><span class="linenos"> 75</span></a>
-</span><span id="GBDTClassifier-76"><a href="#GBDTClassifier-76"><span class="linenos"> 76</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GBDTClassifier-77"><a href="#GBDTClassifier-77"><span class="linenos"> 77</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="GBDTClassifier-78"><a href="#GBDTClassifier-78"><span class="linenos"> 78</span></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
-</span><span id="GBDTClassifier-79"><a href="#GBDTClassifier-79"><span class="linenos"> 79</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-</span><span id="GBDTClassifier-80"><a href="#GBDTClassifier-80"><span class="linenos"> 80</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-</span><span id="GBDTClassifier-81"><a href="#GBDTClassifier-81"><span class="linenos"> 81</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="GBDTClassifier-82"><a href="#GBDTClassifier-82"><span class="linenos"> 82</span></a>        <span class="n">rowsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GBDTClassifier-83"><a href="#GBDTClassifier-83"><span class="linenos"> 83</span></a>        <span class="n">colsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GBDTClassifier-84"><a href="#GBDTClassifier-84"><span class="linenos"> 84</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="GBDTClassifier-85"><a href="#GBDTClassifier-85"><span class="linenos"> 85</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="GBDTClassifier-86"><a href="#GBDTClassifier-86"><span class="linenos"> 86</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDTClassifier-87"><a href="#GBDTClassifier-87"><span class="linenos"> 87</span></a>    <span class="p">):</span>
-</span><span id="GBDTClassifier-88"><a href="#GBDTClassifier-88"><span class="linenos"> 88</span></a>
-</span><span id="GBDTClassifier-89"><a href="#GBDTClassifier-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-</span><span id="GBDTClassifier-90"><a href="#GBDTClassifier-90"><span class="linenos"> 90</span></a>
-</span><span id="GBDTClassifier-91"><a href="#GBDTClassifier-91"><span class="linenos"> 91</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GBDTClassifier-92"><a href="#GBDTClassifier-92"><span class="linenos"> 92</span></a>            <span class="n">model_type</span><span class="o">=</span><span class="n">model_type</span><span class="p">,</span>
-</span><span id="GBDTClassifier-93"><a href="#GBDTClassifier-93"><span class="linenos"> 93</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GBDTClassifier-94"><a href="#GBDTClassifier-94"><span class="linenos"> 94</span></a>            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GBDTClassifier-95"><a href="#GBDTClassifier-95"><span class="linenos"> 95</span></a>            <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GBDTClassifier-96"><a href="#GBDTClassifier-96"><span class="linenos"> 96</span></a>            <span class="n">rowsample</span><span class="o">=</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="GBDTClassifier-97"><a href="#GBDTClassifier-97"><span class="linenos"> 97</span></a>            <span class="n">colsample</span><span class="o">=</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="GBDTClassifier-98"><a href="#GBDTClassifier-98"><span class="linenos"> 98</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="GBDTClassifier-99"><a href="#GBDTClassifier-99"><span class="linenos"> 99</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDTClassifier-100"><a href="#GBDTClassifier-100"><span class="linenos">100</span></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDTClassifier-101"><a href="#GBDTClassifier-101"><span class="linenos">101</span></a>        <span class="p">)</span>
-</span><span id="GBDTClassifier-102"><a href="#GBDTClassifier-102"><span class="linenos">102</span></a>
-</span><span id="GBDTClassifier-103"><a href="#GBDTClassifier-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
-</span><span id="GBDTClassifier-104"><a href="#GBDTClassifier-104"><span class="linenos">104</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-</span><span id="GBDTClassifier-105"><a href="#GBDTClassifier-105"><span class="linenos">105</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;catboost&quot;</span><span class="p">:</span>
-</span><span id="GBDTClassifier-106"><a href="#GBDTClassifier-106"><span class="linenos">106</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CatBoostClassifier</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-</span><span id="GBDTClassifier-107"><a href="#GBDTClassifier-107"><span class="linenos">107</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lightgbm&quot;</span><span class="p">:</span>
-</span><span id="GBDTClassifier-108"><a href="#GBDTClassifier-108"><span class="linenos">108</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-</span><span id="GBDTClassifier-109"><a href="#GBDTClassifier-109"><span class="linenos">109</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="GBDTClassifier-110"><a href="#GBDTClassifier-110"><span class="linenos">110</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown model_type: </span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span id="GBDTClassifier-111"><a href="#GBDTClassifier-111"><span class="linenos">111</span></a>
-</span><span id="GBDTClassifier-112"><a href="#GBDTClassifier-112"><span class="linenos">112</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GBDTClassifier-113"><a href="#GBDTClassifier-113"><span class="linenos">113</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
+</span><span id="GBDTClassifier-51"><a href="#GBDTClassifier-51"><span class="linenos"> 51</span></a><span class="sd">    # Split dataset into training and testing sets</span>
+</span><span id="GBDTClassifier-52"><a href="#GBDTClassifier-52"><span class="linenos"> 52</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="GBDTClassifier-53"><a href="#GBDTClassifier-53"><span class="linenos"> 53</span></a>
+</span><span id="GBDTClassifier-54"><a href="#GBDTClassifier-54"><span class="linenos"> 54</span></a><span class="sd">    # Initialize the unified regressor (example with XGBoost)</span>
+</span><span id="GBDTClassifier-55"><a href="#GBDTClassifier-55"><span class="linenos"> 55</span></a><span class="sd">    regressor1 = ub.GBDTClassifier(model_type=&#39;xgboost&#39;)</span>
+</span><span id="GBDTClassifier-56"><a href="#GBDTClassifier-56"><span class="linenos"> 56</span></a><span class="sd">    #regressor2 = ub.GBDTClassifier(model_type=&#39;catboost&#39;)</span>
+</span><span id="GBDTClassifier-57"><a href="#GBDTClassifier-57"><span class="linenos"> 57</span></a><span class="sd">    regressor3 = ub.GBDTClassifier(model_type=&#39;lightgbm&#39;)</span>
+</span><span id="GBDTClassifier-58"><a href="#GBDTClassifier-58"><span class="linenos"> 58</span></a>
+</span><span id="GBDTClassifier-59"><a href="#GBDTClassifier-59"><span class="linenos"> 59</span></a><span class="sd">    # Fit the model</span>
+</span><span id="GBDTClassifier-60"><a href="#GBDTClassifier-60"><span class="linenos"> 60</span></a><span class="sd">    regressor1.fit(X_train, y_train)</span>
+</span><span id="GBDTClassifier-61"><a href="#GBDTClassifier-61"><span class="linenos"> 61</span></a><span class="sd">    #regressor2.fit(X_train, y_train)</span>
+</span><span id="GBDTClassifier-62"><a href="#GBDTClassifier-62"><span class="linenos"> 62</span></a><span class="sd">    regressor3.fit(X_train, y_train)</span>
+</span><span id="GBDTClassifier-63"><a href="#GBDTClassifier-63"><span class="linenos"> 63</span></a>
+</span><span id="GBDTClassifier-64"><a href="#GBDTClassifier-64"><span class="linenos"> 64</span></a><span class="sd">    # Predict on the test set</span>
+</span><span id="GBDTClassifier-65"><a href="#GBDTClassifier-65"><span class="linenos"> 65</span></a><span class="sd">    y_pred1 = regressor1.predict(X_test)</span>
+</span><span id="GBDTClassifier-66"><a href="#GBDTClassifier-66"><span class="linenos"> 66</span></a><span class="sd">    #y_pred2 = regressor2.predict(X_test)</span>
+</span><span id="GBDTClassifier-67"><a href="#GBDTClassifier-67"><span class="linenos"> 67</span></a><span class="sd">    y_pred3 = regressor3.predict(X_test)</span>
+</span><span id="GBDTClassifier-68"><a href="#GBDTClassifier-68"><span class="linenos"> 68</span></a>
+</span><span id="GBDTClassifier-69"><a href="#GBDTClassifier-69"><span class="linenos"> 69</span></a><span class="sd">    # Evaluate the model</span>
+</span><span id="GBDTClassifier-70"><a href="#GBDTClassifier-70"><span class="linenos"> 70</span></a><span class="sd">    accuracy1 = accuracy_score(y_test, y_pred1)</span>
+</span><span id="GBDTClassifier-71"><a href="#GBDTClassifier-71"><span class="linenos"> 71</span></a><span class="sd">    #accuracy2 = accuracy_score(y_test, y_pred2)</span>
+</span><span id="GBDTClassifier-72"><a href="#GBDTClassifier-72"><span class="linenos"> 72</span></a><span class="sd">    accuracy3 = accuracy_score(y_test, y_pred3)</span>
+</span><span id="GBDTClassifier-73"><a href="#GBDTClassifier-73"><span class="linenos"> 73</span></a><span class="sd">    print(f&quot;Classification Accuracy xgboost: {accuracy1:.2f}&quot;)</span>
+</span><span id="GBDTClassifier-74"><a href="#GBDTClassifier-74"><span class="linenos"> 74</span></a><span class="sd">    #print(f&quot;Classification Accuracy catboost: {accuracy2:.2f}&quot;)</span>
+</span><span id="GBDTClassifier-75"><a href="#GBDTClassifier-75"><span class="linenos"> 75</span></a><span class="sd">    print(f&quot;Classification Accuracy lightgbm: {accuracy3:.2f}&quot;)</span>
+</span><span id="GBDTClassifier-76"><a href="#GBDTClassifier-76"><span class="linenos"> 76</span></a><span class="sd">    ```</span>
+</span><span id="GBDTClassifier-77"><a href="#GBDTClassifier-77"><span class="linenos"> 77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="GBDTClassifier-78"><a href="#GBDTClassifier-78"><span class="linenos"> 78</span></a>
+</span><span id="GBDTClassifier-79"><a href="#GBDTClassifier-79"><span class="linenos"> 79</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="GBDTClassifier-80"><a href="#GBDTClassifier-80"><span class="linenos"> 80</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="GBDTClassifier-81"><a href="#GBDTClassifier-81"><span class="linenos"> 81</span></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
+</span><span id="GBDTClassifier-82"><a href="#GBDTClassifier-82"><span class="linenos"> 82</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span><span id="GBDTClassifier-83"><a href="#GBDTClassifier-83"><span class="linenos"> 83</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+</span><span id="GBDTClassifier-84"><a href="#GBDTClassifier-84"><span class="linenos"> 84</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="GBDTClassifier-85"><a href="#GBDTClassifier-85"><span class="linenos"> 85</span></a>        <span class="n">rowsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="GBDTClassifier-86"><a href="#GBDTClassifier-86"><span class="linenos"> 86</span></a>        <span class="n">colsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="GBDTClassifier-87"><a href="#GBDTClassifier-87"><span class="linenos"> 87</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="GBDTClassifier-88"><a href="#GBDTClassifier-88"><span class="linenos"> 88</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+</span><span id="GBDTClassifier-89"><a href="#GBDTClassifier-89"><span class="linenos"> 89</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDTClassifier-90"><a href="#GBDTClassifier-90"><span class="linenos"> 90</span></a>    <span class="p">):</span>
+</span><span id="GBDTClassifier-91"><a href="#GBDTClassifier-91"><span class="linenos"> 91</span></a>
+</span><span id="GBDTClassifier-92"><a href="#GBDTClassifier-92"><span class="linenos"> 92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
+</span><span id="GBDTClassifier-93"><a href="#GBDTClassifier-93"><span class="linenos"> 93</span></a>
+</span><span id="GBDTClassifier-94"><a href="#GBDTClassifier-94"><span class="linenos"> 94</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="GBDTClassifier-95"><a href="#GBDTClassifier-95"><span class="linenos"> 95</span></a>            <span class="n">model_type</span><span class="o">=</span><span class="n">model_type</span><span class="p">,</span>
+</span><span id="GBDTClassifier-96"><a href="#GBDTClassifier-96"><span class="linenos"> 96</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="GBDTClassifier-97"><a href="#GBDTClassifier-97"><span class="linenos"> 97</span></a>            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="GBDTClassifier-98"><a href="#GBDTClassifier-98"><span class="linenos"> 98</span></a>            <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="GBDTClassifier-99"><a href="#GBDTClassifier-99"><span class="linenos"> 99</span></a>            <span class="n">rowsample</span><span class="o">=</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="GBDTClassifier-100"><a href="#GBDTClassifier-100"><span class="linenos">100</span></a>            <span class="n">colsample</span><span class="o">=</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="GBDTClassifier-101"><a href="#GBDTClassifier-101"><span class="linenos">101</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="GBDTClassifier-102"><a href="#GBDTClassifier-102"><span class="linenos">102</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="GBDTClassifier-103"><a href="#GBDTClassifier-103"><span class="linenos">103</span></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDTClassifier-104"><a href="#GBDTClassifier-104"><span class="linenos">104</span></a>        <span class="p">)</span>
+</span><span id="GBDTClassifier-105"><a href="#GBDTClassifier-105"><span class="linenos">105</span></a>
+</span><span id="GBDTClassifier-106"><a href="#GBDTClassifier-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
+</span><span id="GBDTClassifier-107"><a href="#GBDTClassifier-107"><span class="linenos">107</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</span><span id="GBDTClassifier-108"><a href="#GBDTClassifier-108"><span class="linenos">108</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;catboost&quot;</span><span class="p">:</span>
+</span><span id="GBDTClassifier-109"><a href="#GBDTClassifier-109"><span class="linenos">109</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CatBoostClassifier</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</span><span id="GBDTClassifier-110"><a href="#GBDTClassifier-110"><span class="linenos">110</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lightgbm&quot;</span><span class="p">:</span>
+</span><span id="GBDTClassifier-111"><a href="#GBDTClassifier-111"><span class="linenos">111</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</span><span id="GBDTClassifier-112"><a href="#GBDTClassifier-112"><span class="linenos">112</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="GBDTClassifier-113"><a href="#GBDTClassifier-113"><span class="linenos">113</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown model_type: </span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="GBDTClassifier-114"><a href="#GBDTClassifier-114"><span class="linenos">114</span></a>
-</span><span id="GBDTClassifier-115"><a href="#GBDTClassifier-115"><span class="linenos">115</span></a><span class="sd">        Args:</span>
-</span><span id="GBDTClassifier-116"><a href="#GBDTClassifier-116"><span class="linenos">116</span></a>
-</span><span id="GBDTClassifier-117"><a href="#GBDTClassifier-117"><span class="linenos">117</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDTClassifier-118"><a href="#GBDTClassifier-118"><span class="linenos">118</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDTClassifier-119"><a href="#GBDTClassifier-119"><span class="linenos">119</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDTClassifier-120"><a href="#GBDTClassifier-120"><span class="linenos">120</span></a>
-</span><span id="GBDTClassifier-121"><a href="#GBDTClassifier-121"><span class="linenos">121</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDTClassifier-122"><a href="#GBDTClassifier-122"><span class="linenos">122</span></a><span class="sd">                    self.cook_test_set</span>
+</span><span id="GBDTClassifier-115"><a href="#GBDTClassifier-115"><span class="linenos">115</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="GBDTClassifier-116"><a href="#GBDTClassifier-116"><span class="linenos">116</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
+</span><span id="GBDTClassifier-117"><a href="#GBDTClassifier-117"><span class="linenos">117</span></a>
+</span><span id="GBDTClassifier-118"><a href="#GBDTClassifier-118"><span class="linenos">118</span></a><span class="sd">        Args:</span>
+</span><span id="GBDTClassifier-119"><a href="#GBDTClassifier-119"><span class="linenos">119</span></a>
+</span><span id="GBDTClassifier-120"><a href="#GBDTClassifier-120"><span class="linenos">120</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDTClassifier-121"><a href="#GBDTClassifier-121"><span class="linenos">121</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDTClassifier-122"><a href="#GBDTClassifier-122"><span class="linenos">122</span></a><span class="sd">                of samples and n_features is the number of features.</span>
 </span><span id="GBDTClassifier-123"><a href="#GBDTClassifier-123"><span class="linenos">123</span></a>
-</span><span id="GBDTClassifier-124"><a href="#GBDTClassifier-124"><span class="linenos">124</span></a><span class="sd">        Returns:</span>
-</span><span id="GBDTClassifier-125"><a href="#GBDTClassifier-125"><span class="linenos">125</span></a>
-</span><span id="GBDTClassifier-126"><a href="#GBDTClassifier-126"><span class="linenos">126</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
-</span><span id="GBDTClassifier-127"><a href="#GBDTClassifier-127"><span class="linenos">127</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDTClassifier-124"><a href="#GBDTClassifier-124"><span class="linenos">124</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDTClassifier-125"><a href="#GBDTClassifier-125"><span class="linenos">125</span></a><span class="sd">                    self.cook_test_set</span>
+</span><span id="GBDTClassifier-126"><a href="#GBDTClassifier-126"><span class="linenos">126</span></a>
+</span><span id="GBDTClassifier-127"><a href="#GBDTClassifier-127"><span class="linenos">127</span></a><span class="sd">        Returns:</span>
 </span><span id="GBDTClassifier-128"><a href="#GBDTClassifier-128"><span class="linenos">128</span></a>
-</span><span id="GBDTClassifier-129"><a href="#GBDTClassifier-129"><span class="linenos">129</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="GBDTClassifier-129"><a href="#GBDTClassifier-129"><span class="linenos">129</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
+</span><span id="GBDTClassifier-130"><a href="#GBDTClassifier-130"><span class="linenos">130</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDTClassifier-131"><a href="#GBDTClassifier-131"><span class="linenos">131</span></a>
+</span><span id="GBDTClassifier-132"><a href="#GBDTClassifier-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -549,6 +558,9 @@ verbose: int
 
 seed: int
     reproducibility seed
+
+**kwargs: dict
+    additional parameters to be passed to the class
 </code></pre>
 
 <p>Examples:</p>
@@ -604,24 +616,24 @@ seed: int
 
     </div>
     <a class="headerlink" href="#GBDTClassifier.predict_proba"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDTClassifier.predict_proba-112"><a href="#GBDTClassifier.predict_proba-112"><span class="linenos">112</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GBDTClassifier.predict_proba-113"><a href="#GBDTClassifier.predict_proba-113"><span class="linenos">113</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
-</span><span id="GBDTClassifier.predict_proba-114"><a href="#GBDTClassifier.predict_proba-114"><span class="linenos">114</span></a>
-</span><span id="GBDTClassifier.predict_proba-115"><a href="#GBDTClassifier.predict_proba-115"><span class="linenos">115</span></a><span class="sd">        Args:</span>
-</span><span id="GBDTClassifier.predict_proba-116"><a href="#GBDTClassifier.predict_proba-116"><span class="linenos">116</span></a>
-</span><span id="GBDTClassifier.predict_proba-117"><a href="#GBDTClassifier.predict_proba-117"><span class="linenos">117</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDTClassifier.predict_proba-118"><a href="#GBDTClassifier.predict_proba-118"><span class="linenos">118</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDTClassifier.predict_proba-119"><a href="#GBDTClassifier.predict_proba-119"><span class="linenos">119</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDTClassifier.predict_proba-120"><a href="#GBDTClassifier.predict_proba-120"><span class="linenos">120</span></a>
-</span><span id="GBDTClassifier.predict_proba-121"><a href="#GBDTClassifier.predict_proba-121"><span class="linenos">121</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDTClassifier.predict_proba-122"><a href="#GBDTClassifier.predict_proba-122"><span class="linenos">122</span></a><span class="sd">                    self.cook_test_set</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDTClassifier.predict_proba-115"><a href="#GBDTClassifier.predict_proba-115"><span class="linenos">115</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="GBDTClassifier.predict_proba-116"><a href="#GBDTClassifier.predict_proba-116"><span class="linenos">116</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
+</span><span id="GBDTClassifier.predict_proba-117"><a href="#GBDTClassifier.predict_proba-117"><span class="linenos">117</span></a>
+</span><span id="GBDTClassifier.predict_proba-118"><a href="#GBDTClassifier.predict_proba-118"><span class="linenos">118</span></a><span class="sd">        Args:</span>
+</span><span id="GBDTClassifier.predict_proba-119"><a href="#GBDTClassifier.predict_proba-119"><span class="linenos">119</span></a>
+</span><span id="GBDTClassifier.predict_proba-120"><a href="#GBDTClassifier.predict_proba-120"><span class="linenos">120</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDTClassifier.predict_proba-121"><a href="#GBDTClassifier.predict_proba-121"><span class="linenos">121</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDTClassifier.predict_proba-122"><a href="#GBDTClassifier.predict_proba-122"><span class="linenos">122</span></a><span class="sd">                of samples and n_features is the number of features.</span>
 </span><span id="GBDTClassifier.predict_proba-123"><a href="#GBDTClassifier.predict_proba-123"><span class="linenos">123</span></a>
-</span><span id="GBDTClassifier.predict_proba-124"><a href="#GBDTClassifier.predict_proba-124"><span class="linenos">124</span></a><span class="sd">        Returns:</span>
-</span><span id="GBDTClassifier.predict_proba-125"><a href="#GBDTClassifier.predict_proba-125"><span class="linenos">125</span></a>
-</span><span id="GBDTClassifier.predict_proba-126"><a href="#GBDTClassifier.predict_proba-126"><span class="linenos">126</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
-</span><span id="GBDTClassifier.predict_proba-127"><a href="#GBDTClassifier.predict_proba-127"><span class="linenos">127</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDTClassifier.predict_proba-124"><a href="#GBDTClassifier.predict_proba-124"><span class="linenos">124</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDTClassifier.predict_proba-125"><a href="#GBDTClassifier.predict_proba-125"><span class="linenos">125</span></a><span class="sd">                    self.cook_test_set</span>
+</span><span id="GBDTClassifier.predict_proba-126"><a href="#GBDTClassifier.predict_proba-126"><span class="linenos">126</span></a>
+</span><span id="GBDTClassifier.predict_proba-127"><a href="#GBDTClassifier.predict_proba-127"><span class="linenos">127</span></a><span class="sd">        Returns:</span>
 </span><span id="GBDTClassifier.predict_proba-128"><a href="#GBDTClassifier.predict_proba-128"><span class="linenos">128</span></a>
-</span><span id="GBDTClassifier.predict_proba-129"><a href="#GBDTClassifier.predict_proba-129"><span class="linenos">129</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="GBDTClassifier.predict_proba-129"><a href="#GBDTClassifier.predict_proba-129"><span class="linenos">129</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
+</span><span id="GBDTClassifier.predict_proba-130"><a href="#GBDTClassifier.predict_proba-130"><span class="linenos">130</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDTClassifier.predict_proba-131"><a href="#GBDTClassifier.predict_proba-131"><span class="linenos">131</span></a>
+</span><span id="GBDTClassifier.predict_proba-132"><a href="#GBDTClassifier.predict_proba-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -681,81 +693,84 @@ seed: int
 </span><span id="GBDTRegressor-33"><a href="#GBDTRegressor-33"><span class="linenos"> 33</span></a><span class="sd">        seed: int</span>
 </span><span id="GBDTRegressor-34"><a href="#GBDTRegressor-34"><span class="linenos"> 34</span></a><span class="sd">            reproducibility seed</span>
 </span><span id="GBDTRegressor-35"><a href="#GBDTRegressor-35"><span class="linenos"> 35</span></a>
-</span><span id="GBDTRegressor-36"><a href="#GBDTRegressor-36"><span class="linenos"> 36</span></a><span class="sd">    Examples:</span>
-</span><span id="GBDTRegressor-37"><a href="#GBDTRegressor-37"><span class="linenos"> 37</span></a>
-</span><span id="GBDTRegressor-38"><a href="#GBDTRegressor-38"><span class="linenos"> 38</span></a><span class="sd">    ```python</span>
-</span><span id="GBDTRegressor-39"><a href="#GBDTRegressor-39"><span class="linenos"> 39</span></a><span class="sd">    import unifiedbooster as ub</span>
-</span><span id="GBDTRegressor-40"><a href="#GBDTRegressor-40"><span class="linenos"> 40</span></a><span class="sd">    from sklearn.datasets import fetch_california_housing</span>
-</span><span id="GBDTRegressor-41"><a href="#GBDTRegressor-41"><span class="linenos"> 41</span></a><span class="sd">    from sklearn.model_selection import train_test_split</span>
-</span><span id="GBDTRegressor-42"><a href="#GBDTRegressor-42"><span class="linenos"> 42</span></a><span class="sd">    from sklearn.metrics import mean_squared_error</span>
-</span><span id="GBDTRegressor-43"><a href="#GBDTRegressor-43"><span class="linenos"> 43</span></a>
-</span><span id="GBDTRegressor-44"><a href="#GBDTRegressor-44"><span class="linenos"> 44</span></a><span class="sd">    # Load dataset</span>
-</span><span id="GBDTRegressor-45"><a href="#GBDTRegressor-45"><span class="linenos"> 45</span></a><span class="sd">    housing = fetch_california_housing()</span>
-</span><span id="GBDTRegressor-46"><a href="#GBDTRegressor-46"><span class="linenos"> 46</span></a><span class="sd">    X, y = housing.data, housing.target</span>
-</span><span id="GBDTRegressor-47"><a href="#GBDTRegressor-47"><span class="linenos"> 47</span></a>
-</span><span id="GBDTRegressor-48"><a href="#GBDTRegressor-48"><span class="linenos"> 48</span></a><span class="sd">    # Split dataset into training and testing sets</span>
-</span><span id="GBDTRegressor-49"><a href="#GBDTRegressor-49"><span class="linenos"> 49</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="GBDTRegressor-36"><a href="#GBDTRegressor-36"><span class="linenos"> 36</span></a><span class="sd">        **kwargs: dict</span>
+</span><span id="GBDTRegressor-37"><a href="#GBDTRegressor-37"><span class="linenos"> 37</span></a><span class="sd">            additional parameters to be passed to the class</span>
+</span><span id="GBDTRegressor-38"><a href="#GBDTRegressor-38"><span class="linenos"> 38</span></a>
+</span><span id="GBDTRegressor-39"><a href="#GBDTRegressor-39"><span class="linenos"> 39</span></a><span class="sd">    Examples:</span>
+</span><span id="GBDTRegressor-40"><a href="#GBDTRegressor-40"><span class="linenos"> 40</span></a>
+</span><span id="GBDTRegressor-41"><a href="#GBDTRegressor-41"><span class="linenos"> 41</span></a><span class="sd">    ```python</span>
+</span><span id="GBDTRegressor-42"><a href="#GBDTRegressor-42"><span class="linenos"> 42</span></a><span class="sd">    import unifiedbooster as ub</span>
+</span><span id="GBDTRegressor-43"><a href="#GBDTRegressor-43"><span class="linenos"> 43</span></a><span class="sd">    from sklearn.datasets import fetch_california_housing</span>
+</span><span id="GBDTRegressor-44"><a href="#GBDTRegressor-44"><span class="linenos"> 44</span></a><span class="sd">    from sklearn.model_selection import train_test_split</span>
+</span><span id="GBDTRegressor-45"><a href="#GBDTRegressor-45"><span class="linenos"> 45</span></a><span class="sd">    from sklearn.metrics import mean_squared_error</span>
+</span><span id="GBDTRegressor-46"><a href="#GBDTRegressor-46"><span class="linenos"> 46</span></a>
+</span><span id="GBDTRegressor-47"><a href="#GBDTRegressor-47"><span class="linenos"> 47</span></a><span class="sd">    # Load dataset</span>
+</span><span id="GBDTRegressor-48"><a href="#GBDTRegressor-48"><span class="linenos"> 48</span></a><span class="sd">    housing = fetch_california_housing()</span>
+</span><span id="GBDTRegressor-49"><a href="#GBDTRegressor-49"><span class="linenos"> 49</span></a><span class="sd">    X, y = housing.data, housing.target</span>
 </span><span id="GBDTRegressor-50"><a href="#GBDTRegressor-50"><span class="linenos"> 50</span></a>
-</span><span id="GBDTRegressor-51"><a href="#GBDTRegressor-51"><span class="linenos"> 51</span></a><span class="sd">    # Initialize the unified regressor (example with XGBoost)</span>
-</span><span id="GBDTRegressor-52"><a href="#GBDTRegressor-52"><span class="linenos"> 52</span></a><span class="sd">    regressor1 = ub.GBDTRegressor(model_type=&#39;xgboost&#39;)</span>
-</span><span id="GBDTRegressor-53"><a href="#GBDTRegressor-53"><span class="linenos"> 53</span></a><span class="sd">    #regressor2 = ub.GBDTRegressor(model_type=&#39;catboost&#39;)</span>
-</span><span id="GBDTRegressor-54"><a href="#GBDTRegressor-54"><span class="linenos"> 54</span></a><span class="sd">    regressor3 = ub.GBDTRegressor(model_type=&#39;lightgbm&#39;)</span>
-</span><span id="GBDTRegressor-55"><a href="#GBDTRegressor-55"><span class="linenos"> 55</span></a>
-</span><span id="GBDTRegressor-56"><a href="#GBDTRegressor-56"><span class="linenos"> 56</span></a><span class="sd">    # Fit the model</span>
-</span><span id="GBDTRegressor-57"><a href="#GBDTRegressor-57"><span class="linenos"> 57</span></a><span class="sd">    regressor1.fit(X_train, y_train)</span>
-</span><span id="GBDTRegressor-58"><a href="#GBDTRegressor-58"><span class="linenos"> 58</span></a><span class="sd">    #regressor2.fit(X_train, y_train)</span>
-</span><span id="GBDTRegressor-59"><a href="#GBDTRegressor-59"><span class="linenos"> 59</span></a><span class="sd">    regressor3.fit(X_train, y_train)</span>
-</span><span id="GBDTRegressor-60"><a href="#GBDTRegressor-60"><span class="linenos"> 60</span></a>
-</span><span id="GBDTRegressor-61"><a href="#GBDTRegressor-61"><span class="linenos"> 61</span></a><span class="sd">    # Predict on the test set</span>
-</span><span id="GBDTRegressor-62"><a href="#GBDTRegressor-62"><span class="linenos"> 62</span></a><span class="sd">    y_pred1 = regressor1.predict(X_test)</span>
-</span><span id="GBDTRegressor-63"><a href="#GBDTRegressor-63"><span class="linenos"> 63</span></a><span class="sd">    #y_pred2 = regressor2.predict(X_test)</span>
-</span><span id="GBDTRegressor-64"><a href="#GBDTRegressor-64"><span class="linenos"> 64</span></a><span class="sd">    y_pred3 = regressor3.predict(X_test)</span>
-</span><span id="GBDTRegressor-65"><a href="#GBDTRegressor-65"><span class="linenos"> 65</span></a>
-</span><span id="GBDTRegressor-66"><a href="#GBDTRegressor-66"><span class="linenos"> 66</span></a><span class="sd">    # Evaluate the model</span>
-</span><span id="GBDTRegressor-67"><a href="#GBDTRegressor-67"><span class="linenos"> 67</span></a><span class="sd">    mse1 = mean_squared_error(y_test, y_pred1)</span>
-</span><span id="GBDTRegressor-68"><a href="#GBDTRegressor-68"><span class="linenos"> 68</span></a><span class="sd">    #mse2 = mean_squared_error(y_test, y_pred2)</span>
-</span><span id="GBDTRegressor-69"><a href="#GBDTRegressor-69"><span class="linenos"> 69</span></a><span class="sd">    mse3 = mean_squared_error(y_test, y_pred3)</span>
-</span><span id="GBDTRegressor-70"><a href="#GBDTRegressor-70"><span class="linenos"> 70</span></a><span class="sd">    print(f&quot;Regression Mean Squared Error xgboost: {mse1:.2f}&quot;)</span>
-</span><span id="GBDTRegressor-71"><a href="#GBDTRegressor-71"><span class="linenos"> 71</span></a><span class="sd">    #print(f&quot;Regression Mean Squared Error catboost: {mse2:.2f}&quot;)</span>
-</span><span id="GBDTRegressor-72"><a href="#GBDTRegressor-72"><span class="linenos"> 72</span></a><span class="sd">    print(f&quot;Regression Mean Squared Error lightgbm: {mse3:.2f}&quot;)</span>
-</span><span id="GBDTRegressor-73"><a href="#GBDTRegressor-73"><span class="linenos"> 73</span></a><span class="sd">    ```</span>
-</span><span id="GBDTRegressor-74"><a href="#GBDTRegressor-74"><span class="linenos"> 74</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="GBDTRegressor-75"><a href="#GBDTRegressor-75"><span class="linenos"> 75</span></a>
-</span><span id="GBDTRegressor-76"><a href="#GBDTRegressor-76"><span class="linenos"> 76</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GBDTRegressor-77"><a href="#GBDTRegressor-77"><span class="linenos"> 77</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="GBDTRegressor-78"><a href="#GBDTRegressor-78"><span class="linenos"> 78</span></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
-</span><span id="GBDTRegressor-79"><a href="#GBDTRegressor-79"><span class="linenos"> 79</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-</span><span id="GBDTRegressor-80"><a href="#GBDTRegressor-80"><span class="linenos"> 80</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-</span><span id="GBDTRegressor-81"><a href="#GBDTRegressor-81"><span class="linenos"> 81</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="GBDTRegressor-82"><a href="#GBDTRegressor-82"><span class="linenos"> 82</span></a>        <span class="n">rowsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GBDTRegressor-83"><a href="#GBDTRegressor-83"><span class="linenos"> 83</span></a>        <span class="n">colsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GBDTRegressor-84"><a href="#GBDTRegressor-84"><span class="linenos"> 84</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="GBDTRegressor-85"><a href="#GBDTRegressor-85"><span class="linenos"> 85</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="GBDTRegressor-86"><a href="#GBDTRegressor-86"><span class="linenos"> 86</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDTRegressor-87"><a href="#GBDTRegressor-87"><span class="linenos"> 87</span></a>    <span class="p">):</span>
-</span><span id="GBDTRegressor-88"><a href="#GBDTRegressor-88"><span class="linenos"> 88</span></a>
-</span><span id="GBDTRegressor-89"><a href="#GBDTRegressor-89"><span class="linenos"> 89</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;regression&quot;</span>
-</span><span id="GBDTRegressor-90"><a href="#GBDTRegressor-90"><span class="linenos"> 90</span></a>
-</span><span id="GBDTRegressor-91"><a href="#GBDTRegressor-91"><span class="linenos"> 91</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GBDTRegressor-92"><a href="#GBDTRegressor-92"><span class="linenos"> 92</span></a>            <span class="n">model_type</span><span class="o">=</span><span class="n">model_type</span><span class="p">,</span>
-</span><span id="GBDTRegressor-93"><a href="#GBDTRegressor-93"><span class="linenos"> 93</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GBDTRegressor-94"><a href="#GBDTRegressor-94"><span class="linenos"> 94</span></a>            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GBDTRegressor-95"><a href="#GBDTRegressor-95"><span class="linenos"> 95</span></a>            <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GBDTRegressor-96"><a href="#GBDTRegressor-96"><span class="linenos"> 96</span></a>            <span class="n">rowsample</span><span class="o">=</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="GBDTRegressor-97"><a href="#GBDTRegressor-97"><span class="linenos"> 97</span></a>            <span class="n">colsample</span><span class="o">=</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="GBDTRegressor-98"><a href="#GBDTRegressor-98"><span class="linenos"> 98</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="GBDTRegressor-99"><a href="#GBDTRegressor-99"><span class="linenos"> 99</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDTRegressor-100"><a href="#GBDTRegressor-100"><span class="linenos">100</span></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDTRegressor-101"><a href="#GBDTRegressor-101"><span class="linenos">101</span></a>        <span class="p">)</span>
-</span><span id="GBDTRegressor-102"><a href="#GBDTRegressor-102"><span class="linenos">102</span></a>
-</span><span id="GBDTRegressor-103"><a href="#GBDTRegressor-103"><span class="linenos">103</span></a>        <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
-</span><span id="GBDTRegressor-104"><a href="#GBDTRegressor-104"><span class="linenos">104</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">XGBRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-</span><span id="GBDTRegressor-105"><a href="#GBDTRegressor-105"><span class="linenos">105</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;catboost&quot;</span><span class="p">:</span>
-</span><span id="GBDTRegressor-106"><a href="#GBDTRegressor-106"><span class="linenos">106</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CatBoostRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-</span><span id="GBDTRegressor-107"><a href="#GBDTRegressor-107"><span class="linenos">107</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lightgbm&quot;</span><span class="p">:</span>
-</span><span id="GBDTRegressor-108"><a href="#GBDTRegressor-108"><span class="linenos">108</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">LGBMRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-</span><span id="GBDTRegressor-109"><a href="#GBDTRegressor-109"><span class="linenos">109</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="GBDTRegressor-110"><a href="#GBDTRegressor-110"><span class="linenos">110</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown model_type: </span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="GBDTRegressor-51"><a href="#GBDTRegressor-51"><span class="linenos"> 51</span></a><span class="sd">    # Split dataset into training and testing sets</span>
+</span><span id="GBDTRegressor-52"><a href="#GBDTRegressor-52"><span class="linenos"> 52</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="GBDTRegressor-53"><a href="#GBDTRegressor-53"><span class="linenos"> 53</span></a>
+</span><span id="GBDTRegressor-54"><a href="#GBDTRegressor-54"><span class="linenos"> 54</span></a><span class="sd">    # Initialize the unified regressor (example with XGBoost)</span>
+</span><span id="GBDTRegressor-55"><a href="#GBDTRegressor-55"><span class="linenos"> 55</span></a><span class="sd">    regressor1 = ub.GBDTRegressor(model_type=&#39;xgboost&#39;)</span>
+</span><span id="GBDTRegressor-56"><a href="#GBDTRegressor-56"><span class="linenos"> 56</span></a><span class="sd">    #regressor2 = ub.GBDTRegressor(model_type=&#39;catboost&#39;)</span>
+</span><span id="GBDTRegressor-57"><a href="#GBDTRegressor-57"><span class="linenos"> 57</span></a><span class="sd">    regressor3 = ub.GBDTRegressor(model_type=&#39;lightgbm&#39;)</span>
+</span><span id="GBDTRegressor-58"><a href="#GBDTRegressor-58"><span class="linenos"> 58</span></a>
+</span><span id="GBDTRegressor-59"><a href="#GBDTRegressor-59"><span class="linenos"> 59</span></a><span class="sd">    # Fit the model</span>
+</span><span id="GBDTRegressor-60"><a href="#GBDTRegressor-60"><span class="linenos"> 60</span></a><span class="sd">    regressor1.fit(X_train, y_train)</span>
+</span><span id="GBDTRegressor-61"><a href="#GBDTRegressor-61"><span class="linenos"> 61</span></a><span class="sd">    #regressor2.fit(X_train, y_train)</span>
+</span><span id="GBDTRegressor-62"><a href="#GBDTRegressor-62"><span class="linenos"> 62</span></a><span class="sd">    regressor3.fit(X_train, y_train)</span>
+</span><span id="GBDTRegressor-63"><a href="#GBDTRegressor-63"><span class="linenos"> 63</span></a>
+</span><span id="GBDTRegressor-64"><a href="#GBDTRegressor-64"><span class="linenos"> 64</span></a><span class="sd">    # Predict on the test set</span>
+</span><span id="GBDTRegressor-65"><a href="#GBDTRegressor-65"><span class="linenos"> 65</span></a><span class="sd">    y_pred1 = regressor1.predict(X_test)</span>
+</span><span id="GBDTRegressor-66"><a href="#GBDTRegressor-66"><span class="linenos"> 66</span></a><span class="sd">    #y_pred2 = regressor2.predict(X_test)</span>
+</span><span id="GBDTRegressor-67"><a href="#GBDTRegressor-67"><span class="linenos"> 67</span></a><span class="sd">    y_pred3 = regressor3.predict(X_test)</span>
+</span><span id="GBDTRegressor-68"><a href="#GBDTRegressor-68"><span class="linenos"> 68</span></a>
+</span><span id="GBDTRegressor-69"><a href="#GBDTRegressor-69"><span class="linenos"> 69</span></a><span class="sd">    # Evaluate the model</span>
+</span><span id="GBDTRegressor-70"><a href="#GBDTRegressor-70"><span class="linenos"> 70</span></a><span class="sd">    mse1 = mean_squared_error(y_test, y_pred1)</span>
+</span><span id="GBDTRegressor-71"><a href="#GBDTRegressor-71"><span class="linenos"> 71</span></a><span class="sd">    #mse2 = mean_squared_error(y_test, y_pred2)</span>
+</span><span id="GBDTRegressor-72"><a href="#GBDTRegressor-72"><span class="linenos"> 72</span></a><span class="sd">    mse3 = mean_squared_error(y_test, y_pred3)</span>
+</span><span id="GBDTRegressor-73"><a href="#GBDTRegressor-73"><span class="linenos"> 73</span></a><span class="sd">    print(f&quot;Regression Mean Squared Error xgboost: {mse1:.2f}&quot;)</span>
+</span><span id="GBDTRegressor-74"><a href="#GBDTRegressor-74"><span class="linenos"> 74</span></a><span class="sd">    #print(f&quot;Regression Mean Squared Error catboost: {mse2:.2f}&quot;)</span>
+</span><span id="GBDTRegressor-75"><a href="#GBDTRegressor-75"><span class="linenos"> 75</span></a><span class="sd">    print(f&quot;Regression Mean Squared Error lightgbm: {mse3:.2f}&quot;)</span>
+</span><span id="GBDTRegressor-76"><a href="#GBDTRegressor-76"><span class="linenos"> 76</span></a><span class="sd">    ```</span>
+</span><span id="GBDTRegressor-77"><a href="#GBDTRegressor-77"><span class="linenos"> 77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="GBDTRegressor-78"><a href="#GBDTRegressor-78"><span class="linenos"> 78</span></a>
+</span><span id="GBDTRegressor-79"><a href="#GBDTRegressor-79"><span class="linenos"> 79</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="GBDTRegressor-80"><a href="#GBDTRegressor-80"><span class="linenos"> 80</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="GBDTRegressor-81"><a href="#GBDTRegressor-81"><span class="linenos"> 81</span></a>        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
+</span><span id="GBDTRegressor-82"><a href="#GBDTRegressor-82"><span class="linenos"> 82</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+</span><span id="GBDTRegressor-83"><a href="#GBDTRegressor-83"><span class="linenos"> 83</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+</span><span id="GBDTRegressor-84"><a href="#GBDTRegressor-84"><span class="linenos"> 84</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="GBDTRegressor-85"><a href="#GBDTRegressor-85"><span class="linenos"> 85</span></a>        <span class="n">rowsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="GBDTRegressor-86"><a href="#GBDTRegressor-86"><span class="linenos"> 86</span></a>        <span class="n">colsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+</span><span id="GBDTRegressor-87"><a href="#GBDTRegressor-87"><span class="linenos"> 87</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="GBDTRegressor-88"><a href="#GBDTRegressor-88"><span class="linenos"> 88</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+</span><span id="GBDTRegressor-89"><a href="#GBDTRegressor-89"><span class="linenos"> 89</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDTRegressor-90"><a href="#GBDTRegressor-90"><span class="linenos"> 90</span></a>    <span class="p">):</span>
+</span><span id="GBDTRegressor-91"><a href="#GBDTRegressor-91"><span class="linenos"> 91</span></a>
+</span><span id="GBDTRegressor-92"><a href="#GBDTRegressor-92"><span class="linenos"> 92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;regression&quot;</span>
+</span><span id="GBDTRegressor-93"><a href="#GBDTRegressor-93"><span class="linenos"> 93</span></a>
+</span><span id="GBDTRegressor-94"><a href="#GBDTRegressor-94"><span class="linenos"> 94</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="GBDTRegressor-95"><a href="#GBDTRegressor-95"><span class="linenos"> 95</span></a>            <span class="n">model_type</span><span class="o">=</span><span class="n">model_type</span><span class="p">,</span>
+</span><span id="GBDTRegressor-96"><a href="#GBDTRegressor-96"><span class="linenos"> 96</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="GBDTRegressor-97"><a href="#GBDTRegressor-97"><span class="linenos"> 97</span></a>            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="GBDTRegressor-98"><a href="#GBDTRegressor-98"><span class="linenos"> 98</span></a>            <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="GBDTRegressor-99"><a href="#GBDTRegressor-99"><span class="linenos"> 99</span></a>            <span class="n">rowsample</span><span class="o">=</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="GBDTRegressor-100"><a href="#GBDTRegressor-100"><span class="linenos">100</span></a>            <span class="n">colsample</span><span class="o">=</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="GBDTRegressor-101"><a href="#GBDTRegressor-101"><span class="linenos">101</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="GBDTRegressor-102"><a href="#GBDTRegressor-102"><span class="linenos">102</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="GBDTRegressor-103"><a href="#GBDTRegressor-103"><span class="linenos">103</span></a>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDTRegressor-104"><a href="#GBDTRegressor-104"><span class="linenos">104</span></a>        <span class="p">)</span>
+</span><span id="GBDTRegressor-105"><a href="#GBDTRegressor-105"><span class="linenos">105</span></a>
+</span><span id="GBDTRegressor-106"><a href="#GBDTRegressor-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
+</span><span id="GBDTRegressor-107"><a href="#GBDTRegressor-107"><span class="linenos">107</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">XGBRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</span><span id="GBDTRegressor-108"><a href="#GBDTRegressor-108"><span class="linenos">108</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;catboost&quot;</span><span class="p">:</span>
+</span><span id="GBDTRegressor-109"><a href="#GBDTRegressor-109"><span class="linenos">109</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CatBoostRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</span><span id="GBDTRegressor-110"><a href="#GBDTRegressor-110"><span class="linenos">110</span></a>        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lightgbm&quot;</span><span class="p">:</span>
+</span><span id="GBDTRegressor-111"><a href="#GBDTRegressor-111"><span class="linenos">111</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">LGBMRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</span><span id="GBDTRegressor-112"><a href="#GBDTRegressor-112"><span class="linenos">112</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="GBDTRegressor-113"><a href="#GBDTRegressor-113"><span class="linenos">113</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown model_type: </span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -780,6 +795,9 @@ verbose: int
 
 seed: int
     reproducibility seed
+
+**kwargs: dict
+    additional parameters to be passed to the class
 </code></pre>
 
 <p>Examples:</p>
