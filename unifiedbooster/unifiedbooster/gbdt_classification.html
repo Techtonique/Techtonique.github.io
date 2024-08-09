@@ -121,42 +121,42 @@
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">    Examples:</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>
-</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">    ```python</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">    import unifiedbooster as ub</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">    from sklearn.datasets import load_iris</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">    from sklearn.model_selection import train_test_split</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">    from sklearn.metrics import accuracy_score</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">        ```python</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        import unifiedbooster as ub</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="sd">        from sklearn.datasets import load_iris</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">        from sklearn.model_selection import train_test_split</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a><span class="sd">        from sklearn.metrics import accuracy_score</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">    # Load dataset</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">    iris = load_iris()</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">    X, y = iris.data, iris.target</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">        # Load dataset</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">        iris = load_iris()</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a><span class="sd">        X, y = iris.data, iris.target</span>
 </span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">    # Split dataset into training and testing sets</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="sd">        # Split dataset into training and testing sets</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">    # Initialize the unified regressor (example with XGBoost)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">    regressor1 = ub.GBDTClassifier(model_type=&#39;xgboost&#39;)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">    #regressor2 = ub.GBDTClassifier(model_type=&#39;catboost&#39;)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">    regressor3 = ub.GBDTClassifier(model_type=&#39;lightgbm&#39;)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">        # Initialize the unified regressor (example with XGBoost)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="sd">        regressor1 = ub.GBDTClassifier(model_type=&#39;xgboost&#39;)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="sd">        #regressor2 = ub.GBDTClassifier(model_type=&#39;catboost&#39;)</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a><span class="sd">        regressor3 = ub.GBDTClassifier(model_type=&#39;lightgbm&#39;)</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">    # Fit the model</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">    regressor1.fit(X_train, y_train)</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">    #regressor2.fit(X_train, y_train)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">    regressor3.fit(X_train, y_train)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="sd">        # Fit the model</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="sd">        regressor1.fit(X_train, y_train)</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="sd">        #regressor2.fit(X_train, y_train)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="sd">        regressor3.fit(X_train, y_train)</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">    # Predict on the test set</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">    y_pred1 = regressor1.predict(X_test)</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">    #y_pred2 = regressor2.predict(X_test)</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">    y_pred3 = regressor3.predict(X_test)</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="sd">        # Predict on the test set</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="sd">        y_pred1 = regressor1.predict(X_test)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="sd">        #y_pred2 = regressor2.predict(X_test)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="sd">        y_pred3 = regressor3.predict(X_test)</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">    # Evaluate the model</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">    accuracy1 = accuracy_score(y_test, y_pred1)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    #accuracy2 = accuracy_score(y_test, y_pred2)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">    accuracy3 = accuracy_score(y_test, y_pred3)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">    print(f&quot;Classification Accuracy xgboost: {accuracy1:.2f}&quot;)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">    #print(f&quot;Classification Accuracy catboost: {accuracy2:.2f}&quot;)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    print(f&quot;Classification Accuracy lightgbm: {accuracy3:.2f}&quot;)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">    ```</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="sd">        # Evaluate the model</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        accuracy1 = accuracy_score(y_test, y_pred1)</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">        #accuracy2 = accuracy_score(y_test, y_pred2)</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">        accuracy3 = accuracy_score(y_test, y_pred3)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">        print(f&quot;Classification Accuracy xgboost: {accuracy1:.2f}&quot;)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">        #print(f&quot;Classification Accuracy catboost: {accuracy2:.2f}&quot;)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        print(f&quot;Classification Accuracy lightgbm: {accuracy3:.2f}&quot;)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        ```</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -265,42 +265,42 @@
 </span><span id="GBDTClassifier-52"><a href="#GBDTClassifier-52"><span class="linenos"> 52</span></a>
 </span><span id="GBDTClassifier-53"><a href="#GBDTClassifier-53"><span class="linenos"> 53</span></a><span class="sd">    Examples:</span>
 </span><span id="GBDTClassifier-54"><a href="#GBDTClassifier-54"><span class="linenos"> 54</span></a>
-</span><span id="GBDTClassifier-55"><a href="#GBDTClassifier-55"><span class="linenos"> 55</span></a><span class="sd">    ```python</span>
-</span><span id="GBDTClassifier-56"><a href="#GBDTClassifier-56"><span class="linenos"> 56</span></a><span class="sd">    import unifiedbooster as ub</span>
-</span><span id="GBDTClassifier-57"><a href="#GBDTClassifier-57"><span class="linenos"> 57</span></a><span class="sd">    from sklearn.datasets import load_iris</span>
-</span><span id="GBDTClassifier-58"><a href="#GBDTClassifier-58"><span class="linenos"> 58</span></a><span class="sd">    from sklearn.model_selection import train_test_split</span>
-</span><span id="GBDTClassifier-59"><a href="#GBDTClassifier-59"><span class="linenos"> 59</span></a><span class="sd">    from sklearn.metrics import accuracy_score</span>
+</span><span id="GBDTClassifier-55"><a href="#GBDTClassifier-55"><span class="linenos"> 55</span></a><span class="sd">        ```python</span>
+</span><span id="GBDTClassifier-56"><a href="#GBDTClassifier-56"><span class="linenos"> 56</span></a><span class="sd">        import unifiedbooster as ub</span>
+</span><span id="GBDTClassifier-57"><a href="#GBDTClassifier-57"><span class="linenos"> 57</span></a><span class="sd">        from sklearn.datasets import load_iris</span>
+</span><span id="GBDTClassifier-58"><a href="#GBDTClassifier-58"><span class="linenos"> 58</span></a><span class="sd">        from sklearn.model_selection import train_test_split</span>
+</span><span id="GBDTClassifier-59"><a href="#GBDTClassifier-59"><span class="linenos"> 59</span></a><span class="sd">        from sklearn.metrics import accuracy_score</span>
 </span><span id="GBDTClassifier-60"><a href="#GBDTClassifier-60"><span class="linenos"> 60</span></a>
-</span><span id="GBDTClassifier-61"><a href="#GBDTClassifier-61"><span class="linenos"> 61</span></a><span class="sd">    # Load dataset</span>
-</span><span id="GBDTClassifier-62"><a href="#GBDTClassifier-62"><span class="linenos"> 62</span></a><span class="sd">    iris = load_iris()</span>
-</span><span id="GBDTClassifier-63"><a href="#GBDTClassifier-63"><span class="linenos"> 63</span></a><span class="sd">    X, y = iris.data, iris.target</span>
+</span><span id="GBDTClassifier-61"><a href="#GBDTClassifier-61"><span class="linenos"> 61</span></a><span class="sd">        # Load dataset</span>
+</span><span id="GBDTClassifier-62"><a href="#GBDTClassifier-62"><span class="linenos"> 62</span></a><span class="sd">        iris = load_iris()</span>
+</span><span id="GBDTClassifier-63"><a href="#GBDTClassifier-63"><span class="linenos"> 63</span></a><span class="sd">        X, y = iris.data, iris.target</span>
 </span><span id="GBDTClassifier-64"><a href="#GBDTClassifier-64"><span class="linenos"> 64</span></a>
-</span><span id="GBDTClassifier-65"><a href="#GBDTClassifier-65"><span class="linenos"> 65</span></a><span class="sd">    # Split dataset into training and testing sets</span>
-</span><span id="GBDTClassifier-66"><a href="#GBDTClassifier-66"><span class="linenos"> 66</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="GBDTClassifier-65"><a href="#GBDTClassifier-65"><span class="linenos"> 65</span></a><span class="sd">        # Split dataset into training and testing sets</span>
+</span><span id="GBDTClassifier-66"><a href="#GBDTClassifier-66"><span class="linenos"> 66</span></a><span class="sd">        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
 </span><span id="GBDTClassifier-67"><a href="#GBDTClassifier-67"><span class="linenos"> 67</span></a>
-</span><span id="GBDTClassifier-68"><a href="#GBDTClassifier-68"><span class="linenos"> 68</span></a><span class="sd">    # Initialize the unified regressor (example with XGBoost)</span>
-</span><span id="GBDTClassifier-69"><a href="#GBDTClassifier-69"><span class="linenos"> 69</span></a><span class="sd">    regressor1 = ub.GBDTClassifier(model_type=&#39;xgboost&#39;)</span>
-</span><span id="GBDTClassifier-70"><a href="#GBDTClassifier-70"><span class="linenos"> 70</span></a><span class="sd">    #regressor2 = ub.GBDTClassifier(model_type=&#39;catboost&#39;)</span>
-</span><span id="GBDTClassifier-71"><a href="#GBDTClassifier-71"><span class="linenos"> 71</span></a><span class="sd">    regressor3 = ub.GBDTClassifier(model_type=&#39;lightgbm&#39;)</span>
+</span><span id="GBDTClassifier-68"><a href="#GBDTClassifier-68"><span class="linenos"> 68</span></a><span class="sd">        # Initialize the unified regressor (example with XGBoost)</span>
+</span><span id="GBDTClassifier-69"><a href="#GBDTClassifier-69"><span class="linenos"> 69</span></a><span class="sd">        regressor1 = ub.GBDTClassifier(model_type=&#39;xgboost&#39;)</span>
+</span><span id="GBDTClassifier-70"><a href="#GBDTClassifier-70"><span class="linenos"> 70</span></a><span class="sd">        #regressor2 = ub.GBDTClassifier(model_type=&#39;catboost&#39;)</span>
+</span><span id="GBDTClassifier-71"><a href="#GBDTClassifier-71"><span class="linenos"> 71</span></a><span class="sd">        regressor3 = ub.GBDTClassifier(model_type=&#39;lightgbm&#39;)</span>
 </span><span id="GBDTClassifier-72"><a href="#GBDTClassifier-72"><span class="linenos"> 72</span></a>
-</span><span id="GBDTClassifier-73"><a href="#GBDTClassifier-73"><span class="linenos"> 73</span></a><span class="sd">    # Fit the model</span>
-</span><span id="GBDTClassifier-74"><a href="#GBDTClassifier-74"><span class="linenos"> 74</span></a><span class="sd">    regressor1.fit(X_train, y_train)</span>
-</span><span id="GBDTClassifier-75"><a href="#GBDTClassifier-75"><span class="linenos"> 75</span></a><span class="sd">    #regressor2.fit(X_train, y_train)</span>
-</span><span id="GBDTClassifier-76"><a href="#GBDTClassifier-76"><span class="linenos"> 76</span></a><span class="sd">    regressor3.fit(X_train, y_train)</span>
+</span><span id="GBDTClassifier-73"><a href="#GBDTClassifier-73"><span class="linenos"> 73</span></a><span class="sd">        # Fit the model</span>
+</span><span id="GBDTClassifier-74"><a href="#GBDTClassifier-74"><span class="linenos"> 74</span></a><span class="sd">        regressor1.fit(X_train, y_train)</span>
+</span><span id="GBDTClassifier-75"><a href="#GBDTClassifier-75"><span class="linenos"> 75</span></a><span class="sd">        #regressor2.fit(X_train, y_train)</span>
+</span><span id="GBDTClassifier-76"><a href="#GBDTClassifier-76"><span class="linenos"> 76</span></a><span class="sd">        regressor3.fit(X_train, y_train)</span>
 </span><span id="GBDTClassifier-77"><a href="#GBDTClassifier-77"><span class="linenos"> 77</span></a>
-</span><span id="GBDTClassifier-78"><a href="#GBDTClassifier-78"><span class="linenos"> 78</span></a><span class="sd">    # Predict on the test set</span>
-</span><span id="GBDTClassifier-79"><a href="#GBDTClassifier-79"><span class="linenos"> 79</span></a><span class="sd">    y_pred1 = regressor1.predict(X_test)</span>
-</span><span id="GBDTClassifier-80"><a href="#GBDTClassifier-80"><span class="linenos"> 80</span></a><span class="sd">    #y_pred2 = regressor2.predict(X_test)</span>
-</span><span id="GBDTClassifier-81"><a href="#GBDTClassifier-81"><span class="linenos"> 81</span></a><span class="sd">    y_pred3 = regressor3.predict(X_test)</span>
+</span><span id="GBDTClassifier-78"><a href="#GBDTClassifier-78"><span class="linenos"> 78</span></a><span class="sd">        # Predict on the test set</span>
+</span><span id="GBDTClassifier-79"><a href="#GBDTClassifier-79"><span class="linenos"> 79</span></a><span class="sd">        y_pred1 = regressor1.predict(X_test)</span>
+</span><span id="GBDTClassifier-80"><a href="#GBDTClassifier-80"><span class="linenos"> 80</span></a><span class="sd">        #y_pred2 = regressor2.predict(X_test)</span>
+</span><span id="GBDTClassifier-81"><a href="#GBDTClassifier-81"><span class="linenos"> 81</span></a><span class="sd">        y_pred3 = regressor3.predict(X_test)</span>
 </span><span id="GBDTClassifier-82"><a href="#GBDTClassifier-82"><span class="linenos"> 82</span></a>
-</span><span id="GBDTClassifier-83"><a href="#GBDTClassifier-83"><span class="linenos"> 83</span></a><span class="sd">    # Evaluate the model</span>
-</span><span id="GBDTClassifier-84"><a href="#GBDTClassifier-84"><span class="linenos"> 84</span></a><span class="sd">    accuracy1 = accuracy_score(y_test, y_pred1)</span>
-</span><span id="GBDTClassifier-85"><a href="#GBDTClassifier-85"><span class="linenos"> 85</span></a><span class="sd">    #accuracy2 = accuracy_score(y_test, y_pred2)</span>
-</span><span id="GBDTClassifier-86"><a href="#GBDTClassifier-86"><span class="linenos"> 86</span></a><span class="sd">    accuracy3 = accuracy_score(y_test, y_pred3)</span>
-</span><span id="GBDTClassifier-87"><a href="#GBDTClassifier-87"><span class="linenos"> 87</span></a><span class="sd">    print(f&quot;Classification Accuracy xgboost: {accuracy1:.2f}&quot;)</span>
-</span><span id="GBDTClassifier-88"><a href="#GBDTClassifier-88"><span class="linenos"> 88</span></a><span class="sd">    #print(f&quot;Classification Accuracy catboost: {accuracy2:.2f}&quot;)</span>
-</span><span id="GBDTClassifier-89"><a href="#GBDTClassifier-89"><span class="linenos"> 89</span></a><span class="sd">    print(f&quot;Classification Accuracy lightgbm: {accuracy3:.2f}&quot;)</span>
-</span><span id="GBDTClassifier-90"><a href="#GBDTClassifier-90"><span class="linenos"> 90</span></a><span class="sd">    ```</span>
+</span><span id="GBDTClassifier-83"><a href="#GBDTClassifier-83"><span class="linenos"> 83</span></a><span class="sd">        # Evaluate the model</span>
+</span><span id="GBDTClassifier-84"><a href="#GBDTClassifier-84"><span class="linenos"> 84</span></a><span class="sd">        accuracy1 = accuracy_score(y_test, y_pred1)</span>
+</span><span id="GBDTClassifier-85"><a href="#GBDTClassifier-85"><span class="linenos"> 85</span></a><span class="sd">        #accuracy2 = accuracy_score(y_test, y_pred2)</span>
+</span><span id="GBDTClassifier-86"><a href="#GBDTClassifier-86"><span class="linenos"> 86</span></a><span class="sd">        accuracy3 = accuracy_score(y_test, y_pred3)</span>
+</span><span id="GBDTClassifier-87"><a href="#GBDTClassifier-87"><span class="linenos"> 87</span></a><span class="sd">        print(f&quot;Classification Accuracy xgboost: {accuracy1:.2f}&quot;)</span>
+</span><span id="GBDTClassifier-88"><a href="#GBDTClassifier-88"><span class="linenos"> 88</span></a><span class="sd">        #print(f&quot;Classification Accuracy catboost: {accuracy2:.2f}&quot;)</span>
+</span><span id="GBDTClassifier-89"><a href="#GBDTClassifier-89"><span class="linenos"> 89</span></a><span class="sd">        print(f&quot;Classification Accuracy lightgbm: {accuracy3:.2f}&quot;)</span>
+</span><span id="GBDTClassifier-90"><a href="#GBDTClassifier-90"><span class="linenos"> 90</span></a><span class="sd">        ```</span>
 </span><span id="GBDTClassifier-91"><a href="#GBDTClassifier-91"><span class="linenos"> 91</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="GBDTClassifier-92"><a href="#GBDTClassifier-92"><span class="linenos"> 92</span></a>
 </span><span id="GBDTClassifier-93"><a href="#GBDTClassifier-93"><span class="linenos"> 93</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -397,7 +397,7 @@ seed: int
 
 <p>Examples:</p>
 
-<div class="pdoc-code codehilite">
+<pre><code><div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">import</span> <span class="nn">unifiedbooster</span> <span class="k">as</span> <span class="nn">ub</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -434,6 +434,7 @@ seed: int
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classification Accuracy lightgbm: </span><span class="si">{</span><span class="n">accuracy3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
+</code></pre>
 </div>
 
 

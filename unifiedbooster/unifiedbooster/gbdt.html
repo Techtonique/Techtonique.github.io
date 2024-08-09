@@ -174,68 +174,70 @@
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>                <span class="s2">&quot;depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>                <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>                <span class="s2">&quot;bootstrap_type&quot;</span><span class="p">:</span> <span class="s2">&quot;MVS&quot;</span><span class="p">,</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="p">}</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>                <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>                <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="p">}</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="sd">        Parameters:</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>                <span class="s2">&quot;boosting_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Plain&quot;</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>                <span class="s2">&quot;leaf_estimation_iterations&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>                <span class="s2">&quot;bootstrap_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bernoulli&quot;</span><span class="p">,</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="p">}</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>                <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>                <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="p">}</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
 </span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="sd">                Target values.</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">        Returns:</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="sd">        Parameters:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">                Target values.</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">            self: object</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="sd">        Parameters:</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="sd">        Returns:</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="sd">            self: object</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
 </span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">        Returns:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="sd">        Parameters:</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="sd">        Returns:</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -339,68 +341,70 @@
 </span><span id="GBDT-91"><a href="#GBDT-91"><span class="linenos"> 91</span></a>                <span class="s2">&quot;depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
 </span><span id="GBDT-92"><a href="#GBDT-92"><span class="linenos"> 92</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
 </span><span id="GBDT-93"><a href="#GBDT-93"><span class="linenos"> 93</span></a>                <span class="s2">&quot;random_seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDT-94"><a href="#GBDT-94"><span class="linenos"> 94</span></a>                <span class="s2">&quot;bootstrap_type&quot;</span><span class="p">:</span> <span class="s2">&quot;MVS&quot;</span><span class="p">,</span>
-</span><span id="GBDT-95"><a href="#GBDT-95"><span class="linenos"> 95</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDT-96"><a href="#GBDT-96"><span class="linenos"> 96</span></a>            <span class="p">}</span>
-</span><span id="GBDT-97"><a href="#GBDT-97"><span class="linenos"> 97</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
-</span><span id="GBDT-98"><a href="#GBDT-98"><span class="linenos"> 98</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="GBDT-99"><a href="#GBDT-99"><span class="linenos"> 99</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GBDT-100"><a href="#GBDT-100"><span class="linenos">100</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GBDT-101"><a href="#GBDT-101"><span class="linenos">101</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
-</span><span id="GBDT-102"><a href="#GBDT-102"><span class="linenos">102</span></a>                <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
-</span><span id="GBDT-103"><a href="#GBDT-103"><span class="linenos">103</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GBDT-104"><a href="#GBDT-104"><span class="linenos">104</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="GBDT-105"><a href="#GBDT-105"><span class="linenos">105</span></a>                <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="GBDT-106"><a href="#GBDT-106"><span class="linenos">106</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-</span><span id="GBDT-107"><a href="#GBDT-107"><span class="linenos">107</span></a>            <span class="p">}</span>
-</span><span id="GBDT-108"><a href="#GBDT-108"><span class="linenos">108</span></a>
-</span><span id="GBDT-109"><a href="#GBDT-109"><span class="linenos">109</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GBDT-110"><a href="#GBDT-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
-</span><span id="GBDT-111"><a href="#GBDT-111"><span class="linenos">111</span></a>
-</span><span id="GBDT-112"><a href="#GBDT-112"><span class="linenos">112</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT-94"><a href="#GBDT-94"><span class="linenos"> 94</span></a>                <span class="s2">&quot;boosting_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Plain&quot;</span><span class="p">,</span>
+</span><span id="GBDT-95"><a href="#GBDT-95"><span class="linenos"> 95</span></a>                <span class="s2">&quot;leaf_estimation_iterations&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="GBDT-96"><a href="#GBDT-96"><span class="linenos"> 96</span></a>                <span class="s2">&quot;bootstrap_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bernoulli&quot;</span><span class="p">,</span>
+</span><span id="GBDT-97"><a href="#GBDT-97"><span class="linenos"> 97</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDT-98"><a href="#GBDT-98"><span class="linenos"> 98</span></a>            <span class="p">}</span>
+</span><span id="GBDT-99"><a href="#GBDT-99"><span class="linenos"> 99</span></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
+</span><span id="GBDT-100"><a href="#GBDT-100"><span class="linenos">100</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="GBDT-101"><a href="#GBDT-101"><span class="linenos">101</span></a>                <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">,</span>
+</span><span id="GBDT-102"><a href="#GBDT-102"><span class="linenos">102</span></a>                <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+</span><span id="GBDT-103"><a href="#GBDT-103"><span class="linenos">103</span></a>                <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rowsample</span><span class="p">,</span>
+</span><span id="GBDT-104"><a href="#GBDT-104"><span class="linenos">104</span></a>                <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">colsample</span><span class="p">,</span>
+</span><span id="GBDT-105"><a href="#GBDT-105"><span class="linenos">105</span></a>                <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span><span class="p">,</span>
+</span><span id="GBDT-106"><a href="#GBDT-106"><span class="linenos">106</span></a>                <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+</span><span id="GBDT-107"><a href="#GBDT-107"><span class="linenos">107</span></a>                <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="GBDT-108"><a href="#GBDT-108"><span class="linenos">108</span></a>                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="GBDT-109"><a href="#GBDT-109"><span class="linenos">109</span></a>            <span class="p">}</span>
+</span><span id="GBDT-110"><a href="#GBDT-110"><span class="linenos">110</span></a>
+</span><span id="GBDT-111"><a href="#GBDT-111"><span class="linenos">111</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GBDT-112"><a href="#GBDT-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
 </span><span id="GBDT-113"><a href="#GBDT-113"><span class="linenos">113</span></a>
-</span><span id="GBDT-114"><a href="#GBDT-114"><span class="linenos">114</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT-115"><a href="#GBDT-115"><span class="linenos">115</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT-116"><a href="#GBDT-116"><span class="linenos">116</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT-117"><a href="#GBDT-117"><span class="linenos">117</span></a>
-</span><span id="GBDT-118"><a href="#GBDT-118"><span class="linenos">118</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GBDT-119"><a href="#GBDT-119"><span class="linenos">119</span></a><span class="sd">                Target values.</span>
-</span><span id="GBDT-120"><a href="#GBDT-120"><span class="linenos">120</span></a>
-</span><span id="GBDT-121"><a href="#GBDT-121"><span class="linenos">121</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT-122"><a href="#GBDT-122"><span class="linenos">122</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
-</span><span id="GBDT-123"><a href="#GBDT-123"><span class="linenos">123</span></a>
-</span><span id="GBDT-124"><a href="#GBDT-124"><span class="linenos">124</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT-114"><a href="#GBDT-114"><span class="linenos">114</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT-115"><a href="#GBDT-115"><span class="linenos">115</span></a>
+</span><span id="GBDT-116"><a href="#GBDT-116"><span class="linenos">116</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT-117"><a href="#GBDT-117"><span class="linenos">117</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT-118"><a href="#GBDT-118"><span class="linenos">118</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GBDT-119"><a href="#GBDT-119"><span class="linenos">119</span></a>
+</span><span id="GBDT-120"><a href="#GBDT-120"><span class="linenos">120</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
+</span><span id="GBDT-121"><a href="#GBDT-121"><span class="linenos">121</span></a><span class="sd">                Target values.</span>
+</span><span id="GBDT-122"><a href="#GBDT-122"><span class="linenos">122</span></a>
+</span><span id="GBDT-123"><a href="#GBDT-123"><span class="linenos">123</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT-124"><a href="#GBDT-124"><span class="linenos">124</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
 </span><span id="GBDT-125"><a href="#GBDT-125"><span class="linenos">125</span></a>
-</span><span id="GBDT-126"><a href="#GBDT-126"><span class="linenos">126</span></a><span class="sd">            self: object</span>
-</span><span id="GBDT-127"><a href="#GBDT-127"><span class="linenos">127</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GBDT-128"><a href="#GBDT-128"><span class="linenos">128</span></a>
-</span><span id="GBDT-129"><a href="#GBDT-129"><span class="linenos">129</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
-</span><span id="GBDT-130"><a href="#GBDT-130"><span class="linenos">130</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT-131"><a href="#GBDT-131"><span class="linenos">131</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
-</span><span id="GBDT-132"><a href="#GBDT-132"><span class="linenos">132</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
-</span><span id="GBDT-133"><a href="#GBDT-133"><span class="linenos">133</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT-134"><a href="#GBDT-134"><span class="linenos">134</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
-</span><span id="GBDT-135"><a href="#GBDT-135"><span class="linenos">135</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</span><span id="GBDT-136"><a href="#GBDT-136"><span class="linenos">136</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="GBDT-137"><a href="#GBDT-137"><span class="linenos">137</span></a>
-</span><span id="GBDT-138"><a href="#GBDT-138"><span class="linenos">138</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GBDT-139"><a href="#GBDT-139"><span class="linenos">139</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
-</span><span id="GBDT-140"><a href="#GBDT-140"><span class="linenos">140</span></a>
-</span><span id="GBDT-141"><a href="#GBDT-141"><span class="linenos">141</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT-126"><a href="#GBDT-126"><span class="linenos">126</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT-127"><a href="#GBDT-127"><span class="linenos">127</span></a>
+</span><span id="GBDT-128"><a href="#GBDT-128"><span class="linenos">128</span></a><span class="sd">            self: object</span>
+</span><span id="GBDT-129"><a href="#GBDT-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT-130"><a href="#GBDT-130"><span class="linenos">130</span></a>
+</span><span id="GBDT-131"><a href="#GBDT-131"><span class="linenos">131</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
+</span><span id="GBDT-132"><a href="#GBDT-132"><span class="linenos">132</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT-133"><a href="#GBDT-133"><span class="linenos">133</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
+</span><span id="GBDT-134"><a href="#GBDT-134"><span class="linenos">134</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+</span><span id="GBDT-135"><a href="#GBDT-135"><span class="linenos">135</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT-136"><a href="#GBDT-136"><span class="linenos">136</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
+</span><span id="GBDT-137"><a href="#GBDT-137"><span class="linenos">137</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="GBDT-138"><a href="#GBDT-138"><span class="linenos">138</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GBDT-139"><a href="#GBDT-139"><span class="linenos">139</span></a>
+</span><span id="GBDT-140"><a href="#GBDT-140"><span class="linenos">140</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="GBDT-141"><a href="#GBDT-141"><span class="linenos">141</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
 </span><span id="GBDT-142"><a href="#GBDT-142"><span class="linenos">142</span></a>
-</span><span id="GBDT-143"><a href="#GBDT-143"><span class="linenos">143</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT-144"><a href="#GBDT-144"><span class="linenos">144</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT-145"><a href="#GBDT-145"><span class="linenos">145</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT-146"><a href="#GBDT-146"><span class="linenos">146</span></a>
-</span><span id="GBDT-147"><a href="#GBDT-147"><span class="linenos">147</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT-148"><a href="#GBDT-148"><span class="linenos">148</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="GBDT-149"><a href="#GBDT-149"><span class="linenos">149</span></a>
-</span><span id="GBDT-150"><a href="#GBDT-150"><span class="linenos">150</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT-143"><a href="#GBDT-143"><span class="linenos">143</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT-144"><a href="#GBDT-144"><span class="linenos">144</span></a>
+</span><span id="GBDT-145"><a href="#GBDT-145"><span class="linenos">145</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT-146"><a href="#GBDT-146"><span class="linenos">146</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT-147"><a href="#GBDT-147"><span class="linenos">147</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GBDT-148"><a href="#GBDT-148"><span class="linenos">148</span></a>
+</span><span id="GBDT-149"><a href="#GBDT-149"><span class="linenos">149</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT-150"><a href="#GBDT-150"><span class="linenos">150</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="GBDT-151"><a href="#GBDT-151"><span class="linenos">151</span></a>
-</span><span id="GBDT-152"><a href="#GBDT-152"><span class="linenos">152</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="GBDT-153"><a href="#GBDT-153"><span class="linenos">153</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GBDT-154"><a href="#GBDT-154"><span class="linenos">154</span></a>
-</span><span id="GBDT-155"><a href="#GBDT-155"><span class="linenos">155</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="GBDT-152"><a href="#GBDT-152"><span class="linenos">152</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT-153"><a href="#GBDT-153"><span class="linenos">153</span></a>
+</span><span id="GBDT-154"><a href="#GBDT-154"><span class="linenos">154</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="GBDT-155"><a href="#GBDT-155"><span class="linenos">155</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT-156"><a href="#GBDT-156"><span class="linenos">156</span></a>
+</span><span id="GBDT-157"><a href="#GBDT-157"><span class="linenos">157</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -450,34 +454,34 @@ seed: int
 
     </div>
     <a class="headerlink" href="#GBDT.fit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.fit-109"><a href="#GBDT.fit-109"><span class="linenos">109</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="GBDT.fit-110"><a href="#GBDT.fit-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
-</span><span id="GBDT.fit-111"><a href="#GBDT.fit-111"><span class="linenos">111</span></a>
-</span><span id="GBDT.fit-112"><a href="#GBDT.fit-112"><span class="linenos">112</span></a><span class="sd">        Parameters:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.fit-111"><a href="#GBDT.fit-111"><span class="linenos">111</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="GBDT.fit-112"><a href="#GBDT.fit-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit custom model to training data (X, y).</span>
 </span><span id="GBDT.fit-113"><a href="#GBDT.fit-113"><span class="linenos">113</span></a>
-</span><span id="GBDT.fit-114"><a href="#GBDT.fit-114"><span class="linenos">114</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT.fit-115"><a href="#GBDT.fit-115"><span class="linenos">115</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT.fit-116"><a href="#GBDT.fit-116"><span class="linenos">116</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT.fit-117"><a href="#GBDT.fit-117"><span class="linenos">117</span></a>
-</span><span id="GBDT.fit-118"><a href="#GBDT.fit-118"><span class="linenos">118</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
-</span><span id="GBDT.fit-119"><a href="#GBDT.fit-119"><span class="linenos">119</span></a><span class="sd">                Target values.</span>
-</span><span id="GBDT.fit-120"><a href="#GBDT.fit-120"><span class="linenos">120</span></a>
-</span><span id="GBDT.fit-121"><a href="#GBDT.fit-121"><span class="linenos">121</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT.fit-122"><a href="#GBDT.fit-122"><span class="linenos">122</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
-</span><span id="GBDT.fit-123"><a href="#GBDT.fit-123"><span class="linenos">123</span></a>
-</span><span id="GBDT.fit-124"><a href="#GBDT.fit-124"><span class="linenos">124</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT.fit-114"><a href="#GBDT.fit-114"><span class="linenos">114</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT.fit-115"><a href="#GBDT.fit-115"><span class="linenos">115</span></a>
+</span><span id="GBDT.fit-116"><a href="#GBDT.fit-116"><span class="linenos">116</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT.fit-117"><a href="#GBDT.fit-117"><span class="linenos">117</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT.fit-118"><a href="#GBDT.fit-118"><span class="linenos">118</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GBDT.fit-119"><a href="#GBDT.fit-119"><span class="linenos">119</span></a>
+</span><span id="GBDT.fit-120"><a href="#GBDT.fit-120"><span class="linenos">120</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
+</span><span id="GBDT.fit-121"><a href="#GBDT.fit-121"><span class="linenos">121</span></a><span class="sd">                Target values.</span>
+</span><span id="GBDT.fit-122"><a href="#GBDT.fit-122"><span class="linenos">122</span></a>
+</span><span id="GBDT.fit-123"><a href="#GBDT.fit-123"><span class="linenos">123</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT.fit-124"><a href="#GBDT.fit-124"><span class="linenos">124</span></a><span class="sd">                        self.cook_training_set or self.obj.fit</span>
 </span><span id="GBDT.fit-125"><a href="#GBDT.fit-125"><span class="linenos">125</span></a>
-</span><span id="GBDT.fit-126"><a href="#GBDT.fit-126"><span class="linenos">126</span></a><span class="sd">            self: object</span>
-</span><span id="GBDT.fit-127"><a href="#GBDT.fit-127"><span class="linenos">127</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GBDT.fit-128"><a href="#GBDT.fit-128"><span class="linenos">128</span></a>
-</span><span id="GBDT.fit-129"><a href="#GBDT.fit-129"><span class="linenos">129</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
-</span><span id="GBDT.fit-130"><a href="#GBDT.fit-130"><span class="linenos">130</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT.fit-131"><a href="#GBDT.fit-131"><span class="linenos">131</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
-</span><span id="GBDT.fit-132"><a href="#GBDT.fit-132"><span class="linenos">132</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
-</span><span id="GBDT.fit-133"><a href="#GBDT.fit-133"><span class="linenos">133</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
-</span><span id="GBDT.fit-134"><a href="#GBDT.fit-134"><span class="linenos">134</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
-</span><span id="GBDT.fit-135"><a href="#GBDT.fit-135"><span class="linenos">135</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</span><span id="GBDT.fit-136"><a href="#GBDT.fit-136"><span class="linenos">136</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="GBDT.fit-126"><a href="#GBDT.fit-126"><span class="linenos">126</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT.fit-127"><a href="#GBDT.fit-127"><span class="linenos">127</span></a>
+</span><span id="GBDT.fit-128"><a href="#GBDT.fit-128"><span class="linenos">128</span></a><span class="sd">            self: object</span>
+</span><span id="GBDT.fit-129"><a href="#GBDT.fit-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT.fit-130"><a href="#GBDT.fit-130"><span class="linenos">130</span></a>
+</span><span id="GBDT.fit-131"><a href="#GBDT.fit-131"><span class="linenos">131</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;type_fit&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;classification&quot;</span><span class="p">:</span>
+</span><span id="GBDT.fit-132"><a href="#GBDT.fit-132"><span class="linenos">132</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT.fit-133"><a href="#GBDT.fit-133"><span class="linenos">133</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
+</span><span id="GBDT.fit-134"><a href="#GBDT.fit-134"><span class="linenos">134</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+</span><span id="GBDT.fit-135"><a href="#GBDT.fit-135"><span class="linenos">135</span></a>            <span class="p">)</span>  <span class="c1"># for compatibility with sklearn</span>
+</span><span id="GBDT.fit-136"><a href="#GBDT.fit-136"><span class="linenos">136</span></a>        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;gradientboosting&quot;</span><span class="p">:</span>
+</span><span id="GBDT.fit-137"><a href="#GBDT.fit-137"><span class="linenos">137</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">max_features</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="GBDT.fit-138"><a href="#GBDT.fit-138"><span class="linenos">138</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -515,24 +519,24 @@ y: array-like, shape = [n_samples]
 
     </div>
     <a class="headerlink" href="#GBDT.predict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.predict-138"><a href="#GBDT.predict-138"><span class="linenos">138</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GBDT.predict-139"><a href="#GBDT.predict-139"><span class="linenos">139</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
-</span><span id="GBDT.predict-140"><a href="#GBDT.predict-140"><span class="linenos">140</span></a>
-</span><span id="GBDT.predict-141"><a href="#GBDT.predict-141"><span class="linenos">141</span></a><span class="sd">        Parameters:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="GBDT.predict-140"><a href="#GBDT.predict-140"><span class="linenos">140</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="GBDT.predict-141"><a href="#GBDT.predict-141"><span class="linenos">141</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
 </span><span id="GBDT.predict-142"><a href="#GBDT.predict-142"><span class="linenos">142</span></a>
-</span><span id="GBDT.predict-143"><a href="#GBDT.predict-143"><span class="linenos">143</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
-</span><span id="GBDT.predict-144"><a href="#GBDT.predict-144"><span class="linenos">144</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
-</span><span id="GBDT.predict-145"><a href="#GBDT.predict-145"><span class="linenos">145</span></a><span class="sd">                of samples and n_features is the number of features.</span>
-</span><span id="GBDT.predict-146"><a href="#GBDT.predict-146"><span class="linenos">146</span></a>
-</span><span id="GBDT.predict-147"><a href="#GBDT.predict-147"><span class="linenos">147</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
-</span><span id="GBDT.predict-148"><a href="#GBDT.predict-148"><span class="linenos">148</span></a><span class="sd">                    self.cook_test_set</span>
-</span><span id="GBDT.predict-149"><a href="#GBDT.predict-149"><span class="linenos">149</span></a>
-</span><span id="GBDT.predict-150"><a href="#GBDT.predict-150"><span class="linenos">150</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT.predict-143"><a href="#GBDT.predict-143"><span class="linenos">143</span></a><span class="sd">        Parameters:</span>
+</span><span id="GBDT.predict-144"><a href="#GBDT.predict-144"><span class="linenos">144</span></a>
+</span><span id="GBDT.predict-145"><a href="#GBDT.predict-145"><span class="linenos">145</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
+</span><span id="GBDT.predict-146"><a href="#GBDT.predict-146"><span class="linenos">146</span></a><span class="sd">                Training vectors, where n_samples is the number</span>
+</span><span id="GBDT.predict-147"><a href="#GBDT.predict-147"><span class="linenos">147</span></a><span class="sd">                of samples and n_features is the number of features.</span>
+</span><span id="GBDT.predict-148"><a href="#GBDT.predict-148"><span class="linenos">148</span></a>
+</span><span id="GBDT.predict-149"><a href="#GBDT.predict-149"><span class="linenos">149</span></a><span class="sd">            **kwargs: additional parameters to be passed to</span>
+</span><span id="GBDT.predict-150"><a href="#GBDT.predict-150"><span class="linenos">150</span></a><span class="sd">                    self.cook_test_set</span>
 </span><span id="GBDT.predict-151"><a href="#GBDT.predict-151"><span class="linenos">151</span></a>
-</span><span id="GBDT.predict-152"><a href="#GBDT.predict-152"><span class="linenos">152</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="GBDT.predict-153"><a href="#GBDT.predict-153"><span class="linenos">153</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GBDT.predict-154"><a href="#GBDT.predict-154"><span class="linenos">154</span></a>
-</span><span id="GBDT.predict-155"><a href="#GBDT.predict-155"><span class="linenos">155</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="GBDT.predict-152"><a href="#GBDT.predict-152"><span class="linenos">152</span></a><span class="sd">        Returns:</span>
+</span><span id="GBDT.predict-153"><a href="#GBDT.predict-153"><span class="linenos">153</span></a>
+</span><span id="GBDT.predict-154"><a href="#GBDT.predict-154"><span class="linenos">154</span></a><span class="sd">            model predictions: {array-like}</span>
+</span><span id="GBDT.predict-155"><a href="#GBDT.predict-155"><span class="linenos">155</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="GBDT.predict-156"><a href="#GBDT.predict-156"><span class="linenos">156</span></a>
+</span><span id="GBDT.predict-157"><a href="#GBDT.predict-157"><span class="linenos">157</span></a>        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
