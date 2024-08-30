@@ -87,7 +87,7 @@
             
       
       
-      <div class="hidden name"><code>getting-updates.Rmd</code></div>
+      <div class="hidden name"><code>getting-updates-bayesianrvfl.Rmd</code></div>
 
     </div>
 
@@ -124,89 +124,110 @@
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">index_train</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample.int</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span>,</span>
-<span>                                 size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fl">0.8</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                                 size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fl">0.6</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                                 replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] 31 15 19 14  3 10 18 22 11  5 20 29 23 30  9 28  8 27  7 32 26 17  4  1 24</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] 31 15 19 14  3 10 18 22 11  5 20 29 23 30  9 28  8 27  7</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X_train</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="va">index_train</span>, <span class="op">]</span></span>
 <span><span class="va">y_train</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="va">index_train</span><span class="op">]</span></span>
 <span><span class="va">X_test</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">index_train</span>, <span class="op">]</span></span>
 <span><span class="va">y_test</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">index_train</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X_train</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 25 10</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 19 10</span></span></code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1]  7 10</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 13 10</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">obj_GCV</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bayesianrvfl/man/fit_rvfl.html" class="external-link">fit_rvfl</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X_train</span>, y <span class="op">=</span> <span class="va">y_train</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">best_lambda</span> <span class="op">&lt;-</span> <span class="va">obj_GCV</span><span class="op">$</span><span class="va">lambda</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.min</a></span><span class="op">(</span><span class="va">obj_GCV</span><span class="op">$</span><span class="va">GCV</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 12.9155</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="rvfl-regression-updates">1 - <strong>RVFL regression</strong> updates<a class="anchor" aria-label="anchor" href="#rvfl-regression-updates"></a>
 </h2>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Regressor.html">Regressor</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"rvfl"</span>, </span>
-<span>                                      nb_hidden <span class="op">=</span> <span class="fl">50L</span>,</span>
-<span>                                      pi_method <span class="op">=</span> <span class="st">"splitconformal"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Regressor.html">Regressor</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bayesianrvfl"</span>, </span>
+<span>                                      nb_hidden <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">get_type</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "regression"</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">get_name</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Regressor"</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  2.023 s</span></span></code></pre>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="va">best_lambda</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Elapsed:  0.007 s</span></span></code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $preds</span></span>
-<span><span class="co">##       Mazda RX4 Wag             Valiant          Merc 450SE          Merc 450SL </span></span>
-<span><span class="co">##            21.65449            22.93687            15.87428            15.02294 </span></span>
-<span><span class="co">## Lincoln Continental       Toyota Corona    Pontiac Firebird </span></span>
-<span><span class="co">##            11.85602            30.61269            13.41956 </span></span>
+<span><span class="co">##           Mazda RX4       Mazda RX4 Wag      Hornet 4 Drive             Valiant </span></span>
+<span><span class="co">##            21.72647            21.30147            20.57339            20.40433 </span></span>
+<span><span class="co">##          Merc 450SE          Merc 450SL Lincoln Continental   Chrysler Imperial </span></span>
+<span><span class="co">##            15.07106            15.57730            11.43328            11.71555 </span></span>
+<span><span class="co">##       Toyota Corona          Camaro Z28    Pontiac Firebird           Fiat X1-9 </span></span>
+<span><span class="co">##            24.78543            14.45203            15.12042            29.35087 </span></span>
+<span><span class="co">##          Volvo 142E </span></span>
+<span><span class="co">##            25.97273 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $lower</span></span>
-<span><span class="co">##       Mazda RX4 Wag             Valiant          Merc 450SE          Merc 450SL </span></span>
-<span><span class="co">##          10.6544910          11.9368684           4.8742829           4.0229365 </span></span>
-<span><span class="co">## Lincoln Continental       Toyota Corona    Pontiac Firebird </span></span>
-<span><span class="co">##           0.8560243          19.6126863           2.4195568 </span></span>
+<span><span class="co">##           Mazda RX4       Mazda RX4 Wag      Hornet 4 Drive             Valiant </span></span>
+<span><span class="co">##           14.067816           13.655095           12.741795           12.509024 </span></span>
+<span><span class="co">##          Merc 450SE          Merc 450SL Lincoln Continental   Chrysler Imperial </span></span>
+<span><span class="co">##            7.489889            8.045126            3.350443            3.760876 </span></span>
+<span><span class="co">##       Toyota Corona          Camaro Z28    Pontiac Firebird           Fiat X1-9 </span></span>
+<span><span class="co">##           16.733640            6.546520            7.059589           21.433047 </span></span>
+<span><span class="co">##          Volvo 142E </span></span>
+<span><span class="co">##           18.456205 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $upper</span></span>
-<span><span class="co">##       Mazda RX4 Wag             Valiant          Merc 450SE          Merc 450SL </span></span>
-<span><span class="co">##            32.65449            33.93687            26.87428            26.02294 </span></span>
-<span><span class="co">## Lincoln Continental       Toyota Corona    Pontiac Firebird </span></span>
-<span><span class="co">##            22.85602            41.61269            24.41956</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<span><span class="co">##           Mazda RX4       Mazda RX4 Wag      Hornet 4 Drive             Valiant </span></span>
+<span><span class="co">##            29.38513            28.94784            28.40499            28.29964 </span></span>
+<span><span class="co">##          Merc 450SE          Merc 450SL Lincoln Continental   Chrysler Imperial </span></span>
+<span><span class="co">##            22.65223            23.10947            19.51612            19.67022 </span></span>
+<span><span class="co">##       Toyota Corona          Camaro Z28    Pontiac Firebird           Fiat X1-9 </span></span>
+<span><span class="co">##            32.83723            22.35754            23.18125            37.26870 </span></span>
+<span><span class="co">##          Volvo 142E </span></span>
+<span><span class="co">##            33.48926 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $simulate</span></span>
+<span><span class="co">## function (n) </span></span>
+<span><span class="co">## MASS::mvrnorm(n = n, mu = res, Sigma = Sigma_newx)</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fee2b421250&gt;</span></span>
+<span><span class="co">## &lt;environment: 0x7fee2b424638&gt;</span></span></code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
-<span><span class="co">## [1] -0.7840207</span></span>
+<span><span class="co">## [1] 0.6714261</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $R_squared_adj</span></span>
-<span><span class="co">## [1] 3.676031</span></span>
+<span><span class="co">## [1] -0.9714435</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Residuals</span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">## -9.1127 -3.1464 -0.6545 -1.0681  1.4014  5.7804 </span></span>
+<span><span class="co">## -4.5727 -2.0509 -0.7265 -0.3449  1.3289  4.0796 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Coverage_rate</span></span>
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##          estimate       lower        upper      p-value signif</span></span>
-<span><span class="co">## cyl  -119.0669508 -180.926164  -57.2077378 0.0032924683     **</span></span>
-<span><span class="co">## disp   -1.8682022   -3.317442   -0.4189628 0.0197070983      *</span></span>
-<span><span class="co">## hp      0.2475173   -2.457524    2.9525591 0.8302658597       </span></span>
-<span><span class="co">## drat  765.8271469  432.109214 1099.5450799 0.0013616361     **</span></span>
-<span><span class="co">## wt    192.2312109  106.387749  278.0746728 0.0015442426     **</span></span>
-<span><span class="co">## qsec  164.3760278   47.849385  280.9026706 0.0136048574      *</span></span>
-<span><span class="co">## vs   -226.3762189 -303.013774 -149.7386635 0.0003557495    ***</span></span>
-<span><span class="co">## am   -304.1346936 -656.243320   47.9739327 0.0789869231      .</span></span>
-<span><span class="co">## gear   31.5146345 -116.625580  179.6548493 0.6213269360       </span></span>
-<span><span class="co">## carb -188.4412677 -271.089233 -105.7933019 0.0014077501     **</span></span>
+<span><span class="co">##          estimate        lower        upper      p-value signif</span></span>
+<span><span class="co">## cyl   -43.7544698  -46.5047867  -41.0041528 2.118540e-13    ***</span></span>
+<span><span class="co">## disp   -0.6263908   -0.7184442   -0.5343375 4.440630e-09    ***</span></span>
+<span><span class="co">## hp     -1.0357395   -1.2469270   -0.8245521 1.741273e-07    ***</span></span>
+<span><span class="co">## drat   91.6790411   80.7865309  102.5715514 3.830077e-10    ***</span></span>
+<span><span class="co">## wt   -173.5883607 -192.9498209 -154.2269004 1.835870e-10    ***</span></span>
+<span><span class="co">## qsec   21.3008188   15.5157279   27.0859097 3.653604e-06    ***</span></span>
+<span><span class="co">## vs    105.8540687   83.6069779  128.1011595 2.422756e-07    ***</span></span>
+<span><span class="co">## am    204.1534474  176.7091659  231.5977289 1.598086e-09    ***</span></span>
+<span><span class="co">## gear   47.2993146   39.4986036   55.1000256 1.645027e-08    ***</span></span>
+<span><span class="co">## carb  -58.9820744  -68.7040650  -49.2600838 1.634624e-08    ***</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
 <span><span class="co">## Name                       effects</span></span>
-<span><span class="co">## Number of rows             7      </span></span>
+<span><span class="co">## Number of rows             13     </span></span>
 <span><span class="co">## Number of columns          10     </span></span>
 <span><span class="co">## _______________________           </span></span>
 <span><span class="co">## Column type frequency:            </span></span>
@@ -215,34 +236,34 @@
 <span><span class="co">## Group variables            None   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ── Variable type: numeric ──────────────────────────────────────────────────────</span></span>
-<span><span class="co">##    skim_variable     mean     sd      p0      p25      p50      p75     p100</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl           -<span style="color: #BB0000;">119.</span>     66.9  -<span style="color: #BB0000;">211.</span>   -<span style="color: #BB0000;">152.</span>    -<span style="color: #BB0000;">140.</span>     -<span style="color: #BB0000;">82.1</span>    -<span style="color: #BB0000;">15.1</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">1.87</span>    1.57   -<span style="color: #BB0000;">4.02</span>   -<span style="color: #BB0000;">2.75</span>    -<span style="color: #BB0000;">2.28</span>    -<span style="color: #BB0000;">0.972</span>    0.657</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp               0.248   2.92   -<span style="color: #BB0000;">5.33</span>   -<span style="color: #BB0000;">0.745</span>    0.853    2.45     2.80 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat           766.    361.     51.7   673.     885.    <span style="text-decoration: underline;">1</span>000.    <span style="text-decoration: underline;">1</span>079.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt             192.     92.8    93.9   131.     162.     234.     361.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec           164.    126.    -<span style="color: #BB0000;">10.5</span>    91.4    148.     242.     346.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs            -<span style="color: #BB0000;">226.</span>     82.9  -<span style="color: #BB0000;">355.</span>   -<span style="color: #BB0000;">274.</span>    -<span style="color: #BB0000;">218.</span>    -<span style="color: #BB0000;">163.</span>    -<span style="color: #BB0000;">138.</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am            -<span style="color: #BB0000;">304.</span>    381.   -<span style="color: #BB0000;">614.</span>   -<span style="color: #BB0000;">526.</span>    -<span style="color: #BB0000;">348.</span>    -<span style="color: #BB0000;">309.</span>     505.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear            31.5   160.   -<span style="color: #BB0000;">168.</span>    -<span style="color: #BB0000;">58.0</span>     -<span style="color: #BB0000;">6.65</span>   107.     298.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb          -<span style="color: #BB0000;">188.</span>     89.4  -<span style="color: #BB0000;">331.</span>   -<span style="color: #BB0000;">225.</span>    -<span style="color: #BB0000;">171.</span>    -<span style="color: #BB0000;">155.</span>     -<span style="color: #BB0000;">58.5</span>  </span></span>
+<span><span class="co">##    skim_variable     mean     sd       p0      p25      p50      p75     p100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            -<span style="color: #BB0000;">43.8</span>    4.55   -<span style="color: #BB0000;">48.4</span>    -<span style="color: #BB0000;">48.4</span>    -<span style="color: #BB0000;">40.5</span>    -<span style="color: #BB0000;">40.2</span>    -<span style="color: #BB0000;">36.7</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">0.626</span>  0.152   -<span style="color: #BB0000;">0.945</span>   -<span style="color: #BB0000;">0.635</span>   -<span style="color: #BB0000;">0.560</span>   -<span style="color: #BB0000;">0.560</span>   -<span style="color: #BB0000;">0.410</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp              -<span style="color: #BB0000;">1.04</span>   0.349   -<span style="color: #BB0000;">1.52</span>    -<span style="color: #BB0000;">1.43</span>    -<span style="color: #BB0000;">0.930</span>   -<span style="color: #BB0000;">0.725</span>   -<span style="color: #BB0000;">0.725</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat            91.7   18.0     67.5     78.8     95.5     95.5    130.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt            -<span style="color: #BB0000;">174.</span>    32.0   -<span style="color: #BB0000;">224.</span>    -<span style="color: #BB0000;">200.</span>    -<span style="color: #BB0000;">193.</span>    -<span style="color: #BB0000;">141.</span>    -<span style="color: #BB0000;">141.</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec            21.3    9.57    13.0     13.0     20.7     26.6     36.6  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs             106.    36.8     74.3     74.3    103.     145.     166.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am             204.    45.4    160.     160.     197.     251.     253.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear            47.3   12.9     29.9     38.1     50.0     50.0     74.8  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb           -<span style="color: #BB0000;">59.0</span>   16.1    -<span style="color: #BB0000;">84.1</span>    -<span style="color: #BB0000;">72.2</span>    -<span style="color: #BB0000;">68.7</span>    -<span style="color: #BB0000;">42.7</span>    -<span style="color: #BB0000;">42.7</span>  </span></span>
 <span><span class="co">##    hist </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▂▇▂▁▅</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▂▇▂▂▂</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▂▁▂▅▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▂▁▂▂▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▇▇▃▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▃▇▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▅▁▂▂▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▇▇▁▁▂</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▇▇▃▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▁▇▇▃</span></span></code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▇▁▁▇▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▂▁▃▇▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▇▁▁▂▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▇▁▇▁▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▁▇▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▃▁▁▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▇▃▁▂▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▇▁▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▇▁▇▁▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▁▇▁▁▇</span></span></code></pre>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.077 s</span></span></code></pre>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Elapsed:  0.044 s</span></span></code></pre>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
 <span></span>
@@ -256,14 +277,14 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_train</span>, <span class="va">res</span><span class="op">$</span><span class="va">preds</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_train</span>, <span class="va">y_test</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-8-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1</span></span></code></pre>
-<p><strong>update RVFL model</strong></p>
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-9-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0</span></span></code></pre>
+<p><strong>update RVFL model</strong></p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">previous_coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">newx</span> <span class="op">&lt;-</span> <span class="va">X_test</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span><span class="va">newy</span> <span class="op">&lt;-</span> <span class="va">y_test</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span></span>
@@ -273,52 +294,52 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.006 s</span></span></code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Elapsed:  0.003 s</span></span></code></pre>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
-<span><span class="co">## -1.67774 -0.26776  0.03546  0.02185  0.39295  1.69575</span></span></code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span> <span class="op">-</span> <span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
-<span><span class="co">## -0.10122 -0.03770  0.01117  0.01573  0.06498  0.20409</span></span></code></pre>
+<span><span class="co">## -10.0323  -2.1730   0.4918   0.3695   2.1039  15.5515</span></span></code></pre>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span> <span class="op">-</span> <span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">## -4.7221 -2.3221  0.1890 -0.1018  1.7974  4.4465</span></span></code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span> <span class="op">-</span> <span class="va">previous_coefs</span>, type<span class="op">=</span><span class="st">'l'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-11-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-12-1.png" width="691.2"></p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
-<span><span class="co">## [1] -1.005717</span></span>
+<span><span class="co">## [1] 0.2612556</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $R_squared_adj</span></span>
-<span><span class="co">## [1] 3.005717</span></span>
+<span><span class="co">## [1] -7.126189</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Residuals</span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">## -8.6246 -4.2170 -0.4694 -1.1311  1.7834  5.7087 </span></span>
+<span><span class="co">## -4.5397  0.1801  3.2930  2.2180  3.9011  6.9500 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Coverage_rate</span></span>
-<span><span class="co">## [1] 100</span></span>
+<span><span class="co">## [1] 0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##          estimate       lower        upper      p-value signif</span></span>
-<span><span class="co">## cyl   -84.8841225 -137.123316  -32.6449294 0.0086803278     **</span></span>
-<span><span class="co">## disp   -1.8544960   -3.486573   -0.2224188 0.0329792685      *</span></span>
-<span><span class="co">## hp     -0.3709963   -3.620652    2.8786590 0.7809537342       </span></span>
-<span><span class="co">## drat  672.4397479  264.248009 1080.6314872 0.0082113434     **</span></span>
-<span><span class="co">## wt    174.8520694  101.409738  248.2944012 0.0016891939     **</span></span>
-<span><span class="co">## qsec  160.2302320   -1.104187  321.5646509 0.0510800616      .</span></span>
-<span><span class="co">## vs   -237.2254300 -325.307655 -149.1432046 0.0009644739    ***</span></span>
-<span><span class="co">## am   -435.3518879 -563.116618 -307.5871580 0.0003215033    ***</span></span>
-<span><span class="co">## gear   52.8485871 -129.772071  235.4692457 0.4903957253       </span></span>
-<span><span class="co">## carb -210.5250604 -304.050420 -116.9997007 0.0021699932     **</span></span>
+<span><span class="co">##          estimate        lower       upper      p-value signif</span></span>
+<span><span class="co">## cyl   257.2611892  222.8492699  291.673109 4.286598e-09    ***</span></span>
+<span><span class="co">## disp    0.8668335   -0.3027658    2.036433 1.311135e-01       </span></span>
+<span><span class="co">## hp    -10.3185447  -12.3192739   -8.317815 2.055072e-07    ***</span></span>
+<span><span class="co">## drat -102.1189660 -274.9945471   70.756615 2.201352e-01       </span></span>
+<span><span class="co">## wt   -719.6788248 -893.9055286 -545.452121 1.898188e-06    ***</span></span>
+<span><span class="co">## qsec   17.5909087  -60.8711749   96.052992 6.313966e-01       </span></span>
+<span><span class="co">## vs   -194.0447449 -441.9795954   53.890106 1.129218e-01       </span></span>
+<span><span class="co">## am   -571.2955807 -888.7015171 -253.889644 2.228206e-03     **</span></span>
+<span><span class="co">## gear  736.7448821  610.9718511  862.517913 5.544994e-08    ***</span></span>
+<span><span class="co">## carb   43.5006025  -43.3757615  130.376966 2.939585e-01       </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
 <span><span class="co">## Name                       effects</span></span>
-<span><span class="co">## Number of rows             6      </span></span>
+<span><span class="co">## Number of rows             12     </span></span>
 <span><span class="co">## Number of columns          10     </span></span>
 <span><span class="co">## _______________________           </span></span>
 <span><span class="co">## Column type frequency:            </span></span>
@@ -327,29 +348,29 @@
 <span><span class="co">## Group variables            None   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ── Variable type: numeric ──────────────────────────────────────────────────────</span></span>
-<span><span class="co">##    skim_variable     mean     sd      p0     p25      p50      p75     p100</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            -<span style="color: #BB0000;">84.9</span>    49.8  -<span style="color: #BB0000;">160.</span>    -<span style="color: #BB0000;">93.8</span>   -<span style="color: #BB0000;">87.0</span>    -<span style="color: #BB0000;">77.8</span>     -<span style="color: #BB0000;">4.35</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">1.85</span>    1.56   -<span style="color: #BB0000;">3.74</span>   -<span style="color: #BB0000;">2.82</span>   -<span style="color: #BB0000;">2.15</span>    -<span style="color: #BB0000;">0.926</span>    0.483</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp              -<span style="color: #BB0000;">0.371</span>   3.10   -<span style="color: #BB0000;">5.70</span>   -<span style="color: #BB0000;">1.38</span>    0.159    1.87     2.60 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat           672.    389.     21.8   525.    721.     970.    <span style="text-decoration: underline;">1</span>058.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt             175.     70.0    69.6   145.    173.     209.     276.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec           160.    154.    -<span style="color: #BB0000;">21.4</span>    56.8   129.     278.     364.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs            -<span style="color: #BB0000;">237.</span>     83.9  -<span style="color: #BB0000;">336.</span>   -<span style="color: #BB0000;">309.</span>   -<span style="color: #BB0000;">233.</span>    -<span style="color: #BB0000;">169.</span>    -<span style="color: #BB0000;">139.</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am            -<span style="color: #BB0000;">435.</span>    122.   -<span style="color: #BB0000;">652.</span>   -<span style="color: #BB0000;">471.</span>   -<span style="color: #BB0000;">397.</span>    -<span style="color: #BB0000;">360.</span>    -<span style="color: #BB0000;">321.</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear            52.8   174.   -<span style="color: #BB0000;">120.</span>    -<span style="color: #BB0000;">63.9</span>    34.3     83.7    365.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb          -<span style="color: #BB0000;">211.</span>     89.1  -<span style="color: #BB0000;">354.</span>   -<span style="color: #BB0000;">252.</span>   -<span style="color: #BB0000;">185.</span>    -<span style="color: #BB0000;">167.</span>    -<span style="color: #BB0000;">103.</span>   </span></span>
+<span><span class="co">##    skim_variable     mean     sd       p0       p25     p50     p75    p100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            257.     54.2    206.     206.     253.    310.    324.  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp             0.867   1.84    -<span style="color: #BB0000;">2.50</span>     0.236    1.84    1.84    3.64</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp             -<span style="color: #BB0000;">10.3</span>     3.15   -<span style="color: #BB0000;">14.6</span>    -<span style="color: #BB0000;">14.4</span>     -<span style="color: #BB0000;">8.85</span>   -<span style="color: #BB0000;">7.69</span>   -<span style="color: #BB0000;">7.69</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat          -<span style="color: #BB0000;">102.</span>    272.    -<span style="color: #BB0000;">471.</span>    -<span style="color: #BB0000;">310.</span>      54.5    54.5   367.  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt            -<span style="color: #BB0000;">720.</span>    274.   -<span style="color: #BB0000; text-decoration: underline;">1</span><span style="color: #BB0000;">046.</span>    -<span style="color: #BB0000;">945.</span>    -<span style="color: #BB0000;">689.</span>   -<span style="color: #BB0000;">461.</span>   -<span style="color: #BB0000;">461.</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec            17.6   123.     -<span style="color: #BB0000;">74.7</span>    -<span style="color: #BB0000;">74.7</span>    -<span style="color: #BB0000;">40.0</span>    57.5   223.  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs            -<span style="color: #BB0000;">194.</span>    390.    -<span style="color: #BB0000;">512.</span>    -<span style="color: #BB0000;">401.</span>    -<span style="color: #BB0000;">401.</span>   -<span style="color: #BB0000;">214.</span>    617.  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am            -<span style="color: #BB0000;">571.</span>    500.   -<span style="color: #BB0000; text-decoration: underline;">1</span><span style="color: #BB0000;">001.</span>   -<span style="color: #BB0000; text-decoration: underline;">1</span><span style="color: #BB0000;">001.</span>    -<span style="color: #BB0000;">901.</span>    -<span style="color: #BB0000;">22.8</span>    11.5 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear           737.    198.     472.     585.     850.    850.   <span style="text-decoration: underline;">1</span>078.  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb            43.5   137.    -<span style="color: #BB0000;">120.</span>     -<span style="color: #BB0000;">68.6</span>     58.6   173.    173.  </span></span>
 <span><span class="co">##    hist </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▂▁▇▁▂</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▇▃▃▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▃▁▃▇▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▃▁▃▇▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▃▃▇▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▃▃▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▇▃▁▃▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▃▁▃▇▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▇▇▃▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▂▂▁▇▂</span></span></code></pre>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▇▁▁▂▅</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▂▁▃▇▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▅▁▁▂▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▃▂▁▇▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▃▃▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▃▁▁▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▇▃▁▁▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▇▁▁▁▆</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▃▂▁▇▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▃▃▁▁▇</span></span></code></pre>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">new_X_test</span><span class="op">)</span></span>
 <span> </span>
 <span><span class="va">new_y_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_train</span>, <span class="va">newy</span><span class="op">)</span></span>
@@ -364,55 +385,55 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">res</span><span class="op">$</span><span class="va">preds</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">new_y_test</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-13-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">new_y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">new_y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1</span></span></code></pre>
-<p><strong>update RVFL model (Pt.2)</strong></p>
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-14-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">new_y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">new_y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0</span></span></code></pre>
+<p><strong>update RVFL model (Pt.2)</strong></p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">newx</span> <span class="op">&lt;-</span> <span class="va">X_test</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span>
 <span><span class="va">newy</span> <span class="op">&lt;-</span> <span class="va">y_test</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span></span>
 <span><span class="va">new_X_test</span> <span class="op">&lt;-</span> <span class="va">X_test</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="op">]</span></span>
 <span><span class="va">new_y_test</span> <span class="op">&lt;-</span> <span class="va">y_test</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Elapsed:  0.003 s</span></span></code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
-<span><span class="co">## [1] 0.3777726</span></span>
+<span><span class="co">## [1] 0.2969718</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $R_squared_adj</span></span>
-<span><span class="co">## [1] 1.414818</span></span>
+<span><span class="co">## [1] -Inf</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Residuals</span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">## -6.2196 -1.1526 -0.1093 -1.0356  0.7558  1.5477 </span></span>
+<span><span class="co">## -4.4618  0.3053  2.4757  2.1086  3.8532  7.8192 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Coverage_rate</span></span>
-<span><span class="co">## [1] 100</span></span>
+<span><span class="co">## [1] 0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##        estimate        lower        upper     p-value signif</span></span>
-<span><span class="co">## cyl   -66.76203  -115.010766  -18.5132895 0.018431466      *</span></span>
-<span><span class="co">## disp    0.68217    -1.213906    2.5782465 0.374369676       </span></span>
-<span><span class="co">## hp     -3.94151    -7.648378   -0.2346413 0.041878020      *</span></span>
-<span><span class="co">## drat  948.44615   576.695322 1320.1969685 0.002096743     **</span></span>
-<span><span class="co">## wt     55.01586   -39.817801  149.8495183 0.182534541       </span></span>
-<span><span class="co">## qsec  -78.36447  -312.036258  155.3073154 0.404503560       </span></span>
-<span><span class="co">## vs   -155.62212  -275.565235  -35.6790064 0.022710722      *</span></span>
-<span><span class="co">## am   -866.80927 -1292.861113 -440.7574169 0.004837859     **</span></span>
-<span><span class="co">## gear  -33.90991  -183.737703  115.9178756 0.563849264       </span></span>
-<span><span class="co">## carb -252.14976  -385.629419 -118.6700930 0.006319360     **</span></span>
+<span><span class="co">##         estimate        lower       upper      p-value signif</span></span>
+<span><span class="co">## cyl   211.376998  187.5805099  235.173486 2.377085e-09    ***</span></span>
+<span><span class="co">## disp    1.283873    0.4366073    2.131139 7.045993e-03     **</span></span>
+<span><span class="co">## hp     -9.188437  -10.8210558   -7.555817 1.929063e-07    ***</span></span>
+<span><span class="co">## drat -163.110337 -282.6556152  -43.565058 1.245994e-02      *</span></span>
+<span><span class="co">## wt   -694.905581 -831.5318555 -558.279307 4.993959e-07    ***</span></span>
+<span><span class="co">## qsec   49.295847  -23.7814092  122.373104 1.637342e-01       </span></span>
+<span><span class="co">## vs    -60.444278 -261.4668672  140.578311 5.180505e-01       </span></span>
+<span><span class="co">## am   -247.967120 -513.2391500   17.304909 6.389820e-02      .</span></span>
+<span><span class="co">## gear  558.406428  471.6174663  645.195390 5.397869e-08    ***</span></span>
+<span><span class="co">## carb   73.070711    5.3182381  140.823183 3.712251e-02      *</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
 <span><span class="co">## Name                       effects</span></span>
-<span><span class="co">## Number of rows             5      </span></span>
+<span><span class="co">## Number of rows             11     </span></span>
 <span><span class="co">## Number of columns          10     </span></span>
 <span><span class="co">## _______________________           </span></span>
 <span><span class="co">## Column type frequency:            </span></span>
@@ -421,29 +442,18 @@
 <span><span class="co">## Group variables            None   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ── Variable type: numeric ──────────────────────────────────────────────────────</span></span>
-<span><span class="co">##    skim_variable     mean     sd       p0      p25     p50      p75     p100</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            -<span style="color: #BB0000;">66.8</span>    38.9   -<span style="color: #BB0000;">106.</span>    -<span style="color: #BB0000;">87.3</span>    -<span style="color: #BB0000;">84.7</span>   -<span style="color: #BB0000;">47.0</span>     -<span style="color: #BB0000;">8.74</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp             0.682   1.53    -<span style="color: #BB0000;">1.22</span>   -<span style="color: #BB0000;">0.684</span>    1.52    1.62     2.18 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp              -<span style="color: #BB0000;">3.94</span>    2.99    -<span style="color: #BB0000;">7.55</span>   -<span style="color: #BB0000;">5.45</span>    -<span style="color: #BB0000;">5.02</span>   -<span style="color: #BB0000;">0.883</span>   -<span style="color: #BB0000;">0.806</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat           948.    299.     484.    895.     946.   <span style="text-decoration: underline;">1</span>164.    <span style="text-decoration: underline;">1</span>254.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt              55.0    76.4    -<span style="color: #BB0000;">70.3</span>    38.8     80.8   112.     114.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec           -<span style="color: #BB0000;">78.4</span>   188.    -<span style="color: #BB0000;">274.</span>   -<span style="color: #BB0000;">207.</span>     -<span style="color: #BB0000;">68.9</span>   -<span style="color: #BB0000;">57.3</span>    215.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs            -<span style="color: #BB0000;">156.</span>     96.6   -<span style="color: #BB0000;">284.</span>   -<span style="color: #BB0000;">231.</span>    -<span style="color: #BB0000;">110.</span>    -<span style="color: #BB0000;">92.3</span>    -<span style="color: #BB0000;">60.7</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am            -<span style="color: #BB0000;">867.</span>    343.   -<span style="color: #BB0000; text-decoration: underline;">1</span><span style="color: #BB0000;">374.</span>   -<span style="color: #BB0000;">903.</span>    -<span style="color: #BB0000;">830.</span>   -<span style="color: #BB0000;">816.</span>    -<span style="color: #BB0000;">411.</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear           -<span style="color: #BB0000;">33.9</span>   121.    -<span style="color: #BB0000;">231.</span>    -<span style="color: #BB0000;">35.6</span>    -<span style="color: #BB0000;">11.9</span>    13.2     95.5  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb          -<span style="color: #BB0000;">252.</span>    108.    -<span style="color: #BB0000;">369.</span>   -<span style="color: #BB0000;">364.</span>    -<span style="color: #BB0000;">214.</span>   -<span style="color: #BB0000;">170.</span>    -<span style="color: #BB0000;">143.</span>   </span></span>
-<span><span class="co">##    hist </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▇▃▁▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▅▁▁▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▃▇▁▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▃▁▃▃▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▂▁▂▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▁▇▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▃▃▁▃▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▂▁▇▁▂</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▃▁▃▇▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▁▁▃▇</span></span></code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<span><span class="co">##    skim_variable    mean     sd      p0     p25     p50     p75    p100 hist </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            211.    35.4   181.    181.    181.    246.    252.   ▇▁▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp             1.28   1.26   -<span style="color: #BB0000;">1.12</span>    1.19    2.13    2.13    2.13 ▂▁▁▃▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp              -<span style="color: #BB0000;">9.19</span>   2.43  -<span style="color: #BB0000;">12.8</span>   -<span style="color: #BB0000;">11.0</span>    -<span style="color: #BB0000;">7.39</span>   -<span style="color: #BB0000;">7.39</span>   -<span style="color: #BB0000;">7.39</span> ▃▁▁▂▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat          -<span style="color: #BB0000;">163.</span>   178.   -<span style="color: #BB0000;">402.</span>   -<span style="color: #BB0000;">324.</span>    -<span style="color: #BB0000;">14.8</span>   -<span style="color: #BB0000;">14.8</span>   -<span style="color: #BB0000;">14.8</span>  ▃▂▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt            -<span style="color: #BB0000;">695.</span>   203.   -<span style="color: #BB0000;">960.</span>   -<span style="color: #BB0000;">868.</span>   -<span style="color: #BB0000;">520.</span>   -<span style="color: #BB0000;">520.</span>   -<span style="color: #BB0000;">520.</span>   ▂▃▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec            49.3  109.    -<span style="color: #BB0000;">28.6</span>   -<span style="color: #BB0000;">28.6</span>   -<span style="color: #BB0000;">28.6</span>   118.    220.   ▇▂▁▁▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs             -<span style="color: #BB0000;">60.4</span>  299.   -<span style="color: #BB0000;">208.</span>   -<span style="color: #BB0000;">208.</span>   -<span style="color: #BB0000;">208.</span>   -<span style="color: #BB0000;">169.</span>    544.   ▇▁▁▁▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am            -<span style="color: #BB0000;">248.</span>   395.   -<span style="color: #BB0000;">592.</span>   -<span style="color: #BB0000;">592.</span>   -<span style="color: #BB0000;">592.</span>    162.    172.   ▇▁▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear           558.   129.    386.    440.    666.    666.    666.   ▃▂▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb            73.1  101.    -<span style="color: #BB0000;">58.5</span>   -<span style="color: #BB0000;">12.6</span>   160.    160.    160.   ▂▃▁▁▇</span></span></code></pre>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">new_X_test</span><span class="op">)</span></span>
 <span> </span>
 <span><span class="va">new_y_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_train</span>, <span class="va">y_test</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
@@ -458,31 +468,34 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">res</span><span class="op">$</span><span class="va">preds</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">new_y_test</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-17-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-18-1.png" width="691.2"></p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">new_y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">new_y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 0</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="update-rvfl-model-using-polyak-averaging">2 - <strong>update RVFL model using Polyak averaging</strong><a class="anchor" aria-label="anchor" href="#update-rvfl-model-using-polyak-averaging"></a>
 </h2>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Regressor.html">Regressor</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"rvfl"</span>, </span>
-<span>                                      nb_hidden <span class="op">=</span> <span class="fl">50L</span>,</span>
-<span>                                      pi_method <span class="op">=</span> <span class="st">"splitconformal"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Regressor.html">Regressor</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"bayesianrvfl"</span>, </span>
+<span>                                      nb_hidden <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">get_type</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "regression"</span></span></code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">get_name</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Regressor"</span></span></code></pre>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.005 s</span></span></code></pre>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">obj_GCV</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bayesianrvfl/man/fit_rvfl.html" class="external-link">fit_rvfl</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X_train</span>, y <span class="op">=</span> <span class="va">y_train</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">best_lambda</span> <span class="op">&lt;-</span> <span class="va">obj_GCV</span><span class="op">$</span><span class="va">lambda</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.min</a></span><span class="op">(</span><span class="va">obj_GCV</span><span class="op">$</span><span class="va">GCV</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 12.9155</span></span></code></pre>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="va">best_lambda</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Elapsed:  0.004 s</span></span></code></pre>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">previous_coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">newx</span> <span class="op">&lt;-</span> <span class="va">X_test</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
 <span><span class="va">newy</span> <span class="op">&lt;-</span> <span class="va">y_test</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span></span>
@@ -492,52 +505,52 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span>, method <span class="op">=</span> <span class="st">"polyak"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.003 s</span></span></code></pre>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Elapsed:  0.002 s</span></span></code></pre>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
-<span><span class="co">## -1.67774 -0.26776  0.03546  0.02185  0.39295  1.69575</span></span></code></pre>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<span><span class="co">## -0.96778 -0.51401 -0.16335 -0.05234  0.31900  0.98482</span></span></code></pre>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span> <span class="op">-</span> <span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. </span></span>
-<span><span class="co">## -1.547e-01 -9.312e-05  3.555e-02  2.056e-02  5.395e-02  7.444e-02</span></span></code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span></span>
+<span><span class="co">## -0.065436 -0.002152  0.027994  0.015974  0.040033  0.058892</span></span></code></pre>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span> <span class="op">-</span> <span class="va">previous_coefs</span>, type<span class="op">=</span><span class="st">'l'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-22-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-24-1.png" width="691.2"></p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
-<span><span class="co">## [1] -1.622994</span></span>
+<span><span class="co">## [1] 0.6692541</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $R_squared_adj</span></span>
-<span><span class="co">## [1] 3.622994</span></span>
+<span><span class="co">## [1] -2.638205</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Residuals</span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">## -10.275  -5.550  -1.121  -2.008   1.605   4.984 </span></span>
+<span><span class="co">## -4.5014 -2.2111 -0.5532 -0.3928  1.3495  3.9206 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Coverage_rate</span></span>
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##           estimate       lower         upper      p-value signif</span></span>
-<span><span class="co">## cyl  -125.87020894 -180.771353  -70.96906459 0.0019998995     **</span></span>
-<span><span class="co">## disp   -1.50344852   -3.048166    0.04126932 0.0543632798      .</span></span>
-<span><span class="co">## hp      0.01084711   -3.306115    3.32780878 0.9936179132       </span></span>
-<span><span class="co">## drat  688.08905715  282.151278 1094.02683595 0.0073088590     **</span></span>
-<span><span class="co">## wt    171.89295849  101.420353  242.36556410 0.0015147024     **</span></span>
-<span><span class="co">## qsec  171.69932307   18.043234  325.35541236 0.0348951343      *</span></span>
-<span><span class="co">## vs   -166.37364317 -274.090223  -58.65706306 0.0106320189      *</span></span>
-<span><span class="co">## am   -498.70714945 -623.737761 -373.67653808 0.0001516098    ***</span></span>
-<span><span class="co">## gear   -5.39160626 -176.169956  165.38674327 0.9384668564       </span></span>
-<span><span class="co">## carb -211.25367163 -306.219314 -116.28802974 0.0022868550     **</span></span>
+<span><span class="co">##          estimate        lower        upper      p-value signif</span></span>
+<span><span class="co">## cyl   -41.4815528  -43.6039915  -39.3591140 1.306085e-13    ***</span></span>
+<span><span class="co">## disp   -0.5937584   -0.7014857   -0.4860311 1.040246e-07    ***</span></span>
+<span><span class="co">## hp     -1.0226867   -1.2175471   -0.8278263 1.719172e-07    ***</span></span>
+<span><span class="co">## drat   84.5859637   73.2987057   95.8732217 4.178658e-09    ***</span></span>
+<span><span class="co">## wt   -169.1047879 -189.5595154 -148.6500603 1.469605e-09    ***</span></span>
+<span><span class="co">## qsec   22.3026258   15.1341951   29.4710566 2.772362e-05    ***</span></span>
+<span><span class="co">## vs    113.3209911   88.3101728  138.3318093 7.599984e-07    ***</span></span>
+<span><span class="co">## am    175.1639102  139.5755741  210.7522464 3.304560e-07    ***</span></span>
+<span><span class="co">## gear   44.3270639   36.1456398   52.5084881 1.240722e-07    ***</span></span>
+<span><span class="co">## carb  -59.6511203  -69.8576126  -49.4446280 5.677270e-08    ***</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
 <span><span class="co">## Name                       effects</span></span>
-<span><span class="co">## Number of rows             6      </span></span>
+<span><span class="co">## Number of rows             12     </span></span>
 <span><span class="co">## Number of columns          10     </span></span>
 <span><span class="co">## _______________________           </span></span>
 <span><span class="co">## Column type frequency:            </span></span>
@@ -546,29 +559,29 @@
 <span><span class="co">## Group variables            None   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ── Variable type: numeric ──────────────────────────────────────────────────────</span></span>
-<span><span class="co">##    skim_variable      mean     sd      p0      p25      p50      p75     p100</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl           -<span style="color: #BB0000;">126.</span>      52.3  -<span style="color: #BB0000;">200.</span>   -<span style="color: #BB0000;">136.</span>    -<span style="color: #BB0000;">131.</span>    -<span style="color: #BB0000;">122.</span>     -<span style="color: #BB0000;">36.9</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">1.50</span>     1.47   -<span style="color: #BB0000;">3.36</span>   -<span style="color: #BB0000;">2.38</span>    -<span style="color: #BB0000;">1.78</span>    -<span style="color: #BB0000;">0.563</span>    0.630</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp               0.010<span style="text-decoration: underline;">8</span>   3.16   -<span style="color: #BB0000;">5.48</span>   -<span style="color: #BB0000;">0.901</span>    0.427    2.38     3.01 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat           688.     387.     24.3   570.     736.     971.    <span style="text-decoration: underline;">1</span>068.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt             172.      67.2    67.2   146.     175.     203.     266.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec           172.     146.     -<span style="color: #BB0000;">9.11</span>   73.5    151.     279.     368.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs            -<span style="color: #BB0000;">166.</span>     103.   -<span style="color: #BB0000;">287.</span>   -<span style="color: #BB0000;">244.</span>    -<span style="color: #BB0000;">180.</span>     -<span style="color: #BB0000;">79.4</span>    -<span style="color: #BB0000;">40.3</span>  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am            -<span style="color: #BB0000;">499.</span>     119.   -<span style="color: #BB0000;">707.</span>   -<span style="color: #BB0000;">528.</span>    -<span style="color: #BB0000;">489.</span>    -<span style="color: #BB0000;">410.</span>    -<span style="color: #BB0000;">382.</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear            -<span style="color: #BB0000;">5.39</span>   163.   -<span style="color: #BB0000;">160.</span>   -<span style="color: #BB0000;">102.</span>     -<span style="color: #BB0000;">37.3</span>     11.9    298.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb          -<span style="color: #BB0000;">211.</span>      90.5  -<span style="color: #BB0000;">356.</span>   -<span style="color: #BB0000;">256.</span>    -<span style="color: #BB0000;">183.</span>    -<span style="color: #BB0000;">170.</span>    -<span style="color: #BB0000;">101.</span>   </span></span>
+<span><span class="co">##    skim_variable     mean     sd       p0      p25      p50      p75     p100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            -<span style="color: #BB0000;">41.5</span>    3.34   -<span style="color: #BB0000;">43.4</span>    -<span style="color: #BB0000;">43.4</span>    -<span style="color: #BB0000;">43.3</span>    -<span style="color: #BB0000;">41.7</span>    -<span style="color: #BB0000;">34.5</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">0.594</span>  0.170   -<span style="color: #BB0000;">0.916</span>   -<span style="color: #BB0000;">0.635</span>   -<span style="color: #BB0000;">0.505</span>   -<span style="color: #BB0000;">0.505</span>   -<span style="color: #BB0000;">0.356</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp              -<span style="color: #BB0000;">1.02</span>   0.307   -<span style="color: #BB0000;">1.44</span>    -<span style="color: #BB0000;">1.40</span>    -<span style="color: #BB0000;">0.877</span>   -<span style="color: #BB0000;">0.768</span>   -<span style="color: #BB0000;">0.768</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat            84.6   17.8     59.5     76.7     89.5     89.5    128.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt            -<span style="color: #BB0000;">169.</span>    32.2   -<span style="color: #BB0000;">204.</span>    -<span style="color: #BB0000;">199.</span>    -<span style="color: #BB0000;">166.</span>    -<span style="color: #BB0000;">138.</span>    -<span style="color: #BB0000;">138.</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec            22.3   11.3     13.3     13.3     17.4     29.2     40.1  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs             113.    39.4     59.6     94.4     94.4    117.     191.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am             175.    56.0    124.     124.     153.     226.     245.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear            44.3   12.9     26.3     38.7     47.9     47.9     76.0  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb           -<span style="color: #BB0000;">59.7</span>   16.1    -<span style="color: #BB0000;">77.3</span>    -<span style="color: #BB0000;">74.6</span>    -<span style="color: #BB0000;">58.2</span>    -<span style="color: #BB0000;">44.4</span>    -<span style="color: #BB0000;">44.4</span>  </span></span>
 <span><span class="co">##    hist </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▃▇▇▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▃▇▃▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▃▁▃▇▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▃▁▃▇▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▃▃▇▃▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▃▃▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▇▃▃▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▃▁▇▃▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▇▇▃▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▂▂▁▇▂</span></span></code></pre>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▇▁▁▁▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▂▁▃▇▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▅▁▁▂▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▂▃▇▁▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▇▁▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▂▁▁▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▁▇▃▁▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▇▁▁▂▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▂▃▇▁▁</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▁▁▁▇</span></span></code></pre>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">new_X_test</span><span class="op">)</span></span>
 <span> </span>
 <span><span class="va">new_y_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_train</span>, <span class="va">newy</span><span class="op">)</span></span>
@@ -583,55 +596,55 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">res</span><span class="op">$</span><span class="va">preds</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">new_y_test</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-24-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-26-1.png" width="691.2"></p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">new_y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">new_y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
 <p><strong>update RVFL model using Polyak averaging (Pt.2)</strong></p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">newx</span> <span class="op">&lt;-</span> <span class="va">X_test</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span>
 <span><span class="va">newy</span> <span class="op">&lt;-</span> <span class="va">y_test</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span></span>
 <span><span class="va">new_X_test</span> <span class="op">&lt;-</span> <span class="va">X_test</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="op">]</span></span>
 <span><span class="va">new_y_test</span> <span class="op">&lt;-</span> <span class="va">y_test</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span>, method <span class="op">=</span> <span class="st">"polyak"</span>, alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.005 s</span></span></code></pre>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Elapsed:  0.003 s</span></span></code></pre>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
-<span><span class="co">## [1] -1.39862</span></span>
+<span><span class="co">## [1] 0.6426871</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $R_squared_adj</span></span>
-<span><span class="co">## [1] 2.59908</span></span>
+<span><span class="co">## [1] -Inf</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Residuals</span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">##  0.8925  3.5013  3.6366  4.8122  5.6748 10.3558 </span></span>
+<span><span class="co">## -4.5686 -2.4084 -1.0397 -0.3897  1.5507  4.0215 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Coverage_rate</span></span>
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##          estimate       lower        upper      p-value signif</span></span>
-<span><span class="co">## cyl  -167.8483740 -276.106575  -59.5901732 0.0125984485      *</span></span>
-<span><span class="co">## disp   -1.7468768   -4.046334    0.5525802 0.1025782886       </span></span>
-<span><span class="co">## hp      0.9489602   -4.041646    5.9395658 0.6254721191       </span></span>
-<span><span class="co">## drat 1080.1092279  612.491620 1547.7268361 0.0030379142     **</span></span>
-<span><span class="co">## wt    145.1629614   27.355085  262.9708375 0.0267522161      *</span></span>
-<span><span class="co">## qsec  -31.8368595 -230.209540  166.5358209 0.6789457890       </span></span>
-<span><span class="co">## vs   -717.8822099 -880.907320 -554.8570996 0.0002569655    ***</span></span>
-<span><span class="co">## am    -63.9222931 -321.143283  193.2986963 0.5281528598       </span></span>
-<span><span class="co">## gear  -62.5759380 -397.144364  271.9924884 0.6309669853       </span></span>
-<span><span class="co">## carb -128.4286368 -264.535351    7.6780776 0.0588104958      .</span></span>
+<span><span class="co">##          estimate        lower        upper      p-value signif</span></span>
+<span><span class="co">## cyl   -42.1261096  -44.5327541  -39.7194651 2.932516e-12    ***</span></span>
+<span><span class="co">## disp   -0.6256505   -0.7347381   -0.5165629 1.613495e-07    ***</span></span>
+<span><span class="co">## hp     -1.0139634   -1.2198651   -0.8080617 6.747693e-07    ***</span></span>
+<span><span class="co">## drat   82.8645391   74.8033348   90.9257434 5.680663e-10    ***</span></span>
+<span><span class="co">## wt   -170.7891742 -193.1932631 -148.3850853 1.053193e-08    ***</span></span>
+<span><span class="co">## qsec   22.2365552   13.9564091   30.5167012 1.350094e-04    ***</span></span>
+<span><span class="co">## vs    119.1784891   94.0163626  144.3406157 9.681321e-07    ***</span></span>
+<span><span class="co">## am    174.2138307  134.1390652  214.2885963 2.127371e-06    ***</span></span>
+<span><span class="co">## gear   42.7943293   36.9622907   48.6263678 1.523695e-08    ***</span></span>
+<span><span class="co">## carb  -59.4034661  -70.5135723  -48.2933599 3.127231e-07    ***</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
 <span><span class="co">## Name                       effects</span></span>
-<span><span class="co">## Number of rows             5      </span></span>
+<span><span class="co">## Number of rows             11     </span></span>
 <span><span class="co">## Number of columns          10     </span></span>
 <span><span class="co">## _______________________           </span></span>
 <span><span class="co">## Column type frequency:            </span></span>
@@ -640,29 +653,29 @@
 <span><span class="co">## Group variables            None   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## ── Variable type: numeric ──────────────────────────────────────────────────────</span></span>
-<span><span class="co">##    skim_variable     mean     sd      p0      p25       p50      p75      p100</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl           -<span style="color: #BB0000;">168.</span>     87.2  -<span style="color: #BB0000;">237.</span>   -<span style="color: #BB0000;">229.</span>    -<span style="color: #BB0000;">210.</span>     -<span style="color: #BB0000;">132.</span>     -<span style="color: #BB0000;">30.7</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">1.75</span>    1.85   -<span style="color: #BB0000;">3.84</span>   -<span style="color: #BB0000;">3.66</span>    -<span style="color: #BB0000;">0.753</span>    -<span style="color: #BB0000;">0.515</span>    0.033<span style="text-decoration: underline;">9</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp               0.949   4.02   -<span style="color: #BB0000;">4.56</span>   -<span style="color: #BB0000;">0.530</span>    0.047<span style="text-decoration: underline;">8</span>    4.57     5.22  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat          <span style="text-decoration: underline;">1</span>080.    377.    559.    950.    <span style="text-decoration: underline;">1</span>005.     <span style="text-decoration: underline;">1</span>375.    <span style="text-decoration: underline;">1</span>512.    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt             145.     94.9    43.6    76.5    118.      225.     263.    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec           -<span style="color: #BB0000;">31.8</span>   160.   -<span style="color: #BB0000;">206.</span>   -<span style="color: #BB0000;">145.</span>     -<span style="color: #BB0000;">19.2</span>       2.02   209.    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs            -<span style="color: #BB0000;">718.</span>    131.   -<span style="color: #BB0000;">845.</span>   -<span style="color: #BB0000;">783.</span>    -<span style="color: #BB0000;">766.</span>     -<span style="color: #BB0000;">690.</span>    -<span style="color: #BB0000;">505.</span>    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am             -<span style="color: #BB0000;">63.9</span>   207.   -<span style="color: #BB0000;">402.</span>    -<span style="color: #BB0000;">78.9</span>    -<span style="color: #BB0000;">48.8</span>      97.9    112.    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear           -<span style="color: #BB0000;">62.6</span>   269.   -<span style="color: #BB0000;">376.</span>   -<span style="color: #BB0000;">161.</span>     -<span style="color: #BB0000;">95.4</span>     -<span style="color: #BB0000;">44.5</span>    363.    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb          -<span style="color: #BB0000;">128.</span>    110.   -<span style="color: #BB0000;">247.</span>   -<span style="color: #BB0000;">243.</span>     -<span style="color: #BB0000;">77.6</span>     -<span style="color: #BB0000;">66.7</span>     -<span style="color: #BB0000;">8.02</span>  </span></span>
+<span><span class="co">##    skim_variable     mean     sd       p0      p25      p50      p75     p100</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> cyl            -<span style="color: #BB0000;">42.1</span>    3.58   -<span style="color: #BB0000;">44.1</span>    -<span style="color: #BB0000;">44.1</span>    -<span style="color: #BB0000;">44.1</span>    -<span style="color: #BB0000;">43.0</span>    -<span style="color: #BB0000;">34.9</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> disp            -<span style="color: #BB0000;">0.626</span>  0.162   -<span style="color: #BB0000;">0.933</span>   -<span style="color: #BB0000;">0.643</span>   -<span style="color: #BB0000;">0.514</span>   -<span style="color: #BB0000;">0.514</span>   -<span style="color: #BB0000;">0.514</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> hp              -<span style="color: #BB0000;">1.01</span>   0.306   -<span style="color: #BB0000;">1.47</span>    -<span style="color: #BB0000;">1.24</span>    -<span style="color: #BB0000;">0.787</span>   -<span style="color: #BB0000;">0.787</span>   -<span style="color: #BB0000;">0.787</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> drat            82.9   12.0     61.2     79.6     91.7     91.7     91.7  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> wt            -<span style="color: #BB0000;">171.</span>    33.3   -<span style="color: #BB0000;">210.</span>    -<span style="color: #BB0000;">204.</span>    -<span style="color: #BB0000;">142.</span>    -<span style="color: #BB0000;">142.</span>    -<span style="color: #BB0000;">142.</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> qsec            22.2   12.3     13.2     13.2     13.2     30.7     41.2  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> vs             119.    37.5     96.0     96.0     96.0    117.     193.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> am             174.    59.7    123.     123.     123.     233.     247.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> gear            42.8    8.68    27.1     40.4     49.2     49.2     49.2  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> carb           -<span style="color: #BB0000;">59.4</span>   16.5    -<span style="color: #BB0000;">78.8</span>    -<span style="color: #BB0000;">76.0</span>    -<span style="color: #BB0000;">45.1</span>    -<span style="color: #BB0000;">45.1</span>    -<span style="color: #BB0000;">45.1</span>  </span></span>
 <span><span class="co">##    hist </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▇▁▂▁▂</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▇▁▁▃▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▃▁▇▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▃▁▇▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▇▃▁▁▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▁▇▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▇▃▃▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▃▁▁▇▇</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▃▇▃▁▃</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▁▁▇▃</span></span></code></pre>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ▇▁▁▁▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ▂▁▁▃▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ▃▁▁▂▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ▂▁▁▃▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ▇▁▁▁▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ▇▂▁▁▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ▇▃▁▁▂</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ▇▁▁▂▃</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ▂▁▁▃▇</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▁▁▁▇</span></span></code></pre>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">new_X_test</span><span class="op">)</span></span>
 <span> </span>
 <span><span class="va">new_y_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_train</span>, <span class="va">y_test</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
@@ -677,8 +690,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">res</span><span class="op">$</span><span class="va">preds</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_y_train</span>, <span class="va">new_y_test</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_train</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-updates_files/figure-html/unnamed-chunk-28-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<p><img src="getting-updates-bayesianrvfl_files/figure-html/unnamed-chunk-30-1.png" width="691.2"></p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">new_y_test</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">new_y_test</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
 </div>
