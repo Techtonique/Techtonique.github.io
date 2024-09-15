@@ -44,6 +44,15 @@
                 
             </li>
             <li>
+                    <a class="class" href="#MarginErrFunc">MarginErrFunc</a>
+                            <ul class="memberlist">
+                        <li>
+                        </li>
+                </ul>
+
+                
+            </li>
+            <li>
                     <a class="class" href="#QuantileRegErrFunc">QuantileRegErrFunc</a>
                             <ul class="memberlist">
                         <li>
@@ -68,12 +77,38 @@
                 
             </li>
             <li>
+                    <a class="class" href="#ClassifierAdapter">ClassifierAdapter</a>
+                            <ul class="memberlist">
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                </ul>
+
+                
+            </li>
+            <li>
                     <a class="class" href="#RegressorNc">RegressorNc</a>
                             <ul class="memberlist">
                         <li>
                         </li>
                         <li>
                         </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                </ul>
+
+                
+            </li>
+            <li>
+                    <a class="class" href="#ClassifierNc">ClassifierNc</a>
+                            <ul class="memberlist">
                         <li>
                         </li>
                         <li>
@@ -110,6 +145,54 @@
             <li>
                     <a class="class" href="#IcpRegressor">IcpRegressor</a>
                             <ul class="memberlist">
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                </ul>
+
+                
+            </li>
+            <li>
+                    <a class="class" href="#IcpClassifier">IcpClassifier</a>
+                            <ul class="memberlist">
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                </ul>
+
+                
+            </li>
+            <li>
+                    <a class="class" href="#TcpClassifier">TcpClassifier</a>
+                            <ul class="memberlist">
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
+                        <li>
+                        </li>
                         <li>
                         </li>
                         <li>
@@ -163,17 +246,24 @@
 </span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="n">RegressorNc</span><span class="p">,</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>    <span class="n">RegressorNormalizer</span><span class="p">,</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="p">)</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="kn">from</span> <span class="nn">.cp</span> <span class="kn">import</span> <span class="n">IcpRegressor</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">RegressorAdapter</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="s2">&quot;AbsErrorErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="s2">&quot;QuantileRegErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="s2">&quot;RegressorAdapter&quot;</span><span class="p">,</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="s2">&quot;RegressorNc&quot;</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="s2">&quot;RegressorNormalizer&quot;</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="s2">&quot;IcpRegressor&quot;</span><span class="p">,</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="p">]</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="kn">from</span> <span class="nn">.cp</span> <span class="kn">import</span> <span class="n">IcpRegressor</span><span class="p">,</span> <span class="n">TcpClassifier</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="kn">from</span> <span class="nn">.icp</span> <span class="kn">import</span> <span class="n">IcpClassifier</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="kn">from</span> <span class="nn">.nc</span> <span class="kn">import</span> <span class="n">ClassifierNc</span><span class="p">,</span> <span class="n">MarginErrFunc</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">RegressorAdapter</span><span class="p">,</span> <span class="n">ClassifierAdapter</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="s2">&quot;AbsErrorErrFunc&quot;</span><span class="p">,</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="s2">&quot;MarginErrFunc&quot;</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="s2">&quot;QuantileRegErrFunc&quot;</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="s2">&quot;RegressorAdapter&quot;</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="s2">&quot;ClassifierAdapter&quot;</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="s2">&quot;RegressorNc&quot;</span><span class="p">,</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="s2">&quot;ClassifierNc&quot;</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="s2">&quot;RegressorNormalizer&quot;</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="s2">&quot;IcpRegressor&quot;</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="s2">&quot;IcpClassifier&quot;</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="s2">&quot;TcpClassifier&quot;</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="p">]</span>
 </span></pre></div>
 
 
@@ -218,6 +308,52 @@
 <p>For each correct output in <code>y</code>, nonconformity is defined as</p>
 
 <p>$$| y_i - \hat{y}_i |$$</p>
+</div>
+
+
+                        
+                </section>
+                <section id="MarginErrFunc">
+                            <input id="MarginErrFunc-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">MarginErrFunc</span><wbr>(<span class="base">nnetsauce.nonconformist.nc.ClassificationErrFunc</span>):
+
+                <label class="view-source-button" for="MarginErrFunc-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#MarginErrFunc"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MarginErrFunc-122"><a href="#MarginErrFunc-122"><span class="linenos">122</span></a><span class="k">class</span> <span class="nc">MarginErrFunc</span><span class="p">(</span><span class="n">ClassificationErrFunc</span><span class="p">):</span>
+</span><span id="MarginErrFunc-123"><a href="#MarginErrFunc-123"><span class="linenos">123</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="MarginErrFunc-124"><a href="#MarginErrFunc-124"><span class="linenos">124</span></a><span class="sd">    Calculates the margin error.</span>
+</span><span id="MarginErrFunc-125"><a href="#MarginErrFunc-125"><span class="linenos">125</span></a>
+</span><span id="MarginErrFunc-126"><a href="#MarginErrFunc-126"><span class="linenos">126</span></a><span class="sd">    For each correct output in ``y``, nonconformity is defined as</span>
+</span><span id="MarginErrFunc-127"><a href="#MarginErrFunc-127"><span class="linenos">127</span></a>
+</span><span id="MarginErrFunc-128"><a href="#MarginErrFunc-128"><span class="linenos">128</span></a><span class="sd">    .. math::</span>
+</span><span id="MarginErrFunc-129"><a href="#MarginErrFunc-129"><span class="linenos">129</span></a><span class="sd">        0.5 - \dfrac{\hat{P}(y_i | x) - max_{y \, != \, y_i} \hat{P}(y | x)}{2}</span>
+</span><span id="MarginErrFunc-130"><a href="#MarginErrFunc-130"><span class="linenos">130</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="MarginErrFunc-131"><a href="#MarginErrFunc-131"><span class="linenos">131</span></a>
+</span><span id="MarginErrFunc-132"><a href="#MarginErrFunc-132"><span class="linenos">132</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="MarginErrFunc-133"><a href="#MarginErrFunc-133"><span class="linenos">133</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">MarginErrFunc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="MarginErrFunc-134"><a href="#MarginErrFunc-134"><span class="linenos">134</span></a>
+</span><span id="MarginErrFunc-135"><a href="#MarginErrFunc-135"><span class="linenos">135</span></a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prediction</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span id="MarginErrFunc-136"><a href="#MarginErrFunc-136"><span class="linenos">136</span></a>        <span class="n">prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span id="MarginErrFunc-137"><a href="#MarginErrFunc-137"><span class="linenos">137</span></a>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+</span><span id="MarginErrFunc-138"><a href="#MarginErrFunc-138"><span class="linenos">138</span></a>            <span class="k">if</span> <span class="n">y_</span> <span class="o">&gt;=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+</span><span id="MarginErrFunc-139"><a href="#MarginErrFunc-139"><span class="linenos">139</span></a>                <span class="n">prob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="MarginErrFunc-140"><a href="#MarginErrFunc-140"><span class="linenos">140</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="MarginErrFunc-141"><a href="#MarginErrFunc-141"><span class="linenos">141</span></a>                <span class="n">prob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_</span><span class="p">)]</span>
+</span><span id="MarginErrFunc-142"><a href="#MarginErrFunc-142"><span class="linenos">142</span></a>                <span class="n">prediction</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</span><span id="MarginErrFunc-143"><a href="#MarginErrFunc-143"><span class="linenos">143</span></a>        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="p">((</span><span class="n">prob</span> <span class="o">-</span> <span class="n">prediction</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Calculates the margin error.</p>
+
+<p>For each correct output in <code>y</code>, nonconformity is defined as</p>
+
+<p>$$0.5 - \dfrac{\hat{P}(y_i | x) - max_{y \, != \, y_i} \hat{P}(y | x)}{2}$$</p>
 </div>
 
 
@@ -312,6 +448,76 @@
 
 <p>All estimators should specify all the parameters that can be set
 at the class level in their <code><a href="#RegressorAdapter.__init__">__init__</a></code> as explicit keyword
+arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
+
+<h2 id="examples">Examples</h2>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyEstimator</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">is_fitted_</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="bp">self</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+<span class="go">{&#39;param&#39;: 2}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([2, 2, 2])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([3, 3, 3])</span>
+</code></pre>
+</div>
+</div>
+
+
+                        
+                </section>
+                <section id="ClassifierAdapter">
+                            <input id="ClassifierAdapter-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ClassifierAdapter</span><wbr>(<span class="base">nnetsauce.nonconformist.base.BaseModelAdapter</span>):
+
+                <label class="view-source-button" for="ClassifierAdapter-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#ClassifierAdapter"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ClassifierAdapter-106"><a href="#ClassifierAdapter-106"><span class="linenos">106</span></a><span class="k">class</span> <span class="nc">ClassifierAdapter</span><span class="p">(</span><span class="n">BaseModelAdapter</span><span class="p">):</span>
+</span><span id="ClassifierAdapter-107"><a href="#ClassifierAdapter-107"><span class="linenos">107</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">fit_params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="ClassifierAdapter-108"><a href="#ClassifierAdapter-108"><span class="linenos">108</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">ClassifierAdapter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fit_params</span><span class="p">)</span>
+</span><span id="ClassifierAdapter-109"><a href="#ClassifierAdapter-109"><span class="linenos">109</span></a>
+</span><span id="ClassifierAdapter-110"><a href="#ClassifierAdapter-110"><span class="linenos">110</span></a>    <span class="k">def</span> <span class="nf">_underlying_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="ClassifierAdapter-111"><a href="#ClassifierAdapter-111"><span class="linenos">111</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Base class for all estimators in scikit-learn.</p>
+
+<p>Inheriting from this class provides default implementations of:</p>
+
+<ul>
+<li>setting and getting parameters used by <code>GridSearchCV</code> and friends;</li>
+<li>textual and HTML representation displayed in terminals and IDEs;</li>
+<li>estimator serialization;</li>
+<li>parameters validation;</li>
+<li>data validation;</li>
+<li>feature names validation.</li>
+</ul>
+
+<p>Read more in the :ref:<code>User Guide &lt;rolling_your_own_estimator&gt;</code>.</p>
+
+<h2 id="notes">Notes</h2>
+
+<p>All estimators should specify all the parameters that can be set
+at the class level in their <code><a href="#ClassifierAdapter.__init__">__init__</a></code> as explicit keyword
 arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 
 <h2 id="examples">Examples</h2>
@@ -592,6 +798,94 @@ prediction, resulting in a prediction interval for each test pattern.</p>
 
 
                                 </div>
+                        
+                </section>
+                <section id="ClassifierNc">
+                            <input id="ClassifierNc-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ClassifierNc</span><wbr>(<span class="base">nnetsauce.nonconformist.nc.BaseModelNc</span>):
+
+                <label class="view-source-button" for="ClassifierNc-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#ClassifierNc"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ClassifierNc-471"><a href="#ClassifierNc-471"><span class="linenos">471</span></a><span class="k">class</span> <span class="nc">ClassifierNc</span><span class="p">(</span><span class="n">BaseModelNc</span><span class="p">):</span>
+</span><span id="ClassifierNc-472"><a href="#ClassifierNc-472"><span class="linenos">472</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Nonconformity scorer using an underlying class probability estimating</span>
+</span><span id="ClassifierNc-473"><a href="#ClassifierNc-473"><span class="linenos">473</span></a><span class="sd">    model.</span>
+</span><span id="ClassifierNc-474"><a href="#ClassifierNc-474"><span class="linenos">474</span></a>
+</span><span id="ClassifierNc-475"><a href="#ClassifierNc-475"><span class="linenos">475</span></a><span class="sd">    Parameters</span>
+</span><span id="ClassifierNc-476"><a href="#ClassifierNc-476"><span class="linenos">476</span></a><span class="sd">    ----------</span>
+</span><span id="ClassifierNc-477"><a href="#ClassifierNc-477"><span class="linenos">477</span></a><span class="sd">    model : ClassifierAdapter</span>
+</span><span id="ClassifierNc-478"><a href="#ClassifierNc-478"><span class="linenos">478</span></a><span class="sd">        Underlying classification model used for calculating nonconformity</span>
+</span><span id="ClassifierNc-479"><a href="#ClassifierNc-479"><span class="linenos">479</span></a><span class="sd">        scores.</span>
+</span><span id="ClassifierNc-480"><a href="#ClassifierNc-480"><span class="linenos">480</span></a>
+</span><span id="ClassifierNc-481"><a href="#ClassifierNc-481"><span class="linenos">481</span></a><span class="sd">    err_func : ClassificationErrFunc</span>
+</span><span id="ClassifierNc-482"><a href="#ClassifierNc-482"><span class="linenos">482</span></a><span class="sd">        Error function object.</span>
+</span><span id="ClassifierNc-483"><a href="#ClassifierNc-483"><span class="linenos">483</span></a>
+</span><span id="ClassifierNc-484"><a href="#ClassifierNc-484"><span class="linenos">484</span></a><span class="sd">    normalizer : BaseScorer</span>
+</span><span id="ClassifierNc-485"><a href="#ClassifierNc-485"><span class="linenos">485</span></a><span class="sd">        Normalization model.</span>
+</span><span id="ClassifierNc-486"><a href="#ClassifierNc-486"><span class="linenos">486</span></a>
+</span><span id="ClassifierNc-487"><a href="#ClassifierNc-487"><span class="linenos">487</span></a><span class="sd">    beta : float</span>
+</span><span id="ClassifierNc-488"><a href="#ClassifierNc-488"><span class="linenos">488</span></a><span class="sd">        Normalization smoothing parameter. As the beta-value increases,</span>
+</span><span id="ClassifierNc-489"><a href="#ClassifierNc-489"><span class="linenos">489</span></a><span class="sd">        the normalized nonconformity function approaches a non-normalized</span>
+</span><span id="ClassifierNc-490"><a href="#ClassifierNc-490"><span class="linenos">490</span></a><span class="sd">        equivalent.</span>
+</span><span id="ClassifierNc-491"><a href="#ClassifierNc-491"><span class="linenos">491</span></a>
+</span><span id="ClassifierNc-492"><a href="#ClassifierNc-492"><span class="linenos">492</span></a><span class="sd">    Attributes</span>
+</span><span id="ClassifierNc-493"><a href="#ClassifierNc-493"><span class="linenos">493</span></a><span class="sd">    ----------</span>
+</span><span id="ClassifierNc-494"><a href="#ClassifierNc-494"><span class="linenos">494</span></a><span class="sd">    model : ClassifierAdapter</span>
+</span><span id="ClassifierNc-495"><a href="#ClassifierNc-495"><span class="linenos">495</span></a><span class="sd">        Underlying model object.</span>
+</span><span id="ClassifierNc-496"><a href="#ClassifierNc-496"><span class="linenos">496</span></a>
+</span><span id="ClassifierNc-497"><a href="#ClassifierNc-497"><span class="linenos">497</span></a><span class="sd">    err_func : ClassificationErrFunc</span>
+</span><span id="ClassifierNc-498"><a href="#ClassifierNc-498"><span class="linenos">498</span></a><span class="sd">        Scorer function used to calculate nonconformity scores.</span>
+</span><span id="ClassifierNc-499"><a href="#ClassifierNc-499"><span class="linenos">499</span></a>
+</span><span id="ClassifierNc-500"><a href="#ClassifierNc-500"><span class="linenos">500</span></a><span class="sd">    See also</span>
+</span><span id="ClassifierNc-501"><a href="#ClassifierNc-501"><span class="linenos">501</span></a><span class="sd">    --------</span>
+</span><span id="ClassifierNc-502"><a href="#ClassifierNc-502"><span class="linenos">502</span></a><span class="sd">    RegressorNc, NormalizedRegressorNc</span>
+</span><span id="ClassifierNc-503"><a href="#ClassifierNc-503"><span class="linenos">503</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ClassifierNc-504"><a href="#ClassifierNc-504"><span class="linenos">504</span></a>
+</span><span id="ClassifierNc-505"><a href="#ClassifierNc-505"><span class="linenos">505</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="ClassifierNc-506"><a href="#ClassifierNc-506"><span class="linenos">506</span></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="o">=</span><span class="n">MarginErrFunc</span><span class="p">(),</span> <span class="n">normalizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1e-6</span>
+</span><span id="ClassifierNc-507"><a href="#ClassifierNc-507"><span class="linenos">507</span></a>    <span class="p">):</span>
+</span><span id="ClassifierNc-508"><a href="#ClassifierNc-508"><span class="linenos">508</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">ClassifierNc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Nonconformity scorer using an underlying class probability estimating
+model.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>model : ClassifierAdapter
+    Underlying classification model used for calculating nonconformity
+    scores.</p>
+
+<p>err_func : ClassificationErrFunc
+    Error function object.</p>
+
+<p>normalizer : BaseScorer
+    Normalization model.</p>
+
+<p>beta : float
+    Normalization smoothing parameter. As the beta-value increases,
+    the normalized nonconformity function approaches a non-normalized
+    equivalent.</p>
+
+<h2 id="attributes">Attributes</h2>
+
+<p>model : ClassifierAdapter
+    Underlying model object.</p>
+
+<p>err_func : ClassificationErrFunc
+    Scorer function used to calculate nonconformity scores.</p>
+
+<h2 id="see-also">See also</h2>
+
+<p>RegressorNc, NormalizedRegressorNc</p>
+</div>
+
+
                         
                 </section>
                 <section id="RegressorNormalizer">
@@ -1034,6 +1328,685 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
         0 and 1, then p contains the prediction intervals (minimum and
         maximum boundaries) for the set of test patterns at the chosen
         significance level.</p>
+</div>
+
+
+                                </div>
+                        
+                </section>
+                <section id="IcpClassifier">
+                            <input id="IcpClassifier-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">IcpClassifier</span><wbr>(<span class="base">nnetsauce.nonconformist.icp.BaseIcp</span>, <span class="base">nnetsauce.nonconformist.base.ClassifierMixin</span>):
+
+                <label class="view-source-button" for="IcpClassifier-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#IcpClassifier"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="IcpClassifier-127"><a href="#IcpClassifier-127"><span class="linenos">127</span></a><span class="k">class</span> <span class="nc">IcpClassifier</span><span class="p">(</span><span class="n">BaseIcp</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+</span><span id="IcpClassifier-128"><a href="#IcpClassifier-128"><span class="linenos">128</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Inductive conformal classifier.</span>
+</span><span id="IcpClassifier-129"><a href="#IcpClassifier-129"><span class="linenos">129</span></a>
+</span><span id="IcpClassifier-130"><a href="#IcpClassifier-130"><span class="linenos">130</span></a><span class="sd">    Parameters</span>
+</span><span id="IcpClassifier-131"><a href="#IcpClassifier-131"><span class="linenos">131</span></a><span class="sd">    ----------</span>
+</span><span id="IcpClassifier-132"><a href="#IcpClassifier-132"><span class="linenos">132</span></a><span class="sd">    nc_function : BaseScorer</span>
+</span><span id="IcpClassifier-133"><a href="#IcpClassifier-133"><span class="linenos">133</span></a><span class="sd">            Nonconformity scorer object used to calculate nonconformity of</span>
+</span><span id="IcpClassifier-134"><a href="#IcpClassifier-134"><span class="linenos">134</span></a><span class="sd">            calibration examples and test patterns. Should implement ``fit(x, y)``</span>
+</span><span id="IcpClassifier-135"><a href="#IcpClassifier-135"><span class="linenos">135</span></a><span class="sd">            and ``calc_nc(x, y)``.</span>
+</span><span id="IcpClassifier-136"><a href="#IcpClassifier-136"><span class="linenos">136</span></a>
+</span><span id="IcpClassifier-137"><a href="#IcpClassifier-137"><span class="linenos">137</span></a><span class="sd">    smoothing : boolean</span>
+</span><span id="IcpClassifier-138"><a href="#IcpClassifier-138"><span class="linenos">138</span></a><span class="sd">            Decides whether to use stochastic smoothing of p-values.</span>
+</span><span id="IcpClassifier-139"><a href="#IcpClassifier-139"><span class="linenos">139</span></a>
+</span><span id="IcpClassifier-140"><a href="#IcpClassifier-140"><span class="linenos">140</span></a><span class="sd">    Attributes</span>
+</span><span id="IcpClassifier-141"><a href="#IcpClassifier-141"><span class="linenos">141</span></a><span class="sd">    ----------</span>
+</span><span id="IcpClassifier-142"><a href="#IcpClassifier-142"><span class="linenos">142</span></a><span class="sd">    cal_x : numpy array of shape [n_cal_examples, n_features]</span>
+</span><span id="IcpClassifier-143"><a href="#IcpClassifier-143"><span class="linenos">143</span></a><span class="sd">            Inputs of calibration set.</span>
+</span><span id="IcpClassifier-144"><a href="#IcpClassifier-144"><span class="linenos">144</span></a>
+</span><span id="IcpClassifier-145"><a href="#IcpClassifier-145"><span class="linenos">145</span></a><span class="sd">    cal_y : numpy array of shape [n_cal_examples]</span>
+</span><span id="IcpClassifier-146"><a href="#IcpClassifier-146"><span class="linenos">146</span></a><span class="sd">            Outputs of calibration set.</span>
+</span><span id="IcpClassifier-147"><a href="#IcpClassifier-147"><span class="linenos">147</span></a>
+</span><span id="IcpClassifier-148"><a href="#IcpClassifier-148"><span class="linenos">148</span></a><span class="sd">    nc_function : BaseScorer</span>
+</span><span id="IcpClassifier-149"><a href="#IcpClassifier-149"><span class="linenos">149</span></a><span class="sd">            Nonconformity scorer object used to calculate nonconformity scores.</span>
+</span><span id="IcpClassifier-150"><a href="#IcpClassifier-150"><span class="linenos">150</span></a>
+</span><span id="IcpClassifier-151"><a href="#IcpClassifier-151"><span class="linenos">151</span></a><span class="sd">    classes : numpy array of shape [n_classes]</span>
+</span><span id="IcpClassifier-152"><a href="#IcpClassifier-152"><span class="linenos">152</span></a><span class="sd">            List of class labels, with indices corresponding to output columns</span>
+</span><span id="IcpClassifier-153"><a href="#IcpClassifier-153"><span class="linenos">153</span></a><span class="sd">             of IcpClassifier.predict()</span>
+</span><span id="IcpClassifier-154"><a href="#IcpClassifier-154"><span class="linenos">154</span></a>
+</span><span id="IcpClassifier-155"><a href="#IcpClassifier-155"><span class="linenos">155</span></a><span class="sd">    See also</span>
+</span><span id="IcpClassifier-156"><a href="#IcpClassifier-156"><span class="linenos">156</span></a><span class="sd">    --------</span>
+</span><span id="IcpClassifier-157"><a href="#IcpClassifier-157"><span class="linenos">157</span></a><span class="sd">    IcpRegressor</span>
+</span><span id="IcpClassifier-158"><a href="#IcpClassifier-158"><span class="linenos">158</span></a>
+</span><span id="IcpClassifier-159"><a href="#IcpClassifier-159"><span class="linenos">159</span></a><span class="sd">    References</span>
+</span><span id="IcpClassifier-160"><a href="#IcpClassifier-160"><span class="linenos">160</span></a><span class="sd">    ----------</span>
+</span><span id="IcpClassifier-161"><a href="#IcpClassifier-161"><span class="linenos">161</span></a><span class="sd">    .. [1] Papadopoulos, H., &amp; Haralambous, H. (2011). Reliable prediction</span>
+</span><span id="IcpClassifier-162"><a href="#IcpClassifier-162"><span class="linenos">162</span></a><span class="sd">            intervals with regression neural networks. Neural Networks, 24(8),</span>
+</span><span id="IcpClassifier-163"><a href="#IcpClassifier-163"><span class="linenos">163</span></a><span class="sd">            842-851.</span>
+</span><span id="IcpClassifier-164"><a href="#IcpClassifier-164"><span class="linenos">164</span></a>
+</span><span id="IcpClassifier-165"><a href="#IcpClassifier-165"><span class="linenos">165</span></a><span class="sd">    Examples</span>
+</span><span id="IcpClassifier-166"><a href="#IcpClassifier-166"><span class="linenos">166</span></a><span class="sd">    --------</span>
+</span><span id="IcpClassifier-167"><a href="#IcpClassifier-167"><span class="linenos">167</span></a><span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+</span><span id="IcpClassifier-168"><a href="#IcpClassifier-168"><span class="linenos">168</span></a><span class="sd">    &gt;&gt;&gt; from sklearn.datasets import load_iris</span>
+</span><span id="IcpClassifier-169"><a href="#IcpClassifier-169"><span class="linenos">169</span></a><span class="sd">    &gt;&gt;&gt; from sklearn.tree import DecisionTreeClassifier</span>
+</span><span id="IcpClassifier-170"><a href="#IcpClassifier-170"><span class="linenos">170</span></a><span class="sd">    &gt;&gt;&gt; from nonconformist.base import ClassifierAdapter</span>
+</span><span id="IcpClassifier-171"><a href="#IcpClassifier-171"><span class="linenos">171</span></a><span class="sd">    &gt;&gt;&gt; from nonconformist.icp import IcpClassifier</span>
+</span><span id="IcpClassifier-172"><a href="#IcpClassifier-172"><span class="linenos">172</span></a><span class="sd">    &gt;&gt;&gt; from nonconformist.nc import ClassifierNc, MarginErrFunc</span>
+</span><span id="IcpClassifier-173"><a href="#IcpClassifier-173"><span class="linenos">173</span></a><span class="sd">    &gt;&gt;&gt; iris = load_iris()</span>
+</span><span id="IcpClassifier-174"><a href="#IcpClassifier-174"><span class="linenos">174</span></a><span class="sd">    &gt;&gt;&gt; idx = np.random.permutation(iris.target.size)</span>
+</span><span id="IcpClassifier-175"><a href="#IcpClassifier-175"><span class="linenos">175</span></a><span class="sd">    &gt;&gt;&gt; train = idx[:int(idx.size / 3)]</span>
+</span><span id="IcpClassifier-176"><a href="#IcpClassifier-176"><span class="linenos">176</span></a><span class="sd">    &gt;&gt;&gt; cal = idx[int(idx.size / 3):int(2 * idx.size / 3)]</span>
+</span><span id="IcpClassifier-177"><a href="#IcpClassifier-177"><span class="linenos">177</span></a><span class="sd">    &gt;&gt;&gt; test = idx[int(2 * idx.size / 3):]</span>
+</span><span id="IcpClassifier-178"><a href="#IcpClassifier-178"><span class="linenos">178</span></a><span class="sd">    &gt;&gt;&gt; model = ClassifierAdapter(DecisionTreeClassifier())</span>
+</span><span id="IcpClassifier-179"><a href="#IcpClassifier-179"><span class="linenos">179</span></a><span class="sd">    &gt;&gt;&gt; nc = ClassifierNc(model, MarginErrFunc())</span>
+</span><span id="IcpClassifier-180"><a href="#IcpClassifier-180"><span class="linenos">180</span></a><span class="sd">    &gt;&gt;&gt; icp = IcpClassifier(nc)</span>
+</span><span id="IcpClassifier-181"><a href="#IcpClassifier-181"><span class="linenos">181</span></a><span class="sd">    &gt;&gt;&gt; icp.fit(iris.data[train, :], iris.target[train])</span>
+</span><span id="IcpClassifier-182"><a href="#IcpClassifier-182"><span class="linenos">182</span></a><span class="sd">    &gt;&gt;&gt; icp.calibrate(iris.data[cal, :], iris.target[cal])</span>
+</span><span id="IcpClassifier-183"><a href="#IcpClassifier-183"><span class="linenos">183</span></a><span class="sd">    &gt;&gt;&gt; icp.predict(iris.data[test, :], significance=0.10)</span>
+</span><span id="IcpClassifier-184"><a href="#IcpClassifier-184"><span class="linenos">184</span></a><span class="sd">    ...             # doctest: +SKIP</span>
+</span><span id="IcpClassifier-185"><a href="#IcpClassifier-185"><span class="linenos">185</span></a><span class="sd">    array([[ True, False, False],</span>
+</span><span id="IcpClassifier-186"><a href="#IcpClassifier-186"><span class="linenos">186</span></a><span class="sd">            [False,  True, False],</span>
+</span><span id="IcpClassifier-187"><a href="#IcpClassifier-187"><span class="linenos">187</span></a><span class="sd">            ...,</span>
+</span><span id="IcpClassifier-188"><a href="#IcpClassifier-188"><span class="linenos">188</span></a><span class="sd">            [False,  True, False],</span>
+</span><span id="IcpClassifier-189"><a href="#IcpClassifier-189"><span class="linenos">189</span></a><span class="sd">            [False,  True, False]], dtype=bool)</span>
+</span><span id="IcpClassifier-190"><a href="#IcpClassifier-190"><span class="linenos">190</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier-191"><a href="#IcpClassifier-191"><span class="linenos">191</span></a>
+</span><span id="IcpClassifier-192"><a href="#IcpClassifier-192"><span class="linenos">192</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span><span id="IcpClassifier-193"><a href="#IcpClassifier-193"><span class="linenos">193</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">IcpClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
+</span><span id="IcpClassifier-194"><a href="#IcpClassifier-194"><span class="linenos">194</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="IcpClassifier-195"><a href="#IcpClassifier-195"><span class="linenos">195</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span> <span class="o">=</span> <span class="n">smoothing</span>
+</span><span id="IcpClassifier-196"><a href="#IcpClassifier-196"><span class="linenos">196</span></a>
+</span><span id="IcpClassifier-197"><a href="#IcpClassifier-197"><span class="linenos">197</span></a>    <span class="k">def</span> <span class="nf">_calibrate_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">increment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span><span id="IcpClassifier-198"><a href="#IcpClassifier-198"><span class="linenos">198</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_update_classes</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">increment</span><span class="p">)</span>
+</span><span id="IcpClassifier-199"><a href="#IcpClassifier-199"><span class="linenos">199</span></a>
+</span><span id="IcpClassifier-200"><a href="#IcpClassifier-200"><span class="linenos">200</span></a>    <span class="k">def</span> <span class="nf">_update_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">increment</span><span class="p">):</span>
+</span><span id="IcpClassifier-201"><a href="#IcpClassifier-201"><span class="linenos">201</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">increment</span><span class="p">:</span>
+</span><span id="IcpClassifier-202"><a href="#IcpClassifier-202"><span class="linenos">202</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span id="IcpClassifier-203"><a href="#IcpClassifier-203"><span class="linenos">203</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="IcpClassifier-204"><a href="#IcpClassifier-204"><span class="linenos">204</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span> <span class="n">y</span><span class="p">]))</span>
+</span><span id="IcpClassifier-205"><a href="#IcpClassifier-205"><span class="linenos">205</span></a>
+</span><span id="IcpClassifier-206"><a href="#IcpClassifier-206"><span class="linenos">206</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="IcpClassifier-207"><a href="#IcpClassifier-207"><span class="linenos">207</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpClassifier-208"><a href="#IcpClassifier-208"><span class="linenos">208</span></a>
+</span><span id="IcpClassifier-209"><a href="#IcpClassifier-209"><span class="linenos">209</span></a><span class="sd">        Parameters</span>
+</span><span id="IcpClassifier-210"><a href="#IcpClassifier-210"><span class="linenos">210</span></a><span class="sd">        ----------</span>
+</span><span id="IcpClassifier-211"><a href="#IcpClassifier-211"><span class="linenos">211</span></a><span class="sd">        x : numpy array of shape [n_samples, n_features]</span>
+</span><span id="IcpClassifier-212"><a href="#IcpClassifier-212"><span class="linenos">212</span></a><span class="sd">                Inputs of patters for which to predict output values.</span>
+</span><span id="IcpClassifier-213"><a href="#IcpClassifier-213"><span class="linenos">213</span></a>
+</span><span id="IcpClassifier-214"><a href="#IcpClassifier-214"><span class="linenos">214</span></a><span class="sd">        significance : float or None</span>
+</span><span id="IcpClassifier-215"><a href="#IcpClassifier-215"><span class="linenos">215</span></a><span class="sd">                Significance level (maximum allowed error rate) of predictions.</span>
+</span><span id="IcpClassifier-216"><a href="#IcpClassifier-216"><span class="linenos">216</span></a><span class="sd">                Should be a float between 0 and 1. If ``None``, then the p-values</span>
+</span><span id="IcpClassifier-217"><a href="#IcpClassifier-217"><span class="linenos">217</span></a><span class="sd">                are output rather than the predictions.</span>
+</span><span id="IcpClassifier-218"><a href="#IcpClassifier-218"><span class="linenos">218</span></a>
+</span><span id="IcpClassifier-219"><a href="#IcpClassifier-219"><span class="linenos">219</span></a><span class="sd">        Returns</span>
+</span><span id="IcpClassifier-220"><a href="#IcpClassifier-220"><span class="linenos">220</span></a><span class="sd">        -------</span>
+</span><span id="IcpClassifier-221"><a href="#IcpClassifier-221"><span class="linenos">221</span></a><span class="sd">        p : numpy array of shape [n_samples, n_classes]</span>
+</span><span id="IcpClassifier-222"><a href="#IcpClassifier-222"><span class="linenos">222</span></a><span class="sd">                If significance is ``None``, then p contains the p-values for each</span>
+</span><span id="IcpClassifier-223"><a href="#IcpClassifier-223"><span class="linenos">223</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
+</span><span id="IcpClassifier-224"><a href="#IcpClassifier-224"><span class="linenos">224</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
+</span><span id="IcpClassifier-225"><a href="#IcpClassifier-225"><span class="linenos">225</span></a><span class="sd">                prediction sets.</span>
+</span><span id="IcpClassifier-226"><a href="#IcpClassifier-226"><span class="linenos">226</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier-227"><a href="#IcpClassifier-227"><span class="linenos">227</span></a>        <span class="c1"># TODO: if x == self.last_x ...</span>
+</span><span id="IcpClassifier-228"><a href="#IcpClassifier-228"><span class="linenos">228</span></a>        <span class="n">n_test_objects</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="IcpClassifier-229"><a href="#IcpClassifier-229"><span class="linenos">229</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test_objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+</span><span id="IcpClassifier-230"><a href="#IcpClassifier-230"><span class="linenos">230</span></a>
+</span><span id="IcpClassifier-231"><a href="#IcpClassifier-231"><span class="linenos">231</span></a>        <span class="n">ncal_ngt_neq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_stats</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="IcpClassifier-232"><a href="#IcpClassifier-232"><span class="linenos">232</span></a>
+</span><span id="IcpClassifier-233"><a href="#IcpClassifier-233"><span class="linenos">233</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)):</span>
+</span><span id="IcpClassifier-234"><a href="#IcpClassifier-234"><span class="linenos">234</span></a>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test_objects</span><span class="p">):</span>
+</span><span id="IcpClassifier-235"><a href="#IcpClassifier-235"><span class="linenos">235</span></a>                <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc_p</span><span class="p">(</span>
+</span><span id="IcpClassifier-236"><a href="#IcpClassifier-236"><span class="linenos">236</span></a>                    <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span id="IcpClassifier-237"><a href="#IcpClassifier-237"><span class="linenos">237</span></a>                    <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="IcpClassifier-238"><a href="#IcpClassifier-238"><span class="linenos">238</span></a>                    <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+</span><span id="IcpClassifier-239"><a href="#IcpClassifier-239"><span class="linenos">239</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span><span class="p">,</span>
+</span><span id="IcpClassifier-240"><a href="#IcpClassifier-240"><span class="linenos">240</span></a>                <span class="p">)</span>
+</span><span id="IcpClassifier-241"><a href="#IcpClassifier-241"><span class="linenos">241</span></a>
+</span><span id="IcpClassifier-242"><a href="#IcpClassifier-242"><span class="linenos">242</span></a>        <span class="k">if</span> <span class="n">significance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="IcpClassifier-243"><a href="#IcpClassifier-243"><span class="linenos">243</span></a>            <span class="k">return</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="n">significance</span>
+</span><span id="IcpClassifier-244"><a href="#IcpClassifier-244"><span class="linenos">244</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="IcpClassifier-245"><a href="#IcpClassifier-245"><span class="linenos">245</span></a>            <span class="k">return</span> <span class="n">p</span>
+</span><span id="IcpClassifier-246"><a href="#IcpClassifier-246"><span class="linenos">246</span></a>
+</span><span id="IcpClassifier-247"><a href="#IcpClassifier-247"><span class="linenos">247</span></a>    <span class="k">def</span> <span class="nf">_get_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="IcpClassifier-248"><a href="#IcpClassifier-248"><span class="linenos">248</span></a>        <span class="n">n_test_objects</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="IcpClassifier-249"><a href="#IcpClassifier-249"><span class="linenos">249</span></a>        <span class="n">ncal_ngt_neq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test_objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</span><span id="IcpClassifier-250"><a href="#IcpClassifier-250"><span class="linenos">250</span></a>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">):</span>
+</span><span id="IcpClassifier-251"><a href="#IcpClassifier-251"><span class="linenos">251</span></a>            <span class="n">test_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</span><span id="IcpClassifier-252"><a href="#IcpClassifier-252"><span class="linenos">252</span></a>            <span class="n">test_class</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span><span id="IcpClassifier-253"><a href="#IcpClassifier-253"><span class="linenos">253</span></a>
+</span><span id="IcpClassifier-254"><a href="#IcpClassifier-254"><span class="linenos">254</span></a>            <span class="c1"># TODO: maybe calculate p-values using cython or similar</span>
+</span><span id="IcpClassifier-255"><a href="#IcpClassifier-255"><span class="linenos">255</span></a>            <span class="c1"># TODO: interpolated p-values</span>
+</span><span id="IcpClassifier-256"><a href="#IcpClassifier-256"><span class="linenos">256</span></a>
+</span><span id="IcpClassifier-257"><a href="#IcpClassifier-257"><span class="linenos">257</span></a>            <span class="c1"># TODO: nc_function.calc_nc should take X * {y1, y2, ... ,yn}</span>
+</span><span id="IcpClassifier-258"><a href="#IcpClassifier-258"><span class="linenos">258</span></a>            <span class="n">test_nc_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nc_function</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">test_class</span><span class="p">)</span>
+</span><span id="IcpClassifier-259"><a href="#IcpClassifier-259"><span class="linenos">259</span></a>            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">nc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_nc_scores</span><span class="p">):</span>
+</span><span id="IcpClassifier-260"><a href="#IcpClassifier-260"><span class="linenos">260</span></a>                <span class="n">cal_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cal_scores</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="p">))][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="IcpClassifier-261"><a href="#IcpClassifier-261"><span class="linenos">261</span></a>                <span class="n">n_cal</span> <span class="o">=</span> <span class="n">cal_scores</span><span class="o">.</span><span class="n">size</span>
+</span><span id="IcpClassifier-262"><a href="#IcpClassifier-262"><span class="linenos">262</span></a>
+</span><span id="IcpClassifier-263"><a href="#IcpClassifier-263"><span class="linenos">263</span></a>                <span class="n">idx_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cal_scores</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</span><span id="IcpClassifier-264"><a href="#IcpClassifier-264"><span class="linenos">264</span></a>                <span class="n">idx_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cal_scores</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">)</span>
+</span><span id="IcpClassifier-265"><a href="#IcpClassifier-265"><span class="linenos">265</span></a>
+</span><span id="IcpClassifier-266"><a href="#IcpClassifier-266"><span class="linenos">266</span></a>                <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_cal</span>
+</span><span id="IcpClassifier-267"><a href="#IcpClassifier-267"><span class="linenos">267</span></a>                <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_cal</span> <span class="o">-</span> <span class="n">idx_right</span>
+</span><span id="IcpClassifier-268"><a href="#IcpClassifier-268"><span class="linenos">268</span></a>                <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx_right</span> <span class="o">-</span> <span class="n">idx_left</span>
+</span><span id="IcpClassifier-269"><a href="#IcpClassifier-269"><span class="linenos">269</span></a>
+</span><span id="IcpClassifier-270"><a href="#IcpClassifier-270"><span class="linenos">270</span></a>        <span class="k">return</span> <span class="n">ncal_ngt_neq</span>
+</span><span id="IcpClassifier-271"><a href="#IcpClassifier-271"><span class="linenos">271</span></a>
+</span><span id="IcpClassifier-272"><a href="#IcpClassifier-272"><span class="linenos">272</span></a>    <span class="k">def</span> <span class="nf">predict_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="IcpClassifier-273"><a href="#IcpClassifier-273"><span class="linenos">273</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns, using</span>
+</span><span id="IcpClassifier-274"><a href="#IcpClassifier-274"><span class="linenos">274</span></a><span class="sd">        the confidence-and-credibility output scheme.</span>
+</span><span id="IcpClassifier-275"><a href="#IcpClassifier-275"><span class="linenos">275</span></a>
+</span><span id="IcpClassifier-276"><a href="#IcpClassifier-276"><span class="linenos">276</span></a><span class="sd">        Parameters</span>
+</span><span id="IcpClassifier-277"><a href="#IcpClassifier-277"><span class="linenos">277</span></a><span class="sd">        ----------</span>
+</span><span id="IcpClassifier-278"><a href="#IcpClassifier-278"><span class="linenos">278</span></a><span class="sd">        x : numpy array of shape [n_samples, n_features]</span>
+</span><span id="IcpClassifier-279"><a href="#IcpClassifier-279"><span class="linenos">279</span></a><span class="sd">                Inputs of patters for which to predict output values.</span>
+</span><span id="IcpClassifier-280"><a href="#IcpClassifier-280"><span class="linenos">280</span></a>
+</span><span id="IcpClassifier-281"><a href="#IcpClassifier-281"><span class="linenos">281</span></a><span class="sd">        Returns</span>
+</span><span id="IcpClassifier-282"><a href="#IcpClassifier-282"><span class="linenos">282</span></a><span class="sd">        -------</span>
+</span><span id="IcpClassifier-283"><a href="#IcpClassifier-283"><span class="linenos">283</span></a><span class="sd">        p : numpy array of shape [n_samples, 3]</span>
+</span><span id="IcpClassifier-284"><a href="#IcpClassifier-284"><span class="linenos">284</span></a><span class="sd">                p contains three columns: the first column contains the most</span>
+</span><span id="IcpClassifier-285"><a href="#IcpClassifier-285"><span class="linenos">285</span></a><span class="sd">                likely class for each test pattern; the second column contains</span>
+</span><span id="IcpClassifier-286"><a href="#IcpClassifier-286"><span class="linenos">286</span></a><span class="sd">                the confidence in the predicted class label, and the third column</span>
+</span><span id="IcpClassifier-287"><a href="#IcpClassifier-287"><span class="linenos">287</span></a><span class="sd">                contains the credibility of the prediction.</span>
+</span><span id="IcpClassifier-288"><a href="#IcpClassifier-288"><span class="linenos">288</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier-289"><a href="#IcpClassifier-289"><span class="linenos">289</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span><span id="IcpClassifier-290"><a href="#IcpClassifier-290"><span class="linenos">290</span></a>        <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="IcpClassifier-291"><a href="#IcpClassifier-291"><span class="linenos">291</span></a>        <span class="n">credibility</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="IcpClassifier-292"><a href="#IcpClassifier-292"><span class="linenos">292</span></a>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+</span><span id="IcpClassifier-293"><a href="#IcpClassifier-293"><span class="linenos">293</span></a>            <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</span><span id="IcpClassifier-294"><a href="#IcpClassifier-294"><span class="linenos">294</span></a>        <span class="n">confidence</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="IcpClassifier-295"><a href="#IcpClassifier-295"><span class="linenos">295</span></a>
+</span><span id="IcpClassifier-296"><a href="#IcpClassifier-296"><span class="linenos">296</span></a>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">credibility</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Inductive conformal classifier.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>nc_function : BaseScorer
+        Nonconformity scorer object used to calculate nonconformity of
+        calibration examples and test patterns. Should implement <code>fit(x, y)</code>
+        and <code>calc_nc(x, y)</code>.</p>
+
+<p>smoothing : boolean
+        Decides whether to use stochastic smoothing of p-values.</p>
+
+<h2 id="attributes">Attributes</h2>
+
+<p>cal_x : numpy array of shape [n_cal_examples, n_features]
+        Inputs of calibration set.</p>
+
+<p>cal_y : numpy array of shape [n_cal_examples]
+        Outputs of calibration set.</p>
+
+<p>nc_function : BaseScorer
+        Nonconformity scorer object used to calculate nonconformity scores.</p>
+
+<p>classes : numpy array of shape [n_classes]
+        List of class labels, with indices corresponding to output columns
+         of <a href="#IcpClassifier.predict">IcpClassifier.predict()</a></p>
+
+<h2 id="see-also">See also</h2>
+
+<p>IcpRegressor</p>
+
+<h2 id="references">References</h2>
+
+<h2 id="examples">Examples</h2>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nonconformist.base</span> <span class="kn">import</span> <span class="n">ClassifierAdapter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nonconformist.icp</span> <span class="kn">import</span> <span class="n">IcpClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nonconformist.nc</span> <span class="kn">import</span> <span class="n">ClassifierNc</span><span class="p">,</span> <span class="n">MarginErrFunc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">train</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cal</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">3</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">3</span><span class="p">):]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ClassifierAdapter</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nc</span> <span class="o">=</span> <span class="n">ClassifierNc</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">MarginErrFunc</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">icp</span> <span class="o">=</span> <span class="n">IcpClassifier</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">icp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">train</span><span class="p">,</span> <span class="p">:],</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">train</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">icp</span><span class="o">.</span><span class="n">calibrate</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">cal</span><span class="p">,</span> <span class="p">:],</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">cal</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">icp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">test</span><span class="p">,</span> <span class="p">:],</span> <span class="n">significance</span><span class="o">=</span><span class="mf">0.10</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="c1"># doctest: +SKIP</span>
+<span class="go">array([[ True, False, False],</span>
+<span class="go">        [False,  True, False],</span>
+<span class="go">        ...,</span>
+<span class="go">        [False,  True, False],</span>
+<span class="go">        [False,  True, False]], dtype=bool)</span>
+</code></pre>
+</div>
+
+<div class="footnotes">
+<hr />
+<ol>
+</ol>
+</div>
+</div>
+
+
+                                <div id="IcpClassifier.predict" class="classattr">
+                                            <input id="IcpClassifier.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">predict</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">x</span>, </span><span class="param"><span class="n">significance</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="IcpClassifier.predict-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#IcpClassifier.predict"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="IcpClassifier.predict-206"><a href="#IcpClassifier.predict-206"><span class="linenos">206</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="IcpClassifier.predict-207"><a href="#IcpClassifier.predict-207"><span class="linenos">207</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpClassifier.predict-208"><a href="#IcpClassifier.predict-208"><span class="linenos">208</span></a>
+</span><span id="IcpClassifier.predict-209"><a href="#IcpClassifier.predict-209"><span class="linenos">209</span></a><span class="sd">        Parameters</span>
+</span><span id="IcpClassifier.predict-210"><a href="#IcpClassifier.predict-210"><span class="linenos">210</span></a><span class="sd">        ----------</span>
+</span><span id="IcpClassifier.predict-211"><a href="#IcpClassifier.predict-211"><span class="linenos">211</span></a><span class="sd">        x : numpy array of shape [n_samples, n_features]</span>
+</span><span id="IcpClassifier.predict-212"><a href="#IcpClassifier.predict-212"><span class="linenos">212</span></a><span class="sd">                Inputs of patters for which to predict output values.</span>
+</span><span id="IcpClassifier.predict-213"><a href="#IcpClassifier.predict-213"><span class="linenos">213</span></a>
+</span><span id="IcpClassifier.predict-214"><a href="#IcpClassifier.predict-214"><span class="linenos">214</span></a><span class="sd">        significance : float or None</span>
+</span><span id="IcpClassifier.predict-215"><a href="#IcpClassifier.predict-215"><span class="linenos">215</span></a><span class="sd">                Significance level (maximum allowed error rate) of predictions.</span>
+</span><span id="IcpClassifier.predict-216"><a href="#IcpClassifier.predict-216"><span class="linenos">216</span></a><span class="sd">                Should be a float between 0 and 1. If ``None``, then the p-values</span>
+</span><span id="IcpClassifier.predict-217"><a href="#IcpClassifier.predict-217"><span class="linenos">217</span></a><span class="sd">                are output rather than the predictions.</span>
+</span><span id="IcpClassifier.predict-218"><a href="#IcpClassifier.predict-218"><span class="linenos">218</span></a>
+</span><span id="IcpClassifier.predict-219"><a href="#IcpClassifier.predict-219"><span class="linenos">219</span></a><span class="sd">        Returns</span>
+</span><span id="IcpClassifier.predict-220"><a href="#IcpClassifier.predict-220"><span class="linenos">220</span></a><span class="sd">        -------</span>
+</span><span id="IcpClassifier.predict-221"><a href="#IcpClassifier.predict-221"><span class="linenos">221</span></a><span class="sd">        p : numpy array of shape [n_samples, n_classes]</span>
+</span><span id="IcpClassifier.predict-222"><a href="#IcpClassifier.predict-222"><span class="linenos">222</span></a><span class="sd">                If significance is ``None``, then p contains the p-values for each</span>
+</span><span id="IcpClassifier.predict-223"><a href="#IcpClassifier.predict-223"><span class="linenos">223</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
+</span><span id="IcpClassifier.predict-224"><a href="#IcpClassifier.predict-224"><span class="linenos">224</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
+</span><span id="IcpClassifier.predict-225"><a href="#IcpClassifier.predict-225"><span class="linenos">225</span></a><span class="sd">                prediction sets.</span>
+</span><span id="IcpClassifier.predict-226"><a href="#IcpClassifier.predict-226"><span class="linenos">226</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier.predict-227"><a href="#IcpClassifier.predict-227"><span class="linenos">227</span></a>        <span class="c1"># TODO: if x == self.last_x ...</span>
+</span><span id="IcpClassifier.predict-228"><a href="#IcpClassifier.predict-228"><span class="linenos">228</span></a>        <span class="n">n_test_objects</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="IcpClassifier.predict-229"><a href="#IcpClassifier.predict-229"><span class="linenos">229</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test_objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+</span><span id="IcpClassifier.predict-230"><a href="#IcpClassifier.predict-230"><span class="linenos">230</span></a>
+</span><span id="IcpClassifier.predict-231"><a href="#IcpClassifier.predict-231"><span class="linenos">231</span></a>        <span class="n">ncal_ngt_neq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_stats</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="IcpClassifier.predict-232"><a href="#IcpClassifier.predict-232"><span class="linenos">232</span></a>
+</span><span id="IcpClassifier.predict-233"><a href="#IcpClassifier.predict-233"><span class="linenos">233</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">)):</span>
+</span><span id="IcpClassifier.predict-234"><a href="#IcpClassifier.predict-234"><span class="linenos">234</span></a>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test_objects</span><span class="p">):</span>
+</span><span id="IcpClassifier.predict-235"><a href="#IcpClassifier.predict-235"><span class="linenos">235</span></a>                <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc_p</span><span class="p">(</span>
+</span><span id="IcpClassifier.predict-236"><a href="#IcpClassifier.predict-236"><span class="linenos">236</span></a>                    <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+</span><span id="IcpClassifier.predict-237"><a href="#IcpClassifier.predict-237"><span class="linenos">237</span></a>                    <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="IcpClassifier.predict-238"><a href="#IcpClassifier.predict-238"><span class="linenos">238</span></a>                    <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+</span><span id="IcpClassifier.predict-239"><a href="#IcpClassifier.predict-239"><span class="linenos">239</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span><span class="p">,</span>
+</span><span id="IcpClassifier.predict-240"><a href="#IcpClassifier.predict-240"><span class="linenos">240</span></a>                <span class="p">)</span>
+</span><span id="IcpClassifier.predict-241"><a href="#IcpClassifier.predict-241"><span class="linenos">241</span></a>
+</span><span id="IcpClassifier.predict-242"><a href="#IcpClassifier.predict-242"><span class="linenos">242</span></a>        <span class="k">if</span> <span class="n">significance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="IcpClassifier.predict-243"><a href="#IcpClassifier.predict-243"><span class="linenos">243</span></a>            <span class="k">return</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="n">significance</span>
+</span><span id="IcpClassifier.predict-244"><a href="#IcpClassifier.predict-244"><span class="linenos">244</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="IcpClassifier.predict-245"><a href="#IcpClassifier.predict-245"><span class="linenos">245</span></a>            <span class="k">return</span> <span class="n">p</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Predict the output values for a set of input patterns.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>x : numpy array of shape [n_samples, n_features]
+        Inputs of patters for which to predict output values.</p>
+
+<p>significance : float or None
+        Significance level (maximum allowed error rate) of predictions.
+        Should be a float between 0 and 1. If <code>None</code>, then the p-values
+        are output rather than the predictions.</p>
+
+<h2 id="returns">Returns</h2>
+
+<p>p : numpy array of shape [n_samples, n_classes]
+        If significance is <code>None</code>, then p contains the p-values for each
+        sample-class pair; if significance is a float between 0 and 1, then
+        p is a boolean array denoting which labels are included in the
+        prediction sets.</p>
+</div>
+
+
+                                </div>
+                        
+                </section>
+                <section id="TcpClassifier">
+                            <input id="TcpClassifier-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">TcpClassifier</span><wbr>(<span class="base">sklearn.base.BaseEstimator</span>, <span class="base">nnetsauce.nonconformist.base.ClassifierMixin</span>):
+
+                <label class="view-source-button" for="TcpClassifier-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#TcpClassifier"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TcpClassifier-10"><a href="#TcpClassifier-10"><span class="linenos"> 10</span></a><span class="k">class</span> <span class="nc">TcpClassifier</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+</span><span id="TcpClassifier-11"><a href="#TcpClassifier-11"><span class="linenos"> 11</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Transductive conformal classifier.</span>
+</span><span id="TcpClassifier-12"><a href="#TcpClassifier-12"><span class="linenos"> 12</span></a>
+</span><span id="TcpClassifier-13"><a href="#TcpClassifier-13"><span class="linenos"> 13</span></a><span class="sd">    Parameters</span>
+</span><span id="TcpClassifier-14"><a href="#TcpClassifier-14"><span class="linenos"> 14</span></a><span class="sd">    ----------</span>
+</span><span id="TcpClassifier-15"><a href="#TcpClassifier-15"><span class="linenos"> 15</span></a><span class="sd">    nc_function : BaseScorer</span>
+</span><span id="TcpClassifier-16"><a href="#TcpClassifier-16"><span class="linenos"> 16</span></a><span class="sd">            Nonconformity scorer object used to calculate nonconformity of</span>
+</span><span id="TcpClassifier-17"><a href="#TcpClassifier-17"><span class="linenos"> 17</span></a><span class="sd">            calibration examples and test patterns. Should implement ``fit(x, y)``</span>
+</span><span id="TcpClassifier-18"><a href="#TcpClassifier-18"><span class="linenos"> 18</span></a><span class="sd">            and ``calc_nc(x, y)``.</span>
+</span><span id="TcpClassifier-19"><a href="#TcpClassifier-19"><span class="linenos"> 19</span></a>
+</span><span id="TcpClassifier-20"><a href="#TcpClassifier-20"><span class="linenos"> 20</span></a><span class="sd">    smoothing : boolean</span>
+</span><span id="TcpClassifier-21"><a href="#TcpClassifier-21"><span class="linenos"> 21</span></a><span class="sd">            Decides whether to use stochastic smoothing of p-values.</span>
+</span><span id="TcpClassifier-22"><a href="#TcpClassifier-22"><span class="linenos"> 22</span></a>
+</span><span id="TcpClassifier-23"><a href="#TcpClassifier-23"><span class="linenos"> 23</span></a><span class="sd">    Attributes</span>
+</span><span id="TcpClassifier-24"><a href="#TcpClassifier-24"><span class="linenos"> 24</span></a><span class="sd">    ----------</span>
+</span><span id="TcpClassifier-25"><a href="#TcpClassifier-25"><span class="linenos"> 25</span></a><span class="sd">    train_x : numpy array of shape [n_cal_examples, n_features]</span>
+</span><span id="TcpClassifier-26"><a href="#TcpClassifier-26"><span class="linenos"> 26</span></a><span class="sd">            Inputs of training set.</span>
+</span><span id="TcpClassifier-27"><a href="#TcpClassifier-27"><span class="linenos"> 27</span></a>
+</span><span id="TcpClassifier-28"><a href="#TcpClassifier-28"><span class="linenos"> 28</span></a><span class="sd">    train_y : numpy array of shape [n_cal_examples]</span>
+</span><span id="TcpClassifier-29"><a href="#TcpClassifier-29"><span class="linenos"> 29</span></a><span class="sd">            Outputs of calibration set.</span>
+</span><span id="TcpClassifier-30"><a href="#TcpClassifier-30"><span class="linenos"> 30</span></a>
+</span><span id="TcpClassifier-31"><a href="#TcpClassifier-31"><span class="linenos"> 31</span></a><span class="sd">    nc_function : BaseScorer</span>
+</span><span id="TcpClassifier-32"><a href="#TcpClassifier-32"><span class="linenos"> 32</span></a><span class="sd">            Nonconformity scorer object used to calculate nonconformity scores.</span>
+</span><span id="TcpClassifier-33"><a href="#TcpClassifier-33"><span class="linenos"> 33</span></a>
+</span><span id="TcpClassifier-34"><a href="#TcpClassifier-34"><span class="linenos"> 34</span></a><span class="sd">    classes : numpy array of shape [n_classes]</span>
+</span><span id="TcpClassifier-35"><a href="#TcpClassifier-35"><span class="linenos"> 35</span></a><span class="sd">            List of class labels, with indices corresponding to output columns</span>
+</span><span id="TcpClassifier-36"><a href="#TcpClassifier-36"><span class="linenos"> 36</span></a><span class="sd">             of TcpClassifier.predict()</span>
+</span><span id="TcpClassifier-37"><a href="#TcpClassifier-37"><span class="linenos"> 37</span></a>
+</span><span id="TcpClassifier-38"><a href="#TcpClassifier-38"><span class="linenos"> 38</span></a><span class="sd">    See also</span>
+</span><span id="TcpClassifier-39"><a href="#TcpClassifier-39"><span class="linenos"> 39</span></a><span class="sd">    --------</span>
+</span><span id="TcpClassifier-40"><a href="#TcpClassifier-40"><span class="linenos"> 40</span></a><span class="sd">    IcpClassifier</span>
+</span><span id="TcpClassifier-41"><a href="#TcpClassifier-41"><span class="linenos"> 41</span></a>
+</span><span id="TcpClassifier-42"><a href="#TcpClassifier-42"><span class="linenos"> 42</span></a><span class="sd">    References</span>
+</span><span id="TcpClassifier-43"><a href="#TcpClassifier-43"><span class="linenos"> 43</span></a><span class="sd">    ----------</span>
+</span><span id="TcpClassifier-44"><a href="#TcpClassifier-44"><span class="linenos"> 44</span></a><span class="sd">    .. [1] Vovk, V., Gammerman, A., &amp; Shafer, G. (2005). Algorithmic learning</span>
+</span><span id="TcpClassifier-45"><a href="#TcpClassifier-45"><span class="linenos"> 45</span></a><span class="sd">    in a random world. Springer Science &amp; Business Media.</span>
+</span><span id="TcpClassifier-46"><a href="#TcpClassifier-46"><span class="linenos"> 46</span></a>
+</span><span id="TcpClassifier-47"><a href="#TcpClassifier-47"><span class="linenos"> 47</span></a><span class="sd">    Examples</span>
+</span><span id="TcpClassifier-48"><a href="#TcpClassifier-48"><span class="linenos"> 48</span></a><span class="sd">    --------</span>
+</span><span id="TcpClassifier-49"><a href="#TcpClassifier-49"><span class="linenos"> 49</span></a><span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+</span><span id="TcpClassifier-50"><a href="#TcpClassifier-50"><span class="linenos"> 50</span></a><span class="sd">    &gt;&gt;&gt; from sklearn.datasets import load_iris</span>
+</span><span id="TcpClassifier-51"><a href="#TcpClassifier-51"><span class="linenos"> 51</span></a><span class="sd">    &gt;&gt;&gt; from sklearn.svm import SVC</span>
+</span><span id="TcpClassifier-52"><a href="#TcpClassifier-52"><span class="linenos"> 52</span></a><span class="sd">    &gt;&gt;&gt; from nonconformist.base import ClassifierAdapter</span>
+</span><span id="TcpClassifier-53"><a href="#TcpClassifier-53"><span class="linenos"> 53</span></a><span class="sd">    &gt;&gt;&gt; from nonconformist.cp import TcpClassifier</span>
+</span><span id="TcpClassifier-54"><a href="#TcpClassifier-54"><span class="linenos"> 54</span></a><span class="sd">    &gt;&gt;&gt; from nonconformist.nc import ClassifierNc, MarginErrFunc</span>
+</span><span id="TcpClassifier-55"><a href="#TcpClassifier-55"><span class="linenos"> 55</span></a><span class="sd">    &gt;&gt;&gt; iris = load_iris()</span>
+</span><span id="TcpClassifier-56"><a href="#TcpClassifier-56"><span class="linenos"> 56</span></a><span class="sd">    &gt;&gt;&gt; idx = np.random.permutation(iris.target.size)</span>
+</span><span id="TcpClassifier-57"><a href="#TcpClassifier-57"><span class="linenos"> 57</span></a><span class="sd">    &gt;&gt;&gt; train = idx[:int(idx.size / 2)]</span>
+</span><span id="TcpClassifier-58"><a href="#TcpClassifier-58"><span class="linenos"> 58</span></a><span class="sd">    &gt;&gt;&gt; test = idx[int(idx.size / 2):]</span>
+</span><span id="TcpClassifier-59"><a href="#TcpClassifier-59"><span class="linenos"> 59</span></a><span class="sd">    &gt;&gt;&gt; model = ClassifierAdapter(SVC(probability=True))</span>
+</span><span id="TcpClassifier-60"><a href="#TcpClassifier-60"><span class="linenos"> 60</span></a><span class="sd">    &gt;&gt;&gt; nc = ClassifierNc(model, MarginErrFunc())</span>
+</span><span id="TcpClassifier-61"><a href="#TcpClassifier-61"><span class="linenos"> 61</span></a><span class="sd">    &gt;&gt;&gt; tcp = TcpClassifier(nc)</span>
+</span><span id="TcpClassifier-62"><a href="#TcpClassifier-62"><span class="linenos"> 62</span></a><span class="sd">    &gt;&gt;&gt; tcp.fit(iris.data[train, :], iris.target[train])</span>
+</span><span id="TcpClassifier-63"><a href="#TcpClassifier-63"><span class="linenos"> 63</span></a><span class="sd">    &gt;&gt;&gt; tcp.predict(iris.data[test, :], significance=0.10)</span>
+</span><span id="TcpClassifier-64"><a href="#TcpClassifier-64"><span class="linenos"> 64</span></a><span class="sd">    ...             # doctest: +SKIP</span>
+</span><span id="TcpClassifier-65"><a href="#TcpClassifier-65"><span class="linenos"> 65</span></a><span class="sd">    array([[ True, False, False],</span>
+</span><span id="TcpClassifier-66"><a href="#TcpClassifier-66"><span class="linenos"> 66</span></a><span class="sd">            [False,  True, False],</span>
+</span><span id="TcpClassifier-67"><a href="#TcpClassifier-67"><span class="linenos"> 67</span></a><span class="sd">            ...,</span>
+</span><span id="TcpClassifier-68"><a href="#TcpClassifier-68"><span class="linenos"> 68</span></a><span class="sd">            [False,  True, False],</span>
+</span><span id="TcpClassifier-69"><a href="#TcpClassifier-69"><span class="linenos"> 69</span></a><span class="sd">            [False,  True, False]], dtype=bool)</span>
+</span><span id="TcpClassifier-70"><a href="#TcpClassifier-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier-71"><a href="#TcpClassifier-71"><span class="linenos"> 71</span></a>
+</span><span id="TcpClassifier-72"><a href="#TcpClassifier-72"><span class="linenos"> 72</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span><span id="TcpClassifier-73"><a href="#TcpClassifier-73"><span class="linenos"> 73</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_y</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+</span><span id="TcpClassifier-74"><a href="#TcpClassifier-74"><span class="linenos"> 74</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">nc_function</span> <span class="o">=</span> <span class="n">nc_function</span>
+</span><span id="TcpClassifier-75"><a href="#TcpClassifier-75"><span class="linenos"> 75</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">TcpClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="TcpClassifier-76"><a href="#TcpClassifier-76"><span class="linenos"> 76</span></a>
+</span><span id="TcpClassifier-77"><a href="#TcpClassifier-77"><span class="linenos"> 77</span></a>        <span class="c1"># Check if condition-parameter is the default function (i.e.,</span>
+</span><span id="TcpClassifier-78"><a href="#TcpClassifier-78"><span class="linenos"> 78</span></a>        <span class="c1"># lambda x: 0). This is so we can safely clone the object without</span>
+</span><span id="TcpClassifier-79"><a href="#TcpClassifier-79"><span class="linenos"> 79</span></a>        <span class="c1"># the clone accidentally having self.conditional = True.</span>
+</span><span id="TcpClassifier-80"><a href="#TcpClassifier-80"><span class="linenos"> 80</span></a>        <span class="k">def</span> <span class="nf">default_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="TcpClassifier-81"><a href="#TcpClassifier-81"><span class="linenos"> 81</span></a>            <span class="k">return</span> <span class="mi">0</span>
+</span><span id="TcpClassifier-82"><a href="#TcpClassifier-82"><span class="linenos"> 82</span></a>
+</span><span id="TcpClassifier-83"><a href="#TcpClassifier-83"><span class="linenos"> 83</span></a>        <span class="n">is_default</span> <span class="o">=</span> <span class="nb">callable</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+</span><span id="TcpClassifier-84"><a href="#TcpClassifier-84"><span class="linenos"> 84</span></a>            <span class="n">condition</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_code</span> <span class="o">==</span> <span class="n">default_condition</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_code</span>
+</span><span id="TcpClassifier-85"><a href="#TcpClassifier-85"><span class="linenos"> 85</span></a>        <span class="p">)</span>
+</span><span id="TcpClassifier-86"><a href="#TcpClassifier-86"><span class="linenos"> 86</span></a>
+</span><span id="TcpClassifier-87"><a href="#TcpClassifier-87"><span class="linenos"> 87</span></a>        <span class="k">if</span> <span class="n">is_default</span><span class="p">:</span>
+</span><span id="TcpClassifier-88"><a href="#TcpClassifier-88"><span class="linenos"> 88</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
+</span><span id="TcpClassifier-89"><a href="#TcpClassifier-89"><span class="linenos"> 89</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">conditional</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="TcpClassifier-90"><a href="#TcpClassifier-90"><span class="linenos"> 90</span></a>        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">condition</span><span class="p">):</span>
+</span><span id="TcpClassifier-91"><a href="#TcpClassifier-91"><span class="linenos"> 91</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span>
+</span><span id="TcpClassifier-92"><a href="#TcpClassifier-92"><span class="linenos"> 92</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">conditional</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="TcpClassifier-93"><a href="#TcpClassifier-93"><span class="linenos"> 93</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="TcpClassifier-94"><a href="#TcpClassifier-94"><span class="linenos"> 94</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span>
+</span><span id="TcpClassifier-95"><a href="#TcpClassifier-95"><span class="linenos"> 95</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">conditional</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="TcpClassifier-96"><a href="#TcpClassifier-96"><span class="linenos"> 96</span></a>
+</span><span id="TcpClassifier-97"><a href="#TcpClassifier-97"><span class="linenos"> 97</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span> <span class="o">=</span> <span class="n">smoothing</span>
+</span><span id="TcpClassifier-98"><a href="#TcpClassifier-98"><span class="linenos"> 98</span></a>
+</span><span id="TcpClassifier-99"><a href="#TcpClassifier-99"><span class="linenos"> 99</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">base_icp</span> <span class="o">=</span> <span class="n">IcpClassifier</span><span class="p">(</span>
+</span><span id="TcpClassifier-100"><a href="#TcpClassifier-100"><span class="linenos">100</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">nc_function</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span>
+</span><span id="TcpClassifier-101"><a href="#TcpClassifier-101"><span class="linenos">101</span></a>        <span class="p">)</span>
+</span><span id="TcpClassifier-102"><a href="#TcpClassifier-102"><span class="linenos">102</span></a>
+</span><span id="TcpClassifier-103"><a href="#TcpClassifier-103"><span class="linenos">103</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="TcpClassifier-104"><a href="#TcpClassifier-104"><span class="linenos">104</span></a>
+</span><span id="TcpClassifier-105"><a href="#TcpClassifier-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span id="TcpClassifier-106"><a href="#TcpClassifier-106"><span class="linenos">106</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_y</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</span><span id="TcpClassifier-107"><a href="#TcpClassifier-107"><span class="linenos">107</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span><span id="TcpClassifier-108"><a href="#TcpClassifier-108"><span class="linenos">108</span></a>
+</span><span id="TcpClassifier-109"><a href="#TcpClassifier-109"><span class="linenos">109</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="TcpClassifier-110"><a href="#TcpClassifier-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="TcpClassifier-111"><a href="#TcpClassifier-111"><span class="linenos">111</span></a>
+</span><span id="TcpClassifier-112"><a href="#TcpClassifier-112"><span class="linenos">112</span></a><span class="sd">        Parameters</span>
+</span><span id="TcpClassifier-113"><a href="#TcpClassifier-113"><span class="linenos">113</span></a><span class="sd">        ----------</span>
+</span><span id="TcpClassifier-114"><a href="#TcpClassifier-114"><span class="linenos">114</span></a><span class="sd">        x : numpy array of shape [n_samples, n_features]</span>
+</span><span id="TcpClassifier-115"><a href="#TcpClassifier-115"><span class="linenos">115</span></a><span class="sd">                Inputs of patters for which to predict output values.</span>
+</span><span id="TcpClassifier-116"><a href="#TcpClassifier-116"><span class="linenos">116</span></a>
+</span><span id="TcpClassifier-117"><a href="#TcpClassifier-117"><span class="linenos">117</span></a><span class="sd">        significance : float or None</span>
+</span><span id="TcpClassifier-118"><a href="#TcpClassifier-118"><span class="linenos">118</span></a><span class="sd">                Significance level (maximum allowed error rate) of predictions.</span>
+</span><span id="TcpClassifier-119"><a href="#TcpClassifier-119"><span class="linenos">119</span></a><span class="sd">                Should be a float between 0 and 1. If ``None``, then the p-values</span>
+</span><span id="TcpClassifier-120"><a href="#TcpClassifier-120"><span class="linenos">120</span></a><span class="sd">                are output rather than the predictions.</span>
+</span><span id="TcpClassifier-121"><a href="#TcpClassifier-121"><span class="linenos">121</span></a>
+</span><span id="TcpClassifier-122"><a href="#TcpClassifier-122"><span class="linenos">122</span></a><span class="sd">        Returns</span>
+</span><span id="TcpClassifier-123"><a href="#TcpClassifier-123"><span class="linenos">123</span></a><span class="sd">        -------</span>
+</span><span id="TcpClassifier-124"><a href="#TcpClassifier-124"><span class="linenos">124</span></a><span class="sd">        p : numpy array of shape [n_samples, n_classes]</span>
+</span><span id="TcpClassifier-125"><a href="#TcpClassifier-125"><span class="linenos">125</span></a><span class="sd">                If significance is ``None``, then p contains the p-values for each</span>
+</span><span id="TcpClassifier-126"><a href="#TcpClassifier-126"><span class="linenos">126</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
+</span><span id="TcpClassifier-127"><a href="#TcpClassifier-127"><span class="linenos">127</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
+</span><span id="TcpClassifier-128"><a href="#TcpClassifier-128"><span class="linenos">128</span></a><span class="sd">                prediction sets.</span>
+</span><span id="TcpClassifier-129"><a href="#TcpClassifier-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier-130"><a href="#TcpClassifier-130"><span class="linenos">130</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="TcpClassifier-131"><a href="#TcpClassifier-131"><span class="linenos">131</span></a>        <span class="n">n_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="TcpClassifier-132"><a href="#TcpClassifier-132"><span class="linenos">132</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+</span><span id="TcpClassifier-133"><a href="#TcpClassifier-133"><span class="linenos">133</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test</span><span class="p">):</span>
+</span><span id="TcpClassifier-134"><a href="#TcpClassifier-134"><span class="linenos">134</span></a>            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">):</span>
+</span><span id="TcpClassifier-135"><a href="#TcpClassifier-135"><span class="linenos">135</span></a>                <span class="n">train_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]])</span>
+</span><span id="TcpClassifier-136"><a href="#TcpClassifier-136"><span class="linenos">136</span></a>                <span class="n">train_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">train_y</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+</span><span id="TcpClassifier-137"><a href="#TcpClassifier-137"><span class="linenos">137</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">base_icp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+</span><span id="TcpClassifier-138"><a href="#TcpClassifier-138"><span class="linenos">138</span></a>                <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_icp</span><span class="o">.</span><span class="n">nc_function</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+</span><span id="TcpClassifier-139"><a href="#TcpClassifier-139"><span class="linenos">139</span></a>                <span class="n">ngt</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span><span id="TcpClassifier-140"><a href="#TcpClassifier-140"><span class="linenos">140</span></a>                <span class="n">neq</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">scores</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span><span id="TcpClassifier-141"><a href="#TcpClassifier-141"><span class="linenos">141</span></a>
+</span><span id="TcpClassifier-142"><a href="#TcpClassifier-142"><span class="linenos">142</span></a>                <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc_p</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="n">ngt</span><span class="p">,</span> <span class="n">neq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span><span class="p">)</span>
+</span><span id="TcpClassifier-143"><a href="#TcpClassifier-143"><span class="linenos">143</span></a>
+</span><span id="TcpClassifier-144"><a href="#TcpClassifier-144"><span class="linenos">144</span></a>        <span class="k">if</span> <span class="n">significance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="TcpClassifier-145"><a href="#TcpClassifier-145"><span class="linenos">145</span></a>            <span class="k">return</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="n">significance</span>
+</span><span id="TcpClassifier-146"><a href="#TcpClassifier-146"><span class="linenos">146</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="TcpClassifier-147"><a href="#TcpClassifier-147"><span class="linenos">147</span></a>            <span class="k">return</span> <span class="n">p</span>
+</span><span id="TcpClassifier-148"><a href="#TcpClassifier-148"><span class="linenos">148</span></a>
+</span><span id="TcpClassifier-149"><a href="#TcpClassifier-149"><span class="linenos">149</span></a>    <span class="k">def</span> <span class="nf">predict_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span><span id="TcpClassifier-150"><a href="#TcpClassifier-150"><span class="linenos">150</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns, using</span>
+</span><span id="TcpClassifier-151"><a href="#TcpClassifier-151"><span class="linenos">151</span></a><span class="sd">        the confidence-and-credibility output scheme.</span>
+</span><span id="TcpClassifier-152"><a href="#TcpClassifier-152"><span class="linenos">152</span></a>
+</span><span id="TcpClassifier-153"><a href="#TcpClassifier-153"><span class="linenos">153</span></a><span class="sd">        Parameters</span>
+</span><span id="TcpClassifier-154"><a href="#TcpClassifier-154"><span class="linenos">154</span></a><span class="sd">        ----------</span>
+</span><span id="TcpClassifier-155"><a href="#TcpClassifier-155"><span class="linenos">155</span></a><span class="sd">        x : numpy array of shape [n_samples, n_features]</span>
+</span><span id="TcpClassifier-156"><a href="#TcpClassifier-156"><span class="linenos">156</span></a><span class="sd">                Inputs of patters for which to predict output values.</span>
+</span><span id="TcpClassifier-157"><a href="#TcpClassifier-157"><span class="linenos">157</span></a>
+</span><span id="TcpClassifier-158"><a href="#TcpClassifier-158"><span class="linenos">158</span></a><span class="sd">        Returns</span>
+</span><span id="TcpClassifier-159"><a href="#TcpClassifier-159"><span class="linenos">159</span></a><span class="sd">        -------</span>
+</span><span id="TcpClassifier-160"><a href="#TcpClassifier-160"><span class="linenos">160</span></a><span class="sd">        p : numpy array of shape [n_samples, 3]</span>
+</span><span id="TcpClassifier-161"><a href="#TcpClassifier-161"><span class="linenos">161</span></a><span class="sd">                p contains three columns: the first column contains the most</span>
+</span><span id="TcpClassifier-162"><a href="#TcpClassifier-162"><span class="linenos">162</span></a><span class="sd">                likely class for each test pattern; the second column contains</span>
+</span><span id="TcpClassifier-163"><a href="#TcpClassifier-163"><span class="linenos">163</span></a><span class="sd">                the confidence in the predicted class label, and the third column</span>
+</span><span id="TcpClassifier-164"><a href="#TcpClassifier-164"><span class="linenos">164</span></a><span class="sd">                contains the credibility of the prediction.</span>
+</span><span id="TcpClassifier-165"><a href="#TcpClassifier-165"><span class="linenos">165</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier-166"><a href="#TcpClassifier-166"><span class="linenos">166</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span><span id="TcpClassifier-167"><a href="#TcpClassifier-167"><span class="linenos">167</span></a>        <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="TcpClassifier-168"><a href="#TcpClassifier-168"><span class="linenos">168</span></a>        <span class="n">credibility</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="TcpClassifier-169"><a href="#TcpClassifier-169"><span class="linenos">169</span></a>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+</span><span id="TcpClassifier-170"><a href="#TcpClassifier-170"><span class="linenos">170</span></a>            <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</span><span id="TcpClassifier-171"><a href="#TcpClassifier-171"><span class="linenos">171</span></a>        <span class="n">confidence</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="TcpClassifier-172"><a href="#TcpClassifier-172"><span class="linenos">172</span></a>
+</span><span id="TcpClassifier-173"><a href="#TcpClassifier-173"><span class="linenos">173</span></a>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">credibility</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Transductive conformal classifier.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>nc_function : BaseScorer
+        Nonconformity scorer object used to calculate nonconformity of
+        calibration examples and test patterns. Should implement <code>fit(x, y)</code>
+        and <code>calc_nc(x, y)</code>.</p>
+
+<p>smoothing : boolean
+        Decides whether to use stochastic smoothing of p-values.</p>
+
+<h2 id="attributes">Attributes</h2>
+
+<p>train_x : numpy array of shape [n_cal_examples, n_features]
+        Inputs of training set.</p>
+
+<p>train_y : numpy array of shape [n_cal_examples]
+        Outputs of calibration set.</p>
+
+<p>nc_function : BaseScorer
+        Nonconformity scorer object used to calculate nonconformity scores.</p>
+
+<p>classes : numpy array of shape [n_classes]
+        List of class labels, with indices corresponding to output columns
+         of <a href="#TcpClassifier.predict">TcpClassifier.predict()</a></p>
+
+<h2 id="see-also">See also</h2>
+
+<p>IcpClassifier</p>
+
+<h2 id="references">References</h2>
+
+<p>in a random world. Springer Science &amp; Business Media.</p>
+
+<h2 id="examples">Examples</h2>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nonconformist.base</span> <span class="kn">import</span> <span class="n">ClassifierAdapter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nonconformist.cp</span> <span class="kn">import</span> <span class="n">TcpClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nonconformist.nc</span> <span class="kn">import</span> <span class="n">ClassifierNc</span><span class="p">,</span> <span class="n">MarginErrFunc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">train</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">):]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ClassifierAdapter</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nc</span> <span class="o">=</span> <span class="n">ClassifierNc</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">MarginErrFunc</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tcp</span> <span class="o">=</span> <span class="n">TcpClassifier</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tcp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">train</span><span class="p">,</span> <span class="p">:],</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">train</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tcp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">test</span><span class="p">,</span> <span class="p">:],</span> <span class="n">significance</span><span class="o">=</span><span class="mf">0.10</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="c1"># doctest: +SKIP</span>
+<span class="go">array([[ True, False, False],</span>
+<span class="go">        [False,  True, False],</span>
+<span class="go">        ...,</span>
+<span class="go">        [False,  True, False],</span>
+<span class="go">        [False,  True, False]], dtype=bool)</span>
+</code></pre>
+</div>
+
+<div class="footnotes">
+<hr />
+<ol>
+</ol>
+</div>
+</div>
+
+
+                                <div id="TcpClassifier.fit" class="classattr">
+                                            <input id="TcpClassifier.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">fit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">x</span>, </span><span class="param"><span class="n">y</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="TcpClassifier.fit-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#TcpClassifier.fit"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TcpClassifier.fit-105"><a href="#TcpClassifier.fit-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span><span id="TcpClassifier.fit-106"><a href="#TcpClassifier.fit-106"><span class="linenos">106</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_y</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</span><span id="TcpClassifier.fit-107"><a href="#TcpClassifier.fit-107"><span class="linenos">107</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span></pre></div>
+
+
+    
+
+                                </div>
+                                <div id="TcpClassifier.predict" class="classattr">
+                                            <input id="TcpClassifier.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">predict</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">x</span>, </span><span class="param"><span class="n">significance</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="TcpClassifier.predict-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#TcpClassifier.predict"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="TcpClassifier.predict-109"><a href="#TcpClassifier.predict-109"><span class="linenos">109</span></a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="TcpClassifier.predict-110"><a href="#TcpClassifier.predict-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="TcpClassifier.predict-111"><a href="#TcpClassifier.predict-111"><span class="linenos">111</span></a>
+</span><span id="TcpClassifier.predict-112"><a href="#TcpClassifier.predict-112"><span class="linenos">112</span></a><span class="sd">        Parameters</span>
+</span><span id="TcpClassifier.predict-113"><a href="#TcpClassifier.predict-113"><span class="linenos">113</span></a><span class="sd">        ----------</span>
+</span><span id="TcpClassifier.predict-114"><a href="#TcpClassifier.predict-114"><span class="linenos">114</span></a><span class="sd">        x : numpy array of shape [n_samples, n_features]</span>
+</span><span id="TcpClassifier.predict-115"><a href="#TcpClassifier.predict-115"><span class="linenos">115</span></a><span class="sd">                Inputs of patters for which to predict output values.</span>
+</span><span id="TcpClassifier.predict-116"><a href="#TcpClassifier.predict-116"><span class="linenos">116</span></a>
+</span><span id="TcpClassifier.predict-117"><a href="#TcpClassifier.predict-117"><span class="linenos">117</span></a><span class="sd">        significance : float or None</span>
+</span><span id="TcpClassifier.predict-118"><a href="#TcpClassifier.predict-118"><span class="linenos">118</span></a><span class="sd">                Significance level (maximum allowed error rate) of predictions.</span>
+</span><span id="TcpClassifier.predict-119"><a href="#TcpClassifier.predict-119"><span class="linenos">119</span></a><span class="sd">                Should be a float between 0 and 1. If ``None``, then the p-values</span>
+</span><span id="TcpClassifier.predict-120"><a href="#TcpClassifier.predict-120"><span class="linenos">120</span></a><span class="sd">                are output rather than the predictions.</span>
+</span><span id="TcpClassifier.predict-121"><a href="#TcpClassifier.predict-121"><span class="linenos">121</span></a>
+</span><span id="TcpClassifier.predict-122"><a href="#TcpClassifier.predict-122"><span class="linenos">122</span></a><span class="sd">        Returns</span>
+</span><span id="TcpClassifier.predict-123"><a href="#TcpClassifier.predict-123"><span class="linenos">123</span></a><span class="sd">        -------</span>
+</span><span id="TcpClassifier.predict-124"><a href="#TcpClassifier.predict-124"><span class="linenos">124</span></a><span class="sd">        p : numpy array of shape [n_samples, n_classes]</span>
+</span><span id="TcpClassifier.predict-125"><a href="#TcpClassifier.predict-125"><span class="linenos">125</span></a><span class="sd">                If significance is ``None``, then p contains the p-values for each</span>
+</span><span id="TcpClassifier.predict-126"><a href="#TcpClassifier.predict-126"><span class="linenos">126</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
+</span><span id="TcpClassifier.predict-127"><a href="#TcpClassifier.predict-127"><span class="linenos">127</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
+</span><span id="TcpClassifier.predict-128"><a href="#TcpClassifier.predict-128"><span class="linenos">128</span></a><span class="sd">                prediction sets.</span>
+</span><span id="TcpClassifier.predict-129"><a href="#TcpClassifier.predict-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier.predict-130"><a href="#TcpClassifier.predict-130"><span class="linenos">130</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="TcpClassifier.predict-131"><a href="#TcpClassifier.predict-131"><span class="linenos">131</span></a>        <span class="n">n_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="TcpClassifier.predict-132"><a href="#TcpClassifier.predict-132"><span class="linenos">132</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+</span><span id="TcpClassifier.predict-133"><a href="#TcpClassifier.predict-133"><span class="linenos">133</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test</span><span class="p">):</span>
+</span><span id="TcpClassifier.predict-134"><a href="#TcpClassifier.predict-134"><span class="linenos">134</span></a>            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">):</span>
+</span><span id="TcpClassifier.predict-135"><a href="#TcpClassifier.predict-135"><span class="linenos">135</span></a>                <span class="n">train_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]])</span>
+</span><span id="TcpClassifier.predict-136"><a href="#TcpClassifier.predict-136"><span class="linenos">136</span></a>                <span class="n">train_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">train_y</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+</span><span id="TcpClassifier.predict-137"><a href="#TcpClassifier.predict-137"><span class="linenos">137</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">base_icp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+</span><span id="TcpClassifier.predict-138"><a href="#TcpClassifier.predict-138"><span class="linenos">138</span></a>                <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_icp</span><span class="o">.</span><span class="n">nc_function</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+</span><span id="TcpClassifier.predict-139"><a href="#TcpClassifier.predict-139"><span class="linenos">139</span></a>                <span class="n">ngt</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">scores</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span><span id="TcpClassifier.predict-140"><a href="#TcpClassifier.predict-140"><span class="linenos">140</span></a>                <span class="n">neq</span> <span class="o">=</span> <span class="p">(</span><span class="n">scores</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">scores</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</span><span id="TcpClassifier.predict-141"><a href="#TcpClassifier.predict-141"><span class="linenos">141</span></a>
+</span><span id="TcpClassifier.predict-142"><a href="#TcpClassifier.predict-142"><span class="linenos">142</span></a>                <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc_p</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="n">ngt</span><span class="p">,</span> <span class="n">neq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">smoothing</span><span class="p">)</span>
+</span><span id="TcpClassifier.predict-143"><a href="#TcpClassifier.predict-143"><span class="linenos">143</span></a>
+</span><span id="TcpClassifier.predict-144"><a href="#TcpClassifier.predict-144"><span class="linenos">144</span></a>        <span class="k">if</span> <span class="n">significance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="TcpClassifier.predict-145"><a href="#TcpClassifier.predict-145"><span class="linenos">145</span></a>            <span class="k">return</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="n">significance</span>
+</span><span id="TcpClassifier.predict-146"><a href="#TcpClassifier.predict-146"><span class="linenos">146</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="TcpClassifier.predict-147"><a href="#TcpClassifier.predict-147"><span class="linenos">147</span></a>            <span class="k">return</span> <span class="n">p</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Predict the output values for a set of input patterns.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>x : numpy array of shape [n_samples, n_features]
+        Inputs of patters for which to predict output values.</p>
+
+<p>significance : float or None
+        Significance level (maximum allowed error rate) of predictions.
+        Should be a float between 0 and 1. If <code>None</code>, then the p-values
+        are output rather than the predictions.</p>
+
+<h2 id="returns">Returns</h2>
+
+<p>p : numpy array of shape [n_samples, n_classes]
+        If significance is <code>None</code>, then p contains the p-values for each
+        sample-class pair; if significance is a float between 0 and 1, then
+        p is a boolean array denoting which labels are included in the
+        prediction sets.</p>
 </div>
 
 

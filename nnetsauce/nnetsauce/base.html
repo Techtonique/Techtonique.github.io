@@ -213,7 +213,7 @@
 </span><span id="Base-76"><a href="#Base-76"><span class="linenos"> 76</span></a><span class="sd">        type_scaling: a tuple of 3 strings</span>
 </span><span id="Base-77"><a href="#Base-77"><span class="linenos"> 77</span></a><span class="sd">            scaling methods for inputs, hidden layer, and clustering respectively</span>
 </span><span id="Base-78"><a href="#Base-78"><span class="linenos"> 78</span></a><span class="sd">            (and when relevant).</span>
-</span><span id="Base-79"><a href="#Base-79"><span class="linenos"> 79</span></a><span class="sd">            Currently available: standardization (&#39;std&#39;) or MinMax scaling (&#39;minmax&#39;) or robust scaling (&#39;robust&#39;)</span>
+</span><span id="Base-79"><a href="#Base-79"><span class="linenos"> 79</span></a><span class="sd">            Currently available: standardization (&#39;std&#39;) or MinMax scaling (&#39;minmax&#39;) or robust scaling (&#39;robust&#39;) or  max absolute scaling (&#39;maxabs&#39;)</span>
 </span><span id="Base-80"><a href="#Base-80"><span class="linenos"> 80</span></a>
 </span><span id="Base-81"><a href="#Base-81"><span class="linenos"> 81</span></a><span class="sd">        col_sample: float</span>
 </span><span id="Base-82"><a href="#Base-82"><span class="linenos"> 82</span></a><span class="sd">            percentage of features randomly chosen for training</span>
@@ -280,9 +280,9 @@
 </span><span id="Base-143"><a href="#Base-143"><span class="linenos">143</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;type_clust&#39; must be in (&#39;kmeans&#39;, &#39;gmm&#39;)&quot;</span>
 </span><span id="Base-144"><a href="#Base-144"><span class="linenos">144</span></a>
 </span><span id="Base-145"><a href="#Base-145"><span class="linenos">145</span></a>        <span class="k">assert</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">type_scaling</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">all</span><span class="p">(</span>
-</span><span id="Base-146"><a href="#Base-146"><span class="linenos">146</span></a>            <span class="n">type_scaling</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;robust&quot;</span><span class="p">)</span>
+</span><span id="Base-146"><a href="#Base-146"><span class="linenos">146</span></a>            <span class="n">type_scaling</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;minmax&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;robust&quot;</span><span class="p">,</span> <span class="s2">&quot;maxabs&quot;</span><span class="p">)</span>
 </span><span id="Base-147"><a href="#Base-147"><span class="linenos">147</span></a>            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">type_scaling</span><span class="p">))</span>
-</span><span id="Base-148"><a href="#Base-148"><span class="linenos">148</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;type_scaling&#39; must have length 3, and available scaling methods are &#39;minmax&#39; scaling, standardization (&#39;std&#39;) and robust scaling (&#39;robust&#39;)&quot;</span>
+</span><span id="Base-148"><a href="#Base-148"><span class="linenos">148</span></a>        <span class="p">),</span> <span class="s2">&quot;&#39;type_scaling&#39; must have length 3, and available scaling methods are &#39;minmax&#39; scaling, standardization (&#39;std&#39;), robust scaling (&#39;robust&#39;) and max absolute (&#39;maxabs&#39;)&quot;</span>
 </span><span id="Base-149"><a href="#Base-149"><span class="linenos">149</span></a>
 </span><span id="Base-150"><a href="#Base-150"><span class="linenos">150</span></a>        <span class="k">assert</span> <span class="p">(</span><span class="n">col_sample</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
 </span><span id="Base-151"><a href="#Base-151"><span class="linenos">151</span></a>            <span class="n">col_sample</span> <span class="o">&lt;=</span> <span class="mi">1</span>
@@ -984,7 +984,7 @@ type_clust: str
 type_scaling: a tuple of 3 strings
     scaling methods for inputs, hidden layer, and clustering respectively
     (and when relevant).
-    Currently available: standardization ('std') or MinMax scaling ('minmax') or robust scaling ('robust')
+    Currently available: standardization ('std') or MinMax scaling ('minmax') or robust scaling ('robust') or  max absolute scaling ('maxabs')
 
 col_sample: float
     percentage of features randomly chosen for training
