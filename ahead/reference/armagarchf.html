@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.13.0</span>
       </span>
     </div>
 
@@ -44,7 +44,13 @@
       <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
     </li>
     <li>
+      <a href="../articles/ahead-univariate-season.html">Univariate forecasting with `ridge2f` in `ahead`</a>
+    </li>
+    <li>
       <a href="../articles/ahead-vignette.html">Introduction to R package `ahead`</a>
+    </li>
+    <li>
+      <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
   </ul></li>
 <li>
@@ -157,11 +163,9 @@
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/EuStockMarkets.html" class="external-link">EuStockMarkets</a></span><span class="op">[</span> , <span class="st">"DAX"</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">log_returns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">/</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: forecast</span>
-<span class="r-in"><span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">armagarchf</span><span class="op">(</span>y<span class="op">=</span><span class="va">log_returns</span>, h<span class="op">=</span><span class="fl">200</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="armagarchf-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># require(forecast)</span></span></span>
+<span class="r-in"><span><span class="co"># z &lt;- ahead::armagarchf(y=log_returns, h=200)</span></span></span>
+<span class="r-in"><span><span class="co"># plot(z)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -178,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

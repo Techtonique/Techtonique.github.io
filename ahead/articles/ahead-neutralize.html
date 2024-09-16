@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.13.0</span>
       </span>
     </div>
 
@@ -62,7 +62,13 @@
       <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
     </li>
     <li>
+      <a href="../articles/ahead-univariate-season.html">Univariate forecasting with `ridge2f` in `ahead`</a>
+    </li>
+    <li>
       <a href="../articles/ahead-vignette.html">Introduction to R package `ahead`</a>
+    </li>
+    <li>
+      <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
   </ul>
 </li>
@@ -191,29 +197,7 @@ how to install the R version of the package:</p>
 <code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="va">EuStocksLogReturns</span>, h <span class="op">=</span> <span class="fl">7L</span>,</span>
 <span>                      type_pi <span class="op">=</span> <span class="st">'bootstrap'</span>,</span>
 <span>                      B <span class="op">=</span> <span class="fl">10L</span>, ym <span class="op">=</span> <span class="va">ym</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |=======                                                               |  10%
-  |                                                                            
-  |==============                                                        |  20%
-  |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |============================                                          |  40%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |==========================================                            |  60%
-  |                                                                            
-  |=================================================                     |  70%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |======================================================================| 100%</code></pre>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">neutralized_sims</span><span class="op">$</span><span class="va">CAC</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.03013425 0.03026776 0.03040053 0.03053258 0.03066390 0.03079450 0.03092437</span></span></code></pre>
@@ -285,7 +269,7 @@ how to install the R version of the package:</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

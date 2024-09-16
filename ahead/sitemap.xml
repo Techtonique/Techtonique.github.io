@@ -22,7 +22,13 @@
     <loc>https://techtonique.github.io/ahead/articles/ahead-ridge2-prediction-intervals.html</loc>
   </url>
   <url>
+    <loc>https://techtonique.github.io/ahead/articles/ahead-univariate-season.html</loc>
+  </url>
+  <url>
     <loc>https://techtonique.github.io/ahead/articles/ahead-vignette.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/ahead/articles/fitforecastbench.html</loc>
   </url>
   <url>
     <loc>https://techtonique.github.io/ahead/articles/index.html</loc>
@@ -43,10 +49,16 @@
     <loc>https://techtonique.github.io/ahead/reference/basicf.html</loc>
   </url>
   <url>
+    <loc>https://techtonique.github.io/ahead/reference/createtrendseason.html</loc>
+  </url>
+  <url>
     <loc>https://techtonique.github.io/ahead/reference/dynrmf.html</loc>
   </url>
   <url>
     <loc>https://techtonique.github.io/ahead/reference/eatf.html</loc>
+  </url>
+  <url>
+    <loc>https://techtonique.github.io/ahead/reference/fitforecast.html</loc>
   </url>
   <url>
     <loc>https://techtonique.github.io/ahead/reference/getreturns.html</loc>
@@ -61,16 +73,10 @@
     <loc>https://techtonique.github.io/ahead/reference/loessf.html</loc>
   </url>
   <url>
+    <loc>https://techtonique.github.io/ahead/reference/loocvridge2f.html</loc>
+  </url>
+  <url>
     <loc>https://techtonique.github.io/ahead/reference/plot.mtsforecast.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/ahead/reference/plot.pairs.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/ahead/reference/predict.ridge.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/ahead/reference/ridge.html</loc>
   </url>
   <url>
     <loc>https://techtonique.github.io/ahead/reference/ridge2f.html</loc>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.13.0</span>
       </span>
     </div>
 
@@ -44,7 +44,13 @@
       <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
     </li>
     <li>
+      <a href="../articles/ahead-univariate-season.html">Univariate forecasting with `ridge2f` in `ahead`</a>
+    </li>
+    <li>
       <a href="../articles/ahead-vignette.html">Introduction to R package `ahead`</a>
+    </li>
+    <li>
+      <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
   </ul></li>
 <li>
@@ -80,9 +86,9 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ridge2f</span><span class="op">(</span></span>
 <span>  <span class="va">y</span>,</span>
-<span>  xreg <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  h <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">95</span>,</span>
+<span>  xreg <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  lags <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  nb_hidden <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  nodes_sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sobol"</span>, <span class="st">"halton"</span>, <span class="st">"unif"</span><span class="op">)</span>,</span>
@@ -93,9 +99,9 @@
 <span>  dropout <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  type_forecast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"recursive"</span>, <span class="st">"direct"</span><span class="op">)</span>,</span>
 <span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"bootstrap"</span>, <span class="st">"blockbootstrap"</span>, <span class="st">"movingblockbootstrap"</span>,</span>
-<span>    <span class="st">"rvinecopula"</span>, <span class="st">"splitconformal"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"rvinecopula"</span><span class="op">)</span>,</span>
 <span>  block_length <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"empirical"</span>, <span class="st">"student"</span><span class="op">)</span>,</span>
+<span>  margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gaussian"</span>, <span class="st">"empirical"</span><span class="op">)</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">100L</span>,</span>
 <span>  type_aggregation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span><span class="op">)</span>,</span>
@@ -111,11 +117,7 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>y</dt>
-<dd><p>A multivariate time series of class <code>ts</code> (preferred) or a <code>matrix</code></p></dd>
-
-
-<dt>xreg</dt>
-<dd><p>External regressors. A data.frame (preferred) or a <code>matrix</code></p></dd>
+<dd><p>A univariate of multivariate time series of class <code>ts</code> (preferred) or a <code>matrix</code></p></dd>
 
 
 <dt>h</dt>
@@ -124,6 +126,10 @@
 
 <dt>level</dt>
 <dd><p>Confidence level for prediction intervals</p></dd>
+
+
+<dt>xreg</dt>
+<dd><p>External regressors. A data.frame (preferred) or a <code>matrix</code></p></dd>
 
 
 <dt>lags</dt>
@@ -164,8 +170,7 @@
 
 <dt>type_pi</dt>
 <dd><p>Type of prediction interval currently "gaussian", "bootstrap",
-"blockbootstrap", "movingblockbootstrap", "splitconformal" (very experimental right now),
-"rvinecopula" (with Gaussian margins for now, Student-t coming soon)</p></dd>
+"blockbootstrap", "movingblockbootstrap", "rvinecopula" (with Gaussian and empirical margins for now)</p></dd>
 
 
 <dt>block_length</dt>
@@ -173,8 +178,7 @@
 
 
 <dt>margins</dt>
-<dd><p>Distribution of margins: "gaussian", "empirical", "student" (postponed or
-never) for <code>type_pi == "rvinecopula"</code></p></dd>
+<dd><p>Distribution of margins: "gaussian", "empirical" for <code>type_pi == "rvinecopula"</code></p></dd>
 
 
 <dt>seed</dt>
@@ -383,7 +387,7 @@ functional link neural networks. Risks, 6(1), 22. <br></p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
