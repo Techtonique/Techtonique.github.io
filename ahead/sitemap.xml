@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://techtonique.github.io/ahead/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/CONTRIBUTING.html</loc>
+    <loc>/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/LICENSE-text.html</loc>
+    <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/ahead-loess-forecasting.html</loc>
+    <loc>/articles/ahead-loess-forecasting.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/ahead-neutralize.html</loc>
+    <loc>/articles/ahead-neutralize.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/ahead-plotting-functions.html</loc>
+    <loc>/articles/ahead-plotting-functions.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/ahead-ridge2-prediction-intervals.html</loc>
+    <loc>/articles/ahead-ridge2-prediction-intervals.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/ahead-univariate-season.html</loc>
+    <loc>/articles/ahead-univariate-season.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/ahead-vignette.html</loc>
+    <loc>/articles/ahead-vignette.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/fitforecastbench.html</loc>
+    <loc>/articles/fitforecastbench.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/articles/index.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/authors.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/index.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/news/index.html</loc>
+    <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/armagarchf.html</loc>
+    <loc>/reference/armagarchf.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/basicf.html</loc>
+    <loc>/reference/basicf.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/createtrendseason.html</loc>
+    <loc>/reference/createtrendseason.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/dynrmf.html</loc>
+    <loc>/reference/dynrmf.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/eatf.html</loc>
+    <loc>/reference/eatf.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/fitforecast.html</loc>
+    <loc>/reference/fitforecast.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/getreturns.html</loc>
+    <loc>/reference/getreturns.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/getsimulations.html</loc>
+    <loc>/reference/getsimulations.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/index.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/loessf.html</loc>
+    <loc>/reference/loessf.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/loocvridge2f.html</loc>
+    <loc>/reference/loocvridge2f.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/plot.mtsforecast.html</loc>
+    <loc>/reference/plot.mtsforecast.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/ridge2f.html</loc>
+    <loc>/reference/ridge2f.html</loc>
   </url>
   <url>
-    <loc>https://techtonique.github.io/ahead/reference/varf.html</loc>
+    <loc>/reference/varf.html</loc>
   </url>
 </urlset>
