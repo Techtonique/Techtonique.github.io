@@ -25,6 +25,9 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/is_package_available.html</loc>
+  </url>
+  <url>
     <loc>/reference/is_wholenumber.html</loc>
   </url>
   <url>
@@ -35,6 +38,9 @@
   </url>
   <url>
     <loc>/reference/rm_zero_cols.html</loc>
+  </url>
+  <url>
+    <loc>/reference/scale_matrix.html</loc>
   </url>
   <url>
     <loc>/reference/sort_df.html</loc>
