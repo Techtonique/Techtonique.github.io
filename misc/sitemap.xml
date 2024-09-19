@@ -25,9 +25,30 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/is_wholenumber.html</loc>
+  </url>
+  <url>
+    <loc>/reference/one_hot_encode.html</loc>
+  </url>
+  <url>
     <loc>/reference/parfor.html</loc>
   </url>
   <url>
+    <loc>/reference/rm_zero_cols.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sort_df.html</loc>
+  </url>
+  <url>
+    <loc>/reference/split_data.html</loc>
+  </url>
+  <url>
     <loc>/reference/splitts.html</loc>
+  </url>
+  <url>
+    <loc>/reference/vlookup.html</loc>
+  </url>
+  <url>
+    <loc>/reference/winkler_score.html</loc>
   </url>
 </urlset>
