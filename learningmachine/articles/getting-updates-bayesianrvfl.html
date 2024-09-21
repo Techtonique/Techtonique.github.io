@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">learningmachine</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.6.0</span>
       </span>
     </div>
 
@@ -157,7 +157,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="va">best_lambda</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.011 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.009 s</span></span></code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $preds</span></span>
@@ -193,8 +193,8 @@
 <span><span class="co">## $simulate</span></span>
 <span><span class="co">## function (n) </span></span>
 <span><span class="co">## MASS::mvrnorm(n = n, mu = res, Sigma = Sigma_newx)</span></span>
-<span><span class="co">## &lt;bytecode: 0x7f958c3a2c90&gt;</span></span>
-<span><span class="co">## &lt;environment: 0x7f958c3a6078&gt;</span></span></code></pre>
+<span><span class="co">## &lt;bytecode: 0x7fa8dd57e388&gt;</span></span>
+<span><span class="co">## &lt;environment: 0x7fa8dd57d780&gt;</span></span></code></pre>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
@@ -222,6 +222,9 @@
 <span><span class="co">## am    204.1534474  176.7091659  231.5977289 1.598086e-09    ***</span></span>
 <span><span class="co">## gear   47.2993146   39.4986036   55.1000256 1.645027e-08    ***</span></span>
 <span><span class="co">## carb  -58.9820744  -68.7040650  -49.2600838 1.634624e-08    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -262,7 +265,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.054 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.171 s</span></span></code></pre>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
@@ -294,7 +297,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.004 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.017 s</span></span></code></pre>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
@@ -334,6 +337,9 @@
 <span><span class="co">## am   -571.2955807 -888.7015171 -253.889644 2.228206e-03     **</span></span>
 <span><span class="co">## gear  736.7448821  610.9718511  862.517913 5.544994e-08    ***</span></span>
 <span><span class="co">## carb   43.5006025  -43.3757615  130.376966 2.939585e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -400,7 +406,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.009 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.008 s</span></span></code></pre>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
@@ -428,6 +434,9 @@
 <span><span class="co">## am   -247.967120 -513.2391500   17.304909 6.389820e-02      .</span></span>
 <span><span class="co">## gear  558.406428  471.6174663  645.195390 5.397869e-08    ***</span></span>
 <span><span class="co">## carb   73.070711    5.3182381  140.823183 3.712251e-02      *</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -492,7 +501,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="va">best_lambda</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.015 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.005 s</span></span></code></pre>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">previous_coefs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/drop.html" class="external-link">drop</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
@@ -505,7 +514,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span>, method <span class="op">=</span> <span class="st">"polyak"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.017 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.006 s</span></span></code></pre>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
@@ -545,6 +554,9 @@
 <span><span class="co">## am    175.1639102  139.5755741  210.7522464 3.304560e-07    ***</span></span>
 <span><span class="co">## gear   44.3270639   36.1456398   52.5084881 1.240722e-07    ***</span></span>
 <span><span class="co">## carb  -59.6511203  -69.8576126  -49.4446280 5.677270e-08    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -611,7 +623,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span>, method <span class="op">=</span> <span class="st">"polyak"</span>, alpha <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.008 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.005 s</span></span></code></pre>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $R_squared</span></span>
@@ -639,6 +651,9 @@
 <span><span class="co">## am    174.2138307  134.1390652  214.2885963 2.127371e-06    ***</span></span>
 <span><span class="co">## gear   42.7943293   36.9622907   48.6263678 1.523695e-08    ***</span></span>
 <span><span class="co">## carb  -59.4034661  -70.5135723  -48.2933599 3.127231e-07    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>

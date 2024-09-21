@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">learningmachine</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.6.0</span>
       </span>
     </div>
 
@@ -141,7 +141,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  1.434 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  1.773 s</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -176,6 +176,9 @@
 <span><span class="co">## Sepal.Width   0.055710324  0.02112624  0.090294413 0.0026029962     **</span></span>
 <span><span class="co">## Petal.Length -0.031343320 -0.05821752 -0.004469122 0.0238163346      *</span></span>
 <span><span class="co">## Petal.Width  -0.008896551 -0.06450724  0.046714139 0.7458712257       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -212,11 +215,14 @@
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##                  estimate        lower       upper</span></span>
-<span><span class="co">## Sepal.Length -0.048443334 -0.104589591 -0.00495945</span></span>
-<span><span class="co">## Sepal.Width   0.035202317 -0.002792421  0.08621557</span></span>
-<span><span class="co">## Petal.Length  0.003582802 -0.035319385  0.02875329</span></span>
-<span><span class="co">## Petal.Width  -0.032667921 -0.127705313  0.04256300</span></span>
+<span><span class="co">##                  estimate        lower       upper    p-value signif</span></span>
+<span><span class="co">## Sepal.Length -0.048443334 -0.104589591 -0.00495945 0.05722536      .</span></span>
+<span><span class="co">## Sepal.Width   0.035202317 -0.002792421  0.08621557 0.12169958       </span></span>
+<span><span class="co">## Petal.Length  0.003582802 -0.035319385  0.02875329 0.82658880       </span></span>
+<span><span class="co">## Petal.Width  -0.032667921 -0.127705313  0.04256300 0.45235577       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -248,7 +254,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.153 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.115 s</span></span></code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
@@ -274,6 +280,9 @@
 <span><span class="co">## Sepal.Width   0.055753840  0.02119147  0.090316214 0.0025719853     **</span></span>
 <span><span class="co">## Petal.Length -0.031600295 -0.05846617 -0.004734417 0.0227458629      *</span></span>
 <span><span class="co">## Petal.Width  -0.008676126 -0.06476250  0.047410244 0.7539793687       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -301,11 +310,14 @@
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##                  estimate       lower        upper</span></span>
-<span><span class="co">## Sepal.Length  0.005584273 -0.03817798  0.052381504</span></span>
-<span><span class="co">## Sepal.Width  -0.136170522 -0.29444020 -0.007446021</span></span>
-<span><span class="co">## Petal.Length -0.108256713 -0.51936703  0.208079493</span></span>
-<span><span class="co">## Petal.Width   0.604226657  0.40022576  0.761194883</span></span>
+<span><span class="co">##                  estimate       lower        upper      p-value signif</span></span>
+<span><span class="co">## Sepal.Length  0.005584273 -0.03817798  0.052381504 8.090972e-01       </span></span>
+<span><span class="co">## Sepal.Width  -0.136170522 -0.29444020 -0.007446021 6.348879e-02      .</span></span>
+<span><span class="co">## Petal.Length -0.108256713 -0.51936703  0.208079493 5.599189e-01       </span></span>
+<span><span class="co">## Petal.Width   0.604226657  0.40022576  0.761194883 1.335314e-10    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -336,7 +348,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.375 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.125 s</span></span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
@@ -362,6 +374,9 @@
 <span><span class="co">## Sepal.Width  -0.008665406 -0.08293934 0.06560852 0.8130836281       </span></span>
 <span><span class="co">## Petal.Length  0.367528646  0.17051921 0.56453808 0.0006587430    ***</span></span>
 <span><span class="co">## Petal.Width   0.657891051  0.31550619 1.00027591 0.0004837876    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -389,11 +404,14 @@
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##                 estimate       lower        upper</span></span>
-<span><span class="co">## Sepal.Length -0.02891381 -0.07856975  0.007642355</span></span>
-<span><span class="co">## Sepal.Width   0.05119133 -0.02477523  0.141328977</span></span>
-<span><span class="co">## Petal.Length  0.00920727 -0.04566300  0.056302475</span></span>
-<span><span class="co">## Petal.Width  -0.18756955 -0.25804631 -0.123101638</span></span>
+<span><span class="co">##                 estimate       lower        upper      p-value signif</span></span>
+<span><span class="co">## Sepal.Length -0.02891381 -0.07856975  0.007642355 1.892264e-01       </span></span>
+<span><span class="co">## Sepal.Width   0.05119133 -0.02477523  0.141328977 2.275907e-01       </span></span>
+<span><span class="co">## Petal.Length  0.00920727 -0.04566300  0.056302475 7.235174e-01       </span></span>
+<span><span class="co">## Petal.Width  -0.18756955 -0.25804631 -0.123101638 7.988292e-08    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -465,7 +483,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.28 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.243 s</span></span></code></pre>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
@@ -495,6 +513,9 @@
 <span><span class="co">## body_mass_g       -2.325034e-05 -5.796378e-05  1.146310e-05 0.13646280       </span></span>
 <span><span class="co">## sexmale           -7.978043e-03 -2.213090e-02  6.174818e-03 0.19261298       </span></span>
 <span><span class="co">## year              -3.352928e-05 -8.057931e-05  1.352074e-05 0.11899484       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -537,7 +558,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.521 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.066 s</span></span></code></pre>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
@@ -567,6 +588,9 @@
 <span><span class="co">## body_mass_g       -0.0001692677 -0.0001723101 -0.0001662252 1.053542e-08    ***</span></span>
 <span><span class="co">## sexmale           -0.4310257052 -0.4393042529 -0.4227471575 1.373600e-08    ***</span></span>
 <span><span class="co">## year              -0.0102992883 -0.0110718998 -0.0095266769 3.181998e-06    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>

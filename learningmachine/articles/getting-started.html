@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">learningmachine</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.6.0</span>
       </span>
     </div>
 
@@ -152,7 +152,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.02 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.01 s</span></span></code></pre>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">$</span><span class="va">preds</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3.548852</span></span></code></pre>
@@ -194,7 +194,7 @@
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, </span>
 <span>        pi_method <span class="op">=</span> <span class="st">"jackknifeplus"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.251 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.06 s</span></span></code></pre>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95L</span><span class="op">)</span></span>
 <span></span>
@@ -228,7 +228,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  4.543 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  1.527 s</span></span></code></pre>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">$</span><span class="va">preds</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 2.344976</span></span></code></pre>
@@ -236,7 +236,7 @@
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.057 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.013 s</span></span></code></pre>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span></span>
@@ -302,7 +302,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.474 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.108 s</span></span></code></pre>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 2.888748</span></span></code></pre>
@@ -334,6 +334,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## ptratio -0.4819300831  -0.582754790 -0.3811053766 1.242164e-15    ***</span></span>
 <span><span class="co">## black   -0.0002461991  -0.001967809  0.0014754112 7.772335e-01       </span></span>
 <span><span class="co">## lstat   -0.4091458985  -0.475209948 -0.3430818492 9.126116e-22    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -378,7 +381,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">13</span>  0.031<span style="text-decoration: underline;">1</span>  ▁▁▂▆▇</span></span></code></pre>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  3.903 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  1.01 s</span></span></code></pre>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -393,20 +396,23 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## -8.33671 -1.10461 -0.02411  0.12105  1.46980  9.29398 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##              estimate         lower        upper</span></span>
-<span><span class="co">## crim    -0.0544164530  -0.077388205 -0.033868739</span></span>
-<span><span class="co">## zn      -0.0046418100  -0.008950983  0.000193778</span></span>
-<span><span class="co">## indus   -0.0245357110  -0.049120109  0.000544111</span></span>
-<span><span class="co">## chas     7.1730075477   6.366223778  7.870788737</span></span>
-<span><span class="co">## nox     -9.4958030753 -12.303031437 -7.145086697</span></span>
-<span><span class="co">## rm       4.7080249286   3.856816287  5.491698401</span></span>
-<span><span class="co">## age     -0.0439718628  -0.053220093 -0.035161838</span></span>
-<span><span class="co">## dis     -1.4214523042  -1.569696745 -1.285297810</span></span>
-<span><span class="co">## rad      0.1810040336   0.155700757  0.206461984</span></span>
-<span><span class="co">## tax     -0.0115644823  -0.013086037 -0.010031979</span></span>
-<span><span class="co">## ptratio -0.4819300831  -0.582929860 -0.390711993</span></span>
-<span><span class="co">## black   -0.0002461991  -0.001876356  0.001546006</span></span>
-<span><span class="co">## lstat   -0.4091458985  -0.478128045 -0.343430510</span></span>
+<span><span class="co">##              estimate         lower        upper      p-value signif</span></span>
+<span><span class="co">## crim    -0.0544164530  -0.077388205 -0.033868739 3.636383e-06    ***</span></span>
+<span><span class="co">## zn      -0.0046418100  -0.008950983  0.000193778 4.932471e-02      *</span></span>
+<span><span class="co">## indus   -0.0245357110  -0.049120109  0.000544111 5.559257e-02      .</span></span>
+<span><span class="co">## chas     7.1730075477   6.366223778  7.870788737 1.484058e-34    ***</span></span>
+<span><span class="co">## nox     -9.4958030753 -12.303031437 -7.145086697 1.011413e-10    ***</span></span>
+<span><span class="co">## rm       4.7080249286   3.856816287  5.491698401 1.329440e-19    ***</span></span>
+<span><span class="co">## age     -0.0439718628  -0.053220093 -0.035161838 9.023576e-16    ***</span></span>
+<span><span class="co">## dis     -1.4214523042  -1.569696745 -1.285297810 3.493404e-36    ***</span></span>
+<span><span class="co">## rad      0.1810040336   0.155700757  0.206461984 2.383885e-25    ***</span></span>
+<span><span class="co">## tax     -0.0115644823  -0.013086037 -0.010031979 3.950118e-27    ***</span></span>
+<span><span class="co">## ptratio -0.4819300831  -0.582929860 -0.390711993 2.146847e-16    ***</span></span>
+<span><span class="co">## black   -0.0002461991  -0.001876356  0.001546006 7.785258e-01       </span></span>
+<span><span class="co">## lstat   -0.4091458985  -0.478128045 -0.343430510 6.000266e-21    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -451,7 +457,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">13</span>  0.031<span style="text-decoration: underline;">1</span>  ▁▁▂▆▇</span></span></code></pre>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  2.423 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  1.556 s</span></span></code></pre>
 <p><strong><code>ranger</code></strong></p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Regressor.html">Regressor</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"ranger"</span>, pi_method<span class="op">=</span><span class="st">"splitconformal"</span><span class="op">)</span></span>
@@ -464,7 +470,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.12 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.093 s</span></span></code></pre>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">$</span><span class="va">preds</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3.79469</span></span></code></pre>
@@ -499,6 +505,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## ptratio  -32.87462570  -38.77698867  -26.97226272 4.440300e-19    ***</span></span>
 <span><span class="co">## black     -0.26384711   -0.49997135   -0.02772287 2.889086e-02      *</span></span>
 <span><span class="co">## lstat    -44.64193590  -57.99309865  -31.29077315 1.652805e-09    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -543,7 +552,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">13</span> ▁▁▁▃▇</span></span></code></pre>
 <div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  3.007 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.92 s</span></span></code></pre>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -561,20 +570,23 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##              estimate        lower         upper</span></span>
-<span><span class="co">## crim     -46.07120224 -226.0963824   86.64772635</span></span>
-<span><span class="co">## zn        -0.01770371   -0.1911345    0.16043942</span></span>
-<span><span class="co">## indus    -15.27494058  -27.0066412   -4.76012553</span></span>
-<span><span class="co">## chas       0.00000000    0.0000000    0.00000000</span></span>
-<span><span class="co">## nox     -521.68056125 -694.5379226 -351.49586075</span></span>
-<span><span class="co">## rm       275.37923329  225.1057152  332.38712155</span></span>
-<span><span class="co">## age       -1.75704619   -2.5409652   -1.08938031</span></span>
-<span><span class="co">## dis       20.57598690   -3.0778308   44.65777193</span></span>
-<span><span class="co">## rad        2.13991832    0.4743989    4.36379845</span></span>
-<span><span class="co">## tax       -0.60978051   -0.7988964   -0.42355307</span></span>
-<span><span class="co">## ptratio  -32.87462570  -38.9972525  -27.71671691</span></span>
-<span><span class="co">## black     -0.26384711   -0.4737498   -0.03739985</span></span>
-<span><span class="co">## lstat    -44.64193590  -57.9757644  -32.27758919</span></span>
+<span><span class="co">##              estimate        lower         upper      p-value signif</span></span>
+<span><span class="co">## crim     -46.07120224 -226.0963824   86.64772635 5.649169e-01       </span></span>
+<span><span class="co">## zn        -0.01770371   -0.1911345    0.16043942 8.439189e-01       </span></span>
+<span><span class="co">## indus    -15.27494058  -27.0066412   -4.76012553 8.326543e-03     **</span></span>
+<span><span class="co">## chas       0.00000000    0.0000000    0.00000000          NaN       </span></span>
+<span><span class="co">## nox     -521.68056125 -694.5379226 -351.49586075 3.697818e-08    ***</span></span>
+<span><span class="co">## rm       275.37923329  225.1057152  332.38712155 6.551598e-17    ***</span></span>
+<span><span class="co">## age       -1.75704619   -2.5409652   -1.08938031 6.883580e-06    ***</span></span>
+<span><span class="co">## dis       20.57598690   -3.0778308   44.65777193 9.417985e-02      .</span></span>
+<span><span class="co">## rad        2.13991832    0.4743989    4.36379845 3.340076e-02      *</span></span>
+<span><span class="co">## tax       -0.60978051   -0.7988964   -0.42355307 5.710666e-09    ***</span></span>
+<span><span class="co">## ptratio  -32.87462570  -38.9972525  -27.71671691 6.732061e-20    ***</span></span>
+<span><span class="co">## black     -0.26384711   -0.4737498   -0.03739985 1.967444e-02      *</span></span>
+<span><span class="co">## lstat    -44.64193590  -57.9757644  -32.27758919 7.154857e-10    ***</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -619,7 +631,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">13</span> ▁▁▁▃▇</span></span></code></pre>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  2.41 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  1.433 s</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="krr-regression-on-mtcars">3 - <code>KRR</code> regression on mtcars<a class="anchor" aria-label="anchor" href="#krr-regression-on-mtcars"></a>
@@ -672,7 +684,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.009 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.01 s</span></span></code></pre>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_pi_method</span><span class="op">(</span><span class="st">"splitconformal"</span><span class="op">)</span></span>
@@ -695,7 +707,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.011 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.006 s</span></span></code></pre>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
 <span></span>
@@ -741,6 +753,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## gear  191.57905165  134.3446800  248.8134233 3.424783e-05    ***</span></span>
 <span><span class="co">## carb    3.39227959  -22.2875140   29.0720732 7.718555e-01       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
@@ -778,7 +793,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▃▁▆▂▇</span></span></code></pre>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.521 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.216 s</span></span></code></pre>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -796,17 +811,20 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##           estimate        lower        upper</span></span>
-<span><span class="co">## cyl   -23.98943109  -40.5922255   -6.2447901</span></span>
-<span><span class="co">## disp   -0.61133395   -0.9172916   -0.3424231</span></span>
-<span><span class="co">## hp     -0.07828878   -0.3397646    0.1496909</span></span>
-<span><span class="co">## drat  310.94399534  179.0656056  417.8607418</span></span>
-<span><span class="co">## wt   -197.39979731 -231.8809681 -164.5228586</span></span>
-<span><span class="co">## qsec  -19.50660485  -44.6930749    9.1315753</span></span>
-<span><span class="co">## vs     69.84795566  -48.5034409  190.0256695</span></span>
-<span><span class="co">## am    137.97019623   27.1241565  250.3954442</span></span>
-<span><span class="co">## gear  191.57905165  147.4748755  241.7819503</span></span>
-<span><span class="co">## carb    3.39227959  -17.8115551   22.1933920</span></span>
+<span><span class="co">##           estimate        lower        upper      p-value signif</span></span>
+<span><span class="co">## cyl   -23.98943109  -40.5922255   -6.2447901 2.292950e-02      *</span></span>
+<span><span class="co">## disp   -0.61133395   -0.9172916   -0.3424231 2.416713e-03     **</span></span>
+<span><span class="co">## hp     -0.07828878   -0.3397646    0.1496909 5.462365e-01       </span></span>
+<span><span class="co">## drat  310.94399534  179.0656056  417.8607418 6.414323e-04    ***</span></span>
+<span><span class="co">## wt   -197.39979731 -231.8809681 -164.5228586 1.115553e-06    ***</span></span>
+<span><span class="co">## qsec  -19.50660485  -44.6930749    9.1315753 1.891311e-01       </span></span>
+<span><span class="co">## vs     69.84795566  -48.5034409  190.0256695 2.806199e-01       </span></span>
+<span><span class="co">## am    137.97019623   27.1241565  250.3954442 3.846436e-02      *</span></span>
+<span><span class="co">## gear  191.57905165  147.4748755  241.7819503 2.296739e-05    ***</span></span>
+<span><span class="co">## carb    3.39227959  -17.8115551   22.1933920 7.472011e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -845,7 +863,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▃▁▆▂▇</span></span></code></pre>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  1.116 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.337 s</span></span></code></pre>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_pi_method</span><span class="op">(</span><span class="st">"kdejackknifeplus"</span><span class="op">)</span></span>
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
@@ -853,7 +871,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |===                                                                   |   5%  |                                                                              |=======                                                               |  10%  |                                                                              |==========                                                            |  14%  |                                                                              |=============                                                         |  19%  |                                                                              |=================                                                     |  24%  |                                                                              |====================                                                  |  29%  |                                                                              |=======================                                               |  33%  |                                                                              |===========================                                           |  38%  |                                                                              |==============================                                        |  43%  |                                                                              |=================================                                     |  48%  |                                                                              |=====================================                                 |  52%  |                                                                              |========================================                              |  57%  |                                                                              |===========================================                           |  62%  |                                                                              |===============================================                       |  67%  |                                                                              |==================================================                    |  71%  |                                                                              |=====================================================                 |  76%  |                                                                              |=========================================================             |  81%  |                                                                              |============================================================          |  86%  |                                                                              |===============================================================       |  90%  |                                                                              |===================================================================   |  95%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.152 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.023 s</span></span></code></pre>
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
 <span></span>
@@ -899,6 +917,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## gear  264.4099446  185.2573493 343.5625399 3.479849e-05    ***</span></span>
 <span><span class="co">## carb  -24.1859057  -56.7206453   8.3488338 1.269314e-01       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
@@ -936,7 +957,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▇▁▂▇</span></span></code></pre>
 <div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  1.037 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  1.093 s</span></span></code></pre>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -954,17 +975,20 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##          estimate        lower       upper</span></span>
-<span><span class="co">## cyl   -36.7817740  -45.3808553 -26.1949547</span></span>
-<span><span class="co">## disp   -0.2133047   -0.5752521   0.1492085</span></span>
-<span><span class="co">## hp     -0.2920633   -0.7217967   0.1034058</span></span>
-<span><span class="co">## drat  259.9789584  162.2017490 343.4030751</span></span>
-<span><span class="co">## wt   -125.6032827 -152.6736671 -98.7351447</span></span>
-<span><span class="co">## qsec    6.1547882  -14.7007260  29.0726634</span></span>
-<span><span class="co">## vs     35.1176737  -62.1816637 130.3916175</span></span>
-<span><span class="co">## am     85.8109695  -10.0596731 174.5354755</span></span>
-<span><span class="co">## gear  264.4099446  208.5642717 335.6537285</span></span>
-<span><span class="co">## carb  -24.1859057  -50.4118778   2.2305024</span></span>
+<span><span class="co">##          estimate        lower       upper      p-value signif</span></span>
+<span><span class="co">## cyl   -36.7817740  -45.3808553 -26.1949547 3.635150e-05    ***</span></span>
+<span><span class="co">## disp   -0.2133047   -0.5752521   0.1492085 2.781632e-01       </span></span>
+<span><span class="co">## hp     -0.2920633   -0.7217967   0.1034058 1.987160e-01       </span></span>
+<span><span class="co">## drat  259.9789584  162.2017490 343.4030751 3.241203e-04    ***</span></span>
+<span><span class="co">## wt   -125.6032827 -152.6736671 -98.7351447 7.604780e-06    ***</span></span>
+<span><span class="co">## qsec    6.1547882  -14.7007260  29.0726634 5.949372e-01       </span></span>
+<span><span class="co">## vs     35.1176737  -62.1816637 130.3916175 4.928333e-01       </span></span>
+<span><span class="co">## am     85.8109695  -10.0596731 174.5354755 1.017444e-01       </span></span>
+<span><span class="co">## gear  264.4099446  208.5642717 335.6537285 1.897459e-05    ***</span></span>
+<span><span class="co">## carb  -24.1859057  -50.4118778   2.2305024 1.052301e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -1003,7 +1027,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▇▁▂▇</span></span></code></pre>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  1.551 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.914 s</span></span></code></pre>
 <p><strong><code>xgboost</code></strong></p>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Regressor.html">Regressor</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"xgboost"</span>, pi_method <span class="op">=</span> <span class="st">"splitconformal"</span><span class="op">)</span></span>
@@ -1016,7 +1040,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, nrounds<span class="op">=</span><span class="fl">10</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.827 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.485 s</span></span></code></pre>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $preds</span></span>
@@ -1059,6 +1083,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## gear  0.0000000         NaN        NaN       NaN       </span></span>
 <span><span class="co">## carb  0.0000000         NaN        NaN       NaN       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
@@ -1085,7 +1112,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> carb           0      0       0      0   0   0   0  ▁▁▇▁▁</span></span></code></pre>
 <div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.364 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.385 s</span></span></code></pre>
 <div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -1103,17 +1130,20 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##        estimate      lower    upper</span></span>
-<span><span class="co">## cyl   0.0000000  0.0000000  0.00000</span></span>
-<span><span class="co">## disp -0.1859971 -0.5579912  0.00000</span></span>
-<span><span class="co">## hp    0.0000000  0.0000000  0.00000</span></span>
-<span><span class="co">## drat 28.9866074  0.0000000 77.01909</span></span>
-<span><span class="co">## wt    0.0000000  0.0000000  0.00000</span></span>
-<span><span class="co">## qsec -1.7295559 -5.1886676  0.00000</span></span>
-<span><span class="co">## vs    0.0000000  0.0000000  0.00000</span></span>
-<span><span class="co">## am    0.0000000  0.0000000  0.00000</span></span>
-<span><span class="co">## gear  0.0000000  0.0000000  0.00000</span></span>
-<span><span class="co">## carb  0.0000000  0.0000000  0.00000</span></span>
+<span><span class="co">##        estimate      lower    upper   p-value signif</span></span>
+<span><span class="co">## cyl   0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## disp -0.1859971 -0.5579912  0.00000 0.2237346       </span></span>
+<span><span class="co">## hp    0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## drat 28.9866074  0.0000000 77.01909 0.1742390       </span></span>
+<span><span class="co">## wt    0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## qsec -1.7295559 -5.1886676  0.00000 0.2237346       </span></span>
+<span><span class="co">## vs    0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## am    0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## gear  0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## carb  0.0000000  0.0000000  0.00000       NaN       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -1141,12 +1171,12 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> carb           0      0       0      0   0   0   0  ▁▁▇▁▁</span></span></code></pre>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.399 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.378 s</span></span></code></pre>
 <div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, nrounds<span class="op">=</span><span class="fl">10</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.01 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.011 s</span></span></code></pre>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
@@ -1169,7 +1199,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, nrounds<span class="op">=</span><span class="fl">10</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.01 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.019 s</span></span></code></pre>
 <div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
@@ -1192,7 +1222,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, nrounds<span class="op">=</span><span class="fl">10</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.003 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.007 s</span></span></code></pre>
 <div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
@@ -1227,7 +1257,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, reg_lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.068 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.053 s</span></span></code></pre>
 <div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $preds</span></span>
@@ -1282,6 +1312,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## gear   52.646721   -6.640614  111.9340567 7.547657e-02      .</span></span>
 <span><span class="co">## carb  -17.100561  -87.819649   53.6185270 5.976705e-01       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
@@ -1319,7 +1352,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▂▁▁▂</span></span></code></pre>
 <div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.19 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.819 s</span></span></code></pre>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -1337,17 +1370,20 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##         estimate       lower         upper</span></span>
-<span><span class="co">## cyl   137.649985   67.927710  224.49681122</span></span>
-<span><span class="co">## disp   -2.406399   -4.543447   -0.83146440</span></span>
-<span><span class="co">## hp     -0.527573   -1.228274    0.08917815</span></span>
-<span><span class="co">## drat  707.372951  379.807480 1129.02366858</span></span>
-<span><span class="co">## wt   -500.429007 -557.338124 -452.13988493</span></span>
-<span><span class="co">## qsec  -89.930939 -115.877565  -59.82831064</span></span>
-<span><span class="co">## vs    234.198406  -17.180072  581.09310604</span></span>
-<span><span class="co">## am   -235.789718 -437.517547   13.80315000</span></span>
-<span><span class="co">## gear   52.646721    6.427697   94.54115818</span></span>
-<span><span class="co">## carb  -17.100561  -69.147781   45.17009752</span></span>
+<span><span class="co">##         estimate       lower         upper      p-value signif</span></span>
+<span><span class="co">## cyl   137.649985   67.927710  224.49681122 7.317784e-03     **</span></span>
+<span><span class="co">## disp   -2.406399   -4.543447   -0.83146440 3.164812e-02      *</span></span>
+<span><span class="co">## hp     -0.527573   -1.228274    0.08917815 1.509239e-01       </span></span>
+<span><span class="co">## drat  707.372951  379.807480 1129.02366858 4.912929e-03     **</span></span>
+<span><span class="co">## wt   -500.429007 -557.338124 -452.13988493 1.682493e-08    ***</span></span>
+<span><span class="co">## qsec  -89.930939 -115.877565  -59.82831064 1.427513e-04    ***</span></span>
+<span><span class="co">## vs    234.198406  -17.180072  581.09310604 1.592806e-01       </span></span>
+<span><span class="co">## am   -235.789718 -437.517547   13.80315000 7.084922e-02      .</span></span>
+<span><span class="co">## gear   52.646721    6.427697   94.54115818 4.386846e-02      *</span></span>
+<span><span class="co">## carb  -17.100561  -69.147781   45.17009752 5.720359e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -1386,12 +1422,12 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▂▁▁▂</span></span></code></pre>
 <div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.325 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.78 s</span></span></code></pre>
 <div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.006 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.008 s</span></span></code></pre>
 <div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">X_test</span><span class="op">)</span></span>
@@ -1423,7 +1459,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.01 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.008 s</span></span></code></pre>
 <div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">previous_coefs</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
@@ -1465,6 +1501,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## gear   57.7630332  -18.934712  134.4607782 1.206459e-01       </span></span>
 <span><span class="co">## carb  -42.9572292 -108.690903   22.7764447 1.702409e-01       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
 <span><span class="co">##                            Values </span></span>
@@ -1502,7 +1541,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▅▁▁▂</span></span></code></pre>
 <div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.341 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.158 s</span></span></code></pre>
 <div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -1520,17 +1559,20 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##          estimate       lower        upper</span></span>
-<span><span class="co">## cyl   111.6701473   56.594459  201.0414388</span></span>
-<span><span class="co">## disp   -1.7983224   -3.653135   -0.7503408</span></span>
-<span><span class="co">## hp     -0.4167545   -1.276126    0.2910989</span></span>
-<span><span class="co">## drat  569.9102780  332.259718  964.1132085</span></span>
-<span><span class="co">## wt   -504.1496696 -578.789199 -452.5053839</span></span>
-<span><span class="co">## qsec -107.9102921 -129.483384  -82.5423190</span></span>
-<span><span class="co">## vs    145.0280002  -28.272020  432.6517253</span></span>
-<span><span class="co">## am   -319.6910568 -475.989615  -90.6464455</span></span>
-<span><span class="co">## gear   57.7630332    1.751775  117.2749634</span></span>
-<span><span class="co">## carb  -42.9572292  -84.450432   16.1551891</span></span>
+<span><span class="co">##          estimate       lower        upper      p-value signif</span></span>
+<span><span class="co">## cyl   111.6701473   56.594459  201.0414388 1.629833e-02      *</span></span>
+<span><span class="co">## disp   -1.7983224   -3.653135   -0.7503408 4.130189e-02      *</span></span>
+<span><span class="co">## hp     -0.4167545   -1.276126    0.2910989 3.277078e-01       </span></span>
+<span><span class="co">## drat  569.9102780  332.259718  964.1132085 7.668526e-03     **</span></span>
+<span><span class="co">## wt   -504.1496696 -578.789199 -452.5053839 2.773501e-07    ***</span></span>
+<span><span class="co">## qsec -107.9102921 -129.483384  -82.5423190 1.836083e-05    ***</span></span>
+<span><span class="co">## vs    145.0280002  -28.272020  432.6517253 2.524377e-01       </span></span>
+<span><span class="co">## am   -319.6910568 -475.989615  -90.6464455 1.166475e-02      *</span></span>
+<span><span class="co">## gear   57.7630332    1.751775  117.2749634 8.565636e-02      .</span></span>
+<span><span class="co">## carb  -42.9572292  -84.450432   16.1551891 1.327138e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -1569,7 +1611,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▇▅▁▁▂</span></span></code></pre>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.53 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.306 s</span></span></code></pre>
 <div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">new_X_test</span><span class="op">)</span></span>
 <span> </span>
@@ -1600,7 +1642,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">update</span><span class="op">(</span><span class="va">newx</span>, <span class="va">newy</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.006 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.005 s</span></span></code></pre>
 <div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
@@ -1629,6 +1671,9 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## am   -395.7216847 -562.762331 -228.6810387 8.143911e-04    ***</span></span>
 <span><span class="co">## gear   53.0732573  -59.833653  165.9801679 3.030574e-01       </span></span>
 <span><span class="co">## carb  -25.9448064  -63.759959   11.8703467 1.487567e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -1667,7 +1712,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▂▅▇▁▅</span></span></code></pre>
 <div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.253 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.177 s</span></span></code></pre>
 <div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">new_X_test</span>, y<span class="op">=</span><span class="va">new_y_test</span>, show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
@@ -1685,17 +1730,20 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## [1] 75</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##          estimate       lower        upper</span></span>
-<span><span class="co">## cyl    40.8981137   13.611534   65.5300212</span></span>
-<span><span class="co">## disp   -0.7335494   -1.115045   -0.4043467</span></span>
-<span><span class="co">## hp     -0.8233606   -1.910531    0.1687140</span></span>
-<span><span class="co">## drat  549.7206897  443.074920  626.9047838</span></span>
-<span><span class="co">## wt   -469.9351032 -516.601161 -418.4594690</span></span>
-<span><span class="co">## qsec -116.6183871 -145.417748  -84.7362399</span></span>
-<span><span class="co">## vs   -194.4213942 -267.427325 -127.3499666</span></span>
-<span><span class="co">## am   -395.7216847 -515.026287 -273.6581298</span></span>
-<span><span class="co">## gear   53.0732573  -37.486884  134.4552153</span></span>
-<span><span class="co">## carb  -25.9448064  -53.884043    2.7424530</span></span>
+<span><span class="co">##          estimate       lower        upper      p-value signif</span></span>
+<span><span class="co">## cyl    40.8981137   13.611534   65.5300212 1.761953e-02      *</span></span>
+<span><span class="co">## disp   -0.7335494   -1.115045   -0.4043467 4.895727e-03     **</span></span>
+<span><span class="co">## hp     -0.8233606   -1.910531    0.1687140 1.645431e-01       </span></span>
+<span><span class="co">## drat  549.7206897  443.074920  626.9047838 7.440063e-06    ***</span></span>
+<span><span class="co">## wt   -469.9351032 -516.601161 -418.4594690 3.026569e-07    ***</span></span>
+<span><span class="co">## qsec -116.6183871 -145.417748  -84.7362399 1.335105e-04    ***</span></span>
+<span><span class="co">## vs   -194.4213942 -267.427325 -127.3499666 9.655321e-04    ***</span></span>
+<span><span class="co">## am   -395.7216847 -515.026287 -273.6581298 3.580841e-04    ***</span></span>
+<span><span class="co">## gear   53.0732573  -37.486884  134.4552153 2.655631e-01       </span></span>
+<span><span class="co">## carb  -25.9448064  -53.884043    2.7424530 1.155572e-01       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $signif_codes</span></span>
+<span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $effects</span></span>
 <span><span class="co">## ── Data Summary ────────────────────────</span></span>
@@ -1734,7 +1782,7 @@ Boston<a class="anchor" aria-label="anchor" href="#krr-ranger-regression-on-bost
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> ▂▅▇▁▅</span></span></code></pre>
 <div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.452 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.326 s</span></span></code></pre>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span>X <span class="op">=</span> <span class="va">new_X_test</span><span class="op">)</span></span>
 <span> </span>
