@@ -4,6 +4,9 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/articles/fit_param_dist.html</loc>
+  </url>
+  <url>
     <loc>/articles/getting-started-parfor.html</loc>
   </url>
   <url>
@@ -19,7 +22,13 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/KL_divergence_hist.html</loc>
+  </url>
+  <url>
     <loc>/reference/debug_print.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fit_param_dist.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
