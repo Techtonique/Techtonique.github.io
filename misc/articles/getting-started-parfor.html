@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -118,175 +118,109 @@ computation with a progress bar</strong>.</p></li>
 <pre><code><span><span class="co">## Loading required package: compiler</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |=======                                                               |  10%
-  |                                                                            
-  |==============                                                        |  20%
-  |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |============================                                          |  40%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |==========================================                            |  60%
-  |                                                                            
-  |=================================================                     |  70%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |======================================================================| 100%</code></pre>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, cl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |=======                                                               |  10%
-  |                                                                            
-  |==============                                                        |  20%
-  |                                                                            
-  |=====================                                                 |  30%
-  |                                                                            
-  |============================                                          |  40%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |==========================================                            |  60%
-  |                                                                            
-  |=================================================                     |  70%
-  |                                                                            
-  |========================================================              |  80%
-  |                                                                            
-  |===============================================================       |  90%
-  |                                                                            
-  |======================================================================| 100%</code></pre>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-  |                                                                            
-  |                                                                      |   0%evaluation # 1:
-## $i
-## [1] 1
-## 
-## 
-  |                                                                            
-  |=======                                                               |  10%result of evaluating expression:
-## [1] 1
-## got results for task 1
-## numValues: 1, numResults: 1, stopped: FALSE
-## returning status FALSE
-## evaluation # 2:
-## $i
-## [1] 2
-## 
-## 
-  |                                                                            
-  |==============                                                        |  20%result of evaluating expression:
-## [1] 4
-## got results for task 2
-## numValues: 2, numResults: 2, stopped: FALSE
-## returning status FALSE
-## evaluation # 3:
-## $i
-## [1] 3
-## 
-## 
-  |                                                                            
-  |=====================                                                 |  30%result of evaluating expression:
-## [1] 9
-## got results for task 3
-## numValues: 3, numResults: 3, stopped: FALSE
-## returning status FALSE
-## evaluation # 4:
-## $i
-## [1] 4
-## 
-## 
-  |                                                                            
-  |============================                                          |  40%result of evaluating expression:
-## [1] 16
-## got results for task 4
-## numValues: 4, numResults: 4, stopped: FALSE
-## returning status FALSE
-## evaluation # 5:
-## $i
-## [1] 5
-## 
-## 
-  |                                                                            
-  |===================================                                   |  50%result of evaluating expression:
-## [1] 25
-## got results for task 5
-## numValues: 5, numResults: 5, stopped: FALSE
-## returning status FALSE
-## evaluation # 6:
-## $i
-## [1] 6
-## 
-## 
-  |                                                                            
-  |==========================================                            |  60%result of evaluating expression:
-## [1] 36
-## got results for task 6
-## numValues: 6, numResults: 6, stopped: FALSE
-## returning status FALSE
-## evaluation # 7:
-## $i
-## [1] 7
-## 
-## 
-  |                                                                            
-  |=================================================                     |  70%result of evaluating expression:
-## [1] 49
-## got results for task 7
-## numValues: 7, numResults: 7, stopped: FALSE
-## returning status FALSE
-## evaluation # 8:
-## $i
-## [1] 8
-## 
-## 
-  |                                                                            
-  |========================================================              |  80%result of evaluating expression:
-## [1] 64
-## got results for task 8
-## numValues: 8, numResults: 8, stopped: FALSE
-## returning status FALSE
-## evaluation # 9:
-## $i
-## [1] 9
-## 
-## 
-  |                                                                            
-  |===============================================================       |  90%result of evaluating expression:
-## [1] 81
-## got results for task 9
-## numValues: 9, numResults: 9, stopped: FALSE
-## returning status FALSE
-## evaluation # 10:
-## $i
-## [1] 10
-## 
-## 
-  |                                                                            
-  |======================================================================| 100%result of evaluating expression:
-## [1] 100
-## got results for task 10
-## numValues: 10, numResults: 10, stopped: FALSE
-## returning status FALSE
-## numValues: 10, numResults: 10, stopped: TRUE
-## first call to combine function
-## evaluating call object to combine results:
-##   fun(result.1, result.2, result.3, result.4, result.5, result.6, 
-##     result.7, result.8, result.9, result.10)</code></pre>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%evaluation # 1:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |=======                                                               |  10%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 1</span></span>
+<span><span class="co">## got results for task 1</span></span>
+<span><span class="co">## numValues: 1, numResults: 1, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 2:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 2</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |==============                                                        |  20%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 4</span></span>
+<span><span class="co">## got results for task 2</span></span>
+<span><span class="co">## numValues: 2, numResults: 2, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 3:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 3</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |=====================                                                 |  30%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 9</span></span>
+<span><span class="co">## got results for task 3</span></span>
+<span><span class="co">## numValues: 3, numResults: 3, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 4:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 4</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |============================                                          |  40%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 16</span></span>
+<span><span class="co">## got results for task 4</span></span>
+<span><span class="co">## numValues: 4, numResults: 4, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 5:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 5</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |===================================                                   |  50%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 25</span></span>
+<span><span class="co">## got results for task 5</span></span>
+<span><span class="co">## numValues: 5, numResults: 5, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 6:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 6</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |==========================================                            |  60%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 36</span></span>
+<span><span class="co">## got results for task 6</span></span>
+<span><span class="co">## numValues: 6, numResults: 6, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 7:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 7</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |=================================================                     |  70%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 49</span></span>
+<span><span class="co">## got results for task 7</span></span>
+<span><span class="co">## numValues: 7, numResults: 7, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 8:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 8</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |========================================================              |  80%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 64</span></span>
+<span><span class="co">## got results for task 8</span></span>
+<span><span class="co">## numValues: 8, numResults: 8, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 9:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 9</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |===============================================================       |  90%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 81</span></span>
+<span><span class="co">## got results for task 9</span></span>
+<span><span class="co">## numValues: 9, numResults: 9, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## evaluation # 10:</span></span>
+<span><span class="co">## $i</span></span>
+<span><span class="co">## [1] 10</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##   |                                                                              |======================================================================| 100%result of evaluating expression:</span></span>
+<span><span class="co">## [1] 100</span></span>
+<span><span class="co">## got results for task 10</span></span>
+<span><span class="co">## numValues: 10, numResults: 10, stopped: FALSE</span></span>
+<span><span class="co">## returning status FALSE</span></span>
+<span><span class="co">## numValues: 10, numResults: 10, stopped: TRUE</span></span>
+<span><span class="co">## first call to combine function</span></span>
+<span><span class="co">## evaluating call object to combine results:</span></span>
+<span><span class="co">##   fun(result.1, result.2, result.3, result.4, result.5, result.6, </span></span>
+<span><span class="co">##     result.7, result.8, result.9, result.10)</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
