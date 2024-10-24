@@ -28,6 +28,15 @@
     <loc>/articles/ahead-vignette.html</loc>
   </url>
   <url>
+    <loc>/articles/caretfitpredict.html</loc>
+  </url>
+  <url>
+    <loc>/articles/comb_OLS.html</loc>
+  </url>
+  <url>
+    <loc>/articles/comb_OLS2.html</loc>
+  </url>
+  <url>
     <loc>/articles/fitforecastbench.html</loc>
   </url>
   <url>
@@ -49,6 +58,15 @@
     <loc>/reference/basicf.html</loc>
   </url>
   <url>
+    <loc>/reference/comb_GLMNET.html</loc>
+  </url>
+  <url>
+    <loc>/reference/comb_OLS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/comb_Ridge.html</loc>
+  </url>
+  <url>
     <loc>/reference/createtrendseason.html</loc>
   </url>
   <url>
@@ -56,6 +74,9 @@
   </url>
   <url>
     <loc>/reference/eatf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fit_func.html</loc>
   </url>
   <url>
     <loc>/reference/fitforecast.html</loc>
@@ -77,6 +98,9 @@
   </url>
   <url>
     <loc>/reference/plot.mtsforecast.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predict_func.html</loc>
   </url>
   <url>
     <loc>/reference/ridge2f.html</loc>

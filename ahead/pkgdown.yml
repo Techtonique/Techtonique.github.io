@@ -8,6 +8,9 @@ articles:
   ahead-ridge2-prediction-intervals: ahead-ridge2-prediction-intervals.html
   ahead-univariate-season: ahead-univariate-season.html
   ahead-vignette: ahead-vignette.html
+  caretfitpredict: caretfitpredict.html
+  comb_OLS: comb_OLS.html
+  comb_OLS2: comb_OLS2.html
   fitforecastbench: fitforecastbench.html
-last_built: 2024-09-18T16:39Z
+last_built: 2024-10-24T10:53Z
 
