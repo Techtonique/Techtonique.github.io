@@ -97,13 +97,22 @@
     <loc>/reference/loocvridge2f.html</loc>
   </url>
   <url>
+    <loc>/reference/plot.foreccomb_res.html</loc>
+  </url>
+  <url>
     <loc>/reference/plot.mtsforecast.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predict.foreccomb_res.html</loc>
   </url>
   <url>
     <loc>/reference/predict_func.html</loc>
   </url>
   <url>
     <loc>/reference/ridge2f.html</loc>
+  </url>
+  <url>
+    <loc>/reference/summary.foreccomb_res.html</loc>
   </url>
   <url>
     <loc>/reference/varf.html</loc>

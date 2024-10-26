@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.1</span>
       </span>
     </div>
 
@@ -149,24 +149,17 @@ hyperparameters will have to be tuned.</p>
 </h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, h <span class="op">=</span> <span class="fl">7</span>, type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, B <span class="op">=</span> <span class="fl">10</span>, </span>
-<span>                      block_length <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre></div>
+<span>                      block_length <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"sims"</span>, </span>
-<span>     main <span class="op">=</span> <span class="st">"Predictive simulations \n for Quotes"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-4-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span>, </span>
+<span>     main <span class="op">=</span> <span class="st">"Predictive simulations \n for Quotes"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for Quotes"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-4-2.png" width="691.2"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span>, </span>
+<span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for TV.advert"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"dist"</span>, </span>
 <span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for TV.advert"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-5-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, selected_series <span class="op">=</span> <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"dist"</span>, </span>
-<span>     main <span class="op">=</span> <span class="st">"Predictive simulation \n for TV.advert"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ahead-plotting-functions_files/figure-html/unnamed-chunk-5-2.png" width="691.2"></p>
 </div>
   </div>
 
