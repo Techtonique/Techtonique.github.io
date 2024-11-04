@@ -120,7 +120,7 @@ forecastingapi<wbr>.forecastingapi    </h1>
 </span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>    <span class="p">}</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>
 </span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="n">files</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">path_to_file</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">),</span> <span class="s1">&#39;text/csv&#39;</span><span class="p">),</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">path_to_file</span><span class="p">,</span> <span class="n">read_file_or_url</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">),</span> <span class="s1">&#39;text/csv&#39;</span><span class="p">),</span>
 </span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>    <span class="p">}</span>
 </span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">BASE_URL</span> <span class="o">+</span> <span class="s1">&#39;/forecasting&#39;</span><span class="p">,</span>
@@ -129,12 +129,12 @@ forecastingapi<wbr>.forecastingapi    </h1>
 </span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="k">def</span> <span class="nf">read_file_or_url</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="k">def</span> <span class="nf">read_file_or_url</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">):</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="p">{</span><span class="n">file_name</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">}</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="k">return</span> <span class="p">{</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)}</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>        <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -216,7 +216,7 @@ forecastingapi<wbr>.forecastingapi    </h1>
 </span><span id="get_forecast-69"><a href="#get_forecast-69"><span class="linenos">69</span></a>    <span class="p">}</span>
 </span><span id="get_forecast-70"><a href="#get_forecast-70"><span class="linenos">70</span></a>
 </span><span id="get_forecast-71"><a href="#get_forecast-71"><span class="linenos">71</span></a>    <span class="n">files</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="get_forecast-72"><a href="#get_forecast-72"><span class="linenos">72</span></a>        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">path_to_file</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">),</span> <span class="s1">&#39;text/csv&#39;</span><span class="p">),</span>
+</span><span id="get_forecast-72"><a href="#get_forecast-72"><span class="linenos">72</span></a>        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">path_to_file</span><span class="p">,</span> <span class="n">read_file_or_url</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">),</span> <span class="s1">&#39;text/csv&#39;</span><span class="p">),</span>
 </span><span id="get_forecast-73"><a href="#get_forecast-73"><span class="linenos">73</span></a>    <span class="p">}</span>
 </span><span id="get_forecast-74"><a href="#get_forecast-74"><span class="linenos">74</span></a>
 </span><span id="get_forecast-75"><a href="#get_forecast-75"><span class="linenos">75</span></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">BASE_URL</span> <span class="o">+</span> <span class="s1">&#39;/forecasting&#39;</span><span class="p">,</span>
@@ -275,18 +275,18 @@ forecastingapi<wbr>.forecastingapi    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">read_file_or_url</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">file_name</span>, </span><span class="param"><span class="n">path</span></span><span class="return-annotation">):</span></span>
+        <span class="name">read_file_or_url</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">path</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="read_file_or_url-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#read_file_or_url"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="read_file_or_url-81"><a href="#read_file_or_url-81"><span class="linenos">81</span></a><span class="k">def</span> <span class="nf">read_file_or_url</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="read_file_or_url-81"><a href="#read_file_or_url-81"><span class="linenos">81</span></a><span class="k">def</span> <span class="nf">read_file_or_url</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 </span><span id="read_file_or_url-82"><a href="#read_file_or_url-82"><span class="linenos">82</span></a>    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">):</span>
 </span><span id="read_file_or_url-83"><a href="#read_file_or_url-83"><span class="linenos">83</span></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span><span id="read_file_or_url-84"><a href="#read_file_or_url-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="p">{</span><span class="n">file_name</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">}</span>
+</span><span id="read_file_or_url-84"><a href="#read_file_or_url-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
 </span><span id="read_file_or_url-85"><a href="#read_file_or_url-85"><span class="linenos">85</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="read_file_or_url-86"><a href="#read_file_or_url-86"><span class="linenos">86</span></a>        <span class="k">return</span> <span class="p">{</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)}</span>
+</span><span id="read_file_or_url-86"><a href="#read_file_or_url-86"><span class="linenos">86</span></a>        <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
