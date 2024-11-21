@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.2</span>
       </span>
     </div>
 
@@ -79,6 +79,9 @@
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
+    <li>
+      <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -112,19 +115,21 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: foreach</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: snow</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: forecast</span></span></code></pre>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Loading required package: ggplot2</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: tseries</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/fitforecast.html">fitforecast</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span></span>
 <span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/fitforecast.html">fitforecast</a></span><span class="op">(</span><span class="va">AirPassengers</span>, </span>
 <span>                           conformalize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">obj3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/fitforecast.html">fitforecast</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, method <span class="op">=</span> <span class="st">"dynrmf"</span><span class="op">)</span></span>
 <span><span class="va">obj4</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/fitforecast.html">fitforecast</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, </span>
 <span>                           conformalize <span class="op">=</span> <span class="cn">TRUE</span>, method <span class="op">=</span> <span class="st">"dynrmf"</span><span class="op">)</span></span>
-<span><span class="va">obj5</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/fitforecast.html">fitforecast</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, method <span class="op">=</span> <span class="st">"te"</span><span class="op">)</span></span>
 <span><span class="va">obj6</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/fitforecast.html">fitforecast</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, </span>
 <span>                           conformalize <span class="op">=</span> <span class="cn">TRUE</span>, method <span class="op">=</span> <span class="st">"te"</span><span class="op">)</span></span>
 <span></span>
@@ -133,25 +138,23 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fitforecastbench_files/figure-html/unnamed-chunk-2-1.png" width="720"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fitforecastbench_files/figure-html/unnamed-chunk-2-2.png" width="720"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">obj2</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">obj2</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="st">"simulations"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fitforecastbench_files/figure-html/unnamed-chunk-2-3.png" width="720"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">obj3</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">obj4</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fitforecastbench_files/figure-html/unnamed-chunk-2-4.png" width="720"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj5</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">obj6</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">obj6</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fitforecastbench_files/figure-html/unnamed-chunk-2-5.png" width="720"></p>
   </div>
 

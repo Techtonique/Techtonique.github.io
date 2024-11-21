@@ -19,7 +19,7 @@ forecast."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.2</span>
       </span>
     </div>
 
@@ -62,6 +62,9 @@ forecast."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
+    </li>
+    <li>
+      <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
   </ul></li>
 <li>
@@ -119,24 +122,6 @@ forecast.</p>
     <p>Christoph E. Weiss and Gernot R. Roetzer</p>
     </div>
 
-    <div id="ref-examples">
-    <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1</span><span class="op">)</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">train_o</span><span class="op">&lt;-</span><span class="va">obs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">80</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">train_p</span><span class="op">&lt;-</span><span class="va">preds</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">80</span>,<span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">test_o</span><span class="op">&lt;-</span><span class="va">obs</span><span class="op">[</span><span class="fl">81</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span></span></span>
-<span class="r-in"><span><span class="va">test_p</span><span class="op">&lt;-</span><span class="va">preds</span><span class="op">[</span><span class="fl">81</span><span class="op">:</span><span class="fl">100</span>,<span class="op">]</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu">foreccomb</span><span class="op">(</span><span class="va">train_o</span>, <span class="va">train_p</span>, <span class="va">test_o</span>, <span class="va">test_p</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in foreccomb(train_o, train_p, test_o, test_p):</span> could not find function "foreccomb"</span>
-<span class="r-in"><span><span class="va">fit</span><span class="op">&lt;-</span><span class="fu">comb_BG</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in comb_BG(data):</span> could not find function "comb_BG"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'fit' not found</span>
-<span class="r-in"><span></span></span>
-</code></pre></div>
-    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

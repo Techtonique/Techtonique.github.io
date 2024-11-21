@@ -2,6 +2,16 @@ pandoc: 3.1.11.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  getting-started: getting-started.html
-last_built: 2024-11-01T14:34Z
+  ahead-loess-forecasting: ahead-loess-forecasting.html
+  ahead-neutralize: ahead-neutralize.html
+  ahead-plotting-functions: ahead-plotting-functions.html
+  ahead-ridge2-prediction-intervals: ahead-ridge2-prediction-intervals.html
+  ahead-univariate-season: ahead-univariate-season.html
+  ahead-vignette: ahead-vignette.html
+  caretfitpredict: caretfitpredict.html
+  comb_OLS: comb_OLS.html
+  comb_OLS2: comb_OLS2.html
+  fitforecastbench: fitforecastbench.html
+  generic-conformal: generic-conformal.html
+last_built: 2024-11-21T13:24Z
 

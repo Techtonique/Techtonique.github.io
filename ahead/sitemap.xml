@@ -4,10 +4,43 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/CONTRIBUTING.html</loc>
+  </url>
+  <url>
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/articles/getting-started.html</loc>
+    <loc>/articles/ahead-loess-forecasting.html</loc>
+  </url>
+  <url>
+    <loc>/articles/ahead-neutralize.html</loc>
+  </url>
+  <url>
+    <loc>/articles/ahead-plotting-functions.html</loc>
+  </url>
+  <url>
+    <loc>/articles/ahead-ridge2-prediction-intervals.html</loc>
+  </url>
+  <url>
+    <loc>/articles/ahead-univariate-season.html</loc>
+  </url>
+  <url>
+    <loc>/articles/ahead-vignette.html</loc>
+  </url>
+  <url>
+    <loc>/articles/caretfitpredict.html</loc>
+  </url>
+  <url>
+    <loc>/articles/comb_OLS.html</loc>
+  </url>
+  <url>
+    <loc>/articles/comb_OLS2.html</loc>
+  </url>
+  <url>
+    <loc>/articles/fitforecastbench.html</loc>
+  </url>
+  <url>
+    <loc>/articles/generic-conformal.html</loc>
   </url>
   <url>
     <loc>/articles/index.html</loc>
@@ -19,9 +52,78 @@
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/get_forecast.html</loc>
+    <loc>/news/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/armagarchf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/basicf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/comb_GLMNET.html</loc>
+  </url>
+  <url>
+    <loc>/reference/comb_OLS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/comb_Ridge.html</loc>
+  </url>
+  <url>
+    <loc>/reference/conformalize.html</loc>
+  </url>
+  <url>
+    <loc>/reference/createtrendseason.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dynrmf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/eatf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fit_func.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fitforecast.html</loc>
+  </url>
+  <url>
+    <loc>/reference/genericforecast.html</loc>
+  </url>
+  <url>
+    <loc>/reference/getreturns.html</loc>
+  </url>
+  <url>
+    <loc>/reference/getsimulations.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/loessf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/loocvridge2f.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot.foreccomb_res.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot.mtsforecast.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predict.foreccomb_res.html</loc>
+  </url>
+  <url>
+    <loc>/reference/predict_func.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ridge2f.html</loc>
+  </url>
+  <url>
+    <loc>/reference/summary.foreccomb_res.html</loc>
+  </url>
+  <url>
+    <loc>/reference/varf.html</loc>
   </url>
 </urlset>
