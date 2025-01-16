@@ -84,9 +84,14 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">        print(clf.predict(X_test))</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        ```</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="k">pass</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        clf = Classifier(&quot;RandomForestClassifier&quot;, n_estimators=100, random_state=42)</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        print(clf.predict(X_test))</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        ```</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="k">pass</span>
 </span></pre></div>
 
 
@@ -123,9 +128,14 @@
 </span><span id="Classifier-23"><a href="#Classifier-23"><span class="linenos">23</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
 </span><span id="Classifier-24"><a href="#Classifier-24"><span class="linenos">24</span></a><span class="sd">        print(clf.predict(X_test))</span>
 </span><span id="Classifier-25"><a href="#Classifier-25"><span class="linenos">25</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
-</span><span id="Classifier-26"><a href="#Classifier-26"><span class="linenos">26</span></a><span class="sd">        ```</span>
-</span><span id="Classifier-27"><a href="#Classifier-27"><span class="linenos">27</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="Classifier-28"><a href="#Classifier-28"><span class="linenos">28</span></a>    <span class="k">pass</span>
+</span><span id="Classifier-26"><a href="#Classifier-26"><span class="linenos">26</span></a>
+</span><span id="Classifier-27"><a href="#Classifier-27"><span class="linenos">27</span></a><span class="sd">        clf = Classifier(&quot;RandomForestClassifier&quot;, n_estimators=100, random_state=42)</span>
+</span><span id="Classifier-28"><a href="#Classifier-28"><span class="linenos">28</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
+</span><span id="Classifier-29"><a href="#Classifier-29"><span class="linenos">29</span></a><span class="sd">        print(clf.predict(X_test))</span>
+</span><span id="Classifier-30"><a href="#Classifier-30"><span class="linenos">30</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
+</span><span id="Classifier-31"><a href="#Classifier-31"><span class="linenos">31</span></a><span class="sd">        ```</span>
+</span><span id="Classifier-32"><a href="#Classifier-32"><span class="linenos">32</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="Classifier-33"><a href="#Classifier-33"><span class="linenos">33</span></a>    <span class="k">pass</span>
 </span></pre></div>
 
 
@@ -149,6 +159,11 @@
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">clf</span> <span class="o">=</span> <span class="n">Classifier</span><span class="p">(</span><span class="s2">&quot;LogisticRegression&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">Classifier</span><span class="p">(</span><span class="s2">&quot;RandomForestClassifier&quot;</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
