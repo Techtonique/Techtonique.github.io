@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Toolkit for Monte Carlo Simulations • ESGtoolkit</title>
+<title>A Toolkit for Monte Carlo Simulations • esgtoolkit</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -39,8 +39,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">ESGtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.2</span>
+        <a class="navbar-link" href="index.html">esgtoolkit</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.0</span>
       </span>
     </div>
 
@@ -48,6 +48,21 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/g2plus.html">G2++</a>
+    </li>
+    <li>
+      <a href="articles/martingale_test.html">Martingale tests</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -77,13 +92,13 @@
   <div class="contents col-md-9">
 
 <div class="section level1">
-<div class="page-header"><h1 id="esgtoolkit--star">ESGtoolkit | <a class="external-link github-button" href="https://github.com/Techtonique/esgtoolkit/stargazers" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Star esgtoolkit/esgtoolkit on GitHub">Star</a>
+<div class="page-header"><h1 id="esgtoolkit--star">esgtoolkit | <a class="external-link github-button" href="https://github.com/Techtonique/esgtoolkit/stargazers" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Star esgtoolkit/esgtoolkit on GitHub">Star</a>
 <a class="anchor" aria-label="anchor" href="#esgtoolkit--star"></a>
 </h1></div>
-
-<p><strong>Important:</strong> Starting with 1.0.0, the next version, it will be renamed as: lower case ‘esgtoolkit’ (to finally remove all my active packages from CRAN)</p>
+<p><a href="https://github.com/Techtonique/esgtoolkit" class="external-link"><img src="https://img.shields.io/github/last-commit/Techtonique/esgtoolkit" alt="Last Commit"></a> <a href="http://hits.dwyl.com/Techtonique/esgtoolkit" class="external-link"><img src="https://hits.dwyl.com/Techtonique/esgtoolkit.svg?style=flat-square" alt="HitCount"></a></p>
+<p><strong>Important:</strong> Starting with 1.0.0, the package is renamed as lower case ‘esgtoolkit’ (to finally remove all my active packages from CRAN)</p>
 <p>A toolkit for Monte Carlo Simulations in Finance, Economics, Insurance, Physics. Multiple simulation models can be created by combining building blocks provided in the package.</p>
-<p>For <strong>more details</strong>, you can read the package <a href="https://www.researchgate.net/publication/338549100_ESGtoolkit_a_tool_for_stochastic_simulation_v020" class="external-link">vignette on ResearchGate</a>. Functions’ documentation can be found in section ‘Reference’ of the <a href="https://techtonique.github.io/ESGtoolkit/">website</a>.</p>
+<p>For <strong>more details</strong>, you can read the package <a href="https://www.researchgate.net/publication/338549100_esgtoolkit_a_tool_for_stochastic_simulation_v020" class="external-link">vignette on ResearchGate</a>. Functions’ documentation can be found in section ‘Reference’ of the <a href="https://techtonique.github.io/esgtoolkit/">website</a>.</p>
 </div>
 <div class="section level1">
 <h1 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
@@ -103,7 +118,7 @@
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Techtonique/ESGtoolkit"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Techtonique/esgtoolkit"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>From R universe:</li>
 </ul>
@@ -114,14 +129,14 @@
 <span>  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Install some packages</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'ESGtoolkit'</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'esgtoolkit'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
 </h1>
-<p>In addition to the example below, you can read: - <a href="https://thierrymoudiki.wordpress.com/" class="external-link">this blog</a>‘s archives - the functions’ examples in section ‘Reference’ on <a href="https://techtonique.github.io/ESGtoolkit/">the website</a> contain code + a lot graphs</p>
+<p>In addition to the example below, you can read: - <a href="https://thierrymoudiki.wordpress.com/" class="external-link">this blog</a>‘s archives - the functions’ examples in section ‘Reference’ on <a href="https://techtonique.github.io/esgtoolkit/">the website</a> contain code + a lot graphs</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://techtonique.github.io/ESGtoolkit/">ESGtoolkit</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Techtonique/esgtoolkit" class="external-link">esgtoolkit</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Geometric Brownian Motion (https://en.wikipedia.org/wiki/Geometric_Brownian_motion)</span></span>
 <span></span>
@@ -142,7 +157,7 @@
 <div class="section level1">
 <h1 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h1>
-<p><a href="https://techtonique.github.io/ESGtoolkit/LICENSE-text.html">BSD 3-Clause Clear</a> © Thierry Moudiki, 2014.</p>
+<p><a href="https://techtonique.github.io/esgtoolkit/LICENSE-text.html">BSD 3-Clause Clear</a> © Thierry Moudiki, 2014.</p>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </div>
 
@@ -152,9 +167,8 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://cloud.r-project.org/package=ESGtoolkit" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/Techtonique/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/Techtonique/ESGtoolkit/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/Techtonique/esgtoolkit/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -177,7 +191,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing ESGtoolkit</a></li>
+<li><a href="authors.html#citation">Citing esgtoolkit</a></li>
 </ul>
 </div>
 
@@ -189,12 +203,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/Techtonique/ESGtoolkit" class="external-link"><img src="https://img.shields.io/github/last-commit/Techtonique/ESGtoolkit" alt="Last Commit"></a></li>
-</ul>
-</div>
+
 
   </div>
 </div>
@@ -207,7 +216,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
