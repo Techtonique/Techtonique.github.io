@@ -121,36 +121,173 @@
 <span><span class="va">S0</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
-<span><span class="va">eps0</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simshocks.html">simshocks</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, horizon <span class="op">=</span> <span class="fl">3</span>, frequency <span class="op">=</span> <span class="st">"quart"</span><span class="op">)</span></span>
-<span><span class="va">sim.GBM</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, horizon <span class="op">=</span> <span class="fl">3</span>, frequency <span class="op">=</span> <span class="st">"quart"</span>,   </span>
+<span><span class="va">eps0</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simshocks.html">simshocks</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, horizon <span class="op">=</span> <span class="fl">3</span>, frequency <span class="op">=</span> <span class="st">"quart"</span><span class="op">)</span></span>
+<span><span class="va">eps_trend</span> <span class="op">&lt;-</span> <span class="va">eps0</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">eps0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">sim.GBM</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, horizon <span class="op">=</span> <span class="fl">3</span>, frequency <span class="op">=</span> <span class="st">"quart"</span>,   </span>
 <span>                   model <span class="op">=</span> <span class="st">"GBM"</span>, </span>
 <span>                   x0 <span class="op">=</span> <span class="va">S0</span>, theta1 <span class="op">=</span> <span class="va">r0</span>, theta2 <span class="op">=</span> <span class="fl">0.1</span>, </span>
 <span>                   eps <span class="op">=</span> <span class="va">eps0</span>, seed<span class="op">=</span><span class="fl">10001</span><span class="op">)</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">mc.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
-<span>                             alpha <span class="op">=</span> <span class="fl">0.05</span>, method <span class="op">=</span> <span class="st">"trend"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">sim.GBM_trend</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, horizon <span class="op">=</span> <span class="fl">3</span>, frequency <span class="op">=</span> <span class="st">"quart"</span>,   </span>
+<span>                   model <span class="op">=</span> <span class="st">"GBM"</span>, </span>
+<span>                   x0 <span class="op">=</span> <span class="va">S0</span>, theta1 <span class="op">=</span> <span class="va">r0</span>, theta2 <span class="op">=</span> <span class="fl">0.1</span>, </span>
+<span>                   eps <span class="op">=</span> <span class="va">eps_trend</span>, seed<span class="op">=</span><span class="fl">10001</span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">test1</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
+<span>                            alpha <span class="op">=</span> <span class="fl">0.05</span>, method <span class="op">=</span> <span class="st">"trend"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<pre><code><span><span class="co">## $F_statistic</span></span>
+<pre><code><span><span class="co">## $model</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = Y ~ X_past - 1)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##  X_past1   X_past2   X_past3   X_past4   X_past5   X_past6   X_past7   X_past8  </span></span>
+<span><span class="co">## -0.06572   0.16730  -0.26443  -0.18877   0.19323  -0.02259   0.13619  -0.11573  </span></span>
+<span><span class="co">##  X_past9  X_past10  X_past11  </span></span>
+<span><span class="co">##  0.03115   0.15059  -0.16763  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $confint</span></span>
+<span><span class="co">##               2.5 %     97.5 %</span></span>
+<span><span class="co">## X_past1  -1.5677993 1.43636442</span></span>
+<span><span class="co">## X_past2  -0.1809456 0.51555444</span></span>
+<span><span class="co">## X_past3  -0.5508806 0.02202036</span></span>
+<span><span class="co">## X_past4  -0.4761764 0.09862776</span></span>
+<span><span class="co">## X_past5  -0.1314138 0.51787217</span></span>
+<span><span class="co">## X_past6  -0.3278961 0.28271931</span></span>
+<span><span class="co">## X_past7  -0.1975848 0.46996836</span></span>
+<span><span class="co">## X_past8  -0.4314591 0.20000013</span></span>
+<span><span class="co">## X_past9  -0.2941281 0.35641929</span></span>
+<span><span class="co">## X_past10 -0.1642687 0.46545036</span></span>
+<span><span class="co">## X_past11 -0.4260530 0.09078976</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $regression_summary</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = Y ~ X_past - 1)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residuals:</span></span>
+<span><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">## -12.9643  -3.4212   0.0955   2.9126  13.3615 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##          Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
+<span><span class="co">## X_past1  -0.06572    0.75596  -0.087    0.931  </span></span>
+<span><span class="co">## X_past2   0.16730    0.17527   0.955    0.342  </span></span>
+<span><span class="co">## X_past3  -0.26443    0.14416  -1.834    0.070 .</span></span>
+<span><span class="co">## X_past4  -0.18877    0.14464  -1.305    0.195  </span></span>
+<span><span class="co">## X_past5   0.19323    0.16339   1.183    0.240  </span></span>
+<span><span class="co">## X_past6  -0.02259    0.15365  -0.147    0.883  </span></span>
+<span><span class="co">## X_past7   0.13619    0.16798   0.811    0.420  </span></span>
+<span><span class="co">## X_past8  -0.11573    0.15890  -0.728    0.468  </span></span>
+<span><span class="co">## X_past9   0.03115    0.16370   0.190    0.850  </span></span>
+<span><span class="co">## X_past10  0.15059    0.15846   0.950    0.345  </span></span>
+<span><span class="co">## X_past11 -0.16763    0.13006  -1.289    0.201  </span></span>
+<span><span class="co">## ---</span></span>
+<span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residual standard error: 5.418 on 89 degrees of freedom</span></span>
+<span><span class="co">## Multiple R-squared:  0.118,  Adjusted R-squared:  0.008978 </span></span>
+<span><span class="co">## F-statistic: 1.082 on 11 and 89 DF,  p-value: 0.3845</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $F_statistic</span></span>
 <span><span class="co">##    value </span></span>
-<span><span class="co">## 1.127645 </span></span>
+<span><span class="co">## 1.082356 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $F_critical_value</span></span>
-<span><span class="co">## [1] 1.899171</span></span>
+<span><span class="co">## [1] 1.897906</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $F_p_value</span></span>
 <span><span class="co">##     value </span></span>
-<span><span class="co">## 0.3499621 </span></span>
+<span><span class="co">## 0.3845351 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $ADF_p_value</span></span>
 <span><span class="co">## [1] 0.99</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Ljung_Box_p_value</span></span>
-<span><span class="co">## [1] 0.5998307</span></span></code></pre>
+<span><span class="co">## [1] 0.5478898</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">mc.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
-<span>                             alpha <span class="op">=</span> <span class="fl">0.05</span>, method <span class="op">=</span> <span class="st">"ratio"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">test2</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM_trend</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
+<span>                            alpha <span class="op">=</span> <span class="fl">0.05</span>, method <span class="op">=</span> <span class="st">"trend"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $model</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = Y ~ X_past - 1)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##   X_past1    X_past2    X_past3    X_past4    X_past5    X_past6    X_past7  </span></span>
+<span><span class="co">## -10.29737    0.24375   -0.37384   -0.28232    0.26141   -0.02530    0.19617  </span></span>
+<span><span class="co">##   X_past8    X_past9   X_past10   X_past11  </span></span>
+<span><span class="co">##  -0.15802    0.04407    0.17779   -0.12494  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $confint</span></span>
+<span><span class="co">##                2.5 %      97.5 %</span></span>
+<span><span class="co">## X_past1  -15.4669678 -5.12776227</span></span>
+<span><span class="co">## X_past2   -0.2665785  0.75408750</span></span>
+<span><span class="co">## X_past3   -0.7894330  0.04175475</span></span>
+<span><span class="co">## X_past4   -0.6930818  0.12845125</span></span>
+<span><span class="co">## X_past5   -0.1933910  0.71621916</span></span>
+<span><span class="co">## X_past6   -0.4424541  0.39186025</span></span>
+<span><span class="co">## X_past7   -0.2464075  0.63874666</span></span>
+<span><span class="co">## X_past8   -0.5622693  0.24622708</span></span>
+<span><span class="co">## X_past9   -0.3560678  0.44420838</span></span>
+<span><span class="co">## X_past10  -0.1924981  0.54806926</span></span>
+<span><span class="co">## X_past11  -0.4140250  0.16415292</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $regression_summary</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = Y ~ X_past - 1)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residuals:</span></span>
+<span><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">## -18.5358  -5.0704   0.1687   4.6036  20.1236 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##           Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">## X_past1  -10.29737    2.60174  -3.958 0.000152 ***</span></span>
+<span><span class="co">## X_past2    0.24375    0.25684   0.949 0.345162    </span></span>
+<span><span class="co">## X_past3   -0.37384    0.20916  -1.787 0.077286 .  </span></span>
+<span><span class="co">## X_past4   -0.28232    0.20673  -1.366 0.175497    </span></span>
+<span><span class="co">## X_past5    0.26141    0.22889   1.142 0.256484    </span></span>
+<span><span class="co">## X_past6   -0.02530    0.20995  -0.120 0.904364    </span></span>
+<span><span class="co">## X_past7    0.19617    0.22274   0.881 0.380844    </span></span>
+<span><span class="co">## X_past8   -0.15802    0.20345  -0.777 0.439388    </span></span>
+<span><span class="co">## X_past9    0.04407    0.20138   0.219 0.827275    </span></span>
+<span><span class="co">## X_past10   0.17779    0.18636   0.954 0.342660    </span></span>
+<span><span class="co">## X_past11  -0.12494    0.14549  -0.859 0.392804    </span></span>
+<span><span class="co">## ---</span></span>
+<span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residual standard error: 7.979 on 89 degrees of freedom</span></span>
+<span><span class="co">## Multiple R-squared:  0.5878, Adjusted R-squared:  0.5368 </span></span>
+<span><span class="co">## F-statistic: 11.54 on 11 and 89 DF,  p-value: 4.801e-13</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $F_statistic</span></span>
+<span><span class="co">##    value </span></span>
+<span><span class="co">## 11.53593 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $F_critical_value</span></span>
+<span><span class="co">## [1] 1.897906</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $F_p_value</span></span>
+<span><span class="co">##        value </span></span>
+<span><span class="co">## 4.801344e-13 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $ADF_p_value</span></span>
+<span><span class="co">## [1] 0.99</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $Ljung_Box_p_value</span></span>
+<span><span class="co">## [1] 0.5813833</span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">test1_ratio</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
+<span>                            alpha <span class="op">=</span> <span class="fl">0.05</span>, method <span class="op">=</span> <span class="st">"ratio"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  One Sample t-test</span></span>
 <span><span class="co">## </span></span>
@@ -162,8 +299,23 @@
 <span><span class="co">## sample estimates:</span></span>
 <span><span class="co">##  mean of x </span></span>
 <span><span class="co">## 0.01075996</span></span></code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">mc.test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM</span>, p0 <span class="op">=</span> <span class="va">S0</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">test2_ratio</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM_trend</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
+<span>                            alpha <span class="op">=</span> <span class="fl">0.05</span>, method <span class="op">=</span> <span class="st">"ratio"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">##  One Sample t-test</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## data:  -log(Dt/Y)</span></span>
+<span><span class="co">## t = -28.306, df = 1299, p-value &lt; 2.2e-16</span></span>
+<span><span class="co">## alternative hypothesis: true mean is not equal to 0</span></span>
+<span><span class="co">## 95 percent confidence interval:</span></span>
+<span><span class="co">##  -0.1381972 -0.1202828</span></span>
+<span><span class="co">## sample estimates:</span></span>
+<span><span class="co">## mean of x </span></span>
+<span><span class="co">##  -0.12924</span></span></code></pre>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">test3</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
+<span>alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  martingale '1=1' one Sample t-test </span></span>
 <span><span class="co">## </span></span>
@@ -245,9 +397,96 @@
 <span><span class="co">## $mc.prices</span></span>
 <span><span class="co">##  [1]  99.25281  99.45798  99.39472  99.96570  99.25232  99.13551  98.91679</span></span>
 <span><span class="co">##  [8]  99.24119  99.01396  99.74187  99.76000 100.22790 100.13885</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">mc.test</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">test3</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="martingale_test_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">test4</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgmartingaletest.html">esgmartingaletest</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r0</span>, X <span class="op">=</span> <span class="va">sim.GBM_trend</span>, p0 <span class="op">=</span> <span class="va">S0</span>, </span>
+<span>alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">##  martingale '1=1' one Sample t-test </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##  alternative hypothesis: true mean of the martingale difference is not equal to 0 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## df =  99</span></span>
+<span><span class="co">##                t      p-value</span></span>
+<span><span class="co">## 0 Q2 -0.09830242 9.218909e-01</span></span>
+<span><span class="co">## 0 Q3  1.26564339 2.086113e-01</span></span>
+<span><span class="co">## 0 Q4  3.38854397 1.009793e-03</span></span>
+<span><span class="co">## 1 Q1  4.35501911 3.248801e-05</span></span>
+<span><span class="co">## 1 Q2  6.28558899 8.832209e-09</span></span>
+<span><span class="co">## 1 Q3  8.22182946 8.017342e-13</span></span>
+<span><span class="co">## 1 Q4 10.46406421 1.065632e-17</span></span>
+<span><span class="co">## 2 Q1 12.72722237 1.464574e-22</span></span>
+<span><span class="co">## 2 Q2 14.59789208 1.997160e-26</span></span>
+<span><span class="co">## 2 Q3 18.25662272 1.864629e-33</span></span>
+<span><span class="co">## 2 Q4 20.27387917 5.091006e-37</span></span>
+<span><span class="co">## 3 Q1 21.86138734 1.126498e-39</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## 95 percent confidence intervals for the mean : </span></span>
+<span><span class="co">##      c.i lower bound c.i upper bound</span></span>
+<span><span class="co">## 0 Q1       0.0000000        0.000000</span></span>
+<span><span class="co">## 0 Q2      -0.9213037        0.834326</span></span>
+<span><span class="co">## 0 Q3      -0.5092052        2.302959</span></span>
+<span><span class="co">## 0 Q4       1.2474891        4.772721</span></span>
+<span><span class="co">## 1 Q1       2.3632214        6.318966</span></span>
+<span><span class="co">## 1 Q2       4.6921279        9.021072</span></span>
+<span><span class="co">## 1 Q3       7.4864493       12.249406</span></span>
+<span><span class="co">## 1 Q4      11.4705294       16.838555</span></span>
+<span><span class="co">## 2 Q1      15.6505958       21.431879</span></span>
+<span><span class="co">## 2 Q2      21.5232520       28.294760</span></span>
+<span><span class="co">## 2 Q3      27.9312389       34.742971</span></span>
+<span><span class="co">## 2 Q4      35.5563641       43.271273</span></span>
+<span><span class="co">## 3 Q1      43.5552945       52.251014</span></span></code></pre>
+<pre><code><span><span class="co">## $t</span></span>
+<span><span class="co">##          Qtr1        Qtr2        Qtr3        Qtr4</span></span>
+<span><span class="co">## 0             -0.09830242  1.26564339  3.38854397</span></span>
+<span><span class="co">## 1  4.35501911  6.28558899  8.22182946 10.46406421</span></span>
+<span><span class="co">## 2 12.72722237 14.59789208 18.25662272 20.27387917</span></span>
+<span><span class="co">## 3 21.86138734                                    </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $p.value</span></span>
+<span><span class="co">##           Qtr1         Qtr2         Qtr3         Qtr4</span></span>
+<span><span class="co">## 0              9.218909e-01 2.086113e-01 1.009793e-03</span></span>
+<span><span class="co">## 1 3.248801e-05 8.832209e-09 8.017342e-13 1.065632e-17</span></span>
+<span><span class="co">## 2 1.464574e-22 1.997160e-26 1.864629e-33 5.091006e-37</span></span>
+<span><span class="co">## 3 1.126498e-39                                       </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $samplemean</span></span>
+<span><span class="co">##          Qtr1        Qtr2        Qtr3        Qtr4</span></span>
+<span><span class="co">## 0             -0.04348885  0.89687710  3.01010493</span></span>
+<span><span class="co">## 1  4.34109374  6.85659997  9.86792776 14.15454224</span></span>
+<span><span class="co">## 2 18.54123730 24.90900609 31.33710516 39.41381860</span></span>
+<span><span class="co">## 3 47.90315446                                    </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $conf.int</span></span>
+<span><span class="co">##        Series 1  Series 2</span></span>
+<span><span class="co">## 0 Q1  0.0000000  0.000000</span></span>
+<span><span class="co">## 0 Q2 -0.9213037  0.834326</span></span>
+<span><span class="co">## 0 Q3 -0.5092052  2.302959</span></span>
+<span><span class="co">## 0 Q4  1.2474891  4.772721</span></span>
+<span><span class="co">## 1 Q1  2.3632214  6.318966</span></span>
+<span><span class="co">## 1 Q2  4.6921279  9.021072</span></span>
+<span><span class="co">## 1 Q3  7.4864493 12.249406</span></span>
+<span><span class="co">## 1 Q4 11.4705294 16.838555</span></span>
+<span><span class="co">## 2 Q1 15.6505958 21.431879</span></span>
+<span><span class="co">## 2 Q2 21.5232520 28.294760</span></span>
+<span><span class="co">## 2 Q3 27.9312389 34.742971</span></span>
+<span><span class="co">## 2 Q4 35.5563641 43.271273</span></span>
+<span><span class="co">## 3 Q1 43.5552945 52.251014</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $truemean</span></span>
+<span><span class="co">##  [1] 0 0 0 0 0 0 0 0 0 0 0 0 0</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $true_prices</span></span>
+<span><span class="co">##  [1] 100 100 100 100 100 100 100 100 100 100 100 100 100</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mc.prices</span></span>
+<span><span class="co">##  [1]  99.25281  99.95651 100.89688 103.01010 104.34109 106.85660 109.86793</span></span>
+<span><span class="co">##  [8] 114.15454 118.54124 124.90901 131.33711 139.41382 147.90315</span></span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">test4</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="martingale_test_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

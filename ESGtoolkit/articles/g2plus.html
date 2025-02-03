@@ -195,7 +195,7 @@
 <span><span class="va">r_SW</span> <span class="op">&lt;-</span> <span class="fu">simG2plus</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, methodyc <span class="op">=</span> <span class="st">"hyman"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">ptm</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.098   0.005   0.104</span></span></code></pre>
+<span><span class="co">##   0.193   0.011   0.254</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">r_SW</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span>
