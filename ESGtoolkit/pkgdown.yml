@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   g2plus: g2plus.html
   martingale_test: martingale_test.html
-last_built: 2025-02-03T20:56Z
+last_built: 2025-02-07T14:17Z
 urls:
   reference: https://techtonique.github.io/esgtoolkit/reference
   article: https://techtonique.github.io/esgtoolkit/articles
