@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.15.0</span>
       </span>
     </div>
 
@@ -57,6 +57,9 @@
     </li>
     <li>
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
+    </li>
+    <li>
+      <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -179,225 +182,7 @@
 <span class="r-in"><span><span class="va">test_pred</span> <span class="op">&lt;-</span> <span class="va">electricity</span><span class="op">[</span><span class="fl">85</span><span class="op">:</span><span class="fl">123</span>, <span class="va">forecasting_methods</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">ForecastComb</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ForecastComb/man/foreccomb.html" class="external-link">foreccomb</a></span><span class="op">(</span><span class="va">train_obs</span>, <span class="va">train_pred</span>, <span class="va">test_obs</span>, <span class="va">test_pred</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">comb_GLMNET</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Method</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GLMNET Regression Regression"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Models</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "arima"   "ets"     "nnet"    "dampedt" "dotm"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Fitted</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Time Series:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Start = 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> End = 84 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Frequency = 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 35878.50 33644.27 36312.31 30258.31 28893.30 28392.59 28694.17 28434.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 30025.91 31556.28 34047.23 36407.60 35963.88 32998.01 35858.16 30097.28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] 29779.11 28522.30 28643.47 28707.67 29808.18 31791.58 34098.84 35714.49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 35842.60 33195.45 34771.13 29914.63 28704.55 27724.39 28470.85 27868.45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] 28789.39 31455.03 31379.17 34098.66 34341.19 31758.03 32756.58 28978.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] 27811.85 27104.06 27316.63 26865.51 27921.23 29981.37 31421.46 34178.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 35300.14 32291.19 33613.51 28637.18 27660.20 26684.56 27086.58 27163.08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] 28000.63 30273.40 31623.79 33433.12 34253.89 30869.39 32134.89 27652.63</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [65] 27438.39 26946.58 26815.60 26670.87 27478.89 29286.78 31475.12 33636.87</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [73] 33979.47 31359.82 31939.39 28394.24 28058.86 26678.05 26912.53 26670.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [81] 27233.13 29445.80 31089.23 33539.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Accuracy_Train</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    ME     RMSE      MAE         MPE     MAPE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Test set 3.551339e-12 950.6999 751.5739 0.007510127 2.417785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data$Actual_Train</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Time Series:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Start = 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> End = 84 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Frequency = 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 36420 32901 34595 29665 30154 28607 29072 29018 29266 32955 35385 36311</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 36885 34077 34807 32379 29319 28025 29145 28814 29183 32311 33274 35355</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 36490 32544 32810 28334 28186 27302 27562 27323 27487 29978 31259 33734</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 36770 32347 33348 28815 28455 26761 27403 26743 27508 30261 32806 37107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 35851 31347 32919 27378 27766 26948 26901 27234 27644 29307 30865 33056</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [61] 33447 32359 31196 29083 28783 26558 27145 27012 27086 30168 31317 33327</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [73] 34581 31645 33922 29393 27537 25813 26397 26189 27265 29126 31246 31838</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data$Forecasts_Train</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Time Series:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Start = 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> End = 84 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Frequency = 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       arima      ets     nnet  dampedt     dotm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 36980.16 35692.31 37047.91 35540.66 36044.28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2 33587.29 33708.15 34523.56 33962.34 33821.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3 36005.55 37366.20 36049.72 37317.91 37119.29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4 30925.25 30550.24 30721.91 30356.77 30350.95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5 30394.78 29167.64 29241.89 28766.40 28910.84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6 28938.14 29004.18 29211.91 29006.25 28229.28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7 29657.04 28528.66 29203.88 28814.83 28655.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8 29153.90 28315.55 29166.40 28434.89 28301.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9 29961.03 30160.74 30119.06 30349.56 30275.80</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 31588.09 31766.03 31651.94 32071.41 31901.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 33837.47 33822.40 35515.04 34113.82 34026.36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 34867.32 36794.86 36655.04 37026.80 37067.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 35889.38 35607.80 36822.33 35729.63 36300.97</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 32798.91 33587.61 32255.68 33768.59 33773.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 34306.37 36737.83 35292.80 36758.11 36800.75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 29966.78 30370.67 29980.12 30557.80 30436.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 30392.01 29190.21 30635.55 29636.53 29688.95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 29015.34 29074.45 28713.94 29141.59 28614.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 29412.07 28855.21 28355.26 28940.68 28921.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 29363.64 28426.54 29410.28 28597.90 28606.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 29765.27 30040.77 29542.78 30152.22 30183.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 32220.66 32057.18 31768.59 32241.53 32183.21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 34156.03 34057.47 35147.91 34279.69 34235.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 35723.96 36689.58 34983.13 36780.37 36654.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 36280.06 35648.41 36827.12 35740.49 36103.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 33840.14 33668.43 33528.59 33755.07 33530.99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 34407.08 36135.97 33336.14 36230.09 35938.64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 32319.76 30719.51 29427.69 30388.45 30291.53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 29614.98 29097.34 28965.02 28939.13 28766.45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 27872.45 28863.16 28469.27 28292.87 27561.67</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 29435.29 28800.08 29850.37 28264.59 28077.79</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 29127.54 28455.57 28706.44 27841.23 27636.98</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 29183.36 29158.41 28987.40 29139.26 28900.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 31830.06 31279.38 33910.04 31367.97 30857.46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 32552.70 32838.71 29306.29 33268.83 32517.92</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 34430.62 35206.62 34223.59 34889.89 34586.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 35111.78 34116.19 35916.67 33589.01 34260.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 32600.07 32144.69 32009.33 32333.50 32024.70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 32050.98 34506.88 30459.31 34412.39 34143.19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 28909.21 29035.14 29412.74 29075.38 29027.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 28631.67 27933.21 27772.33 27841.73 27936.44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 27810.99 27664.01 27380.88 27071.34 27063.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 27823.04 27418.15 27182.21 27167.99 27457.91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 27695.70 27062.08 26316.67 26706.98 27127.40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 27729.13 28251.66 27625.38 27828.42 28191.17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 30040.28 30452.20 29920.24 30057.55 30284.07</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 31285.80 32283.79 30917.63 31801.27 31998.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 33766.69 34779.92 34910.21 34220.15 34461.99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 36983.56 34822.79 37032.61 34640.33 35186.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 32174.73 32478.97 33326.39 32411.67 32321.84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 35212.61 34396.88 33543.16 34191.48 34098.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52 28693.48 29109.25 28210.13 28870.24 28995.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53 27419.96 27808.78 27680.25 27604.85 27791.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 27257.66 27042.60 26763.98 26709.01 26698.56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55 26645.51 27175.85 27158.66 26909.30 27167.65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56 26683.68 26725.28 28429.34 26531.20 26783.43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 27677.94 27991.41 28588.35 27773.89 27935.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58 29618.71 30345.62 31386.19 30134.59 30162.66</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59 31554.72 32120.05 32010.20 31941.42 31863.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60 34620.52 34622.02 32505.33 34431.48 34257.01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61 35408.60 34167.47 35783.08 33679.08 34171.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62 30813.78 31214.30 31422.86 30899.38 30993.72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63 32948.11 33573.30 30838.18 33071.76 33032.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64 27501.02 27831.13 27400.83 27584.47 27886.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65 28547.37 27270.63 27960.56 26752.54 27308.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66 27685.63 26759.22 28189.67 26340.52 26516.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67 27236.53 26857.17 26654.41 26429.01 26937.96</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68 27679.89 26823.84 26624.48 26241.10 26716.85</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69 27918.96 27702.99 27038.87 27388.42 27752.75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70 28971.84 29941.75 28495.52 29660.45 29843.95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71 30894.37 31637.15 32048.64 31582.71 31650.72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72 32397.33 34187.96 33919.64 34167.32 34091.52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 73 33115.75 34016.22 35074.75 33897.86 34124.47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 74 32555.78 31310.88 32255.46 31274.89 31335.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75 31042.54 33283.00 30687.24 32963.94 32871.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76 30705.99 28457.84 28581.42 28151.62 28412.07</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77 28697.64 27759.14 29001.12 27500.41 27822.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 78 26778.47 27158.96 26978.23 26530.16 26623.01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 79 26988.92 26860.49 27073.26 26716.07 26928.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80 27249.51 26564.57 26948.81 26437.79 26605.43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 81 27120.25 27427.02 26988.43 27380.79 27435.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82 30009.34 29802.17 29517.19 29730.54 29642.90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83 31195.88 31354.69 31576.93 31477.45 31247.50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84 32847.38 33889.44 34547.21 34035.28 33683.08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data$Actual_Test</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 33043 29574 30718 26992 26681 25357 26047 25762 26293 29030 30305 32410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 33543 30547 31497 27266 27081 25786 26269 25865 26495 29046 30206 30558</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 32910 30755 31315 28613 26586 25174 25548 25506 25711 27117 29988 30748</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 33248 29049 28653</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data$Forecasts_Test</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          arima      ets     nnet  dampedt     dotm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] 33395.99 33706.67 33778.28 33846.89 33669.48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] 31353.06 30811.06 32761.55 31063.92 30769.82</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] 32690.41 32715.53 30234.00 32662.11 32104.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,] 28822.92 27455.61 28331.94 27445.52 27423.75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] 27005.12 26594.99 27446.12 26459.79 26532.87</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,] 25879.31 25478.99 25818.47 25503.73 25395.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,] 26128.31 25662.47 26564.64 25634.57 25820.73</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,] 26144.49 25500.46 26877.43 25423.22 25635.85</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,] 26902.03 26541.49 27999.95 26452.49 26554.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10,] 28515.83 28709.94 28632.77 28761.65 28666.95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11,] 30706.99 30729.40 30382.29 30605.18 30421.59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12,] 30850.00 32834.31 30621.59 32951.20 32606.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13,] 32665.82 32894.29 32637.60 32915.04 32911.37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14,] 29558.12 30380.45 30544.08 30231.88 30193.74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15,] 30592.16 32128.33 31596.72 31957.74 31738.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16,] 27364.42 27226.29 28148.55 27102.39 27342.76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17,] 26832.84 26432.22 27447.47 26247.89 26567.58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18,] 25698.38 25476.58 25699.69 25304.02 25472.84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19,] 26272.95 25987.31 26228.02 25633.27 25973.37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20,] 26068.00 25812.51 26082.77 25459.22 25784.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21,] 26374.39 26600.27 26657.92 26455.79 26659.46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22,] 28708.26 28834.22 29387.03 28829.42 28840.90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23,] 30009.44 30782.86 30667.33 30650.26 30537.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24,] 31932.58 32854.12 32228.59 32958.64 32680.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25,] 32061.97 32573.41 32526.32 32805.78 32732.29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26,] 29841.11 30197.23 29858.33 30056.27 29948.50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27,] 31410.68 31662.86 30792.17 31774.25 31509.48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28,] 27873.58 27081.09 28931.22 26959.74 27157.65</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29,] 28131.67 26421.91 27213.22 26345.12 26672.68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30,] 26253.58 25669.49 25532.26 25327.80 25477.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31,] 25708.30 25866.34 26063.55 25602.69 25890.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [32,] 25221.81 25521.81 25442.68 25331.66 25589.83</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33,] 25916.13 26382.73 26000.61 26276.04 26409.58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34,] 27976.21 28489.29 28282.95 28595.66 28501.43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35,] 28374.38 29940.13 29089.22 30170.96 29853.79</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36,] 29526.02 32015.12 31017.64 32360.05 31894.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37,] 32539.18 32213.54 32392.26 32468.24 32344.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [38,] 31230.25 29746.24 30849.92 29858.74 29685.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39,] 30466.33 31211.92 30355.76 31324.26 30923.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Predict</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function (object, newpreds) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> {</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     return(drop(predict(object$lin_model, newpreds, s = "lambda.min")))</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x7f988e2c2a88&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: namespace:ahead&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Intercept</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1117.331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02511533 0.00000000 0.26187911 0.00000000 0.66946352</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Forecasts_Test</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 33342.40 31083.61 31348.75 27619.97 26745.93 25529.66 26016.31 25974.86</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 26902.79 28523.31 30211.18 31739.85 32517.81 30072.16 31407.69 27481.09</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] 26765.19 25546.10 26033.98 25864.65 26608.42 28842.13 30345.94 32237.91</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 32353.62 29735.50 31064.50 27574.92 26806.83 25519.38 25921.03 25545.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] 26257.49 28307.35 29433.84 31333.73 32070.72 29853.89 30534.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Accuracy_Test</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                ME     RMSE      MAE       MPE     MAPE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Test set 96.97216 707.1726 531.9225 0.3429199 1.796003</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $lin_model</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet::cv.glmnet(x = as.matrix(prediction_matrix), y = as.numeric(observed_vector)) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Measure: Mean-Squared Error </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Lambda Index Measure     SE Nonzero</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> min   19.3    55 1020679 153117       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1se  345.3    24 1151856 192213       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "foreccomb_res" "comb_GLMNET"  </span>
+<span class="r-in"><span><span class="co"># obj &lt;- ahead::comb_GLMNET(data))</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

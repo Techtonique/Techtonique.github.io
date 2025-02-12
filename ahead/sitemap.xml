@@ -37,6 +37,9 @@
     <loc>/articles/comb_OLS2.html</loc>
   </url>
   <url>
+    <loc>/articles/conformal-ml.html</loc>
+  </url>
+  <url>
     <loc>/articles/fitforecastbench.html</loc>
   </url>
   <url>
@@ -104,6 +107,9 @@
   </url>
   <url>
     <loc>/reference/loocvridge2f.html</loc>
+  </url>
+  <url>
+    <loc>/reference/mlf.html</loc>
   </url>
   <url>
     <loc>/reference/plot.foreccomb_res.html</loc>
