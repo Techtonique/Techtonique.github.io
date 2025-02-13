@@ -92,13 +92,14 @@ jobs:
       - name: Build binary packages
         run: |
           mkdir -p r-packages/${{ matrix.path }}
-          for pkg in r-packages/*/ ; do
-            if [ -d "$pkg" ]; then
-              R CMD INSTALL --build "$pkg" --no-multiarch
-            fi
-          done
-          mv *.zip *.tgz r-packages/${{ matrix.path }}/
-          
+          Get-ChildItem -Path "r-packages" -Directory | 
+          Where-Object { $_.Name -ne "src" -and $_.Name -ne "bin" } | 
+          ForEach-Object {
+            R CMD INSTALL --build $_.FullName --no-multiarch
+          }
+          Move-Item -Path *.zip, *.tgz -Destination r-packages/${{ matrix.path }}/ -ErrorAction SilentlyContinue
+        shell: pwsh
+
       - name: Create PACKAGES files
         run: |
           Rscript -e 'tools::write_PACKAGES("r-packages/${{ matrix.path }}", type="${{ matrix.platform }}")'
