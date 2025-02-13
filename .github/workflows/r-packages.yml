@@ -27,7 +27,14 @@ jobs:
 
       - name: Install R package dependencies
         run: |
-          install.packages(c("Rcpp", "memoise"), repos="https://cloud.r-project.org")
+          install.packages(c(
+            "Rcpp", "memoise", "foreach", "snow", "forecast", 
+            "ggplot2", "tseries", "cclust", "randtoolbox", 
+            "dfoptim", "doSNOW", "scoringRules", "gridExtra", 
+            "reshape2", "VineCopula", "httr", "jsonlite", 
+            "skimr", "ranger", "glmnet", "xgboost", "e1071", 
+            "caret", "R6"
+          ), repos="https://cloud.r-project.org")
         shell: Rscript {0}
 
       - name: Build source packages
