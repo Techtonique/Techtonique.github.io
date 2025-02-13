@@ -101,7 +101,21 @@ jobs:
           sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
       - name: Install R package dependencies
         run: |
-          install.packages(c("Rcpp"), repos="https://cloud.r-project.org")
+          packages <- c(
+            "Rcpp", "memoise", "foreach", "snow", "forecast", 
+            "ggplot2", "tseries", "cclust", "randtoolbox", 
+            "dfoptim", "doSNOW", "scoringRules", "gridExtra", 
+            "reshape2", "VineCopula", "httr", "jsonlite", 
+            "skimr", "ranger", "glmnet", "xgboost", "e1071", 
+            "caret", "R6"
+          )
+          install.packages(packages, repos="https://cloud.r-project.org", dependencies=TRUE)
+          # Verify installation
+          installed <- rownames(installed.packages())
+          missing <- packages[!packages %in% installed]
+          if (length(missing) > 0) {
+            stop("Missing packages: ", paste(missing, collapse=", "))
+          }
         shell: Rscript {0}
       - name: Build binary packages
         run: |
