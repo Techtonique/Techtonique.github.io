@@ -27,7 +27,7 @@ jobs:
 
       - name: Install R package dependencies
         run: |
-          install.packages(c("Rcpp"), repos="https://cloud.r-project.org")
+          install.packages(c("Rcpp", "memoise"), repos="https://cloud.r-project.org")
         shell: Rscript {0}
 
       - name: Build source packages
