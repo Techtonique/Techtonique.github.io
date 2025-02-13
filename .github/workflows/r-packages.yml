@@ -57,7 +57,7 @@ jobs:
             platform: mac.binary
             path: bin/macosx/contrib/4.3
           - os: ubuntu-latest
-            platform: binary
+            platform: source
             path: bin/linux/contrib/4.3
             
     runs-on: ${{ matrix.os }}
