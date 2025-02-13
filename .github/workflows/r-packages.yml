@@ -104,7 +104,7 @@ jobs:
           Rscript -e 'tools::write_PACKAGES("r-packages/${{ matrix.path }}", type="${{ matrix.platform }}")'
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: r-packages-${{ matrix.os }}
           path: r-packages
@@ -116,7 +116,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Download all artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
           
