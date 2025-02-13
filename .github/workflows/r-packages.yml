@@ -27,14 +27,21 @@ jobs:
 
       - name: Install R package dependencies
         run: |
-          install.packages(c(
+          packages <- c(
             "Rcpp", "memoise", "foreach", "snow", "forecast", 
             "ggplot2", "tseries", "cclust", "randtoolbox", 
             "dfoptim", "doSNOW", "scoringRules", "gridExtra", 
             "reshape2", "VineCopula", "httr", "jsonlite", 
             "skimr", "ranger", "glmnet", "xgboost", "e1071", 
             "caret", "R6"
-          ), repos="https://cloud.r-project.org")
+          )
+          install.packages(packages, repos="https://cloud.r-project.org")
+          # Verify installation
+          installed <- rownames(installed.packages())
+          missing <- packages[!packages %in% installed]
+          if (length(missing) > 0) {
+            stop("Missing packages: ", paste(missing, collapse=", "))
+          }
         shell: Rscript {0}
 
       - name: Build source packages
