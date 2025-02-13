@@ -35,7 +35,7 @@ jobs:
             "skimr", "ranger", "glmnet", "xgboost", "e1071", 
             "caret", "R6"
           )
-          install.packages(packages, repos="https://cloud.r-project.org")
+          install.packages(packages, repos="https://cloud.r-project.org", dependencies=TRUE)
           # Verify installation
           installed <- rownames(installed.packages())
           missing <- packages[!packages %in% installed]
