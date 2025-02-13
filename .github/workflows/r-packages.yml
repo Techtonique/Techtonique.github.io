@@ -95,7 +95,8 @@ jobs:
           Get-ChildItem -Path "r-packages" -Directory | 
           Where-Object { $_.Name -ne "src" -and $_.Name -ne "bin" } | 
           ForEach-Object {
-            & R CMD INSTALL --build $_.FullName --no-multiarch
+            $pkg = $_.FullName
+            Start-Process -FilePath "R" -ArgumentList "CMD", "INSTALL", "--build", "$pkg", "--no-multiarch" -NoNewWindow -Wait
           }
           Move-Item -Path *.zip, *.tgz -Destination r-packages/${{ matrix.path }}/ -ErrorAction SilentlyContinue
         shell: pwsh
