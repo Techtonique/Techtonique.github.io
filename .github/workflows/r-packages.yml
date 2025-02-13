@@ -20,7 +20,19 @@ jobs:
         with:
           r-version: 'release'
           
-      - name: Install system dependencies
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install qpdf
+          brew install --cask basictex
+          
+      - name: Install system dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          choco install rtools
+          
+      - name: Install system dependencies (Linux)
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
@@ -99,6 +111,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
+
       - name: Install R package dependencies
         run: |
           packages <- c(
@@ -117,6 +130,7 @@ jobs:
             stop("Missing packages: ", paste(missing, collapse=", "))
           }
         shell: Rscript {0}
+
       - name: Build binary packages
         run: |
           mkdir -p r-packages/${{ matrix.path }}
