@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir -p r-packages/src/contrib
           for pkg in r-packages/*/ ; do
-            if [ -d "$pkg" ]; then
+            if [ -d "$pkg" ] && [ "$(basename "$pkg")" != "src" ]; then
               R CMD build "$pkg" --no-build-vignettes
             fi
           done
