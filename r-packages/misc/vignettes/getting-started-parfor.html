@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Getting started with parfor</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Getting started with parfor</h1>
+
+
+
+<p>This function is adapted from the excellent
+<code>foreach::foreach</code> package. The difference is:
+<code>misc::parfor</code> calls a function in a loop. Two of the
+advantages of <code>misc::parfor</code> over
+<code>foreach::foreach</code> are:</p>
+<ul>
+<li><p>you <strong>don’t have to register a parallel backend</strong>
+before using it. Just specify <code>cl</code> to use parallel
+processing.</p></li>
+<li><p>you can directly <strong>monitor the progress of the parallel
+computation with a progress bar</strong>.</p></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(misc)</span></code></pre></div>
+<pre><code>## Loading required package: foreach</code></pre>
+<pre><code>## Loading required package: doSNOW</code></pre>
+<pre><code>## Loading required package: iterators</code></pre>
+<pre><code>## Loading required package: snow</code></pre>
+<pre><code>## Loading required package: parallel</code></pre>
+<pre><code>## 
+## Attaching package: &#39;parallel&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:snow&#39;:
+## 
+##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+##     clusterExport, clusterMap, clusterSplit, makeCluster, parApply,
+##     parCapply, parLapply, parRapply, parSapply, splitIndices,
+##     stopCluster</code></pre>
+<pre><code>## Loading required package: compiler</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</code></pre>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">cl =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</code></pre>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##   |                                                                              |                                                                      |   0%evaluation # 1:
+## $i
+## [1] 1
+## 
+##   |                                                                              |=======                                                               |  10%result of evaluating expression:
+## [1] 1
+## got results for task 1
+## numValues: 1, numResults: 1, stopped: FALSE
+## returning status FALSE
+## evaluation # 2:
+## $i
+## [1] 2
+## 
+##   |                                                                              |==============                                                        |  20%result of evaluating expression:
+## [1] 4
+## got results for task 2
+## numValues: 2, numResults: 2, stopped: FALSE
+## returning status FALSE
+## evaluation # 3:
+## $i
+## [1] 3
+## 
+##   |                                                                              |=====================                                                 |  30%result of evaluating expression:
+## [1] 9
+## got results for task 3
+## numValues: 3, numResults: 3, stopped: FALSE
+## returning status FALSE
+## evaluation # 4:
+## $i
+## [1] 4
+## 
+##   |                                                                              |============================                                          |  40%result of evaluating expression:
+## [1] 16
+## got results for task 4
+## numValues: 4, numResults: 4, stopped: FALSE
+## returning status FALSE
+## evaluation # 5:
+## $i
+## [1] 5
+## 
+##   |                                                                              |===================================                                   |  50%result of evaluating expression:
+## [1] 25
+## got results for task 5
+## numValues: 5, numResults: 5, stopped: FALSE
+## returning status FALSE
+## evaluation # 6:
+## $i
+## [1] 6
+## 
+##   |                                                                              |==========================================                            |  60%result of evaluating expression:
+## [1] 36
+## got results for task 6
+## numValues: 6, numResults: 6, stopped: FALSE
+## returning status FALSE
+## evaluation # 7:
+## $i
+## [1] 7
+## 
+##   |                                                                              |=================================================                     |  70%result of evaluating expression:
+## [1] 49
+## got results for task 7
+## numValues: 7, numResults: 7, stopped: FALSE
+## returning status FALSE
+## evaluation # 8:
+## $i
+## [1] 8
+## 
+##   |                                                                              |========================================================              |  80%result of evaluating expression:
+## [1] 64
+## got results for task 8
+## numValues: 8, numResults: 8, stopped: FALSE
+## returning status FALSE
+## evaluation # 9:
+## $i
+## [1] 9
+## 
+##   |                                                                              |===============================================================       |  90%result of evaluating expression:
+## [1] 81
+## got results for task 9
+## numValues: 9, numResults: 9, stopped: FALSE
+## returning status FALSE
+## evaluation # 10:
+## $i
+## [1] 10
+## 
+##   |                                                                              |======================================================================| 100%result of evaluating expression:
+## [1] 100
+## got results for task 10
+## numValues: 10, numResults: 10, stopped: FALSE
+## returning status FALSE
+## numValues: 10, numResults: 10, stopped: TRUE
+## first call to combine function
+## evaluating call object to combine results:
+##   fun(result.1, result.2, result.3, result.4, result.5, result.6, 
+##     result.7, result.8, result.9, result.10)</code></pre>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>##  [1]    1    8   27   64  125  216  343  512  729 1000</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>##  [1]    1    8   27   64  125  216  343  512  729 1000</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>{</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">*</span><span class="fl">0.5</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>}</span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(foo, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="at">verbose =</span> <span class="cn">TRUE</span>, <span class="at">combine =</span> rbind)</span></code></pre></div>
+<pre><code>## evaluation # 1:
+## $i
+## [1] 1
+## 
+## [1] 1
+## result of evaluating expression:
+## [1] 0.5
+## got results for task 1
+## numValues: 1, numResults: 1, stopped: FALSE
+## returning status FALSE
+## evaluation # 2:
+## $i
+## [1] 2
+## 
+## [1] 2
+## result of evaluating expression:
+## [1] 1
+## got results for task 2
+## numValues: 2, numResults: 2, stopped: FALSE
+## returning status FALSE
+## evaluation # 3:
+## $i
+## [1] 3
+## 
+## [1] 3
+## result of evaluating expression:
+## [1] 1.5
+## got results for task 3
+## numValues: 3, numResults: 3, stopped: FALSE
+## returning status FALSE
+## evaluation # 4:
+## $i
+## [1] 4
+## 
+## [1] 4
+## result of evaluating expression:
+## [1] 2
+## got results for task 4
+## numValues: 4, numResults: 4, stopped: FALSE
+## returning status FALSE
+## evaluation # 5:
+## $i
+## [1] 5
+## 
+## [1] 5
+## result of evaluating expression:
+## [1] 2.5
+## got results for task 5
+## numValues: 5, numResults: 5, stopped: FALSE
+## returning status FALSE
+## evaluation # 6:
+## $i
+## [1] 6
+## 
+## [1] 6
+## result of evaluating expression:
+## [1] 3
+## got results for task 6
+## numValues: 6, numResults: 6, stopped: FALSE
+## returning status FALSE
+## evaluation # 7:
+## $i
+## [1] 7
+## 
+## [1] 7
+## result of evaluating expression:
+## [1] 3.5
+## got results for task 7
+## numValues: 7, numResults: 7, stopped: FALSE
+## returning status FALSE
+## evaluation # 8:
+## $i
+## [1] 8
+## 
+## [1] 8
+## result of evaluating expression:
+## [1] 4
+## got results for task 8
+## numValues: 8, numResults: 8, stopped: FALSE
+## returning status FALSE
+## evaluation # 9:
+## $i
+## [1] 9
+## 
+## [1] 9
+## result of evaluating expression:
+## [1] 4.5
+## got results for task 9
+## numValues: 9, numResults: 9, stopped: FALSE
+## returning status FALSE
+## evaluation # 10:
+## $i
+## [1] 10
+## 
+## [1] 10
+## result of evaluating expression:
+## [1] 5
+## got results for task 10
+## numValues: 10, numResults: 10, stopped: FALSE
+## returning status FALSE
+## numValues: 10, numResults: 10, stopped: TRUE
+## first call to combine function
+## evaluating call object to combine results:
+##   fun(result.1, result.2, result.3, result.4, result.5, result.6, 
+##     result.7, result.8, result.9, result.10)</code></pre>
+<pre><code>##           [,1]
+## result.1   0.5
+## result.2   1.0
+## result.3   1.5
+## result.4   2.0
+## result.5   2.5
+## result.6   3.0
+## result.7   3.5
+## result.8   4.0
+## result.9   4.5
+## result.10  5.0</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(foo, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="at">verbose =</span> <span class="cn">TRUE</span>, <span class="at">combine =</span> cbind)</span></code></pre></div>
+<pre><code>## evaluation # 1:
+## $i
+## [1] 1
+## 
+## [1] 1
+## result of evaluating expression:
+## [1] 0.5
+## got results for task 1
+## numValues: 1, numResults: 1, stopped: FALSE
+## returning status FALSE
+## evaluation # 2:
+## $i
+## [1] 2
+## 
+## [1] 2
+## result of evaluating expression:
+## [1] 1
+## got results for task 2
+## numValues: 2, numResults: 2, stopped: FALSE
+## returning status FALSE
+## evaluation # 3:
+## $i
+## [1] 3
+## 
+## [1] 3
+## result of evaluating expression:
+## [1] 1.5
+## got results for task 3
+## numValues: 3, numResults: 3, stopped: FALSE
+## returning status FALSE
+## evaluation # 4:
+## $i
+## [1] 4
+## 
+## [1] 4
+## result of evaluating expression:
+## [1] 2
+## got results for task 4
+## numValues: 4, numResults: 4, stopped: FALSE
+## returning status FALSE
+## evaluation # 5:
+## $i
+## [1] 5
+## 
+## [1] 5
+## result of evaluating expression:
+## [1] 2.5
+## got results for task 5
+## numValues: 5, numResults: 5, stopped: FALSE
+## returning status FALSE
+## evaluation # 6:
+## $i
+## [1] 6
+## 
+## [1] 6
+## result of evaluating expression:
+## [1] 3
+## got results for task 6
+## numValues: 6, numResults: 6, stopped: FALSE
+## returning status FALSE
+## evaluation # 7:
+## $i
+## [1] 7
+## 
+## [1] 7
+## result of evaluating expression:
+## [1] 3.5
+## got results for task 7
+## numValues: 7, numResults: 7, stopped: FALSE
+## returning status FALSE
+## evaluation # 8:
+## $i
+## [1] 8
+## 
+## [1] 8
+## result of evaluating expression:
+## [1] 4
+## got results for task 8
+## numValues: 8, numResults: 8, stopped: FALSE
+## returning status FALSE
+## evaluation # 9:
+## $i
+## [1] 9
+## 
+## [1] 9
+## result of evaluating expression:
+## [1] 4.5
+## got results for task 9
+## numValues: 9, numResults: 9, stopped: FALSE
+## returning status FALSE
+## evaluation # 10:
+## $i
+## [1] 10
+## 
+## [1] 10
+## result of evaluating expression:
+## [1] 5
+## got results for task 10
+## numValues: 10, numResults: 10, stopped: FALSE
+## returning status FALSE
+## numValues: 10, numResults: 10, stopped: TRUE
+## first call to combine function
+## evaluating call object to combine results:
+##   fun(result.1, result.2, result.3, result.4, result.5, result.6, 
+##     result.7, result.8, result.9, result.10)</code></pre>
+<pre><code>##      result.1 result.2 result.3 result.4 result.5 result.6 result.7 result.8
+## [1,]      0.5        1      1.5        2      2.5        3      3.5        4
+##      result.9 result.10
+## [1,]      4.5         5</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>foo2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>{</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">*</span><span class="fl">0.5</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>}</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>misc<span class="sc">::</span><span class="fu">parfor</span>(foo2, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">show_progress =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a><span class="at">verbose =</span> <span class="cn">TRUE</span>, <span class="at">combine =</span> <span class="st">&#39;+&#39;</span>)</span></code></pre></div>
+<pre><code>## evaluation # 1:
+## $i
+## [1] 1
+## 
+## [1] 1
+## result of evaluating expression:
+## [1] 0.5
+## got results for task 1
+## numValues: 1, numResults: 1, stopped: FALSE
+## returning status FALSE
+## evaluation # 2:
+## $i
+## [1] 2
+## 
+## [1] 2
+## result of evaluating expression:
+## [1] 1
+## got results for task 2
+## numValues: 2, numResults: 2, stopped: FALSE
+## first call to combine function
+## evaluating call object to combine results:
+##   fun(result.1, result.2)
+## returning status FALSE
+## evaluation # 3:
+## $i
+## [1] 3
+## 
+## [1] 3
+## result of evaluating expression:
+## [1] 1.5
+## got results for task 3
+## numValues: 3, numResults: 3, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.3)
+## returning status FALSE
+## evaluation # 4:
+## $i
+## [1] 4
+## 
+## [1] 4
+## result of evaluating expression:
+## [1] 2
+## got results for task 4
+## numValues: 4, numResults: 4, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.4)
+## returning status FALSE
+## evaluation # 5:
+## $i
+## [1] 5
+## 
+## [1] 5
+## result of evaluating expression:
+## [1] 2.5
+## got results for task 5
+## numValues: 5, numResults: 5, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.5)
+## returning status FALSE
+## evaluation # 6:
+## $i
+## [1] 6
+## 
+## [1] 6
+## result of evaluating expression:
+## [1] 3
+## got results for task 6
+## numValues: 6, numResults: 6, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.6)
+## returning status FALSE
+## evaluation # 7:
+## $i
+## [1] 7
+## 
+## [1] 7
+## result of evaluating expression:
+## [1] 3.5
+## got results for task 7
+## numValues: 7, numResults: 7, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.7)
+## returning status FALSE
+## evaluation # 8:
+## $i
+## [1] 8
+## 
+## [1] 8
+## result of evaluating expression:
+## [1] 4
+## got results for task 8
+## numValues: 8, numResults: 8, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.8)
+## returning status FALSE
+## evaluation # 9:
+## $i
+## [1] 9
+## 
+## [1] 9
+## result of evaluating expression:
+## [1] 4.5
+## got results for task 9
+## numValues: 9, numResults: 9, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.9)
+## returning status FALSE
+## evaluation # 10:
+## $i
+## [1] 10
+## 
+## [1] 10
+## result of evaluating expression:
+## [1] 5
+## got results for task 10
+## numValues: 10, numResults: 10, stopped: FALSE
+## calling combine function
+## evaluating call object to combine results:
+##   fun(accum, result.10)
+## returning status FALSE
+## numValues: 10, numResults: 10, stopped: TRUE</code></pre>
+<pre><code>## [1] 27.5</code></pre>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

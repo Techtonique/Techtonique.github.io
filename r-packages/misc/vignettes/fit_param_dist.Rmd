@@ -1,0 +1,92 @@
+---
+title: "Fitting multiple parametric distributions to data and simulate best-fitting distribution"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Fitting multiple parametric distributions to data and simulate best-fitting distribution}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Example usage 1
+
+```{r, fig.width=7.5}
+set.seed(123)
+n <- 1000
+vector <- rweibull(n, 2, 3)  # Replace with your vector
+
+start <- proc.time()[3]
+simulate_function <- misc::fit_param_dist(vector)
+end <- proc.time()[3]
+print(paste("Time taken:", end - start))
+
+simulated_data <- simulate_function(n)  # Generate 100 samples from the best-fit distribution
+
+par(mfrow = c(1, 2))
+hist(vector, main = "Original Data", xlab = "Value", ylab = "Frequency")
+hist(simulated_data, main = "Simulated Data", xlab = "Value", ylab = "Frequency")
+```
+
+# Example usage 2
+
+```{r, fig.width=7.5}
+set.seed(123)
+n <- 1000
+vector <- rnorm(n)  # Replace with your vector
+
+start <- proc.time()[3]
+simulate_function <- misc::fit_param_dist(vector)
+end <- proc.time()[3]
+print(paste("Time taken:", end - start))
+
+simulated_data <- simulate_function(n)  # Generate 100 samples from the best-fit distribution
+
+par(mfrow = c(1, 2))
+hist(vector, main = "Original Data", xlab = "Value", ylab = "Frequency")
+hist(simulated_data, main = "Simulated Data", xlab = "Value", ylab = "Frequency")
+```
+
+# Example usage 3
+
+```{r, fig.width=7.5}
+# Example usage 1
+set.seed(123)
+n <- 1000
+vector <- rlnorm(n)  # Replace with your vector
+
+start <- proc.time()[3]
+simulate_function <- misc::fit_param_dist(vector)
+end <- proc.time()[3]
+print(paste("Time taken:", end - start))
+
+simulated_data <- simulate_function(n)  # Generate 100 samples from the best-fit distribution
+
+par(mfrow = c(1, 2))
+hist(vector, main = "Original Data", xlab = "Value", ylab = "Frequency")
+hist(simulated_data, main = "Simulated Data", xlab = "Value", ylab = "Frequency")
+```
+
+# Example usage 4
+
+```{r, fig.width=7.5}
+set.seed(123)
+n <- 1000
+vector <- rbeta(n, 2, 3)  # Replace with your vector
+
+start <- proc.time()[3]
+simulate_function <- misc::fit_param_dist(vector, verbose=TRUE)
+end <- proc.time()[3]
+print(paste("Time taken:", end - start))
+
+simulated_data <- simulate_function(n)  # Generate 100 samples from the best-fit distribution
+
+par(mfrow = c(1, 2))
+hist(vector, main = "Original Data", xlab = "Value", ylab = "Frequency")
+hist(simulated_data, main = "Simulated Data", xlab = "Value", ylab = "Frequency")
+```
+
+
+

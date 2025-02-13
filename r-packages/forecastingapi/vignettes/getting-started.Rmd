@@ -1,0 +1,25 @@
+---
+title: "Getting started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Example usage 1
+
+```{eval=FALSE}
+path_to_file <- "/Users/t/Documents/datasets/time_series/univariate/AirPassengers.csv"
+forecastingapi::get_forecast(path_to_file)
+```
+
+# Example usage 2
+
+```{r eval=FALSE}
+forecastingapi::get_forecast(path_to_file, type_pi='scp2-kde', h=5L, replications=10L)
+```

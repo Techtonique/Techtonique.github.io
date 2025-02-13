@@ -1,0 +1,47 @@
+---
+title: "Martingale Tests"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Martingale Tests}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(simulatetimeseries)
+```
+
+# 1 - Stationary Series
+
+```{r, fig.width = 7.5}
+set.seed(123)
+x <- rnorm(1000)
+par(mfrow = c(1, 2))
+plot(x, type = "l")
+plot(diff(x), type = "l")
+print(martingale_test(x))
+```
+
+# 2 - Brownian Motion
+
+```{r, fig.width = 7.5}
+set.seed(123)
+x <- cumsum(rnorm(1000))
+par(mfrow = c(1, 2))
+plot(x, type = "l")
+plot(diff(x), type = "l")
+print(martingale_test(x))
+```
+
+# 3 - Random Walk with Drift
+
+```{r, fig.width = 7.5}
+set.seed(123)
+x <- cumsum(rnorm(1000)) + seq_len(1000)
+par(mfrow = c(1, 2))
+plot(x, type = "l")
+plot(diff(x), type = "l")
+print(martingale_test(x))
+```
+
+

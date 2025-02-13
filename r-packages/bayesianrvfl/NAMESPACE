@@ -1,0 +1,10 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "runif")
+importFrom("stats", "quantile")
+importFrom("utils", "txtProgressBar")
+importFrom("graphics", "lines", "plot")
+importFrom("stats", "Box.test", "cor", "dnorm", "dunif", "nlminb",
+             "pnorm", "shapiro.test", "t.test", "var")
+importFrom("utils", "setTxtProgressBar", "tail")
+import("foreach")
+#useDynLib("bayesianrvfl")

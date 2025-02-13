@@ -1,0 +1,15 @@
+*.html
+*.DS_Store
+.Rbuildignore
+*.Rproj
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+src/*.o
+src/*.so
+src/*.dll
+learningmachine.Rcheck/
+learningmachine*.tar.gz
+learningmachine*.tgz
+docs/

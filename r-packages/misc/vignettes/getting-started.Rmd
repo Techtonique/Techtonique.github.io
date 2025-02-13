@@ -1,0 +1,17 @@
+---
+title: "Getting started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This is a package of utility functions that I use frequently and always wanted to have stored somewhere. The functions are mostly short, but (hopefully) doing one thing well, and powerful.
+
+If you want to **develop an R package at the command line efficiently**, you may also like:
+
+- this **blog post**: [Quick/automated R package development workflow (assuming you're using macOS or Linux) Part2](https://thierrymoudiki.github.io/blog/2024/08/30/r/makefile-r-pkg2)
+- this **Makefile**: https://gist.github.com/thierrymoudiki/3bd7cfa099aef0c64eb5f91138d8cedb
+
+<script src="https://gist.github.com/thierrymoudiki/3bd7cfa099aef0c64eb5f91138d8cedb.js"></script>
