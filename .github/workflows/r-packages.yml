@@ -84,7 +84,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
-
+      - name: Install R package dependencies
+        run: |
+          install.packages(c("Rcpp"), repos="https://cloud.r-project.org")
+        shell: Rscript {0}
       - name: Build binary packages
         run: |
           mkdir -p r-packages/${{ matrix.path }}
