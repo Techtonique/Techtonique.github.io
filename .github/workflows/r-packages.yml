@@ -35,25 +35,52 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
+          sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra \
+            libcurl4-openssl-dev libssl-dev libxml2-dev \
+            libudunits2-dev libgdal-dev libgeos-dev libproj-dev \
+            libfontconfig1-dev libharfbuzz-dev libfribidi-dev
 
       - name: Install R package dependencies
         run: |
-          packages <- c(
-            "Rcpp", "memoise", "foreach", "snow", "forecast", 
-            "ggplot2", "tseries", "cclust", "randtoolbox", 
-            "dfoptim", "doSNOW", "scoringRules", "gridExtra", 
-            "reshape2", "VineCopula", "httr", "jsonlite", 
-            "skimr", "ranger", "glmnet", "xgboost", "e1071", 
-            "caret", "R6"
-          )
-          install.packages(packages, repos="https://cloud.r-project.org", dependencies=TRUE)
-          # Verify installation
-          installed <- rownames(installed.packages())
-          missing <- packages[!packages %in% installed]
-          if (length(missing) > 0) {
-            stop("Missing packages: ", paste(missing, collapse=", "))
-          }
+          # First install dependencies that forecast needs
+          install.packages(c(
+            "timeDate",
+            "zoo",
+            "xts",
+            "tseries",
+            "fracdiff"
+          ), repos="https://cloud.r-project.org", dependencies=TRUE)
+          
+          # Then try to install forecast
+          install.packages("forecast", repos="https://cloud.r-project.org", dependencies=TRUE)
+          
+          # Finally install other needed packages
+          install.packages(c(
+            "miniCRAN", 
+            "remotes", 
+            "Rcpp",
+            "httr",
+            "memoise",
+            "foreach",
+            "snow",
+            "ggplot2",
+            "cclust",
+            "randtoolbox",
+            "dfoptim",
+            "doSNOW",
+            "scoringRules",
+            "gridExtra",
+            "reshape2",
+            "VineCopula",
+            "jsonlite",
+            "skimr",
+            "ranger",
+            "glmnet",
+            "xgboost",
+            "e1071",
+            "caret",
+            "R6"
+          ), repos="https://cloud.r-project.org", dependencies=TRUE)
         shell: Rscript {0}
 
       - name: Build source packages
