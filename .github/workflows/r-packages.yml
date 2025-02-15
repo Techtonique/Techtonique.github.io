@@ -141,6 +141,7 @@ jobs:
   build-binaries:
     needs: build-source
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, macos-latest]
         include:
@@ -150,7 +151,9 @@ jobs:
           - os: macos-latest
             platform: mac.binary
             path: bin/macosx/contrib/4.3
+            
     runs-on: ${{ matrix.os }}
+    
     steps:
       - uses: actions/checkout@v4
       
@@ -158,45 +161,33 @@ jobs:
         with:
           r-version: 'release'
           
-      - name: Install system dependencies (macOS)
-        if: runner.os == 'macOS'
-        run: |
-          brew install qpdf
-          brew install --cask basictex
-          
-      - name: Install system dependencies (Windows)
+      - uses: r-lib/actions/setup-rtools@v2
         if: runner.os == 'Windows'
-        run: |
-          choco install rtools
-          
-      - name: Install system dependencies (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
 
       - name: Install pak
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
         shell: Rscript {0}
 
-      - name: Install R package dependencies
+      - name: Install dependencies
         run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak(c("miniCRAN", "remotes", "Rcpp"))
         shell: Rscript {0}
 
+      - name: Download source packages
+        uses: actions/download-artifact@v4
+        with:
+          name: r-packages-source
+          path: r-packages-source
+
       - name: Build binary packages
+        shell: Rscript {0}
         run: |
-          # Create R script for building binary packages
-          @'
           library(miniCRAN)
           
           # Setup directories
           repo_dir <- "r-packages"
           source_dir <- "r-packages-source/src/contrib"
-          
-          # Create binary directory
           bin_dir <- file.path(repo_dir, "${{ matrix.path }}")
           dir.create(bin_dir, recursive = TRUE, showWarnings = FALSE)
           
@@ -206,50 +197,26 @@ jobs:
           
           # Build binary packages
           for (pkg_file in pkg_files) {
-              message("\nAttempting to build: ", basename(pkg_file))
-              tryCatch({
-                  cmd <- sprintf("R CMD INSTALL --build %s --no-multiarch", pkg_file)
-                  message("Running command: ", cmd)
-                  system_output <- system(cmd, intern = TRUE)
-                  message(paste(system_output, collapse = "\n"))
-                  message("Successfully built: ", basename(pkg_file))
-              }, error = function(e) {
-                  message("Error building package: ", basename(pkg_file))
-                  message("Error message: ", e$message)
-                  message("Stack trace: ", paste(sys.calls(), collapse = "\n"))
-              })
+            message("\nBuilding ", basename(pkg_file))
+            try({
+              install.packages(pkg_file, repos = NULL, type = "source", lib = tempdir())
+              system(paste0("R CMD INSTALL --build ", pkg_file))
+            })
           }
           
-          # Move binary packages to repository
-          if (.Platform$OS.type == "windows") {
-              zip_files <- list.files(pattern = "\\.zip$", full.names = TRUE)
-              message("\nFound binary packages: ", paste(basename(zip_files), collapse = ", "))
-              if (length(zip_files) > 0) {
-                  file.copy(zip_files, bin_dir, overwrite = TRUE)
-                  message("Copied binary packages to: ", bin_dir)
-              } else {
-                  message("No binary packages found to copy!")
-              }
+          # Move binary packages
+          if (Sys.info()[["sysname"]] == "Windows") {
+            files <- list.files(pattern = "\\.zip$")
           } else {
-              tgz_files <- list.files(pattern = "\\.tgz$", full.names = TRUE)
-              message("\nFound binary packages: ", paste(basename(tgz_files), collapse = ", "))
-              if (length(tgz_files) > 0) {
-                  file.copy(tgz_files, bin_dir, overwrite = TRUE)
-                  message("Copied binary packages to: ", bin_dir)
-              } else {
-                  message("No binary packages found to copy!")
-              }
+            files <- list.files(pattern = "\\.tgz$")
           }
           
-          # Create PACKAGES files
-          message("\nCreating PACKAGES files in: ", bin_dir)
-          tools::write_PACKAGES(bin_dir, type = "${{ matrix.platform }}")
-          message("PACKAGES files created successfully")
-          '@ | Out-File -Encoding utf8 build_binaries.R
+          if (length(files) > 0) {
+            file.copy(files, bin_dir, overwrite = TRUE)
+            message("Copied files: ", paste(files, collapse = ", "))
+          }
           
-          # Run the R script
-          Rscript build_binaries.R
-        shell: pwsh
+          tools::write_PACKAGES(bin_dir, type = "${{ matrix.platform }}")
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
