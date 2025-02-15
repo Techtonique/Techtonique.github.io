@@ -58,17 +58,55 @@ jobs:
 
       - name: Build source packages
         run: |
-          mkdir -p r-packages/src/contrib
-          for pkg in r-packages/*/ ; do
-            if [ -d "$pkg" ] && [ "$(basename "$pkg")" != "src" ]; then
-              R CMD build "$pkg" --no-build-vignettes
-            fi
-          done
-          mv *.tar.gz r-packages/src/contrib/
+          # Create R script for building packages
+          cat << 'EOF' > build_packages.R
+          library(miniCRAN)
           
-      - name: Create PACKAGES files
-        run: |
-          Rscript -e 'tools::write_PACKAGES("r-packages/src/contrib", type="source")'
+          # Define directories
+          repo_dir <- "r-packages"
+          
+          # Create the repository directories
+          dir.create(file.path(repo_dir, "src/contrib"), recursive = TRUE, showWarnings = FALSE)
+          
+          # List of R packages to build
+          packages <- c(
+              "ahead",
+              "bcn",
+              "crossvalidation",
+              "ESGtoolkit",
+              "learningmachine",
+              "misc",
+              "mlsauce_r"
+          )
+          
+          # Build and store package source tarballs
+          message("\nBuilding packages...")
+          for (pkg_name in packages) {
+              message(paste("\nBuilding", pkg_name, "..."))
+              pkg_dir <- file.path(".", pkg_name)
+              
+              if (dir.exists(pkg_dir)) {
+                  # Run R CMD build
+                  system(paste("R CMD build", pkg_dir))
+                  
+                  # Find the created tarball
+                  pkg_file <- list.files(".", pattern = paste0(basename(pkg_name), ".*\\.tar\\.gz$"), full.names = TRUE)
+                  
+                  if (length(pkg_file) > 0) {
+                      # Move the package to the repository directory
+                      file.copy(pkg_file[1], file.path(repo_dir, "src/contrib"), overwrite = TRUE)
+                      file.remove(pkg_file[1])  # Clean up
+                      message(paste("Successfully built and copied:", pkg_name))
+                  }
+              }
+          }
+          
+          # Create PACKAGES files
+          tools::write_PACKAGES(file.path(repo_dir, "src/contrib"), type="source")
+          EOF
+          
+          # Run the R script
+          Rscript build_packages.R
 
   build-binaries:
     needs: build-source

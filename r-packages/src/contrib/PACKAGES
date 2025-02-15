@@ -1,0 +1,81 @@
+Package: ahead
+Version: 0.15.0
+Depends: R (>= 3.5.0), foreach, snow, forecast, ggplot2, tseries
+Imports: Rcpp (>= 1.0.6), misc
+LinkingTo: Rcpp
+Suggests: caret, dfoptim, doSNOW, knitr, rmarkdown, testthat, forecast,
+        ForecastComb, fpp, glmnet, e1071, randomForest, roxygen2
+MD5sum: 384ff174817961d97344926f0a0cc753
+NeedsCompilation: yes
+
+Package: bayesianrvfl
+Version: 0.3.1
+Depends: cclust, memoise
+Imports: Rcpp, randtoolbox, foreach, memoise
+LinkingTo: Rcpp
+MD5sum: 29662409dc591188cc7d4bbe5858e2c0
+NeedsCompilation: yes
+
+Package: bcn
+Version: 0.7.0
+Depends: R (>= 3.5.0)
+Imports: Rcpp (>= 1.0.7), dfoptim
+LinkingTo: Rcpp
+Suggests: knitr, rmarkdown, randomForest, pROC, MASS
+MD5sum: 7ef1c34dfb561c455abf335fb813a008
+NeedsCompilation: yes
+
+Package: crossvalidation
+Version: 0.5.0
+Depends: R (>= 3.5.0), doSNOW, foreach, scoringRules
+Suggests: glmnet, testthat, forecast, randomForest, knitr, rmarkdown,
+        xgboost
+License: file LICENSE
+MD5sum: 0cb746f7c003439535046309a778bd32
+NeedsCompilation: no
+
+Package: esgtoolkit
+Version: 1.2.1
+Depends: R (>= 3.5.0), ggplot2, gridExtra, methods, reshape2,
+        VineCopula, randtoolbox
+Imports: Rcpp(>= 0.11.0)
+LinkingTo: Rcpp
+Suggests: devtools, ggplot2, testthat
+MD5sum: 93e563cdc8ccacf37abd76b3b4f470f4
+NeedsCompilation: yes
+
+Package: forecastingapi
+Version: 0.4.0
+Imports: httr, jsonlite
+License: MIT
+MD5sum: 14adf7043c587f590048796e76617011
+NeedsCompilation: no
+
+Package: learningmachine
+Version: 2.8.0
+Depends: randtoolbox, tseries, memoise, foreach, skimr, snow, doSNOW,
+        ranger, glmnet, xgboost, e1071, MASS, caret
+Imports: Rcpp (>= 1.0.10), R6
+LinkingTo: Rcpp
+Suggests: caret, e1071, ggplot2, glmnet, knitr, MASS, mlbench,
+        palmerpenguins, pkgbuild, pROC, ranger, reshape2, rmarkdown,
+        roxygen2, testthat (>= 3.0.0), xgboost
+License: BSD_3_clause + file LICENSE
+MD5sum: 6b32ac1ab85e86e858812c3411a24011
+NeedsCompilation: yes
+
+Package: misc
+Version: 0.4.0
+Depends: R (>= 3.5.0), MASS, stats, utils, foreach, doSNOW, snow,
+        parallel, compiler
+License: MIT
+MD5sum: 0d5c4a51790892421fdc15d4ece491df
+NeedsCompilation: no
+
+Package: simulatetimeseries
+Version: 1.0
+Imports: Rcpp (>= 1.0.12)
+LinkingTo: Rcpp
+License: GPL (>= 2)
+MD5sum: 418c2fc5f2363044450e07b3bd27647f
+NeedsCompilation: yes
