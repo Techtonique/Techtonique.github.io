@@ -188,19 +188,68 @@ jobs:
 
       - name: Build binary packages
         run: |
-          mkdir -p r-packages/${{ matrix.path }}
-          Get-ChildItem -Path "r-packages" -Directory | 
-          Where-Object { $_.Name -ne "src" -and $_.Name -ne "bin" } | 
-          ForEach-Object {
-            $pkg = $_.FullName
-            Start-Process -FilePath "R" -ArgumentList "CMD", "INSTALL", "--build", "$pkg", "--no-multiarch" -NoNewWindow -Wait
+          # Create R script for building binary packages
+          @'
+          library(miniCRAN)
+          
+          # Setup directories
+          repo_dir <- "r-packages"
+          source_dir <- "r-packages-source/src/contrib"
+          
+          # Create binary directory
+          bin_dir <- file.path(repo_dir, "${{ matrix.path }}")
+          dir.create(bin_dir, recursive = TRUE, showWarnings = FALSE)
+          
+          # Get list of source packages
+          pkg_files <- list.files(source_dir, pattern = "\\.tar\\.gz$", full.names = TRUE)
+          message("Found source packages: ", paste(basename(pkg_files), collapse = ", "))
+          
+          # Build binary packages
+          for (pkg_file in pkg_files) {
+              message("\nAttempting to build: ", basename(pkg_file))
+              tryCatch({
+                  cmd <- sprintf("R CMD INSTALL --build %s --no-multiarch", pkg_file)
+                  message("Running command: ", cmd)
+                  system_output <- system(cmd, intern = TRUE)
+                  message(paste(system_output, collapse = "\n"))
+                  message("Successfully built: ", basename(pkg_file))
+              }, error = function(e) {
+                  message("Error building package: ", basename(pkg_file))
+                  message("Error message: ", e$message)
+                  message("Stack trace: ", paste(sys.calls(), collapse = "\n"))
+              })
           }
-          Move-Item -Path *.zip, *.tgz -Destination r-packages/${{ matrix.path }}/ -ErrorAction SilentlyContinue
+          
+          # Move binary packages to repository
+          if (.Platform$OS.type == "windows") {
+              zip_files <- list.files(pattern = "\\.zip$", full.names = TRUE)
+              message("\nFound binary packages: ", paste(basename(zip_files), collapse = ", "))
+              if (length(zip_files) > 0) {
+                  file.copy(zip_files, bin_dir, overwrite = TRUE)
+                  message("Copied binary packages to: ", bin_dir)
+              } else {
+                  message("No binary packages found to copy!")
+              }
+          } else {
+              tgz_files <- list.files(pattern = "\\.tgz$", full.names = TRUE)
+              message("\nFound binary packages: ", paste(basename(tgz_files), collapse = ", "))
+              if (length(tgz_files) > 0) {
+                  file.copy(tgz_files, bin_dir, overwrite = TRUE)
+                  message("Copied binary packages to: ", bin_dir)
+              } else {
+                  message("No binary packages found to copy!")
+              }
+          }
+          
+          # Create PACKAGES files
+          message("\nCreating PACKAGES files in: ", bin_dir)
+          tools::write_PACKAGES(bin_dir, type = "${{ matrix.platform }}")
+          message("PACKAGES files created successfully")
+          '@ | Out-File -Encoding utf8 build_binaries.R
+          
+          # Run the R script
+          Rscript build_binaries.R
         shell: pwsh
-
-      - name: Create PACKAGES files
-        run: |
-          Rscript -e 'tools::write_PACKAGES("r-packages/${{ matrix.path }}", type="${{ matrix.platform }}")'
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
