@@ -213,9 +213,11 @@ jobs:
           name: r-packages-${{ matrix.os }}
           path: r-packages
           
-  deploy:
+  finalize:
     needs: [build-source, build-binaries]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
@@ -226,17 +228,18 @@ jobs:
           
       - name: Merge repositories
         run: |
-          mkdir -p r-packages-merged
-          cp -r artifacts/*/* r-packages-merged/
+          mkdir -p r-packages
+          cp -r artifacts/*/* r-packages/
           # Add debug information
           echo "Contents of artifacts directory:"
           ls -R artifacts/
-          echo "Contents of r-packages-merged directory:"
-          ls -R r-packages-merged/
+          echo "Contents of r-packages directory:"
+          ls -R r-packages/
           
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./r-packages-merged
-          destination_dir: r-packages
+      - name: Commit and push changes
+        run: |
+          git config --global thierrymoudiki 'thierrymoudiki'
+          git config --global thierrymoudiki@gmail.com 'thierrymoudiki@gmail.com'
+          git add r-packages/
+          git commit -m "Update R packages repository" || echo "No changes to commit"
+          git push
