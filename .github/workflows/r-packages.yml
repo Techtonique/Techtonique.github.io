@@ -147,9 +147,7 @@ jobs:
           - os: macos-latest
             platform: mac.binary
             path: bin/macosx/contrib/4.3
-            
     runs-on: ${{ matrix.os }}
-    
     steps:
       - uses: actions/checkout@v4
       
