@@ -64,7 +64,6 @@ jobs:
             "miniCRAN", 
             "remotes", 
             "Rcpp",
-            "memoise",
             "httr",
             "foreach",
             "snow",
@@ -107,8 +106,7 @@ jobs:
               "crossvalidation",
               "ESGtoolkit",
               "learningmachine",
-              "misc",
-              "mlsauce_r"
+              "misc"
           )
           
           # Build and store package source tarballs
