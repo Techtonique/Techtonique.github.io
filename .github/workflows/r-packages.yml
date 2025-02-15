@@ -40,22 +40,27 @@ jobs:
             libudunits2-dev libgdal-dev libgeos-dev libproj-dev \
             libfontconfig1-dev libharfbuzz-dev libfribidi-dev
 
+      - name: Install pak
+        run: |
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+        shell: Rscript {0}
+
       - name: Install R package dependencies
         run: |
           # First install dependencies that forecast needs
-          install.packages(c(
+          pak::pak(c(
             "timeDate",
             "zoo",
             "xts",
             "tseries",
             "fracdiff"
-          ), repos="https://cloud.r-project.org", dependencies=TRUE)
+          ))
           
           # Then try to install forecast
-          install.packages("forecast", repos="https://cloud.r-project.org", dependencies=TRUE)
+          pak::pak("forecast")
           
           # Finally install other needed packages
-          install.packages(c(
+          pak::pak(c(
             "miniCRAN", 
             "remotes", 
             "Rcpp",
@@ -80,7 +85,7 @@ jobs:
             "e1071",
             "caret",
             "R6"
-          ), repos="https://cloud.r-project.org", dependencies=TRUE)
+          ))
         shell: Rscript {0}
 
       - name: Build source packages
@@ -172,23 +177,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y qpdf texinfo texlive-latex-base texlive-latex-extra
 
+      - name: Install pak
+        run: |
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+        shell: Rscript {0}
+
       - name: Install R package dependencies
         run: |
-          packages <- c(
-            "Rcpp", "memoise", "foreach", "snow", "forecast", 
-            "ggplot2", "tseries", "cclust", "randtoolbox", 
-            "dfoptim", "doSNOW", "scoringRules", "gridExtra", 
-            "reshape2", "VineCopula", "httr", "jsonlite", 
-            "skimr", "ranger", "glmnet", "xgboost", "e1071", 
-            "caret", "R6"
-          )
-          install.packages(packages, repos="https://cloud.r-project.org", dependencies=TRUE)
-          # Verify installation
-          installed <- rownames(installed.packages())
-          missing <- packages[!packages %in% installed]
-          if (length(missing) > 0) {
-            stop("Missing packages: ", paste(missing, collapse=", "))
-          }
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          pak::pak(c("miniCRAN", "remotes", "Rcpp"))
         shell: Rscript {0}
 
       - name: Build binary packages
@@ -238,8 +235,8 @@ jobs:
           
       - name: Commit and push changes
         run: |
-          git config --global thierrymoudiki 'thierrymoudiki'
-          git config --global thierrymoudiki@gmail.com 'thierrymoudiki@gmail.com'
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
           git add r-packages/
           git commit -m "Update R packages repository" || echo "No changes to commit"
           git push
