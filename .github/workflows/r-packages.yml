@@ -139,7 +139,7 @@ jobs:
     needs: build-source
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest, macos-latest]
         include:
           - os: windows-latest
             platform: win.binary
@@ -147,9 +147,6 @@ jobs:
           - os: macos-latest
             platform: mac.binary
             path: bin/macosx/contrib/4.3
-          - os: ubuntu-latest
-            platform: source
-            path: bin/linux/contrib/4.3
             
     runs-on: ${{ matrix.os }}
     
