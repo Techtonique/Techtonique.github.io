@@ -233,6 +233,11 @@ jobs:
         run: |
           mkdir -p r-packages-merged
           cp -r artifacts/*/* r-packages-merged/
+          # Add debug information
+          echo "Contents of artifacts directory:"
+          ls -R artifacts/
+          echo "Contents of r-packages-merged directory:"
+          ls -R r-packages-merged/
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
