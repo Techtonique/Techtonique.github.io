@@ -11,27 +11,31 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-source:
-    runs-on: ubuntu-latest
+  build-binaries:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: source
+            path: src/contrib
+          - os: windows-latest
+            platform: win.binary
+            path: bin/windows/contrib/4.3
+          - os: macos-latest
+            platform: mac.binary
+            path: bin/macosx/contrib/4.3
+            
+    runs-on: ${{ matrix.os }}
+    
     steps:
       - uses: actions/checkout@v4
       
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: 'release'
-          
-      - name: Install system dependencies (macOS)
-        if: runner.os == 'macOS'
-        run: |
-          brew install qpdf
-          brew install --cask basictex
-          
-      - name: Install system dependencies (Windows)
-        if: runner.os == 'Windows'
-        run: |
-          choco install rtools
-          
-      - name: Install system dependencies (Linux)
+
+      - name: Install system dependencies (Ubuntu)
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
@@ -40,31 +44,35 @@ jobs:
             libudunits2-dev libgdal-dev libgeos-dev libproj-dev \
             libfontconfig1-dev libharfbuzz-dev libfribidi-dev
 
-      - name: Install pak
+      - name: Install Rtools (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          choco install rtools
+          echo "C:/rtools43/x86_64-w64-mingw32.static.posix/bin" >> $GITHUB_PATH
+          echo "C:/rtools43/usr/bin" >> $GITHUB_PATH
+        shell: bash
+
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install qpdf
+          brew install --cask basictex
+
+      - name: Install pak and dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-        shell: Rscript {0}
-
-      - name: Install R package dependencies
-        run: |
-          # First install dependencies that forecast needs
-          pak::pak(c(
-            "timeDate",
-            "zoo",
-            "xts",
-            "tseries",
-            "fracdiff"
-          ))
-          
-          # Then try to install forecast
-          pak::pak("forecast")
-          
-          # Finally install other needed packages
           pak::pak(c(
             "miniCRAN", 
             "remotes", 
             "Rcpp",
+            "timeDate",
+            "zoo",
+            "xts",
+            "tseries",
+            "fracdiff",
+            "forecast",
             "httr",
+            "memoise",
             "foreach",
             "snow",
             "ggplot2",
@@ -87,145 +95,80 @@ jobs:
           ))
         shell: Rscript {0}
 
-      - name: Build source packages
+      - name: Build and check packages
+        shell: Rscript {0}
         run: |
-          # Create R script for building packages
-          cat << 'EOF' > build_packages.R
-          library(miniCRAN)
-          
-          # Define directories
+          # Setup directory
           repo_dir <- "r-packages"
+          pkg_dir <- file.path(repo_dir, "${{ matrix.path }}")
+          dir.create(pkg_dir, recursive = TRUE, showWarnings = FALSE)
           
-          # Create the repository directories
-          dir.create(file.path(repo_dir, "src/contrib"), recursive = TRUE, showWarnings = FALSE)
-          
-          # List of R packages to build
+          # List of packages to build
           packages <- c(
               "ahead",
               "bcn",
               "crossvalidation",
               "ESGtoolkit",
               "learningmachine",
-              "misc"
+              "misc",
+              "mlsauce_r"
           )
           
-          # Build and store package source tarballs
-          message("\nBuilding packages...")
-          for (pkg_name in packages) {
-              message(paste("\nBuilding", pkg_name, "..."))
-              pkg_dir <- file.path(".", pkg_name)
-              
-              if (dir.exists(pkg_dir)) {
-                  # Run R CMD build
-                  system(paste("R CMD build", pkg_dir))
-                  
-                  # Find the created tarball
-                  pkg_file <- list.files(".", pattern = paste0(basename(pkg_name), ".*\\.tar\\.gz$"), full.names = TRUE)
-                  
-                  if (length(pkg_file) > 0) {
-                      # Move the package to the repository directory
-                      file.copy(pkg_file[1], file.path(repo_dir, "src/contrib"), overwrite = TRUE)
-                      file.remove(pkg_file[1])  # Clean up
-                      message(paste("Successfully built and copied:", pkg_name))
-                  }
-              }
-          }
-          
-          # Create PACKAGES files
-          tools::write_PACKAGES(file.path(repo_dir, "src/contrib"), type="source")
-          EOF
-          
-          # Run the R script
-          Rscript build_packages.R
-
-  build-binaries:
-    needs: build-source
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, macos-latest]
-        include:
-          - os: windows-latest
-            platform: win.binary
-            path: bin/windows/contrib/4.3
-          - os: macos-latest
-            platform: mac.binary
-            path: bin/macosx/contrib/4.3
+          # Build and check packages
+          for (pkg in packages) {
+            message("\n====================================")
+            message("Processing package: ", pkg)
+            message("====================================\n")
             
-    runs-on: ${{ matrix.os }}
-    
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: 'release'
-          
-      - uses: r-lib/actions/setup-rtools@v2
-        if: runner.os == 'Windows'
-
-      - name: Install pak
-        run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-        shell: Rscript {0}
-
-      - name: Install dependencies
-        run: |
-          pak::pak(c("miniCRAN", "remotes", "Rcpp"))
-        shell: Rscript {0}
-
-      - name: Download source packages
-        uses: actions/download-artifact@v4
-        with:
-          name: r-packages-source
-          path: r-packages-source
-
-      - name: Build binary packages
-        shell: Rscript {0}
-        run: |
-          library(miniCRAN)
-          
-          # Setup directories
-          repo_dir <- "r-packages"
-          source_dir <- "r-packages-source/src/contrib"
-          bin_dir <- file.path(repo_dir, "${{ matrix.path }}")
-          dir.create(bin_dir, recursive = TRUE, showWarnings = FALSE)
-          
-          # Get list of source packages
-          pkg_files <- list.files(source_dir, pattern = "\\.tar\\.gz$", full.names = TRUE)
-          message("Found source packages: ", paste(basename(pkg_files), collapse = ", "))
-          
-          # Build binary packages
-          for (pkg_file in pkg_files) {
-            message("\nBuilding ", basename(pkg_file))
             try({
-              install.packages(pkg_file, repos = NULL, type = "source", lib = tempdir())
-              system(paste0("R CMD INSTALL --build ", pkg_file))
+              # First run R CMD check
+              message("\nRunning R CMD check...")
+              check_cmd <- paste("R CMD check", pkg, "--no-manual --no-build-vignettes")
+              system(check_cmd, intern = TRUE)
+              message("R CMD check completed")
+              
+              if ("${{ matrix.platform }}" == "source") {
+                message("\nBuilding source package...")
+                build_cmd <- paste("R CMD build", pkg)
+                system(build_cmd, intern = TRUE)
+                pkg_file <- list.files(pattern = paste0(pkg, ".*\\.tar\\.gz$"))
+                message("Source package built: ", pkg_file)
+              } else {
+                message("\nBuilding binary package...")
+                build_cmd <- paste("R CMD INSTALL --build", pkg)
+                system(build_cmd, intern = TRUE)
+                if (Sys.info()[["sysname"]] == "Windows") {
+                  pkg_file <- list.files(pattern = paste0(pkg, ".*\\.zip$"))
+                } else {
+                  pkg_file <- list.files(pattern = paste0(pkg, ".*\\.tgz$"))
+                }
+                message("Binary package built: ", pkg_file)
+              }
+              
+              if (length(pkg_file) > 0) {
+                file.copy(pkg_file, pkg_dir, overwrite = TRUE)
+                message("Package file copied to repository directory")
+              } else {
+                message("WARNING: No package file found after build!")
+              }
             })
           }
           
-          # Move binary packages
-          if (Sys.info()[["sysname"]] == "Windows") {
-            files <- list.files(pattern = "\\.zip$")
-          } else {
-            files <- list.files(pattern = "\\.tgz$")
-          }
+          message("\nCreating PACKAGES files...")
+          tools::write_PACKAGES(pkg_dir, type = "${{ matrix.platform }}")
+          message("PACKAGES files created")
           
-          if (length(files) > 0) {
-            file.copy(files, bin_dir, overwrite = TRUE)
-            message("Copied files: ", paste(files, collapse = ", "))
-          }
-          
-          tools::write_PACKAGES(bin_dir, type = "${{ matrix.platform }}")
+          message("\nFinal repository contents:")
+          print(list.files(pkg_dir, recursive = TRUE))
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: r-packages-${{ matrix.os }}
           path: r-packages
-          
+
   finalize:
-    needs: [build-source, build-binaries]
+    needs: build-binaries
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -241,10 +184,7 @@ jobs:
         run: |
           mkdir -p r-packages
           cp -r artifacts/*/* r-packages/
-          # Add debug information
-          echo "Contents of artifacts directory:"
-          ls -R artifacts/
-          echo "Contents of r-packages directory:"
+          echo "Repository contents after merge:"
           ls -R r-packages/
           
       - name: Commit and push changes
