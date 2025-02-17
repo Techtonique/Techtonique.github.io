@@ -32,7 +32,6 @@ jobs:
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak(c(
-            "miniCRAN", 
             "remotes", 
             "Rcpp",
             "timeDate",
@@ -219,7 +218,37 @@ jobs:
       - name: Install pak and dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          pak::pak(c("miniCRAN", "remotes", "Rcpp"))
+          pak::pak(c(
+            "remotes", 
+            "Rcpp",
+            "timeDate",
+            "zoo",
+            "xts",
+            "tseries",
+            "fracdiff",
+            "forecast",
+            "httr",
+            "memoise",
+            "foreach",
+            "snow",
+            "ggplot2",
+            "cclust",
+            "randtoolbox",
+            "dfoptim",
+            "doSNOW",
+            "scoringRules",
+            "gridExtra",
+            "reshape2",
+            "VineCopula",
+            "jsonlite",
+            "skimr",
+            "ranger",
+            "glmnet",
+            "xgboost",
+            "e1071",
+            "caret",
+            "R6"
+          ))
         shell: Rscript {0}
 
       - name: Download source packages
