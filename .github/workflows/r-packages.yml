@@ -100,7 +100,12 @@ jobs:
             message("Processing package: ", pkg)
             message("====================================\n")
             
-            try({
+            result <- tryCatch({
+              # Clone repository
+              message("\nCloning repository from ", url, "...")
+              clone_cmd <- sprintf("git clone %s %s", url, pkg)
+              system(clone_cmd)
+              
               # Run R CMD check
               message("\nRunning R CMD check...")
               check_cmd <- paste("R CMD check", pkg, "--no-manual --no-build-vignettes")
@@ -119,19 +124,23 @@ jobs:
               pkg_file <- list.files(pattern = paste0(pkg, ".*\\.tar\\.gz$"))
               if (length(pkg_file) > 0) {
                 file.copy(pkg_file, pkg_dir, overwrite = TRUE)
+                status_entry$status <- "SUCCESS"
                 message("Package file copied to repository directory")
               } else {
+                status_entry$error_message <- "No package file found after build"
                 message("WARNING: No package file found after build!")
               }
+              NULL
             }, error = function(e) {
               message("Error processing package: ", pkg)
               message("Error message: ", e$message)
               message("Call stack:")
               print(sys.calls())
+              e
             })
             
-            if (inherits(result, "try-error")) {
-              status_entry$error_message <- as.character(result)
+            if (inherits(result, "error")) {
+              status_entry$error_message <- conditionMessage(result)
             }
             
             # Add status to tracking list
