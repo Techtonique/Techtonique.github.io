@@ -1,0 +1,60 @@
+{
+  "platform": "win.binary",
+  "timestamp": "2025-02-17 17:04:18",
+  "packages": {
+    "ahead": {
+      "package": "ahead",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_time": "2025-02-17 17:04:18"
+    },
+    "bayesianrvfl": {
+      "package": "bayesianrvfl",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_time": "2025-02-17 17:04:19"
+    },
+    "bcn": {
+      "package": "bcn",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_time": "2025-02-17 17:04:20"
+    },
+    "crossvalidation": {
+      "package": "crossvalidation",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_time": "2025-02-17 17:04:20"
+    },
+    "esgtoolkit": {
+      "package": "esgtoolkit",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_time": "2025-02-17 17:04:20"
+    },
+    "forecastingapi": {
+      "package": "forecastingapi",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:04:21"
+    },
+    "learningmachine": {
+      "package": "learningmachine",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:04:22"
+    },
+    "misc": {
+      "package": "misc",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:04:23"
+    },
+    "simulatetimeseries": {
+      "package": "simulatetimeseries",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:04:23"
+    }
+  }
+}

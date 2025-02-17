@@ -1,0 +1,78 @@
+{
+  "platform": "source",
+  "timestamp": "2025-02-17 17:01:51",
+  "packages": {
+    "crossvalidation": {
+      "package": "crossvalidation",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:01:51"
+    },
+    "esgtoolkit": {
+      "package": "esgtoolkit",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:01:51"
+    },
+    "ahead": {
+      "package": "ahead",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:01:52"
+    },
+    "bcn": {
+      "package": "bcn",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:01:53"
+    },
+    "learningmachine": {
+      "package": "learningmachine",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:01:53"
+    },
+    "nnetsauce": {
+      "package": "nnetsauce",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:01:54"
+    },
+    "mlsauce": {
+      "package": "mlsauce",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:01:54"
+    },
+    "forecastingapi": {
+      "package": "forecastingapi",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:01:54"
+    },
+    "simulatetimeseries": {
+      "package": "simulatetimeseries",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:02:01"
+    },
+    "bayesianrvfl": {
+      "package": "bayesianrvfl",
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_time": "2025-02-17 17:02:15"
+    },
+    "misc": {
+      "package": "misc",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:02:17"
+    },
+    "tisthemachinelearner": {
+      "package": "tisthemachinelearner",
+      "status": "FAILED",
+      "error_message": "No package file found after build",
+      "build_time": "2025-02-17 17:02:18"
+    }
+  }
+}
