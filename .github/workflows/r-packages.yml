@@ -262,7 +262,7 @@ jobs:
             message("Processing package: ", basename(pkg_file))
             message("====================================\n")
             
-            try({
+            result <- tryCatch({
               message("\nBuilding binary package...")
               build_cmd <- paste("R CMD INSTALL --build", pkg_file, "--no-multiarch")
               build_output <- system(build_cmd, intern = TRUE)
@@ -271,26 +271,30 @@ jobs:
               
               # Move binary package to repository
               if (Sys.info()[["sysname"]] == "Windows") {
-                pkg_files <- list.files(pattern = "\\.zip$")
+                bin_files <- list.files(pattern = "\\.zip$")
               } else {
-                pkg_files <- list.files(pattern = "\\.tgz$")
+                bin_files <- list.files(pattern = "\\.tgz$")
               }
               
-              if (length(pkg_files) > 0) {
-                file.copy(pkg_files, bin_dir, overwrite = TRUE)
+              if (length(bin_files) > 0) {
+                file.copy(bin_files, bin_dir, overwrite = TRUE)
+                status_entry$status <- "SUCCESS"
                 message("Binary package(s) copied to repository")
               } else {
+                status_entry$error_message <- "No binary package found after build"
                 message("WARNING: No binary package found after build!")
               }
+              NULL
             }, error = function(e) {
               message("Error processing package: ", basename(pkg_file))
               message("Error message: ", e$message)
               message("Call stack:")
               print(sys.calls())
+              e
             })
             
-            if (inherits(result, "try-error")) {
-              status_entry$error_message <- as.character(result)
+            if (inherits(result, "error")) {
+              status_entry$error_message <- conditionMessage(result)
             }
             
             # Add status to tracking list
