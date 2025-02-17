@@ -266,9 +266,52 @@ jobs:
           bin_dir <- file.path(repo_dir, "${{ matrix.path }}")
           dir.create(bin_dir, recursive = TRUE, showWarnings = FALSE)
           
-          # Get list of source packages
+          # Get list of source packages and sort by dependencies
           pkg_files <- list.files(source_dir, pattern = "\\.tar\\.gz$", full.names = TRUE)
           message("Found source packages: ", paste(basename(pkg_files), collapse = ", "))
+          
+          # Define package dependencies (simplified version)
+          pkg_deps <- list(
+            "misc" = character(0),
+            "crossvalidation" = character(0),
+            "esgtoolkit" = character(0),
+            "ahead" = c("misc"),
+            "bcn" = character(0),
+            "learningmachine" = character(0),
+            "bayesianrvfl" = character(0),
+            "forecastingapi" = character(0),
+            "simulatetimeseries" = character(0)
+          )
+          
+          # Function to sort packages by dependencies
+          sort_by_deps <- function(pkgs, deps) {
+            sorted <- character(0)
+            remaining <- names(deps)
+            
+            while (length(remaining) > 0) {
+              # Find packages with no remaining dependencies
+              available <- remaining[sapply(remaining, function(pkg) {
+                all(deps[[pkg]] %in% sorted)
+              })]
+              
+              if (length(available) == 0) {
+                warning("Circular dependency detected")
+                break
+              }
+              
+              sorted <- c(sorted, available)
+              remaining <- setdiff(remaining, available)
+            }
+            
+            return(sorted)
+          }
+          
+          # Sort packages
+          pkg_order <- sort_by_deps(basename(pkg_files), pkg_deps)
+          pkg_files <- pkg_files[match(paste0(pkg_order, ".*\\.tar\\.gz"), basename(pkg_files))]
+          
+          message("\nPackage build order:")
+          message(paste(basename(pkg_files), collapse = "\n"))
           
           # Initialize build status tracking
           build_status <- list(
