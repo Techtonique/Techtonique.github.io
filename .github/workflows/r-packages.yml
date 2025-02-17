@@ -266,8 +266,9 @@ jobs:
           bin_dir <- file.path(repo_dir, "${{ matrix.path }}")
           dir.create(bin_dir, recursive = TRUE, showWarnings = FALSE)
           
-          # Get list of source packages and sort by dependencies
+          # Get list of source packages
           pkg_files <- list.files(source_dir, pattern = "\\.tar\\.gz$", full.names = TRUE)
+          pkg_names <- sub("_.*$", "", basename(pkg_files))
           message("Found source packages: ", paste(basename(pkg_files), collapse = ", "))
           
           # Define package dependencies (simplified version)
@@ -286,7 +287,7 @@ jobs:
           # Function to sort packages by dependencies
           sort_by_deps <- function(pkgs, deps) {
             sorted <- character(0)
-            remaining <- names(deps)
+            remaining <- intersect(names(deps), pkgs)  # Only consider packages that exist
             
             while (length(remaining) > 0) {
               # Find packages with no remaining dependencies
@@ -303,15 +304,18 @@ jobs:
               remaining <- setdiff(remaining, available)
             }
             
+            # Add any packages not in deps list at the end
+            sorted <- c(sorted, setdiff(pkgs, names(deps)))
             return(sorted)
           }
           
           # Sort packages
-          pkg_order <- sort_by_deps(basename(pkg_files), pkg_deps)
-          pkg_files <- pkg_files[match(paste0(pkg_order, ".*\\.tar\\.gz"), basename(pkg_files))]
-          
+          pkg_order <- sort_by_deps(pkg_names, pkg_deps)
           message("\nPackage build order:")
-          message(paste(basename(pkg_files), collapse = "\n"))
+          message(paste(pkg_order, collapse = "\n"))
+          
+          # Reorder package files
+          pkg_files <- pkg_files[match(pkg_order, pkg_names)]
           
           # Initialize build status tracking
           build_status <- list(
