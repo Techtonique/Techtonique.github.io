@@ -50,6 +50,12 @@ jobs:
           choco install rtools
           echo "C:/rtools43/x86_64-w64-mingw32.static.posix/bin" >> $GITHUB_PATH
           echo "C:/rtools43/usr/bin" >> $GITHUB_PATH
+          echo "Verifying Rtools installation:"
+          ls "C:/rtools43"
+          echo "PATH environment variable:"
+          echo $PATH
+          where gcc
+          where make
         shell: bash
 
       - name: Install system dependencies (macOS)
@@ -120,11 +126,20 @@ jobs:
             message("====================================\n")
             
             try({
+              if (Sys.info()[["sysname"]] == "Windows") {
+                message("\nWindows-specific information:")
+                message("Working directory: ", getwd())
+                message("Package directory exists: ", dir.exists(pkg))
+                message("Package directory contents:")
+                print(list.files(pkg, recursive = TRUE))
+              }
+              
               # First run R CMD check
               message("\nRunning R CMD check...")
               check_cmd <- paste("R CMD check", pkg, "--no-manual --no-build-vignettes")
-              system(check_cmd, intern = TRUE)
-              message("R CMD check completed")
+              check_output <- system(check_cmd, intern = TRUE)
+              message("R CMD check output:")
+              print(check_output)
               
               if ("${{ matrix.platform }}" == "source") {
                 message("\nBuilding source package...")
@@ -134,14 +149,19 @@ jobs:
                 message("Source package built: ", pkg_file)
               } else {
                 message("\nBuilding binary package...")
-                build_cmd <- paste("R CMD INSTALL --build", pkg)
-                system(build_cmd, intern = TRUE)
+                build_cmd <- paste("R CMD INSTALL --build", pkg, "--no-multiarch")
+                build_output <- system(build_cmd, intern = TRUE)
+                message("Build command output:")
+                print(build_output)
+                
                 if (Sys.info()[["sysname"]] == "Windows") {
                   pkg_file <- list.files(pattern = paste0(pkg, ".*\\.zip$"))
-                } else {
-                  pkg_file <- list.files(pattern = paste0(pkg, ".*\\.tgz$"))
+                  message("\nLooking for Windows binary:")
+                  message("Pattern: ", paste0(pkg, ".*\\.zip$"))
+                  message("Files found: ", paste(pkg_file, collapse = ", "))
+                  message("All files in directory:")
+                  print(list.files())
                 }
-                message("Binary package built: ", pkg_file)
               }
               
               if (length(pkg_file) > 0) {
@@ -150,6 +170,11 @@ jobs:
               } else {
                 message("WARNING: No package file found after build!")
               }
+            }, error = function(e) {
+              message("Error processing package: ", pkg)
+              message("Error message: ", e$message)
+              message("Call stack:")
+              print(sys.calls())
             })
           }
           
@@ -193,3 +218,19 @@ jobs:
           git add r-packages/
           git commit -m "Update R packages repository" || echo "No changes to commit"
           git push
+
+      - name: Verify Windows build environment
+        if: runner.os == 'Windows'
+        shell: Rscript {0}
+        run: |
+          message("R version:")
+          print(R.version)
+          
+          message("\nR home directory:")
+          print(R.home())
+          
+          message("\nSystem PATH:")
+          print(Sys.getenv("PATH"))
+          
+          message("\nChecking for Rtools:")
+          print(pkgbuild::find_rtools())
