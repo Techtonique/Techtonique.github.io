@@ -1,9 +1,0 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-crossval.Rcheck/
-crossval*.tar.gz
-crossval*.tgz
-inst/doc
-docs

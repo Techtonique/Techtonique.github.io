@@ -1,7 +1,0 @@
-useDynLib(simulatetimeseries, .registration=TRUE)
-importFrom(Rcpp, evalCpp)
-importFrom("stats", "approx", "arima.sim", "deltat", "frequency",
-               "is.ts", "lm", "rnorm", "rt", "runif", "start", "time",
-               "ts", "tsp", "window")
-importFrom("utils", "tail")
-exportPattern("^[[:alpha:]]+")
