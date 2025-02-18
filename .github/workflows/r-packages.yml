@@ -63,8 +63,10 @@ jobs:
             "R6",
             "devtools",
             "vars",
-            "rmarkdown"          
+            "rmarkdown", 
+            "randomForest"
             ))
+          remotes::install_github("thierrymoudiki/misc")
         shell: Rscript {0}
 
       - name: Build source packages
@@ -268,8 +270,10 @@ jobs:
             "R6",
             "devtools",
             "vars",
-            "rmarkdown"
+            "rmarkdown",
+            "randomForest"
           ))
+          remotes::install_github("thierrymoudiki/misc")
         shell: Rscript {0}
 
       - name: Download source packages
@@ -404,8 +408,17 @@ jobs:
         run: |
           mkdir -p r-packages
           
-          # Copy all files, forcing overwrite
-          cp -rf artifacts/*/* r-packages/
+          # First copy source packages
+          if [ -d "artifacts/r-packages-source" ]; then
+            cp -rf artifacts/r-packages-source/* r-packages/
+          fi
+          
+          # Then copy binary packages, which should only contain their respective directories
+          for artifact in artifacts/r-packages-*; do
+            if [ "$artifact" != "artifacts/r-packages-source" ]; then
+              cp -rf $artifact/* r-packages/
+            fi
+          done
           
           # Clean up unnecessary directories
           cd r-packages
