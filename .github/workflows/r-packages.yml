@@ -60,8 +60,11 @@ jobs:
             "xgboost",
             "e1071",
             "caret",
-            "R6"
-          ))
+            "R6",
+            "devtools",
+            "vars",
+            "rmarkdown"          
+            ))
         shell: Rscript {0}
 
       - name: Build source packages
@@ -262,7 +265,10 @@ jobs:
             "xgboost",
             "e1071",
             "caret",
-            "R6"
+            "R6",
+            "devtools",
+            "vars",
+            "rmarkdown"
           ))
         shell: Rscript {0}
 
@@ -279,60 +285,11 @@ jobs:
         run: |
           # Setup directory
           repo_dir <- "r-packages"
-          source_dir <- "r-packages-source/src/contrib"
-          bin_dir <- file.path(repo_dir, "${{ matrix.path }}")
-          dir.create(bin_dir, recursive = TRUE, showWarnings = FALSE)
+          pkg_dir <- file.path(repo_dir, "${{ matrix.path }}")
+          dir.create(pkg_dir, recursive = TRUE, showWarnings = FALSE)
           
-          # Get list of source packages
-          pkg_files <- list.files(source_dir, pattern = "\\.tar\\.gz$", full.names = TRUE)
-          pkg_names <- sub("_.*$", "", basename(pkg_files))
-          message("Found source packages: ", paste(basename(pkg_files), collapse = ", "))
-          
-          # Define package dependencies (simplified version)
-          pkg_deps <- list(
-            "misc" = character(0),
-            "crossvalidation" = character(0),
-            "esgtoolkit" = character(0),
-            "ahead" = c("misc"),
-            "bcn" = character(0),
-            "learningmachine" = character(0),
-            "bayesianrvfl" = character(0),
-            "forecastingapi" = character(0),
-            "simulatetimeseries" = character(0)
-          )
-          
-          # Function to sort packages by dependencies
-          sort_by_deps <- function(pkgs, deps) {
-            sorted <- character(0)
-            remaining <- intersect(names(deps), pkgs)  # Only consider packages that exist
-            
-            while (length(remaining) > 0) {
-              # Find packages with no remaining dependencies
-              available <- remaining[sapply(remaining, function(pkg) {
-                all(deps[[pkg]] %in% sorted)
-              })]
-              
-              if (length(available) == 0) {
-                warning("Circular dependency detected")
-                break
-              }
-              
-              sorted <- c(sorted, available)
-              remaining <- setdiff(remaining, available)
-            }
-            
-            # Add any packages not in deps list at the end
-            sorted <- c(sorted, setdiff(pkgs, names(deps)))
-            return(sorted)
-          }
-          
-          # Sort packages
-          pkg_order <- sort_by_deps(pkg_names, pkg_deps)
-          message("\nPackage build order:")
-          message(paste(pkg_order, collapse = "\n"))
-          
-          # Reorder package files
-          pkg_files <- pkg_files[match(pkg_order, pkg_names)]
+          message("Building binaries for platform: ${{ matrix.platform }}")
+          message("Output directory: ", pkg_dir)
           
           # Initialize build status tracking
           build_status <- list(
@@ -341,65 +298,75 @@ jobs:
             packages = list()
           )
           
-          # Build binary packages
+          # Download source packages
+          src_dir <- "r-packages-source/src/contrib"
+          pkg_files <- list.files(src_dir, pattern = "\\.tar\\.gz$", full.names = TRUE)
+          message("Found source packages: ", paste(basename(pkg_files), collapse = ", "))
+          
+          # Build each package
           for (pkg_file in pkg_files) {
             pkg_name <- sub("_.*$", "", basename(pkg_file))
+            message("\nProcessing package: ", pkg_name)
+            
             status_entry <- list(
               package = pkg_name,
               status = "FAILED",
               error_message = NULL,
+              build_output = NULL,
               build_time = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
             )
             
-            message("\n====================================")
-            message("Processing package: ", basename(pkg_file))
-            message("====================================\n")
-            
             result <- tryCatch({
-              message("\nBuilding binary package...")
-              build_cmd <- paste("R CMD INSTALL --build", pkg_file, "--no-multiarch")
-              build_output <- system(build_cmd, intern = TRUE)
-              message("Build command output:")
-              print(build_output)
+              # Install binary package
+              message("Building binary package...")
+              install_output <- system2("R", 
+                c("CMD", "INSTALL", "--build", pkg_file, "--no-multiarch"),
+                stdout = TRUE, stderr = TRUE)
+              message("Build output:")
+              print(install_output)
               
-              # Move binary package to repository
-              if (Sys.info()[["sysname"]] == "Windows") {
-                bin_files <- list.files(pattern = "\\.zip$")
+              # Find and move the built binary package
+              if (Sys.info()["sysname"] == "Windows") {
+                bin_pattern <- paste0("^", pkg_name, ".*\\.zip$")
               } else {
-                bin_files <- list.files(pattern = "\\.tgz$")
+                bin_pattern <- paste0("^", pkg_name, ".*\\.tgz$")
               }
               
+              bin_files <- list.files(pattern = bin_pattern)
+              message("Found binary files: ", paste(bin_files, collapse = ", "))
+              
               if (length(bin_files) > 0) {
-                file.copy(bin_files, bin_dir, overwrite = TRUE)
+                message("Moving ", bin_files[1], " to ", pkg_dir)
+                file.copy(bin_files[1], pkg_dir, overwrite = TRUE)
+                file.remove(bin_files[1])
                 status_entry$status <- "SUCCESS"
-                message("Binary package(s) copied to repository")
+                message("Binary package copied to repository")
               } else {
                 status_entry$error_message <- "No binary package found after build"
                 message("WARNING: No binary package found after build!")
               }
+              
+              status_entry$build_output <- paste(install_output, collapse = "\n")
               NULL
             }, error = function(e) {
               message("Error processing package: ", basename(pkg_file))
               message("Error message: ", e$message)
-              message("Call stack:")
-              print(sys.calls())
+              status_entry$error_message <- conditionMessage(e)
+              if (exists("install_output")) {
+                status_entry$build_output <- paste(install_output, collapse = "\n")
+              }
               e
             })
             
-            if (inherits(result, "error")) {
-              status_entry$error_message <- conditionMessage(result)
-            }
-            
-            # Add status to tracking list
             build_status$packages[[pkg_name]] <- status_entry
           }
           
           message("\nCreating PACKAGES files...")
-          tools::write_PACKAGES(bin_dir, type = "${{ matrix.platform }}")
+          tools::write_PACKAGES(pkg_dir, type = "${{ matrix.platform }}")
           message("PACKAGES files created")
           
           message("\nFinal repository contents:")
-          print(list.files(bin_dir, recursive = TRUE))
+          print(list.files(pkg_dir, recursive = TRUE))
           
           # Save build status
           status_file <- file.path(repo_dir, sprintf("build_status_%s.json", "${{ matrix.platform }}"))
@@ -433,10 +400,12 @@ jobs:
         with:
           path: artifacts
           
-      - name: Merge repositories
+      - name: Merge artifacts
         run: |
           mkdir -p r-packages
-          cp -r artifacts/*/* r-packages/
+          
+          # Copy all files, forcing overwrite
+          cp -rf artifacts/*/* r-packages/
           
           # Clean up unnecessary directories
           cd r-packages
@@ -448,6 +417,7 @@ jobs:
           
           echo "Repository contents after cleanup:"
           ls -R
+        shell: /usr/bin/bash -e {0}
           
       - name: Commit and push changes
         run: |
