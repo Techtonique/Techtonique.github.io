@@ -29,6 +29,8 @@ jobs:
             libfontconfig1-dev libharfbuzz-dev libfribidi-dev
 
       - name: Install pak and dependencies
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak(c(
@@ -65,8 +67,8 @@ jobs:
             "vars",
             "rmarkdown", 
             "randomForest"
-            ))
-          remotes::install_github("thierrymoudiki/misc")
+          ))
+          pak::pkg_install("thierrymoudiki/misc")
         shell: Rscript {0}
 
       - name: Build source packages
@@ -236,6 +238,8 @@ jobs:
           brew install --cask basictex
 
       - name: Install pak and dependencies
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           pak::pak(c(
@@ -273,7 +277,7 @@ jobs:
             "rmarkdown",
             "randomForest"
           ))
-          remotes::install_github("thierrymoudiki/misc")
+          pak::pkg_install("thierrymoudiki/misc")
         shell: Rscript {0}
 
       - name: Download source packages
