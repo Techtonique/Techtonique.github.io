@@ -86,7 +86,7 @@ jobs:
           # Clone and build packages
           for (i in seq_len(nrow(packages_info))) {
             pkg <- packages_info$package[i]
-            url <- packages_info$url[i]
+            url <- paste0(packages_info$url[i], ".git")  # Add .git suffix
             
             status_entry <- list(
               package = pkg,
@@ -100,10 +100,24 @@ jobs:
             message("====================================\n")
             
             result <- tryCatch({
-              # Clone repository
+              # Clean up any existing directory
+              if (dir.exists(pkg)) {
+                unlink(pkg, recursive = TRUE)
+              }
+              
+              # Clone repository with verbose output
               message("\nCloning repository from ", url, "...")
-              clone_cmd <- sprintf("git clone %s %s", url, pkg)
+              clone_cmd <- sprintf("git clone --verbose %s %s", url, pkg)  # Using url with .git suffix
               system(clone_cmd)
+              
+              # List directory contents for debugging
+              message("\nDirectory contents after clone:")
+              print(list.files(pkg, recursive = TRUE))
+              
+              # Verify DESCRIPTION file exists
+              if (!file.exists(file.path(pkg, "DESCRIPTION"))) {
+                stop("DESCRIPTION file not found after cloning")
+              }
               
               # Run R CMD check
               message("\nRunning R CMD check...")
@@ -144,6 +158,9 @@ jobs:
             
             # Add status to tracking list
             build_status$packages[[pkg]] <- status_entry
+            
+            # Clean up
+            unlink(pkg, recursive = TRUE)
           }
           
           message("\nCreating PACKAGES files...")
