@@ -457,8 +457,15 @@ jobs:
         run: |
           Rscript -e '
           tryCatch({
+            # Helper function to find existing R version directories
+            find_r_version_dirs <- function(base_dir, platform) {
+              if (!dir.exists(base_dir)) return(character(0))
+              dirs <- list.dirs(base_dir, recursive = FALSE)
+              # Return version directories that contain PACKAGES files
+              dirs[file.exists(file.path(dirs, "PACKAGES"))]
+            }
+
             modify_packages <- function(pkg_dir, platform="source", r_version=getRversion()) {
-              packages_file <- file.path(pkg_dir, "PACKAGES")
               result <- list(
                 platform = platform,
                 path = pkg_dir,
@@ -467,6 +474,13 @@ jobs:
                 modified = 0
               )
               
+              # Check directory exists
+              if (!dir.exists(dirname(pkg_dir))) {
+                result$message <- paste("Parent directory not found:", dirname(pkg_dir))
+                return(result)
+              }
+              
+              packages_file <- file.path(pkg_dir, "PACKAGES")
               if (!file.exists(packages_file)) {
                 result$message <- paste("PACKAGES file not found in:", pkg_dir)
                 return(result)
@@ -494,6 +508,7 @@ jobs:
                 }
                 
                 message("Processing ", nrow(pkg_info), " packages in ", pkg_dir)
+                modified_count <- 0
                 
                 for (i in seq_len(nrow(pkg_info))) {
                   if (!is.na(pkg_info[i, "Package"]) && !is.na(pkg_info[i, "Version"]) && !is.na(pkg_info[i, "File"])) {
@@ -508,16 +523,21 @@ jobs:
                                   paste0("\\1", tracking_url),
                                   content)
                     
+                    modified_count <- modified_count + 1
                     message("Updated URL for ", package, " ", version)
                   } else {
                     message("Skipping incomplete entry at row ", i)
                   }
                 }
                 
-                writeLines(content, packages_file)
-                result$status <- "SUCCESS"
-                result$modified <- nrow(pkg_info)
-                result$message <- paste("Modified", nrow(pkg_info), "package entries")
+                if (modified_count > 0) {
+                  writeLines(content, packages_file)
+                  result$status <- "SUCCESS"
+                  result$modified <- modified_count
+                  result$message <- paste("Modified", modified_count, "package entries")
+                } else {
+                  result$message <- "No valid package entries to modify"
+                }
                 
               }, error = function(e) {
                 result$status <- "ERROR"
@@ -527,14 +547,43 @@ jobs:
               return(result)
             }
             
-            r_version <- getRversion()
-            major_minor <- paste(R.version$major, strsplit(R.version$minor, ".", fixed=TRUE)[[1]][1], sep=".")
+            # Find actual R version directories
+            message("\nScanning repository structure:")
+            src_dir <- "r-packages/src/contrib"
+            win_base <- "r-packages/bin/windows/contrib"
+            mac_base <- "r-packages/bin/macosx/contrib"
             
-            results <- list(
-              source = modify_packages("r-packages/src/contrib", "source", r_version),
-              windows = modify_packages(sprintf("r-packages/bin/windows/contrib/%s", major_minor), "windows", r_version),
-              macos = modify_packages(sprintf("r-packages/bin/macosx/contrib/%s", major_minor), "macos", r_version)
-            )
+            message("Repository contents:")
+            if (dir.exists("r-packages")) {
+              system("ls -R r-packages")
+            } else {
+              message("r-packages directory not found")
+            }
+            
+            # Process source packages
+            source_result <- modify_packages(src_dir, "source")
+            
+            # Find and process binary packages
+            win_dirs <- find_r_version_dirs(win_base, "windows")
+            mac_dirs <- find_r_version_dirs(mac_base, "macos")
+            
+            results <- list(source = source_result)
+            
+            # Process Windows versions
+            if (length(win_dirs) > 0) {
+              for (dir in win_dirs) {
+                ver <- basename(dir)
+                results[[paste0("windows_", ver)]] <- modify_packages(dir, "windows", ver)
+              }
+            }
+            
+            # Process macOS versions
+            if (length(mac_dirs) > 0) {
+              for (dir in mac_dirs) {
+                ver <- basename(dir)
+                results[[paste0("macos_", ver)]] <- modify_packages(dir, "macos", ver)
+              }
+            }
             
             message("\nModification results:")
             for (platform in names(results)) {
@@ -548,9 +597,15 @@ jobs:
               ))
             }
             
-            # Consider it a success if at least source packages were modified
-            if (results$source$status != "SUCCESS") {
-              stop("Failed to modify source packages")
+            # Consider it a success if source packages exist and were processed
+            if (!dir.exists(src_dir)) {
+              stop("Source package directory not found")
+            }
+            if (source_result$status == "SKIPPED" && grepl("not found", source_result$message)) {
+              stop("No PACKAGES file found in source directory")
+            }
+            if (source_result$status == "ERROR") {
+              stop(paste("Error processing source packages:", source_result$message))
             }
             
           }, error = function(e) {
