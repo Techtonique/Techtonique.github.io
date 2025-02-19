@@ -68,7 +68,8 @@ jobs:
             "rmarkdown", 
             "randomForest", 
             "fpp",
-            "reticulate"
+            "reticulate",
+            "ForecastComb"
           ))
           pak::pkg_install("thierrymoudiki/misc")
         shell: Rscript {0}
@@ -286,7 +287,8 @@ jobs:
             "rmarkdown",
             "randomForest",
             "fpp",
-            "reticulate"
+            "reticulate",
+            "ForecastComb"
           ))
           pak::pkg_install("thierrymoudiki/misc")
         shell: Rscript {0}
