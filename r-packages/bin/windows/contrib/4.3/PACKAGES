@@ -61,6 +61,12 @@ Depends: R (>= 3.5.0), MASS, stats, utils, foreach, doSNOW, snow,
         parallel, compiler
 License: MIT
 
+Package: nnetsauce
+Version: 0.20.6
+Depends: R (>= 3.3.3), forecast, memoise
+Imports: reticulate
+Suggests: roxygen2, reticulate
+
 Package: simulatetimeseries
 Version: 1.0
 Imports: Rcpp (>= 1.0.12)
