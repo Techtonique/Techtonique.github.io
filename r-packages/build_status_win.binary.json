@@ -1,60 +1,90 @@
 {
   "platform": "win.binary",
-  "timestamp": "2025-02-17 17:04:18",
+  "timestamp": "2025-02-19 00:52:26",
   "packages": {
     "ahead": {
       "package": "ahead",
-      "status": "FAILED",
-      "error_message": "No binary package found after build",
-      "build_time": "2025-02-17 17:04:18"
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'ahead' ...\n** using staged installation\n** libs\nusing C++ compiler: 'G__~1.EXE (GCC) 13.3.0'\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c RcppExports.cpp -o RcppExports.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c embedc.cpp -o embedc.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c utils_armagarch.cpp -o utils_armagarch.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c utils_matrix.cpp -o utils_matrix.o\nutils_matrix.cpp: In function 'Rcpp::NumericMatrix create_lags_cpp(Rcpp::NumericVector, int)':\nutils_matrix.cpp:14:24: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   14 |       for(int p = 0; p < n_k; p++)\n      |                      ~~^~~~~\nutils_matrix.cpp: In function 'Rcpp::List create_train_inputs_cpp(Rcpp::NumericMatrix, int)':\nutils_matrix.cpp:38:20: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'int' [-Wsign-compare]\n   38 |       for(l = 1; l < k; l++) {\n      |                  ~~^~~\nutils_matrix.cpp: In function 'Rcpp::NumericMatrix reformat_cpp(Rcpp::NumericMatrix, long unsigned int)':\nutils_matrix.cpp:60:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   60 |   for(int j = 0; j < p; j++) {\n      |                  ~~^~~\nutils_matrix.cpp:61:22: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   61 |     for(int i = 0; i < n_k; i++) {\n      |                    ~~^~~~~\nutils_matrix.cpp: In function 'Rcpp::NumericMatrix rev_matrix_cpp(Rcpp::NumericMatrix)':\nutils_matrix.cpp:76:19: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   76 |  for(int k = 0; k < p; k++) {\n      |                 ~~^~~\nutils_matrix.cpp: In function 'Rcpp::NumericMatrix rbind_vecmat_cpp(Rcpp::NumericVector, Rcpp::NumericMatrix)':\nutils_matrix.cpp:98:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   98 |   for(int i = 0; i < x_nrow; i++) {\n      |                  ~~^~~~~~~~\nutils_matrix.cpp:102:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n  102 |   for(int j = 0; j < x_ncol; j++) {\n      |                  ~~^~~~~~~~\ng++ -std=gnu++17 -shared -s -static-libgcc -o ahead.dll tmp.def RcppExports.o embedc.o utils_armagarch.o utils_matrix.o -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib -LC:/R/bin/x64 -lR\ninstalling to D:/a/_temp/Library/00LOCK-ahead/00new/ahead/libs/x64\n** R\n** inst\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'ahead' as ahead_0.15.0.zip\n* DONE (ahead)",
+      "build_time": "2025-02-19 00:52:26"
     },
     "bayesianrvfl": {
       "package": "bayesianrvfl",
-      "status": "FAILED",
-      "error_message": "No binary package found after build",
-      "build_time": "2025-02-17 17:04:19"
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'bayesianrvfl' ...\n** using staged installation\n** libs\nusing C++ compiler: 'G__~1.EXE (GCC) 13.3.0'\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c RcppExports.cpp -o RcppExports.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c kernels.cpp -o kernels.o\nkernels.cpp: In function 'double l2_norm(Rcpp::NumericVector)':\nkernels.cpp:9:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n    9 |   for(int i = 0; i < n; i++) {\n      |                  ~~^~~\nkernels.cpp: In function 'Rcpp::NumericMatrix matern52_kxx_cpp(Rcpp::NumericMatrix, double, double)':\nkernels.cpp:24:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   24 |   for(int i = 0; i < n; i++) {\n      |                  ~~^~~\nkernels.cpp:25:22: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   25 |     for(int j = i; j < n; j++) {\n      |                    ~~^~~\nkernels.cpp: In function 'Rcpp::NumericVector matern52_kxy_cpp(Rcpp::NumericMatrix, Rcpp::NumericVector, double, double)':\nkernels.cpp:50:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   50 |   for(int i = 0; i < k; i++) {\n      |                  ~~^~~\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c utils.cpp -o utils.o\nutils.cpp: In function 'Rcpp::NumericMatrix cbind_cpp(Rcpp::NumericMatrix, Rcpp::NumericMatrix)':\nutils.cpp:19:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   19 |   for(int j = 0; j < res_ncol; j++) {\n      |                  ~~^~~~~~~~~~\nutils.cpp:20:10: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   20 |     if(j < x_ncol)\n      |        ~~^~~~~~~~\nutils.cpp: In function 'double l2_dist(Rcpp::NumericVector, Rcpp::NumericVector)':\nutils.cpp:42:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   42 |   for(int i = 0; i < n; i++) {\n      |                  ~~^~~\nutils.cpp: In function 'Rcpp::NumericVector l2_distmat(Rcpp::NumericVector, Rcpp::NumericMatrix)':\nutils.cpp:55:16: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   55 |   if (x.ncol() != y_ncol) {\n      |       ~~~~~~~~~^~~~~~~~~\nutils.cpp:61:23: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   61 |      for(int i = 0; i < n; i++) {\n      |                     ~~^~~\nutils.cpp: In function 'Rcpp::NumericMatrix one_hot_encode_cpp(Rcpp::NumericVector, long unsigned int)':\nutils.cpp:81:20: warning: comparison of integer expressions of different signedness: 'int' and 'long unsigned int' [-Wsign-compare]\n   81 |   for(int i = 0; i < n_obs; i++) {\n      |                  ~~^~~~~~~\ng++ -std=gnu++17 -shared -s -static-libgcc -o bayesianrvfl.dll tmp.def RcppExports.o kernels.o utils.o -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib -LC:/R/bin/x64 -lR\ninstalling to D:/a/_temp/Library/00LOCK-bayesianrvfl/00new/bayesianrvfl/libs/x64\n** R\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'bayesianrvfl' as bayesianrvfl_0.3.1.zip\n* DONE (bayesianrvfl)",
+      "build_time": "2025-02-19 00:53:00"
     },
     "bcn": {
       "package": "bcn",
-      "status": "FAILED",
-      "error_message": "No binary package found after build",
-      "build_time": "2025-02-17 17:04:20"
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'bcn' ...\n** using staged installation\n** libs\nusing C++ compiler: 'G__~1.EXE (GCC) 13.3.0'\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c RcppExports.cpp -o RcppExports.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c bcn.cpp -o bcn.o\nbcn.cpp: In function 'Rcpp::NumericVector calculate_hL_cpp(Rcpp::NumericMatrix, Rcpp::NumericVector, Rcpp::String)':\nbcn.cpp:135:1: warning: control reaches end of non-void function [-Wreturn-type]\n  135 | }\n      | ^\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c rcpp_hello_world.cpp -o rcpp_hello_world.o\ng++ -std=gnu++17 -shared -s -static-libgcc -o bcn.dll tmp.def RcppExports.o bcn.o rcpp_hello_world.o -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib -LC:/R/bin/x64 -lR\ninstalling to D:/a/_temp/Library/00LOCK-bcn/00new/bcn/libs/x64\n** R\n** data\n*** moving datasets to lazyload DB\n** inst\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'bcn' as bcn_0.7.0.zip\n* DONE (bcn)",
+      "build_time": "2025-02-19 00:53:11"
     },
     "crossvalidation": {
       "package": "crossvalidation",
-      "status": "FAILED",
-      "error_message": "No binary package found after build",
-      "build_time": "2025-02-17 17:04:20"
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'crossvalidation' ...\n** using staged installation\n** R\n** inst\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'crossvalidation' as crossvalidation_0.5.0.zip\n* DONE (crossvalidation)",
+      "build_time": "2025-02-19 00:53:20"
     },
     "esgtoolkit": {
       "package": "esgtoolkit",
-      "status": "FAILED",
-      "error_message": "No binary package found after build",
-      "build_time": "2025-02-17 17:04:20"
+      "status": "SUCCESS",
+      "error_message": {},
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'esgtoolkit' ...\n** using staged installation\n** libs\nusing C++ compiler: 'G__~1.EXE (GCC) 13.3.0'\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c RcppExports.cpp -o RcppExports.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c esg2.cpp -o esg2.o\ng++ -std=gnu++17 -shared -s -static-libgcc -o esgtoolkit.dll tmp.def RcppExports.o esg2.o -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib -LC:/R/bin/x64 -lR\ninstalling to D:/a/_temp/Library/00LOCK-esgtoolkit/00new/esgtoolkit/libs/x64\n** R\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'esgtoolkit' as esgtoolkit_1.2.1.zip\n* DONE (esgtoolkit)",
+      "build_time": "2025-02-19 00:53:23"
     },
     "forecastingapi": {
       "package": "forecastingapi",
       "status": "SUCCESS",
       "error_message": {},
-      "build_time": "2025-02-17 17:04:21"
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'forecastingapi' ...\n** using staged installation\n** R\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'forecastingapi' as forecastingapi_0.4.0.zip\n* DONE (forecastingapi)",
+      "build_time": "2025-02-19 00:53:34"
     },
     "learningmachine": {
       "package": "learningmachine",
       "status": "SUCCESS",
       "error_message": {},
-      "build_time": "2025-02-17 17:04:22"
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'learningmachine' ...\n** using staged installation\n** libs\nusing C++ compiler: 'G__~1.EXE (GCC) 13.3.0'\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c RcppExports.cpp -o RcppExports.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c compute_probs.cpp -o compute_probs.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c matern32.cpp -o matern32.o\nIn file included from D:/a/_temp/Library/Rcpp/include/Rcpp/Vector.h:51,\n                 from D:/a/_temp/Library/Rcpp/include/Rcpp.h:40,\n                 from matern32.cpp:1:\nIn member function 'Rcpp::Vector<RTYPE, StoragePolicy>::Proxy Rcpp::Vector<RTYPE, StoragePolicy>::operator()(const size_t&) [with int RTYPE = 14; StoragePolicy = Rcpp::PreserveStorage]',\n    inlined from 'double find_lam_eigen(Rcpp::NumericMatrix, Rcpp::NumericVector, Rcpp::NumericVector, Rcpp::NumericVector)' at matern32.cpp:343:28:\nD:/a/_temp/Library/Rcpp/include/Rcpp/vector/Vector.h:344:25: warning: 'i_opt' may be used uninitialized [-Wmaybe-uninitialized]\n  344 |         return cache.ref( offset(i) ) ;\n      |                ~~~~~~~~~^~~~~~~~~~~~~\nmatern32.cpp: In function 'double find_lam_eigen(Rcpp::NumericMatrix, Rcpp::NumericVector, Rcpp::NumericVector, Rcpp::NumericVector)':\nmatern32.cpp:324:21: note: 'i_opt' was declared here\n  324 |   unsigned long int i_opt;\n      |                     ^~~~~\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c sampling.cpp -o sampling.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c utils_classification.cpp -o utils_classification.o\ng++ -std=gnu++17 -shared -s -static-libgcc -o learningmachine.dll tmp.def RcppExports.o compute_probs.o matern32.o sampling.o utils_classification.o -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib -LC:/R/bin/x64 -lR\ninstalling to D:/a/_temp/Library/00LOCK-learningmachine/00new/learningmachine/libs/x64\n** R\n** inst\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'learningmachine' as learningmachine_2.8.0.zip\n* DONE (learningmachine)",
+      "build_time": "2025-02-19 00:53:36"
     },
     "misc": {
       "package": "misc",
       "status": "SUCCESS",
       "error_message": {},
-      "build_time": "2025-02-17 17:04:23"
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'misc' ...\n** using staged installation\n** R\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'misc' as misc_0.4.0.zip\n* DONE (misc)",
+      "build_time": "2025-02-19 00:53:59"
+    },
+    "mlsauce": {
+      "package": "mlsauce",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_output": "* installing to library 'D:/a/_temp/Library'\nERROR: dependency 'reticulate' is not available for package 'mlsauce'\n* removing 'D:/a/_temp/Library/mlsauce'",
+      "build_time": "2025-02-19 00:54:01"
+    },
+    "nnetsauce": {
+      "package": "nnetsauce",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_output": "* installing to library 'D:/a/_temp/Library'\nERROR: dependency 'reticulate' is not available for package 'nnetsauce'\n* removing 'D:/a/_temp/Library/nnetsauce'",
+      "build_time": "2025-02-19 00:54:02"
     },
     "simulatetimeseries": {
       "package": "simulatetimeseries",
       "status": "SUCCESS",
       "error_message": {},
-      "build_time": "2025-02-17 17:04:23"
+      "build_output": "* installing to library 'D:/a/_temp/Library'\n* installing *source* package 'simulatetimeseries' ...\n** using staged installation\n** libs\nusing C++ compiler: 'G__~1.EXE (GCC) 13.3.0'\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c RcppExports.cpp -o RcppExports.o\ng++ -std=gnu++17  -I\"C:/R/include\" -DNDEBUG  -I'D:/a/_temp/Library/Rcpp/include'   -I\"C:/rtools44/x86_64-w64-mingw32.static.posix/include\"     -O2 -Wall  -mfpmath=sse -msse2 -mstackrealign  -c utils.cpp -o utils.o\ng++ -std=gnu++17 -shared -s -static-libgcc -o simulatetimeseries.dll tmp.def RcppExports.o utils.o -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib/x64 -LC:/rtools44/x86_64-w64-mingw32.static.posix/lib -LC:/R/bin/x64 -lR\ninstalling to D:/a/_temp/Library/00LOCK-simulatetimeseries/00new/simulatetimeseries/libs/x64\n** R\n** byte-compile and prepare package for lazy loading\n** help\n*** installing help indices\n** building package indices\n** installing vignettes\n** testing if installed package can be loaded from temporary location\n** testing if installed package can be loaded from final location\n** testing if installed package keeps a record of temporary installation path\n* MD5 sums\npackaged installation of 'simulatetimeseries' as simulatetimeseries_1.0.zip\n* DONE (simulatetimeseries)",
+      "build_time": "2025-02-19 00:54:02"
+    },
+    "tisthemachinelearner": {
+      "package": "tisthemachinelearner",
+      "status": "FAILED",
+      "error_message": "No binary package found after build",
+      "build_output": "* installing to library 'D:/a/_temp/Library'\nERROR: dependency 'reticulate' is not available for package 'tisthemachinelearner'\n* removing 'D:/a/_temp/Library/tisthemachinelearner'",
+      "build_time": "2025-02-19 00:54:09"
     }
   }
 }
