@@ -452,9 +452,28 @@ jobs:
         shell: /usr/bin/bash -e {0}
 
       - name: Modify PACKAGES for tracking
+        shell: Rscript {0}
         run: |
-          Rscript -e 'modify_packages <- function(pkg_dir, platform="source") { packages_file <- file.path(pkg_dir, "PACKAGES"); if (file.exists(packages_file)) { content <- readLines(packages_file); pkg_info <- read.dcf(textConnection(paste(content, collapse="\n"))); for (i in seq_len(nrow(pkg_info))) { package <- pkg_info[i, "Package"]; version <- pkg_info[i, "Version"]; tracking_url <- sprintf("https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s", package, version, platform); content <- gsub(paste0("^(File: )", pkg_info[i, "File"]), paste0("\\1", tracking_url), content) }; writeLines(content, packages_file) } }; modify_packages("r-packages/src/contrib", "source"); modify_packages("r-packages/bin/windows/contrib/4.3", "windows"); modify_packages("r-packages/bin/macosx/contrib/4.3", "macos")'
-        shell: bash
+          modify_packages <- function(pkg_dir, platform="source") {
+            packages_file <- file.path(pkg_dir, "PACKAGES")
+            if (file.exists(packages_file)) {
+              content <- readLines(packages_file)
+              pkg_info <- read.dcf(textConnection(paste(content, collapse="\n")))
+              for (i in seq_len(nrow(pkg_info))) {
+                package <- pkg_info[i, "Package"]
+                version <- pkg_info[i, "Version"]
+                tracking_url <- sprintf("https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s", 
+                                      package, version, platform)
+                content <- gsub(paste0("^(File: )", pkg_info[i, "File"]), 
+                              paste0("\\1", tracking_url), 
+                              content)
+              }
+              writeLines(content, packages_file)
+            }
+          }
+          modify_packages("r-packages/src/contrib", "source")
+          modify_packages("r-packages/bin/windows/contrib/4.3", "windows")
+          modify_packages("r-packages/bin/macosx/contrib/4.3", "macos")
           
       - name: Commit and push changes
         run: |
