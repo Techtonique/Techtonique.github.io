@@ -452,29 +452,111 @@ jobs:
         shell: /usr/bin/bash -e {0}
 
       - name: Modify PACKAGES for tracking
-        shell: Rscript {0}
         run: |
-          modify_packages <- function(pkg_dir, platform="source") {
-            packages_file <- file.path(pkg_dir, "PACKAGES")
-            if (file.exists(packages_file)) {
-              content <- readLines(packages_file)
-              pkg_info <- read.dcf(textConnection(paste(content, collapse="\n")))
-              for (i in seq_len(nrow(pkg_info))) {
-                package <- pkg_info[i, "Package"]
-                version <- pkg_info[i, "Version"]
-                tracking_url <- sprintf("https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s", 
-                                      package, version, platform)
-                content <- gsub(paste0("^(File: )", pkg_info[i, "File"]), 
-                              paste0("\\1", tracking_url), 
-                              content)
+          Rscript -e '
+          tryCatch({
+            modify_packages <- function(pkg_dir, platform="source", r_version=getRversion()) {
+              packages_file <- file.path(pkg_dir, "PACKAGES")
+              result <- list(
+                platform = platform,
+                path = pkg_dir,
+                status = "SKIPPED",
+                message = NULL,
+                modified = 0
+              )
+              
+              if (!file.exists(packages_file)) {
+                result$message <- paste("PACKAGES file not found in:", pkg_dir)
+                return(result)
               }
-              writeLines(content, packages_file)
+              
+              tryCatch({
+                content <- readLines(packages_file)
+                if (length(content) == 0) {
+                  result$message <- "PACKAGES file is empty"
+                  return(result)
+                }
+                
+                pkg_info <- read.dcf(textConnection(paste(content, collapse="\n")))
+                if (is.null(pkg_info) || nrow(pkg_info) == 0) {
+                  result$message <- "No package entries found in PACKAGES file"
+                  return(result)
+                }
+                
+                # Check for required columns
+                required_cols <- c("Package", "Version", "File")
+                missing_cols <- required_cols[!required_cols %in% colnames(pkg_info)]
+                if (length(missing_cols) > 0) {
+                  result$message <- paste("Missing required columns:", paste(missing_cols, collapse=", "))
+                  return(result)
+                }
+                
+                message("Processing ", nrow(pkg_info), " packages in ", pkg_dir)
+                
+                for (i in seq_len(nrow(pkg_info))) {
+                  if (!is.na(pkg_info[i, "Package"]) && !is.na(pkg_info[i, "Version"]) && !is.na(pkg_info[i, "File"])) {
+                    package <- pkg_info[i, "Package"]
+                    version <- pkg_info[i, "Version"]
+                    tracking_url <- sprintf(
+                      "https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s&r_version=%s",
+                      package, version, platform, r_version
+                    )
+                    
+                    content <- gsub(paste0("^(File: )", pkg_info[i, "File"]),
+                                  paste0("\\1", tracking_url),
+                                  content)
+                    
+                    message("Updated URL for ", package, " ", version)
+                  } else {
+                    message("Skipping incomplete entry at row ", i)
+                  }
+                }
+                
+                writeLines(content, packages_file)
+                result$status <- "SUCCESS"
+                result$modified <- nrow(pkg_info)
+                result$message <- paste("Modified", nrow(pkg_info), "package entries")
+                
+              }, error = function(e) {
+                result$status <- "ERROR"
+                result$message <- conditionMessage(e)
+              })
+              
+              return(result)
             }
-          }
-          modify_packages("r-packages/src/contrib", "source")
-          modify_packages("r-packages/bin/windows/contrib/4.3", "windows")
-          modify_packages("r-packages/bin/macosx/contrib/4.3", "macos")
-          
+            
+            r_version <- getRversion()
+            major_minor <- paste(R.version$major, strsplit(R.version$minor, ".", fixed=TRUE)[[1]][1], sep=".")
+            
+            results <- list(
+              source = modify_packages("r-packages/src/contrib", "source", r_version),
+              windows = modify_packages(sprintf("r-packages/bin/windows/contrib/%s", major_minor), "windows", r_version),
+              macos = modify_packages(sprintf("r-packages/bin/macosx/contrib/%s", major_minor), "macos", r_version)
+            )
+            
+            message("\nModification results:")
+            for (platform in names(results)) {
+              r <- results[[platform]]
+              message(sprintf(
+                "%s (%s): %s - %s",
+                platform,
+                r$path,
+                r$status,
+                if (!is.null(r$message)) r$message else "No message"
+              ))
+            }
+            
+            # Consider it a success if at least source packages were modified
+            if (results$source$status != "SUCCESS") {
+              stop("Failed to modify source packages")
+            }
+            
+          }, error = function(e) {
+            message("Error occurred: ", conditionMessage(e))
+            quit(status = 1)
+          })'
+        shell: bash
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'GitHub Actions Bot'
