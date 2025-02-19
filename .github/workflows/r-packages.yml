@@ -515,13 +515,22 @@ jobs:
                     package <- pkg_info[i, "Package"]
                     version <- pkg_info[i, "Version"]
                     tracking_url <- sprintf(
-                      "https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s&r_version=%s",
-                      package, version, platform, r_version
+                      "https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s",
+                      package, version, platform
                     )
                     
-                    content <- gsub(paste0("^(File: )", pkg_info[i, "File"]),
-                                  paste0("\\1", tracking_url),
-                                  content)
+                    # Add build options based on platform
+                    build_opts <- "--no-build-vignettes --no-manual"
+                    if (platform == "windows") {
+                      build_opts <- paste(build_opts, "--no-multiarch")
+                    }
+                    
+                    # Update the build command in the File field
+                    content <- gsub(
+                      paste0("^(File: )", pkg_info[i, "File"]),
+                      paste0("\\1", tracking_url, " ", build_opts),
+                      content
+                    )
                     
                     modified_count <- modified_count + 1
                     message("Updated URL for ", package, " ", version)
