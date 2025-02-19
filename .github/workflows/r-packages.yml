@@ -461,3 +461,37 @@ jobs:
           
           message("\nChecking for Rtools:")
           print(pkgbuild::find_rtools())
+
+      - name: Modify PACKAGES for tracking
+        shell: Rscript {0}
+        run: |
+          modify_packages <- function(pkg_dir, platform = "source") {
+            packages_file <- file.path(pkg_dir, "PACKAGES")
+            if (file.exists(packages_file)) {
+              content <- readLines(packages_file)
+              pkg_info <- read.dcf(textConnection(paste(content, collapse="\n")))
+              
+              for (i in seq_len(nrow(pkg_info))) {
+                package <- pkg_info[i, "Package"]
+                version <- pkg_info[i, "Version"]
+                
+                # Replace direct URL with tracking URL
+                tracking_url <- sprintf(
+                  "https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s",
+                  package, version, platform
+                )
+                
+                content <- gsub(
+                  paste0("^(File: )", pkg_info[i, "File"]),
+                  paste0("\\1", tracking_url),
+                  content
+                )
+              }
+              writeLines(content, packages_file)
+            }
+          }
+          
+          # Modify PACKAGES files for each platform
+          modify_packages("r-packages/src/contrib", "source")
+          modify_packages("r-packages/bin/windows/contrib/4.3", "windows")
+          modify_packages("r-packages/bin/macosx/contrib/4.3", "macos")
