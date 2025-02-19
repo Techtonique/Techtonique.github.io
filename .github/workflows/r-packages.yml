@@ -414,6 +414,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+      
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -446,6 +450,11 @@ jobs:
           echo "Repository contents after cleanup:"
           ls -R
         shell: /usr/bin/bash -e {0}
+
+      - name: Modify PACKAGES for tracking
+        run: |
+          Rscript -e 'modify_packages <- function(pkg_dir, platform="source") { packages_file <- file.path(pkg_dir, "PACKAGES"); if (file.exists(packages_file)) { content <- readLines(packages_file); pkg_info <- read.dcf(textConnection(paste(content, collapse="\n"))); for (i in seq_len(nrow(pkg_info))) { package <- pkg_info[i, "Package"]; version <- pkg_info[i, "Version"]; tracking_url <- sprintf("https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s", package, version, platform); content <- gsub(paste0("^(File: )", pkg_info[i, "File"]), paste0("\\1", tracking_url), content) }; writeLines(content, packages_file) } }; modify_packages("r-packages/src/contrib", "source"); modify_packages("r-packages/bin/windows/contrib/4.3", "windows"); modify_packages("r-packages/bin/macosx/contrib/4.3", "macos")'
+        shell: bash
           
       - name: Commit and push changes
         run: |
@@ -470,9 +479,3 @@ jobs:
           
           message("\nChecking for Rtools:")
           print(pkgbuild::find_rtools())
-
-      - name: Modify PACKAGES for tracking
-        if: success()
-        run: |
-          Rscript -e 'modify_packages <- function(pkg_dir, platform="source") { packages_file <- file.path(pkg_dir, "PACKAGES"); if (file.exists(packages_file)) { content <- readLines(packages_file); pkg_info <- read.dcf(textConnection(paste(content, collapse="\n"))); for (i in seq_len(nrow(pkg_info))) { package <- pkg_info[i, "Package"]; version <- pkg_info[i, "Version"]; tracking_url <- sprintf("https://techtonique-r-packages-079db1913d27.herokuapp.com/download/%s?version=%s&platform=%s", package, version, platform); content <- gsub(paste0("^(File: )", pkg_info[i, "File"]), paste0("\\1", tracking_url), content) }; writeLines(content, packages_file) } }; modify_packages("r-packages/src/contrib", "source"); modify_packages("r-packages/bin/windows/contrib/4.3", "windows"); modify_packages("r-packages/bin/macosx/contrib/4.3", "macos")'
-        shell: bash
