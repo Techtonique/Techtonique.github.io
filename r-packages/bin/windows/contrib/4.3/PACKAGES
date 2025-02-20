@@ -1,7 +1,8 @@
 Package: ahead
-Version: 0.15.0
-Depends: R (>= 3.5.0), foreach, snow, forecast, ggplot2, tseries
-Imports: Rcpp (>= 1.0.6), misc
+Version: 0.16.2
+Depends: R (>= 3.5.0), foreach, snow, forecast, ggplot2, tseries,
+        randtoolbox, vars
+Imports: Rcpp (>= 1.0.6), misc, devtools
 LinkingTo: Rcpp
 Suggests: caret, dfoptim, doSNOW, knitr, rmarkdown, testthat, forecast,
         ForecastComb, fpp, glmnet, e1071, randomForest, roxygen2
@@ -60,6 +61,12 @@ Version: 0.4.0
 Depends: R (>= 3.5.0), MASS, stats, utils, foreach, doSNOW, snow,
         parallel, compiler
 License: MIT
+
+Package: nnetsauce
+Version: 0.20.6
+Depends: R (>= 3.3.3), forecast, memoise
+Imports: reticulate
+Suggests: roxygen2, reticulate
 
 Package: simulatetimeseries
 Version: 1.0
