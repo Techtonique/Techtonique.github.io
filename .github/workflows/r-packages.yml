@@ -133,7 +133,7 @@ jobs:
               
               # Build source package
               message("\nBuilding source package...")
-              build_cmd <- paste("R CMD build", pkg)
+              build_cmd <- paste("R CMD build", pkg, "--no-build-vignettes --no-manual")
               build_output <- system(build_cmd, intern = TRUE)
               message("Build command output:")
               print(build_output)
