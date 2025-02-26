@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tisthemachinelearner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
       </span>
     </div>
 
@@ -146,10 +146,10 @@ regression example using the built-in <code>mtcars</code> dataset:</p>
 <code class="sourceCode R"><span><span class="va">rf</span> <span class="op">&lt;-</span> <span class="va">Regressor</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>model_name <span class="op">=</span> <span class="st">"RandomForestRegressor"</span><span class="op">)</span></span>
 <span><span class="va">rf</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">preds</span> <span class="op">&lt;-</span> <span class="va">rf</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 19.180 23.095 28.515 29.268 18.633 17.420 20.418</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 19.011 22.851 29.030 29.646 18.209 17.708 20.663</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y_test</span> <span class="op">-</span> <span class="va">preds</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 2.472809</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2.293614</span></span></code></pre></div>
 </div>
   </div>
 
