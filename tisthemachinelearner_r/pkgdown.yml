@@ -1,0 +1,8 @@
+pandoc: 3.1.11.1
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  intro_R6: intro_R6.html
+  intro_S3_calib: intro_S3_calib.html
+  intro_S3: intro_S3.html
+last_built: 2025-02-26T05:17Z
