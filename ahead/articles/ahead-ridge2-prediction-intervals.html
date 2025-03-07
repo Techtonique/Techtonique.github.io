@@ -6,20 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prediction intervals for multivariate time series (simulation-based) • ahead</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Prediction intervals for multivariate time series (simulation-based)">
-<meta property="og:description" content="ahead">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -33,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.15.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.17.0</span>
       </span>
     </div>
 
@@ -45,7 +44,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -57,6 +56,9 @@
     </li>
     <li>
       <a href="../articles/ahead-plotting-functions.html">Plotting functions</a>
+    </li>
+    <li>
+      <a href="../articles/ahead-ridge2-conformal.html">Prediction intervals for multivariate time series (simulation-based)</a>
     </li>
     <li>
       <a href="../articles/ahead-ridge2-prediction-intervals.html">Prediction intervals for multivariate time series (simulation-based)</a>
@@ -99,7 +101,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -108,7 +110,7 @@
 series (simulation-based)</h1>
             
       
-      
+
       <div class="hidden name"><code>ahead-ridge2-prediction-intervals.Rmd</code></div>
 
     </div>
@@ -1179,50 +1181,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2003 -1.08056990 -1.14582835</span></span>
-<span><span class="co">#&gt; 2004 -1.23343504 -1.15469695</span></span>
-<span><span class="co">#&gt; 2005  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2006 -2.58725990 -2.26486335</span></span>
-<span><span class="co">#&gt; 2007 -3.07477874 -1.76651025</span></span>
-<span><span class="co">#&gt; 2008 -1.31677412 -1.06553020</span></span>
-<span><span class="co">#&gt; 2009  0.65681006  0.07019039</span></span>
-<span><span class="co">#&gt; 2010  0.33076863 -0.40143292</span></span>
-<span><span class="co">#&gt; 2011  0.51993723  0.22434076</span></span>
-<span><span class="co">#&gt; 2012  0.10053432 -0.17249791</span></span>
-<span><span class="co">#&gt; 2013  0.95770684  0.35761548</span></span>
-<span><span class="co">#&gt; 2014  0.26825909 -0.01668861</span></span>
-<span><span class="co">#&gt; 2015 -0.12839403 -0.42852687</span></span>
-<span><span class="co">#&gt; 2016 -1.17137522 -0.76232506</span></span>
-<span><span class="co">#&gt; 2017  0.19770654  0.96971721</span></span>
-<span><span class="co">#&gt; 2018  1.62259434  1.31981494</span></span>
-<span><span class="co">#&gt; 2019 -0.14704277  0.17362676</span></span>
-<span><span class="co">#&gt; 2020 -0.07045343 -0.05730098</span></span>
-<span><span class="co">#&gt; 2021 -1.17072203 -0.66882907</span></span>
-<span><span class="co">#&gt; 2022 -2.89887258 -1.53863637</span></span>
-<span><span class="co">#&gt; 2023 -0.62736155 -0.06504866</span></span>
-<span><span class="co">#&gt; 2024  0.96560231  0.19518092</span></span>
-<span><span class="co">#&gt; 2025 -0.09354593 -0.06951135</span></span>
-<span><span class="co">#&gt; 2026  0.15915097  1.22257588</span></span>
-<span><span class="co">#&gt; 2027  0.29875209  0.25719228</span></span>
-<span><span class="co">#&gt; 2028 -1.31329880 -0.69076345</span></span>
-<span><span class="co">#&gt; 2029  2.48926902  1.54309187</span></span>
-<span><span class="co">#&gt; 2030  1.91175656  0.91165371</span></span>
-<span><span class="co">#&gt; 2031  2.04130891  1.23352769</span></span>
-<span><span class="co">#&gt; 2032 -0.29759583 -0.05351566</span></span>
-<span><span class="co">#&gt; 2033 -1.22025180 -0.56162404</span></span>
-<span><span class="co">#&gt; 2034 -0.95856611 -0.54609232</span></span>
-<span><span class="co">#&gt; 2035  0.20717781  0.29095534</span></span>
-<span><span class="co">#&gt; 2036 -0.70462371 -1.15899926</span></span>
-<span><span class="co">#&gt; 2037  2.26007518  1.40841386</span></span>
-<span><span class="co">#&gt; 2038  2.95319223  1.69957104</span></span>
-<span><span class="co">#&gt; 2039  0.89317411  0.77051186</span></span>
-<span><span class="co">#&gt; 2040 -1.54622760 -0.71981400</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; Feb 2002 -1.08056990 -1.14582835</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.23343504 -1.15469695</span></span>
+<span><span class="co">#&gt; Apr 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; May 2002 -2.58725990 -2.26486335</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.07477874 -1.76651025</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.31677412 -1.06553020</span></span>
+<span><span class="co">#&gt; Aug 2002  0.65681006  0.07019039</span></span>
+<span><span class="co">#&gt; Sep 2002  0.33076863 -0.40143292</span></span>
+<span><span class="co">#&gt; Oct 2002  0.51993723  0.22434076</span></span>
+<span><span class="co">#&gt; Nov 2002  0.10053432 -0.17249791</span></span>
+<span><span class="co">#&gt; Dec 2002  0.95770684  0.35761548</span></span>
+<span><span class="co">#&gt; Jan 2003  0.26825909 -0.01668861</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.12839403 -0.42852687</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.17137522 -0.76232506</span></span>
+<span><span class="co">#&gt; Apr 2003  0.19770654  0.96971721</span></span>
+<span><span class="co">#&gt; May 2003  1.62259434  1.31981494</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.14704277  0.17362676</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.07045343 -0.05730098</span></span>
+<span><span class="co">#&gt; Aug 2003 -1.17072203 -0.66882907</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.89887258 -1.53863637</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.62736155 -0.06504866</span></span>
+<span><span class="co">#&gt; Nov 2003  0.96560231  0.19518092</span></span>
+<span><span class="co">#&gt; Dec 2003 -0.09354593 -0.06951135</span></span>
+<span><span class="co">#&gt; Jan 2004  0.15915097  1.22257588</span></span>
+<span><span class="co">#&gt; Feb 2004  0.29875209  0.25719228</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.31329880 -0.69076345</span></span>
+<span><span class="co">#&gt; Apr 2004  2.48926902  1.54309187</span></span>
+<span><span class="co">#&gt; May 2004  1.91175656  0.91165371</span></span>
+<span><span class="co">#&gt; Jun 2004  2.04130891  1.23352769</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.29759583 -0.05351566</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.22025180 -0.56162404</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.95856611 -0.54609232</span></span>
+<span><span class="co">#&gt; Oct 2004  0.20717781  0.29095534</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.70462371 -1.15899926</span></span>
+<span><span class="co">#&gt; Dec 2004  2.26007518  1.40841386</span></span>
+<span><span class="co">#&gt; Jan 2005  2.95319223  1.69957104</span></span>
+<span><span class="co">#&gt; Feb 2005  0.89317411  0.77051186</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.54622760 -0.71981400</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.924173</span></span>
@@ -1488,50 +1486,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes    TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.67535261  1.600318363</span></span>
-<span><span class="co">#&gt; 2003 -0.09454667  0.059245589</span></span>
-<span><span class="co">#&gt; 2004 -0.61710349 -0.617562341</span></span>
-<span><span class="co">#&gt; 2005  1.55432930  1.431543276</span></span>
-<span><span class="co">#&gt; 2006 -1.65830176 -1.201288646</span></span>
-<span><span class="co">#&gt; 2007 -3.27721670 -1.999680352</span></span>
-<span><span class="co">#&gt; 2008 -0.83986146 -0.746117612</span></span>
-<span><span class="co">#&gt; 2009  1.04485279  0.291750330</span></span>
-<span><span class="co">#&gt; 2010  0.75352722 -0.155143365</span></span>
-<span><span class="co">#&gt; 2011  0.26745241  0.004965096</span></span>
-<span><span class="co">#&gt; 2012  0.43157027  0.102861987</span></span>
-<span><span class="co">#&gt; 2013  1.13693270  0.494399368</span></span>
-<span><span class="co">#&gt; 2014  0.49053241  0.135721074</span></span>
-<span><span class="co">#&gt; 2015 -0.10253286 -0.465058629</span></span>
-<span><span class="co">#&gt; 2016 -1.85353900 -1.312388835</span></span>
-<span><span class="co">#&gt; 2017 -0.33001834  0.475005003</span></span>
-<span><span class="co">#&gt; 2018  2.16635830  1.749815332</span></span>
-<span><span class="co">#&gt; 2019  0.17739319  0.443529161</span></span>
-<span><span class="co">#&gt; 2020  0.27361734  0.111136601</span></span>
-<span><span class="co">#&gt; 2021 -0.58111949 -0.379519019</span></span>
-<span><span class="co">#&gt; 2022 -2.30767070 -1.246635836</span></span>
-<span><span class="co">#&gt; 2023 -0.19353452  0.176564889</span></span>
-<span><span class="co">#&gt; 2024  1.00563207  0.187437814</span></span>
-<span><span class="co">#&gt; 2025  0.41917089  0.235645632</span></span>
-<span><span class="co">#&gt; 2026  0.52295932  1.364524163</span></span>
-<span><span class="co">#&gt; 2027 -0.95933919 -0.673442252</span></span>
-<span><span class="co">#&gt; 2028 -1.56353647 -0.843576594</span></span>
-<span><span class="co">#&gt; 2029  2.26526358  1.468847972</span></span>
-<span><span class="co">#&gt; 2030  1.69164304  0.697529740</span></span>
-<span><span class="co">#&gt; 2031  2.01008148  1.118934668</span></span>
-<span><span class="co">#&gt; 2032 -0.38235687 -0.261094013</span></span>
-<span><span class="co">#&gt; 2033 -1.39361339 -0.785256869</span></span>
-<span><span class="co">#&gt; 2034 -1.33394033 -0.789489620</span></span>
-<span><span class="co">#&gt; 2035 -0.37279705 -0.008190995</span></span>
-<span><span class="co">#&gt; 2036 -1.43004502 -1.625855697</span></span>
-<span><span class="co">#&gt; 2037  0.16351013  0.242165460</span></span>
-<span><span class="co">#&gt; 2038  2.64510868  1.356646561</span></span>
-<span><span class="co">#&gt; 2039  0.59781674  0.490409659</span></span>
-<span><span class="co">#&gt; 2040 -2.00203118 -1.128697062</span></span>
+<span><span class="co">#&gt;               Quotes    TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.67535261  1.600318363</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.09454667  0.059245589</span></span>
+<span><span class="co">#&gt; Mar 2002 -0.61710349 -0.617562341</span></span>
+<span><span class="co">#&gt; Apr 2002  1.55432930  1.431543276</span></span>
+<span><span class="co">#&gt; May 2002 -1.65830176 -1.201288646</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.27721670 -1.999680352</span></span>
+<span><span class="co">#&gt; Jul 2002 -0.83986146 -0.746117612</span></span>
+<span><span class="co">#&gt; Aug 2002  1.04485279  0.291750330</span></span>
+<span><span class="co">#&gt; Sep 2002  0.75352722 -0.155143365</span></span>
+<span><span class="co">#&gt; Oct 2002  0.26745241  0.004965096</span></span>
+<span><span class="co">#&gt; Nov 2002  0.43157027  0.102861987</span></span>
+<span><span class="co">#&gt; Dec 2002  1.13693270  0.494399368</span></span>
+<span><span class="co">#&gt; Jan 2003  0.49053241  0.135721074</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.10253286 -0.465058629</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.85353900 -1.312388835</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.33001834  0.475005003</span></span>
+<span><span class="co">#&gt; May 2003  2.16635830  1.749815332</span></span>
+<span><span class="co">#&gt; Jun 2003  0.17739319  0.443529161</span></span>
+<span><span class="co">#&gt; Jul 2003  0.27361734  0.111136601</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.58111949 -0.379519019</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.30767070 -1.246635836</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.19353452  0.176564889</span></span>
+<span><span class="co">#&gt; Nov 2003  1.00563207  0.187437814</span></span>
+<span><span class="co">#&gt; Dec 2003  0.41917089  0.235645632</span></span>
+<span><span class="co">#&gt; Jan 2004  0.52295932  1.364524163</span></span>
+<span><span class="co">#&gt; Feb 2004 -0.95933919 -0.673442252</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.56353647 -0.843576594</span></span>
+<span><span class="co">#&gt; Apr 2004  2.26526358  1.468847972</span></span>
+<span><span class="co">#&gt; May 2004  1.69164304  0.697529740</span></span>
+<span><span class="co">#&gt; Jun 2004  2.01008148  1.118934668</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.38235687 -0.261094013</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.39361339 -0.785256869</span></span>
+<span><span class="co">#&gt; Sep 2004 -1.33394033 -0.789489620</span></span>
+<span><span class="co">#&gt; Oct 2004 -0.37279705 -0.008190995</span></span>
+<span><span class="co">#&gt; Nov 2004 -1.43004502 -1.625855697</span></span>
+<span><span class="co">#&gt; Dec 2004  0.16351013  0.242165460</span></span>
+<span><span class="co">#&gt; Jan 2005  2.64510868  1.356646561</span></span>
+<span><span class="co">#&gt; Feb 2005  0.59781674  0.490409659</span></span>
+<span><span class="co">#&gt; Mar 2005 -2.00203118 -1.128697062</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.243869</span></span>
@@ -1798,50 +1792,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.11874618  1.19921616</span></span>
-<span><span class="co">#&gt; 2003  0.09390745  0.01901986</span></span>
-<span><span class="co">#&gt; 2004 -1.43434322 -1.16781389</span></span>
-<span><span class="co">#&gt; 2005  1.27193197  1.24470742</span></span>
-<span><span class="co">#&gt; 2006 -1.49065784 -1.21723396</span></span>
-<span><span class="co">#&gt; 2007 -2.34261676 -1.51417390</span></span>
-<span><span class="co">#&gt; 2008 -0.46298299 -0.60250287</span></span>
-<span><span class="co">#&gt; 2009  1.63235318  0.57215494</span></span>
-<span><span class="co">#&gt; 2010  0.40411221 -0.32801633</span></span>
-<span><span class="co">#&gt; 2011  0.48277892  0.18055867</span></span>
-<span><span class="co">#&gt; 2012  0.57087239  0.21240486</span></span>
-<span><span class="co">#&gt; 2013  1.17734665  0.57331263</span></span>
-<span><span class="co">#&gt; 2014  0.11531808  0.03121107</span></span>
-<span><span class="co">#&gt; 2015 -0.42672324 -0.52697371</span></span>
-<span><span class="co">#&gt; 2016 -1.85435793 -1.23203209</span></span>
-<span><span class="co">#&gt; 2017 -0.03066633  0.70089111</span></span>
-<span><span class="co">#&gt; 2018  2.03550258  1.71783757</span></span>
-<span><span class="co">#&gt; 2019  0.10090940  0.43690274</span></span>
-<span><span class="co">#&gt; 2020 -0.06200294  0.01106144</span></span>
-<span><span class="co">#&gt; 2021  0.13620873  0.06072585</span></span>
-<span><span class="co">#&gt; 2022 -1.89082466 -0.95683806</span></span>
-<span><span class="co">#&gt; 2023 -0.59474544  0.01552906</span></span>
-<span><span class="co">#&gt; 2024  0.86784469  0.14757423</span></span>
-<span><span class="co">#&gt; 2025  0.64438935  0.39749239</span></span>
-<span><span class="co">#&gt; 2026  1.21235947  1.79794968</span></span>
-<span><span class="co">#&gt; 2027 -0.72834160 -0.52926182</span></span>
-<span><span class="co">#&gt; 2028 -2.25083381 -1.18159761</span></span>
-<span><span class="co">#&gt; 2029  1.33778080  0.97343623</span></span>
-<span><span class="co">#&gt; 2030  1.97229999  0.89921107</span></span>
-<span><span class="co">#&gt; 2031  0.98424529  0.52904493</span></span>
-<span><span class="co">#&gt; 2032 -0.10842601 -0.11619745</span></span>
-<span><span class="co">#&gt; 2033 -2.24369150 -1.28978017</span></span>
-<span><span class="co">#&gt; 2034 -0.89142004 -0.54783127</span></span>
-<span><span class="co">#&gt; 2035 -0.04783669  0.13304638</span></span>
-<span><span class="co">#&gt; 2036 -1.11899454 -1.45036144</span></span>
-<span><span class="co">#&gt; 2037  0.60160639  0.35230619</span></span>
-<span><span class="co">#&gt; 2038  2.54250721  1.21587964</span></span>
-<span><span class="co">#&gt; 2039  0.43166441  0.33684394</span></span>
-<span><span class="co">#&gt; 2040 -1.75521983 -1.09770352</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.11874618  1.19921616</span></span>
+<span><span class="co">#&gt; Feb 2002  0.09390745  0.01901986</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.43434322 -1.16781389</span></span>
+<span><span class="co">#&gt; Apr 2002  1.27193197  1.24470742</span></span>
+<span><span class="co">#&gt; May 2002 -1.49065784 -1.21723396</span></span>
+<span><span class="co">#&gt; Jun 2002 -2.34261676 -1.51417390</span></span>
+<span><span class="co">#&gt; Jul 2002 -0.46298299 -0.60250287</span></span>
+<span><span class="co">#&gt; Aug 2002  1.63235318  0.57215494</span></span>
+<span><span class="co">#&gt; Sep 2002  0.40411221 -0.32801633</span></span>
+<span><span class="co">#&gt; Oct 2002  0.48277892  0.18055867</span></span>
+<span><span class="co">#&gt; Nov 2002  0.57087239  0.21240486</span></span>
+<span><span class="co">#&gt; Dec 2002  1.17734665  0.57331263</span></span>
+<span><span class="co">#&gt; Jan 2003  0.11531808  0.03121107</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.42672324 -0.52697371</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.85435793 -1.23203209</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.03066633  0.70089111</span></span>
+<span><span class="co">#&gt; May 2003  2.03550258  1.71783757</span></span>
+<span><span class="co">#&gt; Jun 2003  0.10090940  0.43690274</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.06200294  0.01106144</span></span>
+<span><span class="co">#&gt; Aug 2003  0.13620873  0.06072585</span></span>
+<span><span class="co">#&gt; Sep 2003 -1.89082466 -0.95683806</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.59474544  0.01552906</span></span>
+<span><span class="co">#&gt; Nov 2003  0.86784469  0.14757423</span></span>
+<span><span class="co">#&gt; Dec 2003  0.64438935  0.39749239</span></span>
+<span><span class="co">#&gt; Jan 2004  1.21235947  1.79794968</span></span>
+<span><span class="co">#&gt; Feb 2004 -0.72834160 -0.52926182</span></span>
+<span><span class="co">#&gt; Mar 2004 -2.25083381 -1.18159761</span></span>
+<span><span class="co">#&gt; Apr 2004  1.33778080  0.97343623</span></span>
+<span><span class="co">#&gt; May 2004  1.97229999  0.89921107</span></span>
+<span><span class="co">#&gt; Jun 2004  0.98424529  0.52904493</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.10842601 -0.11619745</span></span>
+<span><span class="co">#&gt; Aug 2004 -2.24369150 -1.28978017</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.89142004 -0.54783127</span></span>
+<span><span class="co">#&gt; Oct 2004 -0.04783669  0.13304638</span></span>
+<span><span class="co">#&gt; Nov 2004 -1.11899454 -1.45036144</span></span>
+<span><span class="co">#&gt; Dec 2004  0.60160639  0.35230619</span></span>
+<span><span class="co">#&gt; Jan 2005  2.54250721  1.21587964</span></span>
+<span><span class="co">#&gt; Feb 2005  0.43166441  0.33684394</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.75521983 -1.09770352</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 0.7972857</span></span>
@@ -2109,50 +2099,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2003 -0.85477619 -0.98393029</span></span>
-<span><span class="co">#&gt; 2004 -1.00310653 -1.06267921</span></span>
-<span><span class="co">#&gt; 2005  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2006 -2.36146619 -2.10296529</span></span>
-<span><span class="co">#&gt; 2007 -3.36233492 -1.98959149</span></span>
-<span><span class="co">#&gt; 2008 -1.19409276 -0.96452874</span></span>
-<span><span class="co">#&gt; 2009  0.77658242  0.14934530</span></span>
-<span><span class="co">#&gt; 2010  0.59572299 -0.28721951</span></span>
-<span><span class="co">#&gt; 2011 -0.05623678  0.01878023</span></span>
-<span><span class="co">#&gt; 2012  0.04224137 -0.21855884</span></span>
-<span><span class="co">#&gt; 2013  0.78363351  0.22949465</span></span>
-<span><span class="co">#&gt; 2014  0.06745138 -0.16899703</span></span>
-<span><span class="co">#&gt; 2015 -0.47113613 -0.67865735</span></span>
-<span><span class="co">#&gt; 2016 -1.96150053 -1.32047922</span></span>
-<span><span class="co">#&gt; 2017 -0.39902461  0.60812604</span></span>
-<span><span class="co">#&gt; 2018  1.60642970  1.31542231</span></span>
-<span><span class="co">#&gt; 2019 -0.38592136  0.01993791</span></span>
-<span><span class="co">#&gt; 2020 -0.04845633  0.05173157</span></span>
-<span><span class="co">#&gt; 2021 -0.88143921 -0.52155537</span></span>
-<span><span class="co">#&gt; 2022 -2.56255162 -1.33780704</span></span>
-<span><span class="co">#&gt; 2023 -0.54244587  0.01936417</span></span>
-<span><span class="co">#&gt; 2024  0.49795898 -0.11485376</span></span>
-<span><span class="co">#&gt; 2025  0.69509909  0.45274834</span></span>
-<span><span class="co">#&gt; 2026  0.63284087  1.48814559</span></span>
-<span><span class="co">#&gt; 2027 -1.47632294 -0.92299854</span></span>
-<span><span class="co">#&gt; 2028 -1.78763671 -0.97448637</span></span>
-<span><span class="co">#&gt; 2029  2.35063076  1.50826223</span></span>
-<span><span class="co">#&gt; 2030  1.67726281  0.73013283</span></span>
-<span><span class="co">#&gt; 2031  2.48613792  1.55203022</span></span>
-<span><span class="co">#&gt; 2032 -0.13610810  0.06171409</span></span>
-<span><span class="co">#&gt; 2033 -0.79383525 -0.25751529</span></span>
-<span><span class="co">#&gt; 2034 -0.70470857 -0.41256032</span></span>
-<span><span class="co">#&gt; 2035  0.53215200  0.47720624</span></span>
-<span><span class="co">#&gt; 2036 -0.78427460 -1.15615114</span></span>
-<span><span class="co">#&gt; 2037  2.38131744  1.46510425</span></span>
-<span><span class="co">#&gt; 2038  3.68215047  2.20096870</span></span>
-<span><span class="co">#&gt; 2039  1.36156864  1.07925077</span></span>
-<span><span class="co">#&gt; 2040 -1.08642784 -0.41158288</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.85477619 -0.98393029</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.00310653 -1.06267921</span></span>
+<span><span class="co">#&gt; Apr 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; May 2002 -2.36146619 -2.10296529</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.36233492 -1.98959149</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.19409276 -0.96452874</span></span>
+<span><span class="co">#&gt; Aug 2002  0.77658242  0.14934530</span></span>
+<span><span class="co">#&gt; Sep 2002  0.59572299 -0.28721951</span></span>
+<span><span class="co">#&gt; Oct 2002 -0.05623678  0.01878023</span></span>
+<span><span class="co">#&gt; Nov 2002  0.04224137 -0.21855884</span></span>
+<span><span class="co">#&gt; Dec 2002  0.78363351  0.22949465</span></span>
+<span><span class="co">#&gt; Jan 2003  0.06745138 -0.16899703</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.47113613 -0.67865735</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.96150053 -1.32047922</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.39902461  0.60812604</span></span>
+<span><span class="co">#&gt; May 2003  1.60642970  1.31542231</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.38592136  0.01993791</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.04845633  0.05173157</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.88143921 -0.52155537</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.56255162 -1.33780704</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.54244587  0.01936417</span></span>
+<span><span class="co">#&gt; Nov 2003  0.49795898 -0.11485376</span></span>
+<span><span class="co">#&gt; Dec 2003  0.69509909  0.45274834</span></span>
+<span><span class="co">#&gt; Jan 2004  0.63284087  1.48814559</span></span>
+<span><span class="co">#&gt; Feb 2004 -1.47632294 -0.92299854</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.78763671 -0.97448637</span></span>
+<span><span class="co">#&gt; Apr 2004  2.35063076  1.50826223</span></span>
+<span><span class="co">#&gt; May 2004  1.67726281  0.73013283</span></span>
+<span><span class="co">#&gt; Jun 2004  2.48613792  1.55203022</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.13610810  0.06171409</span></span>
+<span><span class="co">#&gt; Aug 2004 -0.79383525 -0.25751529</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.70470857 -0.41256032</span></span>
+<span><span class="co">#&gt; Oct 2004  0.53215200  0.47720624</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.78427460 -1.15615114</span></span>
+<span><span class="co">#&gt; Dec 2004  2.38131744  1.46510425</span></span>
+<span><span class="co">#&gt; Jan 2005  3.68215047  2.20096870</span></span>
+<span><span class="co">#&gt; Feb 2005  1.36156864  1.07925077</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.08642784 -0.41158288</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.180296</span></span>
@@ -2425,50 +2411,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2003 -1.08056990 -1.14582835</span></span>
-<span><span class="co">#&gt; 2004 -1.23343504 -1.15469695</span></span>
-<span><span class="co">#&gt; 2005  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2006 -2.58725990 -2.26486335</span></span>
-<span><span class="co">#&gt; 2007 -3.07477874 -1.76651025</span></span>
-<span><span class="co">#&gt; 2008 -1.31677412 -1.06553020</span></span>
-<span><span class="co">#&gt; 2009  0.65681006  0.07019039</span></span>
-<span><span class="co">#&gt; 2010  0.33076863 -0.40143292</span></span>
-<span><span class="co">#&gt; 2011  0.51993723  0.22434076</span></span>
-<span><span class="co">#&gt; 2012  0.10053432 -0.17249791</span></span>
-<span><span class="co">#&gt; 2013  0.95770684  0.35761548</span></span>
-<span><span class="co">#&gt; 2014  0.26825909 -0.01668861</span></span>
-<span><span class="co">#&gt; 2015 -0.12839403 -0.42852687</span></span>
-<span><span class="co">#&gt; 2016 -1.17137522 -0.76232506</span></span>
-<span><span class="co">#&gt; 2017  0.19770654  0.96971721</span></span>
-<span><span class="co">#&gt; 2018  1.62259434  1.31981494</span></span>
-<span><span class="co">#&gt; 2019 -0.14704277  0.17362676</span></span>
-<span><span class="co">#&gt; 2020 -0.07045343 -0.05730098</span></span>
-<span><span class="co">#&gt; 2021 -1.17072203 -0.66882907</span></span>
-<span><span class="co">#&gt; 2022 -2.89887258 -1.53863637</span></span>
-<span><span class="co">#&gt; 2023 -0.62736155 -0.06504866</span></span>
-<span><span class="co">#&gt; 2024  0.96560231  0.19518092</span></span>
-<span><span class="co">#&gt; 2025 -0.09354593 -0.06951135</span></span>
-<span><span class="co">#&gt; 2026  0.15915097  1.22257588</span></span>
-<span><span class="co">#&gt; 2027  0.29875209  0.25719228</span></span>
-<span><span class="co">#&gt; 2028 -1.31329880 -0.69076345</span></span>
-<span><span class="co">#&gt; 2029  2.48926902  1.54309187</span></span>
-<span><span class="co">#&gt; 2030  1.91175656  0.91165371</span></span>
-<span><span class="co">#&gt; 2031  2.04130891  1.23352769</span></span>
-<span><span class="co">#&gt; 2032 -0.29759583 -0.05351566</span></span>
-<span><span class="co">#&gt; 2033 -1.22025180 -0.56162404</span></span>
-<span><span class="co">#&gt; 2034 -0.95856611 -0.54609232</span></span>
-<span><span class="co">#&gt; 2035  0.20717781  0.29095534</span></span>
-<span><span class="co">#&gt; 2036 -0.70462371 -1.15899926</span></span>
-<span><span class="co">#&gt; 2037  2.26007518  1.40841386</span></span>
-<span><span class="co">#&gt; 2038  2.95319223  1.69957104</span></span>
-<span><span class="co">#&gt; 2039  0.89317411  0.77051186</span></span>
-<span><span class="co">#&gt; 2040 -1.54622760 -0.71981400</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; Feb 2002 -1.08056990 -1.14582835</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.23343504 -1.15469695</span></span>
+<span><span class="co">#&gt; Apr 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; May 2002 -2.58725990 -2.26486335</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.07477874 -1.76651025</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.31677412 -1.06553020</span></span>
+<span><span class="co">#&gt; Aug 2002  0.65681006  0.07019039</span></span>
+<span><span class="co">#&gt; Sep 2002  0.33076863 -0.40143292</span></span>
+<span><span class="co">#&gt; Oct 2002  0.51993723  0.22434076</span></span>
+<span><span class="co">#&gt; Nov 2002  0.10053432 -0.17249791</span></span>
+<span><span class="co">#&gt; Dec 2002  0.95770684  0.35761548</span></span>
+<span><span class="co">#&gt; Jan 2003  0.26825909 -0.01668861</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.12839403 -0.42852687</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.17137522 -0.76232506</span></span>
+<span><span class="co">#&gt; Apr 2003  0.19770654  0.96971721</span></span>
+<span><span class="co">#&gt; May 2003  1.62259434  1.31981494</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.14704277  0.17362676</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.07045343 -0.05730098</span></span>
+<span><span class="co">#&gt; Aug 2003 -1.17072203 -0.66882907</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.89887258 -1.53863637</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.62736155 -0.06504866</span></span>
+<span><span class="co">#&gt; Nov 2003  0.96560231  0.19518092</span></span>
+<span><span class="co">#&gt; Dec 2003 -0.09354593 -0.06951135</span></span>
+<span><span class="co">#&gt; Jan 2004  0.15915097  1.22257588</span></span>
+<span><span class="co">#&gt; Feb 2004  0.29875209  0.25719228</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.31329880 -0.69076345</span></span>
+<span><span class="co">#&gt; Apr 2004  2.48926902  1.54309187</span></span>
+<span><span class="co">#&gt; May 2004  1.91175656  0.91165371</span></span>
+<span><span class="co">#&gt; Jun 2004  2.04130891  1.23352769</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.29759583 -0.05351566</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.22025180 -0.56162404</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.95856611 -0.54609232</span></span>
+<span><span class="co">#&gt; Oct 2004  0.20717781  0.29095534</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.70462371 -1.15899926</span></span>
+<span><span class="co">#&gt; Dec 2004  2.26007518  1.40841386</span></span>
+<span><span class="co">#&gt; Jan 2005  2.95319223  1.69957104</span></span>
+<span><span class="co">#&gt; Feb 2005  0.89317411  0.77051186</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.54622760 -0.71981400</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.924173</span></span>
@@ -2736,50 +2718,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes    TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.67535261  1.600318363</span></span>
-<span><span class="co">#&gt; 2003 -0.09454667  0.059245589</span></span>
-<span><span class="co">#&gt; 2004 -0.61710349 -0.617562341</span></span>
-<span><span class="co">#&gt; 2005  1.55432930  1.431543276</span></span>
-<span><span class="co">#&gt; 2006 -1.65830176 -1.201288646</span></span>
-<span><span class="co">#&gt; 2007 -3.27721670 -1.999680352</span></span>
-<span><span class="co">#&gt; 2008 -0.83986146 -0.746117612</span></span>
-<span><span class="co">#&gt; 2009  1.04485279  0.291750330</span></span>
-<span><span class="co">#&gt; 2010  0.75352722 -0.155143365</span></span>
-<span><span class="co">#&gt; 2011  0.26745241  0.004965096</span></span>
-<span><span class="co">#&gt; 2012  0.43157027  0.102861987</span></span>
-<span><span class="co">#&gt; 2013  1.13693270  0.494399368</span></span>
-<span><span class="co">#&gt; 2014  0.49053241  0.135721074</span></span>
-<span><span class="co">#&gt; 2015 -0.10253286 -0.465058629</span></span>
-<span><span class="co">#&gt; 2016 -1.85353900 -1.312388835</span></span>
-<span><span class="co">#&gt; 2017 -0.33001834  0.475005003</span></span>
-<span><span class="co">#&gt; 2018  2.16635830  1.749815332</span></span>
-<span><span class="co">#&gt; 2019  0.17739319  0.443529161</span></span>
-<span><span class="co">#&gt; 2020  0.27361734  0.111136601</span></span>
-<span><span class="co">#&gt; 2021 -0.58111949 -0.379519019</span></span>
-<span><span class="co">#&gt; 2022 -2.30767070 -1.246635836</span></span>
-<span><span class="co">#&gt; 2023 -0.19353452  0.176564889</span></span>
-<span><span class="co">#&gt; 2024  1.00563207  0.187437814</span></span>
-<span><span class="co">#&gt; 2025  0.41917089  0.235645632</span></span>
-<span><span class="co">#&gt; 2026  0.52295932  1.364524163</span></span>
-<span><span class="co">#&gt; 2027 -0.95933919 -0.673442252</span></span>
-<span><span class="co">#&gt; 2028 -1.56353647 -0.843576594</span></span>
-<span><span class="co">#&gt; 2029  2.26526358  1.468847972</span></span>
-<span><span class="co">#&gt; 2030  1.69164304  0.697529740</span></span>
-<span><span class="co">#&gt; 2031  2.01008148  1.118934668</span></span>
-<span><span class="co">#&gt; 2032 -0.38235687 -0.261094013</span></span>
-<span><span class="co">#&gt; 2033 -1.39361339 -0.785256869</span></span>
-<span><span class="co">#&gt; 2034 -1.33394033 -0.789489620</span></span>
-<span><span class="co">#&gt; 2035 -0.37279705 -0.008190995</span></span>
-<span><span class="co">#&gt; 2036 -1.43004502 -1.625855697</span></span>
-<span><span class="co">#&gt; 2037  0.16351013  0.242165460</span></span>
-<span><span class="co">#&gt; 2038  2.64510868  1.356646561</span></span>
-<span><span class="co">#&gt; 2039  0.59781674  0.490409659</span></span>
-<span><span class="co">#&gt; 2040 -2.00203118 -1.128697062</span></span>
+<span><span class="co">#&gt;               Quotes    TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.67535261  1.600318363</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.09454667  0.059245589</span></span>
+<span><span class="co">#&gt; Mar 2002 -0.61710349 -0.617562341</span></span>
+<span><span class="co">#&gt; Apr 2002  1.55432930  1.431543276</span></span>
+<span><span class="co">#&gt; May 2002 -1.65830176 -1.201288646</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.27721670 -1.999680352</span></span>
+<span><span class="co">#&gt; Jul 2002 -0.83986146 -0.746117612</span></span>
+<span><span class="co">#&gt; Aug 2002  1.04485279  0.291750330</span></span>
+<span><span class="co">#&gt; Sep 2002  0.75352722 -0.155143365</span></span>
+<span><span class="co">#&gt; Oct 2002  0.26745241  0.004965096</span></span>
+<span><span class="co">#&gt; Nov 2002  0.43157027  0.102861987</span></span>
+<span><span class="co">#&gt; Dec 2002  1.13693270  0.494399368</span></span>
+<span><span class="co">#&gt; Jan 2003  0.49053241  0.135721074</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.10253286 -0.465058629</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.85353900 -1.312388835</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.33001834  0.475005003</span></span>
+<span><span class="co">#&gt; May 2003  2.16635830  1.749815332</span></span>
+<span><span class="co">#&gt; Jun 2003  0.17739319  0.443529161</span></span>
+<span><span class="co">#&gt; Jul 2003  0.27361734  0.111136601</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.58111949 -0.379519019</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.30767070 -1.246635836</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.19353452  0.176564889</span></span>
+<span><span class="co">#&gt; Nov 2003  1.00563207  0.187437814</span></span>
+<span><span class="co">#&gt; Dec 2003  0.41917089  0.235645632</span></span>
+<span><span class="co">#&gt; Jan 2004  0.52295932  1.364524163</span></span>
+<span><span class="co">#&gt; Feb 2004 -0.95933919 -0.673442252</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.56353647 -0.843576594</span></span>
+<span><span class="co">#&gt; Apr 2004  2.26526358  1.468847972</span></span>
+<span><span class="co">#&gt; May 2004  1.69164304  0.697529740</span></span>
+<span><span class="co">#&gt; Jun 2004  2.01008148  1.118934668</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.38235687 -0.261094013</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.39361339 -0.785256869</span></span>
+<span><span class="co">#&gt; Sep 2004 -1.33394033 -0.789489620</span></span>
+<span><span class="co">#&gt; Oct 2004 -0.37279705 -0.008190995</span></span>
+<span><span class="co">#&gt; Nov 2004 -1.43004502 -1.625855697</span></span>
+<span><span class="co">#&gt; Dec 2004  0.16351013  0.242165460</span></span>
+<span><span class="co">#&gt; Jan 2005  2.64510868  1.356646561</span></span>
+<span><span class="co">#&gt; Feb 2005  0.59781674  0.490409659</span></span>
+<span><span class="co">#&gt; Mar 2005 -2.00203118 -1.128697062</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.243869</span></span>
@@ -3048,50 +3026,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.11874618  1.19921616</span></span>
-<span><span class="co">#&gt; 2003  0.09390745  0.01901986</span></span>
-<span><span class="co">#&gt; 2004 -1.43434322 -1.16781389</span></span>
-<span><span class="co">#&gt; 2005  1.27193197  1.24470742</span></span>
-<span><span class="co">#&gt; 2006 -1.49065784 -1.21723396</span></span>
-<span><span class="co">#&gt; 2007 -2.34261676 -1.51417390</span></span>
-<span><span class="co">#&gt; 2008 -0.46298299 -0.60250287</span></span>
-<span><span class="co">#&gt; 2009  1.63235318  0.57215494</span></span>
-<span><span class="co">#&gt; 2010  0.40411221 -0.32801633</span></span>
-<span><span class="co">#&gt; 2011  0.48277892  0.18055867</span></span>
-<span><span class="co">#&gt; 2012  0.57087239  0.21240486</span></span>
-<span><span class="co">#&gt; 2013  1.17734665  0.57331263</span></span>
-<span><span class="co">#&gt; 2014  0.11531808  0.03121107</span></span>
-<span><span class="co">#&gt; 2015 -0.42672324 -0.52697371</span></span>
-<span><span class="co">#&gt; 2016 -1.85435793 -1.23203209</span></span>
-<span><span class="co">#&gt; 2017 -0.03066633  0.70089111</span></span>
-<span><span class="co">#&gt; 2018  2.03550258  1.71783757</span></span>
-<span><span class="co">#&gt; 2019  0.10090940  0.43690274</span></span>
-<span><span class="co">#&gt; 2020 -0.06200294  0.01106144</span></span>
-<span><span class="co">#&gt; 2021  0.13620873  0.06072585</span></span>
-<span><span class="co">#&gt; 2022 -1.89082466 -0.95683806</span></span>
-<span><span class="co">#&gt; 2023 -0.59474544  0.01552906</span></span>
-<span><span class="co">#&gt; 2024  0.86784469  0.14757423</span></span>
-<span><span class="co">#&gt; 2025  0.64438935  0.39749239</span></span>
-<span><span class="co">#&gt; 2026  1.21235947  1.79794968</span></span>
-<span><span class="co">#&gt; 2027 -0.72834160 -0.52926182</span></span>
-<span><span class="co">#&gt; 2028 -2.25083381 -1.18159761</span></span>
-<span><span class="co">#&gt; 2029  1.33778080  0.97343623</span></span>
-<span><span class="co">#&gt; 2030  1.97229999  0.89921107</span></span>
-<span><span class="co">#&gt; 2031  0.98424529  0.52904493</span></span>
-<span><span class="co">#&gt; 2032 -0.10842601 -0.11619745</span></span>
-<span><span class="co">#&gt; 2033 -2.24369150 -1.28978017</span></span>
-<span><span class="co">#&gt; 2034 -0.89142004 -0.54783127</span></span>
-<span><span class="co">#&gt; 2035 -0.04783669  0.13304638</span></span>
-<span><span class="co">#&gt; 2036 -1.11899454 -1.45036144</span></span>
-<span><span class="co">#&gt; 2037  0.60160639  0.35230619</span></span>
-<span><span class="co">#&gt; 2038  2.54250721  1.21587964</span></span>
-<span><span class="co">#&gt; 2039  0.43166441  0.33684394</span></span>
-<span><span class="co">#&gt; 2040 -1.75521983 -1.09770352</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.11874618  1.19921616</span></span>
+<span><span class="co">#&gt; Feb 2002  0.09390745  0.01901986</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.43434322 -1.16781389</span></span>
+<span><span class="co">#&gt; Apr 2002  1.27193197  1.24470742</span></span>
+<span><span class="co">#&gt; May 2002 -1.49065784 -1.21723396</span></span>
+<span><span class="co">#&gt; Jun 2002 -2.34261676 -1.51417390</span></span>
+<span><span class="co">#&gt; Jul 2002 -0.46298299 -0.60250287</span></span>
+<span><span class="co">#&gt; Aug 2002  1.63235318  0.57215494</span></span>
+<span><span class="co">#&gt; Sep 2002  0.40411221 -0.32801633</span></span>
+<span><span class="co">#&gt; Oct 2002  0.48277892  0.18055867</span></span>
+<span><span class="co">#&gt; Nov 2002  0.57087239  0.21240486</span></span>
+<span><span class="co">#&gt; Dec 2002  1.17734665  0.57331263</span></span>
+<span><span class="co">#&gt; Jan 2003  0.11531808  0.03121107</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.42672324 -0.52697371</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.85435793 -1.23203209</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.03066633  0.70089111</span></span>
+<span><span class="co">#&gt; May 2003  2.03550258  1.71783757</span></span>
+<span><span class="co">#&gt; Jun 2003  0.10090940  0.43690274</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.06200294  0.01106144</span></span>
+<span><span class="co">#&gt; Aug 2003  0.13620873  0.06072585</span></span>
+<span><span class="co">#&gt; Sep 2003 -1.89082466 -0.95683806</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.59474544  0.01552906</span></span>
+<span><span class="co">#&gt; Nov 2003  0.86784469  0.14757423</span></span>
+<span><span class="co">#&gt; Dec 2003  0.64438935  0.39749239</span></span>
+<span><span class="co">#&gt; Jan 2004  1.21235947  1.79794968</span></span>
+<span><span class="co">#&gt; Feb 2004 -0.72834160 -0.52926182</span></span>
+<span><span class="co">#&gt; Mar 2004 -2.25083381 -1.18159761</span></span>
+<span><span class="co">#&gt; Apr 2004  1.33778080  0.97343623</span></span>
+<span><span class="co">#&gt; May 2004  1.97229999  0.89921107</span></span>
+<span><span class="co">#&gt; Jun 2004  0.98424529  0.52904493</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.10842601 -0.11619745</span></span>
+<span><span class="co">#&gt; Aug 2004 -2.24369150 -1.28978017</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.89142004 -0.54783127</span></span>
+<span><span class="co">#&gt; Oct 2004 -0.04783669  0.13304638</span></span>
+<span><span class="co">#&gt; Nov 2004 -1.11899454 -1.45036144</span></span>
+<span><span class="co">#&gt; Dec 2004  0.60160639  0.35230619</span></span>
+<span><span class="co">#&gt; Jan 2005  2.54250721  1.21587964</span></span>
+<span><span class="co">#&gt; Feb 2005  0.43166441  0.33684394</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.75521983 -1.09770352</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 0.7972857</span></span>
@@ -3360,50 +3334,46 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2003 -0.85477619 -0.98393029</span></span>
-<span><span class="co">#&gt; 2004 -1.00310653 -1.06267921</span></span>
-<span><span class="co">#&gt; 2005  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2006 -2.36146619 -2.10296529</span></span>
-<span><span class="co">#&gt; 2007 -3.36233492 -1.98959149</span></span>
-<span><span class="co">#&gt; 2008 -1.19409276 -0.96452874</span></span>
-<span><span class="co">#&gt; 2009  0.77658242  0.14934530</span></span>
-<span><span class="co">#&gt; 2010  0.59572299 -0.28721951</span></span>
-<span><span class="co">#&gt; 2011 -0.05623678  0.01878023</span></span>
-<span><span class="co">#&gt; 2012  0.04224137 -0.21855884</span></span>
-<span><span class="co">#&gt; 2013  0.78363351  0.22949465</span></span>
-<span><span class="co">#&gt; 2014  0.06745138 -0.16899703</span></span>
-<span><span class="co">#&gt; 2015 -0.47113613 -0.67865735</span></span>
-<span><span class="co">#&gt; 2016 -1.96150053 -1.32047922</span></span>
-<span><span class="co">#&gt; 2017 -0.39902461  0.60812604</span></span>
-<span><span class="co">#&gt; 2018  1.60642970  1.31542231</span></span>
-<span><span class="co">#&gt; 2019 -0.38592136  0.01993791</span></span>
-<span><span class="co">#&gt; 2020 -0.04845633  0.05173157</span></span>
-<span><span class="co">#&gt; 2021 -0.88143921 -0.52155537</span></span>
-<span><span class="co">#&gt; 2022 -2.56255162 -1.33780704</span></span>
-<span><span class="co">#&gt; 2023 -0.54244587  0.01936417</span></span>
-<span><span class="co">#&gt; 2024  0.49795898 -0.11485376</span></span>
-<span><span class="co">#&gt; 2025  0.69509909  0.45274834</span></span>
-<span><span class="co">#&gt; 2026  0.63284087  1.48814559</span></span>
-<span><span class="co">#&gt; 2027 -1.47632294 -0.92299854</span></span>
-<span><span class="co">#&gt; 2028 -1.78763671 -0.97448637</span></span>
-<span><span class="co">#&gt; 2029  2.35063076  1.50826223</span></span>
-<span><span class="co">#&gt; 2030  1.67726281  0.73013283</span></span>
-<span><span class="co">#&gt; 2031  2.48613792  1.55203022</span></span>
-<span><span class="co">#&gt; 2032 -0.13610810  0.06171409</span></span>
-<span><span class="co">#&gt; 2033 -0.79383525 -0.25751529</span></span>
-<span><span class="co">#&gt; 2034 -0.70470857 -0.41256032</span></span>
-<span><span class="co">#&gt; 2035  0.53215200  0.47720624</span></span>
-<span><span class="co">#&gt; 2036 -0.78427460 -1.15615114</span></span>
-<span><span class="co">#&gt; 2037  2.38131744  1.46510425</span></span>
-<span><span class="co">#&gt; 2038  3.68215047  2.20096870</span></span>
-<span><span class="co">#&gt; 2039  1.36156864  1.07925077</span></span>
-<span><span class="co">#&gt; 2040 -1.08642784 -0.41158288</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.85477619 -0.98393029</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.00310653 -1.06267921</span></span>
+<span><span class="co">#&gt; Apr 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; May 2002 -2.36146619 -2.10296529</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.36233492 -1.98959149</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.19409276 -0.96452874</span></span>
+<span><span class="co">#&gt; Aug 2002  0.77658242  0.14934530</span></span>
+<span><span class="co">#&gt; Sep 2002  0.59572299 -0.28721951</span></span>
+<span><span class="co">#&gt; Oct 2002 -0.05623678  0.01878023</span></span>
+<span><span class="co">#&gt; Nov 2002  0.04224137 -0.21855884</span></span>
+<span><span class="co">#&gt; Dec 2002  0.78363351  0.22949465</span></span>
+<span><span class="co">#&gt; Jan 2003  0.06745138 -0.16899703</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.47113613 -0.67865735</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.96150053 -1.32047922</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.39902461  0.60812604</span></span>
+<span><span class="co">#&gt; May 2003  1.60642970  1.31542231</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.38592136  0.01993791</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.04845633  0.05173157</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.88143921 -0.52155537</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.56255162 -1.33780704</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.54244587  0.01936417</span></span>
+<span><span class="co">#&gt; Nov 2003  0.49795898 -0.11485376</span></span>
+<span><span class="co">#&gt; Dec 2003  0.69509909  0.45274834</span></span>
+<span><span class="co">#&gt; Jan 2004  0.63284087  1.48814559</span></span>
+<span><span class="co">#&gt; Feb 2004 -1.47632294 -0.92299854</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.78763671 -0.97448637</span></span>
+<span><span class="co">#&gt; Apr 2004  2.35063076  1.50826223</span></span>
+<span><span class="co">#&gt; May 2004  1.67726281  0.73013283</span></span>
+<span><span class="co">#&gt; Jun 2004  2.48613792  1.55203022</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.13610810  0.06171409</span></span>
+<span><span class="co">#&gt; Aug 2004 -0.79383525 -0.25751529</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.70470857 -0.41256032</span></span>
+<span><span class="co">#&gt; Oct 2004  0.53215200  0.47720624</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.78427460 -1.15615114</span></span>
+<span><span class="co">#&gt; Dec 2004  2.38131744  1.46510425</span></span>
+<span><span class="co">#&gt; Jan 2005  3.68215047  2.20096870</span></span>
+<span><span class="co">#&gt; Feb 2005  1.36156864  1.07925077</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.08642784 -0.41158288</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.180296</span></span>
@@ -3674,50 +3644,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2003 -0.85477619 -0.98393029</span></span>
-<span><span class="co">#&gt; 2004 -1.00310653 -1.06267921</span></span>
-<span><span class="co">#&gt; 2005  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2006 -2.36146619 -2.10296529</span></span>
-<span><span class="co">#&gt; 2007 -3.36233492 -1.98959149</span></span>
-<span><span class="co">#&gt; 2008 -1.19409276 -0.96452874</span></span>
-<span><span class="co">#&gt; 2009  0.77658242  0.14934530</span></span>
-<span><span class="co">#&gt; 2010  0.59572299 -0.28721951</span></span>
-<span><span class="co">#&gt; 2011 -0.05623678  0.01878023</span></span>
-<span><span class="co">#&gt; 2012  0.04224137 -0.21855884</span></span>
-<span><span class="co">#&gt; 2013  0.78363351  0.22949465</span></span>
-<span><span class="co">#&gt; 2014  0.06745138 -0.16899703</span></span>
-<span><span class="co">#&gt; 2015 -0.47113613 -0.67865735</span></span>
-<span><span class="co">#&gt; 2016 -1.96150053 -1.32047922</span></span>
-<span><span class="co">#&gt; 2017 -0.39902461  0.60812604</span></span>
-<span><span class="co">#&gt; 2018  1.60642970  1.31542231</span></span>
-<span><span class="co">#&gt; 2019 -0.38592136  0.01993791</span></span>
-<span><span class="co">#&gt; 2020 -0.04845633  0.05173157</span></span>
-<span><span class="co">#&gt; 2021 -0.88143921 -0.52155537</span></span>
-<span><span class="co">#&gt; 2022 -2.56255162 -1.33780704</span></span>
-<span><span class="co">#&gt; 2023 -0.54244587  0.01936417</span></span>
-<span><span class="co">#&gt; 2024  0.49795898 -0.11485376</span></span>
-<span><span class="co">#&gt; 2025  0.69509909  0.45274834</span></span>
-<span><span class="co">#&gt; 2026  0.63284087  1.48814559</span></span>
-<span><span class="co">#&gt; 2027 -1.47632294 -0.92299854</span></span>
-<span><span class="co">#&gt; 2028 -1.78763671 -0.97448637</span></span>
-<span><span class="co">#&gt; 2029  2.35063076  1.50826223</span></span>
-<span><span class="co">#&gt; 2030  1.67726281  0.73013283</span></span>
-<span><span class="co">#&gt; 2031  2.48613792  1.55203022</span></span>
-<span><span class="co">#&gt; 2032 -0.13610810  0.06171409</span></span>
-<span><span class="co">#&gt; 2033 -0.79383525 -0.25751529</span></span>
-<span><span class="co">#&gt; 2034 -0.70470857 -0.41256032</span></span>
-<span><span class="co">#&gt; 2035  0.53215200  0.47720624</span></span>
-<span><span class="co">#&gt; 2036 -0.78427460 -1.15615114</span></span>
-<span><span class="co">#&gt; 2037  2.38131744  1.46510425</span></span>
-<span><span class="co">#&gt; 2038  3.68215047  2.20096870</span></span>
-<span><span class="co">#&gt; 2039  1.36156864  1.07925077</span></span>
-<span><span class="co">#&gt; 2040 -1.08642784 -0.41158288</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.85477619 -0.98393029</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.00310653 -1.06267921</span></span>
+<span><span class="co">#&gt; Apr 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; May 2002 -2.36146619 -2.10296529</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.36233492 -1.98959149</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.19409276 -0.96452874</span></span>
+<span><span class="co">#&gt; Aug 2002  0.77658242  0.14934530</span></span>
+<span><span class="co">#&gt; Sep 2002  0.59572299 -0.28721951</span></span>
+<span><span class="co">#&gt; Oct 2002 -0.05623678  0.01878023</span></span>
+<span><span class="co">#&gt; Nov 2002  0.04224137 -0.21855884</span></span>
+<span><span class="co">#&gt; Dec 2002  0.78363351  0.22949465</span></span>
+<span><span class="co">#&gt; Jan 2003  0.06745138 -0.16899703</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.47113613 -0.67865735</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.96150053 -1.32047922</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.39902461  0.60812604</span></span>
+<span><span class="co">#&gt; May 2003  1.60642970  1.31542231</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.38592136  0.01993791</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.04845633  0.05173157</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.88143921 -0.52155537</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.56255162 -1.33780704</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.54244587  0.01936417</span></span>
+<span><span class="co">#&gt; Nov 2003  0.49795898 -0.11485376</span></span>
+<span><span class="co">#&gt; Dec 2003  0.69509909  0.45274834</span></span>
+<span><span class="co">#&gt; Jan 2004  0.63284087  1.48814559</span></span>
+<span><span class="co">#&gt; Feb 2004 -1.47632294 -0.92299854</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.78763671 -0.97448637</span></span>
+<span><span class="co">#&gt; Apr 2004  2.35063076  1.50826223</span></span>
+<span><span class="co">#&gt; May 2004  1.67726281  0.73013283</span></span>
+<span><span class="co">#&gt; Jun 2004  2.48613792  1.55203022</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.13610810  0.06171409</span></span>
+<span><span class="co">#&gt; Aug 2004 -0.79383525 -0.25751529</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.70470857 -0.41256032</span></span>
+<span><span class="co">#&gt; Oct 2004  0.53215200  0.47720624</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.78427460 -1.15615114</span></span>
+<span><span class="co">#&gt; Dec 2004  2.38131744  1.46510425</span></span>
+<span><span class="co">#&gt; Jan 2005  3.68215047  2.20096870</span></span>
+<span><span class="co">#&gt; Feb 2005  1.36156864  1.07925077</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.08642784 -0.41158288</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.180296</span></span>
@@ -3990,50 +3956,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2003 -1.08056990 -1.14582835</span></span>
-<span><span class="co">#&gt; 2004 -1.23343504 -1.15469695</span></span>
-<span><span class="co">#&gt; 2005  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2006 -2.58725990 -2.26486335</span></span>
-<span><span class="co">#&gt; 2007 -3.07477874 -1.76651025</span></span>
-<span><span class="co">#&gt; 2008 -1.31677412 -1.06553020</span></span>
-<span><span class="co">#&gt; 2009  0.65681006  0.07019039</span></span>
-<span><span class="co">#&gt; 2010  0.33076863 -0.40143292</span></span>
-<span><span class="co">#&gt; 2011  0.51993723  0.22434076</span></span>
-<span><span class="co">#&gt; 2012  0.10053432 -0.17249791</span></span>
-<span><span class="co">#&gt; 2013  0.95770684  0.35761548</span></span>
-<span><span class="co">#&gt; 2014  0.26825909 -0.01668861</span></span>
-<span><span class="co">#&gt; 2015 -0.12839403 -0.42852687</span></span>
-<span><span class="co">#&gt; 2016 -1.17137522 -0.76232506</span></span>
-<span><span class="co">#&gt; 2017  0.19770654  0.96971721</span></span>
-<span><span class="co">#&gt; 2018  1.62259434  1.31981494</span></span>
-<span><span class="co">#&gt; 2019 -0.14704277  0.17362676</span></span>
-<span><span class="co">#&gt; 2020 -0.07045343 -0.05730098</span></span>
-<span><span class="co">#&gt; 2021 -1.17072203 -0.66882907</span></span>
-<span><span class="co">#&gt; 2022 -2.89887258 -1.53863637</span></span>
-<span><span class="co">#&gt; 2023 -0.62736155 -0.06504866</span></span>
-<span><span class="co">#&gt; 2024  0.96560231  0.19518092</span></span>
-<span><span class="co">#&gt; 2025 -0.09354593 -0.06951135</span></span>
-<span><span class="co">#&gt; 2026  0.15915097  1.22257588</span></span>
-<span><span class="co">#&gt; 2027  0.29875209  0.25719228</span></span>
-<span><span class="co">#&gt; 2028 -1.31329880 -0.69076345</span></span>
-<span><span class="co">#&gt; 2029  2.48926902  1.54309187</span></span>
-<span><span class="co">#&gt; 2030  1.91175656  0.91165371</span></span>
-<span><span class="co">#&gt; 2031  2.04130891  1.23352769</span></span>
-<span><span class="co">#&gt; 2032 -0.29759583 -0.05351566</span></span>
-<span><span class="co">#&gt; 2033 -1.22025180 -0.56162404</span></span>
-<span><span class="co">#&gt; 2034 -0.95856611 -0.54609232</span></span>
-<span><span class="co">#&gt; 2035  0.20717781  0.29095534</span></span>
-<span><span class="co">#&gt; 2036 -0.70462371 -1.15899926</span></span>
-<span><span class="co">#&gt; 2037  2.26007518  1.40841386</span></span>
-<span><span class="co">#&gt; 2038  2.95319223  1.69957104</span></span>
-<span><span class="co">#&gt; 2039  0.89317411  0.77051186</span></span>
-<span><span class="co">#&gt; 2040 -1.54622760 -0.71981400</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; Feb 2002 -1.08056990 -1.14582835</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.23343504 -1.15469695</span></span>
+<span><span class="co">#&gt; Apr 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; May 2002 -2.58725990 -2.26486335</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.07477874 -1.76651025</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.31677412 -1.06553020</span></span>
+<span><span class="co">#&gt; Aug 2002  0.65681006  0.07019039</span></span>
+<span><span class="co">#&gt; Sep 2002  0.33076863 -0.40143292</span></span>
+<span><span class="co">#&gt; Oct 2002  0.51993723  0.22434076</span></span>
+<span><span class="co">#&gt; Nov 2002  0.10053432 -0.17249791</span></span>
+<span><span class="co">#&gt; Dec 2002  0.95770684  0.35761548</span></span>
+<span><span class="co">#&gt; Jan 2003  0.26825909 -0.01668861</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.12839403 -0.42852687</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.17137522 -0.76232506</span></span>
+<span><span class="co">#&gt; Apr 2003  0.19770654  0.96971721</span></span>
+<span><span class="co">#&gt; May 2003  1.62259434  1.31981494</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.14704277  0.17362676</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.07045343 -0.05730098</span></span>
+<span><span class="co">#&gt; Aug 2003 -1.17072203 -0.66882907</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.89887258 -1.53863637</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.62736155 -0.06504866</span></span>
+<span><span class="co">#&gt; Nov 2003  0.96560231  0.19518092</span></span>
+<span><span class="co">#&gt; Dec 2003 -0.09354593 -0.06951135</span></span>
+<span><span class="co">#&gt; Jan 2004  0.15915097  1.22257588</span></span>
+<span><span class="co">#&gt; Feb 2004  0.29875209  0.25719228</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.31329880 -0.69076345</span></span>
+<span><span class="co">#&gt; Apr 2004  2.48926902  1.54309187</span></span>
+<span><span class="co">#&gt; May 2004  1.91175656  0.91165371</span></span>
+<span><span class="co">#&gt; Jun 2004  2.04130891  1.23352769</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.29759583 -0.05351566</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.22025180 -0.56162404</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.95856611 -0.54609232</span></span>
+<span><span class="co">#&gt; Oct 2004  0.20717781  0.29095534</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.70462371 -1.15899926</span></span>
+<span><span class="co">#&gt; Dec 2004  2.26007518  1.40841386</span></span>
+<span><span class="co">#&gt; Jan 2005  2.95319223  1.69957104</span></span>
+<span><span class="co">#&gt; Feb 2005  0.89317411  0.77051186</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.54622760 -0.71981400</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.924173</span></span>
@@ -4301,50 +4263,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes    TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.67535261  1.600318363</span></span>
-<span><span class="co">#&gt; 2003 -0.09454667  0.059245589</span></span>
-<span><span class="co">#&gt; 2004 -0.61710349 -0.617562341</span></span>
-<span><span class="co">#&gt; 2005  1.55432930  1.431543276</span></span>
-<span><span class="co">#&gt; 2006 -1.65830176 -1.201288646</span></span>
-<span><span class="co">#&gt; 2007 -3.27721670 -1.999680352</span></span>
-<span><span class="co">#&gt; 2008 -0.83986146 -0.746117612</span></span>
-<span><span class="co">#&gt; 2009  1.04485279  0.291750330</span></span>
-<span><span class="co">#&gt; 2010  0.75352722 -0.155143365</span></span>
-<span><span class="co">#&gt; 2011  0.26745241  0.004965096</span></span>
-<span><span class="co">#&gt; 2012  0.43157027  0.102861987</span></span>
-<span><span class="co">#&gt; 2013  1.13693270  0.494399368</span></span>
-<span><span class="co">#&gt; 2014  0.49053241  0.135721074</span></span>
-<span><span class="co">#&gt; 2015 -0.10253286 -0.465058629</span></span>
-<span><span class="co">#&gt; 2016 -1.85353900 -1.312388835</span></span>
-<span><span class="co">#&gt; 2017 -0.33001834  0.475005003</span></span>
-<span><span class="co">#&gt; 2018  2.16635830  1.749815332</span></span>
-<span><span class="co">#&gt; 2019  0.17739319  0.443529161</span></span>
-<span><span class="co">#&gt; 2020  0.27361734  0.111136601</span></span>
-<span><span class="co">#&gt; 2021 -0.58111949 -0.379519019</span></span>
-<span><span class="co">#&gt; 2022 -2.30767070 -1.246635836</span></span>
-<span><span class="co">#&gt; 2023 -0.19353452  0.176564889</span></span>
-<span><span class="co">#&gt; 2024  1.00563207  0.187437814</span></span>
-<span><span class="co">#&gt; 2025  0.41917089  0.235645632</span></span>
-<span><span class="co">#&gt; 2026  0.52295932  1.364524163</span></span>
-<span><span class="co">#&gt; 2027 -0.95933919 -0.673442252</span></span>
-<span><span class="co">#&gt; 2028 -1.56353647 -0.843576594</span></span>
-<span><span class="co">#&gt; 2029  2.26526358  1.468847972</span></span>
-<span><span class="co">#&gt; 2030  1.69164304  0.697529740</span></span>
-<span><span class="co">#&gt; 2031  2.01008148  1.118934668</span></span>
-<span><span class="co">#&gt; 2032 -0.38235687 -0.261094013</span></span>
-<span><span class="co">#&gt; 2033 -1.39361339 -0.785256869</span></span>
-<span><span class="co">#&gt; 2034 -1.33394033 -0.789489620</span></span>
-<span><span class="co">#&gt; 2035 -0.37279705 -0.008190995</span></span>
-<span><span class="co">#&gt; 2036 -1.43004502 -1.625855697</span></span>
-<span><span class="co">#&gt; 2037  0.16351013  0.242165460</span></span>
-<span><span class="co">#&gt; 2038  2.64510868  1.356646561</span></span>
-<span><span class="co">#&gt; 2039  0.59781674  0.490409659</span></span>
-<span><span class="co">#&gt; 2040 -2.00203118 -1.128697062</span></span>
+<span><span class="co">#&gt;               Quotes    TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.67535261  1.600318363</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.09454667  0.059245589</span></span>
+<span><span class="co">#&gt; Mar 2002 -0.61710349 -0.617562341</span></span>
+<span><span class="co">#&gt; Apr 2002  1.55432930  1.431543276</span></span>
+<span><span class="co">#&gt; May 2002 -1.65830176 -1.201288646</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.27721670 -1.999680352</span></span>
+<span><span class="co">#&gt; Jul 2002 -0.83986146 -0.746117612</span></span>
+<span><span class="co">#&gt; Aug 2002  1.04485279  0.291750330</span></span>
+<span><span class="co">#&gt; Sep 2002  0.75352722 -0.155143365</span></span>
+<span><span class="co">#&gt; Oct 2002  0.26745241  0.004965096</span></span>
+<span><span class="co">#&gt; Nov 2002  0.43157027  0.102861987</span></span>
+<span><span class="co">#&gt; Dec 2002  1.13693270  0.494399368</span></span>
+<span><span class="co">#&gt; Jan 2003  0.49053241  0.135721074</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.10253286 -0.465058629</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.85353900 -1.312388835</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.33001834  0.475005003</span></span>
+<span><span class="co">#&gt; May 2003  2.16635830  1.749815332</span></span>
+<span><span class="co">#&gt; Jun 2003  0.17739319  0.443529161</span></span>
+<span><span class="co">#&gt; Jul 2003  0.27361734  0.111136601</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.58111949 -0.379519019</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.30767070 -1.246635836</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.19353452  0.176564889</span></span>
+<span><span class="co">#&gt; Nov 2003  1.00563207  0.187437814</span></span>
+<span><span class="co">#&gt; Dec 2003  0.41917089  0.235645632</span></span>
+<span><span class="co">#&gt; Jan 2004  0.52295932  1.364524163</span></span>
+<span><span class="co">#&gt; Feb 2004 -0.95933919 -0.673442252</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.56353647 -0.843576594</span></span>
+<span><span class="co">#&gt; Apr 2004  2.26526358  1.468847972</span></span>
+<span><span class="co">#&gt; May 2004  1.69164304  0.697529740</span></span>
+<span><span class="co">#&gt; Jun 2004  2.01008148  1.118934668</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.38235687 -0.261094013</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.39361339 -0.785256869</span></span>
+<span><span class="co">#&gt; Sep 2004 -1.33394033 -0.789489620</span></span>
+<span><span class="co">#&gt; Oct 2004 -0.37279705 -0.008190995</span></span>
+<span><span class="co">#&gt; Nov 2004 -1.43004502 -1.625855697</span></span>
+<span><span class="co">#&gt; Dec 2004  0.16351013  0.242165460</span></span>
+<span><span class="co">#&gt; Jan 2005  2.64510868  1.356646561</span></span>
+<span><span class="co">#&gt; Feb 2005  0.59781674  0.490409659</span></span>
+<span><span class="co">#&gt; Mar 2005 -2.00203118 -1.128697062</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.243869</span></span>
@@ -4613,50 +4571,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.11874618  1.19921616</span></span>
-<span><span class="co">#&gt; 2003  0.09390745  0.01901986</span></span>
-<span><span class="co">#&gt; 2004 -1.43434322 -1.16781389</span></span>
-<span><span class="co">#&gt; 2005  1.27193197  1.24470742</span></span>
-<span><span class="co">#&gt; 2006 -1.49065784 -1.21723396</span></span>
-<span><span class="co">#&gt; 2007 -2.34261676 -1.51417390</span></span>
-<span><span class="co">#&gt; 2008 -0.46298299 -0.60250287</span></span>
-<span><span class="co">#&gt; 2009  1.63235318  0.57215494</span></span>
-<span><span class="co">#&gt; 2010  0.40411221 -0.32801633</span></span>
-<span><span class="co">#&gt; 2011  0.48277892  0.18055867</span></span>
-<span><span class="co">#&gt; 2012  0.57087239  0.21240486</span></span>
-<span><span class="co">#&gt; 2013  1.17734665  0.57331263</span></span>
-<span><span class="co">#&gt; 2014  0.11531808  0.03121107</span></span>
-<span><span class="co">#&gt; 2015 -0.42672324 -0.52697371</span></span>
-<span><span class="co">#&gt; 2016 -1.85435793 -1.23203209</span></span>
-<span><span class="co">#&gt; 2017 -0.03066633  0.70089111</span></span>
-<span><span class="co">#&gt; 2018  2.03550258  1.71783757</span></span>
-<span><span class="co">#&gt; 2019  0.10090940  0.43690274</span></span>
-<span><span class="co">#&gt; 2020 -0.06200294  0.01106144</span></span>
-<span><span class="co">#&gt; 2021  0.13620873  0.06072585</span></span>
-<span><span class="co">#&gt; 2022 -1.89082466 -0.95683806</span></span>
-<span><span class="co">#&gt; 2023 -0.59474544  0.01552906</span></span>
-<span><span class="co">#&gt; 2024  0.86784469  0.14757423</span></span>
-<span><span class="co">#&gt; 2025  0.64438935  0.39749239</span></span>
-<span><span class="co">#&gt; 2026  1.21235947  1.79794968</span></span>
-<span><span class="co">#&gt; 2027 -0.72834160 -0.52926182</span></span>
-<span><span class="co">#&gt; 2028 -2.25083381 -1.18159761</span></span>
-<span><span class="co">#&gt; 2029  1.33778080  0.97343623</span></span>
-<span><span class="co">#&gt; 2030  1.97229999  0.89921107</span></span>
-<span><span class="co">#&gt; 2031  0.98424529  0.52904493</span></span>
-<span><span class="co">#&gt; 2032 -0.10842601 -0.11619745</span></span>
-<span><span class="co">#&gt; 2033 -2.24369150 -1.28978017</span></span>
-<span><span class="co">#&gt; 2034 -0.89142004 -0.54783127</span></span>
-<span><span class="co">#&gt; 2035 -0.04783669  0.13304638</span></span>
-<span><span class="co">#&gt; 2036 -1.11899454 -1.45036144</span></span>
-<span><span class="co">#&gt; 2037  0.60160639  0.35230619</span></span>
-<span><span class="co">#&gt; 2038  2.54250721  1.21587964</span></span>
-<span><span class="co">#&gt; 2039  0.43166441  0.33684394</span></span>
-<span><span class="co">#&gt; 2040 -1.75521983 -1.09770352</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.11874618  1.19921616</span></span>
+<span><span class="co">#&gt; Feb 2002  0.09390745  0.01901986</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.43434322 -1.16781389</span></span>
+<span><span class="co">#&gt; Apr 2002  1.27193197  1.24470742</span></span>
+<span><span class="co">#&gt; May 2002 -1.49065784 -1.21723396</span></span>
+<span><span class="co">#&gt; Jun 2002 -2.34261676 -1.51417390</span></span>
+<span><span class="co">#&gt; Jul 2002 -0.46298299 -0.60250287</span></span>
+<span><span class="co">#&gt; Aug 2002  1.63235318  0.57215494</span></span>
+<span><span class="co">#&gt; Sep 2002  0.40411221 -0.32801633</span></span>
+<span><span class="co">#&gt; Oct 2002  0.48277892  0.18055867</span></span>
+<span><span class="co">#&gt; Nov 2002  0.57087239  0.21240486</span></span>
+<span><span class="co">#&gt; Dec 2002  1.17734665  0.57331263</span></span>
+<span><span class="co">#&gt; Jan 2003  0.11531808  0.03121107</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.42672324 -0.52697371</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.85435793 -1.23203209</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.03066633  0.70089111</span></span>
+<span><span class="co">#&gt; May 2003  2.03550258  1.71783757</span></span>
+<span><span class="co">#&gt; Jun 2003  0.10090940  0.43690274</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.06200294  0.01106144</span></span>
+<span><span class="co">#&gt; Aug 2003  0.13620873  0.06072585</span></span>
+<span><span class="co">#&gt; Sep 2003 -1.89082466 -0.95683806</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.59474544  0.01552906</span></span>
+<span><span class="co">#&gt; Nov 2003  0.86784469  0.14757423</span></span>
+<span><span class="co">#&gt; Dec 2003  0.64438935  0.39749239</span></span>
+<span><span class="co">#&gt; Jan 2004  1.21235947  1.79794968</span></span>
+<span><span class="co">#&gt; Feb 2004 -0.72834160 -0.52926182</span></span>
+<span><span class="co">#&gt; Mar 2004 -2.25083381 -1.18159761</span></span>
+<span><span class="co">#&gt; Apr 2004  1.33778080  0.97343623</span></span>
+<span><span class="co">#&gt; May 2004  1.97229999  0.89921107</span></span>
+<span><span class="co">#&gt; Jun 2004  0.98424529  0.52904493</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.10842601 -0.11619745</span></span>
+<span><span class="co">#&gt; Aug 2004 -2.24369150 -1.28978017</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.89142004 -0.54783127</span></span>
+<span><span class="co">#&gt; Oct 2004 -0.04783669  0.13304638</span></span>
+<span><span class="co">#&gt; Nov 2004 -1.11899454 -1.45036144</span></span>
+<span><span class="co">#&gt; Dec 2004  0.60160639  0.35230619</span></span>
+<span><span class="co">#&gt; Jan 2005  2.54250721  1.21587964</span></span>
+<span><span class="co">#&gt; Feb 2005  0.43166441  0.33684394</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.75521983 -1.09770352</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 0.7972857</span></span>
@@ -4925,50 +4879,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2003 -0.85477619 -0.98393029</span></span>
-<span><span class="co">#&gt; 2004 -1.00310653 -1.06267921</span></span>
-<span><span class="co">#&gt; 2005  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2006 -2.36146619 -2.10296529</span></span>
-<span><span class="co">#&gt; 2007 -3.36233492 -1.98959149</span></span>
-<span><span class="co">#&gt; 2008 -1.19409276 -0.96452874</span></span>
-<span><span class="co">#&gt; 2009  0.77658242  0.14934530</span></span>
-<span><span class="co">#&gt; 2010  0.59572299 -0.28721951</span></span>
-<span><span class="co">#&gt; 2011 -0.05623678  0.01878023</span></span>
-<span><span class="co">#&gt; 2012  0.04224137 -0.21855884</span></span>
-<span><span class="co">#&gt; 2013  0.78363351  0.22949465</span></span>
-<span><span class="co">#&gt; 2014  0.06745138 -0.16899703</span></span>
-<span><span class="co">#&gt; 2015 -0.47113613 -0.67865735</span></span>
-<span><span class="co">#&gt; 2016 -1.96150053 -1.32047922</span></span>
-<span><span class="co">#&gt; 2017 -0.39902461  0.60812604</span></span>
-<span><span class="co">#&gt; 2018  1.60642970  1.31542231</span></span>
-<span><span class="co">#&gt; 2019 -0.38592136  0.01993791</span></span>
-<span><span class="co">#&gt; 2020 -0.04845633  0.05173157</span></span>
-<span><span class="co">#&gt; 2021 -0.88143921 -0.52155537</span></span>
-<span><span class="co">#&gt; 2022 -2.56255162 -1.33780704</span></span>
-<span><span class="co">#&gt; 2023 -0.54244587  0.01936417</span></span>
-<span><span class="co">#&gt; 2024  0.49795898 -0.11485376</span></span>
-<span><span class="co">#&gt; 2025  0.69509909  0.45274834</span></span>
-<span><span class="co">#&gt; 2026  0.63284087  1.48814559</span></span>
-<span><span class="co">#&gt; 2027 -1.47632294 -0.92299854</span></span>
-<span><span class="co">#&gt; 2028 -1.78763671 -0.97448637</span></span>
-<span><span class="co">#&gt; 2029  2.35063076  1.50826223</span></span>
-<span><span class="co">#&gt; 2030  1.67726281  0.73013283</span></span>
-<span><span class="co">#&gt; 2031  2.48613792  1.55203022</span></span>
-<span><span class="co">#&gt; 2032 -0.13610810  0.06171409</span></span>
-<span><span class="co">#&gt; 2033 -0.79383525 -0.25751529</span></span>
-<span><span class="co">#&gt; 2034 -0.70470857 -0.41256032</span></span>
-<span><span class="co">#&gt; 2035  0.53215200  0.47720624</span></span>
-<span><span class="co">#&gt; 2036 -0.78427460 -1.15615114</span></span>
-<span><span class="co">#&gt; 2037  2.38131744  1.46510425</span></span>
-<span><span class="co">#&gt; 2038  3.68215047  2.20096870</span></span>
-<span><span class="co">#&gt; 2039  1.36156864  1.07925077</span></span>
-<span><span class="co">#&gt; 2040 -1.08642784 -0.41158288</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.85477619 -0.98393029</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.00310653 -1.06267921</span></span>
+<span><span class="co">#&gt; Apr 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; May 2002 -2.36146619 -2.10296529</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.36233492 -1.98959149</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.19409276 -0.96452874</span></span>
+<span><span class="co">#&gt; Aug 2002  0.77658242  0.14934530</span></span>
+<span><span class="co">#&gt; Sep 2002  0.59572299 -0.28721951</span></span>
+<span><span class="co">#&gt; Oct 2002 -0.05623678  0.01878023</span></span>
+<span><span class="co">#&gt; Nov 2002  0.04224137 -0.21855884</span></span>
+<span><span class="co">#&gt; Dec 2002  0.78363351  0.22949465</span></span>
+<span><span class="co">#&gt; Jan 2003  0.06745138 -0.16899703</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.47113613 -0.67865735</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.96150053 -1.32047922</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.39902461  0.60812604</span></span>
+<span><span class="co">#&gt; May 2003  1.60642970  1.31542231</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.38592136  0.01993791</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.04845633  0.05173157</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.88143921 -0.52155537</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.56255162 -1.33780704</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.54244587  0.01936417</span></span>
+<span><span class="co">#&gt; Nov 2003  0.49795898 -0.11485376</span></span>
+<span><span class="co">#&gt; Dec 2003  0.69509909  0.45274834</span></span>
+<span><span class="co">#&gt; Jan 2004  0.63284087  1.48814559</span></span>
+<span><span class="co">#&gt; Feb 2004 -1.47632294 -0.92299854</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.78763671 -0.97448637</span></span>
+<span><span class="co">#&gt; Apr 2004  2.35063076  1.50826223</span></span>
+<span><span class="co">#&gt; May 2004  1.67726281  0.73013283</span></span>
+<span><span class="co">#&gt; Jun 2004  2.48613792  1.55203022</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.13610810  0.06171409</span></span>
+<span><span class="co">#&gt; Aug 2004 -0.79383525 -0.25751529</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.70470857 -0.41256032</span></span>
+<span><span class="co">#&gt; Oct 2004  0.53215200  0.47720624</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.78427460 -1.15615114</span></span>
+<span><span class="co">#&gt; Dec 2004  2.38131744  1.46510425</span></span>
+<span><span class="co">#&gt; Jan 2005  3.68215047  2.20096870</span></span>
+<span><span class="co">#&gt; Feb 2005  1.36156864  1.07925077</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.08642784 -0.41158288</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.180296</span></span>
@@ -5239,50 +5189,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2003 -0.85477619 -0.98393029</span></span>
-<span><span class="co">#&gt; 2004 -1.00310653 -1.06267921</span></span>
-<span><span class="co">#&gt; 2005  1.34231135  1.22967612</span></span>
-<span><span class="co">#&gt; 2006 -2.36146619 -2.10296529</span></span>
-<span><span class="co">#&gt; 2007 -3.36233492 -1.98959149</span></span>
-<span><span class="co">#&gt; 2008 -1.19409276 -0.96452874</span></span>
-<span><span class="co">#&gt; 2009  0.77658242  0.14934530</span></span>
-<span><span class="co">#&gt; 2010  0.59572299 -0.28721951</span></span>
-<span><span class="co">#&gt; 2011 -0.05623678  0.01878023</span></span>
-<span><span class="co">#&gt; 2012  0.04224137 -0.21855884</span></span>
-<span><span class="co">#&gt; 2013  0.78363351  0.22949465</span></span>
-<span><span class="co">#&gt; 2014  0.06745138 -0.16899703</span></span>
-<span><span class="co">#&gt; 2015 -0.47113613 -0.67865735</span></span>
-<span><span class="co">#&gt; 2016 -1.96150053 -1.32047922</span></span>
-<span><span class="co">#&gt; 2017 -0.39902461  0.60812604</span></span>
-<span><span class="co">#&gt; 2018  1.60642970  1.31542231</span></span>
-<span><span class="co">#&gt; 2019 -0.38592136  0.01993791</span></span>
-<span><span class="co">#&gt; 2020 -0.04845633  0.05173157</span></span>
-<span><span class="co">#&gt; 2021 -0.88143921 -0.52155537</span></span>
-<span><span class="co">#&gt; 2022 -2.56255162 -1.33780704</span></span>
-<span><span class="co">#&gt; 2023 -0.54244587  0.01936417</span></span>
-<span><span class="co">#&gt; 2024  0.49795898 -0.11485376</span></span>
-<span><span class="co">#&gt; 2025  0.69509909  0.45274834</span></span>
-<span><span class="co">#&gt; 2026  0.63284087  1.48814559</span></span>
-<span><span class="co">#&gt; 2027 -1.47632294 -0.92299854</span></span>
-<span><span class="co">#&gt; 2028 -1.78763671 -0.97448637</span></span>
-<span><span class="co">#&gt; 2029  2.35063076  1.50826223</span></span>
-<span><span class="co">#&gt; 2030  1.67726281  0.73013283</span></span>
-<span><span class="co">#&gt; 2031  2.48613792  1.55203022</span></span>
-<span><span class="co">#&gt; 2032 -0.13610810  0.06171409</span></span>
-<span><span class="co">#&gt; 2033 -0.79383525 -0.25751529</span></span>
-<span><span class="co">#&gt; 2034 -0.70470857 -0.41256032</span></span>
-<span><span class="co">#&gt; 2035  0.53215200  0.47720624</span></span>
-<span><span class="co">#&gt; 2036 -0.78427460 -1.15615114</span></span>
-<span><span class="co">#&gt; 2037  2.38131744  1.46510425</span></span>
-<span><span class="co">#&gt; 2038  3.68215047  2.20096870</span></span>
-<span><span class="co">#&gt; 2039  1.36156864  1.07925077</span></span>
-<span><span class="co">#&gt; 2040 -1.08642784 -0.41158288</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; Feb 2002 -0.85477619 -0.98393029</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.00310653 -1.06267921</span></span>
+<span><span class="co">#&gt; Apr 2002  1.34231135  1.22967612</span></span>
+<span><span class="co">#&gt; May 2002 -2.36146619 -2.10296529</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.36233492 -1.98959149</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.19409276 -0.96452874</span></span>
+<span><span class="co">#&gt; Aug 2002  0.77658242  0.14934530</span></span>
+<span><span class="co">#&gt; Sep 2002  0.59572299 -0.28721951</span></span>
+<span><span class="co">#&gt; Oct 2002 -0.05623678  0.01878023</span></span>
+<span><span class="co">#&gt; Nov 2002  0.04224137 -0.21855884</span></span>
+<span><span class="co">#&gt; Dec 2002  0.78363351  0.22949465</span></span>
+<span><span class="co">#&gt; Jan 2003  0.06745138 -0.16899703</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.47113613 -0.67865735</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.96150053 -1.32047922</span></span>
+<span><span class="co">#&gt; Apr 2003 -0.39902461  0.60812604</span></span>
+<span><span class="co">#&gt; May 2003  1.60642970  1.31542231</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.38592136  0.01993791</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.04845633  0.05173157</span></span>
+<span><span class="co">#&gt; Aug 2003 -0.88143921 -0.52155537</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.56255162 -1.33780704</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.54244587  0.01936417</span></span>
+<span><span class="co">#&gt; Nov 2003  0.49795898 -0.11485376</span></span>
+<span><span class="co">#&gt; Dec 2003  0.69509909  0.45274834</span></span>
+<span><span class="co">#&gt; Jan 2004  0.63284087  1.48814559</span></span>
+<span><span class="co">#&gt; Feb 2004 -1.47632294 -0.92299854</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.78763671 -0.97448637</span></span>
+<span><span class="co">#&gt; Apr 2004  2.35063076  1.50826223</span></span>
+<span><span class="co">#&gt; May 2004  1.67726281  0.73013283</span></span>
+<span><span class="co">#&gt; Jun 2004  2.48613792  1.55203022</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.13610810  0.06171409</span></span>
+<span><span class="co">#&gt; Aug 2004 -0.79383525 -0.25751529</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.70470857 -0.41256032</span></span>
+<span><span class="co">#&gt; Oct 2004  0.53215200  0.47720624</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.78427460 -1.15615114</span></span>
+<span><span class="co">#&gt; Dec 2004  2.38131744  1.46510425</span></span>
+<span><span class="co">#&gt; Jan 2005  3.68215047  2.20096870</span></span>
+<span><span class="co">#&gt; Feb 2005  1.36156864  1.07925077</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.08642784 -0.41158288</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $loocv</span></span>
 <span><span class="co">#&gt; [1] 1.180296</span></span>
@@ -5549,50 +5495,46 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <span><span class="co">#&gt; [1] "ridge2"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt; Time Series:</span></span>
-<span><span class="co">#&gt; Start = 2002 </span></span>
-<span><span class="co">#&gt; End = 2040 </span></span>
-<span><span class="co">#&gt; Frequency = 1 </span></span>
-<span><span class="co">#&gt;           Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; 2002  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2003 -1.08056990 -1.14582835</span></span>
-<span><span class="co">#&gt; 2004 -1.23343504 -1.15469695</span></span>
-<span><span class="co">#&gt; 2005  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; 2006 -2.58725990 -2.26486335</span></span>
-<span><span class="co">#&gt; 2007 -3.07477874 -1.76651025</span></span>
-<span><span class="co">#&gt; 2008 -1.31677412 -1.06553020</span></span>
-<span><span class="co">#&gt; 2009  0.65681006  0.07019039</span></span>
-<span><span class="co">#&gt; 2010  0.33076863 -0.40143292</span></span>
-<span><span class="co">#&gt; 2011  0.51993723  0.22434076</span></span>
-<span><span class="co">#&gt; 2012  0.10053432 -0.17249791</span></span>
-<span><span class="co">#&gt; 2013  0.95770684  0.35761548</span></span>
-<span><span class="co">#&gt; 2014  0.26825909 -0.01668861</span></span>
-<span><span class="co">#&gt; 2015 -0.12839403 -0.42852687</span></span>
-<span><span class="co">#&gt; 2016 -1.17137522 -0.76232506</span></span>
-<span><span class="co">#&gt; 2017  0.19770654  0.96971721</span></span>
-<span><span class="co">#&gt; 2018  1.62259434  1.31981494</span></span>
-<span><span class="co">#&gt; 2019 -0.14704277  0.17362676</span></span>
-<span><span class="co">#&gt; 2020 -0.07045343 -0.05730098</span></span>
-<span><span class="co">#&gt; 2021 -1.17072203 -0.66882907</span></span>
-<span><span class="co">#&gt; 2022 -2.89887258 -1.53863637</span></span>
-<span><span class="co">#&gt; 2023 -0.62736155 -0.06504866</span></span>
-<span><span class="co">#&gt; 2024  0.96560231  0.19518092</span></span>
-<span><span class="co">#&gt; 2025 -0.09354593 -0.06951135</span></span>
-<span><span class="co">#&gt; 2026  0.15915097  1.22257588</span></span>
-<span><span class="co">#&gt; 2027  0.29875209  0.25719228</span></span>
-<span><span class="co">#&gt; 2028 -1.31329880 -0.69076345</span></span>
-<span><span class="co">#&gt; 2029  2.48926902  1.54309187</span></span>
-<span><span class="co">#&gt; 2030  1.91175656  0.91165371</span></span>
-<span><span class="co">#&gt; 2031  2.04130891  1.23352769</span></span>
-<span><span class="co">#&gt; 2032 -0.29759583 -0.05351566</span></span>
-<span><span class="co">#&gt; 2033 -1.22025180 -0.56162404</span></span>
-<span><span class="co">#&gt; 2034 -0.95856611 -0.54609232</span></span>
-<span><span class="co">#&gt; 2035  0.20717781  0.29095534</span></span>
-<span><span class="co">#&gt; 2036 -0.70462371 -1.15899926</span></span>
-<span><span class="co">#&gt; 2037  2.26007518  1.40841386</span></span>
-<span><span class="co">#&gt; 2038  2.95319223  1.69957104</span></span>
-<span><span class="co">#&gt; 2039  0.89317411  0.77051186</span></span>
-<span><span class="co">#&gt; 2040 -1.54622760 -0.71981400</span></span>
+<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
+<span><span class="co">#&gt; Jan 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; Feb 2002 -1.08056990 -1.14582835</span></span>
+<span><span class="co">#&gt; Mar 2002 -1.23343504 -1.15469695</span></span>
+<span><span class="co">#&gt; Apr 2002  1.40368643  1.33052782</span></span>
+<span><span class="co">#&gt; May 2002 -2.58725990 -2.26486335</span></span>
+<span><span class="co">#&gt; Jun 2002 -3.07477874 -1.76651025</span></span>
+<span><span class="co">#&gt; Jul 2002 -1.31677412 -1.06553020</span></span>
+<span><span class="co">#&gt; Aug 2002  0.65681006  0.07019039</span></span>
+<span><span class="co">#&gt; Sep 2002  0.33076863 -0.40143292</span></span>
+<span><span class="co">#&gt; Oct 2002  0.51993723  0.22434076</span></span>
+<span><span class="co">#&gt; Nov 2002  0.10053432 -0.17249791</span></span>
+<span><span class="co">#&gt; Dec 2002  0.95770684  0.35761548</span></span>
+<span><span class="co">#&gt; Jan 2003  0.26825909 -0.01668861</span></span>
+<span><span class="co">#&gt; Feb 2003 -0.12839403 -0.42852687</span></span>
+<span><span class="co">#&gt; Mar 2003 -1.17137522 -0.76232506</span></span>
+<span><span class="co">#&gt; Apr 2003  0.19770654  0.96971721</span></span>
+<span><span class="co">#&gt; May 2003  1.62259434  1.31981494</span></span>
+<span><span class="co">#&gt; Jun 2003 -0.14704277  0.17362676</span></span>
+<span><span class="co">#&gt; Jul 2003 -0.07045343 -0.05730098</span></span>
+<span><span class="co">#&gt; Aug 2003 -1.17072203 -0.66882907</span></span>
+<span><span class="co">#&gt; Sep 2003 -2.89887258 -1.53863637</span></span>
+<span><span class="co">#&gt; Oct 2003 -0.62736155 -0.06504866</span></span>
+<span><span class="co">#&gt; Nov 2003  0.96560231  0.19518092</span></span>
+<span><span class="co">#&gt; Dec 2003 -0.09354593 -0.06951135</span></span>
+<span><span class="co">#&gt; Jan 2004  0.15915097  1.22257588</span></span>
+<span><span class="co">#&gt; Feb 2004  0.29875209  0.25719228</span></span>
+<span><span class="co">#&gt; Mar 2004 -1.31329880 -0.69076345</span></span>
+<span><span class="co">#&gt; Apr 2004  2.48926902  1.54309187</span></span>
+<span><span class="co">#&gt; May 2004  1.91175656  0.91165371</span></span>
+<span><span class="co">#&gt; Jun 2004  2.04130891  1.23352769</span></span>
+<span><span class="co">#&gt; Jul 2004 -0.29759583 -0.05351566</span></span>
+<span><span class="co">#&gt; Aug 2004 -1.22025180 -0.56162404</span></span>
+<span><span class="co">#&gt; Sep 2004 -0.95856611 -0.54609232</span></span>
+<span><span class="co">#&gt; Oct 2004  0.20717781  0.29095534</span></span>
+<span><span class="co">#&gt; Nov 2004 -0.70462371 -1.15899926</span></span>
+<span><span class="co">#&gt; Dec 2004  2.26007518  1.40841386</span></span>
+<span><span class="co">#&gt; Jan 2005  2.95319223  1.69957104</span></span>
+<span><span class="co">#&gt; Feb 2005  0.89317411  0.77051186</span></span>
+<span><span class="co">#&gt; Mar 2005 -1.54622760 -0.71981400</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $copula</span></span>
 <span><span class="co">#&gt; $copula$params</span></span>
@@ -5646,9 +5588,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -5661,16 +5601,16 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>

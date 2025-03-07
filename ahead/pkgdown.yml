@@ -1,10 +1,11 @@
 pandoc: 3.1.11.1
-pkgdown: 2.0.7
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   ahead-loess-forecasting: ahead-loess-forecasting.html
   ahead-neutralize: ahead-neutralize.html
   ahead-plotting-functions: ahead-plotting-functions.html
+  ahead-ridge2-conformal: ahead-ridge2-conformal.html
   ahead-ridge2-prediction-intervals: ahead-ridge2-prediction-intervals.html
   ahead-univariate-season: ahead-univariate-season.html
   ahead-vignette: ahead-vignette.html
@@ -14,5 +15,4 @@ articles:
   conformal-ml: conformal-ml.html
   fitforecastbench: fitforecastbench.html
   generic-conformal: generic-conformal.html
-last_built: 2025-02-12T12:47Z
-
+last_built: 2025-03-07T16:28Z
