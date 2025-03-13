@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Miscellaneous Statistical/Machine Learning stuff • mlsauce</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -19,7 +19,7 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -51,7 +51,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -59,13 +59,13 @@
 <div class="page-header"><h1 id="mlsauce">mlsauce<a class="anchor" aria-label="anchor" href="#mlsauce"></a>
 </h1></div>
 <p><strong>Miscellaneous Statistical/Machine learning stuff.</strong></p>
-<p><a href="https://techtonique.r-universe.dev/mlsauce" class="external-link"><img src="https://techtonique.r-universe.dev/badges/mlsauce" alt="r-universe"></a> <a href="https://techtonique.github.io/mlsauce_r/" class="external-link"><img src="https://img.shields.io/badge/documentation-is_here-green" alt="Documentation"></a></p>
+<p><a href="https://r-packages.techtonique.net/mlsauce" class="external-link"><img src="https://r-packages.techtonique.net/badges/mlsauce" alt="r-universe"></a> <a href="https://techtonique.github.io/mlsauce_r/" class="external-link"><img src="https://img.shields.io/badge/documentation-is_here-green" alt="Documentation"></a></p>
 <p>R version of the Python package <a href="https://github.com/Techtonique/mlsauce" class="external-link">mlsauce</a>.</p>
 <p>Only for Linux, for now. Windows users can envisage using <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">WSL</a>, the <strong>Windows Subsystem for Linux</strong>.</p>
 <p><strong>Install from GitHub</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">remotes::install_github</span><span class="er">(</span><span class="st">"Techtonique/mlsauce_r"</span><span class="kw">)</span> <span class="co"># the repo is in this organization</span></span></code></pre></div>
 <p><strong>Install from R-universe</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">'mlsauce'</span><span class="ex">,</span> repos = c<span class="er">(</span><span class="st">'https://techtonique.r-universe.dev'</span><span class="ex">,</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">'mlsauce'</span><span class="ex">,</span> repos = c<span class="er">(</span><span class="st">'https://r-packages.techtonique.net'</span><span class="ex">,</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="st">'https://cloud.r-project.org'</span><span class="kw">))</span></span></code></pre></div>
 <p><strong>General rule for using the package in R</strong>: object accesses with <code>.</code>’s are replaced by <code>$</code>’s. R Examples can be found in the package, once installed, by typing (in R console):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -112,16 +112,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>

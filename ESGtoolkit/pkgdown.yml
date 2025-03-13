@@ -1,11 +1,10 @@
 pandoc: 3.1.11.1
-pkgdown: 2.0.7
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   g2plus: g2plus.html
   martingale_test: martingale_test.html
-last_built: 2025-02-07T14:17Z
+last_built: 2025-03-10T17:34Z
 urls:
   reference: https://techtonique.github.io/esgtoolkit/reference
   article: https://techtonique.github.io/esgtoolkit/articles
-

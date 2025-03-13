@@ -1,78 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/404.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/articles/g2plus.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/articles/martingale_test.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/calculatereturns.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgcortest.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgdiscountfactor.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgfwdrates.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgmartingaletest.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgmccv.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgmcprices.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgplotbands.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgplotshocks.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/esgplotts.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/forwardrates.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/simdiff.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/simshocks.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/ycextra.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/esgtoolkit/reference/ycinter.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://techtonique.github.io/esgtoolkit/404.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/CONTRIBUTING.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/LICENSE-text.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/articles/g2plus.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/articles/index.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/articles/martingale_test.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/authors.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/index.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/news/index.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/calculatereturns.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgcortest.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgdiscountfactor.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgfwdrates.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgmartingaletest.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgmccv.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgmcprices.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgplotbands.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgplotshocks.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/esgplotts.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/forwardrates.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/index.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/simdiff.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/simshocks.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/ycextra.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/ycinter.html</loc></url>
 </urlset>
+
