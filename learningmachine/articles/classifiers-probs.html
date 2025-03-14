@@ -6,20 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prob. classifiers • learningmachine</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Prob. classifiers">
-<meta property="og:description" content="learningmachine">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -33,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">learningmachine</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.8.0</span>
       </span>
     </div>
 
@@ -45,7 +44,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -78,7 +77,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -86,7 +85,7 @@
       <h1 data-toc-skip>Prob. classifiers</h1>
             
       
-      
+
       <div class="hidden name"><code>classifiers-probs.Rmd</code></div>
 
     </div>
@@ -126,7 +125,7 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 30  4</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Classifier.html">Classifier</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"ranger"</span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va">Classifier</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"ranger"</span>, </span>
 <span>                                       pi_method<span class="op">=</span><span class="st">"kdesplitconformal"</span>, </span>
 <span>                                       type_prediction_set<span class="op">=</span><span class="st">"score"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">get_type</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -141,7 +140,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  1.773 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.207 s</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -210,16 +209,16 @@
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, </span>
 <span>            class_name <span class="op">=</span> <span class="st">"setosa"</span>,</span>
-<span>            show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"nonparametric"</span><span class="op">)</span></span></code></pre></div>
+<span>            show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"conformal"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $Coverage_rate</span></span>
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##                  estimate        lower       upper    p-value signif</span></span>
-<span><span class="co">## Sepal.Length -0.048443334 -0.104589591 -0.00495945 0.05722536      .</span></span>
-<span><span class="co">## Sepal.Width   0.035202317 -0.002792421  0.08621557 0.12169958       </span></span>
-<span><span class="co">## Petal.Length  0.003582802 -0.035319385  0.02875329 0.82658880       </span></span>
-<span><span class="co">## Petal.Width  -0.032667921 -0.127705313  0.04256300 0.45235577       </span></span>
+<span><span class="co">##                  estimate        lower        upper      p-value signif</span></span>
+<span><span class="co">## Sepal.Length -0.053025603 -0.089466501 -0.023811003 1.268525e-83    ***</span></span>
+<span><span class="co">## Sepal.Width   0.040548346  0.001752295  0.085386386 3.011031e-83    ***</span></span>
+<span><span class="co">## Petal.Length -0.017785314 -0.049567604  0.002937428 1.837689e-80    ***</span></span>
+<span><span class="co">## Petal.Width  -0.005838469 -0.063148765  0.051895014 3.813712e-06    ***</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $signif_codes</span></span>
 <span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
@@ -247,14 +246,14 @@
 <h2 id="ranger-classification">2 - <code>ranger</code> classification<a class="anchor" aria-label="anchor" href="#ranger-classification"></a>
 </h2>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Classifier.html">Classifier</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"ranger"</span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va">Classifier</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"ranger"</span>, </span>
 <span>                                       type_prediction_set<span class="op">=</span><span class="st">"score"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_pi_method</span><span class="op">(</span><span class="st">"bootsplitconformal"</span><span class="op">)</span></span>
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.115 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.212 s</span></span></code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
@@ -305,16 +304,16 @@
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, </span>
 <span>            class_index <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>            show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"nonparametric"</span><span class="op">)</span></span></code></pre></div>
+<span>            show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"conformal"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $Coverage_rate</span></span>
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
-<span><span class="co">##                  estimate       lower        upper      p-value signif</span></span>
-<span><span class="co">## Sepal.Length  0.005584273 -0.03817798  0.052381504 8.090972e-01       </span></span>
-<span><span class="co">## Sepal.Width  -0.136170522 -0.29444020 -0.007446021 6.348879e-02      .</span></span>
-<span><span class="co">## Petal.Length -0.108256713 -0.51936703  0.208079493 5.599189e-01       </span></span>
-<span><span class="co">## Petal.Width   0.604226657  0.40022576  0.761194883 1.335314e-10    ***</span></span>
+<span><span class="co">##                 estimate       lower       upper      p-value signif</span></span>
+<span><span class="co">## Sepal.Length  0.01594707 -0.02829819  0.05344505 1.111879e-36    ***</span></span>
+<span><span class="co">## Sepal.Width  -0.03931299 -0.10377850  0.02508012 2.742725e-71    ***</span></span>
+<span><span class="co">## Petal.Length -0.35871292 -0.84734244 -0.02261778 2.203400e-83    ***</span></span>
+<span><span class="co">## Petal.Width  -0.29615607 -0.77339305 -0.05585631 1.268419e-83    ***</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $signif_codes</span></span>
 <span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
@@ -342,13 +341,13 @@
 <h2 id="extratrees-classification">3 - <code>extratrees</code> classification<a class="anchor" aria-label="anchor" href="#extratrees-classification"></a>
 </h2>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Classifier.html">Classifier</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"extratrees"</span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va">Classifier</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"extratrees"</span>, </span>
 <span>        pi_method <span class="op">=</span> <span class="st">"bootsplitconformal"</span>, type_prediction_set<span class="op">=</span><span class="st">"score"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.125 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.189 s</span></span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
@@ -399,16 +398,16 @@
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="va">X_test</span>, y<span class="op">=</span><span class="va">y_test</span>, </span>
 <span>            class_name <span class="op">=</span> <span class="st">"setosa"</span>,</span>
-<span>            show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"nonparametric"</span><span class="op">)</span></span></code></pre></div>
+<span>            show_progress<span class="op">=</span><span class="cn">FALSE</span>, type_ci<span class="op">=</span><span class="st">"conformal"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $Coverage_rate</span></span>
 <span><span class="co">## [1] 100</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $citests</span></span>
 <span><span class="co">##                 estimate       lower        upper      p-value signif</span></span>
-<span><span class="co">## Sepal.Length -0.02891381 -0.07856975  0.007642355 1.892264e-01       </span></span>
-<span><span class="co">## Sepal.Width   0.05119133 -0.02477523  0.141328977 2.275907e-01       </span></span>
-<span><span class="co">## Petal.Length  0.00920727 -0.04566300  0.056302475 7.235174e-01       </span></span>
-<span><span class="co">## Petal.Width  -0.18756955 -0.25804631 -0.123101638 7.988292e-08    ***</span></span>
+<span><span class="co">## Sepal.Length -0.03680401 -0.06688503 -0.009715445 1.268525e-83    ***</span></span>
+<span><span class="co">## Sepal.Width   0.10990337  0.04958273  0.172880069 1.268525e-83    ***</span></span>
+<span><span class="co">## Petal.Length -0.06883330 -0.17412460  0.004915667 2.219027e-82    ***</span></span>
+<span><span class="co">## Petal.Width  -0.08780824 -0.29922333  0.032861413 2.758274e-64    ***</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $signif_codes</span></span>
 <span><span class="co">## [1] "Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1"</span></span>
@@ -475,7 +474,7 @@
 <span><span class="va">X_test</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">index_train</span>, <span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span>
 <span><span class="va">y_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">index_train</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Classifier.html">Classifier</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"extratrees"</span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va">Classifier</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"extratrees"</span>, </span>
 <span>                                       type_prediction_set<span class="op">=</span><span class="st">"score"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_pi_method</span><span class="op">(</span><span class="st">"bootsplitconformal"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
@@ -483,7 +482,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.243 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.497 s</span></span></code></pre>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
@@ -550,7 +549,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;">8</span> -<span style="color: #BB0000;">0.000</span><span style="color: #BB0000; text-decoration: underline;">017</span><span style="color: #BB0000;">3</span>   0.000<span style="text-decoration: underline;">002</span>71 ▂▁▁▇▂</span></span></code></pre>
 <p><strong>rvfl</strong></p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va"><a href="../reference/Classifier.html">Classifier</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"rvfl"</span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">learningmachine</span><span class="fu">::</span><span class="va">Classifier</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"rvfl"</span>, </span>
 <span>                                type_prediction_set<span class="op">=</span><span class="st">"score"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_pi_method</span><span class="op">(</span><span class="st">"bootsplitconformal"</span><span class="op">)</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">set_level</span><span class="op">(</span><span class="fl">95</span><span class="op">)</span></span>
@@ -558,7 +557,7 @@
 <span><span class="va">t0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Elapsed: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">t0</span>, <span class="st">"s \n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Elapsed:  0.066 s</span></span></code></pre>
+<pre><code><span><span class="co">## Elapsed:  0.063 s</span></span></code></pre>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="va">obj</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
@@ -628,9 +627,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -643,16 +640,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
