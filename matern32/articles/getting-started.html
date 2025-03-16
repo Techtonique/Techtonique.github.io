@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">matern32</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,100 +64,98 @@
 
     
     
+<div class="section level2">
+<h2 id="install-package">Install package<a class="anchor" aria-label="anchor" href="#install-package"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span>  <span class="va">longley</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">longley</span><span class="op">[</span>, <span class="fl">7</span><span class="op">]</span></span>
-<span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">matern32</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_matern32.html">fit_matern32</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>                    techtonique <span class="op">=</span> <span class="st">"https://r-packages.techtonique.net"</span>,</span>
+<span>                    CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span></span>
+<span>                <span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"matern32"</span><span class="op">)</span>                </span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="data-set">Data set<a class="anchor" aria-label="anchor" href="#data-set"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/Boston.html" class="external-link">Boston</a></span><span class="op">[</span>,<span class="op">-</span><span class="fl">14</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/Boston.html" class="external-link">Boston</a></span><span class="op">[</span>,<span class="fl">14</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">idx_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample.int</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fl">0.8</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="fitting-a-model">Fitting a model<a class="anchor" aria-label="anchor" href="#fitting-a-model"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">matern32</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_matern32.html">fit_matern32</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_train</span>,<span class="op">]</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">[</span><span class="va">idx_train</span><span class="op">]</span>, lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'matern32':</span></span>
 <span><span class="co">##   method       from </span></span>
 <span><span class="co">##   predict.poly stats</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span> </span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">fit_obj</span><span class="op">$</span><span class="va">lambda</span><span class="op">)</span>, <span class="va">fit_obj</span><span class="op">$</span><span class="va">GCV</span>, type <span class="op">=</span> <span class="st">'l'</span>, main <span class="op">=</span> <span class="st">"GCV"</span>, </span>
-<span>ylab <span class="op">=</span> <span class="st">"GCV"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_obj</span>, <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span>,<span class="op">]</span><span class="op">)</span> <span class="op">-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span><span class="op">)</span><span class="op">**</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 2.680429</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="prediction-intervals">Prediction intervals<a class="anchor" aria-label="anchor" href="#prediction-intervals"></a>
+</h2>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">matern32</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_matern32.html">fit_matern32</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_train</span>,<span class="op">]</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">[</span><span class="va">idx_train</span><span class="op">]</span>, lambda <span class="op">=</span> <span class="fl">0.01</span>, method <span class="op">=</span> <span class="st">"conformal"</span><span class="op">)</span></span>
+<span><span class="va">preds_splitconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_obj</span>, <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span>,<span class="op">]</span>, level<span class="op">=</span><span class="fl">95</span>, method <span class="op">=</span> <span class="st">"splitconformal"</span><span class="op">)</span></span>
+<span><span class="va">preds_kdeconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_obj</span>, <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span>,<span class="op">]</span>, level<span class="op">=</span><span class="fl">95</span>, method <span class="op">=</span> <span class="st">"kde"</span><span class="op">)</span></span>
+<span><span class="va">preds_bootstrapconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_obj</span>, <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span>,<span class="op">]</span>, level<span class="op">=</span><span class="fl">95</span>, method <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
+<span><span class="co">##   method            from</span></span>
+<span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">preds_surrogateconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_obj</span>, <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span>,<span class="op">]</span>, level<span class="op">=</span><span class="fl">95</span>, method <span class="op">=</span> <span class="st">"surrogate"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">fit_obj</span><span class="op">$</span><span class="va">lambda</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">fit_obj</span><span class="op">$</span><span class="va">coef</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">'l'</span>, </span>
-<span>main <span class="op">=</span> <span class="st">"coefficients = f(lambda)"</span>, xlab <span class="op">=</span> <span class="st">"log(lambda)"</span>, </span>
-<span>ylab <span class="op">=</span> <span class="st">"coefs"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">2</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting-started_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">summary_fit_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit_obj</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Response: </span></span>
-<span><span class="co">##    Min. 1st Qu.  Median 3rd Qu.    Max. </span></span>
-<span><span class="co">## 60.1710 62.7125 65.5040 68.2905 70.5510 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Residuals: </span></span>
-<span><span class="co">##          Min.       1st Qu.        Median       3rd Qu.          Max. </span></span>
-<span><span class="co">## -5.479492e-09 -5.612915e-10  1.438529e-09  2.714826e-09  4.223992e-09 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## 1st order effects: </span></span>
-<span><span class="co">##                     Est Std. Error   t value     Pr(&gt;|t|)    </span></span>
-<span><span class="co">## GNP.deflator 0.38804069 0.11231518 3.4549265 0.0061750027  **</span></span>
-<span><span class="co">## GNP          0.46864334 0.09713599 4.8246105 0.0006973893 ***</span></span>
-<span><span class="co">## Unemployed   0.29877987 0.15096718 1.9791049 0.0759856842   .</span></span>
-<span><span class="co">## Armed.Forces 0.01963802 0.10906456 0.1800586 0.8607029882    </span></span>
-<span><span class="co">## Population   0.41293025 0.09770680 4.2262181 0.0017542634  **</span></span>
-<span><span class="co">## Year         0.45740785 0.09333162 4.9008883 0.0006222926 ***</span></span>
-<span><span class="co">## --- </span></span>
-<span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Distribution of marginal effects:  </span></span>
-<span><span class="co">##   GNP.deflator          GNP            Unemployed       Armed.Forces     </span></span>
-<span><span class="co">##  Min.   :-8.6203   Min.   :-5.8885   Min.   :-9.2591   Min.   :-4.54804  </span></span>
-<span><span class="co">##  1st Qu.:-0.1580   1st Qu.:-0.1433   1st Qu.:-0.3304   1st Qu.:-0.80442  </span></span>
-<span><span class="co">##  Median : 0.4848   Median : 0.5345   Median : 0.2018   Median : 0.00000  </span></span>
-<span><span class="co">##  Mean   : 0.3880   Mean   : 0.4686   Mean   : 0.2988   Mean   : 0.01964  </span></span>
-<span><span class="co">##  3rd Qu.: 1.2454   3rd Qu.: 1.3997   3rd Qu.: 1.0672   3rd Qu.: 0.63753  </span></span>
-<span><span class="co">##  Max.   : 4.8282   Max.   : 3.6191   Max.   : 8.1953   Max.   : 5.16689  </span></span>
-<span><span class="co">##    Population           Year        </span></span>
-<span><span class="co">##  Min.   :-5.6781   Min.   :-5.4276  </span></span>
-<span><span class="co">##  1st Qu.:-0.1696   1st Qu.:-0.1735  </span></span>
-<span><span class="co">##  Median : 0.5619   Median : 0.5834  </span></span>
-<span><span class="co">##  Mean   : 0.4129   Mean   : 0.4574  </span></span>
-<span><span class="co">##  3rd Qu.: 1.2177   3rd Qu.: 1.2846  </span></span>
-<span><span class="co">##  Max.   : 3.9818   Max.   : 3.5683  </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Multiple R-squared:   1  Adjusted R-squared: 1 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## Residuals Box test:   0.3597019  Residuals Shapiro test:   0.1698543 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## LOOCV error:   191.2803 lambda:  1e-10</span></span></code></pre>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">summary_fit_obj</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##                     Est Std. Error   t value     Pr(&gt;|t|)    </span></span>
-<span><span class="co">## GNP.deflator 0.38804069 0.11231518 3.4549265 0.0061750027  **</span></span>
-<span><span class="co">## GNP          0.46864334 0.09713599 4.8246105 0.0006973893 ***</span></span>
-<span><span class="co">## Unemployed   0.29877987 0.15096718 1.9791049 0.0759856842   .</span></span>
-<span><span class="co">## Armed.Forces 0.01963802 0.10906456 0.1800586 0.8607029882    </span></span>
-<span><span class="co">## Population   0.41293025 0.09770680 4.2262181 0.0017542634  **</span></span>
-<span><span class="co">## Year         0.45740785 0.09333162 4.9008883 0.0006222926 ***</span></span></code></pre>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">summary_fit_obj</span><span class="op">$</span><span class="va">distro_effects</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   GNP.deflator          GNP            Unemployed       Armed.Forces     </span></span>
-<span><span class="co">##  Min.   :-8.6203   Min.   :-5.8885   Min.   :-9.2591   Min.   :-4.54804  </span></span>
-<span><span class="co">##  1st Qu.:-0.1580   1st Qu.:-0.1433   1st Qu.:-0.3304   1st Qu.:-0.80442  </span></span>
-<span><span class="co">##  Median : 0.4848   Median : 0.5345   Median : 0.2018   Median : 0.00000  </span></span>
-<span><span class="co">##  Mean   : 0.3880   Mean   : 0.4686   Mean   : 0.2988   Mean   : 0.01964  </span></span>
-<span><span class="co">##  3rd Qu.: 1.2454   3rd Qu.: 1.3997   3rd Qu.: 1.0672   3rd Qu.: 0.63753  </span></span>
-<span><span class="co">##  Max.   : 4.8282   Max.   : 3.6191   Max.   : 8.1953   Max.   : 5.16689  </span></span>
-<span><span class="co">##    Population           Year        </span></span>
-<span><span class="co">##  Min.   :-5.6781   Min.   :-5.4276  </span></span>
-<span><span class="co">##  1st Qu.:-0.1696   1st Qu.:-0.1735  </span></span>
-<span><span class="co">##  Median : 0.5619   Median : 0.5834  </span></span>
-<span><span class="co">##  Mean   : 0.4129   Mean   : 0.4574  </span></span>
-<span><span class="co">##  3rd Qu.: 1.2177   3rd Qu.: 1.2846  </span></span>
-<span><span class="co">##  Max.   : 3.9818   Max.   : 3.5683</span></span></code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">Boston</span><span class="op">[</span>,<span class="op">-</span><span class="fl">14</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">Boston</span><span class="op">[</span>,<span class="fl">14</span><span class="op">]</span></span>
+<span><span class="co"># coverage</span></span>
+<span><span class="op">(</span><span class="va">coverage_splitconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">preds_splitconformal</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">preds_splitconformal</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.9705882</span></span></code></pre>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">coverage_kdeconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">preds_kdeconformal</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">preds_kdeconformal</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.9803922</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">coverage_bootstrapconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">preds_bootstrapconformal</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">preds_bootstrapconformal</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.9509804</span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">coverage_surrogateconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">preds_surrogateconformal</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">preds_surrogateconformal</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.9705882</span></span></code></pre>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Extract predictions and true values</span></span>
+<span><span class="va">x_test</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">y_test</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="co"># Define a helper function to plot prediction intervals</span></span>
+<span><span class="va">plot_intervals</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">lower</span>, <span class="va">upper</span>, <span class="va">method_name</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, type <span class="op">=</span> <span class="st">"p"</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="st">"blue"</span>, xlab <span class="op">=</span> <span class="st">"Observation"</span>, ylab <span class="op">=</span> <span class="st">"Value"</span>,</span>
+<span>       main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Prediction Intervals -"</span>, <span class="va">method_name</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html" class="external-link">polygon</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">lower</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html" class="external-link">rgb</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span><span class="op">)</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span>  <span class="va">predicted_mean</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">lower</span> <span class="op">+</span> <span class="va">upper</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">predicted_mean</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Plot for Split Conformal</span></span>
+<span><span class="fu">plot_intervals</span><span class="op">(</span><span class="va">x_test</span>, <span class="va">y_test</span>, <span class="va">preds_splitconformal</span><span class="op">$</span><span class="va">lower</span>, <span class="va">preds_splitconformal</span><span class="op">$</span><span class="va">upper</span>, <span class="st">"Split Conformal"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot for KDE Conformal</span></span>
+<span><span class="fu">plot_intervals</span><span class="op">(</span><span class="va">x_test</span>, <span class="va">y_test</span>, <span class="va">preds_kdeconformal</span><span class="op">$</span><span class="va">lower</span>, <span class="va">preds_kdeconformal</span><span class="op">$</span><span class="va">upper</span>, <span class="st">"KDE Conformal"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot for Bootstrap Conformal</span></span>
+<span><span class="fu">plot_intervals</span><span class="op">(</span><span class="va">x_test</span>, <span class="va">y_test</span>, <span class="va">preds_bootstrapconformal</span><span class="op">$</span><span class="va">lower</span>, <span class="va">preds_bootstrapconformal</span><span class="op">$</span><span class="va">upper</span>, <span class="st">"Bootstrap Conformal"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot for Surrogate Conformal</span></span>
+<span><span class="fu">plot_intervals</span><span class="op">(</span><span class="va">x_test</span>, <span class="va">y_test</span>, <span class="va">preds_surrogateconformal</span><span class="op">$</span><span class="va">lower</span>, <span class="va">preds_surrogateconformal</span><span class="op">$</span><span class="va">upper</span>, <span class="st">"Surrogate Conformal"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="getting-started_files/figure-html/unnamed-chunk-5-1.png" width="720"></p>
+</div>
+<div class="section level2">
+<h2 id="summary-of-the-fit-object">Summary of the fit object<a class="anchor" aria-label="anchor" href="#summary-of-the-fit-object"></a>
+</h2>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">idx_train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample.int</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fl">0.8</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">matern32</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_matern32.html">fit_matern32</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_train</span>,<span class="op">]</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">[</span><span class="va">idx_train</span><span class="op">]</span>, lambda <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">matern32</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_matern32.html">fit_matern32</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_train</span>,<span class="op">]</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">[</span><span class="va">idx_train</span><span class="op">]</span>, lambda <span class="op">=</span> <span class="fl">10</span><span class="op">**</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, by<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">summary_fit_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit_obj</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Response: </span></span>
@@ -228,7 +226,7 @@
 <span><span class="co">## Residuals Box test:   0.5072909  Residuals Shapiro test:   9.852929e-17 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## LOOCV error:   3914.125 lambda:  0.01</span></span></code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">summary_fit_obj</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                  Est  Std. Error     t value     Pr(&gt;|t|)    </span></span>
 <span><span class="co">## crim    -0.015533728 0.003412618  -4.5518504 7.110262e-06 ***</span></span>
@@ -244,7 +242,7 @@
 <span><span class="co">## ptratio -0.051585681 0.007020797  -7.3475530 1.187631e-12 ***</span></span>
 <span><span class="co">## black   -0.012671878 0.003726811  -3.4001933 7.427270e-04 ***</span></span>
 <span><span class="co">## lstat    0.022905821 0.006081373   3.7665545 1.909751e-04 ***</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">summary_fit_obj</span><span class="op">$</span><span class="va">distro_effects</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##       crim                 zn                indus          </span></span>
 <span><span class="co">##  Min.   :-33.71609   Min.   :-26.25433   Min.   :-36.15176  </span></span>
@@ -281,10 +279,17 @@
 <span><span class="co">##  Mean   :  0.02291  </span></span>
 <span><span class="co">##  3rd Qu.:  0.44015  </span></span>
 <span><span class="co">##  Max.   : 58.95171</span></span></code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_obj</span>, <span class="va">X</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span>,<span class="op">]</span><span class="op">)</span> <span class="op">-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">idx_train</span><span class="op">]</span><span class="op">)</span><span class="op">**</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 2.680429</span></span></code></pre>
-  </main>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj</span>, choice <span class="op">=</span> <span class="st">"coeffs"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj</span>, choice <span class="op">=</span> <span class="st">"GCV"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="getting-started_files/figure-html/unnamed-chunk-7-1.png" width="720"></p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit_obj</span>, choice <span class="op">=</span> <span class="st">"residuals"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="getting-started_files/figure-html/unnamed-chunk-8-1.png" width="720"></p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
