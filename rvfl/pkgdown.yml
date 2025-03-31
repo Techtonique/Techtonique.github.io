@@ -1,0 +1,16 @@
+pandoc: 3.1.11.1
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  bootstrap: bootstrap.html
+  GLM: GLM.html
+  GLMGamma: GLMGamma.html
+  nnet: nnet.html
+  ridgemodel_summary_plot: ridgemodel_summary_plot.html
+  ridgemodel: ridgemodel.html
+  rvfl_summary_plot: rvfl_summary_plot.html
+  rvfl: rvfl.html
+  surrogate: surrogate.html
+  svm: svm.html
+  zeroinfl: zeroinfl.html
+last_built: 2025-03-31T22:39Z
