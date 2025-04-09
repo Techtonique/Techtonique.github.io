@@ -15,4 +15,6 @@ articles:
   conformal-ml: conformal-ml.html
   fitforecastbench: fitforecastbench.html
   generic-conformal: generic-conformal.html
-last_built: 2025-03-08T05:26Z
+  glmthetaf-attention-conformal: glmthetaf-attention-conformal.html
+  glmthetaf: glmthetaf.html
+last_built: 2025-04-08T17:10Z

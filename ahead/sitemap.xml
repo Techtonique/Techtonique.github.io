@@ -15,6 +15,8 @@
 <url><loc>/articles/conformal-ml.html</loc></url>
 <url><loc>/articles/fitforecastbench.html</loc></url>
 <url><loc>/articles/generic-conformal.html</loc></url>
+<url><loc>/articles/glmthetaf-attention-conformal.html</loc></url>
+<url><loc>/articles/glmthetaf.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
@@ -24,6 +26,7 @@
 <url><loc>/reference/comb_GLMNET.html</loc></url>
 <url><loc>/reference/comb_OLS.html</loc></url>
 <url><loc>/reference/comb_Ridge.html</loc></url>
+<url><loc>/reference/computeattention.html</loc></url>
 <url><loc>/reference/conformalize.html</loc></url>
 <url><loc>/reference/createtrendseason.html</loc></url>
 <url><loc>/reference/direct_sampling.html</loc></url>
@@ -35,6 +38,7 @@
 <url><loc>/reference/get_error.html</loc></url>
 <url><loc>/reference/getreturns.html</loc></url>
 <url><loc>/reference/getsimulations.html</loc></url>
+<url><loc>/reference/glmthetaf.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/loessf.html</loc></url>
 <url><loc>/reference/loocvridge2f.html</loc></url>
