@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tisthemachinelearner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -32,7 +32,16 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/bayesian.html">Bayesian</a>
+    </li>
+    <li>
       <a href="../articles/intro_R6.html">Introduction to tisthemachinelearner, R6 interface</a>
+    </li>
+    <li>
+      <a href="../articles/intro_S3_booster.html">Introduction to tisthemachinelearner, S3 interface booster</a>
+    </li>
+    <li>
+      <a href="../articles/intro_S3_boosterCpp.html">Introduction to tisthemachinelearner, S3 interface booster</a>
     </li>
     <li>
       <a href="../articles/intro_S3_calib.html">Introduction to tisthemachinelearner, S3 interface with calibration</a>
@@ -41,9 +50,6 @@
       <a href="../articles/intro_S3.html">Introduction to tisthemachinelearner, S3 interface</a>
     </li>
   </ul></li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -61,13 +67,37 @@
           <p class="section-desc"></p>
         </th>
       </tr></tbody><tbody><tr><td>
+          <p><code><a href="booster.html">Booster</a></code> </p>
+        </td>
+        <td><p>R6 Class for Gradient Boosting</p></td>
+      </tr><tr><td>
+          <p><code><a href="boosterCpp.html">boosterCpp()</a></code> </p>
+        </td>
+        <td><p>Fit a boosting model with neural network feature transformation</p></td>
+      </tr><tr><td>
           <p><code><a href="get_model_list.html">get_model_list()</a></code> </p>
         </td>
         <td><p>Get a list of all models in scikit-learn</p></td>
       </tr><tr><td>
-          <p><code><a href="regressor.html">regressor()</a></code> </p>
+          <p><code><a href="predict.booster.html">predict(<i>&lt;booster&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Create a regression model using tisthemachinelearner</p></td>
+        <td><p>Predict using a boosted model</p></td>
+      </tr><tr><td>
+          <p><code><a href="predict.regressor.html">predict(<i>&lt;regressor&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Predict method for regressor objects</p></td>
+      </tr><tr><td>
+          <p><code><a href="predictBoosterCpp.html">predictBoosterCpp()</a></code> </p>
+        </td>
+        <td><p>Predict using a boosted model</p></td>
+      </tr><tr><td>
+          <p><code><a href="regressor.html">Regressor</a></code> </p>
+        </td>
+        <td><p>R6 Class for Scikit-learn Regressors</p></td>
+      </tr><tr><td>
+          <p><code><a href="simulate.regressor.html">simulate(<i>&lt;regressor&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Simulate method for regressor objects</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to tisthemachinelearner, S3 interface with calibration • tisthemachinelearner</title>
+<title>Introduction to tisthemachinelearner, S3 interface booster • tisthemachinelearner</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to tisthemachinelearner, S3 interface with calibration">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to tisthemachinelearner, S3 interface booster">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -83,13 +83,13 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to tisthemachinelearner, S3
-interface with calibration</h1>
+interface booster</h1>
                         <h4 data-toc-skip class="author">T. Moudiki</h4>
             
             <h4 data-toc-skip class="date">2025-04-21</h4>
       
 
-      <div class="hidden name"><code>intro_S3_calib.Rmd</code></div>
+      <div class="hidden name"><code>intro_S3_booster.Rmd</code></div>
 
     </div>
 
@@ -140,48 +140,125 @@ per gallon (mpg) based on other car characteristics:</p>
 <p>Now let’s try Ridge regression with cross-validation for
 hyperparameter tuning:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Fit ridge regression model</span></span>
-<span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="va">reg_ridge</span> <span class="op">&lt;-</span> <span class="fu">tisthemachinelearner</span><span class="fu">::</span><span class="fu">regressor</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, <span class="st">"Ridge"</span>, </span>
-<span>                      <span class="co">#alphas = c(0.01, 0.1, 1, 10),</span></span>
-<span>                      calibration <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 6.599 seconds</span></span>
+<code class="sourceCode R"><span><span class="co"># Fit booster model</span></span>
+<span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">reg_booster</span> <span class="op">&lt;-</span> <span class="fu">tisthemachinelearner</span><span class="fu">::</span><span class="fu">booster</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, <span class="st">"ExtraTreeRegressor"</span>,</span>
+<span>                                            n_estimators <span class="op">=</span> <span class="fl">100L</span>,</span>
+<span>                                            learning_rate <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>                                            show_progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                                            verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Iteration 1: loss = 21.6277</span></span>
+<span><span class="co">#&gt; Iteration 2: loss = 19.465</span></span>
+<span><span class="co">#&gt; Iteration 3: loss = 17.5185</span></span>
+<span><span class="co">#&gt; Iteration 4: loss = 15.7666</span></span>
+<span><span class="co">#&gt; Iteration 5: loss = 14.19</span></span>
+<span><span class="co">#&gt; Iteration 6: loss = 12.771</span></span>
+<span><span class="co">#&gt; Iteration 7: loss = 11.4939</span></span>
+<span><span class="co">#&gt; Iteration 8: loss = 10.3445</span></span>
+<span><span class="co">#&gt; Iteration 9: loss = 9.31003</span></span>
+<span><span class="co">#&gt; Iteration 10: loss = 8.37903</span></span>
+<span><span class="co">#&gt; Iteration 11: loss = 7.54112</span></span>
+<span><span class="co">#&gt; Iteration 12: loss = 6.78701</span></span>
+<span><span class="co">#&gt; Iteration 13: loss = 6.10831</span></span>
+<span><span class="co">#&gt; Iteration 14: loss = 5.49748</span></span>
+<span><span class="co">#&gt; Iteration 15: loss = 4.94773</span></span>
+<span><span class="co">#&gt; Iteration 16: loss = 4.45296</span></span>
+<span><span class="co">#&gt; Iteration 17: loss = 4.00766</span></span>
+<span><span class="co">#&gt; Iteration 18: loss = 3.6069</span></span>
+<span><span class="co">#&gt; Iteration 19: loss = 3.24621</span></span>
+<span><span class="co">#&gt; Iteration 20: loss = 2.92159</span></span>
+<span><span class="co">#&gt; Iteration 21: loss = 2.62943</span></span>
+<span><span class="co">#&gt; Iteration 22: loss = 2.36648</span></span>
+<span><span class="co">#&gt; Iteration 23: loss = 2.12984</span></span>
+<span><span class="co">#&gt; Iteration 24: loss = 1.91685</span></span>
+<span><span class="co">#&gt; Iteration 25: loss = 1.72517</span></span>
+<span><span class="co">#&gt; Iteration 26: loss = 1.55265</span></span>
+<span><span class="co">#&gt; Iteration 27: loss = 1.39739</span></span>
+<span><span class="co">#&gt; Iteration 28: loss = 1.25765</span></span>
+<span><span class="co">#&gt; Iteration 29: loss = 1.13188</span></span>
+<span><span class="co">#&gt; Iteration 30: loss = 1.01869</span></span>
+<span><span class="co">#&gt; Iteration 31: loss = 0.916825</span></span>
+<span><span class="co">#&gt; Iteration 32: loss = 0.825142</span></span>
+<span><span class="co">#&gt; Iteration 33: loss = 0.742628</span></span>
+<span><span class="co">#&gt; Iteration 34: loss = 0.668365</span></span>
+<span><span class="co">#&gt; Iteration 35: loss = 0.601529</span></span>
+<span><span class="co">#&gt; Iteration 36: loss = 0.541376</span></span>
+<span><span class="co">#&gt; Iteration 37: loss = 0.487238</span></span>
+<span><span class="co">#&gt; Iteration 38: loss = 0.438514</span></span>
+<span><span class="co">#&gt; Iteration 39: loss = 0.394663</span></span>
+<span><span class="co">#&gt; Iteration 40: loss = 0.355197</span></span>
+<span><span class="co">#&gt; Iteration 41: loss = 0.319677</span></span>
+<span><span class="co">#&gt; Iteration 42: loss = 0.287709</span></span>
+<span><span class="co">#&gt; Iteration 43: loss = 0.258938</span></span>
+<span><span class="co">#&gt; Iteration 44: loss = 0.233045</span></span>
+<span><span class="co">#&gt; Iteration 45: loss = 0.20974</span></span>
+<span><span class="co">#&gt; Iteration 46: loss = 0.188766</span></span>
+<span><span class="co">#&gt; Iteration 47: loss = 0.169889</span></span>
+<span><span class="co">#&gt; Iteration 48: loss = 0.152901</span></span>
+<span><span class="co">#&gt; Iteration 49: loss = 0.13761</span></span>
+<span><span class="co">#&gt; Iteration 50: loss = 0.123849</span></span>
+<span><span class="co">#&gt; Iteration 51: loss = 0.111464</span></span>
+<span><span class="co">#&gt; Iteration 52: loss = 0.100318</span></span>
+<span><span class="co">#&gt; Iteration 53: loss = 0.0902862</span></span>
+<span><span class="co">#&gt; Iteration 54: loss = 0.0812576</span></span>
+<span><span class="co">#&gt; Iteration 55: loss = 0.0731318</span></span>
+<span><span class="co">#&gt; Iteration 56: loss = 0.0658187</span></span>
+<span><span class="co">#&gt; Iteration 57: loss = 0.0592368</span></span>
+<span><span class="co">#&gt; Iteration 58: loss = 0.0533131</span></span>
+<span><span class="co">#&gt; Iteration 59: loss = 0.0479818</span></span>
+<span><span class="co">#&gt; Iteration 60: loss = 0.0431836</span></span>
+<span><span class="co">#&gt; Iteration 61: loss = 0.0388653</span></span>
+<span><span class="co">#&gt; Iteration 62: loss = 0.0349787</span></span>
+<span><span class="co">#&gt; Iteration 63: loss = 0.0314809</span></span>
+<span><span class="co">#&gt; Iteration 64: loss = 0.0283328</span></span>
+<span><span class="co">#&gt; Iteration 65: loss = 0.0254995</span></span>
+<span><span class="co">#&gt; Iteration 66: loss = 0.0229495</span></span>
+<span><span class="co">#&gt; Iteration 67: loss = 0.0206546</span></span>
+<span><span class="co">#&gt; Iteration 68: loss = 0.0185891</span></span>
+<span><span class="co">#&gt; Iteration 69: loss = 0.0167302</span></span>
+<span><span class="co">#&gt; Iteration 70: loss = 0.0150572</span></span>
+<span><span class="co">#&gt; Iteration 71: loss = 0.0135515</span></span>
+<span><span class="co">#&gt; Iteration 72: loss = 0.0121963</span></span>
+<span><span class="co">#&gt; Iteration 73: loss = 0.0109767</span></span>
+<span><span class="co">#&gt; Iteration 74: loss = 0.00987903</span></span>
+<span><span class="co">#&gt; Iteration 75: loss = 0.00889113</span></span>
+<span><span class="co">#&gt; Iteration 76: loss = 0.00800201</span></span>
+<span><span class="co">#&gt; Iteration 77: loss = 0.00720181</span></span>
+<span><span class="co">#&gt; Iteration 78: loss = 0.00648163</span></span>
+<span><span class="co">#&gt; Iteration 79: loss = 0.00583347</span></span>
+<span><span class="co">#&gt; Iteration 80: loss = 0.00525012</span></span>
+<span><span class="co">#&gt; Iteration 81: loss = 0.00472511</span></span>
+<span><span class="co">#&gt; Iteration 82: loss = 0.0042526</span></span>
+<span><span class="co">#&gt; Iteration 83: loss = 0.00382734</span></span>
+<span><span class="co">#&gt; Iteration 84: loss = 0.0034446</span></span>
+<span><span class="co">#&gt; Iteration 85: loss = 0.00310014</span></span>
+<span><span class="co">#&gt; Iteration 86: loss = 0.00279013</span></span>
+<span><span class="co">#&gt; Iteration 87: loss = 0.00251112</span></span>
+<span><span class="co">#&gt; Iteration 88: loss = 0.00226</span></span>
+<span><span class="co">#&gt; Iteration 89: loss = 0.002034</span></span>
+<span><span class="co">#&gt; Iteration 90: loss = 0.0018306</span></span>
+<span><span class="co">#&gt; Iteration 91: loss = 0.00164754</span></span>
+<span><span class="co">#&gt; Iteration 92: loss = 0.00148279</span></span>
+<span><span class="co">#&gt; Iteration 93: loss = 0.00133451</span></span>
+<span><span class="co">#&gt; Iteration 94: loss = 0.00120106</span></span>
+<span><span class="co">#&gt; Iteration 95: loss = 0.00108095</span></span>
+<span><span class="co">#&gt; Iteration 96: loss = 0.000972858</span></span>
+<span><span class="co">#&gt; Iteration 97: loss = 0.000875572</span></span>
+<span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">time</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">time</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Time taken: 32.64 seconds</span></span>
 <span></span>
 <span><span class="co"># Make predictions</span></span>
-<span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="va">predictions_ridge_splitconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_ridge</span>, <span class="va">X_test</span>, method <span class="op">=</span> <span class="st">"splitconformal"</span><span class="op">)</span></span>
-<span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.004 seconds</span></span>
+<span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_booster</span>, <span class="va">X_test</span><span class="op">)</span></span>
+<span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">time</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">time</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Time taken: 0.073 seconds</span></span>
 <span></span>
-<span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="va">predictions_ridge_surrogate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_ridge</span>, <span class="va">X_test</span>, method <span class="op">=</span> <span class="st">"surrogate"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Registered S3 method overwritten by 'quantmod':</span></span>
-<span><span class="co">#&gt;   method            from</span></span>
-<span><span class="co">#&gt;   as.zoo.data.frame zoo</span></span>
-<span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.288 seconds</span></span>
-<span></span>
-<span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="va">predictions_ridge_bootstrap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_ridge</span>, <span class="va">X_test</span>, method <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span></span>
-<span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.03 seconds</span></span>
-<span></span>
-<span><span class="co"># Calculate coverage</span></span>
-<span><span class="va">coverage_ridge_splitconformal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y_test</span> <span class="op">&gt;=</span> <span class="va">predictions_ridge_splitconformal</span><span class="op">[</span>, <span class="st">"lwr"</span><span class="op">]</span> <span class="op">&amp;</span> <span class="va">y_test</span> <span class="op">&lt;=</span> <span class="va">predictions_ridge_splitconformal</span><span class="op">[</span>, <span class="st">"upr"</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">coverage_ridge_surrogate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y_test</span> <span class="op">&gt;=</span> <span class="va">predictions_ridge_surrogate</span><span class="op">[</span>, <span class="st">"lwr"</span><span class="op">]</span> <span class="op">&amp;</span> <span class="va">y_test</span> <span class="op">&lt;=</span> <span class="va">predictions_ridge_surrogate</span><span class="op">[</span>, <span class="st">"upr"</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">coverage_ridge_bootstrap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">y_test</span> <span class="op">&gt;=</span> <span class="va">predictions_ridge_bootstrap</span><span class="op">[</span>, <span class="st">"lwr"</span><span class="op">]</span> <span class="op">&amp;</span> <span class="va">y_test</span> <span class="op">&lt;=</span> <span class="va">predictions_ridge_bootstrap</span><span class="op">[</span>, <span class="st">"upr"</span><span class="op">]</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Ridge Regression Split Conformal Coverage:"</span>, <span class="va">coverage_ridge_splitconformal</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Ridge Regression Split Conformal Coverage: 0.9803922</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Ridge Regression Surrogate Coverage:"</span>, <span class="va">coverage_ridge_surrogate</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Ridge Regression Surrogate Coverage: 0.9705882</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Ridge Regression Bootstrap Coverage:"</span>, <span class="va">coverage_ridge_bootstrap</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Ridge Regression Bootstrap Coverage: 0.9607843</span></span></code></pre></div>
+<span><span class="co"># RMSE </span></span>
+<span><span class="va">rmse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">y_test</span> <span class="op">-</span> <span class="va">predictions</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"RMSE:"</span>, <span class="va">rmse</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; RMSE: 2.841826</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session Info<a class="anchor" aria-label="anchor" href="#session-info"></a>
@@ -211,15 +288,13 @@ hyperparameter tuning:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] cli_3.6.4         knitr_1.49        rlang_1.1.6       xfun_0.51        </span></span>
-<span><span class="co">#&gt;  [5] png_0.1-8         textshaping_1.0.0 jsonlite_2.0.0    zoo_1.8-14       </span></span>
-<span><span class="co">#&gt;  [9] TTR_0.24.4        xts_0.14.1        htmltools_0.5.8.1 ragg_1.3.3       </span></span>
-<span><span class="co">#&gt; [13] sass_0.4.9        rmarkdown_2.29    quadprog_1.5-8    grid_4.3.3       </span></span>
-<span><span class="co">#&gt; [17] evaluate_1.0.3    jquerylib_0.1.4   MASS_7.3-60.0.1   fastmap_1.2.0    </span></span>
-<span><span class="co">#&gt; [21] yaml_2.3.10       lifecycle_1.0.4   compiler_4.3.3    fs_1.6.5         </span></span>
-<span><span class="co">#&gt; [25] htmlwidgets_1.6.4 Rcpp_1.0.14       systemfonts_1.1.0 lattice_0.22-5   </span></span>
-<span><span class="co">#&gt; [29] digest_0.6.37     R6_2.6.1          curl_6.2.2        quantmod_0.4.27  </span></span>
-<span><span class="co">#&gt; [33] bslib_0.9.0       tools_4.3.3       tseries_0.10-58   pkgdown_2.1.1    </span></span>
-<span><span class="co">#&gt; [37] cachem_1.1.0      desc_1.4.3</span></span></code></pre></div>
+<span><span class="co">#&gt;  [5] png_0.1-8         textshaping_1.0.0 jsonlite_2.0.0    htmltools_0.5.8.1</span></span>
+<span><span class="co">#&gt;  [9] ragg_1.3.3        sass_0.4.9        rmarkdown_2.29    grid_4.3.3       </span></span>
+<span><span class="co">#&gt; [13] evaluate_1.0.3    jquerylib_0.1.4   MASS_7.3-60.0.1   fastmap_1.2.0    </span></span>
+<span><span class="co">#&gt; [17] yaml_2.3.10       lifecycle_1.0.4   compiler_4.3.3    fs_1.6.5         </span></span>
+<span><span class="co">#&gt; [21] htmlwidgets_1.6.4 Rcpp_1.0.14       systemfonts_1.1.0 lattice_0.22-5   </span></span>
+<span><span class="co">#&gt; [25] digest_0.6.37     R6_2.6.1          bslib_0.9.0       tools_4.3.3      </span></span>
+<span><span class="co">#&gt; [29] pkgdown_2.1.1     cachem_1.1.0      desc_1.4.3</span></span></code></pre></div>
 </div>
   </div>
 
