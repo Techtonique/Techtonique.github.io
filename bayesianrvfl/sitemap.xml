@@ -1,6 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
 <url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/articles/bayesian-opt.html</loc></url>
 <url><loc>/articles/getting-updates.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/authors.html</loc></url>
@@ -8,6 +9,8 @@
 <url><loc>/reference/bayes_opt.html</loc></url>
 <url><loc>/reference/fit_rvfl.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/msnlminb.html</loc></url>
+<url><loc>/reference/msnmkb.html</loc></url>
 <url><loc>/reference/predict.glmnet_rvfl.html</loc></url>
 <url><loc>/reference/predict.matern52.html</loc></url>
 <url><loc>/reference/predict.rvfl.html</loc></url>

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bayesianrvfl</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
       </span>
     </div>
 
@@ -49,6 +49,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/bayesian-opt.html">Bayesian optimization</a>
+    </li>
+    <li>
       <a href="../articles/getting-updates.html">Getting updates</a>
     </li>
   </ul>
@@ -84,37 +87,41 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"bayesianrvfl"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: cclust</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: memoise</span></span></code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Loading required package: mlbench</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: caret</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: ggplot2</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: lattice</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 0 - dataset -----</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span></span>
 <span><span class="op">(</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>; <span class="op">(</span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 32</span></span></code></pre>
 <pre><code><span><span class="co">## [1] 10</span></span></code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 1 - Split data set into 3 parts -----</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">idx_train</span> <span class="op">&lt;-</span> <span class="fu">caret</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/createDataPartition.html" class="external-link">createDataPartition</a></span><span class="op">(</span><span class="va">y</span>, p <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span><span class="op">$</span><span class="va">Resample1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1]  1  2  6  7  8  9 10 12 13 14 16 18 19 21 22 23 25 26 27 30 31</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">idx_comp</span> <span class="op">&lt;-</span> <span class="fu">generics</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="va">idx_train</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1]  3  4  5 11 15 17 20 24 28 29 32</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">idx_validation</span> <span class="op">&lt;-</span> <span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idx_comp</span>,</span>
 <span>                               size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">idx_comp</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>,</span>
 <span>                               replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 15 28 29 17 32</span></span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">idx_test</span> <span class="op">&lt;-</span> <span class="fu">generics</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="va">idx_comp</span>, <span class="va">idx_validation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  3  4  5 11 20 24</span></span></code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># check</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">generics</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="va">idx_train</span>, <span class="va">idx_validation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## integer(0)</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">generics</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">idx_train</span>, <span class="va">idx_validation</span><span class="op">)</span>, <span class="va">idx_test</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## integer(0)</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X_train</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_train</span>,<span class="op">]</span></span>
 <span><span class="va">y_train</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="va">idx_train</span><span class="op">]</span></span>
 <span><span class="va">X_validation</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_validation</span>,<span class="op">]</span></span>
@@ -130,7 +137,7 @@
 <span><span class="va">obj_GCV</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_rvfl.html">fit_rvfl</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X_train</span>, y <span class="op">=</span> <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">best_lambda</span> <span class="op">&lt;-</span> <span class="va">obj_GCV</span><span class="op">$</span><span class="va">lambda</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html" class="external-link">which.min</a></span><span class="op">(</span><span class="va">obj_GCV</span><span class="op">$</span><span class="va">GCV</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 12.9155</span></span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_rvfl.html">fit_rvfl</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X_train</span>,</span>
 <span>                                   y <span class="op">=</span> <span class="va">y_train</span>,</span>
 <span>                                   method <span class="op">=</span> <span class="st">"solve"</span>,</span>
@@ -386,7 +393,7 @@
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "rvfl"</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 3 - Predict on validation set -----</span></span>
 <span></span>
 <span><span class="va">preds_validation</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/predict_rvfl.html">predict_rvfl</a></span><span class="op">(</span><span class="va">fit_obj</span>,</span>
@@ -407,22 +414,22 @@
 <span><span class="co">## $simulate</span></span>
 <span><span class="co">## function (n) </span></span>
 <span><span class="co">## MASS::mvrnorm(n = n, mu = res, Sigma = Sigma_newx)</span></span>
-<span><span class="co">## &lt;bytecode: 0x7fb55fca7640&gt;</span></span>
-<span><span class="co">## &lt;environment: 0x7fb55fca6ae0&gt;</span></span></code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<span><span class="co">## &lt;bytecode: 0x7fc2d9709b98&gt;</span></span>
+<span><span class="co">## &lt;environment: 0x7fc2d970a7a0&gt;</span></span></code></pre>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">level</span> <span class="op">&lt;-</span> <span class="fl">95</span></span>
 <span><span class="va">multiplier</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">qnorm</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="op">(</span><span class="fl">100</span> <span class="op">-</span> <span class="va">level</span><span class="op">)</span><span class="op">/</span><span class="fl">200</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span> <span class="op">-</span> <span class="va">y_validation</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">## -3.4992 -1.9268  2.2022  0.8209  3.3909  3.9374</span></span></code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">preds_upper</span> <span class="op">&lt;-</span> <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span> <span class="op">+</span> <span class="va">multiplier</span><span class="op">*</span><span class="va">preds_validation</span><span class="op">$</span><span class="va">sd</span></span>
 <span><span class="va">preds_lower</span> <span class="op">&lt;-</span> <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span> <span class="op">-</span> <span class="va">multiplier</span><span class="op">*</span><span class="va">preds_validation</span><span class="op">$</span><span class="va">sd</span></span>
 <span></span>
 <span><span class="co"># coverage rate</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">preds_upper</span> <span class="op">&gt;=</span> <span class="va">y_validation</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">preds_lower</span> <span class="op">&lt;=</span> <span class="va">y_validation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 4 - Update -----</span></span>
 <span><span class="co"># add new points in an online fashion</span></span>
 <span><span class="va">fit_obj2</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/update_params.html">update_params</a></span><span class="op">(</span><span class="va">fit_obj</span>, newx <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_test</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="op">]</span>,</span>
@@ -679,7 +686,7 @@
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "rvfl"</span></span></code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 4 - Update -----</span></span>
 <span><span class="va">fit_obj3</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/update_params.html">update_params</a></span><span class="op">(</span><span class="va">fit_obj2</span>, newx <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_test</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="op">]</span>,</span>
 <span>                                        newy <span class="op">=</span> <span class="va">y</span><span class="op">[</span><span class="va">idx_test</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
@@ -728,13 +735,13 @@
 <span><span class="co">## h3    0.31512079</span></span>
 <span><span class="co">## h4    0.44075787</span></span>
 <span><span class="co">## h5    0.42961755</span></span></code></pre>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">preds_validation2</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/predict_rvfl.html">predict_rvfl</a></span><span class="op">(</span><span class="va">fit_obj2</span>,</span>
 <span>                                                newx <span class="op">=</span> <span class="va">X_validation</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">preds_validation3</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/predict_rvfl.html">predict_rvfl</a></span><span class="op">(</span><span class="va">fit_obj7</span>,</span>
 <span>                                                newx <span class="op">=</span> <span class="va">X_validation</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 5 - Plots -----</span></span>
 <span></span>
 <span><span class="co">#par(mfrow=c(3, 2))</span></span>
@@ -743,7 +750,7 @@
 <span>     main <span class="op">=</span> <span class="st">'Generalized Cross-validation error'</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"log(lambda)"</span>, ylab <span class="op">=</span> <span class="st">"GCV"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-5-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">y_validation</span>, type<span class="op">=</span><span class="st">'l'</span>, col<span class="op">=</span><span class="st">"red"</span>,</span>
 <span>     lwd<span class="op">=</span><span class="fl">2</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_validation</span>, <span class="va">preds_lower</span>, <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -754,7 +761,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">preds_upper</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">preds_lower</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-5-2.png" width="691.2"></p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y_validation</span>,</span>
 <span>     y <span class="op">=</span> <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_validation</span>, <span class="va">preds_lower</span>, <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -763,12 +770,12 @@
 <span>     xlab <span class="op">=</span> <span class="st">"observed"</span>, ylab <span class="op">=</span> <span class="st">"predicted"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">1</span>, col<span class="op">=</span><span class="st">"green"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-5-3.png" width="691.2"></p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">mat_coefs</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">'l'</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>        main <span class="op">=</span> <span class="st">'model coefficients \n after each update'</span>,</span>
 <span>        xlab <span class="op">=</span> <span class="st">"update#"</span>, ylab <span class="op">=</span> <span class="st">"model coefficient"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-5-4.png" width="691.2"></p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y_validation</span>,</span>
 <span>     y <span class="op">=</span> <span class="va">preds_validation2</span><span class="op">$</span><span class="va">mean</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_validation</span>, <span class="va">preds_lower</span>, <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -777,7 +784,7 @@
 <span>     xlab <span class="op">=</span> <span class="st">"observed"</span>, ylab <span class="op">=</span> <span class="st">"predicted"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">1</span>, col<span class="op">=</span><span class="st">"green"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-5-5.png" width="691.2"></p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">preds_validation3</span><span class="op">$</span><span class="fu">simulate</span><span class="op">(</span><span class="fl">250</span><span class="op">)</span><span class="op">)</span>, type<span class="op">=</span><span class="st">'l'</span>,</span>
 <span>        lwd <span class="op">=</span> <span class="fl">2</span>, main <span class="op">=</span> <span class="st">'predictive posterior simulation \n (after 6 point-updates)'</span>,</span>
 <span>        xlab <span class="op">=</span> <span class="st">"obs#"</span>, ylab <span class="op">=</span> <span class="st">"prediction"</span><span class="op">)</span></span></code></pre></div>
@@ -786,7 +793,7 @@
 <div class="section level2">
 <h2 id="with-polyak-averaging">2 - With Polyak averaging<a class="anchor" aria-label="anchor" href="#with-polyak-averaging"></a>
 </h2>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"bayesianrvfl"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="op">(</span><span class="va">fit_obj</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/fit_rvfl.html">fit_rvfl</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">X_train</span>,</span>
@@ -1043,7 +1050,7 @@
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "rvfl"</span></span></code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 3 - Predict on validation set -----</span></span>
 <span><span class="va">preds_validation</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/predict_rvfl.html">predict_rvfl</a></span><span class="op">(</span><span class="va">fit_obj</span>,</span>
 <span>                                               newx <span class="op">=</span> <span class="va">X_validation</span><span class="op">)</span></span>
@@ -1052,13 +1059,13 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span> <span class="op">-</span> <span class="va">y_validation</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">## -3.4992 -1.9268  2.2022  0.8209  3.3909  3.9374</span></span></code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">preds_upper</span> <span class="op">&lt;-</span> <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span> <span class="op">+</span> <span class="va">multiplier</span><span class="op">*</span><span class="va">preds_validation</span><span class="op">$</span><span class="va">sd</span></span>
 <span><span class="va">preds_lower</span> <span class="op">&lt;-</span> <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span> <span class="op">-</span> <span class="va">multiplier</span><span class="op">*</span><span class="va">preds_validation</span><span class="op">$</span><span class="va">sd</span></span>
 <span><span class="co"># coverage rate</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">preds_upper</span> <span class="op">&gt;=</span> <span class="va">y_validation</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">preds_lower</span> <span class="op">&lt;=</span> <span class="va">y_validation</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1</span></span></code></pre>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 4 - Update -----</span></span>
 <span><span class="co"># add new points in an online fashion</span></span>
 <span><span class="va">fit_obj2</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/update_params.html">update_params</a></span><span class="op">(</span><span class="va">fit_obj</span>, newx <span class="op">=</span> <span class="va">X</span><span class="op">[</span><span class="va">idx_test</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="op">]</span>,</span>
@@ -1110,20 +1117,20 @@
 <span><span class="co">## h3   -0.3144344</span></span>
 <span><span class="co">## h4   -0.1247607</span></span>
 <span><span class="co">## h5    1.0513688</span></span></code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">preds_validation2</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/predict_rvfl.html">predict_rvfl</a></span><span class="op">(</span><span class="va">fit_obj2</span>,</span>
 <span>                                                newx <span class="op">=</span> <span class="va">X_validation</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">preds_validation3</span> <span class="op">&lt;-</span> <span class="fu">bayesianrvfl</span><span class="fu">::</span><span class="fu"><a href="../reference/predict_rvfl.html">predict_rvfl</a></span><span class="op">(</span><span class="va">fit_obj7</span>,</span>
 <span>                                                newx <span class="op">=</span> <span class="va">X_validation</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 5 - Plots -----</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">obj_GCV</span><span class="op">$</span><span class="va">lambda</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">obj_GCV</span><span class="op">$</span><span class="va">GCV</span>, type<span class="op">=</span><span class="st">'l'</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">'Generalized Cross-validation error'</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"log(lambda)"</span>, ylab <span class="op">=</span> <span class="st">"GCV"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-7-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">y_validation</span>, type<span class="op">=</span><span class="st">'l'</span>, col<span class="op">=</span><span class="st">"red"</span>,</span>
 <span>     lwd<span class="op">=</span><span class="fl">2</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_validation</span>, <span class="va">preds_lower</span>, <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1134,7 +1141,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">preds_upper</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">preds_lower</span>, col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-7-2.png" width="691.2"></p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y_validation</span>,</span>
 <span>     y <span class="op">=</span> <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_validation</span>, <span class="va">preds_lower</span>, <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1143,12 +1150,12 @@
 <span>     xlab <span class="op">=</span> <span class="st">"observed"</span>, ylab <span class="op">=</span> <span class="st">"predicted"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">1</span>, col<span class="op">=</span><span class="st">"green"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-7-3.png" width="691.2"></p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">mat_coefs</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">'l'</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>        main <span class="op">=</span> <span class="st">'model coefficients \n after each update'</span>,</span>
 <span>        xlab <span class="op">=</span> <span class="st">"update#"</span>, ylab <span class="op">=</span> <span class="st">"model coefficient"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-7-4.png" width="691.2"></p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">y_validation</span>,</span>
 <span>     y <span class="op">=</span> <span class="va">preds_validation2</span><span class="op">$</span><span class="va">mean</span>,</span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y_validation</span>, <span class="va">preds_lower</span>, <span class="va">preds_validation</span><span class="op">$</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1157,7 +1164,7 @@
 <span>     xlab <span class="op">=</span> <span class="st">"observed"</span>, ylab <span class="op">=</span> <span class="st">"predicted"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">1</span>, col<span class="op">=</span><span class="st">"green"</span>, lwd<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-updates_files/figure-html/unnamed-chunk-7-5.png" width="691.2"></p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">preds_validation3</span><span class="op">$</span><span class="fu">simulate</span><span class="op">(</span><span class="fl">250</span><span class="op">)</span><span class="op">)</span>, type<span class="op">=</span><span class="st">'l'</span>,</span>
 <span>        lwd <span class="op">=</span> <span class="fl">2</span>, main <span class="op">=</span> <span class="st">'predictive posterior simulation \n (after 6 point-updates)'</span>,</span>
 <span>        xlab <span class="op">=</span> <span class="st">"obs#"</span>, ylab <span class="op">=</span> <span class="st">"prediction"</span><span class="op">)</span></span></code></pre></div>
