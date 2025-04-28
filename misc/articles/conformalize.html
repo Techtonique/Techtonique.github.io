@@ -49,6 +49,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/conformalize-matrix-interface.html">conformalize matrix interface</a>
+    </li>
+    <li>
       <a href="../articles/conformalize.html">conformalize</a>
     </li>
     <li>
@@ -146,9 +149,45 @@ predictions and calculate prediction intervals.</p>
 <span>  newdata <span class="op">=</span> <span class="va">new_data</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"split"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = formula, data = data)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">## (Intercept)           x1           x2  </span></span>
+<span><span class="co">##   -0.000171     3.115230     1.954085  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##          10          15          18          19          28          33 </span></span>
+<span><span class="co">## -0.07155337 -0.50575404 -0.34743168 -0.61805759 -0.40117678  0.05274032 </span></span>
+<span><span class="co">##          45          47          49          58          59          61 </span></span>
+<span><span class="co">## -0.09260136 -0.05885147 -0.31844333  0.24731261 -0.13813234 -0.29452465 </span></span>
+<span><span class="co">##          65          66          73          75          82          95 </span></span>
+<span><span class="co">##  1.07655235  0.74875010  0.26380004  0.40559198  0.29773432  0.99912730 </span></span>
+<span><span class="co">##         102         104         106         107         113         114 </span></span>
+<span><span class="co">## -0.41409168 -0.60257935  0.08524682 -1.10511279 -0.83744059 -0.40724958 </span></span>
+<span><span class="co">##         115         119         120         133         136         142 </span></span>
+<span><span class="co">## -0.24259646  0.79117708  0.44859913 -0.40430463 -1.07935716  0.43797248 </span></span>
+<span><span class="co">##         146         148         150         151         152         160 </span></span>
+<span><span class="co">## -0.88608587 -0.27676132 -0.14552706  0.41625998 -1.00911160  1.29913204 </span></span>
+<span><span class="co">##         161         174         175         199 </span></span>
+<span><span class="co">## -0.15375511  0.34773043  0.20273890 -0.64231123 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 0.5868316</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] -0.1249228</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit        lwr      upr</span></span>
 <span><span class="co">## 1 1.6023773  0.5217324 2.683022</span></span>
 <span><span class="co">## 2 2.4634938  1.3828489 3.544139</span></span>
@@ -162,7 +201,7 @@ predictions and calculate prediction intervals.</p>
 </h3>
 <p>The coverage rate is the proportion of true values that fall within
 the prediction intervals.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Simulate true values for the new data</span></span>
 <span><span class="va">true_y</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">new_data</span><span class="op">$</span><span class="va">x1</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">new_data</span><span class="op">$</span><span class="va">x2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span></span>
@@ -194,7 +233,7 @@ demonstrate conformal prediction.</p>
 </h3>
 <p>We will use the <code>MASS</code> package to access the
 <code>Boston</code> dataset.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Load the Boston dataset</span></span>
@@ -222,7 +261,7 @@ demonstrate conformal prediction.</p>
 </h3>
 <p>We will split the data into training and test sets to ensure they are
 disjoint.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Boston</span><span class="op">)</span></span>
 <span><span class="va">train_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fl">0.8</span> <span class="op">*</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
@@ -232,7 +271,7 @@ disjoint.</p>
 <div class="section level3">
 <h3 id="fit-conformal-model-1">Fit Conformal Model 1<a class="anchor" aria-label="anchor" href="#fit-conformal-model-1"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define fit and predict functions</span></span>
 <span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -251,16 +290,112 @@ disjoint.</p>
 </h3>
 <p>We will use the <code>predict.conformalize</code> method to generate
 predictions and calculate prediction intervals for the test set.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="va">test_data</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"split"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## rlm(formula = formula, data = data)</span></span>
+<span><span class="co">## Converged in 12 iterations</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##  (Intercept)         crim           zn        indus         chas          nox </span></span>
+<span><span class="co">## 10.053413833 -0.163015431  0.009957524 -0.013355275  1.557351564 -5.289064676 </span></span>
+<span><span class="co">##           rm          age          dis          rad          tax      ptratio </span></span>
+<span><span class="co">##  6.050082402 -0.014130776 -1.046959248  0.204156664 -0.010752932 -0.815953461 </span></span>
+<span><span class="co">##        black        lstat </span></span>
+<span><span class="co">##  0.014196664 -0.436463429 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Degrees of freedom: 202 total; 188 residual</span></span>
+<span><span class="co">## Scale estimate: 2.78 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##          415          463          179          426          118          503 </span></span>
+<span><span class="co">##  17.75101224  -0.42301639  -1.61859953   1.62139385  -3.34677969  -1.60897767 </span></span>
+<span><span class="co">##           90          256          197          491          348          355 </span></span>
+<span><span class="co">##  -3.19085491   1.54228923  -1.78273122   5.81481859  -0.79919511   5.50240802 </span></span>
+<span><span class="co">##            7          501          485          254          211           43 </span></span>
+<span><span class="co">##   0.53762811  -3.44980333   2.53375234   8.03603880   1.44113352   0.08310029 </span></span>
+<span><span class="co">##          373          332          425          330           23          411 </span></span>
+<span><span class="co">##  28.09729049  -1.37881939   2.08155331  -2.10520186  -1.24294958   7.86360572 </span></span>
+<span><span class="co">##          309          135          290           72           76           63 </span></span>
+<span><span class="co">##  -5.85410610   3.32023507  -0.94636403   0.80984792  -1.85752392  -1.35877320 </span></span>
+<span><span class="co">##          210          493          294           41          492          316 </span></span>
+<span><span class="co">##   6.10840592   4.26900808  -1.23403353   2.06751492  -0.11235268  -3.23281956 </span></span>
+<span><span class="co">##           16           94          342           39          240            4 </span></span>
+<span><span class="co">##   0.81505531  -1.98229092   1.20380307   2.23545905  -4.28334192   3.17274197 </span></span>
+<span><span class="co">##           13          409          308           89           25          291 </span></span>
+<span><span class="co">##   1.08193007   6.47568699  -3.13637115  -7.61851115  -0.14593182  -2.55986770 </span></span>
+<span><span class="co">##          286          396          110          158          398           67 </span></span>
+<span><span class="co">##  -3.95756249  -6.92122367  -0.08380848   8.39453871  -6.20029505  -2.16451929 </span></span>
+<span><span class="co">##          335           85          136          178          236           98 </span></span>
+<span><span class="co">##  -2.13636104  -0.97950834  -0.01953636  -3.55277580  -0.09793921   0.42318320 </span></span>
+<span><span class="co">##          214          127          212          273          310          232 </span></span>
+<span><span class="co">##   2.77058176   2.35196874   5.06669808  -3.18238722  -2.29399575  -2.62510928 </span></span>
+<span><span class="co">##          366          416          350          407          280          154 </span></span>
+<span><span class="co">##  20.43126404  -0.62828007   2.65823308  10.23724986   0.74559441   1.59669803 </span></span>
+<span><span class="co">##          102          255          326          272          470          288 </span></span>
+<span><span class="co">##   0.19552077   0.18581742  -1.05991028  -1.16045291   4.23230707  -1.66642094 </span></span>
+<span><span class="co">##          440           55          331          478          184          459 </span></span>
+<span><span class="co">##   0.71422248   5.50936970  -2.00530538   4.02428952   2.53299654  -1.93859807 </span></span>
+<span><span class="co">##          196          432          352           20          502          177 </span></span>
+<span><span class="co">##   9.48644109  -2.62067731   3.24264261   0.51984714  -2.24793764  -1.58613996 </span></span>
+<span><span class="co">##           42          405          380          395          194          249 </span></span>
+<span><span class="co">##  -2.75990583   4.56727197  -5.27523660  -3.43589886   0.10886146   3.11941696 </span></span>
+<span><span class="co">##          200          377          250          292          434           33 </span></span>
+<span><span class="co">##   6.02359042  -3.63739240   1.09081050   4.60846568  -1.70144111   4.07698311 </span></span>
+<span><span class="co">##          152           54          430          289          185          205 </span></span>
+<span><span class="co">##   1.29737169   0.24062338  -1.99405324  -2.80371431   6.00421913   7.74226900 </span></span>
+<span><span class="co">##          334          215          318           57          105          279 </span></span>
+<span><span class="co">##  -1.14753812  12.85549644   1.83703448   1.44486879  -0.60194612   0.46171405 </span></span>
+<span><span class="co">##          129          106          480          369          406          287 </span></span>
+<span><span class="co">##  -1.75885183   2.26221951   1.79691136  31.89913520   1.75716435   1.61365538 </span></span>
+<span><span class="co">##          356          225          117          452          400          341 </span></span>
+<span><span class="co">##   5.24072632   3.87927876  -1.67191387  -4.92493185  -3.94064347  -2.50204595 </span></span>
+<span><span class="co">##          176          220          191           53          104          447 </span></span>
+<span><span class="co">##  -1.26482459  -4.90616974   6.42986225  -2.64155010  -0.47874865  -2.81083340 </span></span>
+<span><span class="co">##          320          354          275          261            2          336 </span></span>
+<span><span class="co">##  -0.53303073   5.21706683  -1.12106092  -2.06641580  -3.33379070  -0.19269560 </span></span>
+<span><span class="co">##          497          394          448          327          419          112 </span></span>
+<span><span class="co">##   6.50546425  -5.49102250  -5.42896409  -1.29979669   9.33706323  -4.11746097 </span></span>
+<span><span class="co">##           36           87          399          111          461          351 </span></span>
+<span><span class="co">##  -3.60153400   0.90077494   1.54781531   0.97506146  -3.11921704   1.75920907 </span></span>
+<span><span class="co">##           31           73          424          333          122           92 </span></span>
+<span><span class="co">##   1.35292531  -0.96867871   3.25415805  -2.67640505  -1.09730455  -4.87346776 </span></span>
+<span><span class="co">##          234          338          472          300          323          314 </span></span>
+<span><span class="co">##   8.19783868  -0.82543739  -1.15016922  -2.15925065  -2.00661608  -3.39475797 </span></span>
+<span><span class="co">##          443          387          376          208          499          206 </span></span>
+<span><span class="co">##  -0.32010786   8.62390298 -10.57350717   5.50712569   0.08881949   0.54973502 </span></span>
+<span><span class="co">##          297          219           82          169          413          228 </span></span>
+<span><span class="co">##  -0.11392277  -1.13639371  -2.23070320  -1.15670018  22.68901628  -1.11958292 </span></span>
+<span><span class="co">##          423          258          385          482          498          192 </span></span>
+<span><span class="co">##   6.06871179   2.90343078  10.38887008  -2.11698974  -0.34891269   0.99064382 </span></span>
+<span><span class="co">##          386          414           50          260           97          183 </span></span>
+<span><span class="co">##   1.34099245  10.71923362   3.13590006  -4.57405529  -2.25277923   3.81266117 </span></span>
+<span><span class="co">##          100          274          484          296          357          227 </span></span>
+<span><span class="co">##  -0.46119518  -0.96786208   2.97493526  -0.20959741  -0.95380842  -1.96415748 </span></span>
+<span><span class="co">##          190          329          156          131            8          468 </span></span>
+<span><span class="co">##   1.00965741  -1.42530635  -4.17827374  -1.58936371   7.51853676   4.12047455 </span></span>
+<span><span class="co">##           70          213          382          182 </span></span>
+<span><span class="co">##   1.16853787   1.78909033  -7.07189205   9.67559663 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 5.384367</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] 0.1888384</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  29.92942 20.263283 39.59556</span></span>
 <span><span class="co">## 15 19.30837  9.642229 28.97451</span></span>
@@ -274,7 +409,7 @@ predictions and calculate prediction intervals for the test set.</p>
 </h3>
 <p>The coverage rate is the proportion of true values in the test set
 that fall within the prediction intervals.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -287,7 +422,7 @@ that fall within the prediction intervals.</p>
 <div class="section level3">
 <h3 id="fit-conformal-model-2">Fit Conformal Model 2<a class="anchor" aria-label="anchor" href="#fit-conformal-model-2"></a>
 </h3>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define fit and predict functions</span></span>
 <span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -306,16 +441,126 @@ that fall within the prediction intervals.</p>
 </h3>
 <p>We will use the <code>predict.conformalize</code> method to generate
 predictions and calculate prediction intervals for the test set.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="va">test_data</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"split"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:  stats::glm(formula = formula, data = data)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">## (Intercept)         crim           zn        indus         chas          nox  </span></span>
+<span><span class="co">##    29.78825     -0.14238      0.03251      0.03061      2.17196    -16.17824  </span></span>
+<span><span class="co">##          rm          age          dis          rad          tax      ptratio  </span></span>
+<span><span class="co">##     4.70344      0.01813     -1.50717      0.35519     -0.01344     -1.04058  </span></span>
+<span><span class="co">##       black        lstat  </span></span>
+<span><span class="co">##     0.01303     -0.58559  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Degrees of Freedom: 201 Total (i.e. Null);  188 Residual</span></span>
+<span><span class="co">## Null Deviance:       18580 </span></span>
+<span><span class="co">## Residual Deviance: 3991  AIC: 1206</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##           415           463           179           426           118 </span></span>
+<span><span class="co">##  15.764477831  -0.988770013  -2.543179984   0.246263589  -4.612173369 </span></span>
+<span><span class="co">##           503            90           256           197           491 </span></span>
+<span><span class="co">##  -1.693827822  -2.950069022   1.869965859  -2.430610387   6.641430762 </span></span>
+<span><span class="co">##           348           355             7           501           485 </span></span>
+<span><span class="co">##  -0.387896963   7.048338684   0.194748907  -3.493814316   1.693920234 </span></span>
+<span><span class="co">##           254           211            43           373           332 </span></span>
+<span><span class="co">##  12.292956642   0.138159179   1.154004128  24.027816881  -0.803632969 </span></span>
+<span><span class="co">##           425           330            23           411           309 </span></span>
+<span><span class="co">##  -0.839920969  -0.722612132  -0.167767308   2.167940990  -6.825169566 </span></span>
+<span><span class="co">##           135           290            72            76            63 </span></span>
+<span><span class="co">##   3.275100495  -0.759414026   1.430389678  -2.020087653  -1.674552399 </span></span>
+<span><span class="co">##           210           493           294            41           492 </span></span>
+<span><span class="co">##   4.586854531   4.552309079  -1.126062979   1.696969057   0.262178313 </span></span>
+<span><span class="co">##           316            16            94           342            39 </span></span>
+<span><span class="co">##  -3.970341530   1.333549618  -3.241784129   2.197383166   2.775323621 </span></span>
+<span><span class="co">##           240             4            13           409           308 </span></span>
+<span><span class="co">##  -4.694843972   4.306893821   1.896411213   4.373885971  -4.894902111 </span></span>
+<span><span class="co">##            89            25           291           286           396 </span></span>
+<span><span class="co">##  -8.248709022   0.398861978  -3.821840049  -3.993434219  -8.052811215 </span></span>
+<span><span class="co">##           110           158           398            67           335 </span></span>
+<span><span class="co">##  -0.174707897   6.170637038  -7.912137723  -3.779100281  -0.420307060 </span></span>
+<span><span class="co">##            85           136           178           236            98 </span></span>
+<span><span class="co">##  -0.505685158   0.722000550  -5.082576649  -1.112554638   1.000305006 </span></span>
+<span><span class="co">##           214           127           212           273           310 </span></span>
+<span><span class="co">##   3.417047314   2.068581362   4.029083985  -3.973489628  -3.257778331 </span></span>
+<span><span class="co">##           232           366           416           350           407 </span></span>
+<span><span class="co">##  -3.217537805  14.504200597  -0.789956450   5.421465622   5.957527419 </span></span>
+<span><span class="co">##           280           154           102           255           326 </span></span>
+<span><span class="co">##  -0.388687016   1.987991575   0.466096118   0.007181811   0.558481278 </span></span>
+<span><span class="co">##           272           470           288           440            55 </span></span>
+<span><span class="co">##  -0.918384377   2.276754357  -2.553856315   0.008825628   6.349577246 </span></span>
+<span><span class="co">##           331           478           184           459           196 </span></span>
+<span><span class="co">##  -0.804163641   1.663888937   0.439328371  -2.359964178   8.911889804 </span></span>
+<span><span class="co">##           432           352            20           502           177 </span></span>
+<span><span class="co">##  -4.146198759   5.045979801   0.563337346  -1.280802168  -1.992182379 </span></span>
+<span><span class="co">##            42           405           380           395           194 </span></span>
+<span><span class="co">##  -0.902292374   3.327617862  -6.667225863  -5.400633140   0.231787928 </span></span>
+<span><span class="co">##           249           200           377           250           292 </span></span>
+<span><span class="co">##   3.977422436   6.478740182  -4.023381192   2.932225794   3.772826861 </span></span>
+<span><span class="co">##           434            33           152            54           430 </span></span>
+<span><span class="co">##  -2.448673653   6.358540758   0.946984605   0.628531680  -2.546717499 </span></span>
+<span><span class="co">##           289           185           205           334           215 </span></span>
+<span><span class="co">##  -3.941265332   4.102284871   6.607098719   0.430018524  15.728088344 </span></span>
+<span><span class="co">##           318            57           105           279           129 </span></span>
+<span><span class="co">##   2.099510664   1.644595746  -1.270661910  -0.426073914  -1.271359683 </span></span>
+<span><span class="co">##           106           480           369           406           287 </span></span>
+<span><span class="co">##   1.426383844  -0.792647956  25.844187265  -0.968727677   2.656329159 </span></span>
+<span><span class="co">##           356           225           117           452           400 </span></span>
+<span><span class="co">##   6.852693030   3.881995799  -2.152249451  -5.166074745  -3.503250830 </span></span>
+<span><span class="co">##           341           176           220           191            53 </span></span>
+<span><span class="co">##  -2.262305509  -1.417549048  -7.035616819   6.863606354  -2.022958762 </span></span>
+<span><span class="co">##           104           447           320           354           275 </span></span>
+<span><span class="co">##  -0.802709122  -3.305050943   0.093391012   5.989158592  -2.851763168 </span></span>
+<span><span class="co">##           261             2           336           497           394 </span></span>
+<span><span class="co">##  -2.597612328  -3.713695585   1.263629192   6.975450133  -7.050402445 </span></span>
+<span><span class="co">##           448           327           419           112            36 </span></span>
+<span><span class="co">##  -6.187067749  -0.138726762   6.104096769  -4.466775330  -4.616862136 </span></span>
+<span><span class="co">##            87           399           111           461           351 </span></span>
+<span><span class="co">##   1.284500325   0.300778763   1.758188903  -3.221342364   3.619381597 </span></span>
+<span><span class="co">##            31            73           424           333           122 </span></span>
+<span><span class="co">##   2.428740626  -0.527694477   1.845675138  -2.221711574  -2.189798218 </span></span>
+<span><span class="co">##            92           234           338           472           300 </span></span>
+<span><span class="co">##  -5.666921491   8.775318305  -0.162437018  -4.000684029  -1.784296138 </span></span>
+<span><span class="co">##           323           314           443           387           376 </span></span>
+<span><span class="co">##  -1.977525789  -4.395997397  -1.201281672   6.307724361 -11.738018736 </span></span>
+<span><span class="co">##           208           499           206           297           219 </span></span>
+<span><span class="co">##   5.537880093   0.246994887   1.102222072  -0.460269305  -2.987158004 </span></span>
+<span><span class="co">##            82           169           413           228           423 </span></span>
+<span><span class="co">##  -3.021002286  -3.205200388  19.853308439  -2.192024195   2.797529204 </span></span>
+<span><span class="co">##           258           385           482           498           192 </span></span>
+<span><span class="co">##   3.414178564   8.271338091  -4.451362820  -0.266787057   0.792207439 </span></span>
+<span><span class="co">##           386           414            50           260            97 </span></span>
+<span><span class="co">##   0.442623562   6.487624676   3.388454435  -6.629745005  -2.978426708 </span></span>
+<span><span class="co">##           183           100           274           484           296 </span></span>
+<span><span class="co">##   2.427214778  -0.031584384  -0.570256827   1.238172323   0.095873701 </span></span>
+<span><span class="co">##           357           227           190           329           156 </span></span>
+<span><span class="co">##  -1.933201226  -2.531726289   0.382566988  -0.545690834  -3.581922258 </span></span>
+<span><span class="co">##           131             8           468            70           213 </span></span>
+<span><span class="co">##  -1.346444916   7.621427858   2.329583294   1.528233254   1.223808670 </span></span>
+<span><span class="co">##           382           182 </span></span>
+<span><span class="co">##  -7.999559935   8.543358664 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 5.091575</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] 0.1125522</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 21.864586 38.92410</span></span>
 <span><span class="co">## 15 19.10867 10.578908 27.63842</span></span>
@@ -323,16 +568,126 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## 19 14.18587  5.656113 22.71563</span></span>
 <span><span class="co">## 28 13.85324  5.323482 22.38300</span></span>
 <span><span class="co">## 37 21.66451 13.134753 30.19427</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="va">test_data</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"kde"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston2</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:  stats::glm(formula = formula, data = data)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">## (Intercept)         crim           zn        indus         chas          nox  </span></span>
+<span><span class="co">##    29.78825     -0.14238      0.03251      0.03061      2.17196    -16.17824  </span></span>
+<span><span class="co">##          rm          age          dis          rad          tax      ptratio  </span></span>
+<span><span class="co">##     4.70344      0.01813     -1.50717      0.35519     -0.01344     -1.04058  </span></span>
+<span><span class="co">##       black        lstat  </span></span>
+<span><span class="co">##     0.01303     -0.58559  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Degrees of Freedom: 201 Total (i.e. Null);  188 Residual</span></span>
+<span><span class="co">## Null Deviance:       18580 </span></span>
+<span><span class="co">## Residual Deviance: 3991  AIC: 1206</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##           415           463           179           426           118 </span></span>
+<span><span class="co">##  15.764477831  -0.988770013  -2.543179984   0.246263589  -4.612173369 </span></span>
+<span><span class="co">##           503            90           256           197           491 </span></span>
+<span><span class="co">##  -1.693827822  -2.950069022   1.869965859  -2.430610387   6.641430762 </span></span>
+<span><span class="co">##           348           355             7           501           485 </span></span>
+<span><span class="co">##  -0.387896963   7.048338684   0.194748907  -3.493814316   1.693920234 </span></span>
+<span><span class="co">##           254           211            43           373           332 </span></span>
+<span><span class="co">##  12.292956642   0.138159179   1.154004128  24.027816881  -0.803632969 </span></span>
+<span><span class="co">##           425           330            23           411           309 </span></span>
+<span><span class="co">##  -0.839920969  -0.722612132  -0.167767308   2.167940990  -6.825169566 </span></span>
+<span><span class="co">##           135           290            72            76            63 </span></span>
+<span><span class="co">##   3.275100495  -0.759414026   1.430389678  -2.020087653  -1.674552399 </span></span>
+<span><span class="co">##           210           493           294            41           492 </span></span>
+<span><span class="co">##   4.586854531   4.552309079  -1.126062979   1.696969057   0.262178313 </span></span>
+<span><span class="co">##           316            16            94           342            39 </span></span>
+<span><span class="co">##  -3.970341530   1.333549618  -3.241784129   2.197383166   2.775323621 </span></span>
+<span><span class="co">##           240             4            13           409           308 </span></span>
+<span><span class="co">##  -4.694843972   4.306893821   1.896411213   4.373885971  -4.894902111 </span></span>
+<span><span class="co">##            89            25           291           286           396 </span></span>
+<span><span class="co">##  -8.248709022   0.398861978  -3.821840049  -3.993434219  -8.052811215 </span></span>
+<span><span class="co">##           110           158           398            67           335 </span></span>
+<span><span class="co">##  -0.174707897   6.170637038  -7.912137723  -3.779100281  -0.420307060 </span></span>
+<span><span class="co">##            85           136           178           236            98 </span></span>
+<span><span class="co">##  -0.505685158   0.722000550  -5.082576649  -1.112554638   1.000305006 </span></span>
+<span><span class="co">##           214           127           212           273           310 </span></span>
+<span><span class="co">##   3.417047314   2.068581362   4.029083985  -3.973489628  -3.257778331 </span></span>
+<span><span class="co">##           232           366           416           350           407 </span></span>
+<span><span class="co">##  -3.217537805  14.504200597  -0.789956450   5.421465622   5.957527419 </span></span>
+<span><span class="co">##           280           154           102           255           326 </span></span>
+<span><span class="co">##  -0.388687016   1.987991575   0.466096118   0.007181811   0.558481278 </span></span>
+<span><span class="co">##           272           470           288           440            55 </span></span>
+<span><span class="co">##  -0.918384377   2.276754357  -2.553856315   0.008825628   6.349577246 </span></span>
+<span><span class="co">##           331           478           184           459           196 </span></span>
+<span><span class="co">##  -0.804163641   1.663888937   0.439328371  -2.359964178   8.911889804 </span></span>
+<span><span class="co">##           432           352            20           502           177 </span></span>
+<span><span class="co">##  -4.146198759   5.045979801   0.563337346  -1.280802168  -1.992182379 </span></span>
+<span><span class="co">##            42           405           380           395           194 </span></span>
+<span><span class="co">##  -0.902292374   3.327617862  -6.667225863  -5.400633140   0.231787928 </span></span>
+<span><span class="co">##           249           200           377           250           292 </span></span>
+<span><span class="co">##   3.977422436   6.478740182  -4.023381192   2.932225794   3.772826861 </span></span>
+<span><span class="co">##           434            33           152            54           430 </span></span>
+<span><span class="co">##  -2.448673653   6.358540758   0.946984605   0.628531680  -2.546717499 </span></span>
+<span><span class="co">##           289           185           205           334           215 </span></span>
+<span><span class="co">##  -3.941265332   4.102284871   6.607098719   0.430018524  15.728088344 </span></span>
+<span><span class="co">##           318            57           105           279           129 </span></span>
+<span><span class="co">##   2.099510664   1.644595746  -1.270661910  -0.426073914  -1.271359683 </span></span>
+<span><span class="co">##           106           480           369           406           287 </span></span>
+<span><span class="co">##   1.426383844  -0.792647956  25.844187265  -0.968727677   2.656329159 </span></span>
+<span><span class="co">##           356           225           117           452           400 </span></span>
+<span><span class="co">##   6.852693030   3.881995799  -2.152249451  -5.166074745  -3.503250830 </span></span>
+<span><span class="co">##           341           176           220           191            53 </span></span>
+<span><span class="co">##  -2.262305509  -1.417549048  -7.035616819   6.863606354  -2.022958762 </span></span>
+<span><span class="co">##           104           447           320           354           275 </span></span>
+<span><span class="co">##  -0.802709122  -3.305050943   0.093391012   5.989158592  -2.851763168 </span></span>
+<span><span class="co">##           261             2           336           497           394 </span></span>
+<span><span class="co">##  -2.597612328  -3.713695585   1.263629192   6.975450133  -7.050402445 </span></span>
+<span><span class="co">##           448           327           419           112            36 </span></span>
+<span><span class="co">##  -6.187067749  -0.138726762   6.104096769  -4.466775330  -4.616862136 </span></span>
+<span><span class="co">##            87           399           111           461           351 </span></span>
+<span><span class="co">##   1.284500325   0.300778763   1.758188903  -3.221342364   3.619381597 </span></span>
+<span><span class="co">##            31            73           424           333           122 </span></span>
+<span><span class="co">##   2.428740626  -0.527694477   1.845675138  -2.221711574  -2.189798218 </span></span>
+<span><span class="co">##            92           234           338           472           300 </span></span>
+<span><span class="co">##  -5.666921491   8.775318305  -0.162437018  -4.000684029  -1.784296138 </span></span>
+<span><span class="co">##           323           314           443           387           376 </span></span>
+<span><span class="co">##  -1.977525789  -4.395997397  -1.201281672   6.307724361 -11.738018736 </span></span>
+<span><span class="co">##           208           499           206           297           219 </span></span>
+<span><span class="co">##   5.537880093   0.246994887   1.102222072  -0.460269305  -2.987158004 </span></span>
+<span><span class="co">##            82           169           413           228           423 </span></span>
+<span><span class="co">##  -3.021002286  -3.205200388  19.853308439  -2.192024195   2.797529204 </span></span>
+<span><span class="co">##           258           385           482           498           192 </span></span>
+<span><span class="co">##   3.414178564   8.271338091  -4.451362820  -0.266787057   0.792207439 </span></span>
+<span><span class="co">##           386           414            50           260            97 </span></span>
+<span><span class="co">##   0.442623562   6.487624676   3.388454435  -6.629745005  -2.978426708 </span></span>
+<span><span class="co">##           183           100           274           484           296 </span></span>
+<span><span class="co">##   2.427214778  -0.031584384  -0.570256827   1.238172323   0.095873701 </span></span>
+<span><span class="co">##           357           227           190           329           156 </span></span>
+<span><span class="co">##  -1.933201226  -2.531726289   0.382566988  -0.545690834  -3.581922258 </span></span>
+<span><span class="co">##           131             8           468            70           213 </span></span>
+<span><span class="co">##  -1.346444916   7.621427858   2.329583294   1.528233254   1.223808670 </span></span>
+<span><span class="co">##           382           182 </span></span>
+<span><span class="co">##  -7.999559935   8.543358664 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 5.091575</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] 0.1125522</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit      lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 22.37589 49.43768</span></span>
 <span><span class="co">## 15 19.10867 11.96002 28.22319</span></span>
@@ -340,7 +695,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## 19 14.18587  6.77628 23.56133</span></span>
 <span><span class="co">## 28 13.85324  6.61761 27.71907</span></span>
 <span><span class="co">## 37 21.66451 13.49167 37.83532</span></span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
@@ -348,10 +703,120 @@ predictions and calculate prediction intervals for the test set.</p>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"surrogate"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:  stats::glm(formula = formula, data = data)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">## (Intercept)         crim           zn        indus         chas          nox  </span></span>
+<span><span class="co">##    29.78825     -0.14238      0.03251      0.03061      2.17196    -16.17824  </span></span>
+<span><span class="co">##          rm          age          dis          rad          tax      ptratio  </span></span>
+<span><span class="co">##     4.70344      0.01813     -1.50717      0.35519     -0.01344     -1.04058  </span></span>
+<span><span class="co">##       black        lstat  </span></span>
+<span><span class="co">##     0.01303     -0.58559  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Degrees of Freedom: 201 Total (i.e. Null);  188 Residual</span></span>
+<span><span class="co">## Null Deviance:       18580 </span></span>
+<span><span class="co">## Residual Deviance: 3991  AIC: 1206</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##           415           463           179           426           118 </span></span>
+<span><span class="co">##  15.764477831  -0.988770013  -2.543179984   0.246263589  -4.612173369 </span></span>
+<span><span class="co">##           503            90           256           197           491 </span></span>
+<span><span class="co">##  -1.693827822  -2.950069022   1.869965859  -2.430610387   6.641430762 </span></span>
+<span><span class="co">##           348           355             7           501           485 </span></span>
+<span><span class="co">##  -0.387896963   7.048338684   0.194748907  -3.493814316   1.693920234 </span></span>
+<span><span class="co">##           254           211            43           373           332 </span></span>
+<span><span class="co">##  12.292956642   0.138159179   1.154004128  24.027816881  -0.803632969 </span></span>
+<span><span class="co">##           425           330            23           411           309 </span></span>
+<span><span class="co">##  -0.839920969  -0.722612132  -0.167767308   2.167940990  -6.825169566 </span></span>
+<span><span class="co">##           135           290            72            76            63 </span></span>
+<span><span class="co">##   3.275100495  -0.759414026   1.430389678  -2.020087653  -1.674552399 </span></span>
+<span><span class="co">##           210           493           294            41           492 </span></span>
+<span><span class="co">##   4.586854531   4.552309079  -1.126062979   1.696969057   0.262178313 </span></span>
+<span><span class="co">##           316            16            94           342            39 </span></span>
+<span><span class="co">##  -3.970341530   1.333549618  -3.241784129   2.197383166   2.775323621 </span></span>
+<span><span class="co">##           240             4            13           409           308 </span></span>
+<span><span class="co">##  -4.694843972   4.306893821   1.896411213   4.373885971  -4.894902111 </span></span>
+<span><span class="co">##            89            25           291           286           396 </span></span>
+<span><span class="co">##  -8.248709022   0.398861978  -3.821840049  -3.993434219  -8.052811215 </span></span>
+<span><span class="co">##           110           158           398            67           335 </span></span>
+<span><span class="co">##  -0.174707897   6.170637038  -7.912137723  -3.779100281  -0.420307060 </span></span>
+<span><span class="co">##            85           136           178           236            98 </span></span>
+<span><span class="co">##  -0.505685158   0.722000550  -5.082576649  -1.112554638   1.000305006 </span></span>
+<span><span class="co">##           214           127           212           273           310 </span></span>
+<span><span class="co">##   3.417047314   2.068581362   4.029083985  -3.973489628  -3.257778331 </span></span>
+<span><span class="co">##           232           366           416           350           407 </span></span>
+<span><span class="co">##  -3.217537805  14.504200597  -0.789956450   5.421465622   5.957527419 </span></span>
+<span><span class="co">##           280           154           102           255           326 </span></span>
+<span><span class="co">##  -0.388687016   1.987991575   0.466096118   0.007181811   0.558481278 </span></span>
+<span><span class="co">##           272           470           288           440            55 </span></span>
+<span><span class="co">##  -0.918384377   2.276754357  -2.553856315   0.008825628   6.349577246 </span></span>
+<span><span class="co">##           331           478           184           459           196 </span></span>
+<span><span class="co">##  -0.804163641   1.663888937   0.439328371  -2.359964178   8.911889804 </span></span>
+<span><span class="co">##           432           352            20           502           177 </span></span>
+<span><span class="co">##  -4.146198759   5.045979801   0.563337346  -1.280802168  -1.992182379 </span></span>
+<span><span class="co">##            42           405           380           395           194 </span></span>
+<span><span class="co">##  -0.902292374   3.327617862  -6.667225863  -5.400633140   0.231787928 </span></span>
+<span><span class="co">##           249           200           377           250           292 </span></span>
+<span><span class="co">##   3.977422436   6.478740182  -4.023381192   2.932225794   3.772826861 </span></span>
+<span><span class="co">##           434            33           152            54           430 </span></span>
+<span><span class="co">##  -2.448673653   6.358540758   0.946984605   0.628531680  -2.546717499 </span></span>
+<span><span class="co">##           289           185           205           334           215 </span></span>
+<span><span class="co">##  -3.941265332   4.102284871   6.607098719   0.430018524  15.728088344 </span></span>
+<span><span class="co">##           318            57           105           279           129 </span></span>
+<span><span class="co">##   2.099510664   1.644595746  -1.270661910  -0.426073914  -1.271359683 </span></span>
+<span><span class="co">##           106           480           369           406           287 </span></span>
+<span><span class="co">##   1.426383844  -0.792647956  25.844187265  -0.968727677   2.656329159 </span></span>
+<span><span class="co">##           356           225           117           452           400 </span></span>
+<span><span class="co">##   6.852693030   3.881995799  -2.152249451  -5.166074745  -3.503250830 </span></span>
+<span><span class="co">##           341           176           220           191            53 </span></span>
+<span><span class="co">##  -2.262305509  -1.417549048  -7.035616819   6.863606354  -2.022958762 </span></span>
+<span><span class="co">##           104           447           320           354           275 </span></span>
+<span><span class="co">##  -0.802709122  -3.305050943   0.093391012   5.989158592  -2.851763168 </span></span>
+<span><span class="co">##           261             2           336           497           394 </span></span>
+<span><span class="co">##  -2.597612328  -3.713695585   1.263629192   6.975450133  -7.050402445 </span></span>
+<span><span class="co">##           448           327           419           112            36 </span></span>
+<span><span class="co">##  -6.187067749  -0.138726762   6.104096769  -4.466775330  -4.616862136 </span></span>
+<span><span class="co">##            87           399           111           461           351 </span></span>
+<span><span class="co">##   1.284500325   0.300778763   1.758188903  -3.221342364   3.619381597 </span></span>
+<span><span class="co">##            31            73           424           333           122 </span></span>
+<span><span class="co">##   2.428740626  -0.527694477   1.845675138  -2.221711574  -2.189798218 </span></span>
+<span><span class="co">##            92           234           338           472           300 </span></span>
+<span><span class="co">##  -5.666921491   8.775318305  -0.162437018  -4.000684029  -1.784296138 </span></span>
+<span><span class="co">##           323           314           443           387           376 </span></span>
+<span><span class="co">##  -1.977525789  -4.395997397  -1.201281672   6.307724361 -11.738018736 </span></span>
+<span><span class="co">##           208           499           206           297           219 </span></span>
+<span><span class="co">##   5.537880093   0.246994887   1.102222072  -0.460269305  -2.987158004 </span></span>
+<span><span class="co">##            82           169           413           228           423 </span></span>
+<span><span class="co">##  -3.021002286  -3.205200388  19.853308439  -2.192024195   2.797529204 </span></span>
+<span><span class="co">##           258           385           482           498           192 </span></span>
+<span><span class="co">##   3.414178564   8.271338091  -4.451362820  -0.266787057   0.792207439 </span></span>
+<span><span class="co">##           386           414            50           260            97 </span></span>
+<span><span class="co">##   0.442623562   6.487624676   3.388454435  -6.629745005  -2.978426708 </span></span>
+<span><span class="co">##           183           100           274           484           296 </span></span>
+<span><span class="co">##   2.427214778  -0.031584384  -0.570256827   1.238172323   0.095873701 </span></span>
+<span><span class="co">##           357           227           190           329           156 </span></span>
+<span><span class="co">##  -1.933201226  -2.531726289   0.382566988  -0.545690834  -3.581922258 </span></span>
+<span><span class="co">##           131             8           468            70           213 </span></span>
+<span><span class="co">##  -1.346444916   7.621427858   2.329583294   1.528233254   1.223808670 </span></span>
+<span><span class="co">##           382           182 </span></span>
+<span><span class="co">##  -7.999559935   8.543358664 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 5.091575</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] 0.1125522</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 22.482206 39.30623</span></span>
@@ -360,16 +825,126 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## 19 14.18587  7.396239 29.63858</span></span>
 <span><span class="co">## 28 13.85324  6.134993 22.68221</span></span>
 <span><span class="co">## 37 21.66451 14.614108 33.95747</span></span></code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="va">test_data</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"bootstrap"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston4</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:  stats::glm(formula = formula, data = data)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">## (Intercept)         crim           zn        indus         chas          nox  </span></span>
+<span><span class="co">##    29.78825     -0.14238      0.03251      0.03061      2.17196    -16.17824  </span></span>
+<span><span class="co">##          rm          age          dis          rad          tax      ptratio  </span></span>
+<span><span class="co">##     4.70344      0.01813     -1.50717      0.35519     -0.01344     -1.04058  </span></span>
+<span><span class="co">##       black        lstat  </span></span>
+<span><span class="co">##     0.01303     -0.58559  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Degrees of Freedom: 201 Total (i.e. Null);  188 Residual</span></span>
+<span><span class="co">## Null Deviance:       18580 </span></span>
+<span><span class="co">## Residual Deviance: 3991  AIC: 1206</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##           415           463           179           426           118 </span></span>
+<span><span class="co">##  15.764477831  -0.988770013  -2.543179984   0.246263589  -4.612173369 </span></span>
+<span><span class="co">##           503            90           256           197           491 </span></span>
+<span><span class="co">##  -1.693827822  -2.950069022   1.869965859  -2.430610387   6.641430762 </span></span>
+<span><span class="co">##           348           355             7           501           485 </span></span>
+<span><span class="co">##  -0.387896963   7.048338684   0.194748907  -3.493814316   1.693920234 </span></span>
+<span><span class="co">##           254           211            43           373           332 </span></span>
+<span><span class="co">##  12.292956642   0.138159179   1.154004128  24.027816881  -0.803632969 </span></span>
+<span><span class="co">##           425           330            23           411           309 </span></span>
+<span><span class="co">##  -0.839920969  -0.722612132  -0.167767308   2.167940990  -6.825169566 </span></span>
+<span><span class="co">##           135           290            72            76            63 </span></span>
+<span><span class="co">##   3.275100495  -0.759414026   1.430389678  -2.020087653  -1.674552399 </span></span>
+<span><span class="co">##           210           493           294            41           492 </span></span>
+<span><span class="co">##   4.586854531   4.552309079  -1.126062979   1.696969057   0.262178313 </span></span>
+<span><span class="co">##           316            16            94           342            39 </span></span>
+<span><span class="co">##  -3.970341530   1.333549618  -3.241784129   2.197383166   2.775323621 </span></span>
+<span><span class="co">##           240             4            13           409           308 </span></span>
+<span><span class="co">##  -4.694843972   4.306893821   1.896411213   4.373885971  -4.894902111 </span></span>
+<span><span class="co">##            89            25           291           286           396 </span></span>
+<span><span class="co">##  -8.248709022   0.398861978  -3.821840049  -3.993434219  -8.052811215 </span></span>
+<span><span class="co">##           110           158           398            67           335 </span></span>
+<span><span class="co">##  -0.174707897   6.170637038  -7.912137723  -3.779100281  -0.420307060 </span></span>
+<span><span class="co">##            85           136           178           236            98 </span></span>
+<span><span class="co">##  -0.505685158   0.722000550  -5.082576649  -1.112554638   1.000305006 </span></span>
+<span><span class="co">##           214           127           212           273           310 </span></span>
+<span><span class="co">##   3.417047314   2.068581362   4.029083985  -3.973489628  -3.257778331 </span></span>
+<span><span class="co">##           232           366           416           350           407 </span></span>
+<span><span class="co">##  -3.217537805  14.504200597  -0.789956450   5.421465622   5.957527419 </span></span>
+<span><span class="co">##           280           154           102           255           326 </span></span>
+<span><span class="co">##  -0.388687016   1.987991575   0.466096118   0.007181811   0.558481278 </span></span>
+<span><span class="co">##           272           470           288           440            55 </span></span>
+<span><span class="co">##  -0.918384377   2.276754357  -2.553856315   0.008825628   6.349577246 </span></span>
+<span><span class="co">##           331           478           184           459           196 </span></span>
+<span><span class="co">##  -0.804163641   1.663888937   0.439328371  -2.359964178   8.911889804 </span></span>
+<span><span class="co">##           432           352            20           502           177 </span></span>
+<span><span class="co">##  -4.146198759   5.045979801   0.563337346  -1.280802168  -1.992182379 </span></span>
+<span><span class="co">##            42           405           380           395           194 </span></span>
+<span><span class="co">##  -0.902292374   3.327617862  -6.667225863  -5.400633140   0.231787928 </span></span>
+<span><span class="co">##           249           200           377           250           292 </span></span>
+<span><span class="co">##   3.977422436   6.478740182  -4.023381192   2.932225794   3.772826861 </span></span>
+<span><span class="co">##           434            33           152            54           430 </span></span>
+<span><span class="co">##  -2.448673653   6.358540758   0.946984605   0.628531680  -2.546717499 </span></span>
+<span><span class="co">##           289           185           205           334           215 </span></span>
+<span><span class="co">##  -3.941265332   4.102284871   6.607098719   0.430018524  15.728088344 </span></span>
+<span><span class="co">##           318            57           105           279           129 </span></span>
+<span><span class="co">##   2.099510664   1.644595746  -1.270661910  -0.426073914  -1.271359683 </span></span>
+<span><span class="co">##           106           480           369           406           287 </span></span>
+<span><span class="co">##   1.426383844  -0.792647956  25.844187265  -0.968727677   2.656329159 </span></span>
+<span><span class="co">##           356           225           117           452           400 </span></span>
+<span><span class="co">##   6.852693030   3.881995799  -2.152249451  -5.166074745  -3.503250830 </span></span>
+<span><span class="co">##           341           176           220           191            53 </span></span>
+<span><span class="co">##  -2.262305509  -1.417549048  -7.035616819   6.863606354  -2.022958762 </span></span>
+<span><span class="co">##           104           447           320           354           275 </span></span>
+<span><span class="co">##  -0.802709122  -3.305050943   0.093391012   5.989158592  -2.851763168 </span></span>
+<span><span class="co">##           261             2           336           497           394 </span></span>
+<span><span class="co">##  -2.597612328  -3.713695585   1.263629192   6.975450133  -7.050402445 </span></span>
+<span><span class="co">##           448           327           419           112            36 </span></span>
+<span><span class="co">##  -6.187067749  -0.138726762   6.104096769  -4.466775330  -4.616862136 </span></span>
+<span><span class="co">##            87           399           111           461           351 </span></span>
+<span><span class="co">##   1.284500325   0.300778763   1.758188903  -3.221342364   3.619381597 </span></span>
+<span><span class="co">##            31            73           424           333           122 </span></span>
+<span><span class="co">##   2.428740626  -0.527694477   1.845675138  -2.221711574  -2.189798218 </span></span>
+<span><span class="co">##            92           234           338           472           300 </span></span>
+<span><span class="co">##  -5.666921491   8.775318305  -0.162437018  -4.000684029  -1.784296138 </span></span>
+<span><span class="co">##           323           314           443           387           376 </span></span>
+<span><span class="co">##  -1.977525789  -4.395997397  -1.201281672   6.307724361 -11.738018736 </span></span>
+<span><span class="co">##           208           499           206           297           219 </span></span>
+<span><span class="co">##   5.537880093   0.246994887   1.102222072  -0.460269305  -2.987158004 </span></span>
+<span><span class="co">##            82           169           413           228           423 </span></span>
+<span><span class="co">##  -3.021002286  -3.205200388  19.853308439  -2.192024195   2.797529204 </span></span>
+<span><span class="co">##           258           385           482           498           192 </span></span>
+<span><span class="co">##   3.414178564   8.271338091  -4.451362820  -0.266787057   0.792207439 </span></span>
+<span><span class="co">##           386           414            50           260            97 </span></span>
+<span><span class="co">##   0.442623562   6.487624676   3.388454435  -6.629745005  -2.978426708 </span></span>
+<span><span class="co">##           183           100           274           484           296 </span></span>
+<span><span class="co">##   2.427214778  -0.031584384  -0.570256827   1.238172323   0.095873701 </span></span>
+<span><span class="co">##           357           227           190           329           156 </span></span>
+<span><span class="co">##  -1.933201226  -2.531726289   0.382566988  -0.545690834  -3.581922258 </span></span>
+<span><span class="co">##           131             8           468            70           213 </span></span>
+<span><span class="co">##  -1.346444916   7.621427858   2.329583294   1.528233254   1.223808670 </span></span>
+<span><span class="co">##           382           182 </span></span>
+<span><span class="co">##  -7.999559935   8.543358664 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 5.091575</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] 0.1125522</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston4</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 23.343942 45.84706</span></span>
 <span><span class="co">## 15 19.10867 11.055854 34.56138</span></span>
@@ -381,7 +956,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <div class="section level3">
 <h3 id="fit-conformal-model-2-1">Fit Conformal Model 2<a class="anchor" aria-label="anchor" href="#fit-conformal-model-2-1"></a>
 </h3>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define fit and predict functions</span></span>
 <span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">ranger</span><span class="fu">::</span><span class="fu"><a href="http://imbs-hl.github.io/ranger/reference/ranger.html" class="external-link">ranger</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span><span class="op">)</span><span class="op">$</span><span class="va">predictions</span></span>
@@ -402,9 +977,79 @@ predictions and calculate prediction intervals for the test set.</p>
 <span>  predict_func <span class="op">=</span> <span class="va">predict_func</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"kde"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston_rf</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## [1] "object's value:"</span></span>
+<span><span class="co">## $fit</span></span>
+<span><span class="co">## Ranger result</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">##  ranger::ranger(formula, data = data) </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Type:                             Regression </span></span>
+<span><span class="co">## Number of trees:                  500 </span></span>
+<span><span class="co">## Sample size:                      202 </span></span>
+<span><span class="co">## Number of independent variables:  13 </span></span>
+<span><span class="co">## Mtry:                             3 </span></span>
+<span><span class="co">## Target node size:                 5 </span></span>
+<span><span class="co">## Variable importance mode:         none </span></span>
+<span><span class="co">## Splitrule:                        variance </span></span>
+<span><span class="co">## OOB prediction error (MSE):       13.55259 </span></span>
+<span><span class="co">## R squared (OOB):                  0.8533691 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $residuals</span></span>
+<span><span class="co">##   [1]  -3.419252485  -0.948371904   2.675323333  -2.598149629  -0.923586667</span></span>
+<span><span class="co">##   [6]   2.806848571  -2.826340000  -1.491453333  -2.489190000  -3.565245897</span></span>
+<span><span class="co">##  [11]  -2.136576667  -3.257890000   2.622440000  -3.145675238  -0.244042279</span></span>
+<span><span class="co">##  [16]   4.792316667   1.998528333   0.404793333  22.685658431  -3.982500000</span></span>
+<span><span class="co">##  [21]  -2.671341579  -1.622233333  -1.460822619  -6.905260537  -5.999110000</span></span>
+<span><span class="co">##  [26]   0.155501429   0.392040000   0.149533333  -0.930151111  -1.906894762</span></span>
+<span><span class="co">##  [31]   2.173411667   1.539468254   0.940606667   0.309360000  -1.265117857</span></span>
+<span><span class="co">##  [36]  -4.139176667   0.080682063   0.790000000  -0.670880000   3.063760000</span></span>
+<span><span class="co">##  [41]  -1.711786190  -1.024086667   2.283516667   3.230715208  -0.860076667</span></span>
+<span><span class="co">##  [46]  -7.209290000  -0.960430079  -2.272120000  -3.188883333  -0.830568072</span></span>
+<span><span class="co">##  [51]   1.028754762   9.078797302  -3.833185873  -2.743470000  -3.063023333</span></span>
+<span><span class="co">##  [56]   0.233986667   1.097631190  -0.455676667   1.006970000  -0.354476667</span></span>
+<span><span class="co">##  [61]   4.763956667  -0.214310000   0.975033333  -0.950043333  -1.107186667</span></span>
+<span><span class="co">##  [66]  -4.651613333   5.937836459  -3.254903344  -1.278533333  -6.213082086</span></span>
+<span><span class="co">##  [71]   4.446340000   3.104358571   3.332153333  -2.110590000  -0.577501429</span></span>
+<span><span class="co">##  [76]   0.138066667   1.508937921  -0.760330000   0.262449105  -1.368658889</span></span>
+<span><span class="co">##  [81]  -3.598423333  -1.123331889   3.749873333  -0.731447167   6.017003333</span></span>
+<span><span class="co">##  [86]  -1.556023540  -1.682773333  -0.802122381   1.794991905   0.792356667</span></span>
+<span><span class="co">##  [91]  -1.384863333  -1.873168579  -1.470001346   0.871751192   2.918430000</span></span>
+<span><span class="co">##  [96]   1.689620000   3.567063333   1.616160292   0.607816667   2.928053333</span></span>
+<span><span class="co">## [101]  -1.604249246  -1.887962857   1.271774740   1.465173333  -3.736407921</span></span>
+<span><span class="co">## [106]  -1.379770000   2.114656667   4.379490000  -2.429900000   4.534193333</span></span>
+<span><span class="co">## [111]   0.818860000  -0.974893333   0.386531429   2.707783333   0.954815952</span></span>
+<span><span class="co">## [116]   1.397428095   1.750509706  19.166842727  -5.368585249  -4.832006667</span></span>
+<span><span class="co">## [121]  -2.089930000   0.794706667   0.424038571  -0.912724448  -5.966195684</span></span>
+<span><span class="co">## [126]  -1.858970000   1.488720000   0.234165000   8.115750000  -1.359113333</span></span>
+<span><span class="co">## [131]  -0.284088571   0.008984731  -0.644770000  -1.141963333   0.697113333</span></span>
+<span><span class="co">## [136]  -1.385102684  -1.537040000  -0.528966667   2.202580000  -0.482767638</span></span>
+<span><span class="co">## [141]  -1.977078277  -1.385644762  -1.348723163   0.422290000  -2.897343333</span></span>
+<span><span class="co">## [146]   1.137146667  -4.545621403   1.054850000  -0.258624034  -2.568693333</span></span>
+<span><span class="co">## [151]  -1.473339524  -0.854933333  -0.319572550  -3.069270000   0.061366667</span></span>
+<span><span class="co">## [156]  -2.431423333   4.908740000  -1.892460000  -1.433907712  -1.354686667</span></span>
+<span><span class="co">## [161]  -1.865293333  -1.118776667   2.543779556   0.463239708 -11.145920805</span></span>
+<span><span class="co">## [166]   3.396180000   0.547756667   0.718356667   2.520637619   1.517316667</span></span>
+<span><span class="co">## [171]  -1.419243333   1.834314921   4.713897526  -2.458633333   1.398365831</span></span>
+<span><span class="co">## [176]   7.671565411  -2.675716524  -1.082686528  -2.071096667   2.584770000</span></span>
+<span><span class="co">## [181]  -3.645966658   2.998171877   0.397487619  -2.018283636  -3.104970000</span></span>
+<span><span class="co">## [186]   2.172127619  -0.680980000  -0.271110000   0.765309626   3.178264286</span></span>
+<span><span class="co">## [191]   1.714637993  -6.863493333   1.529373333  -3.405393333  -2.415632886</span></span>
+<span><span class="co">## [196]   0.214736190   9.585452619   3.925567955   0.351836667   1.739140000</span></span>
+<span><span class="co">## [201]  -0.202268616  10.164143333</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $sd_residuals</span></span>
+<span><span class="co">## [1] 3.624106</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $scaled_residuals</span></span>
+<span><span class="co">## [1] 0.01260864</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "conformalize"</span></span></code></pre>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston_rf</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           fit       lwr      upr</span></span>
 <span><span class="co">## [1,] 27.03134 21.991838 32.43038</span></span>
 <span><span class="co">## [2,] 19.20299 13.542260 25.05314</span></span>
@@ -419,7 +1064,7 @@ predictions and calculate prediction intervals for the test set.</p>
 </h3>
 <p>The coverage rate is the proportion of true values in the test set
 that fall within the prediction intervals.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -428,7 +1073,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9411765</span></span></code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -437,7 +1082,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9607843</span></span></code></pre>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -446,7 +1091,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9705882</span></span></code></pre>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -455,7 +1100,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9607843</span></span></code></pre>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
