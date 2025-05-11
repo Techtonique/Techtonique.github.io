@@ -7,8 +7,10 @@
     <title>survivalist.ensemble.boosting API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
-    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#ffffcc}.pdoc-code{background:#f8f8f8;}.pdoc-code .c{color:#3D7B7B; font-style:italic}.pdoc-code .err{border:1px solid #FF0000}.pdoc-code .k{color:#008000; font-weight:bold}.pdoc-code .o{color:#666666}.pdoc-code .ch{color:#3D7B7B; font-style:italic}.pdoc-code .cm{color:#3D7B7B; font-style:italic}.pdoc-code .cp{color:#9C6500}.pdoc-code .cpf{color:#3D7B7B; font-style:italic}.pdoc-code .c1{color:#3D7B7B; font-style:italic}.pdoc-code .cs{color:#3D7B7B; font-style:italic}.pdoc-code .gd{color:#A00000}.pdoc-code .ge{font-style:italic}.pdoc-code .gr{color:#E40000}.pdoc-code .gh{color:#000080; font-weight:bold}.pdoc-code .gi{color:#008400}.pdoc-code .go{color:#717171}.pdoc-code .gp{color:#000080; font-weight:bold}.pdoc-code .gs{font-weight:bold}.pdoc-code .gu{color:#800080; font-weight:bold}.pdoc-code .gt{color:#0044DD}.pdoc-code .kc{color:#008000; font-weight:bold}.pdoc-code .kd{color:#008000; font-weight:bold}.pdoc-code .kn{color:#008000; font-weight:bold}.pdoc-code .kp{color:#008000}.pdoc-code .kr{color:#008000; font-weight:bold}.pdoc-code .kt{color:#B00040}.pdoc-code .m{color:#666666}.pdoc-code .s{color:#BA2121}.pdoc-code .na{color:#687822}.pdoc-code .nb{color:#008000}.pdoc-code .nc{color:#0000FF; font-weight:bold}.pdoc-code .no{color:#880000}.pdoc-code .nd{color:#AA22FF}.pdoc-code .ni{color:#717171; font-weight:bold}.pdoc-code .ne{color:#CB3F38; font-weight:bold}.pdoc-code .nf{color:#0000FF}.pdoc-code .nl{color:#767600}.pdoc-code .nn{color:#0000FF; font-weight:bold}.pdoc-code .nt{color:#008000; font-weight:bold}.pdoc-code .nv{color:#19177C}.pdoc-code .ow{color:#AA22FF; font-weight:bold}.pdoc-code .w{color:#bbbbbb}.pdoc-code .mb{color:#666666}.pdoc-code .mf{color:#666666}.pdoc-code .mh{color:#666666}.pdoc-code .mi{color:#666666}.pdoc-code .mo{color:#666666}.pdoc-code .sa{color:#BA2121}.pdoc-code .sb{color:#BA2121}.pdoc-code .sc{color:#BA2121}.pdoc-code .dl{color:#BA2121}.pdoc-code .sd{color:#BA2121; font-style:italic}.pdoc-code .s2{color:#BA2121}.pdoc-code .se{color:#AA5D1F; font-weight:bold}.pdoc-code .sh{color:#BA2121}.pdoc-code .si{color:#A45A77; font-weight:bold}.pdoc-code .sx{color:#008000}.pdoc-code .sr{color:#A45A77}.pdoc-code .s1{color:#BA2121}.pdoc-code .ss{color:#19177C}.pdoc-code .bp{color:#008000}.pdoc-code .fm{color:#0000FF}.pdoc-code .vc{color:#19177C}.pdoc-code .vg{color:#19177C}.pdoc-code .vi{color:#19177C}.pdoc-code .vm{color:#19177C}.pdoc-code .il{color:#666666}</style>
-    <style>/*! theme.css */:root{--pdoc-background:#fff;}.pdoc{--text:#212529;--muted:#6c757d;--link:#3660a5;--link-hover:#1659c5;--code:#f8f8f8;--active:#fff598;--accent:#eee;--accent2:#c1c1c1;--nav-hover:rgba(255, 255, 255, 0.5);--name:#0066BB;--def:#008800;--annotation:#007020;}</style>
+    <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
+    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
+    <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
+    <style>/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}</style>
     <style>/*! layout.css */html, body{width:100%;height:100%;}html, main{scroll-behavior:smooth;}body{background-color:var(--pdoc-background);}@media (max-width:769px){#navtoggle{cursor:pointer;position:absolute;width:50px;height:40px;top:1rem;right:1rem;border-color:var(--text);color:var(--text);display:flex;opacity:0.8;z-index:999;}#navtoggle:hover{opacity:1;}#togglestate + div{display:none;}#togglestate:checked + div{display:inherit;}main, header{padding:2rem 3vw;}header + main{margin-top:-3rem;}.git-button{display:none !important;}nav input[type="search"]{max-width:77%;}nav input[type="search"]:first-child{margin-top:-6px;}nav input[type="search"]:valid ~ *{display:none !important;}}@media (min-width:770px){:root{--sidebar-width:clamp(12.5rem, 28vw, 22rem);}nav{position:fixed;overflow:auto;height:100vh;width:var(--sidebar-width);}main, header{padding:3rem 2rem 3rem calc(var(--sidebar-width) + 3rem);width:calc(54rem + var(--sidebar-width));max-width:100%;}header + main{margin-top:-4rem;}#navtoggle{display:none;}}#togglestate{position:absolute;height:0;opacity:0;}nav.pdoc{--pad:clamp(0.5rem, 2vw, 1.75rem);--indent:1.5rem;background-color:var(--accent);border-right:1px solid var(--accent2);box-shadow:0 0 20px rgba(50, 50, 50, .2) inset;padding:0 0 0 var(--pad);overflow-wrap:anywhere;scrollbar-width:thin; scrollbar-color:var(--accent2) transparent; z-index:1}nav.pdoc::-webkit-scrollbar{width:.4rem; }nav.pdoc::-webkit-scrollbar-thumb{background-color:var(--accent2); }nav.pdoc > div{padding:var(--pad) 0;}nav.pdoc .module-list-button{display:inline-flex;align-items:center;color:var(--text);border-color:var(--muted);margin-bottom:1rem;}nav.pdoc .module-list-button:hover{border-color:var(--text);}nav.pdoc input[type=search]{display:block;outline-offset:0;width:calc(100% - var(--pad));}nav.pdoc .logo{max-width:calc(100% - var(--pad));max-height:35vh;display:block;margin:0 auto 1rem;transform:translate(calc(-.5 * var(--pad)), 0);}nav.pdoc ul{list-style:none;padding-left:0;}nav.pdoc > div > ul{margin-left:calc(0px - var(--pad));}nav.pdoc li a{padding:.2rem 0 .2rem calc(var(--pad) + var(--indent));}nav.pdoc > div > ul > li > a{padding-left:var(--pad);}nav.pdoc li{transition:all 100ms;}nav.pdoc li:hover{background-color:var(--nav-hover);}nav.pdoc a, nav.pdoc a:hover{color:var(--text);}nav.pdoc a{display:block;}nav.pdoc > h2:first-of-type{margin-top:1.5rem;}nav.pdoc .class:before{content:"class ";color:var(--muted);}nav.pdoc .function:after{content:"()";color:var(--muted);}nav.pdoc footer:before{content:"";display:block;width:calc(100% - var(--pad));border-top:solid var(--accent2) 1px;margin-top:1.5rem;padding-top:.5rem;}nav.pdoc footer{font-size:small;}</style>
     <style>/*! content.css */.pdoc{color:var(--text);box-sizing:border-box;line-height:1.5;background:none;}.pdoc .pdoc-button{cursor:pointer;display:inline-block;border:solid black 1px;border-radius:2px;font-size:.75rem;padding:calc(0.5em - 1px) 1em;transition:100ms all;}.pdoc .pdoc-alert{padding:1rem 1rem 1rem calc(1.5rem + 24px);border:1px solid transparent;border-radius:.25rem;background-repeat:no-repeat;background-position:1rem center;margin-bottom:1rem;}.pdoc .pdoc-alert > *:last-child{margin-bottom:0;}.pdoc .pdoc-alert-note {color:#084298;background-color:#cfe2ff;border-color:#b6d4fe;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23084298%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2016A8%208%200%201%200%208%200a8%208%200%200%200%200%2016zm.93-9.412-1%204.705c-.07.34.029.533.304.533.194%200%20.487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703%200-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381%202.29-.287zM8%205.5a1%201%200%201%201%200-2%201%201%200%200%201%200%202z%22/%3E%3C/svg%3E");}.pdoc .pdoc-alert-warning{color:#664d03;background-color:#fff3cd;border-color:#ffecb5;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23664d03%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.982%201.566a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767L8.982%201.566zM8%205c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%205.995A.905.905%200%200%201%208%205zm.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2z%22/%3E%3C/svg%3E");}.pdoc .pdoc-alert-danger{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.52.359A.5.5%200%200%201%206%200h4a.5.5%200%200%201%20.474.658L8.694%206H12.5a.5.5%200%200%201%20.395.807l-7%209a.5.5%200%200%201-.873-.454L6.823%209.5H3.5a.5.5%200%200%201-.48-.641l2.5-8.5z%22/%3E%3C/svg%3E");}.pdoc .visually-hidden{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0, 0, 0, 0) !important;white-space:nowrap !important;border:0 !important;}.pdoc h1, .pdoc h2, .pdoc h3{font-weight:300;margin:.3em 0;padding:.2em 0;}.pdoc > section:not(.module-info) h1{font-size:1.5rem;font-weight:500;}.pdoc > section:not(.module-info) h2{font-size:1.4rem;font-weight:500;}.pdoc > section:not(.module-info) h3{font-size:1.3rem;font-weight:500;}.pdoc > section:not(.module-info) h4{font-size:1.2rem;}.pdoc > section:not(.module-info) h5{font-size:1.1rem;}.pdoc a{text-decoration:none;color:var(--link);}.pdoc a:hover{color:var(--link-hover);}.pdoc blockquote{margin-left:2rem;}.pdoc pre{border-top:1px solid var(--accent2);border-bottom:1px solid var(--accent2);margin-top:0;margin-bottom:1em;padding:.5rem 0 .5rem .5rem;overflow-x:auto;background-color:var(--code);}.pdoc code{color:var(--text);padding:.2em .4em;margin:0;font-size:85%;background-color:var(--accent);border-radius:6px;}.pdoc a > code{color:inherit;}.pdoc pre > code{display:inline-block;font-size:inherit;background:none;border:none;padding:0;}.pdoc > section:not(.module-info){margin-bottom:1.5rem;}.pdoc .modulename{margin-top:0;font-weight:bold;}.pdoc .modulename a{color:var(--link);transition:100ms all;}.pdoc .git-button{float:right;border:solid var(--link) 1px;}.pdoc .git-button:hover{background-color:var(--link);color:var(--pdoc-background);}.view-source-toggle-state,.view-source-toggle-state ~ .pdoc-code{display:none;}.view-source-toggle-state:checked ~ .pdoc-code{display:block;}.view-source-button{display:inline-block;float:right;font-size:.75rem;line-height:1.5rem;color:var(--muted);padding:0 .4rem 0 1.3rem;cursor:pointer;text-indent:-2px;}.view-source-button > span{visibility:hidden;}.module-info .view-source-button{float:none;display:flex;justify-content:flex-end;margin:-1.2rem .4rem -.2rem 0;}.view-source-button::before{position:absolute;content:"View Source";display:list-item;list-style-type:disclosure-closed;}.view-source-toggle-state:checked ~ .attr .view-source-button::before,.view-source-toggle-state:checked ~ .view-source-button::before{list-style-type:disclosure-open;}.pdoc .docstring{margin-bottom:1.5rem;}.pdoc section:not(.module-info) .docstring{margin-left:clamp(0rem, 5vw - 2rem, 1rem);}.pdoc .docstring .pdoc-code{margin-left:1em;margin-right:1em;}.pdoc h1:target,.pdoc h2:target,.pdoc h3:target,.pdoc h4:target,.pdoc h5:target,.pdoc h6:target,.pdoc .pdoc-code > pre > span:target{background-color:var(--active);box-shadow:-1rem 0 0 0 var(--active);}.pdoc .pdoc-code > pre > span:target{display:block;}.pdoc div:target > .attr,.pdoc section:target > .attr,.pdoc dd:target > a{background-color:var(--active);}.pdoc *{scroll-margin:2rem;}.pdoc .pdoc-code .linenos{user-select:none;}.pdoc .attr:hover{filter:contrast(0.95);}.pdoc section, .pdoc .classattr{position:relative;}.pdoc .headerlink{--width:clamp(1rem, 3vw, 2rem);position:absolute;top:0;left:calc(0rem - var(--width));transition:all 100ms ease-in-out;opacity:0;}.pdoc .headerlink::before{content:"#";display:block;text-align:center;width:var(--width);height:2.3rem;line-height:2.3rem;font-size:1.5rem;}.pdoc .attr:hover ~ .headerlink,.pdoc *:target > .headerlink,.pdoc .headerlink:hover{opacity:1;}.pdoc .attr{display:block;margin:.5rem 0 .5rem;padding:.4rem .4rem .4rem 1rem;background-color:var(--accent);overflow-x:auto;}.pdoc .classattr{margin-left:2rem;}.pdoc .name{color:var(--name);font-weight:bold;}.pdoc .def{color:var(--def);font-weight:bold;}.pdoc .signature{background-color:transparent;}.pdoc .param, .pdoc .return-annotation{white-space:pre;}.pdoc .signature.multiline .param{display:block;}.pdoc .signature.condensed .param{display:inline-block;}.pdoc .annotation{color:var(--annotation);}.pdoc .view-value-toggle-state,.pdoc .view-value-toggle-state ~ .default_value{display:none;}.pdoc .view-value-toggle-state:checked ~ .default_value{display:inherit;}.pdoc .view-value-button{font-size:.5rem;vertical-align:middle;border-style:dashed;margin-top:-0.1rem;}.pdoc .view-value-button:hover{background:white;}.pdoc .view-value-button::before{content:"show";text-align:center;width:2.2em;display:inline-block;}.pdoc .view-value-toggle-state:checked ~ .view-value-button::before{content:"hide";}.pdoc .inherited{margin-left:2rem;}.pdoc .inherited dt{font-weight:700;}.pdoc .inherited dt, .pdoc .inherited dd{display:inline;margin-left:0;margin-bottom:.5rem;}.pdoc .inherited dd:not(:last-child):after{content:", ";}.pdoc .inherited .class:before{content:"class ";}.pdoc .inherited .function a:after{content:"()";}.pdoc .search-result .docstring{overflow:auto;max-height:25vh;}.pdoc .search-result.focused > .attr{background-color:var(--active);}.pdoc .attribution{margin-top:2rem;display:block;opacity:0.5;transition:all 200ms;filter:grayscale(100%);}.pdoc .attribution:hover{opacity:1;filter:grayscale(0%);}.pdoc .attribution img{margin-left:5px;height:35px;vertical-align:middle;width:70px;transition:all 200ms;}.pdoc table{display:block;width:max-content;max-width:100%;overflow:auto;margin-bottom:1rem;}.pdoc table th{font-weight:600;}.pdoc table th, .pdoc table td{padding:6px 13px;border:1px solid var(--accent2);}</style>
     <style>/*! custom.css */</style></head>
@@ -28,97 +30,73 @@
 
 
 
-            <h2>API Documentation</h2>
+            <h2>API Documentation</h2>            
                 <ul class="memberlist">
             <li>
                     <a class="class" href="#ComponentwiseGradientBoostingSurvivalAnalysis">ComponentwiseGradientBoostingSurvivalAnalysis</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__">ComponentwiseGradientBoostingSurvivalAnalysis</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.loss">loss</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.n_estimators">n_estimators</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.learning_rate">learning_rate</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.subsample">subsample</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.warm_start">warm_start</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.dropout_rate">dropout_rate</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.random_state">random_state</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.verbose">verbose</a>
                         </li>
                         <li>
-                                <a class="function" href="#ComponentwiseGradientBoostingSurvivalAnalysis.fit">fit</a>
                         </li>
                         <li>
-                                <a class="function" href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict">predict</a>
                         </li>
                         <li>
-                                <a class="function" href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function">predict_cumulative_hazard_function</a>
                         </li>
                         <li>
-                                <a class="function" href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function">predict_survival_function</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_">coef_</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_">unique_times_</a>
                         </li>
                         <li>
-                                <a class="variable" href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_">feature_importances_</a>
                         </li>
                         <li>
-                                <a class="function" href="#ComponentwiseGradientBoostingSurvivalAnalysis.set_fit_request">set_fit_request</a>
                         </li>
                 </ul>
 
+                
             </li>
             <li>
                     <a class="class" href="#GradientBoostingSurvivalAnalysis">GradientBoostingSurvivalAnalysis</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.__init__">GradientBoostingSurvivalAnalysis</a>
                         </li>
                         <li>
-                                <a class="variable" href="#GradientBoostingSurvivalAnalysis.dropout_rate">dropout_rate</a>
                         </li>
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.fit">fit</a>
                         </li>
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.predict">predict</a>
                         </li>
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.staged_predict">staged_predict</a>
                         </li>
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function">predict_cumulative_hazard_function</a>
                         </li>
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.predict_survival_function">predict_survival_function</a>
                         </li>
                         <li>
-                                <a class="variable" href="#GradientBoostingSurvivalAnalysis.unique_times_">unique_times_</a>
                         </li>
                         <li>
-                                <a class="function" href="#GradientBoostingSurvivalAnalysis.set_fit_request">set_fit_request</a>
                         </li>
                 </ul>
 
+                
             </li>
     </ul>
 
@@ -2519,77 +2497,8 @@
 </div>
 
 
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="name">ComponentwiseGradientBoostingSurvivalAnalysis</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">loss</span><span class="o">=</span><span class="s1">&#39;coxph&#39;</span>,</span><span class="param">	<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span>,</span><span class="param">	<span class="n">subsample</span><span class="o">=</span><span class="mf">1.0</span>,</span><span class="param">	<span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">dropout_rate</span><span class="o">=</span><span class="mi">0</span>,</span><span class="param">	<span class="n">random_state</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">verbose</span><span class="o">=</span><span class="mi">0</span></span>)</span>
-
-                <label class="view-source-button" for="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-208"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-208"><span class="linenos">208</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-209"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-209"><span class="linenos">209</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-210"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-210"><span class="linenos">210</span></a>        <span class="o">*</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-211"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-211"><span class="linenos">211</span></a>        <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;coxph&quot;</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-212"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-212"><span class="linenos">212</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-213"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-213"><span class="linenos">213</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-214"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-214"><span class="linenos">214</span></a>        <span class="n">subsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-215"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-215"><span class="linenos">215</span></a>        <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-216"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-216"><span class="linenos">216</span></a>        <span class="n">dropout_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-217"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-217"><span class="linenos">217</span></a>        <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-218"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-218"><span class="linenos">218</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-219"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-219"><span class="linenos">219</span></a>    <span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-220"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-220"><span class="linenos">220</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-221"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-221"><span class="linenos">221</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_estimators</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-222"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-222"><span class="linenos">222</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-223"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-223"><span class="linenos">223</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">subsample</span> <span class="o">=</span> <span class="n">subsample</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-224"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-224"><span class="linenos">224</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">warm_start</span> <span class="o">=</span> <span class="n">warm_start</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-225"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-225"><span class="linenos">225</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-226"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-226"><span class="linenos">226</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.__init__-227"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.__init__-227"><span class="linenos">227</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.loss" class="classattr">
-                                <div class="attr variable">
-            <span class="name">loss</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.loss"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.n_estimators" class="classattr">
-                                <div class="attr variable">
-            <span class="name">n_estimators</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.n_estimators"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.learning_rate" class="classattr">
-                                <div class="attr variable">
-            <span class="name">learning_rate</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.learning_rate"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.subsample" class="classattr">
-                                <div class="attr variable">
+                                <div id="ComponentwiseGradientBoostingSurvivalAnalysis.subsample" class="classattr">
+                                    <div class="attr variable">
             <span class="name">subsample</span>
 
         
@@ -2598,53 +2507,9 @@
     
     
 
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.warm_start" class="classattr">
-                                <div class="attr variable">
-            <span class="name">warm_start</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.warm_start"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.dropout_rate" class="classattr">
-                                <div class="attr variable">
-            <span class="name">dropout_rate</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.dropout_rate"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.random_state" class="classattr">
-                                <div class="attr variable">
-            <span class="name">random_state</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.random_state"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.verbose" class="classattr">
-                                <div class="attr variable">
-            <span class="name">verbose</span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.verbose"></a>
-    
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.fit" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="ComponentwiseGradientBoostingSurvivalAnalysis.fit" class="classattr">
+                                            <input id="ComponentwiseGradientBoostingSurvivalAnalysis.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -2748,9 +2613,9 @@
 </div>
 
 
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.predict" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="ComponentwiseGradientBoostingSurvivalAnalysis.predict" class="classattr">
+                                            <input id="ComponentwiseGradientBoostingSurvivalAnalysis.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -2804,456 +2669,8 @@ time to event.</p>
 </div>
 
 
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">predict_cumulative_hazard_function</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">return_array</span><span class="o">=</span><span class="kc">False</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-523"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-523"><span class="linenos">523</span></a>    <span class="k">def</span> <span class="nf">predict_cumulative_hazard_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-524"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-524"><span class="linenos">524</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict cumulative hazard function.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-525"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-525"><span class="linenos">525</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-526"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-526"><span class="linenos">526</span></a><span class="sd">        Only available if :meth:`fit` has been called with `loss = &quot;coxph&quot;`.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-527"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-527"><span class="linenos">527</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-528"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-528"><span class="linenos">528</span></a><span class="sd">        The cumulative hazard function for an individual</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-529"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-529"><span class="linenos">529</span></a><span class="sd">        with feature vector :math:`x` is defined as</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-530"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-530"><span class="linenos">530</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-531"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-531"><span class="linenos">531</span></a><span class="sd">        .. math::</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-532"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-532"><span class="linenos">532</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-533"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-533"><span class="linenos">533</span></a><span class="sd">            H(t \\mid x) = \\exp(f(x)) H_0(t) ,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-534"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-534"><span class="linenos">534</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-535"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-535"><span class="linenos">535</span></a><span class="sd">        where :math:`f(\\cdot)` is the additive ensemble of base learners,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-536"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-536"><span class="linenos">536</span></a><span class="sd">        and :math:`H_0(t)` is the baseline hazard function,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-537"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-537"><span class="linenos">537</span></a><span class="sd">        estimated by Breslow&#39;s estimator.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-538"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-538"><span class="linenos">538</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-539"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-539"><span class="linenos">539</span></a><span class="sd">        Parameters</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-540"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-540"><span class="linenos">540</span></a><span class="sd">        ----------</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-541"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-541"><span class="linenos">541</span></a><span class="sd">        X : array-like, shape = (n_samples, n_features)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-542"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-542"><span class="linenos">542</span></a><span class="sd">            Data matrix.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-543"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-543"><span class="linenos">543</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-544"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-544"><span class="linenos">544</span></a><span class="sd">        return_array : boolean, default: False</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-545"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-545"><span class="linenos">545</span></a><span class="sd">            If set, return an array with the cumulative hazard rate</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-546"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-546"><span class="linenos">546</span></a><span class="sd">            for each `self.unique_times_`, otherwise an array of</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-547"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-547"><span class="linenos">547</span></a><span class="sd">            :class:`survivalist.functions.StepFunction`.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-548"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-548"><span class="linenos">548</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-549"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-549"><span class="linenos">549</span></a><span class="sd">        Returns</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-550"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-550"><span class="linenos">550</span></a><span class="sd">        -------</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-551"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-551"><span class="linenos">551</span></a><span class="sd">        cum_hazard : ndarray</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-552"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-552"><span class="linenos">552</span></a><span class="sd">            If `return_array` is set, an array with the cumulative hazard rate</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-553"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-553"><span class="linenos">553</span></a><span class="sd">            for each `self.unique_times_`, otherwise an array of length `n_samples`</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-554"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-554"><span class="linenos">554</span></a><span class="sd">            of :class:`survivalist.functions.StepFunction` instances will be returned.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-555"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-555"><span class="linenos">555</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-556"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-556"><span class="linenos">556</span></a><span class="sd">        Examples</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-557"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-557"><span class="linenos">557</span></a><span class="sd">        --------</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-558"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-558"><span class="linenos">558</span></a><span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-559"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-559"><span class="linenos">559</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.datasets import load_whas500</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-560"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-560"><span class="linenos">560</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.ensemble import ComponentwiseGradientBoostingSurvivalAnalysis</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-561"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-561"><span class="linenos">561</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-562"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-562"><span class="linenos">562</span></a><span class="sd">        Load the data.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-563"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-563"><span class="linenos">563</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-564"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-564"><span class="linenos">564</span></a><span class="sd">        &gt;&gt;&gt; X, y = load_whas500()</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-565"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-565"><span class="linenos">565</span></a><span class="sd">        &gt;&gt;&gt; X = X.astype(float)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-566"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-566"><span class="linenos">566</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-567"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-567"><span class="linenos">567</span></a><span class="sd">        Fit the model.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-568"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-568"><span class="linenos">568</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-569"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-569"><span class="linenos">569</span></a><span class="sd">        &gt;&gt;&gt; estimator = ComponentwiseGradientBoostingSurvivalAnalysis(loss=&quot;coxph&quot;).fit(X, y)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-570"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-570"><span class="linenos">570</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-571"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-571"><span class="linenos">571</span></a><span class="sd">        Estimate the cumulative hazard function for the first 10 samples.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-572"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-572"><span class="linenos">572</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-573"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-573"><span class="linenos">573</span></a><span class="sd">        &gt;&gt;&gt; chf_funcs = estimator.predict_cumulative_hazard_function(X.iloc[:10])</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-574"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-574"><span class="linenos">574</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-575"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-575"><span class="linenos">575</span></a><span class="sd">        Plot the estimated cumulative hazard functions.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-576"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-576"><span class="linenos">576</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-577"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-577"><span class="linenos">577</span></a><span class="sd">        &gt;&gt;&gt; for fn in chf_funcs:</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-578"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-578"><span class="linenos">578</span></a><span class="sd">        ...     plt.step(fn.x, fn(fn.x), where=&quot;post&quot;)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-579"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-579"><span class="linenos">579</span></a><span class="sd">        ...</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-580"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-580"><span class="linenos">580</span></a><span class="sd">        &gt;&gt;&gt; plt.ylim(0, 1)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-581"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-581"><span class="linenos">581</span></a><span class="sd">        &gt;&gt;&gt; plt.show()</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-582"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-582"><span class="linenos">582</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-583"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-583"><span class="linenos">583</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_cumulative_hazard_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_baseline_model</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">return_array</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Predict cumulative hazard function.</p>
-
-<p>Only available if <code><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.fit">fit()</a></code> has been called with <code>loss = "coxph"</code>.</p>
-
-<p>The cumulative hazard function for an individual
-with feature vector \( x \) is defined as</p>
-
-<p>$$H(t \mid x) = \exp(f(x)) H_0(t) ,$$</p>
-
-<p>where \( f(\cdot) \) is the additive ensemble of base learners,
-and \( H_0(t) \) is the baseline hazard function,
-estimated by Breslow's estimator.</p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>X : array-like, shape = (n_samples, n_features)
-    Data matrix.</p>
-
-<p>return_array : boolean, default: False
-    If set, return an array with the cumulative hazard rate
-    for each <code>self.unique_times_</code>, otherwise an array of
-    <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code>.</p>
-
-<h2 id="returns">Returns</h2>
-
-<p>cum_hazard : ndarray
-    If <code>return_array</code> is set, an array with the cumulative hazard rate
-    for each <code>self.unique_times_</code>, otherwise an array of length <code>n_samples</code>
-    of <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code> instances will be returned.</p>
-
-<h2 id="examples">Examples</h2>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../datasets.html">survivalist.datasets</a></span> <span class="kn">import</span> <span class="n">load_whas500</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../ensemble.html">survivalist.ensemble</a></span> <span class="kn">import</span> <span class="n">ComponentwiseGradientBoostingSurvivalAnalysis</span>
-</code></pre>
-</div>
-
-<p>Load the data.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_whas500</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Fit the model.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">ComponentwiseGradientBoostingSurvivalAnalysis</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;coxph&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Estimate the cumulative hazard function for the first 10 samples.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">chf_funcs</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict_cumulative_hazard_function</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-</code></pre>
-</div>
-
-<p>Plot the estimated cumulative hazard functions.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">chf_funcs</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">predict_survival_function</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">return_array</span><span class="o">=</span><span class="kc">False</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-585"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-585"><span class="linenos">585</span></a>    <span class="k">def</span> <span class="nf">predict_survival_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-586"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-586"><span class="linenos">586</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict survival function.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-587"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-587"><span class="linenos">587</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-588"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-588"><span class="linenos">588</span></a><span class="sd">        Only available if :meth:`fit` has been called with `loss = &quot;coxph&quot;`.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-589"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-589"><span class="linenos">589</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-590"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-590"><span class="linenos">590</span></a><span class="sd">        The survival function for an individual</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-591"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-591"><span class="linenos">591</span></a><span class="sd">        with feature vector :math:`x` is defined as</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-592"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-592"><span class="linenos">592</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-593"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-593"><span class="linenos">593</span></a><span class="sd">        .. math::</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-594"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-594"><span class="linenos">594</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-595"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-595"><span class="linenos">595</span></a><span class="sd">            S(t \\mid x) = S_0(t)^{\\exp(f(x)} ,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-596"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-596"><span class="linenos">596</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-597"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-597"><span class="linenos">597</span></a><span class="sd">        where :math:`f(\\cdot)` is the additive ensemble of base learners,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-598"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-598"><span class="linenos">598</span></a><span class="sd">        and :math:`S_0(t)` is the baseline survival function,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-599"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-599"><span class="linenos">599</span></a><span class="sd">        estimated by Breslow&#39;s estimator.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-600"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-600"><span class="linenos">600</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-601"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-601"><span class="linenos">601</span></a><span class="sd">        Parameters</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-602"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-602"><span class="linenos">602</span></a><span class="sd">        ----------</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-603"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-603"><span class="linenos">603</span></a><span class="sd">        X : array-like, shape = (n_samples, n_features)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-604"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-604"><span class="linenos">604</span></a><span class="sd">            Data matrix.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-605"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-605"><span class="linenos">605</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-606"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-606"><span class="linenos">606</span></a><span class="sd">        return_array : boolean, default: False</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-607"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-607"><span class="linenos">607</span></a><span class="sd">            If set, return an array with the probability</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-608"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-608"><span class="linenos">608</span></a><span class="sd">            of survival for each `self.unique_times_`,</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-609"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-609"><span class="linenos">609</span></a><span class="sd">            otherwise an array of :class:`survivalist.functions.StepFunction`.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-610"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-610"><span class="linenos">610</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-611"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-611"><span class="linenos">611</span></a><span class="sd">        Returns</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-612"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-612"><span class="linenos">612</span></a><span class="sd">        -------</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-613"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-613"><span class="linenos">613</span></a><span class="sd">        survival : ndarray</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-614"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-614"><span class="linenos">614</span></a><span class="sd">            If `return_array` is set, an array with the probability of</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-615"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-615"><span class="linenos">615</span></a><span class="sd">            survival for each `self.unique_times_`, otherwise an array of</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-616"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-616"><span class="linenos">616</span></a><span class="sd">            length `n_samples` of :class:`survivalist.functions.StepFunction`</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-617"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-617"><span class="linenos">617</span></a><span class="sd">            instances will be returned.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-618"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-618"><span class="linenos">618</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-619"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-619"><span class="linenos">619</span></a><span class="sd">        Examples</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-620"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-620"><span class="linenos">620</span></a><span class="sd">        --------</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-621"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-621"><span class="linenos">621</span></a><span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-622"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-622"><span class="linenos">622</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.datasets import load_whas500</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-623"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-623"><span class="linenos">623</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.ensemble import ComponentwiseGradientBoostingSurvivalAnalysis</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-624"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-624"><span class="linenos">624</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-625"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-625"><span class="linenos">625</span></a><span class="sd">        Load the data.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-626"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-626"><span class="linenos">626</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-627"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-627"><span class="linenos">627</span></a><span class="sd">        &gt;&gt;&gt; X, y = load_whas500()</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-628"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-628"><span class="linenos">628</span></a><span class="sd">        &gt;&gt;&gt; X = X.astype(float)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-629"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-629"><span class="linenos">629</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-630"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-630"><span class="linenos">630</span></a><span class="sd">        Fit the model.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-631"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-631"><span class="linenos">631</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-632"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-632"><span class="linenos">632</span></a><span class="sd">        &gt;&gt;&gt; estimator = ComponentwiseGradientBoostingSurvivalAnalysis(loss=&quot;coxph&quot;).fit(X, y)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-633"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-633"><span class="linenos">633</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-634"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-634"><span class="linenos">634</span></a><span class="sd">        Estimate the survival function for the first 10 samples.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-635"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-635"><span class="linenos">635</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-636"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-636"><span class="linenos">636</span></a><span class="sd">        &gt;&gt;&gt; surv_funcs = estimator.predict_survival_function(X.iloc[:10])</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-637"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-637"><span class="linenos">637</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-638"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-638"><span class="linenos">638</span></a><span class="sd">        Plot the estimated survival functions.</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-639"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-639"><span class="linenos">639</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-640"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-640"><span class="linenos">640</span></a><span class="sd">        &gt;&gt;&gt; for fn in surv_funcs:</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-641"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-641"><span class="linenos">641</span></a><span class="sd">        ...     plt.step(fn.x, fn(fn.x), where=&quot;post&quot;)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-642"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-642"><span class="linenos">642</span></a><span class="sd">        ...</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-643"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-643"><span class="linenos">643</span></a><span class="sd">        &gt;&gt;&gt; plt.ylim(0, 1)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-644"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-644"><span class="linenos">644</span></a><span class="sd">        &gt;&gt;&gt; plt.show()</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-645"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-645"><span class="linenos">645</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-646"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.predict_survival_function-646"><span class="linenos">646</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_survival_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_baseline_model</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">return_array</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Predict survival function.</p>
-
-<p>Only available if <code><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.fit">fit()</a></code> has been called with <code>loss = "coxph"</code>.</p>
-
-<p>The survival function for an individual
-with feature vector \( x \) is defined as</p>
-
-<p>$$S(t \mid x) = S_0(t)^{\exp(f(x)} ,$$</p>
-
-<p>where \( f(\cdot) \) is the additive ensemble of base learners,
-and \( S_0(t) \) is the baseline survival function,
-estimated by Breslow's estimator.</p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>X : array-like, shape = (n_samples, n_features)
-    Data matrix.</p>
-
-<p>return_array : boolean, default: False
-    If set, return an array with the probability
-    of survival for each <code>self.unique_times_</code>,
-    otherwise an array of <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code>.</p>
-
-<h2 id="returns">Returns</h2>
-
-<p>survival : ndarray
-    If <code>return_array</code> is set, an array with the probability of
-    survival for each <code>self.unique_times_</code>, otherwise an array of
-    length <code>n_samples</code> of <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code>
-    instances will be returned.</p>
-
-<h2 id="examples">Examples</h2>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../datasets.html">survivalist.datasets</a></span> <span class="kn">import</span> <span class="n">load_whas500</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../ensemble.html">survivalist.ensemble</a></span> <span class="kn">import</span> <span class="n">ComponentwiseGradientBoostingSurvivalAnalysis</span>
-</code></pre>
-</div>
-
-<p>Load the data.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_whas500</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Fit the model.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">ComponentwiseGradientBoostingSurvivalAnalysis</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;coxph&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Estimate the survival function for the first 10 samples.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">surv_funcs</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict_survival_function</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-</code></pre>
-</div>
-
-<p>Plot the estimated survival functions.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">surv_funcs</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr variable">
-            <span class="name">coef_</span>
-
-                <label class="view-source-button" for="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-648"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-648"><span class="linenos">648</span></a>    <span class="nd">@property</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-649"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-649"><span class="linenos">649</span></a>    <span class="k">def</span> <span class="nf">coef_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-650"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-650"><span class="linenos">650</span></a>        <span class="n">coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features_in_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-651"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-651"><span class="linenos">651</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-652"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-652"><span class="linenos">652</span></a>        <span class="k">for</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="p">:</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-653"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-653"><span class="linenos">653</span></a>            <span class="n">coef</span><span class="p">[</span><span class="n">estimator</span><span class="o">.</span><span class="n">component</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">estimator</span><span class="o">.</span><span class="n">coef_</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-654"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-654"><span class="linenos">654</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.coef_-655"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.coef_-655"><span class="linenos">655</span></a>        <span class="k">return</span> <span class="n">coef</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr variable">
-            <span class="name">unique_times_</span>
-
-                <label class="view-source-button" for="ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-657"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-657"><span class="linenos">657</span></a>    <span class="nd">@property</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-658"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-658"><span class="linenos">658</span></a>    <span class="k">def</span> <span class="nf">unique_times_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-659"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.unique_times_-659"><span class="linenos">659</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_baseline_model</span><span class="p">()</span><span class="o">.</span><span class="n">unique_times_</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_" class="classattr">
-                                        <input id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr variable">
-            <span class="name">feature_importances_</span>
-
-                <label class="view-source-button" for="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-661"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-661"><span class="linenos">661</span></a>    <span class="nd">@property</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-662"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-662"><span class="linenos">662</span></a>    <span class="k">def</span> <span class="nf">feature_importances_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-663"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-663"><span class="linenos">663</span></a>        <span class="n">imp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_features_in_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-664"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-664"><span class="linenos">664</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-665"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-665"><span class="linenos">665</span></a>            <span class="n">imp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-666"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-666"><span class="linenos">666</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-667"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-667"><span class="linenos">667</span></a>        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-668"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-668"><span class="linenos">668</span></a>            <span class="n">imp</span><span class="p">[</span><span class="n">estimator</span><span class="o">.</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-669"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-669"><span class="linenos">669</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-670"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-670"><span class="linenos">670</span></a>        <span class="k">def</span> <span class="nf">_importance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-671"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-671"><span class="linenos">671</span></a>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-672"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-672"><span class="linenos">672</span></a>                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-673"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-673"><span class="linenos">673</span></a>            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-674"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-674"><span class="linenos">674</span></a>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-675"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-675"><span class="linenos">675</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_importance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">imp</span><span class="p">])</span>
-</span><span id="ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-676"><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.feature_importances_-676"><span class="linenos">676</span></a>        <span class="k">return</span> <span class="n">ret</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="ComponentwiseGradientBoostingSurvivalAnalysis.set_fit_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_fit_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#ComponentwiseGradientBoostingSurvivalAnalysis.set_fit_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code><a href="#ComponentwiseGradientBoostingSurvivalAnalysis.set_fit_request">set_fit_request</a></code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt>sklearn.ensemble._base.BaseEnsemble</dt>
-                                <dd id="ComponentwiseGradientBoostingSurvivalAnalysis.estimator" class="variable">estimator</dd>
-                <dd id="ComponentwiseGradientBoostingSurvivalAnalysis.estimator_params" class="variable">estimator_params</dd>
-
-            </div>
-            <div><dt>sklearn.base.BaseEstimator</dt>
-                                <dd id="ComponentwiseGradientBoostingSurvivalAnalysis.get_params" class="function">get_params</dd>
-                <dd id="ComponentwiseGradientBoostingSurvivalAnalysis.set_params" class="function">set_params</dd>
-
-            </div>
-            <div><dt>sklearn.utils._metadata_requests._MetadataRequester</dt>
-                                <dd id="ComponentwiseGradientBoostingSurvivalAnalysis.get_metadata_routing" class="function">get_metadata_routing</dd>
-
-            </div>
-            <div><dt><a href="../base.html#SurvivalAnalysisMixin">survivalist.base.SurvivalAnalysisMixin</a></dt>
-                                <dd id="ComponentwiseGradientBoostingSurvivalAnalysis.score" class="function"><a href="../base.html#SurvivalAnalysisMixin.score">score</a></dd>
-
-            </div>
-                                </dl>
-                            </div>
+                                </div>
+                        
                 </section>
                 <section id="GradientBoostingSurvivalAnalysis">
                             <input id="GradientBoostingSurvivalAnalysis-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -4526,82 +3943,8 @@ in 18th International Conference on Artificial Intelligence and Statistics,
 </div>
 
 
-                            <div id="GradientBoostingSurvivalAnalysis.__init__" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="name">GradientBoostingSurvivalAnalysis</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">loss</span><span class="o">=</span><span class="s1">&#39;coxph&#39;</span>,</span><span class="param">	<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span>,</span><span class="param">	<span class="n">subsample</span><span class="o">=</span><span class="mf">1.0</span>,</span><span class="param">	<span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;friedman_mse&#39;</span>,</span><span class="param">	<span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span>,</span><span class="param">	<span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span>,</span><span class="param">	<span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span>,</span><span class="param">	<span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span>,</span><span class="param">	<span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span>,</span><span class="param">	<span class="n">random_state</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">max_features</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">validation_fraction</span><span class="o">=</span><span class="mf">0.1</span>,</span><span class="param">	<span class="n">n_iter_no_change</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span>,</span><span class="param">	<span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.0</span>,</span><span class="param">	<span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>,</span><span class="param">	<span class="n">ccp_alpha</span><span class="o">=</span><span class="mf">0.0</span></span>)</span>
-
-                <label class="view-source-button" for="GradientBoostingSurvivalAnalysis.__init__-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GradientBoostingSurvivalAnalysis.__init__-933"><a href="#GradientBoostingSurvivalAnalysis.__init__-933"><span class="linenos">933</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-934"><a href="#GradientBoostingSurvivalAnalysis.__init__-934"><span class="linenos">934</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-935"><a href="#GradientBoostingSurvivalAnalysis.__init__-935"><span class="linenos">935</span></a>        <span class="o">*</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-936"><a href="#GradientBoostingSurvivalAnalysis.__init__-936"><span class="linenos">936</span></a>        <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;coxph&quot;</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-937"><a href="#GradientBoostingSurvivalAnalysis.__init__-937"><span class="linenos">937</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-938"><a href="#GradientBoostingSurvivalAnalysis.__init__-938"><span class="linenos">938</span></a>        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-939"><a href="#GradientBoostingSurvivalAnalysis.__init__-939"><span class="linenos">939</span></a>        <span class="n">subsample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-940"><a href="#GradientBoostingSurvivalAnalysis.__init__-940"><span class="linenos">940</span></a>        <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;friedman_mse&quot;</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-941"><a href="#GradientBoostingSurvivalAnalysis.__init__-941"><span class="linenos">941</span></a>        <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-942"><a href="#GradientBoostingSurvivalAnalysis.__init__-942"><span class="linenos">942</span></a>        <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-943"><a href="#GradientBoostingSurvivalAnalysis.__init__-943"><span class="linenos">943</span></a>        <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-944"><a href="#GradientBoostingSurvivalAnalysis.__init__-944"><span class="linenos">944</span></a>        <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-945"><a href="#GradientBoostingSurvivalAnalysis.__init__-945"><span class="linenos">945</span></a>        <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-946"><a href="#GradientBoostingSurvivalAnalysis.__init__-946"><span class="linenos">946</span></a>        <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-947"><a href="#GradientBoostingSurvivalAnalysis.__init__-947"><span class="linenos">947</span></a>        <span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-948"><a href="#GradientBoostingSurvivalAnalysis.__init__-948"><span class="linenos">948</span></a>        <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-949"><a href="#GradientBoostingSurvivalAnalysis.__init__-949"><span class="linenos">949</span></a>        <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-950"><a href="#GradientBoostingSurvivalAnalysis.__init__-950"><span class="linenos">950</span></a>        <span class="n">validation_fraction</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-951"><a href="#GradientBoostingSurvivalAnalysis.__init__-951"><span class="linenos">951</span></a>        <span class="n">n_iter_no_change</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-952"><a href="#GradientBoostingSurvivalAnalysis.__init__-952"><span class="linenos">952</span></a>        <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-953"><a href="#GradientBoostingSurvivalAnalysis.__init__-953"><span class="linenos">953</span></a>        <span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-954"><a href="#GradientBoostingSurvivalAnalysis.__init__-954"><span class="linenos">954</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-955"><a href="#GradientBoostingSurvivalAnalysis.__init__-955"><span class="linenos">955</span></a>        <span class="n">ccp_alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-956"><a href="#GradientBoostingSurvivalAnalysis.__init__-956"><span class="linenos">956</span></a>    <span class="p">):</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-957"><a href="#GradientBoostingSurvivalAnalysis.__init__-957"><span class="linenos">957</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-958"><a href="#GradientBoostingSurvivalAnalysis.__init__-958"><span class="linenos">958</span></a>            <span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-959"><a href="#GradientBoostingSurvivalAnalysis.__init__-959"><span class="linenos">959</span></a>            <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-960"><a href="#GradientBoostingSurvivalAnalysis.__init__-960"><span class="linenos">960</span></a>            <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-961"><a href="#GradientBoostingSurvivalAnalysis.__init__-961"><span class="linenos">961</span></a>            <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-962"><a href="#GradientBoostingSurvivalAnalysis.__init__-962"><span class="linenos">962</span></a>            <span class="n">min_samples_split</span><span class="o">=</span><span class="n">min_samples_split</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-963"><a href="#GradientBoostingSurvivalAnalysis.__init__-963"><span class="linenos">963</span></a>            <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_samples_leaf</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-964"><a href="#GradientBoostingSurvivalAnalysis.__init__-964"><span class="linenos">964</span></a>            <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="n">min_weight_fraction_leaf</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-965"><a href="#GradientBoostingSurvivalAnalysis.__init__-965"><span class="linenos">965</span></a>            <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-966"><a href="#GradientBoostingSurvivalAnalysis.__init__-966"><span class="linenos">966</span></a>            <span class="n">init</span><span class="o">=</span><span class="s2">&quot;zero&quot;</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-967"><a href="#GradientBoostingSurvivalAnalysis.__init__-967"><span class="linenos">967</span></a>            <span class="n">subsample</span><span class="o">=</span><span class="n">subsample</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-968"><a href="#GradientBoostingSurvivalAnalysis.__init__-968"><span class="linenos">968</span></a>            <span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-969"><a href="#GradientBoostingSurvivalAnalysis.__init__-969"><span class="linenos">969</span></a>            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-970"><a href="#GradientBoostingSurvivalAnalysis.__init__-970"><span class="linenos">970</span></a>            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-971"><a href="#GradientBoostingSurvivalAnalysis.__init__-971"><span class="linenos">971</span></a>            <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="n">max_leaf_nodes</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-972"><a href="#GradientBoostingSurvivalAnalysis.__init__-972"><span class="linenos">972</span></a>            <span class="n">warm_start</span><span class="o">=</span><span class="n">warm_start</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-973"><a href="#GradientBoostingSurvivalAnalysis.__init__-973"><span class="linenos">973</span></a>            <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="n">min_impurity_decrease</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-974"><a href="#GradientBoostingSurvivalAnalysis.__init__-974"><span class="linenos">974</span></a>            <span class="n">validation_fraction</span><span class="o">=</span><span class="n">validation_fraction</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-975"><a href="#GradientBoostingSurvivalAnalysis.__init__-975"><span class="linenos">975</span></a>            <span class="n">n_iter_no_change</span><span class="o">=</span><span class="n">n_iter_no_change</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-976"><a href="#GradientBoostingSurvivalAnalysis.__init__-976"><span class="linenos">976</span></a>            <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-977"><a href="#GradientBoostingSurvivalAnalysis.__init__-977"><span class="linenos">977</span></a>            <span class="n">ccp_alpha</span><span class="o">=</span><span class="n">ccp_alpha</span><span class="p">,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-978"><a href="#GradientBoostingSurvivalAnalysis.__init__-978"><span class="linenos">978</span></a>        <span class="p">)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.__init__-979"><a href="#GradientBoostingSurvivalAnalysis.__init__-979"><span class="linenos">979</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.dropout_rate" class="classattr">
-                                <div class="attr variable">
-            <span class="name">dropout_rate</span>
-
-        
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.dropout_rate"></a>
-    
-    
-
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.fit" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                <div id="GradientBoostingSurvivalAnalysis.fit" class="classattr">
+                                            <input id="GradientBoostingSurvivalAnalysis.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -4816,9 +4159,9 @@ in 18th International Conference on Artificial Intelligence and Statistics,
 </div>
 
 
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.predict" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                                </div>
+                                <div id="GradientBoostingSurvivalAnalysis.predict" class="classattr">
+                                            <input id="GradientBoostingSurvivalAnalysis.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
         <span class="def">def</span>
@@ -4873,498 +4216,8 @@ time to event.</p>
 </div>
 
 
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.staged_predict" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.staged_predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">staged_predict</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="GradientBoostingSurvivalAnalysis.staged_predict-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.staged_predict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1505"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1505"><span class="linenos">1505</span></a>    <span class="k">def</span> <span class="nf">staged_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1506"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1506"><span class="linenos">1506</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict risk scores at each stage for X.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1507"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1507"><span class="linenos">1507</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1508"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1508"><span class="linenos">1508</span></a><span class="sd">        This method allows monitoring (i.e. determine error on testing set)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1509"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1509"><span class="linenos">1509</span></a><span class="sd">        after each stage.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1510"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1510"><span class="linenos">1510</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1511"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1511"><span class="linenos">1511</span></a><span class="sd">        If `loss=&#39;coxph&#39;`, predictions can be interpreted as log hazard ratio</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1512"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1512"><span class="linenos">1512</span></a><span class="sd">        similar to the linear predictor of a Cox proportional hazards</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1513"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1513"><span class="linenos">1513</span></a><span class="sd">        model. If `loss=&#39;squared&#39;` or `loss=&#39;ipcwls&#39;`, predictions are the</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1514"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1514"><span class="linenos">1514</span></a><span class="sd">        time to event.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1515"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1515"><span class="linenos">1515</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1516"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1516"><span class="linenos">1516</span></a><span class="sd">        Parameters</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1517"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1517"><span class="linenos">1517</span></a><span class="sd">        ----------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1518"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1518"><span class="linenos">1518</span></a><span class="sd">        X : array-like, shape = (n_samples, n_features)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1519"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1519"><span class="linenos">1519</span></a><span class="sd">            The input samples.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1520"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1520"><span class="linenos">1520</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1521"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1521"><span class="linenos">1521</span></a><span class="sd">        Returns</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1522"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1522"><span class="linenos">1522</span></a><span class="sd">        -------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1523"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1523"><span class="linenos">1523</span></a><span class="sd">        y : generator of array of shape = (n_samples,)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1524"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1524"><span class="linenos">1524</span></a><span class="sd">            The predicted value of the input samples.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1525"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1525"><span class="linenos">1525</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1526"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1526"><span class="linenos">1526</span></a>        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;estimators_&quot;</span><span class="p">)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1527"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1527"><span class="linenos">1527</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1528"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1528"><span class="linenos">1528</span></a>        <span class="c1"># if dropout wasn&#39;t used during training, proceed as usual,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1529"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1529"><span class="linenos">1529</span></a>        <span class="c1"># otherwise consider scaling factor of individual trees</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1530"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1530"><span class="linenos">1530</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_scale&quot;</span><span class="p">):</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1531"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1531"><span class="linenos">1531</span></a>            <span class="n">predictions_iter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staged_raw_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1532"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1532"><span class="linenos">1532</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1533"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1533"><span class="linenos">1533</span></a>            <span class="n">predictions_iter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dropout_staged_raw_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1534"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1534"><span class="linenos">1534</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1535"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1535"><span class="linenos">1535</span></a>        <span class="k">for</span> <span class="n">raw_predictions</span> <span class="ow">in</span> <span class="n">predictions_iter</span><span class="p">:</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1536"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1536"><span class="linenos">1536</span></a>            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loss</span><span class="o">.</span><span class="n">_scale_raw_prediction</span><span class="p">(</span><span class="n">raw_predictions</span><span class="p">)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.staged_predict-1537"><a href="#GradientBoostingSurvivalAnalysis.staged_predict-1537"><span class="linenos">1537</span></a>            <span class="k">yield</span> <span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Predict risk scores at each stage for X.</p>
-
-<p>This method allows monitoring (i.e. determine error on testing set)
-after each stage.</p>
-
-<p>If <code>loss='coxph'</code>, predictions can be interpreted as log hazard ratio
-similar to the linear predictor of a Cox proportional hazards
-model. If <code>loss='squared'</code> or <code>loss='ipcwls'</code>, predictions are the
-time to event.</p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>X : array-like, shape = (n_samples, n_features)
-    The input samples.</p>
-
-<h2 id="returns">Returns</h2>
-
-<p>y : generator of array of shape = (n_samples,)
-    The predicted value of the input samples.</p>
-</div>
-
-
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">predict_cumulative_hazard_function</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">return_array</span><span class="o">=</span><span class="kc">False</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1545"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1545"><span class="linenos">1545</span></a>    <span class="k">def</span> <span class="nf">predict_cumulative_hazard_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1546"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1546"><span class="linenos">1546</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict cumulative hazard function.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1547"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1547"><span class="linenos">1547</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1548"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1548"><span class="linenos">1548</span></a><span class="sd">        Only available if :meth:`fit` has been called with `loss = &quot;coxph&quot;`.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1549"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1549"><span class="linenos">1549</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1550"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1550"><span class="linenos">1550</span></a><span class="sd">        The cumulative hazard function for an individual</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1551"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1551"><span class="linenos">1551</span></a><span class="sd">        with feature vector :math:`x` is defined as</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1552"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1552"><span class="linenos">1552</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1553"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1553"><span class="linenos">1553</span></a><span class="sd">        .. math::</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1554"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1554"><span class="linenos">1554</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1555"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1555"><span class="linenos">1555</span></a><span class="sd">            H(t \\mid x) = \\exp(f(x)) H_0(t) ,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1556"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1556"><span class="linenos">1556</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1557"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1557"><span class="linenos">1557</span></a><span class="sd">        where :math:`f(\\cdot)` is the additive ensemble of base learners,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1558"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1558"><span class="linenos">1558</span></a><span class="sd">        and :math:`H_0(t)` is the baseline hazard function,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1559"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1559"><span class="linenos">1559</span></a><span class="sd">        estimated by Breslow&#39;s estimator.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1560"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1560"><span class="linenos">1560</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1561"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1561"><span class="linenos">1561</span></a><span class="sd">        Parameters</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1562"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1562"><span class="linenos">1562</span></a><span class="sd">        ----------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1563"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1563"><span class="linenos">1563</span></a><span class="sd">        X : array-like, shape = (n_samples, n_features)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1564"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1564"><span class="linenos">1564</span></a><span class="sd">            Data matrix.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1565"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1565"><span class="linenos">1565</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1566"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1566"><span class="linenos">1566</span></a><span class="sd">        return_array : boolean, default: False</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1567"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1567"><span class="linenos">1567</span></a><span class="sd">            If set, return an array with the cumulative hazard rate</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1568"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1568"><span class="linenos">1568</span></a><span class="sd">            for each `self.unique_times_`, otherwise an array of</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1569"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1569"><span class="linenos">1569</span></a><span class="sd">            :class:`survivalist.functions.StepFunction`.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1570"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1570"><span class="linenos">1570</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1571"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1571"><span class="linenos">1571</span></a><span class="sd">        Returns</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1572"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1572"><span class="linenos">1572</span></a><span class="sd">        -------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1573"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1573"><span class="linenos">1573</span></a><span class="sd">        cum_hazard : ndarray</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1574"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1574"><span class="linenos">1574</span></a><span class="sd">            If `return_array` is set, an array with the cumulative hazard rate</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1575"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1575"><span class="linenos">1575</span></a><span class="sd">            for each `self.unique_times_`, otherwise an array of length `n_samples`</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1576"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1576"><span class="linenos">1576</span></a><span class="sd">            of :class:`survivalist.functions.StepFunction` instances will be returned.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1577"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1577"><span class="linenos">1577</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1578"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1578"><span class="linenos">1578</span></a><span class="sd">        Examples</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1579"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1579"><span class="linenos">1579</span></a><span class="sd">        --------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1580"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1580"><span class="linenos">1580</span></a><span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1581"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1581"><span class="linenos">1581</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.datasets import load_whas500</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1582"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1582"><span class="linenos">1582</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.ensemble import GradientBoostingSurvivalAnalysis</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1583"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1583"><span class="linenos">1583</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1584"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1584"><span class="linenos">1584</span></a><span class="sd">        Load the data.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1585"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1585"><span class="linenos">1585</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1586"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1586"><span class="linenos">1586</span></a><span class="sd">        &gt;&gt;&gt; X, y = load_whas500()</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1587"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1587"><span class="linenos">1587</span></a><span class="sd">        &gt;&gt;&gt; X = X.astype(float)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1588"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1588"><span class="linenos">1588</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1589"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1589"><span class="linenos">1589</span></a><span class="sd">        Fit the model.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1590"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1590"><span class="linenos">1590</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1591"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1591"><span class="linenos">1591</span></a><span class="sd">        &gt;&gt;&gt; estimator = GradientBoostingSurvivalAnalysis(loss=&quot;coxph&quot;).fit(X, y)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1592"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1592"><span class="linenos">1592</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1593"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1593"><span class="linenos">1593</span></a><span class="sd">        Estimate the cumulative hazard function for the first 10 samples.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1594"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1594"><span class="linenos">1594</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1595"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1595"><span class="linenos">1595</span></a><span class="sd">        &gt;&gt;&gt; chf_funcs = estimator.predict_cumulative_hazard_function(X.iloc[:10])</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1596"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1596"><span class="linenos">1596</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1597"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1597"><span class="linenos">1597</span></a><span class="sd">        Plot the estimated cumulative hazard functions.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1598"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1598"><span class="linenos">1598</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1599"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1599"><span class="linenos">1599</span></a><span class="sd">        &gt;&gt;&gt; for fn in chf_funcs:</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1600"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1600"><span class="linenos">1600</span></a><span class="sd">        ...     plt.step(fn.x, fn(fn.x), where=&quot;post&quot;)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1601"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1601"><span class="linenos">1601</span></a><span class="sd">        ...</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1602"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1602"><span class="linenos">1602</span></a><span class="sd">        &gt;&gt;&gt; plt.ylim(0, 1)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1603"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1603"><span class="linenos">1603</span></a><span class="sd">        &gt;&gt;&gt; plt.show()</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1604"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1604"><span class="linenos">1604</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1605"><a href="#GradientBoostingSurvivalAnalysis.predict_cumulative_hazard_function-1605"><span class="linenos">1605</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_cumulative_hazard_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_baseline_model</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">return_array</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Predict cumulative hazard function.</p>
-
-<p>Only available if <code><a href="#GradientBoostingSurvivalAnalysis.fit">fit()</a></code> has been called with <code>loss = "coxph"</code>.</p>
-
-<p>The cumulative hazard function for an individual
-with feature vector \( x \) is defined as</p>
-
-<p>$$H(t \mid x) = \exp(f(x)) H_0(t) ,$$</p>
-
-<p>where \( f(\cdot) \) is the additive ensemble of base learners,
-and \( H_0(t) \) is the baseline hazard function,
-estimated by Breslow's estimator.</p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>X : array-like, shape = (n_samples, n_features)
-    Data matrix.</p>
-
-<p>return_array : boolean, default: False
-    If set, return an array with the cumulative hazard rate
-    for each <code>self.unique_times_</code>, otherwise an array of
-    <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code>.</p>
-
-<h2 id="returns">Returns</h2>
-
-<p>cum_hazard : ndarray
-    If <code>return_array</code> is set, an array with the cumulative hazard rate
-    for each <code>self.unique_times_</code>, otherwise an array of length <code>n_samples</code>
-    of <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code> instances will be returned.</p>
-
-<h2 id="examples">Examples</h2>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../datasets.html">survivalist.datasets</a></span> <span class="kn">import</span> <span class="n">load_whas500</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../ensemble.html">survivalist.ensemble</a></span> <span class="kn">import</span> <span class="n">GradientBoostingSurvivalAnalysis</span>
-</code></pre>
-</div>
-
-<p>Load the data.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_whas500</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Fit the model.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">GradientBoostingSurvivalAnalysis</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;coxph&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Estimate the cumulative hazard function for the first 10 samples.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">chf_funcs</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict_cumulative_hazard_function</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-</code></pre>
-</div>
-
-<p>Plot the estimated cumulative hazard functions.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">chf_funcs</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.predict_survival_function" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.predict_survival_function-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">predict_survival_function</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">return_array</span><span class="o">=</span><span class="kc">False</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="GradientBoostingSurvivalAnalysis.predict_survival_function-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.predict_survival_function"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1607"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1607"><span class="linenos">1607</span></a>    <span class="k">def</span> <span class="nf">predict_survival_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1608"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1608"><span class="linenos">1608</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict survival function.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1609"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1609"><span class="linenos">1609</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1610"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1610"><span class="linenos">1610</span></a><span class="sd">        Only available if :meth:`fit` has been called with `loss = &quot;coxph&quot;`.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1611"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1611"><span class="linenos">1611</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1612"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1612"><span class="linenos">1612</span></a><span class="sd">        The survival function for an individual</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1613"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1613"><span class="linenos">1613</span></a><span class="sd">        with feature vector :math:`x` is defined as</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1614"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1614"><span class="linenos">1614</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1615"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1615"><span class="linenos">1615</span></a><span class="sd">        .. math::</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1616"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1616"><span class="linenos">1616</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1617"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1617"><span class="linenos">1617</span></a><span class="sd">            S(t \\mid x) = S_0(t)^{\\exp(f(x)} ,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1618"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1618"><span class="linenos">1618</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1619"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1619"><span class="linenos">1619</span></a><span class="sd">        where :math:`f(\\cdot)` is the additive ensemble of base learners,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1620"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1620"><span class="linenos">1620</span></a><span class="sd">        and :math:`S_0(t)` is the baseline survival function,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1621"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1621"><span class="linenos">1621</span></a><span class="sd">        estimated by Breslow&#39;s estimator.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1622"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1622"><span class="linenos">1622</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1623"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1623"><span class="linenos">1623</span></a><span class="sd">        Parameters</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1624"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1624"><span class="linenos">1624</span></a><span class="sd">        ----------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1625"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1625"><span class="linenos">1625</span></a><span class="sd">        X : array-like, shape = (n_samples, n_features)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1626"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1626"><span class="linenos">1626</span></a><span class="sd">            Data matrix.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1627"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1627"><span class="linenos">1627</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1628"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1628"><span class="linenos">1628</span></a><span class="sd">        return_array : boolean, default: False</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1629"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1629"><span class="linenos">1629</span></a><span class="sd">            If set, return an array with the probability</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1630"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1630"><span class="linenos">1630</span></a><span class="sd">            of survival for each `self.unique_times_`,</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1631"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1631"><span class="linenos">1631</span></a><span class="sd">            otherwise an array of :class:`survivalist.functions.StepFunction`.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1632"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1632"><span class="linenos">1632</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1633"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1633"><span class="linenos">1633</span></a><span class="sd">        Returns</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1634"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1634"><span class="linenos">1634</span></a><span class="sd">        -------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1635"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1635"><span class="linenos">1635</span></a><span class="sd">        survival : ndarray</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1636"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1636"><span class="linenos">1636</span></a><span class="sd">            If `return_array` is set, an array with the probability of</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1637"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1637"><span class="linenos">1637</span></a><span class="sd">            survival for each `self.unique_times_`, otherwise an array of</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1638"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1638"><span class="linenos">1638</span></a><span class="sd">            length `n_samples` of :class:`survivalist.functions.StepFunction`</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1639"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1639"><span class="linenos">1639</span></a><span class="sd">            instances will be returned.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1640"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1640"><span class="linenos">1640</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1641"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1641"><span class="linenos">1641</span></a><span class="sd">        Examples</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1642"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1642"><span class="linenos">1642</span></a><span class="sd">        --------</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1643"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1643"><span class="linenos">1643</span></a><span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1644"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1644"><span class="linenos">1644</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.datasets import load_whas500</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1645"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1645"><span class="linenos">1645</span></a><span class="sd">        &gt;&gt;&gt; from survivalist.ensemble import GradientBoostingSurvivalAnalysis</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1646"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1646"><span class="linenos">1646</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1647"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1647"><span class="linenos">1647</span></a><span class="sd">        Load the data.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1648"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1648"><span class="linenos">1648</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1649"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1649"><span class="linenos">1649</span></a><span class="sd">        &gt;&gt;&gt; X, y = load_whas500()</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1650"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1650"><span class="linenos">1650</span></a><span class="sd">        &gt;&gt;&gt; X = X.astype(float)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1651"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1651"><span class="linenos">1651</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1652"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1652"><span class="linenos">1652</span></a><span class="sd">        Fit the model.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1653"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1653"><span class="linenos">1653</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1654"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1654"><span class="linenos">1654</span></a><span class="sd">        &gt;&gt;&gt; estimator = GradientBoostingSurvivalAnalysis(loss=&quot;coxph&quot;).fit(X, y)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1655"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1655"><span class="linenos">1655</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1656"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1656"><span class="linenos">1656</span></a><span class="sd">        Estimate the survival function for the first 10 samples.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1657"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1657"><span class="linenos">1657</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1658"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1658"><span class="linenos">1658</span></a><span class="sd">        &gt;&gt;&gt; surv_funcs = estimator.predict_survival_function(X.iloc[:10])</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1659"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1659"><span class="linenos">1659</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1660"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1660"><span class="linenos">1660</span></a><span class="sd">        Plot the estimated survival functions.</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1661"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1661"><span class="linenos">1661</span></a>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1662"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1662"><span class="linenos">1662</span></a><span class="sd">        &gt;&gt;&gt; for fn in surv_funcs:</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1663"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1663"><span class="linenos">1663</span></a><span class="sd">        ...     plt.step(fn.x, fn(fn.x), where=&quot;post&quot;)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1664"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1664"><span class="linenos">1664</span></a><span class="sd">        ...</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1665"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1665"><span class="linenos">1665</span></a><span class="sd">        &gt;&gt;&gt; plt.ylim(0, 1)</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1666"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1666"><span class="linenos">1666</span></a><span class="sd">        &gt;&gt;&gt; plt.show()</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1667"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1667"><span class="linenos">1667</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="GradientBoostingSurvivalAnalysis.predict_survival_function-1668"><a href="#GradientBoostingSurvivalAnalysis.predict_survival_function-1668"><span class="linenos">1668</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_survival_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_baseline_model</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">return_array</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Predict survival function.</p>
-
-<p>Only available if <code><a href="#GradientBoostingSurvivalAnalysis.fit">fit()</a></code> has been called with <code>loss = "coxph"</code>.</p>
-
-<p>The survival function for an individual
-with feature vector \( x \) is defined as</p>
-
-<p>$$S(t \mid x) = S_0(t)^{\exp(f(x)} ,$$</p>
-
-<p>where \( f(\cdot) \) is the additive ensemble of base learners,
-and \( S_0(t) \) is the baseline survival function,
-estimated by Breslow's estimator.</p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>X : array-like, shape = (n_samples, n_features)
-    Data matrix.</p>
-
-<p>return_array : boolean, default: False
-    If set, return an array with the probability
-    of survival for each <code>self.unique_times_</code>,
-    otherwise an array of <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code>.</p>
-
-<h2 id="returns">Returns</h2>
-
-<p>survival : ndarray
-    If <code>return_array</code> is set, an array with the probability of
-    survival for each <code>self.unique_times_</code>, otherwise an array of
-    length <code>n_samples</code> of <code><a href="../functions.html#StepFunction">survivalist.functions.StepFunction</a></code>
-    instances will be returned.</p>
-
-<h2 id="examples">Examples</h2>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../datasets.html">survivalist.datasets</a></span> <span class="kn">import</span> <span class="n">load_whas500</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn"><a href="../ensemble.html">survivalist.ensemble</a></span> <span class="kn">import</span> <span class="n">GradientBoostingSurvivalAnalysis</span>
-</code></pre>
-</div>
-
-<p>Load the data.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_whas500</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Fit the model.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">GradientBoostingSurvivalAnalysis</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;coxph&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre>
-</div>
-
-<p>Estimate the survival function for the first 10 samples.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">surv_funcs</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict_survival_function</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
-</code></pre>
-</div>
-
-<p>Plot the estimated survival functions.</p>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">surv_funcs</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre>
-</div>
-</div>
-
-
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.unique_times_" class="classattr">
-                                        <input id="GradientBoostingSurvivalAnalysis.unique_times_-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr variable">
-            <span class="name">unique_times_</span>
-
-                <label class="view-source-button" for="GradientBoostingSurvivalAnalysis.unique_times_-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.unique_times_"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="GradientBoostingSurvivalAnalysis.unique_times_-1670"><a href="#GradientBoostingSurvivalAnalysis.unique_times_-1670"><span class="linenos">1670</span></a>    <span class="nd">@property</span>
-</span><span id="GradientBoostingSurvivalAnalysis.unique_times_-1671"><a href="#GradientBoostingSurvivalAnalysis.unique_times_-1671"><span class="linenos">1671</span></a>    <span class="k">def</span> <span class="nf">unique_times_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="GradientBoostingSurvivalAnalysis.unique_times_-1672"><a href="#GradientBoostingSurvivalAnalysis.unique_times_-1672"><span class="linenos">1672</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_baseline_model</span><span class="p">()</span><span class="o">.</span><span class="n">unique_times_</span>
-</span></pre></div>
-
-
-    
-
-                            </div>
-                            <div id="GradientBoostingSurvivalAnalysis.set_fit_request" class="classattr">
-                                <div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">set_fit_request</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">unknown</span></span><span class="return-annotation">):</span></span>
-
-        
-    </div>
-    <a class="headerlink" href="#GradientBoostingSurvivalAnalysis.set_fit_request"></a>
-    
-            <div class="docstring"><p>A descriptor for request methods.</p>
-
-<p><em>New in version 1.3.</em></p>
-
-<h2 id="parameters">Parameters</h2>
-
-<p>name : str
-    The name of the method for which the request function should be
-    created, e.g. <code>"fit"</code> would create a <code><a href="#GradientBoostingSurvivalAnalysis.set_fit_request">set_fit_request</a></code> function.</p>
-
-<p>keys : list of str
-    A list of strings which are accepted parameters by the created
-    function, e.g. <code>["sample_weight"]</code> if the corresponding method
-    accepts it as a metadata.</p>
-
-<p>validate_keys : bool, default=True
-    Whether to check if the requested parameters fit the actual parameters
-    of the method.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>This class is a descriptor <sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> and uses PEP-362 to set the signature of
-the returned function <sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup>.</p>
-
-<h2 id="references">References</h2>
-
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn-1">
-<p><a href="https://docs.python.org/3/howto/descriptor.html">https://docs.python.org/3/howto/descriptor.html</a>&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
-</li>
-
-<li id="fn-2">
-<p><a href="https://www.python.org/dev/peps/pep-0362/">https://www.python.org/dev/peps/pep-0362/</a>&#160;<a href="#fnref-2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
-</li>
-</ol>
-</div>
-</div>
-
-
-                            </div>
-                            <div class="inherited">
-                                <h5>Inherited Members</h5>
-                                <dl>
-                                    <div><dt>sklearn.ensemble._gb.BaseGradientBoosting</dt>
-                                <dd id="GradientBoostingSurvivalAnalysis.n_estimators" class="variable">n_estimators</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.learning_rate" class="variable">learning_rate</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.loss" class="variable">loss</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.criterion" class="variable">criterion</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.min_samples_split" class="variable">min_samples_split</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.min_samples_leaf" class="variable">min_samples_leaf</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.min_weight_fraction_leaf" class="variable">min_weight_fraction_leaf</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.subsample" class="variable">subsample</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.max_features" class="variable">max_features</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.max_depth" class="variable">max_depth</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.min_impurity_decrease" class="variable">min_impurity_decrease</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.ccp_alpha" class="variable">ccp_alpha</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.init" class="variable">init</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.random_state" class="variable">random_state</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.alpha" class="variable">alpha</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.verbose" class="variable">verbose</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.max_leaf_nodes" class="variable">max_leaf_nodes</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.warm_start" class="variable">warm_start</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.validation_fraction" class="variable">validation_fraction</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.n_iter_no_change" class="variable">n_iter_no_change</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.tol" class="variable">tol</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.feature_importances_" class="variable">feature_importances_</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.apply" class="function">apply</dd>
-
-            </div>
-            <div><dt>sklearn.ensemble._base.BaseEnsemble</dt>
-                                <dd id="GradientBoostingSurvivalAnalysis.estimator" class="variable">estimator</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.estimator_params" class="variable">estimator_params</dd>
-
-            </div>
-            <div><dt>sklearn.base.BaseEstimator</dt>
-                                <dd id="GradientBoostingSurvivalAnalysis.get_params" class="function">get_params</dd>
-                <dd id="GradientBoostingSurvivalAnalysis.set_params" class="function">set_params</dd>
-
-            </div>
-            <div><dt>sklearn.utils._metadata_requests._MetadataRequester</dt>
-                                <dd id="GradientBoostingSurvivalAnalysis.get_metadata_routing" class="function">get_metadata_routing</dd>
-
-            </div>
-            <div><dt><a href="../base.html#SurvivalAnalysisMixin">survivalist.base.SurvivalAnalysisMixin</a></dt>
-                                <dd id="GradientBoostingSurvivalAnalysis.score" class="function"><a href="../base.html#SurvivalAnalysisMixin.score">score</a></dd>
-
-            </div>
-                                </dl>
-                            </div>
+                                </div>
+                        
                 </section>
     </main>
 <script>
