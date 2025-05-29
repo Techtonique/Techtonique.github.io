@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
       </span>
     </div>
 
@@ -39,6 +39,9 @@
   </a>
   <ul class="dropdown-menu" role="menu"><li>
       <a href="../articles/g2plus.html">G2++</a>
+    </li>
+    <li>
+      <a href="../articles/intro.html">Introduction</a>
     </li>
     <li>
       <a href="../articles/martingale_test.html">Martingale tests</a>
@@ -101,8 +104,8 @@
 <span class="r-in"><span><span class="va">theta2</span> <span class="op">&lt;-</span> <span class="va">kappa</span></span></span>
 <span class="r-in"><span><span class="va">n_simulations</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">eps0</span> <span class="op">&lt;-</span> <span class="fu">simshocks</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_simulations</span>, horizon <span class="op">=</span> <span class="fl">5</span>, frequency <span class="op">=</span> <span class="st">"quart"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">sim_GBM</span> <span class="op">&lt;-</span> <span class="fu">simdiff</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_simulations</span>, horizon <span class="op">=</span> <span class="fl">5</span>, frequency <span class="op">=</span> <span class="st">"quart"</span>,   </span></span>
+<span class="r-in"><span><span class="va">eps0</span> <span class="op">&lt;-</span> <span class="fu"><a href="simshocks.html">simshocks</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_simulations</span>, horizon <span class="op">=</span> <span class="fl">5</span>, frequency <span class="op">=</span> <span class="st">"quart"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sim_GBM</span> <span class="op">&lt;-</span> <span class="fu"><a href="simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n_simulations</span>, horizon <span class="op">=</span> <span class="fl">5</span>, frequency <span class="op">=</span> <span class="st">"quart"</span>,   </span></span>
 <span class="r-in"><span>                   model <span class="op">=</span> <span class="st">"GBM"</span>, </span></span>
 <span class="r-in"><span>                x0 <span class="op">=</span> <span class="fl">100</span>, theta1 <span class="op">=</span> <span class="fl">0.03</span>, theta2 <span class="op">=</span> <span class="fl">0.1</span>, eps <span class="op">=</span> <span class="va">eps0</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>

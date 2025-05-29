@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
       </span>
     </div>
 
@@ -56,6 +56,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/g2plus.html">G2++</a>
+    </li>
+    <li>
+      <a href="../articles/intro.html">Introduction</a>
     </li>
     <li>
       <a href="../articles/martingale_test.html">Martingale tests</a>
@@ -112,7 +115,7 @@
 <pre><code><span><span class="co">## This is randtoolbox. For an overview, type 'help("randtoolbox")'.</span></span></code></pre>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  </span></span>
-<span><span class="co">##  This is version 1.2.1 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
+<span><span class="co">##  This is version 1.2.2 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">## </span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -150,24 +153,24 @@
 <span>    <span class="va">rho_opt</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">0.99855687</span></span>
 <span>    <span class="va">eta_opt</span> <span class="op">&lt;-</span> <span class="fl">0.08439934</span></span>
 <span>    <span class="co"># Simulation of gaussian correlated shocks</span></span>
-<span>    <span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu">simshocks</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>,</span>
+<span>    <span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simshocks.html">simshocks</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>,</span>
 <span>                     frequency <span class="op">=</span> <span class="st">"semi-annual"</span>,</span>
 <span>                     family <span class="op">=</span> <span class="fl">1</span>, par <span class="op">=</span> <span class="va">rho_opt</span><span class="op">)</span></span>
 <span>    <span class="co"># Simulation of the factor x</span></span>
-<span>    <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu">simdiff</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>, </span>
+<span>    <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>, </span>
 <span>                 frequency <span class="op">=</span> <span class="va">freq</span>,  </span>
 <span>                 model <span class="op">=</span> <span class="st">"OU"</span>, </span>
 <span>                 x0 <span class="op">=</span> <span class="fl">0</span>, theta1 <span class="op">=</span> <span class="fl">0</span>, theta2 <span class="op">=</span> <span class="va">a_opt</span>, theta3 <span class="op">=</span> <span class="va">sigma_opt</span>,</span>
 <span>                 eps <span class="op">=</span> <span class="va">eps</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span>    <span class="co"># Simulation of the factor y</span></span>
-<span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu">simdiff</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>, </span>
+<span>    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>, </span>
 <span>                 frequency <span class="op">=</span> <span class="va">freq</span>,  </span>
 <span>                 model <span class="op">=</span> <span class="st">"OU"</span>, </span>
 <span>                 x0 <span class="op">=</span> <span class="fl">0</span>, theta1 <span class="op">=</span> <span class="fl">0</span>, theta2 <span class="op">=</span> <span class="va">b_opt</span>, theta3 <span class="op">=</span> <span class="va">eta_opt</span>,</span>
 <span>                 eps <span class="op">=</span> <span class="va">eps</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span>    <span class="co"># Instantaneous forward rates, with spline interpolation</span></span>
 <span>    <span class="va">methodyc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/match.arg.html" class="external-link">match.arg</a></span><span class="op">(</span><span class="va">methodyc</span><span class="op">)</span></span>
-<span>    <span class="va">fwdrates</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu">esgfwdrates</span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>, </span>
+<span>    <span class="va">fwdrates</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgfwdrates.html">esgfwdrates</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, horizon <span class="op">=</span> <span class="va">horizon</span>, </span>
 <span>    out.frequency <span class="op">=</span> <span class="va">freq</span>, in.maturities <span class="op">=</span> <span class="va">u</span>, </span>
 <span>    in.zerorates <span class="op">=</span> <span class="va">txZC</span>, method <span class="op">=</span> <span class="va">methodyc</span><span class="op">)</span></span>
 <span>    <span class="va">fwdrates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html" class="external-link">window</a></span><span class="op">(</span><span class="va">fwdrates</span>, end <span class="op">=</span> <span class="va">horizon</span><span class="op">)</span></span>
@@ -194,16 +197,16 @@
 <span><span class="va">r_SW</span> <span class="op">&lt;-</span> <span class="fu">simG2plus</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, methodyc <span class="op">=</span> <span class="st">"hyman"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">ptm</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.127   0.006   0.150</span></span></code></pre>
+<span><span class="co">##   0.174   0.007   0.192</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu">esgplotbands</span><span class="op">(</span><span class="va">r_SW</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span>
+<span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">r_SW</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">r_SW</span>, type <span class="op">=</span> <span class="st">'l'</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="g2plus_files/figure-html/unnamed-chunk-3-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Stochastic deflators :</span></span>
 <span><span class="va">deltat_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">deltat</a></span><span class="op">(</span><span class="va">r_SW</span><span class="op">)</span></span>
-<span><span class="va">Dt_SW</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu">esgdiscountfactor</span><span class="op">(</span>r <span class="op">=</span> <span class="va">r_SW</span>, X <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">Dt_SW</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgdiscountfactor.html">esgdiscountfactor</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r_SW</span>, X <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">Dt_SW</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html" class="external-link">window</a></span><span class="op">(</span><span class="va">Dt_SW</span>, start <span class="op">=</span> <span class="va">deltat_r</span>, deltat <span class="op">=</span> <span class="fl">2</span><span class="op">*</span><span class="va">deltat_r</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Market prices</span></span>
