@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.18.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.18.3</span>
       </span>
     </div>
 
@@ -91,7 +91,16 @@
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
     </li>
     <li>
+      <a href="../articles/glmthetaf-attention.html">Generalized Linear Model Theta Forecast with attention</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-ridge-attention.html">Ridge Theta Forecast with attention - conformal uncertainty</a>
+    </li>
+    <li>
       <a href="../articles/glmthetaf.html">Generalized Linear Model Theta Forecast</a>
+    </li>
+    <li>
+      <a href="../articles/mlarch.html">Beyond GARCH</a>
     </li>
   </ul>
 </li>
@@ -124,130 +133,449 @@ attention - conformal uncertainty</h1>
     
     
 <div class="section level2">
-<h2 id="usaccdeaths">1 - USAccDeaths<a class="anchor" aria-label="anchor" href="#usaccdeaths"></a>
+<h2 id="usaccdeaths-methodadj">USAccDeaths (method=‘adj’)<a class="anchor" aria-label="anchor" href="#usaccdeaths-methodadj"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># glm.nb</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8268.704 6521.060 10016.349</span></span>
+<span><span class="co">## Feb 1979       7309.039 5561.394  9056.683</span></span>
+<span><span class="co">## Mar 1979       8154.793 6407.149  9902.438</span></span>
+<span><span class="co">## Apr 1979       8531.014 6783.369 10278.658</span></span>
+<span><span class="co">## May 1979       9393.218 7645.573 11140.862</span></span>
+<span><span class="co">## Jun 1979       9741.994 7994.350 11489.639</span></span>
+<span><span class="co">## Jul 1979      11003.200 9255.555 12750.844</span></span>
+<span><span class="co">## Aug 1979       9835.339 8087.694 11582.983</span></span>
+<span><span class="co">## Sep 1979       8712.499 6964.854 10460.143</span></span>
+<span><span class="co">## Oct 1979       9231.334 7483.690 10978.979</span></span>
+<span><span class="co">## Nov 1979       8576.565 6828.920 10324.209</span></span>
+<span><span class="co">## Dec 1979       9249.011 7501.367 10996.656</span></span>
+<span><span class="co">## Jan 1980       8268.724 6521.080 10016.369</span></span>
+<span><span class="co">## Feb 1980       7309.056 5561.412  9056.701</span></span>
+<span><span class="co">## Mar 1980       8154.813 6407.168  9902.457</span></span>
+<span><span class="co">## Apr 1980       8531.034 6783.390 10278.679</span></span>
+<span><span class="co">## May 1980       9393.240 7645.596 11140.885</span></span>
+<span><span class="co">## Jun 1980       9742.017 7994.373 11489.662</span></span>
+<span><span class="co">## Jul 1980      11003.226 9255.582 12750.871</span></span>
+<span><span class="co">## Aug 1980       9835.362 8087.718 11583.007</span></span>
+<span><span class="co">## Sep 1980       8712.520 6964.875 10460.164</span></span>
+<span><span class="co">## Oct 1980       9231.356 7483.712 10979.001</span></span>
+<span><span class="co">## Nov 1980       8576.585 6828.941 10324.230</span></span>
+<span><span class="co">## Dec 1980       9249.034 7501.389 10996.678</span></span>
+<span><span class="co">## Jan 1981       8268.744 6521.099 10016.388</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># glm</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># rlm</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-3.png" width="720"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># lqs</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-4.png" width="720"></p>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8301.382 6463.642 10139.123</span></span>
+<span><span class="co">## Feb 1979       7350.676 5512.935  9188.417</span></span>
+<span><span class="co">## Mar 1979       8215.372 6377.631 10053.113</span></span>
+<span><span class="co">## Apr 1979       8609.165 6771.424 10446.906</span></span>
+<span><span class="co">## May 1979       9495.541 7657.800 11333.282</span></span>
+<span><span class="co">## Jun 1979       9864.997 8027.256 11702.738</span></span>
+<span><span class="co">## Jul 1979      11161.195 9323.454 12998.936</span></span>
+<span><span class="co">## Aug 1979       9993.612 8155.871 11831.352</span></span>
+<span><span class="co">## Sep 1979       8867.806 7030.065 10705.546</span></span>
+<span><span class="co">## Oct 1979       9411.894 7574.153 11249.635</span></span>
+<span><span class="co">## Nov 1979       8759.189 6921.448 10596.929</span></span>
+<span><span class="co">## Dec 1979       9461.994 7624.253 11299.734</span></span>
+<span><span class="co">## Jan 1980       8473.474 6635.733 10311.215</span></span>
+<span><span class="co">## Feb 1980       7502.722 5664.981  9340.462</span></span>
+<span><span class="co">## Mar 1980       8385.035 6547.294 10222.776</span></span>
+<span><span class="co">## Apr 1980       8786.680 6948.939 10624.421</span></span>
+<span><span class="co">## May 1980       9691.024 7853.283 11528.764</span></span>
+<span><span class="co">## Jun 1980      10067.765 8230.025 11905.506</span></span>
+<span><span class="co">## Jul 1980      11390.245 9552.504 13227.985</span></span>
+<span><span class="co">## Aug 1980      10198.378 8360.637 12036.118</span></span>
+<span><span class="co">## Sep 1980       9049.219 7211.478 10886.959</span></span>
+<span><span class="co">## Oct 1980       9604.136 7766.395 11441.877</span></span>
+<span><span class="co">## Nov 1980       8937.819 7100.078 10775.560</span></span>
+<span><span class="co">## Dec 1980       9654.655 7816.914 11492.396</span></span>
+<span><span class="co">## Jan 1981       8645.739 6807.998 10483.479</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># lm</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-5.png" width="720"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># gam</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># rq</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-6.png" width="720"></p>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8305.354 6473.213 10137.494</span></span>
+<span><span class="co">## Feb 1979       7355.736 5523.596  9187.877</span></span>
+<span><span class="co">## Mar 1979       8222.735 6390.594 10054.875</span></span>
+<span><span class="co">## Apr 1979       8618.664 6786.523 10450.805</span></span>
+<span><span class="co">## May 1979       9507.979 7675.838 11340.120</span></span>
+<span><span class="co">## Jun 1979       9879.950 8047.809 11712.090</span></span>
+<span><span class="co">## Jul 1979      11180.403 9348.262 13012.544</span></span>
+<span><span class="co">## Aug 1979      10012.855 8180.714 11844.996</span></span>
+<span><span class="co">## Sep 1979       8886.690 7054.549 10718.830</span></span>
+<span><span class="co">## Oct 1979       9433.850 7601.710 11265.991</span></span>
+<span><span class="co">## Nov 1979       8781.398 6949.258 10613.539</span></span>
+<span><span class="co">## Dec 1979       9487.898 7655.757 11320.038</span></span>
+<span><span class="co">## Jan 1980       8498.379 6666.238 10330.520</span></span>
+<span><span class="co">## Feb 1980       7526.281 5694.140  9358.421</span></span>
+<span><span class="co">## Mar 1980       8413.044 6580.903 10245.185</span></span>
+<span><span class="co">## Apr 1980       8817.785 6985.645 10649.926</span></span>
+<span><span class="co">## May 1980       9727.260 7895.119 11559.401</span></span>
+<span><span class="co">## Jun 1980      10107.409 8275.268 11939.550</span></span>
+<span><span class="co">## Jul 1980      11437.350 9605.209 13269.491</span></span>
+<span><span class="co">## Aug 1980      10242.567 8410.426 12074.707</span></span>
+<span><span class="co">## Sep 1980       9090.209 7258.068 10922.350</span></span>
+<span><span class="co">## Oct 1980       9649.524 7817.383 11481.665</span></span>
+<span><span class="co">## Nov 1980       8981.806 7149.665 10813.947</span></span>
+<span><span class="co">## Dec 1980       9704.053 7871.912 11536.194</span></span>
+<span><span class="co">## Jan 1981       8691.656 6859.515 10523.796</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-3.png" width="720"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8293.623 6466.222 10121.023</span></span>
+<span><span class="co">## Feb 1979       7340.789 5513.389  9168.189</span></span>
+<span><span class="co">## Mar 1979       8200.987 6373.586 10028.387</span></span>
+<span><span class="co">## Apr 1979       8590.606 6763.206 10418.006</span></span>
+<span><span class="co">## May 1979       9471.241 7643.841 11298.641</span></span>
+<span><span class="co">## Jun 1979       9835.785 8008.384 11663.185</span></span>
+<span><span class="co">## Jul 1979      11123.670 9296.270 12951.071</span></span>
+<span><span class="co">## Aug 1979       9956.019 8128.619 11783.419</span></span>
+<span><span class="co">## Sep 1979       8830.915 7003.515 10658.316</span></span>
+<span><span class="co">## Oct 1979       9369.003 7541.603 11196.403</span></span>
+<span><span class="co">## Nov 1979       8715.805 6888.404 10543.205</span></span>
+<span><span class="co">## Dec 1979       9411.394 7583.994 11238.795</span></span>
+<span><span class="co">## Jan 1980       8424.827 6597.427 10252.228</span></span>
+<span><span class="co">## Feb 1980       7456.705 5629.305  9284.106</span></span>
+<span><span class="co">## Mar 1980       8330.329 6502.928 10157.729</span></span>
+<span><span class="co">## Apr 1980       8725.928 6898.528 10553.328</span></span>
+<span><span class="co">## May 1980       9620.253 7792.853 11447.653</span></span>
+<span><span class="co">## Jun 1980       9990.343 8162.943 11817.743</span></span>
+<span><span class="co">## Jul 1980      11298.253 9470.852 13125.653</span></span>
+<span><span class="co">## Aug 1980      10112.085 8284.684 11939.485</span></span>
+<span><span class="co">## Sep 1980       8969.175 7141.775 10796.576</span></span>
+<span><span class="co">## Oct 1980       9515.508 7688.108 11342.909</span></span>
+<span><span class="co">## Nov 1980       8851.930 7024.529 10679.330</span></span>
+<span><span class="co">## Dec 1980       9558.204 7730.804 11385.604</span></span>
+<span><span class="co">## Jan 1981       8556.088 6728.687 10383.488</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-1-4.png" width="720"></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8301.382 6463.642 10139.123</span></span>
+<span><span class="co">## Feb 1979       7350.676 5512.935  9188.417</span></span>
+<span><span class="co">## Mar 1979       8215.372 6377.631 10053.113</span></span>
+<span><span class="co">## Apr 1979       8609.165 6771.424 10446.906</span></span>
+<span><span class="co">## May 1979       9495.541 7657.800 11333.282</span></span>
+<span><span class="co">## Jun 1979       9864.997 8027.256 11702.738</span></span>
+<span><span class="co">## Jul 1979      11161.195 9323.454 12998.936</span></span>
+<span><span class="co">## Aug 1979       9993.612 8155.871 11831.352</span></span>
+<span><span class="co">## Sep 1979       8867.806 7030.065 10705.546</span></span>
+<span><span class="co">## Oct 1979       9411.894 7574.153 11249.635</span></span>
+<span><span class="co">## Nov 1979       8759.189 6921.448 10596.929</span></span>
+<span><span class="co">## Dec 1979       9461.994 7624.253 11299.734</span></span>
+<span><span class="co">## Jan 1980       8473.474 6635.733 10311.215</span></span>
+<span><span class="co">## Feb 1980       7502.722 5664.981  9340.462</span></span>
+<span><span class="co">## Mar 1980       8385.035 6547.294 10222.776</span></span>
+<span><span class="co">## Apr 1980       8786.680 6948.939 10624.421</span></span>
+<span><span class="co">## May 1980       9691.024 7853.283 11528.764</span></span>
+<span><span class="co">## Jun 1980      10067.765 8230.025 11905.506</span></span>
+<span><span class="co">## Jul 1980      11390.245 9552.504 13227.985</span></span>
+<span><span class="co">## Aug 1980      10198.378 8360.637 12036.118</span></span>
+<span><span class="co">## Sep 1980       9049.219 7211.478 10886.959</span></span>
+<span><span class="co">## Oct 1980       9604.136 7766.395 11441.877</span></span>
+<span><span class="co">## Nov 1980       8937.819 7100.078 10775.560</span></span>
+<span><span class="co">## Dec 1980       9654.655 7816.914 11492.396</span></span>
+<span><span class="co">## Jan 1981       8645.739 6807.998 10483.479</span></span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-1.png" width="720"></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8301.382 6463.642 10139.123</span></span>
+<span><span class="co">## Feb 1979       7350.676 5512.935  9188.417</span></span>
+<span><span class="co">## Mar 1979       8215.372 6377.631 10053.113</span></span>
+<span><span class="co">## Apr 1979       8609.165 6771.424 10446.906</span></span>
+<span><span class="co">## May 1979       9495.541 7657.800 11333.282</span></span>
+<span><span class="co">## Jun 1979       9864.997 8027.256 11702.738</span></span>
+<span><span class="co">## Jul 1979      11161.195 9323.454 12998.936</span></span>
+<span><span class="co">## Aug 1979       9993.612 8155.871 11831.352</span></span>
+<span><span class="co">## Sep 1979       8867.806 7030.065 10705.546</span></span>
+<span><span class="co">## Oct 1979       9411.894 7574.153 11249.635</span></span>
+<span><span class="co">## Nov 1979       8759.189 6921.448 10596.929</span></span>
+<span><span class="co">## Dec 1979       9461.994 7624.253 11299.734</span></span>
+<span><span class="co">## Jan 1980       8473.474 6635.733 10311.215</span></span>
+<span><span class="co">## Feb 1980       7502.722 5664.981  9340.462</span></span>
+<span><span class="co">## Mar 1980       8385.035 6547.294 10222.776</span></span>
+<span><span class="co">## Apr 1980       8786.680 6948.939 10624.421</span></span>
+<span><span class="co">## May 1980       9691.024 7853.283 11528.764</span></span>
+<span><span class="co">## Jun 1980      10067.765 8230.025 11905.506</span></span>
+<span><span class="co">## Jul 1980      11390.245 9552.504 13227.985</span></span>
+<span><span class="co">## Aug 1980      10198.378 8360.637 12036.118</span></span>
+<span><span class="co">## Sep 1980       9049.219 7211.478 10886.959</span></span>
+<span><span class="co">## Oct 1980       9604.136 7766.395 11441.877</span></span>
+<span><span class="co">## Nov 1980       8937.819 7100.078 10775.560</span></span>
+<span><span class="co">## Dec 1980       9654.655 7816.914 11492.396</span></span>
+<span><span class="co">## Jan 1981       8645.739 6807.998 10483.479</span></span></code></pre>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-3-1.png" width="720"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8302.271 6489.390 10115.152</span></span>
+<span><span class="co">## Feb 1979       7351.808 5538.927  9164.689</span></span>
+<span><span class="co">## Mar 1979       8217.019 6404.138 10029.900</span></span>
+<span><span class="co">## Apr 1979       8611.290 6798.409 10424.171</span></span>
+<span><span class="co">## May 1979       9498.323 7685.442 11311.204</span></span>
+<span><span class="co">## Jun 1979       9868.342 8055.461 11681.223</span></span>
+<span><span class="co">## Jul 1979      11165.492 9352.610 12978.373</span></span>
+<span><span class="co">## Aug 1979       9997.916 8185.035 11810.797</span></span>
+<span><span class="co">## Sep 1979       8872.030 7059.149 10684.911</span></span>
+<span><span class="co">## Oct 1979       9416.805 7603.924 11229.686</span></span>
+<span><span class="co">## Nov 1979       8764.157 6951.275 10577.038</span></span>
+<span><span class="co">## Dec 1979       9467.788 7654.907 11280.669</span></span>
+<span><span class="co">## Jan 1980       8479.045 6666.164 10291.926</span></span>
+<span><span class="co">## Feb 1980       7507.991 5695.110  9320.872</span></span>
+<span><span class="co">## Mar 1980       8391.300 6578.419 10204.181</span></span>
+<span><span class="co">## Apr 1980       8793.637 6980.756 10606.518</span></span>
+<span><span class="co">## May 1980       9699.128 7886.247 11512.009</span></span>
+<span><span class="co">## Jun 1980      10076.632 8263.751 11889.513</span></span>
+<span><span class="co">## Jul 1980      11400.780 9587.899 13213.661</span></span>
+<span><span class="co">## Aug 1980      10208.261 8395.380 12021.142</span></span>
+<span><span class="co">## Sep 1980       9058.387 7245.506 10871.268</span></span>
+<span><span class="co">## Oct 1980       9614.287 7801.406 11427.168</span></span>
+<span><span class="co">## Nov 1980       8947.657 7134.776 10760.538</span></span>
+<span><span class="co">## Dec 1980       9665.703 7852.822 11478.584</span></span>
+<span><span class="co">## Jan 1981       8656.008 6843.127 10468.889</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-4-1.png" width="720"></p>
 </div>
 <div class="section level2">
-<h2 id="airpassengers">2 - AirPassengers<a class="anchor" aria-label="anchor" href="#airpassengers"></a>
+<h2 id="airpassengers-methodadj">AirPassengers (method=‘adj’)<a class="anchor" aria-label="anchor" href="#airpassengers-methodadj"></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># glm.nb</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-1.png" width="720"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># glm</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-2.png" width="720"></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># rlm</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-3.png" width="720"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># lm</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-4.png" width="720"></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># lqs</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-5.png" width="720"></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># gam</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-6.png" width="720"></p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># rq</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">obj1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj1</span>, main<span class="op">=</span><span class="st">"With attention"</span><span class="op">)</span></span>
-<span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">FALSE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span>, method <span class="op">=</span> <span class="st">"adj"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj2</span>, main<span class="op">=</span><span class="st">"Without attention"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-2-7.png" width="720"></p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       441.8638 312.5489 571.1787</span></span>
+<span><span class="co">## Feb 1961       415.3297 286.0148 544.6446</span></span>
+<span><span class="co">## Mar 1961       470.6905 341.3756 600.0054</span></span>
+<span><span class="co">## Apr 1961       466.2493 336.9344 595.5642</span></span>
+<span><span class="co">## May 1961       477.9140 348.5991 607.2289</span></span>
+<span><span class="co">## Jun 1961       552.5173 423.2024 681.8321</span></span>
+<span><span class="co">## Jul 1961       618.1834 488.8685 747.4982</span></span>
+<span><span class="co">## Aug 1961       611.8472 482.5323 741.1621</span></span>
+<span><span class="co">## Sep 1961       517.8358 388.5210 647.1507</span></span>
+<span><span class="co">## Oct 1961       448.5688 319.2539 577.8837</span></span>
+<span><span class="co">## Nov 1961       389.6861 260.3713 519.0010</span></span>
+<span><span class="co">## Dec 1961       432.9739 303.6590 562.2888</span></span>
+<span><span class="co">## Jan 1962       441.9548 312.6399 571.2697</span></span>
+<span><span class="co">## Feb 1962       415.4152 286.1003 544.7301</span></span>
+<span><span class="co">## Mar 1962       470.7874 341.4725 600.1023</span></span>
+<span><span class="co">## Apr 1962       466.3453 337.0304 595.6602</span></span>
+<span><span class="co">## May 1962       478.0124 348.6975 607.3273</span></span>
+<span><span class="co">## Jun 1962       552.6310 423.3161 681.9459</span></span>
+<span><span class="co">## Jul 1962       618.3107 488.9958 747.6256</span></span>
+<span><span class="co">## Aug 1962       611.9732 482.6583 741.2881</span></span>
+<span><span class="co">## Sep 1962       517.9425 388.6276 647.2574</span></span>
+<span><span class="co">## Oct 1962       448.6612 319.3463 577.9761</span></span>
+<span><span class="co">## Nov 1962       389.7664 260.4515 519.0813</span></span>
+<span><span class="co">## Dec 1962       433.0630 303.7481 562.3779</span></span>
+<span><span class="co">## Jan 1963       442.0458 312.7309 571.3607</span></span></code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-5-1.png" width="528"></p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.8121 385.2164 506.4079</span></span>
+<span><span class="co">## Feb 1961       421.7063 361.1106 482.3021</span></span>
+<span><span class="co">## Mar 1961       480.9357 420.3399 541.5314</span></span>
+<span><span class="co">## Apr 1961       479.3903 418.7946 539.9861</span></span>
+<span><span class="co">## May 1961       494.4538 433.8580 555.0495</span></span>
+<span><span class="co">## Jun 1961       575.1909 514.5952 635.7867</span></span>
+<span><span class="co">## Jul 1961       647.5292 586.9334 708.1249</span></span>
+<span><span class="co">## Aug 1961       644.8320 584.2363 705.4278</span></span>
+<span><span class="co">## Sep 1961       549.0895 488.4938 609.6853</span></span>
+<span><span class="co">## Oct 1961       478.5349 417.9391 539.1306</span></span>
+<span><span class="co">## Nov 1961       418.2338 357.6381 478.8296</span></span>
+<span><span class="co">## Dec 1961       467.4895 406.8937 528.0852</span></span>
+<span><span class="co">## Jan 1962       480.0432 419.4475 540.6390</span></span>
+<span><span class="co">## Feb 1962       453.9038 393.3081 514.4996</span></span>
+<span><span class="co">## Mar 1962       517.4543 456.8586 578.0501</span></span>
+<span><span class="co">## Apr 1962       515.5933 454.9976 576.1891</span></span>
+<span><span class="co">## May 1962       531.5920 470.9962 592.1877</span></span>
+<span><span class="co">## Jun 1962       618.1603 557.5646 678.7561</span></span>
+<span><span class="co">## Jul 1962       695.6431 635.0473 756.2388</span></span>
+<span><span class="co">## Aug 1962       692.4898 631.8941 753.0856</span></span>
+<span><span class="co">## Sep 1962       589.4558 528.8600 650.0515</span></span>
+<span><span class="co">## Oct 1962       513.5284 452.9327 574.1242</span></span>
+<span><span class="co">## Nov 1962       448.6570 388.0613 509.2528</span></span>
+<span><span class="co">## Dec 1962       501.3178 440.7220 561.9135</span></span>
+<span><span class="co">## Jan 1963       514.5992 454.0035 575.1950</span></span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-5-2.png" width="528"></p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.8309 385.5513 506.1106</span></span>
+<span><span class="co">## Feb 1961       421.7367 361.4570 482.0164</span></span>
+<span><span class="co">## Mar 1961       480.9845 420.7048 541.2641</span></span>
+<span><span class="co">## Apr 1961       479.4529 419.1732 539.7326</span></span>
+<span><span class="co">## May 1961       494.5326 434.2529 554.8122</span></span>
+<span><span class="co">## Jun 1961       575.2990 515.0193 635.5786</span></span>
+<span><span class="co">## Jul 1961       647.6690 587.3894 707.9487</span></span>
+<span><span class="co">## Aug 1961       644.9893 584.7096 705.2689</span></span>
+<span><span class="co">## Sep 1961       549.2386 488.9589 609.5182</span></span>
+<span><span class="co">## Oct 1961       478.6778 418.3981 538.9574</span></span>
+<span><span class="co">## Nov 1961       418.3700 358.0903 478.6497</span></span>
+<span><span class="co">## Dec 1961       467.6541 407.3745 527.9338</span></span>
+<span><span class="co">## Jan 1962       480.2250 419.9454 540.5047</span></span>
+<span><span class="co">## Feb 1962       454.0876 393.8079 514.3673</span></span>
+<span><span class="co">## Mar 1962       517.6772 457.3975 577.9569</span></span>
+<span><span class="co">## Apr 1962       515.8286 455.5489 576.1083</span></span>
+<span><span class="co">## May 1962       531.8481 471.5684 592.1277</span></span>
+<span><span class="co">## Jun 1962       618.4736 558.1940 678.7533</span></span>
+<span><span class="co">## Jul 1962       696.0129 635.7333 756.2926</span></span>
+<span><span class="co">## Aug 1962       692.8751 632.5954 753.1547</span></span>
+<span><span class="co">## Sep 1962       589.7981 529.5184 650.0777</span></span>
+<span><span class="co">## Oct 1962       513.8390 453.5594 574.1187</span></span>
+<span><span class="co">## Nov 1962       448.9391 388.6595 509.2188</span></span>
+<span><span class="co">## Dec 1962       501.6449 441.3652 561.9246</span></span>
+<span><span class="co">## Jan 1963       514.9471 454.6674 575.2267</span></span></code></pre>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-5-3.png" width="528"></p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.8121 385.2164 506.4079</span></span>
+<span><span class="co">## Feb 1961       421.7063 361.1106 482.3021</span></span>
+<span><span class="co">## Mar 1961       480.9357 420.3399 541.5314</span></span>
+<span><span class="co">## Apr 1961       479.3903 418.7946 539.9861</span></span>
+<span><span class="co">## May 1961       494.4538 433.8580 555.0495</span></span>
+<span><span class="co">## Jun 1961       575.1909 514.5952 635.7867</span></span>
+<span><span class="co">## Jul 1961       647.5292 586.9334 708.1249</span></span>
+<span><span class="co">## Aug 1961       644.8320 584.2363 705.4278</span></span>
+<span><span class="co">## Sep 1961       549.0895 488.4938 609.6853</span></span>
+<span><span class="co">## Oct 1961       478.5349 417.9391 539.1306</span></span>
+<span><span class="co">## Nov 1961       418.2338 357.6381 478.8296</span></span>
+<span><span class="co">## Dec 1961       467.4895 406.8937 528.0852</span></span>
+<span><span class="co">## Jan 1962       480.0432 419.4475 540.6390</span></span>
+<span><span class="co">## Feb 1962       453.9038 393.3081 514.4996</span></span>
+<span><span class="co">## Mar 1962       517.4543 456.8586 578.0501</span></span>
+<span><span class="co">## Apr 1962       515.5933 454.9976 576.1891</span></span>
+<span><span class="co">## May 1962       531.5920 470.9962 592.1877</span></span>
+<span><span class="co">## Jun 1962       618.1603 557.5646 678.7561</span></span>
+<span><span class="co">## Jul 1962       695.6431 635.0473 756.2388</span></span>
+<span><span class="co">## Aug 1962       692.4898 631.8941 753.0856</span></span>
+<span><span class="co">## Sep 1962       589.4558 528.8600 650.0515</span></span>
+<span><span class="co">## Oct 1962       513.5284 452.9327 574.1242</span></span>
+<span><span class="co">## Nov 1962       448.6570 388.0613 509.2528</span></span>
+<span><span class="co">## Dec 1962       501.3178 440.7220 561.9135</span></span>
+<span><span class="co">## Jan 1963       514.5992 454.0035 575.1950</span></span></code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-6-1.png" width="528"></p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.8936 386.3463 505.4410</span></span>
+<span><span class="co">## Feb 1961       421.8379 362.2906 481.3853</span></span>
+<span><span class="co">## Mar 1961       481.1472 421.5998 540.6945</span></span>
+<span><span class="co">## Apr 1961       479.6616 420.1143 539.2089</span></span>
+<span><span class="co">## May 1961       494.7952 435.2479 554.3426</span></span>
+<span><span class="co">## Jun 1961       575.6591 516.1118 635.2065</span></span>
+<span><span class="co">## Jul 1961       648.1353 588.5879 707.6826</span></span>
+<span><span class="co">## Aug 1961       645.5134 585.9661 705.0608</span></span>
+<span><span class="co">## Sep 1961       549.7353 490.1880 609.2826</span></span>
+<span><span class="co">## Oct 1961       479.1542 419.6069 538.7015</span></span>
+<span><span class="co">## Nov 1961       418.8240 359.2767 478.3713</span></span>
+<span><span class="co">## Dec 1961       468.2032 408.6559 527.7505</span></span>
+<span><span class="co">## Jan 1962       480.8311 421.2838 540.3784</span></span>
+<span><span class="co">## Feb 1962       454.7002 395.1529 514.2476</span></span>
+<span><span class="co">## Mar 1962       518.4203 458.8730 577.9676</span></span>
+<span><span class="co">## Apr 1962       516.6130 457.0657 576.1604</span></span>
+<span><span class="co">## May 1962       532.7018 473.1545 592.2491</span></span>
+<span><span class="co">## Jun 1962       619.5182 559.9708 679.0655</span></span>
+<span><span class="co">## Jul 1962       697.2461 637.6988 756.7934</span></span>
+<span><span class="co">## Aug 1962       694.1595 634.6122 753.7068</span></span>
+<span><span class="co">## Sep 1962       590.9393 531.3920 650.4867</span></span>
+<span><span class="co">## Oct 1962       514.8747 455.3273 574.4220</span></span>
+<span><span class="co">## Nov 1962       449.8797 390.3324 509.4271</span></span>
+<span><span class="co">## Dec 1962       502.7355 443.1882 562.2828</span></span>
+<span><span class="co">## Jan 1963       516.1069 456.5596 575.6542</span></span></code></pre>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-7-1.png" width="528"></p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.8121 385.2164 506.4079</span></span>
+<span><span class="co">## Feb 1961       421.7063 361.1106 482.3021</span></span>
+<span><span class="co">## Mar 1961       480.9357 420.3399 541.5314</span></span>
+<span><span class="co">## Apr 1961       479.3903 418.7946 539.9861</span></span>
+<span><span class="co">## May 1961       494.4538 433.8580 555.0495</span></span>
+<span><span class="co">## Jun 1961       575.1909 514.5952 635.7867</span></span>
+<span><span class="co">## Jul 1961       647.5292 586.9334 708.1249</span></span>
+<span><span class="co">## Aug 1961       644.8320 584.2363 705.4278</span></span>
+<span><span class="co">## Sep 1961       549.0895 488.4938 609.6853</span></span>
+<span><span class="co">## Oct 1961       478.5349 417.9391 539.1306</span></span>
+<span><span class="co">## Nov 1961       418.2338 357.6381 478.8296</span></span>
+<span><span class="co">## Dec 1961       467.4895 406.8937 528.0852</span></span>
+<span><span class="co">## Jan 1962       480.0432 419.4475 540.6390</span></span>
+<span><span class="co">## Feb 1962       453.9038 393.3081 514.4996</span></span>
+<span><span class="co">## Mar 1962       517.4543 456.8586 578.0501</span></span>
+<span><span class="co">## Apr 1962       515.5933 454.9976 576.1891</span></span>
+<span><span class="co">## May 1962       531.5920 470.9962 592.1877</span></span>
+<span><span class="co">## Jun 1962       618.1603 557.5646 678.7561</span></span>
+<span><span class="co">## Jul 1962       695.6431 635.0473 756.2388</span></span>
+<span><span class="co">## Aug 1962       692.4898 631.8941 753.0856</span></span>
+<span><span class="co">## Sep 1962       589.4558 528.8600 650.0515</span></span>
+<span><span class="co">## Oct 1962       513.5284 452.9327 574.1242</span></span>
+<span><span class="co">## Nov 1962       448.6570 388.0613 509.2528</span></span>
+<span><span class="co">## Dec 1962       501.3178 440.7220 561.9135</span></span>
+<span><span class="co">## Jan 1963       514.5992 454.0035 575.1950</span></span></code></pre>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-8-1.png" width="528"></p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.8959 386.0481 505.7437</span></span>
+<span><span class="co">## Feb 1961       421.8416 361.9938 481.6894</span></span>
+<span><span class="co">## Mar 1961       481.1530 421.3052 541.0009</span></span>
+<span><span class="co">## Apr 1961       479.6691 419.8213 539.5170</span></span>
+<span><span class="co">## May 1961       494.8048 434.9569 554.6526</span></span>
+<span><span class="co">## Jun 1961       575.6722 515.8244 635.5200</span></span>
+<span><span class="co">## Jul 1961       648.1522 588.3043 708.0000</span></span>
+<span><span class="co">## Aug 1961       645.5324 585.6846 705.3802</span></span>
+<span><span class="co">## Sep 1961       549.7533 489.9055 609.6011</span></span>
+<span><span class="co">## Oct 1961       479.1715 419.3236 539.0193</span></span>
+<span><span class="co">## Nov 1961       418.8404 358.9926 478.6883</span></span>
+<span><span class="co">## Dec 1961       468.2231 408.3753 528.0709</span></span>
+<span><span class="co">## Jan 1962       480.8531 421.0052 540.7009</span></span>
+<span><span class="co">## Feb 1962       454.7224 394.8746 514.5703</span></span>
+<span><span class="co">## Mar 1962       518.4472 458.5994 578.2950</span></span>
+<span><span class="co">## Apr 1962       516.6415 456.7937 576.4893</span></span>
+<span><span class="co">## May 1962       532.7327 472.8849 592.5806</span></span>
+<span><span class="co">## Jun 1962       619.5560 559.7082 679.4039</span></span>
+<span><span class="co">## Jul 1962       697.2908 637.4430 757.1386</span></span>
+<span><span class="co">## Aug 1962       694.2061 634.3582 754.0539</span></span>
+<span><span class="co">## Sep 1962       590.9807 531.1329 650.8285</span></span>
+<span><span class="co">## Oct 1962       514.9122 455.0644 574.7600</span></span>
+<span><span class="co">## Nov 1962       449.9138 390.0660 509.7617</span></span>
+<span><span class="co">## Dec 1962       502.7750 442.9272 562.6229</span></span>
+<span><span class="co">## Jan 1963       516.1489 456.3011 575.9968</span></span></code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention-conformal_files/figure-html/unnamed-chunk-9-1.png" width="528"></p>
 </div>
   </div>
 

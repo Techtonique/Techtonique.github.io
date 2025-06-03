@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.18.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.18.3</span>
       </span>
     </div>
 
@@ -74,7 +74,16 @@
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
     </li>
     <li>
+      <a href="../articles/glmthetaf-attention.html">Generalized Linear Model Theta Forecast with attention</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-ridge-attention.html">Ridge Theta Forecast with attention - conformal uncertainty</a>
+    </li>
+    <li>
       <a href="../articles/glmthetaf.html">Generalized Linear Model Theta Forecast</a>
+    </li>
+    <li>
+      <a href="../articles/mlarch.html">Beyond GARCH</a>
     </li>
   </ul></li>
 <li>
@@ -195,8 +204,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [79]  0.17451467  0.19324769</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Accuracy_Train</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    ME      RMSE       MAE      MPE    MAPE       ACF1 Theil's U</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Test set 4.191966e-18 0.9500299 0.7694652 103.5326 137.655 -0.1499389  1.083618</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     ME      RMSE       MAE      MPE    MAPE       ACF1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Test set -3.382203e-19 0.9500299 0.7694652 103.5326 137.655 -0.1499389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          Theil's U</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Test set  1.083618</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Input_Data$Actual_Train</span>
@@ -445,7 +456,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     return(predict(object$lin_model, newpreds))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x7f946143bff0&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;bytecode: 0x7fb14ef14f58&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: namespace:ahead&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Intercept</span>

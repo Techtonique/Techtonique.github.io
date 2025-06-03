@@ -16,5 +16,8 @@ articles:
   fitforecastbench: fitforecastbench.html
   generic-conformal: generic-conformal.html
   glmthetaf-attention-conformal: glmthetaf-attention-conformal.html
+  glmthetaf-attention: glmthetaf-attention.html
+  glmthetaf-ridge-attention: glmthetaf-ridge-attention.html
   glmthetaf: glmthetaf.html
-last_built: 2025-04-08T17:10Z
+  mlarch: mlarch.html
+last_built: 2025-06-02T23:58Z

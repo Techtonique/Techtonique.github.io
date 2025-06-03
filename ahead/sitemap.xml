@@ -16,8 +16,11 @@
 <url><loc>/articles/fitforecastbench.html</loc></url>
 <url><loc>/articles/generic-conformal.html</loc></url>
 <url><loc>/articles/glmthetaf-attention-conformal.html</loc></url>
+<url><loc>/articles/glmthetaf-attention.html</loc></url>
+<url><loc>/articles/glmthetaf-ridge-attention.html</loc></url>
 <url><loc>/articles/glmthetaf.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/mlarch.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
@@ -42,6 +45,7 @@
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/loessf.html</loc></url>
 <url><loc>/reference/loocvridge2f.html</loc></url>
+<url><loc>/reference/mlarchf.html</loc></url>
 <url><loc>/reference/mlf.html</loc></url>
 <url><loc>/reference/plot.foreccomb_res.html</loc></url>
 <url><loc>/reference/plot.mtsforecast.html</loc></url>
@@ -49,6 +53,7 @@
 <url><loc>/reference/predict_func.html</loc></url>
 <url><loc>/reference/ridge2f.html</loc></url>
 <url><loc>/reference/rmultivariate.html</loc></url>
+<url><loc>/reference/splitts.html</loc></url>
 <url><loc>/reference/summary.foreccomb_res.html</loc></url>
 <url><loc>/reference/varf.html</loc></url>
 </urlset>
