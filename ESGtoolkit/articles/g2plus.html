@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -62,6 +62,9 @@
     </li>
     <li>
       <a href="../articles/martingale_test.html">Martingale tests</a>
+    </li>
+    <li>
+      <a href="../articles/simdiffts.html">More flexibility for simulations</a>
     </li>
   </ul>
 </li>
@@ -115,7 +118,7 @@
 <pre><code><span><span class="co">## This is randtoolbox. For an overview, type 'help("randtoolbox")'.</span></span></code></pre>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  </span></span>
-<span><span class="co">##  This is version 1.2.2 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
+<span><span class="co">##  This is version 1.3.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">## </span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -197,12 +200,12 @@
 <span><span class="va">r_SW</span> <span class="op">&lt;-</span> <span class="fu">simG2plus</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, methodyc <span class="op">=</span> <span class="st">"hyman"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">ptm</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.174   0.007   0.192</span></span></code></pre>
+<span><span class="co">##   0.129   0.007   0.143</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">r_SW</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">r_SW</span>, type <span class="op">=</span> <span class="st">'l'</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="g2plus_files/figure-html/unnamed-chunk-3-1.png" width="691.2"></p>
+<p><img src="g2plus_files/figure-html/chunk-3-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Stochastic deflators :</span></span>
 <span><span class="va">deltat_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">deltat</a></span><span class="op">(</span><span class="va">r_SW</span><span class="op">)</span></span>
@@ -242,7 +245,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">conf_int_SW</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, xlab <span class="op">=</span> <span class="st">"time"</span>, </span>
 <span>        ylab <span class="op">=</span> <span class="st">""</span>, main <span class="op">=</span> <span class="st">"Confidence Interval \n for the price difference"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">estim_SW</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="g2plus_files/figure-html/unnamed-chunk-6-1.png" width="691.2"></p>
+<p><img src="g2plus_files/figure-html/chunk-6-1.png" width="691.2"></p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">difference</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">Dt_SW</span> <span class="op">-</span> <span class="va">marketprices</span><span class="op">)</span></span></code></pre></div>
 <p><strong>test for the “martingale” difference</strong> (this
@@ -254,7 +257,7 @@ implementation is very slow)</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"red"</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): "color" is</span></span>
 <span><span class="co">## not a graphical parameter</span></span></code></pre>
-<p><img src="g2plus_files/figure-html/unnamed-chunk-9-1.png" width="691.2"></p>
+<p><img src="g2plus_files/figure-html/chunk-9-1.png" width="691.2"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -5,7 +5,8 @@ articles:
   g2plus: g2plus.html
   intro: intro.html
   martingale_test: martingale_test.html
-last_built: 2025-05-29T13:29Z
+  simdiffts: simdiffts.html
+last_built: 2025-06-17T18:14Z
 urls:
   reference: https://techtonique.github.io/esgtoolkit/reference
   article: https://techtonique.github.io/esgtoolkit/articles

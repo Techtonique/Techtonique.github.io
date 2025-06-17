@@ -24,7 +24,7 @@ classic Monte Carlo, antithetic variates, moment matching, and hybrid approaches
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -46,6 +46,9 @@ classic Monte Carlo, antithetic variates, moment matching, and hybrid approaches
     </li>
     <li>
       <a href="../articles/martingale_test.html">Martingale tests</a>
+    </li>
+    <li>
+      <a href="../articles/simdiffts.html">More flexibility for simulations</a>
     </li>
   </ul></li>
 <li>
@@ -90,7 +93,8 @@ classic Monte Carlo, antithetic variates, moment matching, and hybrid approaches
 <span>  par2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">par</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  RVM <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CVine"</span>, <span class="st">"DVine"</span>, <span class="st">"RVine"</span><span class="op">)</span>,</span>
-<span>  start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  start_ <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  end_ <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -108,8 +112,9 @@ classic Monte Carlo, antithetic variates, moment matching, and hybrid approaches
 
 
 <dt id="arg-frequency">frequency<a class="anchor" aria-label="anchor" href="#arg-frequency"></a></dt>
-<dd><p>Frequency of observations: "annual", "semi-annual", "quarterly",
-"monthly", "weekly", or "daily"</p></dd>
+<dd><p>Frequency of observations: if numeric (as for <code>ts</code> objects),
+better used with <code>start_</code> and <code>end_</code>. Otherwise a string, either "annual",
+"semi-annual", "quarterly", "monthly", "weekly", or "daily"</p></dd>
 
 
 <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
@@ -137,8 +142,12 @@ classic Monte Carlo, antithetic variates, moment matching, and hybrid approaches
 <dd><p>Type of vine copula: "CVine", "DVine", or "RVine"</p></dd>
 
 
-<dt id="arg-start">start<a class="anchor" aria-label="anchor" href="#arg-start"></a></dt>
-<dd><p>Starting time (optional)</p></dd>
+<dt id="arg-start-">start_<a class="anchor" aria-label="anchor" href="#arg-start-"></a></dt>
+<dd><p>Starting time (optional), better used with numeric <code>frequency</code></p></dd>
+
+
+<dt id="arg-end-">end_<a class="anchor" aria-label="anchor" href="#arg-end-"></a></dt>
+<dd><p>Ending time (optional), better used with numeric <code>frequency</code></p></dd>
 
 
 <dt id="arg-seed">seed<a class="anchor" aria-label="anchor" href="#arg-seed"></a></dt>
@@ -156,7 +165,7 @@ Different simulation methods are available:</p><ul><li><p>"classic": Standard Mo
 <li><p>"antithetic": Uses antithetic variates to reduce variance</p></li>
 <li><p>"mm": Moment matching to improve statistical properties</p></li>
 <li><p>"hybridantimm": Combines antithetic variates and moment matching</p></li>
-<li><p>"TAG": Taguchi method</p></li>
+<li><p>"TAG": TAG method</p></li>
 </ul><p>When using copulas (by specifying family and par), the function supports C-vine, D-vine,
 and R-vine copula structures.</p>
     </div>
@@ -171,10 +180,9 @@ and R-vine copula structures.</p>
 <span class="r-in"><span>                              method <span class="op">=</span> <span class="st">"antithetic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate shocks using C-vine copula</span></span></span>
-<span class="r-in"><span><span class="va">shocks_copula</span> <span class="op">&lt;-</span> <span class="fu">simshocks</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, horizon <span class="op">=</span> <span class="fl">5</span>, frequency <span class="op">=</span> <span class="st">"quarterly"</span>,</span></span>
-<span class="r-in"><span>                          family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.3</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                          type <span class="op">=</span> <span class="st">"CVine"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in VineCopula::C2RVine(order, family, par, par2):</span> Length of 'order' and dimension of the D-vine do not match.</span>
+<span class="r-in"><span><span class="co">#shocks_copula &lt;- simshocks(n = 1000, horizon = 5, frequency = "quarterly",</span></span></span>
+<span class="r-in"><span><span class="co">#                          family = c(1, 1), par = c(0.5, 0.3),</span></span></span>
+<span class="r-in"><span><span class="co">#                          type = "CVine")</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

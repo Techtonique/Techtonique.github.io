@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.19.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.20.0</span>
       </span>
     </div>
 
@@ -79,7 +79,13 @@
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
     </li>
     <li>
+      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
+    </li>
+    <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
+    </li>
+    <li>
+      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -133,25 +139,79 @@ models</h1>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">10L</span>, lags<span class="op">=</span><span class="fl">15L</span>, type_pi<span class="op">=</span><span class="st">"surrogate"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Elastic Net </span></span>
+<span><span class="op">(</span><span class="va">res1</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
+<span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p><img src="conformal-ml_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
-<span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">## Warning: Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per</span></span>
 <span><span class="co">## fold</span></span>
 <span><span class="co">## Warning: Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per</span></span>
 <span><span class="co">## fold</span></span></code></pre>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p><img src="conformal-ml_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8213.602 6651.349 10022.678</span></span>
+<span><span class="co">## Feb 1979       7363.028 5825.251  9023.169</span></span>
+<span><span class="co">## Mar 1979       8046.157 6617.970  9972.950</span></span>
+<span><span class="co">## Apr 1979       8424.551 6851.056 10079.520</span></span>
+<span><span class="co">## May 1979       9250.309 7742.602 11244.938</span></span>
+<span><span class="co">## Jun 1979       9632.789 8054.901 11510.649</span></span>
+<span><span class="co">## Jul 1979      10371.590 8766.785 12112.602</span></span>
+<span><span class="co">## Aug 1979       9964.858 8490.399 11752.339</span></span>
+<span><span class="co">## Sep 1979       9300.171 7678.672 11155.126</span></span>
+<span><span class="co">## Oct 1979       9208.652 7485.371 10838.584</span></span>
+<span><span class="co">## Nov 1979       8844.666 7278.118 10374.782</span></span>
+<span><span class="co">## Dec 1979       9439.201 7624.087 11337.581</span></span>
+<span><span class="co">## Jan 1980       8494.563 7242.219 10293.563</span></span>
+<span><span class="co">## Feb 1980       7768.356 6158.841  9755.492</span></span>
+<span><span class="co">## Mar 1980       8447.580 6973.770 10510.269</span></span>
+<span><span class="co">## Apr 1980       8686.358 6964.017 10711.646</span></span>
+<span><span class="co">## May 1980       9424.350 7760.944 11171.701</span></span>
+<span><span class="co">## Jun 1980       9755.722 8089.406 11644.557</span></span>
+<span><span class="co">## Jul 1980      10480.731 9360.777 12447.682</span></span>
+<span><span class="co">## Aug 1980      10037.390 8340.691 11994.056</span></span>
+<span><span class="co">## Sep 1980       9445.844 7803.507 11374.375</span></span>
+<span><span class="co">## Oct 1980       9396.013 7840.971 11184.159</span></span>
+<span><span class="co">## Nov 1980       9233.782 7451.326 10947.589</span></span>
+<span><span class="co">## Dec 1980       9445.088 7840.768 11157.442</span></span>
+<span><span class="co">## Jan 1981       8649.000 6996.512 10370.505</span></span></code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
+<span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       459.7552 380.0345 606.7475</span></span>
+<span><span class="co">## Feb 1961       430.9401 359.5434 547.3340</span></span>
+<span><span class="co">## Mar 1961       453.5584 381.8397 587.8587</span></span>
+<span><span class="co">## Apr 1961       500.1141 422.7564 661.4820</span></span>
+<span><span class="co">## May 1961       527.4440 448.6997 650.1500</span></span>
+<span><span class="co">## Jun 1961       587.2034 510.6481 737.4635</span></span>
+<span><span class="co">## Jul 1961       676.5792 602.9565 812.6947</span></span>
+<span><span class="co">## Aug 1961       663.5441 588.0662 793.0042</span></span>
+<span><span class="co">## Sep 1961       561.2717 479.7528 701.3720</span></span>
+<span><span class="co">## Oct 1961       503.4956 426.6916 629.5803</span></span>
+<span><span class="co">## Nov 1961       434.2601 364.4169 559.5272</span></span>
+<span><span class="co">## Dec 1961       465.6561 383.2880 599.3938</span></span>
+<span><span class="co">## Jan 1962       491.7691 418.2933 622.8430</span></span>
+<span><span class="co">## Feb 1962       469.6840 395.7880 608.7285</span></span>
+<span><span class="co">## Mar 1962       487.1450 414.4287 598.2497</span></span>
+<span><span class="co">## Apr 1962       535.7208 467.2408 654.8935</span></span>
+<span><span class="co">## May 1962       565.6261 485.1066 683.0617</span></span>
+<span><span class="co">## Jun 1962       636.2178 569.5508 773.3438</span></span>
+<span><span class="co">## Jul 1962       732.1846 660.2531 845.8855</span></span>
+<span><span class="co">## Aug 1962       719.2072 645.9557 839.5347</span></span>
+<span><span class="co">## Sep 1962       619.9854 542.7392 757.1536</span></span>
+<span><span class="co">## Oct 1962       539.9768 464.6287 664.3884</span></span>
+<span><span class="co">## Nov 1962       476.9676 407.7306 608.2608</span></span>
+<span><span class="co">## Dec 1962       498.3800 428.1434 658.1620</span></span>
+<span><span class="co">## Jan 1963       527.7314 448.3584 685.2382</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="conformal-ml_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># SVM</span></span>
+<span><span class="op">(</span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
 <span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8199.674 6473.090  9969.367</span></span>
@@ -168,10 +228,51 @@ models</h1>
 <span><span class="co">## Dec 1979       9068.206 6963.608 11055.792</span></span>
 <span><span class="co">## Jan 1980       8340.255 6799.574 10256.971</span></span>
 <span><span class="co">## Feb 1980       8023.531 6147.344  9887.678</span></span>
-<span><span class="co">## Mar 1980       7968.533 6055.050  9964.622</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p><img src="conformal-ml_files/figure-html/unnamed-chunk-1-3.png" width="720"></p>
+<span><span class="co">## Mar 1980       7968.533 6055.050  9964.622</span></span>
+<span><span class="co">## Apr 1980       8048.986 6282.612 10044.950</span></span>
+<span><span class="co">## May 1980       8714.224 6868.880 10491.411</span></span>
+<span><span class="co">## Jun 1980       9318.806 7359.968 11252.699</span></span>
+<span><span class="co">## Jul 1980       9952.219 8386.563 11808.094</span></span>
+<span><span class="co">## Aug 1980       9875.771 8023.109 11831.048</span></span>
+<span><span class="co">## Sep 1980       9548.459 7838.888 11493.556</span></span>
+<span><span class="co">## Oct 1980       9177.084 7572.946 10941.686</span></span>
+<span><span class="co">## Nov 1980       9223.650 7294.213 11107.748</span></span>
+<span><span class="co">## Dec 1980       8914.639 7230.070 10721.664</span></span>
+<span><span class="co">## Jan 1981       8443.229 6608.354 10475.302</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res4</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
+<span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       447.0467 300.1038 680.7571</span></span>
+<span><span class="co">## Feb 1961       425.1280 298.0689 634.4811</span></span>
+<span><span class="co">## Mar 1961       438.3497 309.5155 675.2856</span></span>
+<span><span class="co">## Apr 1961       462.6512 320.5670 705.4005</span></span>
+<span><span class="co">## May 1961       482.4335 336.2366 701.5527</span></span>
+<span><span class="co">## Jun 1961       502.7700 354.6733 725.9698</span></span>
+<span><span class="co">## Jul 1961       537.9357 409.1501 770.2478</span></span>
+<span><span class="co">## Aug 1961       535.3644 400.8080 754.6808</span></span>
+<span><span class="co">## Sep 1961       492.5919 355.9317 728.8254</span></span>
+<span><span class="co">## Oct 1961       468.8418 328.9083 696.4125</span></span>
+<span><span class="co">## Nov 1961       429.0261 296.0011 648.3337</span></span>
+<span><span class="co">## Dec 1961       442.9659 286.2605 671.6427</span></span>
+<span><span class="co">## Jan 1962       463.7218 319.3723 687.8484</span></span>
+<span><span class="co">## Feb 1962       461.1741 318.6205 690.3431</span></span>
+<span><span class="co">## Mar 1962       468.8124 332.0720 660.5847</span></span>
+<span><span class="co">## Apr 1962       488.7456 353.6587 691.0124</span></span>
+<span><span class="co">## May 1962       499.5541 376.7622 694.4943</span></span>
+<span><span class="co">## Jun 1962       520.0000 397.0829 755.7963</span></span>
+<span><span class="co">## Jul 1962       551.8753 416.0097 747.1827</span></span>
+<span><span class="co">## Aug 1962       534.3479 399.1492 732.5522</span></span>
+<span><span class="co">## Sep 1962       503.5217 369.1076 730.4971</span></span>
+<span><span class="co">## Oct 1962       466.1787 325.9431 672.3289</span></span>
+<span><span class="co">## Nov 1962       445.1387 312.2892 670.5696</span></span>
+<span><span class="co">## Dec 1962       450.0594 321.7213 699.8489</span></span>
+<span><span class="co">## Jan 1963       458.8569 311.9392 690.6282</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res4</span><span class="op">)</span></span></code></pre></div>
+<p><img src="conformal-ml_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

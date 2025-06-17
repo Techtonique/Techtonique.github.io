@@ -24,7 +24,7 @@ Cox-Ingersoll-Ross (CIR), and Ornstein-Uhlenbeck (OU) processes."><!-- mathjax -
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -46,6 +46,9 @@ Cox-Ingersoll-Ross (CIR), and Ornstein-Uhlenbeck (OU) processes."><!-- mathjax -
     </li>
     <li>
       <a href="../articles/martingale_test.html">Martingale tests</a>
+    </li>
+    <li>
+      <a href="../articles/simdiffts.html">More flexibility for simulations</a>
     </li>
   </ul></li>
 <li>
@@ -96,7 +99,8 @@ Cox-Ingersoll-Ross (CIR), and Ornstein-Uhlenbeck (OU) processes.</p>
 <span>  eta_up <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  eta_down <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  eps <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  start <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  start_ <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  end_ <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -114,8 +118,9 @@ Cox-Ingersoll-Ross (CIR), and Ornstein-Uhlenbeck (OU) processes.</p>
 
 
 <dt id="arg-frequency">frequency<a class="anchor" aria-label="anchor" href="#arg-frequency"></a></dt>
-<dd><p>Frequency of observations: "annual", "semi-annual", "quarterly",
-"monthly", "weekly", or "daily"</p></dd>
+<dd><p>Frequency of observations: if numeric (as for <code>ts</code> objects),
+better used with <code>start_</code> and <code>end_</code>. Otherwise a string, either "annual",
+"semi-annual", "quarterly", "monthly", "weekly", or "daily"</p></dd>
 
 
 <dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
@@ -166,8 +171,12 @@ Cox-Ingersoll-Ross (CIR), and Ornstein-Uhlenbeck (OU) processes.</p>
 <dd><p>Pre-generated random shocks (optional)</p></dd>
 
 
-<dt id="arg-start">start<a class="anchor" aria-label="anchor" href="#arg-start"></a></dt>
-<dd><p>Starting time (optional)</p></dd>
+<dt id="arg-start-">start_<a class="anchor" aria-label="anchor" href="#arg-start-"></a></dt>
+<dd><p>Starting time (optional), better used with numeric <code>frequency</code></p></dd>
+
+
+<dt id="arg-end-">end_<a class="anchor" aria-label="anchor" href="#arg-end-"></a></dt>
+<dd><p>Ending time (optional), better used with numeric <code>frequency</code></p></dd>
 
 
 <dt id="arg-seed">seed<a class="anchor" aria-label="anchor" href="#arg-seed"></a></dt>

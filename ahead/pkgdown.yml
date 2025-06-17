@@ -12,7 +12,9 @@ articles:
   caretfitpredict: caretfitpredict.html
   comb_OLS: comb_OLS.html
   comb_OLS2: comb_OLS2.html
+  conformal-ml-stacking: conformal-ml-stacking.html
   conformal-ml: conformal-ml.html
+  conformal-ml2: conformal-ml2.html
   fitforecastbench: fitforecastbench.html
   generic-conformal: generic-conformal.html
   glmthetaf-attention-conformal: glmthetaf-attention-conformal.html
@@ -20,4 +22,4 @@ articles:
   glmthetaf-ridge-attention: glmthetaf-ridge-attention.html
   glmthetaf: glmthetaf.html
   mlarch: mlarch.html
-last_built: 2025-06-03T17:45Z
+last_built: 2025-06-17T18:14Z

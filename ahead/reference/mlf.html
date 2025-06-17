@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.19.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.20.0</span>
       </span>
     </div>
 
@@ -62,7 +62,13 @@
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
     </li>
     <li>
+      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
+    </li>
+    <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
+    </li>
+    <li>
+      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -115,6 +121,7 @@
 <span>  lags <span class="op">=</span> <span class="fl">15L</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="fu">ahead</span><span class="fu">::</span><span class="va">ridge</span>,</span>
 <span>  predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
+<span>  stack <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  coeffs <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kde"</span>, <span class="st">"surrogate"</span>, <span class="st">"bootstrap"</span><span class="op">)</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">250L</span>,</span>
@@ -152,6 +159,10 @@
 <dd><p>Prediction function (Statistical/ML model)</p></dd>
 
 
+<dt id="arg-stack">stack<a class="anchor" aria-label="anchor" href="#arg-stack"></a></dt>
+<dd><p>Boolean, use stacking regression or not</p></dd>
+
+
 <dt id="arg-coeffs">coeffs<a class="anchor" aria-label="anchor" href="#arg-coeffs"></a></dt>
 <dd><p>Coefficients of the fitted model. If provided, a linear combination with the coefficients is used to compute the prediction.</p></dd>
 
@@ -172,6 +183,10 @@
 <dd><p>additional parameters passed to the fitting function <code>fit_func</code></p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p>An object of class 'forecast'</p>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
@@ -179,16 +194,19 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="mlf-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">20L</span>, fit_func<span class="op">=</span><span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, stack<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-plt img"><img src="mlf-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, type_pi<span class="op">=</span><span class="st">"surrogate"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="mlf-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="mlf-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">USAccDeaths</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span></span>
 <span class="r-in"><span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span> </span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per fold</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per fold</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="mlf-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="mlf-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">USAccDeaths</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span></span>
 <span class="r-in"><span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span> </span></span>
@@ -209,23 +227,23 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Feb 1980       8023.531 6147.344  9887.678</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Mar 1980       7968.533 6055.050  9964.622</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="mlf-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="mlf-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">mdeaths</span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, type_pi<span class="op">=</span><span class="st">"surrogate"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="mlf-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="mlf-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">fdeaths</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">25L</span>, </span></span>
 <span class="r-in"><span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span> </span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per fold</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per fold</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="mlf-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="mlf-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlf</span><span class="op">(</span><span class="va">fdeaths</span>, fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, h<span class="op">=</span><span class="fl">15L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span></span>
 <span class="r-in"><span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span> </span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="mlf-7.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="mlf-8.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
