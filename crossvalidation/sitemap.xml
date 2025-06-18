@@ -1,57 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/404.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/CHANGES.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/articles/boxplots.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/articles/quickstart.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/boxplot.cvsamples.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/create_samples.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/crossval_ml.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/crossval_ts.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/eval_ts.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/fit_lm.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/predict_lm.html</loc>
-  </url>
-  <url>
-    <loc>https://techtonique.github.io/crossvalidation/reference/split_ts.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://techtonique.github.io/crossvalidation/404.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/CHANGES.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/CONTRIBUTING.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/LICENSE-text.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/articles/boxplots.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/articles/index.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/articles/quickstart.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/authors.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/index.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/boxplot.cvsamples.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/create_samples.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/crossval_ml.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/crossval_ts.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/eval_ts.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/fit_lm.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/index.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/predict_lm.html</loc></url>
+<url><loc>https://techtonique.github.io/crossvalidation/reference/split_ts.html</loc></url>
 </urlset>
+
