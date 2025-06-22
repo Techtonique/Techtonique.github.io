@@ -65,10 +65,13 @@
       <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
+      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
+    </li>
+    <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
-      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models</a>
+      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -90,6 +93,9 @@
     </li>
     <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
+    </li>
+    <li>
+      <a href="../articles/mlarch2.html">Beyond GARCH 2</a>
     </li>
   </ul></li>
 <li>
@@ -119,14 +125,16 @@
 <span>  h <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">95</span>,</span>
 <span>  lags <span class="op">=</span> <span class="fl">15L</span>,</span>
-<span>  fit_func <span class="op">=</span> <span class="fu">ahead</span><span class="fu">::</span><span class="va">ridge</span>,</span>
+<span>  fit_func <span class="op">=</span> <span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/ForecastComb/man/ridge.html" class="external-link">ridge</a></span>,</span>
 <span>  predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
 <span>  stack <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  stacking_models <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  coeffs <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kde"</span>, <span class="st">"surrogate"</span>, <span class="st">"bootstrap"</span><span class="op">)</span>,</span>
+<span>  type_pi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"surrogate"</span>, <span class="st">"bootstrap"</span>, <span class="st">"kde"</span><span class="op">)</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">250L</span>,</span>
 <span>  agg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span><span class="op">)</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span>,</span>
+<span>  show_progress <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -163,6 +171,10 @@
 <dd><p>Boolean, use stacking regression or not</p></dd>
 
 
+<dt id="arg-stacking-models">stacking_models<a class="anchor" aria-label="anchor" href="#arg-stacking-models"></a></dt>
+<dd><p>A list of <code>fit_func</code>s and <code>predict_func</code>s for and ensemble of stacked models (you should set <code>stack=TRUE</code>)</p></dd>
+
+
 <dt id="arg-coeffs">coeffs<a class="anchor" aria-label="anchor" href="#arg-coeffs"></a></dt>
 <dd><p>Coefficients of the fitted model. If provided, a linear combination with the coefficients is used to compute the prediction.</p></dd>
 
@@ -177,6 +189,10 @@
 
 <dt id="arg-agg">agg<a class="anchor" aria-label="anchor" href="#arg-agg"></a></dt>
 <dd><p>"mean" or "median" (aggregation method)</p></dd>
+
+
+<dt id="arg-show-progress">show_progress<a class="anchor" aria-label="anchor" href="#arg-show-progress"></a></dt>
+<dd><p>show progress bar for stacking, if <code>stacking_models</code> if not <code>NULL</code></p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>

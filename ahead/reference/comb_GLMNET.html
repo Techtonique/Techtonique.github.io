@@ -65,10 +65,13 @@
       <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
+      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
+    </li>
+    <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
-      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models</a>
+      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -90,6 +93,9 @@
     </li>
     <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
+    </li>
+    <li>
+      <a href="../articles/mlarch2.html">Beyond GARCH 2</a>
     </li>
   </ul></li>
 <li>
@@ -175,17 +181,22 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ceweiss/ForecastComb" class="external-link">ForecastComb</a></span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: remotes</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: glmnet</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Matrix</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loaded glmnet 4.1-9</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 methods overwritten by 'ForecastComb':</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   method                      from </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   plot.foreccomb_res          ahead</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   predict.foreccomb_res       ahead</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   predict.ridge               ahead</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   print.foreccomb_res_summary ahead</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   summary.foreccomb_res       ahead</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘ForecastComb’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:ahead’:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:ahead’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     comb_OLS</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     comb_GLMNET, comb_OLS, comb_Ridge, ridge</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">electricity</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

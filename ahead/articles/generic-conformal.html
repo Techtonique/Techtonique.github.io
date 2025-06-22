@@ -82,10 +82,13 @@
       <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
+      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
+    </li>
+    <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
-      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models</a>
+      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -107,6 +110,9 @@
     </li>
     <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
+    </li>
+    <li>
+      <a href="../articles/mlarch2.html">Beyond GARCH 2</a>
     </li>
   </ul>
 </li>
@@ -269,10 +275,6 @@ conformalize them.</p>
 <code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, y<span class="op">=</span><span class="va">y</span>, h<span class="op">=</span><span class="va">h</span>, </span>
 <span>fit_func<span class="op">=</span><span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, predict_func<span class="op">=</span><span class="va">predict</span>, method<span class="op">=</span><span class="st">"surrogate"</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning: Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per</span></span>
-<span><span class="co">## fold</span></span>
-<span><span class="co">## Warning: Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per</span></span>
-<span><span class="co">## fold</span></span>
-<span><span class="co">## Warning: Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per</span></span>
 <span><span class="co">## fold</span></span>
 <span><span class="co">## Warning: Option grouped=FALSE enforced in cv.glmnet, since &lt; 3 observations per</span></span>
 <span><span class="co">## fold</span></span></code></pre>

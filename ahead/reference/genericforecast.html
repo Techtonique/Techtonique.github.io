@@ -65,10 +65,13 @@
       <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
+      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
+    </li>
+    <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
     </li>
     <li>
-      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models</a>
+      <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
@@ -90,6 +93,9 @@
     </li>
     <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
+    </li>
+    <li>
+      <a href="../articles/mlarch2.html">Beyond GARCH 2</a>
     </li>
   </ul></li>
 <li>
@@ -151,12 +157,14 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">fdeaths</span> </span></span>
 <span class="r-in"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">25L</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, <span class="va">y</span>, <span class="va">h</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, <span class="va">y</span>, <span class="va">h</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="genericforecast-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="dynrmf.html">dynrmf</a></span>, <span class="va">y</span>, <span class="va">h</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="dynrmf.html">dynrmf</a></span>, <span class="va">y</span>, <span class="va">h</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="genericforecast-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/tbats.html" class="external-link">tbats</a></span>, y<span class="op">=</span><span class="va">y</span>, h<span class="op">=</span><span class="va">h</span>, use.box.cox <span class="op">=</span> <span class="cn">TRUE</span>, use.trend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/tbats.html" class="external-link">tbats</a></span>, y<span class="op">=</span><span class="va">y</span>, h<span class="op">=</span><span class="va">h</span>, use.box.cox <span class="op">=</span> <span class="cn">TRUE</span>, use.trend<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="genericforecast-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">genericforecast</span><span class="op">(</span>FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span>, <span class="va">y</span>, <span class="va">h</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-plt img"><img src="genericforecast-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
