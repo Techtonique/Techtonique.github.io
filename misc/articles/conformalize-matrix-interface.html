@@ -135,7 +135,7 @@ function as the <code>predict_func</code>.</p>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co"># Apply conformalize</span></span>
-<span><span class="va">conformal_model</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu">conformalize</span><span class="op">(</span>  </span>
+<span><span class="va">conformal_model</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span>  </span>
 <span>  x <span class="op">=</span> <span class="va">x</span>,</span>
 <span>  y <span class="op">=</span> <span class="va">y</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>
@@ -324,7 +324,7 @@ disjoint.</p>
 <span></span>
 <span></span>
 <span><span class="co"># Apply conformalize using the training data</span></span>
-<span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu">conformalize</span><span class="op">(</span></span>
+<span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">train_data</span><span class="op">[</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">train_data</span><span class="op">)</span> <span class="op">==</span> <span class="st">"medv"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>  y <span class="op">=</span> <span class="va">train_data</span><span class="op">$</span><span class="va">medv</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>

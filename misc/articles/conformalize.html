@@ -125,7 +125,7 @@ function as the <code>predict_func</code>.</p>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Apply conformalize</span></span>
-<span><span class="va">conformal_model</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu">conformalize</span><span class="op">(</span></span>
+<span><span class="va">conformal_model</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x1</span> <span class="op">+</span> <span class="va">x2</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">data</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>
@@ -299,7 +299,7 @@ disjoint.</p>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Apply conformalize using the training data</span></span>
-<span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu">conformalize</span><span class="op">(</span></span>
+<span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">train_data</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>
@@ -537,7 +537,7 @@ that fall within the prediction intervals.</p>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Apply conformalize using the training data</span></span>
-<span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu">conformalize</span><span class="op">(</span></span>
+<span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">train_data</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>
@@ -1148,7 +1148,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span><span class="op">)</span><span class="op">$</span><span class="va">predictions</span></span>
 <span></span>
 <span><span class="co"># Apply conformalize using the training data</span></span>
-<span><span class="va">conformal_model_boston_rf</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu">conformalize</span><span class="op">(</span></span>
+<span><span class="va">conformal_model_boston_rf</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/conformalize.html">conformalize</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">train_data</span>,</span>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>
