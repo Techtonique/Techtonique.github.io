@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
       </span>
     </div>
 
@@ -111,25 +111,15 @@ computation with a progress bar</strong>.</p></li>
 <pre><code><span><span class="co">## Loading required package: doSNOW</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: iterators</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: snow</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: parallel</span></span></code></pre>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## Attaching package: 'parallel'</span></span></code></pre>
-<pre><code><span><span class="co">## The following objects are masked from 'package:snow':</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,</span></span>
-<span><span class="co">##     clusterExport, clusterMap, clusterSplit, makeCluster, parApply,</span></span>
-<span><span class="co">##     parCapply, parLapply, parRapply, parSapply, splitIndices,</span></span>
-<span><span class="co">##     stopCluster</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: compiler</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, cl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%evaluation # 1:</span></span>
 <span><span class="co">## $i</span></span>
@@ -227,13 +217,13 @@ computation with a progress bar</strong>.</p></li>
 <span><span class="co">##   fun(result.1, result.2, result.3, result.4, result.5, result.6, </span></span>
 <span><span class="co">##     result.7, result.8, result.9, result.10)</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1]    1    8   27   64  125  216  343  512  729 1000</span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1]    1    8   27   64  125  216  343  512  729 1000</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1]    1    8   27   64  125  216  343  512  729 1000</span></span></code></pre>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1]    1    8   27   64  125  216  343  512  729 1000</span></span></code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -357,7 +347,7 @@ computation with a progress bar</strong>.</p></li>
 <span><span class="co">## result.8   4.0</span></span>
 <span><span class="co">## result.9   4.5</span></span>
 <span><span class="co">## result.10  5.0</span></span></code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="va">foo</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>verbose <span class="op">=</span> <span class="cn">TRUE</span>, combine <span class="op">=</span> <span class="va">cbind</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## evaluation # 1:</span></span>
@@ -469,7 +459,7 @@ computation with a progress bar</strong>.</p></li>
 <span><span class="co">## [1,]      0.5        1      1.5        2      2.5        3      3.5        4</span></span>
 <span><span class="co">##      result.9 result.10</span></span>
 <span><span class="co">## [1,]      4.5         5</span></span></code></pre>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">foo2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
