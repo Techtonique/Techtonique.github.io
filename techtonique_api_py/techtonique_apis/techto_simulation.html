@@ -87,21 +87,73 @@
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    Run scenario simulation using the Techtonique API.</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">simulate_scenario</span><span class="p">(</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>        <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="n">theta3</span><span class="o">=</span><span class="n">theta3</span><span class="p">,</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="p">)</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="c1"># Adjust as needed based on API response structure</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;sims&quot;</span><span class="p">])</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    Simulation: run scenario simulation using the Techtonique API.</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">    Excel/xlwings custom function: Run scenario simulation from Excel using the Techtonique API.</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    Parameters</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">    ----------</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">    model : str, default &quot;GBM&quot;</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">        Simulation model to use.</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">    n : int, default 10</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        Number of scenarios.</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">    horizon : int, default 5</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        Simulation horizon.</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">    frequency : str, default &quot;quarterly&quot;</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        Frequency of simulation.</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">    x0 : float, default 1.0</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        Initial value.</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">    theta1 : float, default 0.0</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        Model parameter theta1.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">    theta2 : float, default 0.5</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        Model parameter theta2.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">    theta3 : float, optional</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        Model parameter theta3.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">    seed : int, optional</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">        Random seed.</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">    Returns</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a><span class="sd">    -------</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a><span class="sd">    pd.DataFrame</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="sd">        Simulation results as a DataFrame for Excel.</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a><span class="sd">    ---</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a><span class="sd">    xlwings lite docstring (for Excel help):</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="sd">    Run scenario simulation from Excel using the Techtonique API.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a><span class="sd">    - model: Simulation model (default: GBM).</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="sd">    - n: Number of scenarios (default: 10).</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="sd">    - horizon: Simulation horizon (default: 5).</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="sd">    - frequency: Frequency (default: quarterly).</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a><span class="sd">    - x0: Initial value (default: 1.0).</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="sd">    - theta1: Model parameter theta1 (default: 0.0).</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a><span class="sd">    - theta2: Model parameter theta2 (default: 0.5).</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a><span class="sd">    - theta3: Model parameter theta3 (optional).</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a><span class="sd">    - seed: Random seed (optional).</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a><span class="sd">    Returns: Simulation results as a table for Excel.</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">simulate_scenario</span><span class="p">(</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a>        <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a>        <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>        <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos">91</span></a>        <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos">92</span></a>        <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos">93</span></a>        <span class="n">theta3</span><span class="o">=</span><span class="n">theta3</span><span class="p">,</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos">94</span></a>        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos">95</span></a>    <span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos">96</span></a>    <span class="c1"># Adjust as needed based on API response structure</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos">97</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;sims&quot;</span><span class="p">])</span>
 </span></pre></div>
 
 
@@ -163,25 +215,131 @@
 </span><span id="techto_simulation-29"><a href="#techto_simulation-29"><span class="linenos">29</span></a>    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="techto_simulation-30"><a href="#techto_simulation-30"><span class="linenos">30</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="techto_simulation-31"><a href="#techto_simulation-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="techto_simulation-32"><a href="#techto_simulation-32"><span class="linenos">32</span></a><span class="sd">    Run scenario simulation using the Techtonique API.</span>
-</span><span id="techto_simulation-33"><a href="#techto_simulation-33"><span class="linenos">33</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="techto_simulation-34"><a href="#techto_simulation-34"><span class="linenos">34</span></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">simulate_scenario</span><span class="p">(</span>
-</span><span id="techto_simulation-35"><a href="#techto_simulation-35"><span class="linenos">35</span></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-</span><span id="techto_simulation-36"><a href="#techto_simulation-36"><span class="linenos">36</span></a>        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
-</span><span id="techto_simulation-37"><a href="#techto_simulation-37"><span class="linenos">37</span></a>        <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
-</span><span id="techto_simulation-38"><a href="#techto_simulation-38"><span class="linenos">38</span></a>        <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
-</span><span id="techto_simulation-39"><a href="#techto_simulation-39"><span class="linenos">39</span></a>        <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
-</span><span id="techto_simulation-40"><a href="#techto_simulation-40"><span class="linenos">40</span></a>        <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
-</span><span id="techto_simulation-41"><a href="#techto_simulation-41"><span class="linenos">41</span></a>        <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
-</span><span id="techto_simulation-42"><a href="#techto_simulation-42"><span class="linenos">42</span></a>        <span class="n">theta3</span><span class="o">=</span><span class="n">theta3</span><span class="p">,</span>
-</span><span id="techto_simulation-43"><a href="#techto_simulation-43"><span class="linenos">43</span></a>        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="techto_simulation-44"><a href="#techto_simulation-44"><span class="linenos">44</span></a>    <span class="p">)</span>
-</span><span id="techto_simulation-45"><a href="#techto_simulation-45"><span class="linenos">45</span></a>    <span class="c1"># Adjust as needed based on API response structure</span>
-</span><span id="techto_simulation-46"><a href="#techto_simulation-46"><span class="linenos">46</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;sims&quot;</span><span class="p">])</span>
+</span><span id="techto_simulation-32"><a href="#techto_simulation-32"><span class="linenos">32</span></a><span class="sd">    Simulation: run scenario simulation using the Techtonique API.</span>
+</span><span id="techto_simulation-33"><a href="#techto_simulation-33"><span class="linenos">33</span></a>
+</span><span id="techto_simulation-34"><a href="#techto_simulation-34"><span class="linenos">34</span></a><span class="sd">    Excel/xlwings custom function: Run scenario simulation from Excel using the Techtonique API.</span>
+</span><span id="techto_simulation-35"><a href="#techto_simulation-35"><span class="linenos">35</span></a>
+</span><span id="techto_simulation-36"><a href="#techto_simulation-36"><span class="linenos">36</span></a><span class="sd">    Parameters</span>
+</span><span id="techto_simulation-37"><a href="#techto_simulation-37"><span class="linenos">37</span></a><span class="sd">    ----------</span>
+</span><span id="techto_simulation-38"><a href="#techto_simulation-38"><span class="linenos">38</span></a>
+</span><span id="techto_simulation-39"><a href="#techto_simulation-39"><span class="linenos">39</span></a><span class="sd">    model : str, default &quot;GBM&quot;</span>
+</span><span id="techto_simulation-40"><a href="#techto_simulation-40"><span class="linenos">40</span></a><span class="sd">        Simulation model to use.</span>
+</span><span id="techto_simulation-41"><a href="#techto_simulation-41"><span class="linenos">41</span></a>
+</span><span id="techto_simulation-42"><a href="#techto_simulation-42"><span class="linenos">42</span></a><span class="sd">    n : int, default 10</span>
+</span><span id="techto_simulation-43"><a href="#techto_simulation-43"><span class="linenos">43</span></a><span class="sd">        Number of scenarios.</span>
+</span><span id="techto_simulation-44"><a href="#techto_simulation-44"><span class="linenos">44</span></a>
+</span><span id="techto_simulation-45"><a href="#techto_simulation-45"><span class="linenos">45</span></a><span class="sd">    horizon : int, default 5</span>
+</span><span id="techto_simulation-46"><a href="#techto_simulation-46"><span class="linenos">46</span></a><span class="sd">        Simulation horizon.</span>
+</span><span id="techto_simulation-47"><a href="#techto_simulation-47"><span class="linenos">47</span></a>
+</span><span id="techto_simulation-48"><a href="#techto_simulation-48"><span class="linenos">48</span></a><span class="sd">    frequency : str, default &quot;quarterly&quot;</span>
+</span><span id="techto_simulation-49"><a href="#techto_simulation-49"><span class="linenos">49</span></a><span class="sd">        Frequency of simulation.</span>
+</span><span id="techto_simulation-50"><a href="#techto_simulation-50"><span class="linenos">50</span></a>
+</span><span id="techto_simulation-51"><a href="#techto_simulation-51"><span class="linenos">51</span></a><span class="sd">    x0 : float, default 1.0</span>
+</span><span id="techto_simulation-52"><a href="#techto_simulation-52"><span class="linenos">52</span></a><span class="sd">        Initial value.</span>
+</span><span id="techto_simulation-53"><a href="#techto_simulation-53"><span class="linenos">53</span></a>
+</span><span id="techto_simulation-54"><a href="#techto_simulation-54"><span class="linenos">54</span></a><span class="sd">    theta1 : float, default 0.0</span>
+</span><span id="techto_simulation-55"><a href="#techto_simulation-55"><span class="linenos">55</span></a><span class="sd">        Model parameter theta1.</span>
+</span><span id="techto_simulation-56"><a href="#techto_simulation-56"><span class="linenos">56</span></a>
+</span><span id="techto_simulation-57"><a href="#techto_simulation-57"><span class="linenos">57</span></a><span class="sd">    theta2 : float, default 0.5</span>
+</span><span id="techto_simulation-58"><a href="#techto_simulation-58"><span class="linenos">58</span></a><span class="sd">        Model parameter theta2.</span>
+</span><span id="techto_simulation-59"><a href="#techto_simulation-59"><span class="linenos">59</span></a>
+</span><span id="techto_simulation-60"><a href="#techto_simulation-60"><span class="linenos">60</span></a><span class="sd">    theta3 : float, optional</span>
+</span><span id="techto_simulation-61"><a href="#techto_simulation-61"><span class="linenos">61</span></a><span class="sd">        Model parameter theta3.</span>
+</span><span id="techto_simulation-62"><a href="#techto_simulation-62"><span class="linenos">62</span></a>
+</span><span id="techto_simulation-63"><a href="#techto_simulation-63"><span class="linenos">63</span></a><span class="sd">    seed : int, optional</span>
+</span><span id="techto_simulation-64"><a href="#techto_simulation-64"><span class="linenos">64</span></a><span class="sd">        Random seed.</span>
+</span><span id="techto_simulation-65"><a href="#techto_simulation-65"><span class="linenos">65</span></a>
+</span><span id="techto_simulation-66"><a href="#techto_simulation-66"><span class="linenos">66</span></a><span class="sd">    Returns</span>
+</span><span id="techto_simulation-67"><a href="#techto_simulation-67"><span class="linenos">67</span></a><span class="sd">    -------</span>
+</span><span id="techto_simulation-68"><a href="#techto_simulation-68"><span class="linenos">68</span></a>
+</span><span id="techto_simulation-69"><a href="#techto_simulation-69"><span class="linenos">69</span></a><span class="sd">    pd.DataFrame</span>
+</span><span id="techto_simulation-70"><a href="#techto_simulation-70"><span class="linenos">70</span></a><span class="sd">        Simulation results as a DataFrame for Excel.</span>
+</span><span id="techto_simulation-71"><a href="#techto_simulation-71"><span class="linenos">71</span></a>
+</span><span id="techto_simulation-72"><a href="#techto_simulation-72"><span class="linenos">72</span></a><span class="sd">    ---</span>
+</span><span id="techto_simulation-73"><a href="#techto_simulation-73"><span class="linenos">73</span></a><span class="sd">    xlwings lite docstring (for Excel help):</span>
+</span><span id="techto_simulation-74"><a href="#techto_simulation-74"><span class="linenos">74</span></a><span class="sd">    Run scenario simulation from Excel using the Techtonique API.</span>
+</span><span id="techto_simulation-75"><a href="#techto_simulation-75"><span class="linenos">75</span></a><span class="sd">    - model: Simulation model (default: GBM).</span>
+</span><span id="techto_simulation-76"><a href="#techto_simulation-76"><span class="linenos">76</span></a><span class="sd">    - n: Number of scenarios (default: 10).</span>
+</span><span id="techto_simulation-77"><a href="#techto_simulation-77"><span class="linenos">77</span></a><span class="sd">    - horizon: Simulation horizon (default: 5).</span>
+</span><span id="techto_simulation-78"><a href="#techto_simulation-78"><span class="linenos">78</span></a><span class="sd">    - frequency: Frequency (default: quarterly).</span>
+</span><span id="techto_simulation-79"><a href="#techto_simulation-79"><span class="linenos">79</span></a><span class="sd">    - x0: Initial value (default: 1.0).</span>
+</span><span id="techto_simulation-80"><a href="#techto_simulation-80"><span class="linenos">80</span></a><span class="sd">    - theta1: Model parameter theta1 (default: 0.0).</span>
+</span><span id="techto_simulation-81"><a href="#techto_simulation-81"><span class="linenos">81</span></a><span class="sd">    - theta2: Model parameter theta2 (default: 0.5).</span>
+</span><span id="techto_simulation-82"><a href="#techto_simulation-82"><span class="linenos">82</span></a><span class="sd">    - theta3: Model parameter theta3 (optional).</span>
+</span><span id="techto_simulation-83"><a href="#techto_simulation-83"><span class="linenos">83</span></a><span class="sd">    - seed: Random seed (optional).</span>
+</span><span id="techto_simulation-84"><a href="#techto_simulation-84"><span class="linenos">84</span></a><span class="sd">    Returns: Simulation results as a table for Excel.</span>
+</span><span id="techto_simulation-85"><a href="#techto_simulation-85"><span class="linenos">85</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_simulation-86"><a href="#techto_simulation-86"><span class="linenos">86</span></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">simulate_scenario</span><span class="p">(</span>
+</span><span id="techto_simulation-87"><a href="#techto_simulation-87"><span class="linenos">87</span></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+</span><span id="techto_simulation-88"><a href="#techto_simulation-88"><span class="linenos">88</span></a>        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+</span><span id="techto_simulation-89"><a href="#techto_simulation-89"><span class="linenos">89</span></a>        <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
+</span><span id="techto_simulation-90"><a href="#techto_simulation-90"><span class="linenos">90</span></a>        <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
+</span><span id="techto_simulation-91"><a href="#techto_simulation-91"><span class="linenos">91</span></a>        <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
+</span><span id="techto_simulation-92"><a href="#techto_simulation-92"><span class="linenos">92</span></a>        <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
+</span><span id="techto_simulation-93"><a href="#techto_simulation-93"><span class="linenos">93</span></a>        <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
+</span><span id="techto_simulation-94"><a href="#techto_simulation-94"><span class="linenos">94</span></a>        <span class="n">theta3</span><span class="o">=</span><span class="n">theta3</span><span class="p">,</span>
+</span><span id="techto_simulation-95"><a href="#techto_simulation-95"><span class="linenos">95</span></a>        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="techto_simulation-96"><a href="#techto_simulation-96"><span class="linenos">96</span></a>    <span class="p">)</span>
+</span><span id="techto_simulation-97"><a href="#techto_simulation-97"><span class="linenos">97</span></a>    <span class="c1"># Adjust as needed based on API response structure</span>
+</span><span id="techto_simulation-98"><a href="#techto_simulation-98"><span class="linenos">98</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;sims&quot;</span><span class="p">])</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Run scenario simulation using the Techtonique API.</p>
+            <div class="docstring"><p>Simulation: run scenario simulation using the Techtonique API.</p>
+
+<p>Excel/xlwings custom function: Run scenario simulation from Excel using the Techtonique API.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>model : str, default "GBM"
+    Simulation model to use.</p>
+
+<p>n : int, default 10
+    Number of scenarios.</p>
+
+<p>horizon : int, default 5
+    Simulation horizon.</p>
+
+<p>frequency : str, default "quarterly"
+    Frequency of simulation.</p>
+
+<p>x0 : float, default 1.0
+    Initial value.</p>
+
+<p>theta1 : float, default 0.0
+    Model parameter theta1.</p>
+
+<p>theta2 : float, default 0.5
+    Model parameter theta2.</p>
+
+<p>theta3 : float, optional
+    Model parameter theta3.</p>
+
+<p>seed : int, optional
+    Random seed.</p>
+
+<h2 id="returns">Returns</h2>
+
+<p>pd.DataFrame
+    Simulation results as a DataFrame for Excel.</p>
+
+<hr />
+
+<p>xlwings lite docstring (for Excel help):
+Run scenario simulation from Excel using the Techtonique API.</p>
+
+<ul>
+<li>model: Simulation model (default: GBM).</li>
+<li>n: Number of scenarios (default: 10).</li>
+<li>horizon: Simulation horizon (default: 5).</li>
+<li>frequency: Frequency (default: quarterly).</li>
+<li>x0: Initial value (default: 1.0).</li>
+<li>theta1: Model parameter theta1 (default: 0.0).</li>
+<li>theta2: Model parameter theta2 (default: 0.5).</li>
+<li>theta3: Model parameter theta3 (optional).</li>
+<li>seed: Random seed (optional).
+Returns: Simulation results as a table for Excel.</li>
+</ul>
 </div>
 
 
