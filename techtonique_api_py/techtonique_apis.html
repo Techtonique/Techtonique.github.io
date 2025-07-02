@@ -27,6 +27,9 @@
             <h2>Submodules</h2>
             <ul>
                     <li><a href="techtonique_apis/techto_forecast.html">techto_forecast</a></li>
+                    <li><a href="techtonique_apis/techto_reserving.html">techto_reserving</a></li>
+                    <li><a href="techtonique_apis/techto_simulation.html">techto_simulation</a></li>
+                    <li><a href="techtonique_apis/techto_survival.html">techto_survival</a></li>
             </ul>
 
             <h2>API Documentation</h2>            
@@ -64,6 +67,18 @@
             </li>
             <li>
             </li>
+            <li>
+            </li>
+            <li>
+            </li>
+            <li>
+            </li>
+            <li>
+            </li>
+            <li>
+            </li>
+            <li>
+            </li>
     </ul>
 
 
@@ -85,11 +100,21 @@ techtonique_apis    </h1>
 
                         <label class="view-source-button" for="mod-techtonique_apis-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techtonique_apis</span><span class="w"> </span><span class="kn">import</span> <span class="n">TechtoniqueAPI</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techto_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">techto_forecast</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a>
-</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TechtoniqueAPI&quot;</span><span class="p">,</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a>           <span class="s2">&quot;techto_forecast&quot;</span><span class="p">]</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techtonique_apis</span><span class="w"> </span><span class="kn">import</span> <span class="n">TechtoniqueAPI</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techto_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">techto_forecast</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techto_ml</span><span class="w"> </span><span class="kn">import</span> <span class="n">techto_mlclassification</span><span class="p">,</span> <span class="n">techto_mlregression</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techto_reserving</span><span class="w"> </span><span class="kn">import</span> <span class="n">techto_reserving</span><span class="p">,</span> <span class="n">techto_mlreserving</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techto_simulation</span><span class="w"> </span><span class="kn">import</span> <span class="n">techto_simulation</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.techto_survival</span><span class="w"> </span><span class="kn">import</span> <span class="n">techto_survival</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TechtoniqueAPI&quot;</span><span class="p">,</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>           <span class="s2">&quot;techto_forecast&quot;</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>           <span class="s2">&quot;techto_mlclassification&quot;</span><span class="p">,</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>           <span class="s2">&quot;techto_mlregression&quot;</span><span class="p">,</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>           <span class="s2">&quot;techto_reserving&quot;</span><span class="p">,</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>           <span class="s2">&quot;techto_mlreserving&quot;</span><span class="p">,</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>           <span class="s2">&quot;techto_simulation&quot;</span><span class="p">,</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>           <span class="s2">&quot;techto_survival&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -488,6 +513,316 @@ techtonique_apis    </h1>
 
 <p>pd.DataFrame
     The forecast results or simulation matrix as a DataFrame for Excel.</p>
+</div>
+
+
+                </section>
+                <section id="techto_mlclassification">
+                            <input id="techto_mlclassification-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@func</div>
+        <div class="decorator">@arg(&#39;df&#39;, index=False, doc=&#39;Excel range with columns for features and target.&#39;)</div>
+        <div class="decorator">@arg(&#39;base_model&#39;, doc=&#39;Classification model (default: &#34;RandomForestClassifier&#34;)&#39;)</div>
+        <div class="decorator">@arg(&#39;n_hidden_features&#39;, doc=&#39;Number of hidden features (default: 5)&#39;)</div>
+        <div class="decorator">@arg(&#39;predict_proba&#39;, doc=&#39;If TRUE, return class probabilities (default: FALSE)&#39;)</div>
+        <div class="decorator">@ret(index=False, doc=&#39;Classification predictions as a table for Excel&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">techto_mlclassification</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">base_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;RandomForestClassifier&#39;</span>,</span><span class="param">	<span class="n">n_hidden_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>,</span><span class="param">	<span class="n">predict_proba</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>:</span></span>
+
+                <label class="view-source-button" for="techto_mlclassification-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#techto_mlclassification"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="techto_mlclassification-10"><a href="#techto_mlclassification-10"><span class="linenos">10</span></a><span class="nd">@func</span>
+</span><span id="techto_mlclassification-11"><a href="#techto_mlclassification-11"><span class="linenos">11</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Excel range with columns for features and target.&quot;</span><span class="p">)</span>
+</span><span id="techto_mlclassification-12"><a href="#techto_mlclassification-12"><span class="linenos">12</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;base_model&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Classification model (default: &quot;RandomForestClassifier&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_mlclassification-13"><a href="#techto_mlclassification-13"><span class="linenos">13</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;n_hidden_features&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Number of hidden features (default: 5)&quot;</span><span class="p">)</span>
+</span><span id="techto_mlclassification-14"><a href="#techto_mlclassification-14"><span class="linenos">14</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;predict_proba&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;If TRUE, return class probabilities (default: FALSE)&quot;</span><span class="p">)</span>
+</span><span id="techto_mlclassification-15"><a href="#techto_mlclassification-15"><span class="linenos">15</span></a><span class="nd">@ret</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Classification predictions as a table for Excel&quot;</span><span class="p">)</span>
+</span><span id="techto_mlclassification-16"><a href="#techto_mlclassification-16"><span class="linenos">16</span></a><span class="k">def</span><span class="w"> </span><span class="nf">techto_mlclassification</span><span class="p">(</span>
+</span><span id="techto_mlclassification-17"><a href="#techto_mlclassification-17"><span class="linenos">17</span></a>    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+</span><span id="techto_mlclassification-18"><a href="#techto_mlclassification-18"><span class="linenos">18</span></a>    <span class="n">base_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RandomForestClassifier&quot;</span><span class="p">,</span>
+</span><span id="techto_mlclassification-19"><a href="#techto_mlclassification-19"><span class="linenos">19</span></a>    <span class="n">n_hidden_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+</span><span id="techto_mlclassification-20"><a href="#techto_mlclassification-20"><span class="linenos">20</span></a>    <span class="n">predict_proba</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="techto_mlclassification-21"><a href="#techto_mlclassification-21"><span class="linenos">21</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="techto_mlclassification-22"><a href="#techto_mlclassification-22"><span class="linenos">22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="techto_mlclassification-23"><a href="#techto_mlclassification-23"><span class="linenos">23</span></a><span class="sd">    Run sklearn-style classification on a table from Excel using the Techtonique API.</span>
+</span><span id="techto_mlclassification-24"><a href="#techto_mlclassification-24"><span class="linenos">24</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_mlclassification-25"><a href="#techto_mlclassification-25"><span class="linenos">25</span></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+</span><span id="techto_mlclassification-26"><a href="#techto_mlclassification-26"><span class="linenos">26</span></a>        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="techto_mlclassification-27"><a href="#techto_mlclassification-27"><span class="linenos">27</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">mlclassification</span><span class="p">(</span>
+</span><span id="techto_mlclassification-28"><a href="#techto_mlclassification-28"><span class="linenos">28</span></a>            <span class="n">file_path</span><span class="o">=</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="techto_mlclassification-29"><a href="#techto_mlclassification-29"><span class="linenos">29</span></a>            <span class="n">base_model</span><span class="o">=</span><span class="n">base_model</span><span class="p">,</span>
+</span><span id="techto_mlclassification-30"><a href="#techto_mlclassification-30"><span class="linenos">30</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
+</span><span id="techto_mlclassification-31"><a href="#techto_mlclassification-31"><span class="linenos">31</span></a>            <span class="n">predict_proba</span><span class="o">=</span><span class="n">predict_proba</span><span class="p">,</span>
+</span><span id="techto_mlclassification-32"><a href="#techto_mlclassification-32"><span class="linenos">32</span></a>        <span class="p">)</span>
+</span><span id="techto_mlclassification-33"><a href="#techto_mlclassification-33"><span class="linenos">33</span></a>    <span class="c1"># Adjust keys as needed based on API response</span>
+</span><span id="techto_mlclassification-34"><a href="#techto_mlclassification-34"><span class="linenos">34</span></a>    <span class="k">if</span> <span class="n">predict_proba</span> <span class="ow">and</span> <span class="s2">&quot;proba&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+</span><span id="techto_mlclassification-35"><a href="#techto_mlclassification-35"><span class="linenos">35</span></a>        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;proba&quot;</span><span class="p">])</span>
+</span><span id="techto_mlclassification-36"><a href="#techto_mlclassification-36"><span class="linenos">36</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">])</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run sklearn-style classification on a table from Excel using the Techtonique API.</p>
+</div>
+
+
+                </section>
+                <section id="techto_mlregression">
+                            <input id="techto_mlregression-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@func</div>
+        <div class="decorator">@arg(&#39;df&#39;, index=False, doc=&#39;Excel range with columns for features and target.&#39;)</div>
+        <div class="decorator">@arg(&#39;base_model&#39;, doc=&#39;Regression model (default: &#34;ElasticNet&#34;)&#39;)</div>
+        <div class="decorator">@arg(&#39;n_hidden_features&#39;, doc=&#39;Number of hidden features (default: 5)&#39;)</div>
+        <div class="decorator">@arg(&#39;return_pi&#39;, doc=&#39;If TRUE, return prediction intervals (default: TRUE)&#39;)</div>
+        <div class="decorator">@ret(index=False, doc=&#39;Regression predictions as a table for Excel&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">techto_mlregression</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">base_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ElasticNet&#39;</span>,</span><span class="param">	<span class="n">n_hidden_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>,</span><span class="param">	<span class="n">return_pi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>:</span></span>
+
+                <label class="view-source-button" for="techto_mlregression-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#techto_mlregression"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="techto_mlregression-39"><a href="#techto_mlregression-39"><span class="linenos">39</span></a><span class="nd">@func</span>
+</span><span id="techto_mlregression-40"><a href="#techto_mlregression-40"><span class="linenos">40</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Excel range with columns for features and target.&quot;</span><span class="p">)</span>
+</span><span id="techto_mlregression-41"><a href="#techto_mlregression-41"><span class="linenos">41</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;base_model&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Regression model (default: &quot;ElasticNet&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_mlregression-42"><a href="#techto_mlregression-42"><span class="linenos">42</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;n_hidden_features&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Number of hidden features (default: 5)&quot;</span><span class="p">)</span>
+</span><span id="techto_mlregression-43"><a href="#techto_mlregression-43"><span class="linenos">43</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;return_pi&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;If TRUE, return prediction intervals (default: TRUE)&quot;</span><span class="p">)</span>
+</span><span id="techto_mlregression-44"><a href="#techto_mlregression-44"><span class="linenos">44</span></a><span class="nd">@ret</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Regression predictions as a table for Excel&quot;</span><span class="p">)</span>
+</span><span id="techto_mlregression-45"><a href="#techto_mlregression-45"><span class="linenos">45</span></a><span class="k">def</span><span class="w"> </span><span class="nf">techto_mlregression</span><span class="p">(</span>
+</span><span id="techto_mlregression-46"><a href="#techto_mlregression-46"><span class="linenos">46</span></a>    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+</span><span id="techto_mlregression-47"><a href="#techto_mlregression-47"><span class="linenos">47</span></a>    <span class="n">base_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ElasticNet&quot;</span><span class="p">,</span>
+</span><span id="techto_mlregression-48"><a href="#techto_mlregression-48"><span class="linenos">48</span></a>    <span class="n">n_hidden_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+</span><span id="techto_mlregression-49"><a href="#techto_mlregression-49"><span class="linenos">49</span></a>    <span class="n">return_pi</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="techto_mlregression-50"><a href="#techto_mlregression-50"><span class="linenos">50</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="techto_mlregression-51"><a href="#techto_mlregression-51"><span class="linenos">51</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="techto_mlregression-52"><a href="#techto_mlregression-52"><span class="linenos">52</span></a><span class="sd">    Run regression on a table from Excel using the Techtonique API.</span>
+</span><span id="techto_mlregression-53"><a href="#techto_mlregression-53"><span class="linenos">53</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_mlregression-54"><a href="#techto_mlregression-54"><span class="linenos">54</span></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+</span><span id="techto_mlregression-55"><a href="#techto_mlregression-55"><span class="linenos">55</span></a>        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="techto_mlregression-56"><a href="#techto_mlregression-56"><span class="linenos">56</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">mlregression</span><span class="p">(</span>
+</span><span id="techto_mlregression-57"><a href="#techto_mlregression-57"><span class="linenos">57</span></a>            <span class="n">file_path</span><span class="o">=</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="techto_mlregression-58"><a href="#techto_mlregression-58"><span class="linenos">58</span></a>            <span class="n">base_model</span><span class="o">=</span><span class="n">base_model</span><span class="p">,</span>
+</span><span id="techto_mlregression-59"><a href="#techto_mlregression-59"><span class="linenos">59</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
+</span><span id="techto_mlregression-60"><a href="#techto_mlregression-60"><span class="linenos">60</span></a>            <span class="n">return_pi</span><span class="o">=</span><span class="n">return_pi</span><span class="p">,</span>
+</span><span id="techto_mlregression-61"><a href="#techto_mlregression-61"><span class="linenos">61</span></a>        <span class="p">)</span>
+</span><span id="techto_mlregression-62"><a href="#techto_mlregression-62"><span class="linenos">62</span></a>    <span class="k">if</span> <span class="n">return_pi</span><span class="p">:</span>
+</span><span id="techto_mlregression-63"><a href="#techto_mlregression-63"><span class="linenos">63</span></a>        <span class="k">return</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+</span><span id="techto_mlregression-64"><a href="#techto_mlregression-64"><span class="linenos">64</span></a>            <span class="s2">&quot;prediction&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">],</span>
+</span><span id="techto_mlregression-65"><a href="#techto_mlregression-65"><span class="linenos">65</span></a>            <span class="s2">&quot;lower&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;pi_lower&quot;</span><span class="p">],</span>
+</span><span id="techto_mlregression-66"><a href="#techto_mlregression-66"><span class="linenos">66</span></a>            <span class="s2">&quot;upper&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;pi_upper&quot;</span><span class="p">],</span>
+</span><span id="techto_mlregression-67"><a href="#techto_mlregression-67"><span class="linenos">67</span></a>        <span class="p">}))</span>
+</span><span id="techto_mlregression-68"><a href="#techto_mlregression-68"><span class="linenos">68</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+</span><span id="techto_mlregression-69"><a href="#techto_mlregression-69"><span class="linenos">69</span></a>        <span class="s2">&quot;prediction&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;y_pred&quot;</span><span class="p">]</span>
+</span><span id="techto_mlregression-70"><a href="#techto_mlregression-70"><span class="linenos">70</span></a>    <span class="p">}))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run regression on a table from Excel using the Techtonique API.</p>
+</div>
+
+
+                </section>
+                <section id="techto_reserving">
+                            <input id="techto_reserving-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@func</div>
+        <div class="decorator">@arg(&#39;df&#39;, index=False, doc=&#39;Excel range with reserving triangle data.&#39;)</div>
+        <div class="decorator">@arg(&#39;method&#39;, doc=&#39;Reserving method (default: &#34;chainladder&#34;)&#39;)</div>
+        <div class="decorator">@ret(index=False, doc=&#39;Reserving results as a table for Excel&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">techto_reserving</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;chainladder&#39;</span></span><span class="return-annotation">) -> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>:</span></span>
+
+                <label class="view-source-button" for="techto_reserving-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#techto_reserving"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="techto_reserving-10"><a href="#techto_reserving-10"><span class="linenos">10</span></a><span class="nd">@func</span>
+</span><span id="techto_reserving-11"><a href="#techto_reserving-11"><span class="linenos">11</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Excel range with reserving triangle data.&quot;</span><span class="p">)</span>
+</span><span id="techto_reserving-12"><a href="#techto_reserving-12"><span class="linenos">12</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;method&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Reserving method (default: &quot;chainladder&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_reserving-13"><a href="#techto_reserving-13"><span class="linenos">13</span></a><span class="nd">@ret</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Reserving results as a table for Excel&quot;</span><span class="p">)</span>
+</span><span id="techto_reserving-14"><a href="#techto_reserving-14"><span class="linenos">14</span></a><span class="k">def</span><span class="w"> </span><span class="nf">techto_reserving</span><span class="p">(</span>
+</span><span id="techto_reserving-15"><a href="#techto_reserving-15"><span class="linenos">15</span></a>    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+</span><span id="techto_reserving-16"><a href="#techto_reserving-16"><span class="linenos">16</span></a>    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;chainladder&quot;</span><span class="p">,</span>
+</span><span id="techto_reserving-17"><a href="#techto_reserving-17"><span class="linenos">17</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="techto_reserving-18"><a href="#techto_reserving-18"><span class="linenos">18</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="techto_reserving-19"><a href="#techto_reserving-19"><span class="linenos">19</span></a><span class="sd">    Run classical reserving on a triangle from Excel using the Techtonique API.</span>
+</span><span id="techto_reserving-20"><a href="#techto_reserving-20"><span class="linenos">20</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_reserving-21"><a href="#techto_reserving-21"><span class="linenos">21</span></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+</span><span id="techto_reserving-22"><a href="#techto_reserving-22"><span class="linenos">22</span></a>        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="techto_reserving-23"><a href="#techto_reserving-23"><span class="linenos">23</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">reserving</span><span class="p">(</span>
+</span><span id="techto_reserving-24"><a href="#techto_reserving-24"><span class="linenos">24</span></a>            <span class="n">file_path</span><span class="o">=</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="techto_reserving-25"><a href="#techto_reserving-25"><span class="linenos">25</span></a>            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+</span><span id="techto_reserving-26"><a href="#techto_reserving-26"><span class="linenos">26</span></a>        <span class="p">)</span>
+</span><span id="techto_reserving-27"><a href="#techto_reserving-27"><span class="linenos">27</span></a>    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;chainladder&quot;</span><span class="p">:</span>
+</span><span id="techto_reserving-28"><a href="#techto_reserving-28"><span class="linenos">28</span></a>        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span><span id="techto_reserving-29"><a href="#techto_reserving-29"><span class="linenos">29</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Origin&quot;</span><span class="p">],</span>
+</span><span id="techto_reserving-30"><a href="#techto_reserving-30"><span class="linenos">30</span></a>                         <span class="s2">&quot;IBNR&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;IBNR&quot;</span><span class="p">],</span>
+</span><span id="techto_reserving-31"><a href="#techto_reserving-31"><span class="linenos">31</span></a>                         <span class="s2">&quot;IBNR 95&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;IBNR 95%&quot;</span><span class="p">]})</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run classical reserving on a triangle from Excel using the Techtonique API.</p>
+</div>
+
+
+                </section>
+                <section id="techto_mlreserving">
+                            <input id="techto_mlreserving-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@func</div>
+        <div class="decorator">@arg(&#39;df&#39;, index=False, doc=&#39;Excel range with reserving triangle data.&#39;)</div>
+        <div class="decorator">@arg(&#39;method&#39;, doc=&#39;ML reserving method (default: &#34;RidgeCV&#34;)&#39;)</div>
+        <div class="decorator">@ret(index=False, doc=&#39;ML reserving results as a table for Excel&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">techto_mlreserving</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;RidgeCV&#39;</span></span><span class="return-annotation">) -> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>:</span></span>
+
+                <label class="view-source-button" for="techto_mlreserving-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#techto_mlreserving"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="techto_mlreserving-34"><a href="#techto_mlreserving-34"><span class="linenos">34</span></a><span class="nd">@func</span>
+</span><span id="techto_mlreserving-35"><a href="#techto_mlreserving-35"><span class="linenos">35</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Excel range with reserving triangle data.&quot;</span><span class="p">)</span>
+</span><span id="techto_mlreserving-36"><a href="#techto_mlreserving-36"><span class="linenos">36</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;method&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;ML reserving method (default: &quot;RidgeCV&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_mlreserving-37"><a href="#techto_mlreserving-37"><span class="linenos">37</span></a><span class="nd">@ret</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;ML reserving results as a table for Excel&quot;</span><span class="p">)</span>
+</span><span id="techto_mlreserving-38"><a href="#techto_mlreserving-38"><span class="linenos">38</span></a><span class="k">def</span><span class="w"> </span><span class="nf">techto_mlreserving</span><span class="p">(</span>
+</span><span id="techto_mlreserving-39"><a href="#techto_mlreserving-39"><span class="linenos">39</span></a>    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+</span><span id="techto_mlreserving-40"><a href="#techto_mlreserving-40"><span class="linenos">40</span></a>    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RidgeCV&quot;</span><span class="p">,</span>
+</span><span id="techto_mlreserving-41"><a href="#techto_mlreserving-41"><span class="linenos">41</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="techto_mlreserving-42"><a href="#techto_mlreserving-42"><span class="linenos">42</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="techto_mlreserving-43"><a href="#techto_mlreserving-43"><span class="linenos">43</span></a><span class="sd">    Run ML reserving on a triangle from Excel using the Techtonique API.</span>
+</span><span id="techto_mlreserving-44"><a href="#techto_mlreserving-44"><span class="linenos">44</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_mlreserving-45"><a href="#techto_mlreserving-45"><span class="linenos">45</span></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+</span><span id="techto_mlreserving-46"><a href="#techto_mlreserving-46"><span class="linenos">46</span></a>        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="techto_mlreserving-47"><a href="#techto_mlreserving-47"><span class="linenos">47</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">mlreserving</span><span class="p">(</span>
+</span><span id="techto_mlreserving-48"><a href="#techto_mlreserving-48"><span class="linenos">48</span></a>            <span class="n">file_path</span><span class="o">=</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="techto_mlreserving-49"><a href="#techto_mlreserving-49"><span class="linenos">49</span></a>            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+</span><span id="techto_mlreserving-50"><a href="#techto_mlreserving-50"><span class="linenos">50</span></a>        <span class="p">)</span>
+</span><span id="techto_mlreserving-51"><a href="#techto_mlreserving-51"><span class="linenos">51</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;origin&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;Origin&quot;</span><span class="p">],</span>
+</span><span id="techto_mlreserving-52"><a href="#techto_mlreserving-52"><span class="linenos">52</span></a>                         <span class="s2">&quot;IBNR&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;IBNR&quot;</span><span class="p">],</span>
+</span><span id="techto_mlreserving-53"><a href="#techto_mlreserving-53"><span class="linenos">53</span></a>                         <span class="s2">&quot;IBNR 95&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;IBNR 95%&quot;</span><span class="p">]})</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run ML reserving on a triangle from Excel using the Techtonique API.</p>
+</div>
+
+
+                </section>
+                <section id="techto_simulation">
+                            <input id="techto_simulation-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@func</div>
+        <div class="decorator">@arg(&#39;model&#39;, doc=&#39;Simulation model (default: &#34;GBM&#34;)&#39;)</div>
+        <div class="decorator">@arg(&#39;n&#39;, doc=&#39;Number of scenarios (default: 10)&#39;)</div>
+        <div class="decorator">@arg(&#39;horizon&#39;, doc=&#39;Simulation horizon (default: 5)&#39;)</div>
+        <div class="decorator">@arg(&#39;frequency&#39;, doc=&#39;Frequency (default: &#34;quarterly&#34;)&#39;)</div>
+        <div class="decorator">@arg(&#39;x0&#39;, doc=&#39;Initial value (default: 1.0)&#39;)</div>
+        <div class="decorator">@arg(&#39;theta1&#39;, doc=&#39;Model parameter theta1 (default: 0.0)&#39;)</div>
+        <div class="decorator">@arg(&#39;theta2&#39;, doc=&#39;Model parameter theta2 (default: 0.5)&#39;)</div>
+        <div class="decorator">@arg(&#39;theta3&#39;, doc=&#39;Model parameter theta3 (optional)&#39;)</div>
+        <div class="decorator">@arg(&#39;seed&#39;, doc=&#39;Random seed (optional)&#39;)</div>
+        <div class="decorator">@ret(index=False, doc=&#39;Simulation results as a table for Excel&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">techto_simulation</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;GBM&#39;</span>,</span><span class="param">	<span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>,</span><span class="param">	<span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>,</span><span class="param">	<span class="n">frequency</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;quarterly&#39;</span>,</span><span class="param">	<span class="n">x0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>,</span><span class="param">	<span class="n">theta1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>,</span><span class="param">	<span class="n">theta2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>,</span><span class="param">	<span class="n">theta3</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span>,</span><span class="param">	<span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>:</span></span>
+
+                <label class="view-source-button" for="techto_simulation-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#techto_simulation"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="techto_simulation-9"><a href="#techto_simulation-9"><span class="linenos"> 9</span></a><span class="nd">@func</span>
+</span><span id="techto_simulation-10"><a href="#techto_simulation-10"><span class="linenos">10</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Simulation model (default: &quot;GBM&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_simulation-11"><a href="#techto_simulation-11"><span class="linenos">11</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Number of scenarios (default: 10)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-12"><a href="#techto_simulation-12"><span class="linenos">12</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;horizon&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Simulation horizon (default: 5)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-13"><a href="#techto_simulation-13"><span class="linenos">13</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Frequency (default: &quot;quarterly&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_simulation-14"><a href="#techto_simulation-14"><span class="linenos">14</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;x0&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Initial value (default: 1.0)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-15"><a href="#techto_simulation-15"><span class="linenos">15</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;theta1&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Model parameter theta1 (default: 0.0)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-16"><a href="#techto_simulation-16"><span class="linenos">16</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;theta2&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Model parameter theta2 (default: 0.5)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-17"><a href="#techto_simulation-17"><span class="linenos">17</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;theta3&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Model parameter theta3 (optional)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-18"><a href="#techto_simulation-18"><span class="linenos">18</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Random seed (optional)&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-19"><a href="#techto_simulation-19"><span class="linenos">19</span></a><span class="nd">@ret</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Simulation results as a table for Excel&quot;</span><span class="p">)</span>
+</span><span id="techto_simulation-20"><a href="#techto_simulation-20"><span class="linenos">20</span></a><span class="k">def</span><span class="w"> </span><span class="nf">techto_simulation</span><span class="p">(</span>
+</span><span id="techto_simulation-21"><a href="#techto_simulation-21"><span class="linenos">21</span></a>    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;GBM&quot;</span><span class="p">,</span>
+</span><span id="techto_simulation-22"><a href="#techto_simulation-22"><span class="linenos">22</span></a>    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+</span><span id="techto_simulation-23"><a href="#techto_simulation-23"><span class="linenos">23</span></a>    <span class="n">horizon</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+</span><span id="techto_simulation-24"><a href="#techto_simulation-24"><span class="linenos">24</span></a>    <span class="n">frequency</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;quarterly&quot;</span><span class="p">,</span>
+</span><span id="techto_simulation-25"><a href="#techto_simulation-25"><span class="linenos">25</span></a>    <span class="n">x0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+</span><span id="techto_simulation-26"><a href="#techto_simulation-26"><span class="linenos">26</span></a>    <span class="n">theta1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+</span><span id="techto_simulation-27"><a href="#techto_simulation-27"><span class="linenos">27</span></a>    <span class="n">theta2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+</span><span id="techto_simulation-28"><a href="#techto_simulation-28"><span class="linenos">28</span></a>    <span class="n">theta3</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="techto_simulation-29"><a href="#techto_simulation-29"><span class="linenos">29</span></a>    <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="techto_simulation-30"><a href="#techto_simulation-30"><span class="linenos">30</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="techto_simulation-31"><a href="#techto_simulation-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="techto_simulation-32"><a href="#techto_simulation-32"><span class="linenos">32</span></a><span class="sd">    Run scenario simulation using the Techtonique API.</span>
+</span><span id="techto_simulation-33"><a href="#techto_simulation-33"><span class="linenos">33</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_simulation-34"><a href="#techto_simulation-34"><span class="linenos">34</span></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">simulate_scenario</span><span class="p">(</span>
+</span><span id="techto_simulation-35"><a href="#techto_simulation-35"><span class="linenos">35</span></a>        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+</span><span id="techto_simulation-36"><a href="#techto_simulation-36"><span class="linenos">36</span></a>        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+</span><span id="techto_simulation-37"><a href="#techto_simulation-37"><span class="linenos">37</span></a>        <span class="n">horizon</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span>
+</span><span id="techto_simulation-38"><a href="#techto_simulation-38"><span class="linenos">38</span></a>        <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
+</span><span id="techto_simulation-39"><a href="#techto_simulation-39"><span class="linenos">39</span></a>        <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span>
+</span><span id="techto_simulation-40"><a href="#techto_simulation-40"><span class="linenos">40</span></a>        <span class="n">theta1</span><span class="o">=</span><span class="n">theta1</span><span class="p">,</span>
+</span><span id="techto_simulation-41"><a href="#techto_simulation-41"><span class="linenos">41</span></a>        <span class="n">theta2</span><span class="o">=</span><span class="n">theta2</span><span class="p">,</span>
+</span><span id="techto_simulation-42"><a href="#techto_simulation-42"><span class="linenos">42</span></a>        <span class="n">theta3</span><span class="o">=</span><span class="n">theta3</span><span class="p">,</span>
+</span><span id="techto_simulation-43"><a href="#techto_simulation-43"><span class="linenos">43</span></a>        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="techto_simulation-44"><a href="#techto_simulation-44"><span class="linenos">44</span></a>    <span class="p">)</span>
+</span><span id="techto_simulation-45"><a href="#techto_simulation-45"><span class="linenos">45</span></a>    <span class="c1"># Adjust as needed based on API response structure</span>
+</span><span id="techto_simulation-46"><a href="#techto_simulation-46"><span class="linenos">46</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;sims&quot;</span><span class="p">])</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run scenario simulation using the Techtonique API.</p>
+</div>
+
+
+                </section>
+                <section id="techto_survival">
+                            <input id="techto_survival-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@func</div>
+        <div class="decorator">@arg(&#39;df&#39;, index=False, doc=&#39;Excel range with columns for survival data.&#39;)</div>
+        <div class="decorator">@arg(&#39;method&#39;, doc=&#39;Survival analysis method (default: &#34;km&#34;)&#39;)</div>
+        <div class="decorator">@arg(&#39;patient_id&#39;, doc=&#34;(For machine learning &#39;method&#39;s) Patient ID for individual survival curve&#34;)</div>
+        <div class="decorator">@ret(index=False, doc=&#39;Survival curve results as a table for Excel&#39;)</div>
+
+        <span class="def">def</span>
+        <span class="name">techto_survival</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">df</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>,</span><span class="param">	<span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;km&#39;</span>,</span><span class="param">	<span class="n">patient_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>:</span></span>
+
+                <label class="view-source-button" for="techto_survival-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#techto_survival"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="techto_survival-10"><a href="#techto_survival-10"><span class="linenos">10</span></a><span class="nd">@func</span>
+</span><span id="techto_survival-11"><a href="#techto_survival-11"><span class="linenos">11</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Excel range with columns for survival data.&quot;</span><span class="p">)</span>
+</span><span id="techto_survival-12"><a href="#techto_survival-12"><span class="linenos">12</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;method&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s1">&#39;Survival analysis method (default: &quot;km&quot;)&#39;</span><span class="p">)</span>
+</span><span id="techto_survival-13"><a href="#techto_survival-13"><span class="linenos">13</span></a><span class="nd">@arg</span><span class="p">(</span><span class="s2">&quot;patient_id&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;(For machine learning &#39;method&#39;s) Patient ID for individual survival curve&quot;</span><span class="p">)</span>
+</span><span id="techto_survival-14"><a href="#techto_survival-14"><span class="linenos">14</span></a><span class="nd">@ret</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Survival curve results as a table for Excel&quot;</span><span class="p">)</span>
+</span><span id="techto_survival-15"><a href="#techto_survival-15"><span class="linenos">15</span></a><span class="k">def</span><span class="w"> </span><span class="nf">techto_survival</span><span class="p">(</span>
+</span><span id="techto_survival-16"><a href="#techto_survival-16"><span class="linenos">16</span></a>    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+</span><span id="techto_survival-17"><a href="#techto_survival-17"><span class="linenos">17</span></a>    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;km&quot;</span><span class="p">,</span>
+</span><span id="techto_survival-18"><a href="#techto_survival-18"><span class="linenos">18</span></a>    <span class="n">patient_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="techto_survival-19"><a href="#techto_survival-19"><span class="linenos">19</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="techto_survival-20"><a href="#techto_survival-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="techto_survival-21"><a href="#techto_survival-21"><span class="linenos">21</span></a><span class="sd">    Run survival analysis on a table from Excel using the Techtonique API.</span>
+</span><span id="techto_survival-22"><a href="#techto_survival-22"><span class="linenos">22</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="techto_survival-23"><a href="#techto_survival-23"><span class="linenos">23</span></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+</span><span id="techto_survival-24"><a href="#techto_survival-24"><span class="linenos">24</span></a>        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="techto_survival-25"><a href="#techto_survival-25"><span class="linenos">25</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">survival_curve</span><span class="p">(</span>
+</span><span id="techto_survival-26"><a href="#techto_survival-26"><span class="linenos">26</span></a>            <span class="n">file_path</span><span class="o">=</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="techto_survival-27"><a href="#techto_survival-27"><span class="linenos">27</span></a>            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+</span><span id="techto_survival-28"><a href="#techto_survival-28"><span class="linenos">28</span></a>            <span class="n">patient_id</span><span class="o">=</span><span class="n">patient_id</span><span class="p">,</span>
+</span><span id="techto_survival-29"><a href="#techto_survival-29"><span class="linenos">29</span></a>        <span class="p">)</span>
+</span><span id="techto_survival-30"><a href="#techto_survival-30"><span class="linenos">30</span></a>    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Run survival analysis on a table from Excel using the Techtonique API.</p>
 </div>
 
 
