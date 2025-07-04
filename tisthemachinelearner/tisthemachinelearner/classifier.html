@@ -83,52 +83,53 @@
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">    - **kwargs: Additional parameters to pass to the scikit-learn model.</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">    Examples:</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        ```python</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        from sklearn.model_selection import train_test_split</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        from sklearn.datasets import load_breast_cancer</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        from tisthemachinelearner import Classifier</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        X, y = load_breast_cancer(return_X_y=True)</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        clf = Classifier(&quot;LogisticRegression&quot;, random_state=42)</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        print(clf.predict(X_test))</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        clf = Classifier(&quot;RandomForestClassifier&quot;, n_estimators=100, random_state=42)</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">        print(clf.predict(X_test))</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        ```</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">calibrate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom</span><span class="p">:</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">CustomClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_kwargs</span><span class="p">)</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span> <span class="o">=</span> <span class="n">calibrate</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span> 
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.&quot;&quot;&quot;</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">WrappedCalibratedClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="s1">&#39;prefit&#39;</span><span class="p">)</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="bp">self</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        Predict class probabilities for the input data.</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        Parameters:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        - X (array-like): Input data features.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        Returns:</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        - array-like: Predicted class probabilities.</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">    </span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        ```python</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        from sklearn.model_selection import train_test_split</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        from sklearn.datasets import load_breast_cancer</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        from tisthemachinelearner import Classifier</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        X, y = load_breast_cancer(return_X_y=True)</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        clf = Classifier(&quot;LogisticRegression&quot;, random_state=42)</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        print(clf.predict(X_test))</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        clf = Classifier(&quot;RandomForestClassifier&quot;, n_estimators=100, random_state=42)</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">        print(clf.predict(X_test))</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">        ```</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">calibrate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom</span><span class="p">:</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">CustomClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_kwargs</span><span class="p">)</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span> <span class="o">=</span> <span class="n">calibrate</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span> 
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.&quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">WrappedCalibratedClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="s1">&#39;prefit&#39;</span><span class="p">)</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="bp">self</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        Predict class probabilities for the input data.</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        Parameters:</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        - X (array-like): Input data features.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        Returns:</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        - array-like: Predicted class probabilities.</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -153,52 +154,53 @@
 </span><span id="Classifier-14"><a href="#Classifier-14"><span class="linenos">14</span></a><span class="sd">    - **kwargs: Additional parameters to pass to the scikit-learn model.</span>
 </span><span id="Classifier-15"><a href="#Classifier-15"><span class="linenos">15</span></a>
 </span><span id="Classifier-16"><a href="#Classifier-16"><span class="linenos">16</span></a><span class="sd">    Examples:</span>
-</span><span id="Classifier-17"><a href="#Classifier-17"><span class="linenos">17</span></a><span class="sd">        ```python</span>
-</span><span id="Classifier-18"><a href="#Classifier-18"><span class="linenos">18</span></a><span class="sd">        from sklearn.model_selection import train_test_split</span>
-</span><span id="Classifier-19"><a href="#Classifier-19"><span class="linenos">19</span></a><span class="sd">        from sklearn.datasets import load_breast_cancer</span>
-</span><span id="Classifier-20"><a href="#Classifier-20"><span class="linenos">20</span></a><span class="sd">        from tisthemachinelearner import Classifier</span>
-</span><span id="Classifier-21"><a href="#Classifier-21"><span class="linenos">21</span></a>
-</span><span id="Classifier-22"><a href="#Classifier-22"><span class="linenos">22</span></a><span class="sd">        X, y = load_breast_cancer(return_X_y=True)</span>
-</span><span id="Classifier-23"><a href="#Classifier-23"><span class="linenos">23</span></a><span class="sd">        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
-</span><span id="Classifier-24"><a href="#Classifier-24"><span class="linenos">24</span></a>
-</span><span id="Classifier-25"><a href="#Classifier-25"><span class="linenos">25</span></a><span class="sd">        clf = Classifier(&quot;LogisticRegression&quot;, random_state=42)</span>
-</span><span id="Classifier-26"><a href="#Classifier-26"><span class="linenos">26</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
-</span><span id="Classifier-27"><a href="#Classifier-27"><span class="linenos">27</span></a><span class="sd">        print(clf.predict(X_test))</span>
-</span><span id="Classifier-28"><a href="#Classifier-28"><span class="linenos">28</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
-</span><span id="Classifier-29"><a href="#Classifier-29"><span class="linenos">29</span></a>
-</span><span id="Classifier-30"><a href="#Classifier-30"><span class="linenos">30</span></a><span class="sd">        clf = Classifier(&quot;RandomForestClassifier&quot;, n_estimators=100, random_state=42)</span>
-</span><span id="Classifier-31"><a href="#Classifier-31"><span class="linenos">31</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
-</span><span id="Classifier-32"><a href="#Classifier-32"><span class="linenos">32</span></a><span class="sd">        print(clf.predict(X_test))</span>
-</span><span id="Classifier-33"><a href="#Classifier-33"><span class="linenos">33</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
-</span><span id="Classifier-34"><a href="#Classifier-34"><span class="linenos">34</span></a><span class="sd">        ```</span>
-</span><span id="Classifier-35"><a href="#Classifier-35"><span class="linenos">35</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="Classifier-36"><a href="#Classifier-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">calibrate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="Classifier-37"><a href="#Classifier-37"><span class="linenos">37</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="Classifier-38"><a href="#Classifier-38"><span class="linenos">38</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom</span><span class="p">:</span>
-</span><span id="Classifier-39"><a href="#Classifier-39"><span class="linenos">39</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">CustomClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_kwargs</span><span class="p">)</span>
-</span><span id="Classifier-40"><a href="#Classifier-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span> <span class="o">=</span> <span class="n">calibrate</span>
-</span><span id="Classifier-41"><a href="#Classifier-41"><span class="linenos">41</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span> 
-</span><span id="Classifier-42"><a href="#Classifier-42"><span class="linenos">42</span></a>            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-</span><span id="Classifier-43"><a href="#Classifier-43"><span class="linenos">43</span></a>
-</span><span id="Classifier-44"><a href="#Classifier-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="Classifier-45"><a href="#Classifier-45"><span class="linenos">45</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.&quot;&quot;&quot;</span>
-</span><span id="Classifier-46"><a href="#Classifier-46"><span class="linenos">46</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="Classifier-47"><a href="#Classifier-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span>
-</span><span id="Classifier-48"><a href="#Classifier-48"><span class="linenos">48</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">WrappedCalibratedClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="s1">&#39;prefit&#39;</span><span class="p">)</span>
-</span><span id="Classifier-49"><a href="#Classifier-49"><span class="linenos">49</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span id="Classifier-50"><a href="#Classifier-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="bp">self</span>
-</span><span id="Classifier-51"><a href="#Classifier-51"><span class="linenos">51</span></a>    
-</span><span id="Classifier-52"><a href="#Classifier-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="Classifier-53"><a href="#Classifier-53"><span class="linenos">53</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Classifier-54"><a href="#Classifier-54"><span class="linenos">54</span></a><span class="sd">        Predict class probabilities for the input data.</span>
-</span><span id="Classifier-55"><a href="#Classifier-55"><span class="linenos">55</span></a>
-</span><span id="Classifier-56"><a href="#Classifier-56"><span class="linenos">56</span></a><span class="sd">        Parameters:</span>
-</span><span id="Classifier-57"><a href="#Classifier-57"><span class="linenos">57</span></a><span class="sd">        - X (array-like): Input data features.</span>
-</span><span id="Classifier-58"><a href="#Classifier-58"><span class="linenos">58</span></a>
-</span><span id="Classifier-59"><a href="#Classifier-59"><span class="linenos">59</span></a><span class="sd">        Returns:</span>
-</span><span id="Classifier-60"><a href="#Classifier-60"><span class="linenos">60</span></a><span class="sd">        - array-like: Predicted class probabilities.</span>
-</span><span id="Classifier-61"><a href="#Classifier-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Classifier-62"><a href="#Classifier-62"><span class="linenos">62</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="Classifier-17"><a href="#Classifier-17"><span class="linenos">17</span></a><span class="sd">    </span>
+</span><span id="Classifier-18"><a href="#Classifier-18"><span class="linenos">18</span></a><span class="sd">        ```python</span>
+</span><span id="Classifier-19"><a href="#Classifier-19"><span class="linenos">19</span></a><span class="sd">        from sklearn.model_selection import train_test_split</span>
+</span><span id="Classifier-20"><a href="#Classifier-20"><span class="linenos">20</span></a><span class="sd">        from sklearn.datasets import load_breast_cancer</span>
+</span><span id="Classifier-21"><a href="#Classifier-21"><span class="linenos">21</span></a><span class="sd">        from tisthemachinelearner import Classifier</span>
+</span><span id="Classifier-22"><a href="#Classifier-22"><span class="linenos">22</span></a>
+</span><span id="Classifier-23"><a href="#Classifier-23"><span class="linenos">23</span></a><span class="sd">        X, y = load_breast_cancer(return_X_y=True)</span>
+</span><span id="Classifier-24"><a href="#Classifier-24"><span class="linenos">24</span></a><span class="sd">        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</span>
+</span><span id="Classifier-25"><a href="#Classifier-25"><span class="linenos">25</span></a>
+</span><span id="Classifier-26"><a href="#Classifier-26"><span class="linenos">26</span></a><span class="sd">        clf = Classifier(&quot;LogisticRegression&quot;, random_state=42)</span>
+</span><span id="Classifier-27"><a href="#Classifier-27"><span class="linenos">27</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
+</span><span id="Classifier-28"><a href="#Classifier-28"><span class="linenos">28</span></a><span class="sd">        print(clf.predict(X_test))</span>
+</span><span id="Classifier-29"><a href="#Classifier-29"><span class="linenos">29</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
+</span><span id="Classifier-30"><a href="#Classifier-30"><span class="linenos">30</span></a>
+</span><span id="Classifier-31"><a href="#Classifier-31"><span class="linenos">31</span></a><span class="sd">        clf = Classifier(&quot;RandomForestClassifier&quot;, n_estimators=100, random_state=42)</span>
+</span><span id="Classifier-32"><a href="#Classifier-32"><span class="linenos">32</span></a><span class="sd">        clf.fit(X_train, y_train)</span>
+</span><span id="Classifier-33"><a href="#Classifier-33"><span class="linenos">33</span></a><span class="sd">        print(clf.predict(X_test))</span>
+</span><span id="Classifier-34"><a href="#Classifier-34"><span class="linenos">34</span></a><span class="sd">        print(clf.score(X_test, y_test))</span>
+</span><span id="Classifier-35"><a href="#Classifier-35"><span class="linenos">35</span></a><span class="sd">        ```</span>
+</span><span id="Classifier-36"><a href="#Classifier-36"><span class="linenos">36</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="Classifier-37"><a href="#Classifier-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">calibrate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="Classifier-38"><a href="#Classifier-38"><span class="linenos">38</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">base_model</span><span class="p">,</span> <span class="n">custom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="Classifier-39"><a href="#Classifier-39"><span class="linenos">39</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom</span><span class="p">:</span>
+</span><span id="Classifier-40"><a href="#Classifier-40"><span class="linenos">40</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">CustomClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_kwargs</span><span class="p">)</span>
+</span><span id="Classifier-41"><a href="#Classifier-41"><span class="linenos">41</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span> <span class="o">=</span> <span class="n">calibrate</span>
+</span><span id="Classifier-42"><a href="#Classifier-42"><span class="linenos">42</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span> 
+</span><span id="Classifier-43"><a href="#Classifier-43"><span class="linenos">43</span></a>            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</span><span id="Classifier-44"><a href="#Classifier-44"><span class="linenos">44</span></a>
+</span><span id="Classifier-45"><a href="#Classifier-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="Classifier-46"><a href="#Classifier-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.&quot;&quot;&quot;</span>
+</span><span id="Classifier-47"><a href="#Classifier-47"><span class="linenos">47</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="Classifier-48"><a href="#Classifier-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span>
+</span><span id="Classifier-49"><a href="#Classifier-49"><span class="linenos">49</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">WrappedCalibratedClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="s1">&#39;prefit&#39;</span><span class="p">)</span>
+</span><span id="Classifier-50"><a href="#Classifier-50"><span class="linenos">50</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="Classifier-51"><a href="#Classifier-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="bp">self</span>
+</span><span id="Classifier-52"><a href="#Classifier-52"><span class="linenos">52</span></a>    
+</span><span id="Classifier-53"><a href="#Classifier-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="Classifier-54"><a href="#Classifier-54"><span class="linenos">54</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Classifier-55"><a href="#Classifier-55"><span class="linenos">55</span></a><span class="sd">        Predict class probabilities for the input data.</span>
+</span><span id="Classifier-56"><a href="#Classifier-56"><span class="linenos">56</span></a>
+</span><span id="Classifier-57"><a href="#Classifier-57"><span class="linenos">57</span></a><span class="sd">        Parameters:</span>
+</span><span id="Classifier-58"><a href="#Classifier-58"><span class="linenos">58</span></a><span class="sd">        - X (array-like): Input data features.</span>
+</span><span id="Classifier-59"><a href="#Classifier-59"><span class="linenos">59</span></a>
+</span><span id="Classifier-60"><a href="#Classifier-60"><span class="linenos">60</span></a><span class="sd">        Returns:</span>
+</span><span id="Classifier-61"><a href="#Classifier-61"><span class="linenos">61</span></a><span class="sd">        - array-like: Predicted class probabilities.</span>
+</span><span id="Classifier-62"><a href="#Classifier-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Classifier-63"><a href="#Classifier-63"><span class="linenos">63</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -245,13 +247,13 @@
 
     </div>
     <a class="headerlink" href="#Classifier.fit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Classifier.fit-44"><a href="#Classifier.fit-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="Classifier.fit-45"><a href="#Classifier.fit-45"><span class="linenos">45</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.&quot;&quot;&quot;</span>
-</span><span id="Classifier.fit-46"><a href="#Classifier.fit-46"><span class="linenos">46</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="Classifier.fit-47"><a href="#Classifier.fit-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span>
-</span><span id="Classifier.fit-48"><a href="#Classifier.fit-48"><span class="linenos">48</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">WrappedCalibratedClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="s1">&#39;prefit&#39;</span><span class="p">)</span>
-</span><span id="Classifier.fit-49"><a href="#Classifier.fit-49"><span class="linenos">49</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span id="Classifier.fit-50"><a href="#Classifier.fit-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="bp">self</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Classifier.fit-45"><a href="#Classifier.fit-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="Classifier.fit-46"><a href="#Classifier.fit-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.&quot;&quot;&quot;</span>
+</span><span id="Classifier.fit-47"><a href="#Classifier.fit-47"><span class="linenos">47</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="Classifier.fit-48"><a href="#Classifier.fit-48"><span class="linenos">48</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calibrate</span><span class="p">:</span>
+</span><span id="Classifier.fit-49"><a href="#Classifier.fit-49"><span class="linenos">49</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">WrappedCalibratedClassifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="s1">&#39;prefit&#39;</span><span class="p">)</span>
+</span><span id="Classifier.fit-50"><a href="#Classifier.fit-50"><span class="linenos">50</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="Classifier.fit-51"><a href="#Classifier.fit-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span></pre></div>
 
 
@@ -271,17 +273,17 @@
 
     </div>
     <a class="headerlink" href="#Classifier.predict_proba"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Classifier.predict_proba-52"><a href="#Classifier.predict_proba-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="Classifier.predict_proba-53"><a href="#Classifier.predict_proba-53"><span class="linenos">53</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Classifier.predict_proba-54"><a href="#Classifier.predict_proba-54"><span class="linenos">54</span></a><span class="sd">        Predict class probabilities for the input data.</span>
-</span><span id="Classifier.predict_proba-55"><a href="#Classifier.predict_proba-55"><span class="linenos">55</span></a>
-</span><span id="Classifier.predict_proba-56"><a href="#Classifier.predict_proba-56"><span class="linenos">56</span></a><span class="sd">        Parameters:</span>
-</span><span id="Classifier.predict_proba-57"><a href="#Classifier.predict_proba-57"><span class="linenos">57</span></a><span class="sd">        - X (array-like): Input data features.</span>
-</span><span id="Classifier.predict_proba-58"><a href="#Classifier.predict_proba-58"><span class="linenos">58</span></a>
-</span><span id="Classifier.predict_proba-59"><a href="#Classifier.predict_proba-59"><span class="linenos">59</span></a><span class="sd">        Returns:</span>
-</span><span id="Classifier.predict_proba-60"><a href="#Classifier.predict_proba-60"><span class="linenos">60</span></a><span class="sd">        - array-like: Predicted class probabilities.</span>
-</span><span id="Classifier.predict_proba-61"><a href="#Classifier.predict_proba-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Classifier.predict_proba-62"><a href="#Classifier.predict_proba-62"><span class="linenos">62</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Classifier.predict_proba-53"><a href="#Classifier.predict_proba-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+</span><span id="Classifier.predict_proba-54"><a href="#Classifier.predict_proba-54"><span class="linenos">54</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Classifier.predict_proba-55"><a href="#Classifier.predict_proba-55"><span class="linenos">55</span></a><span class="sd">        Predict class probabilities for the input data.</span>
+</span><span id="Classifier.predict_proba-56"><a href="#Classifier.predict_proba-56"><span class="linenos">56</span></a>
+</span><span id="Classifier.predict_proba-57"><a href="#Classifier.predict_proba-57"><span class="linenos">57</span></a><span class="sd">        Parameters:</span>
+</span><span id="Classifier.predict_proba-58"><a href="#Classifier.predict_proba-58"><span class="linenos">58</span></a><span class="sd">        - X (array-like): Input data features.</span>
+</span><span id="Classifier.predict_proba-59"><a href="#Classifier.predict_proba-59"><span class="linenos">59</span></a>
+</span><span id="Classifier.predict_proba-60"><a href="#Classifier.predict_proba-60"><span class="linenos">60</span></a><span class="sd">        Returns:</span>
+</span><span id="Classifier.predict_proba-61"><a href="#Classifier.predict_proba-61"><span class="linenos">61</span></a><span class="sd">        - array-like: Predicted class probabilities.</span>
+</span><span id="Classifier.predict_proba-62"><a href="#Classifier.predict_proba-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Classifier.predict_proba-63"><a href="#Classifier.predict_proba-63"><span class="linenos">63</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
 
