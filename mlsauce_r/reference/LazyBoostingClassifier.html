@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlsauce</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.22.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.25.3</span>
       </span>
     </div>
 
@@ -130,14 +130,206 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">X_test</span>, <span class="va">y_train</span>, <span class="va">y_test</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Accuracy Balanced Accuracy ROC AUC  F1 Score Time Taken</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier 0.9701493         0.9738462    &lt;NA&gt; 0.9701493 0.23140717</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier          0.8507463         0.8676923    &lt;NA&gt; 0.8495071 0.06676912</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        Accuracy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier                                0.9701493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ExtraTreeRegressor))         0.9701493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(TransformedTargetRegressor)            0.9253731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LinearRegression)                      0.9253731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TweedieRegressor))           0.9253731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Ridge)                                 0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(RidgeCV)                               0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DecisionTreeRegressor)                 0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(KNeighborsRegressor))        0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lars))                       0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TransformedTargetRegressor)) 0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearRegression))           0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(KNeighborsRegressor)                   0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DecisionTreeRegressor))      0.8955224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(SGDRegressor))               0.8805970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ExtraTreeRegressor)                    0.8805970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier                                         0.8507463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearSVR))                  0.8208955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(PassiveAggressiveRegressor)) 0.7313433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(BayesianRidge))              0.7164179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Ridge))                      0.6716418</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(QuantileRegressor))          0.3880597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskElasticNet)                   0.2537313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DummyRegressor)                        0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LassoLars)                             0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskLasso)                        0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ElasticNet)                            0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Lasso)                                 0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LassoLars))                  0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lasso))                      0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DummyRegressor))             0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ElasticNet))                 0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                       Balanced Accuracy ROC AUC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier                                        0.9738462    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ExtraTreeRegressor))                 0.9733333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(TransformedTargetRegressor)                    0.9353846    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LinearRegression)                              0.9353846    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TweedieRegressor))                   0.9348718    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Ridge)                                         0.9225641    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(RidgeCV)                                       0.9225641    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DecisionTreeRegressor)                         0.9205128    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(KNeighborsRegressor))                0.9230769    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lars))                               0.9215385    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TransformedTargetRegressor))         0.9215385    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearRegression))                   0.9215385    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(KNeighborsRegressor)                           0.9205128    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DecisionTreeRegressor))              0.8996795    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(SGDRegressor))                       0.8969231    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ExtraTreeRegressor)                            0.8943590    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier                                                 0.8676923    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearSVR))                          0.8461538    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(PassiveAggressiveRegressor))         0.7692308    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(BayesianRidge))                      0.7564103    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Ridge))                              0.7179487    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(QuantileRegressor))                  0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskElasticNet)                           0.3466667    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DummyRegressor)                                0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LassoLars)                                     0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskLasso)                                0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ElasticNet)                                    0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Lasso)                                         0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LassoLars))                          0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lasso))                              0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DummyRegressor))                     0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ElasticNet))                         0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         F1 Score  Time Taken</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier                                0.97014925 0.304798126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ExtraTreeRegressor))         0.97008015 1.899416924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(TransformedTargetRegressor)            0.92520072 0.321911097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LinearRegression)                      0.92520072 0.191939116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TweedieRegressor))           0.92537313 2.574325085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Ridge)                                 0.91003317 0.184902191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(RidgeCV)                               0.91003317 0.242443085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DecisionTreeRegressor)                 0.90975248 0.340071917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(KNeighborsRegressor))        0.90940484 3.404877663</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lars))                       0.91044776 1.901539087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TransformedTargetRegressor)) 0.91044776 3.829015017</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearRegression))           0.91044776 0.980285168</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(KNeighborsRegressor)                   0.90975248 0.610635042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DecisionTreeRegressor))      0.89597043 2.036102057</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(SGDRegressor))               0.87920645 1.420270205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ExtraTreeRegressor)                    0.87966997 0.318417072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier                                         0.84950709 0.130653381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearSVR))                  0.81136254 1.693439960</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(PassiveAggressiveRegressor)) 0.69578578 1.749754190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(BayesianRidge))              0.67382455 1.749926805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Ridge))                      0.60140962 2.869287014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(QuantileRegressor))          0.21697962 4.767382145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskElasticNet)                   0.15081187 0.175373793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DummyRegressor)                        0.09206977 0.014189959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LassoLars)                             0.09206977 0.007045746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskLasso)                        0.09206977 0.013510227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ElasticNet)                            0.09206977 0.034329891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Lasso)                                 0.09206977 0.011476040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LassoLars))                  0.09206977 0.011094093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lasso))                      0.09206977 0.015908003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DummyRegressor))             0.09206977 0.014057875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ElasticNet))                 0.09206977 0.017328024</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Accuracy Balanced Accuracy ROC AUC  F1 Score Time Taken</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier 0.9701493         0.9738462    &lt;NA&gt; 0.9701493 0.23140717</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier          0.8507463         0.8676923    &lt;NA&gt; 0.8495071 0.06676912</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                        Accuracy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier                                0.9701493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ExtraTreeRegressor))         0.9701493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(TransformedTargetRegressor)            0.9253731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LinearRegression)                      0.9253731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TweedieRegressor))           0.9253731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Ridge)                                 0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(RidgeCV)                               0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DecisionTreeRegressor)                 0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(KNeighborsRegressor))        0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lars))                       0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TransformedTargetRegressor)) 0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearRegression))           0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(KNeighborsRegressor)                   0.9104478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DecisionTreeRegressor))      0.8955224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(SGDRegressor))               0.8805970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ExtraTreeRegressor)                    0.8805970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier                                         0.8507463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearSVR))                  0.8208955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(PassiveAggressiveRegressor)) 0.7313433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(BayesianRidge))              0.7164179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Ridge))                      0.6716418</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(QuantileRegressor))          0.3880597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskElasticNet)                   0.2537313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DummyRegressor)                        0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LassoLars)                             0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskLasso)                        0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ElasticNet)                            0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Lasso)                                 0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LassoLars))                  0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lasso))                      0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DummyRegressor))             0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ElasticNet))                 0.2388060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                       Balanced Accuracy ROC AUC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier                                        0.9738462    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ExtraTreeRegressor))                 0.9733333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(TransformedTargetRegressor)                    0.9353846    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LinearRegression)                              0.9353846    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TweedieRegressor))                   0.9348718    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Ridge)                                         0.9225641    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(RidgeCV)                                       0.9225641    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DecisionTreeRegressor)                         0.9205128    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(KNeighborsRegressor))                0.9230769    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lars))                               0.9215385    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TransformedTargetRegressor))         0.9215385    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearRegression))                   0.9215385    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(KNeighborsRegressor)                           0.9205128    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DecisionTreeRegressor))              0.8996795    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(SGDRegressor))                       0.8969231    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ExtraTreeRegressor)                            0.8943590    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier                                                 0.8676923    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearSVR))                          0.8461538    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(PassiveAggressiveRegressor))         0.7692308    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(BayesianRidge))                      0.7564103    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Ridge))                              0.7179487    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(QuantileRegressor))                  0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskElasticNet)                           0.3466667    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DummyRegressor)                                0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LassoLars)                                     0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskLasso)                                0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ElasticNet)                                    0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Lasso)                                         0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LassoLars))                          0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lasso))                              0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DummyRegressor))                     0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ElasticNet))                         0.3333333    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                         F1 Score  Time Taken</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomForestClassifier                                0.97014925 0.304798126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ExtraTreeRegressor))         0.97008015 1.899416924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(TransformedTargetRegressor)            0.92520072 0.321911097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LinearRegression)                      0.92520072 0.191939116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TweedieRegressor))           0.92537313 2.574325085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Ridge)                                 0.91003317 0.184902191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(RidgeCV)                               0.91003317 0.242443085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DecisionTreeRegressor)                 0.90975248 0.340071917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(KNeighborsRegressor))        0.90940484 3.404877663</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lars))                       0.91044776 1.901539087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(TransformedTargetRegressor)) 0.91044776 3.829015017</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearRegression))           0.91044776 0.980285168</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(KNeighborsRegressor)                   0.90975248 0.610635042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DecisionTreeRegressor))      0.89597043 2.036102057</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(SGDRegressor))               0.87920645 1.420270205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ExtraTreeRegressor)                    0.87966997 0.318417072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> XGBClassifier                                         0.84950709 0.130653381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LinearSVR))                  0.81136254 1.693439960</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(PassiveAggressiveRegressor)) 0.69578578 1.749754190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(BayesianRidge))              0.67382455 1.749926805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Ridge))                      0.60140962 2.869287014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(QuantileRegressor))          0.21697962 4.767382145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskElasticNet)                   0.15081187 0.175373793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(DummyRegressor)                        0.09206977 0.014189959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(LassoLars)                             0.09206977 0.007045746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTaskLasso)                        0.09206977 0.013510227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(ElasticNet)                            0.09206977 0.034329891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(Lasso)                                 0.09206977 0.011476040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(LassoLars))                  0.09206977 0.011094093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(Lasso))                      0.09206977 0.015908003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(DummyRegressor))             0.09206977 0.014057875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GenericBooster(MultiTask(ElasticNet))                 0.09206977 0.017328024</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
