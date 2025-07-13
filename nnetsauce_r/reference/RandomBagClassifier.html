@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nnetsauce</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.1</span>
       </span>
     </div>
 
@@ -94,14 +94,43 @@
 <span class="r-in"><span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu">RandomBagClassifier</span><span class="op">(</span><span class="va">obj</span>, n_estimators<span class="op">=</span><span class="fl">50L</span>,</span></span>
 <span class="r-in"><span>n_hidden_features<span class="op">=</span><span class="fl">5L</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">obj2</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_call_impl(callable, call_args$unnamed, call_args$named):</span> AttributeError: 'list' object has no attribute 'dtype'</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Run `reticulate::py_last_error()` for details.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RandomBagClassifier(col_sample=1.0, dropout=0.0, n_estimators=50,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     n_hidden_features=5, obj=DecisionTreeClassifier(),</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     row_sample=1.0)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="va">X_test</span>, <span class="va">y_test</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_call_impl(callable, call_args$unnamed, call_args$named):</span> AssertionError: no estimator found in `RandomBag` ensemble</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Run `reticulate::py_last_error()` for details.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.7333333</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_call_impl(callable, call_args$unnamed, call_args$named):</span> AssertionError: no estimator found in `RandomBag` ensemble</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Run `reticulate::py_last_error()` for details.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]      [,2] [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] 1.0000000 0.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] 1.0000000 0.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] 1.0000000 0.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,] 0.8861416 0.1138584 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] 1.0000000 0.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,] 0.8861416 0.1138584 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,] 0.8861416 0.1138584 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,] 1.0000000 0.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,] 1.0000000 0.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10,] 0.0000000 0.4000000 0.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11,] 0.8861416 0.1138584 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12,] 0.0000000 0.4400000 0.56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13,] 0.0000000 0.1000000 0.90</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15,] 0.0000000 1.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16,] 0.0000000 1.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17,] 0.0000000 1.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18,] 0.0000000 1.0000000 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19,] 0.8861416 0.1138584 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20,] 0.0000000 0.9000000 0.10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24,] 0.0000000 0.8000000 0.20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25,] 0.0000000 0.1200000 0.88</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29,] 0.0000000 0.0000000 1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30,] 0.0000000 0.0000000 1.00</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
