@@ -206,71 +206,71 @@
 </span><span id="DeepClassifier-66"><a href="#DeepClassifier-66"><span class="linenos"> 66</span></a><span class="sd">        print(clf.score(clf.predict(X_test), y_test))</span>
 </span><span id="DeepClassifier-67"><a href="#DeepClassifier-67"><span class="linenos"> 67</span></a><span class="sd">        ```</span>
 </span><span id="DeepClassifier-68"><a href="#DeepClassifier-68"><span class="linenos"> 68</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="DeepClassifier-69"><a href="#DeepClassifier-69"><span class="linenos"> 69</span></a>
-</span><span id="DeepClassifier-70"><a href="#DeepClassifier-70"><span class="linenos"> 70</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="DeepClassifier-71"><a href="#DeepClassifier-71"><span class="linenos"> 71</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="DeepClassifier-72"><a href="#DeepClassifier-72"><span class="linenos"> 72</span></a>        <span class="n">obj</span><span class="p">,</span>
-</span><span id="DeepClassifier-73"><a href="#DeepClassifier-73"><span class="linenos"> 73</span></a>        <span class="c1"># Defining depth</span>
-</span><span id="DeepClassifier-74"><a href="#DeepClassifier-74"><span class="linenos"> 74</span></a>        <span class="n">n_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="DeepClassifier-75"><a href="#DeepClassifier-75"><span class="linenos"> 75</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="DeepClassifier-76"><a href="#DeepClassifier-76"><span class="linenos"> 76</span></a>        <span class="c1"># CustomClassifier attributes</span>
-</span><span id="DeepClassifier-77"><a href="#DeepClassifier-77"><span class="linenos"> 77</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-</span><span id="DeepClassifier-78"><a href="#DeepClassifier-78"><span class="linenos"> 78</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
-</span><span id="DeepClassifier-79"><a href="#DeepClassifier-79"><span class="linenos"> 79</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-</span><span id="DeepClassifier-80"><a href="#DeepClassifier-80"><span class="linenos"> 80</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="DeepClassifier-81"><a href="#DeepClassifier-81"><span class="linenos"> 81</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepClassifier-82"><a href="#DeepClassifier-82"><span class="linenos"> 82</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-</span><span id="DeepClassifier-83"><a href="#DeepClassifier-83"><span class="linenos"> 83</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepClassifier-84"><a href="#DeepClassifier-84"><span class="linenos"> 84</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-</span><span id="DeepClassifier-85"><a href="#DeepClassifier-85"><span class="linenos"> 85</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="DeepClassifier-86"><a href="#DeepClassifier-86"><span class="linenos"> 86</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
-</span><span id="DeepClassifier-87"><a href="#DeepClassifier-87"><span class="linenos"> 87</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
-</span><span id="DeepClassifier-88"><a href="#DeepClassifier-88"><span class="linenos"> 88</span></a>        <span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="DeepClassifier-89"><a href="#DeepClassifier-89"><span class="linenos"> 89</span></a>        <span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="DeepClassifier-90"><a href="#DeepClassifier-90"><span class="linenos"> 90</span></a>        <span class="n">cv_calibration</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-</span><span id="DeepClassifier-91"><a href="#DeepClassifier-91"><span class="linenos"> 91</span></a>        <span class="n">calibration_method</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
-</span><span id="DeepClassifier-92"><a href="#DeepClassifier-92"><span class="linenos"> 92</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
-</span><span id="DeepClassifier-93"><a href="#DeepClassifier-93"><span class="linenos"> 93</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-</span><span id="DeepClassifier-94"><a href="#DeepClassifier-94"><span class="linenos"> 94</span></a>    <span class="p">):</span>
-</span><span id="DeepClassifier-95"><a href="#DeepClassifier-95"><span class="linenos"> 95</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="DeepClassifier-96"><a href="#DeepClassifier-96"><span class="linenos"> 96</span></a>            <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span>
-</span><span id="DeepClassifier-97"><a href="#DeepClassifier-97"><span class="linenos"> 97</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
-</span><span id="DeepClassifier-98"><a href="#DeepClassifier-98"><span class="linenos"> 98</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
-</span><span id="DeepClassifier-99"><a href="#DeepClassifier-99"><span class="linenos"> 99</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
-</span><span id="DeepClassifier-100"><a href="#DeepClassifier-100"><span class="linenos">100</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
-</span><span id="DeepClassifier-101"><a href="#DeepClassifier-101"><span class="linenos">101</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
-</span><span id="DeepClassifier-102"><a href="#DeepClassifier-102"><span class="linenos">102</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
-</span><span id="DeepClassifier-103"><a href="#DeepClassifier-103"><span class="linenos">103</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
-</span><span id="DeepClassifier-104"><a href="#DeepClassifier-104"><span class="linenos">104</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
-</span><span id="DeepClassifier-105"><a href="#DeepClassifier-105"><span class="linenos">105</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
-</span><span id="DeepClassifier-106"><a href="#DeepClassifier-106"><span class="linenos">106</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
-</span><span id="DeepClassifier-107"><a href="#DeepClassifier-107"><span class="linenos">107</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
-</span><span id="DeepClassifier-108"><a href="#DeepClassifier-108"><span class="linenos">108</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="n">col_sample</span><span class="p">,</span>
-</span><span id="DeepClassifier-109"><a href="#DeepClassifier-109"><span class="linenos">109</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="n">row_sample</span><span class="p">,</span>
-</span><span id="DeepClassifier-110"><a href="#DeepClassifier-110"><span class="linenos">110</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-</span><span id="DeepClassifier-111"><a href="#DeepClassifier-111"><span class="linenos">111</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
-</span><span id="DeepClassifier-112"><a href="#DeepClassifier-112"><span class="linenos">112</span></a>        <span class="p">)</span>
-</span><span id="DeepClassifier-113"><a href="#DeepClassifier-113"><span class="linenos">113</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="DeepClassifier-114"><a href="#DeepClassifier-114"><span class="linenos">114</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="DeepClassifier-115"><a href="#DeepClassifier-115"><span class="linenos">115</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-</span><span id="DeepClassifier-116"><a href="#DeepClassifier-116"><span class="linenos">116</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cv_calibration</span> <span class="o">=</span> <span class="n">cv_calibration</span>
-</span><span id="DeepClassifier-117"><a href="#DeepClassifier-117"><span class="linenos">117</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibration_method</span> <span class="o">=</span> <span class="n">calibration_method</span>
-</span><span id="DeepClassifier-118"><a href="#DeepClassifier-118"><span class="linenos">118</span></a>        
-</span><span id="DeepClassifier-119"><a href="#DeepClassifier-119"><span class="linenos">119</span></a>        <span class="c1"># Only wrap in CalibratedClassifierCV if not already wrapped</span>
-</span><span id="DeepClassifier-120"><a href="#DeepClassifier-120"><span class="linenos">120</span></a>        <span class="c1"># if not isinstance(obj, CalibratedClassifierCV):</span>
-</span><span id="DeepClassifier-121"><a href="#DeepClassifier-121"><span class="linenos">121</span></a>        <span class="c1">#     self.obj = CalibratedClassifierCV(</span>
-</span><span id="DeepClassifier-122"><a href="#DeepClassifier-122"><span class="linenos">122</span></a>        <span class="c1">#         self.obj, </span>
-</span><span id="DeepClassifier-123"><a href="#DeepClassifier-123"><span class="linenos">123</span></a>        <span class="c1">#         cv=self.cv_calibration,</span>
-</span><span id="DeepClassifier-124"><a href="#DeepClassifier-124"><span class="linenos">124</span></a>        <span class="c1">#         method=self.calibration_method</span>
-</span><span id="DeepClassifier-125"><a href="#DeepClassifier-125"><span class="linenos">125</span></a>        <span class="c1">#     )</span>
-</span><span id="DeepClassifier-126"><a href="#DeepClassifier-126"><span class="linenos">126</span></a>        <span class="c1"># else:</span>
-</span><span id="DeepClassifier-127"><a href="#DeepClassifier-127"><span class="linenos">127</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="DeepClassifier-128"><a href="#DeepClassifier-128"><span class="linenos">128</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="DeepClassifier-129"><a href="#DeepClassifier-129"><span class="linenos">129</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
-</span><span id="DeepClassifier-130"><a href="#DeepClassifier-130"><span class="linenos">130</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cv_calibration</span> <span class="o">=</span> <span class="n">cv_calibration</span>
-</span><span id="DeepClassifier-131"><a href="#DeepClassifier-131"><span class="linenos">131</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibration_method</span> <span class="o">=</span> <span class="n">calibration_method</span>
-</span><span id="DeepClassifier-132"><a href="#DeepClassifier-132"><span class="linenos">132</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span id="DeepClassifier-133"><a href="#DeepClassifier-133"><span class="linenos">133</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;classifier&quot;</span>  <span class="c1"># Add this line to explicitly mark as classifier</span>
+</span><span id="DeepClassifier-69"><a href="#DeepClassifier-69"><span class="linenos"> 69</span></a>    <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;classifier&quot;</span>
+</span><span id="DeepClassifier-70"><a href="#DeepClassifier-70"><span class="linenos"> 70</span></a>
+</span><span id="DeepClassifier-71"><a href="#DeepClassifier-71"><span class="linenos"> 71</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="DeepClassifier-72"><a href="#DeepClassifier-72"><span class="linenos"> 72</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="DeepClassifier-73"><a href="#DeepClassifier-73"><span class="linenos"> 73</span></a>        <span class="n">obj</span><span class="p">,</span>
+</span><span id="DeepClassifier-74"><a href="#DeepClassifier-74"><span class="linenos"> 74</span></a>        <span class="c1"># Defining depth</span>
+</span><span id="DeepClassifier-75"><a href="#DeepClassifier-75"><span class="linenos"> 75</span></a>        <span class="n">n_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="DeepClassifier-76"><a href="#DeepClassifier-76"><span class="linenos"> 76</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="DeepClassifier-77"><a href="#DeepClassifier-77"><span class="linenos"> 77</span></a>        <span class="c1"># CustomClassifier attributes</span>
+</span><span id="DeepClassifier-78"><a href="#DeepClassifier-78"><span class="linenos"> 78</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+</span><span id="DeepClassifier-79"><a href="#DeepClassifier-79"><span class="linenos"> 79</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="DeepClassifier-80"><a href="#DeepClassifier-80"><span class="linenos"> 80</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+</span><span id="DeepClassifier-81"><a href="#DeepClassifier-81"><span class="linenos"> 81</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
+</span><span id="DeepClassifier-82"><a href="#DeepClassifier-82"><span class="linenos"> 82</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepClassifier-83"><a href="#DeepClassifier-83"><span class="linenos"> 83</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="DeepClassifier-84"><a href="#DeepClassifier-84"><span class="linenos"> 84</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepClassifier-85"><a href="#DeepClassifier-85"><span class="linenos"> 85</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+</span><span id="DeepClassifier-86"><a href="#DeepClassifier-86"><span class="linenos"> 86</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="DeepClassifier-87"><a href="#DeepClassifier-87"><span class="linenos"> 87</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
+</span><span id="DeepClassifier-88"><a href="#DeepClassifier-88"><span class="linenos"> 88</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
+</span><span id="DeepClassifier-89"><a href="#DeepClassifier-89"><span class="linenos"> 89</span></a>        <span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="DeepClassifier-90"><a href="#DeepClassifier-90"><span class="linenos"> 90</span></a>        <span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="DeepClassifier-91"><a href="#DeepClassifier-91"><span class="linenos"> 91</span></a>        <span class="n">cv_calibration</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+</span><span id="DeepClassifier-92"><a href="#DeepClassifier-92"><span class="linenos"> 92</span></a>        <span class="n">calibration_method</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
+</span><span id="DeepClassifier-93"><a href="#DeepClassifier-93"><span class="linenos"> 93</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
+</span><span id="DeepClassifier-94"><a href="#DeepClassifier-94"><span class="linenos"> 94</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+</span><span id="DeepClassifier-95"><a href="#DeepClassifier-95"><span class="linenos"> 95</span></a>    <span class="p">):</span>
+</span><span id="DeepClassifier-96"><a href="#DeepClassifier-96"><span class="linenos"> 96</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="DeepClassifier-97"><a href="#DeepClassifier-97"><span class="linenos"> 97</span></a>            <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span>
+</span><span id="DeepClassifier-98"><a href="#DeepClassifier-98"><span class="linenos"> 98</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="n">n_hidden_features</span><span class="p">,</span>
+</span><span id="DeepClassifier-99"><a href="#DeepClassifier-99"><span class="linenos"> 99</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="n">activation_name</span><span class="p">,</span>
+</span><span id="DeepClassifier-100"><a href="#DeepClassifier-100"><span class="linenos">100</span></a>            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+</span><span id="DeepClassifier-101"><a href="#DeepClassifier-101"><span class="linenos">101</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="n">nodes_sim</span><span class="p">,</span>
+</span><span id="DeepClassifier-102"><a href="#DeepClassifier-102"><span class="linenos">102</span></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
+</span><span id="DeepClassifier-103"><a href="#DeepClassifier-103"><span class="linenos">103</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
+</span><span id="DeepClassifier-104"><a href="#DeepClassifier-104"><span class="linenos">104</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="n">direct_link</span><span class="p">,</span>
+</span><span id="DeepClassifier-105"><a href="#DeepClassifier-105"><span class="linenos">105</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span>
+</span><span id="DeepClassifier-106"><a href="#DeepClassifier-106"><span class="linenos">106</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="n">cluster_encode</span><span class="p">,</span>
+</span><span id="DeepClassifier-107"><a href="#DeepClassifier-107"><span class="linenos">107</span></a>            <span class="n">type_clust</span><span class="o">=</span><span class="n">type_clust</span><span class="p">,</span>
+</span><span id="DeepClassifier-108"><a href="#DeepClassifier-108"><span class="linenos">108</span></a>            <span class="n">type_scaling</span><span class="o">=</span><span class="n">type_scaling</span><span class="p">,</span>
+</span><span id="DeepClassifier-109"><a href="#DeepClassifier-109"><span class="linenos">109</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="n">col_sample</span><span class="p">,</span>
+</span><span id="DeepClassifier-110"><a href="#DeepClassifier-110"><span class="linenos">110</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="n">row_sample</span><span class="p">,</span>
+</span><span id="DeepClassifier-111"><a href="#DeepClassifier-111"><span class="linenos">111</span></a>            <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span id="DeepClassifier-112"><a href="#DeepClassifier-112"><span class="linenos">112</span></a>            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
+</span><span id="DeepClassifier-113"><a href="#DeepClassifier-113"><span class="linenos">113</span></a>        <span class="p">)</span>
+</span><span id="DeepClassifier-114"><a href="#DeepClassifier-114"><span class="linenos">114</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="DeepClassifier-115"><a href="#DeepClassifier-115"><span class="linenos">115</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="DeepClassifier-116"><a href="#DeepClassifier-116"><span class="linenos">116</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
+</span><span id="DeepClassifier-117"><a href="#DeepClassifier-117"><span class="linenos">117</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cv_calibration</span> <span class="o">=</span> <span class="n">cv_calibration</span>
+</span><span id="DeepClassifier-118"><a href="#DeepClassifier-118"><span class="linenos">118</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibration_method</span> <span class="o">=</span> <span class="n">calibration_method</span>
+</span><span id="DeepClassifier-119"><a href="#DeepClassifier-119"><span class="linenos">119</span></a>        
+</span><span id="DeepClassifier-120"><a href="#DeepClassifier-120"><span class="linenos">120</span></a>        <span class="c1"># Only wrap in CalibratedClassifierCV if not already wrapped</span>
+</span><span id="DeepClassifier-121"><a href="#DeepClassifier-121"><span class="linenos">121</span></a>        <span class="c1"># if not isinstance(obj, CalibratedClassifierCV):</span>
+</span><span id="DeepClassifier-122"><a href="#DeepClassifier-122"><span class="linenos">122</span></a>        <span class="c1">#     self.obj = CalibratedClassifierCV(</span>
+</span><span id="DeepClassifier-123"><a href="#DeepClassifier-123"><span class="linenos">123</span></a>        <span class="c1">#         self.obj, </span>
+</span><span id="DeepClassifier-124"><a href="#DeepClassifier-124"><span class="linenos">124</span></a>        <span class="c1">#         cv=self.cv_calibration,</span>
+</span><span id="DeepClassifier-125"><a href="#DeepClassifier-125"><span class="linenos">125</span></a>        <span class="c1">#         method=self.calibration_method</span>
+</span><span id="DeepClassifier-126"><a href="#DeepClassifier-126"><span class="linenos">126</span></a>        <span class="c1">#     )</span>
+</span><span id="DeepClassifier-127"><a href="#DeepClassifier-127"><span class="linenos">127</span></a>        <span class="c1"># else:</span>
+</span><span id="DeepClassifier-128"><a href="#DeepClassifier-128"><span class="linenos">128</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="DeepClassifier-129"><a href="#DeepClassifier-129"><span class="linenos">129</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="DeepClassifier-130"><a href="#DeepClassifier-130"><span class="linenos">130</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
+</span><span id="DeepClassifier-131"><a href="#DeepClassifier-131"><span class="linenos">131</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cv_calibration</span> <span class="o">=</span> <span class="n">cv_calibration</span>
+</span><span id="DeepClassifier-132"><a href="#DeepClassifier-132"><span class="linenos">132</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">calibration_method</span> <span class="o">=</span> <span class="n">calibration_method</span>
+</span><span id="DeepClassifier-133"><a href="#DeepClassifier-133"><span class="linenos">133</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
 </span><span id="DeepClassifier-134"><a href="#DeepClassifier-134"><span class="linenos">134</span></a>
 </span><span id="DeepClassifier-135"><a href="#DeepClassifier-135"><span class="linenos">135</span></a>        <span class="k">assert</span> <span class="n">n_layers</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;must have n_layers &gt;= 1&quot;</span>
 </span><span id="DeepClassifier-136"><a href="#DeepClassifier-136"><span class="linenos">136</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stacked_obj</span> <span class="o">=</span> <span class="n">obj</span>
@@ -777,6 +777,10 @@
 </span><span id="DeepClassifier-637"><a href="#DeepClassifier-637"><span class="linenos">637</span></a>                        <span class="k">pass</span>
 </span><span id="DeepClassifier-638"><a href="#DeepClassifier-638"><span class="linenos">638</span></a>
 </span><span id="DeepClassifier-639"><a href="#DeepClassifier-639"><span class="linenos">639</span></a>        <span class="k">return</span> <span class="n">results</span>
+</span><span id="DeepClassifier-640"><a href="#DeepClassifier-640"><span class="linenos">640</span></a>
+</span><span id="DeepClassifier-641"><a href="#DeepClassifier-641"><span class="linenos">641</span></a>    <span class="nd">@property</span>
+</span><span id="DeepClassifier-642"><a href="#DeepClassifier-642"><span class="linenos">642</span></a>    <span class="k">def</span> <span class="nf">_estimator_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="DeepClassifier-643"><a href="#DeepClassifier-643"><span class="linenos">643</span></a>        <span class="k">return</span> <span class="s2">&quot;classifier&quot;</span>        
 </span></pre></div>
 
 
@@ -1470,7 +1474,7 @@ level: int
     Level of confidence (default = 95)
 
 method: str
-    `None`, or 'splitconformal', 'localconformal'
+    'splitconformal', 'localconformal'
     prediction (if you specify `return_pi = True`)
 
 **kwargs: additional parameters
