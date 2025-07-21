@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -64,9 +64,15 @@
       <a href="../articles/getting-started.html">Getting started</a>
     </li>
     <li>
+      <a href="../articles/plot_pi.html">Plot prediction interval</a>
+    </li>
+    <li>
       <a href="../articles/timeit.html">Timing R code</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -149,25 +155,7 @@ function as the <code>predict_func</code>.</p>
 <span><span class="co">## 3 2.8086211 0.5726334 0.6743764</span></span>
 <span><span class="co">## 4 2.7359976 0.9373141 0.1054177</span></span>
 <span><span class="co">## 5 1.5328762 0.2656867 0.4831677</span></span>
-<span><span class="co">## 6 4.2696182 0.8578277 0.7267025</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_pred's value:"</span></span>
-<span><span class="co">##  [1] 2.0538780 0.5313949 1.5257631 2.3368574 3.0647686 3.5414238 1.4502907</span></span>
-<span><span class="co">##  [8] 1.6432366 2.5634529 3.3206897 3.6895134 3.7785731 3.4859439 2.2795135</span></span>
-<span><span class="co">## [15] 2.4925830 2.5483291 2.5492368 2.2207192 1.2682567 4.3771387 3.6968402</span></span>
-<span><span class="co">## [22] 2.7656325 1.8965185 2.7979252 2.6517687 2.2081951 2.5633512 3.7216115</span></span>
-<span><span class="co">## [29] 3.5146270 1.5525687 1.5377277 1.4910050 3.8124938 2.6913890 3.1775352</span></span>
-<span><span class="co">## [36] 2.3588660 2.0112045 3.4540548 3.5667044 0.7684528</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_y's value:"</span></span>
-<span><span class="co">##  [1]  1.68717364 -0.09215227  0.58253361  2.00752825  2.54432351  3.26354598</span></span>
-<span><span class="co">##  [7]  0.99154794  1.44649451  2.40032994  3.38409901  3.57146868  3.58620284</span></span>
-<span><span class="co">## [13]  4.62334939  3.27237760  2.61681617  3.39143939  2.64662691  3.47085590</span></span>
-<span><span class="co">## [19]  0.64098595  3.79594615  3.79846191  2.04948301  0.74535452  2.65303132</span></span>
-<span><span class="co">## [25]  2.69533179  3.30664012  3.38299733  3.13378986  1.93853703  1.94673711</span></span>
-<span><span class="co">## [31]  0.55729626  0.72078670  3.35304759  3.32291148  2.43114655  3.61021172</span></span>
-<span><span class="co">## [37]  1.69188315  3.56261005  3.32744997  0.06252609</span></span></code></pre>
+<span><span class="co">## 6 4.2696182 0.8578277 0.7267025</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="generate-predictions-and-prediction-intervals">Generate Predictions and Prediction Intervals<a class="anchor" aria-label="anchor" href="#generate-predictions-and-prediction-intervals"></a>
@@ -344,55 +332,7 @@ disjoint.</p>
 <span><span class="co">## 10  17.10</span></span>
 <span><span class="co">## 397 19.37</span></span>
 <span><span class="co">## 362 14.19</span></span>
-<span><span class="co">## 35  20.34</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_pred's value:"</span></span>
-<span><span class="co">##   [1] 10.419252 20.448372 27.224677 10.898150 20.123587 17.793151 31.526340</span></span>
-<span><span class="co">##   [8] 22.391453 35.789190 11.665246 25.236577 21.457890 20.277560 19.945675</span></span>
-<span><span class="co">##  [15] 20.844042 38.007683 19.701472 24.895207 27.314342 21.082500 14.371342</span></span>
-<span><span class="co">##  [22] 24.222233 16.660823 21.905261 28.799110 15.444499 24.407960 21.550467</span></span>
-<span><span class="co">##  [29] 22.330151 24.106895 17.826588 18.560532 22.959393 34.590640 14.865118</span></span>
-<span><span class="co">##  [36] 20.339177 19.819318 24.210000 33.370880 21.636240 25.011786 34.424087</span></span>
-<span><span class="co">##  [43] 19.416483 13.969285 29.060077 30.809290 16.560430 30.772120 25.188883</span></span>
-<span><span class="co">##  [50] 13.930568 18.371245 32.221203 12.333186 22.143470 23.763023 23.666013</span></span>
-<span><span class="co">##  [57] 17.002369 25.055677 22.993030 39.054477 23.336043 15.914310 18.324967</span></span>
-<span><span class="co">##  [64] 25.350043 21.407187 36.351613 21.562164 10.454903 27.878533 18.113082</span></span>
-<span><span class="co">##  [71] 30.653660 16.295641 23.167847 24.010590 25.177501 25.061933 18.591062</span></span>
-<span><span class="co">##  [78] 23.960330 12.537551 20.268659 23.398423 13.123332 28.750127 15.631447</span></span>
-<span><span class="co">##  [85] 43.982997 15.656024 25.782773 19.002122 20.605008 22.407643 27.984863</span></span>
-<span><span class="co">##  [92] 10.373169 11.670001 11.828249 28.181570 22.810380 31.332937 12.283840</span></span>
-<span><span class="co">##  [99] 25.592183 34.371947 15.904249 15.087963 18.328225 21.934827 13.236408</span></span>
-<span><span class="co">## [106] 23.679770 24.285343 45.620510 24.629900 19.165807 18.981140 25.674893</span></span>
-<span><span class="co">## [113] 19.713469 26.392217 17.045184 18.102572 19.649490 30.833157 10.368585</span></span>
-<span><span class="co">## [120] 24.932007 22.689930 44.005293 20.775961 16.112724 12.266196 20.558970</span></span>
-<span><span class="co">## [127] 27.911280 22.765835 28.884250 26.359113 19.584089 14.891015 21.644770</span></span>
-<span><span class="co">## [134] 31.241963 31.702887 35.185103 23.137040 21.628967 17.497420 14.282768</span></span>
-<span><span class="co">## [141] 14.577078 24.385645 10.148723 22.377710 21.797343 21.362853  9.545621</span></span>
-<span><span class="co">## [148] 20.645150 16.658624 25.468693 14.173340 23.654933 13.719573 22.469270</span></span>
-<span><span class="co">## [155] 20.238633 24.431423 43.391260 20.392460 21.033908 30.354687 22.265293</span></span>
-<span><span class="co">## [162] 22.718777 15.856220 10.036760 26.145921 19.103820 20.652243 21.881643</span></span>
-<span><span class="co">## [169] 24.579362 19.982683 25.319243 21.965685 13.186102 34.058633 19.401634</span></span>
-<span><span class="co">## [176] 42.328435 11.475717 24.782687 20.371097 27.915230 10.845967 13.301828</span></span>
-<span><span class="co">## [183] 19.002512 32.118284 24.504970 35.727872 33.880980 35.471110 21.034690</span></span>
-<span><span class="co">## [190] 25.421736 16.085362 44.463493 33.370627 22.705393 18.015633 18.985264</span></span>
-<span><span class="co">## [197] 17.514547 15.174432 20.548163 20.660860 11.102269 26.035857</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_y's value:"</span></span>
-<span><span class="co">##   [1]  7.0 19.5 29.9  8.3 19.2 20.6 28.7 20.9 33.3  8.1 23.1 18.2 22.9 16.8 20.6</span></span>
-<span><span class="co">##  [16] 42.8 21.7 25.3 50.0 17.1 11.7 22.6 15.2 15.0 22.8 15.6 24.8 21.7 21.4 22.2</span></span>
-<span><span class="co">##  [31] 20.0 20.1 23.9 34.9 13.6 16.2 19.9 25.0 32.7 24.7 23.3 33.4 21.7 17.2 28.2</span></span>
-<span><span class="co">##  [46] 23.6 15.6 28.5 22.0 13.1 19.4 41.3  8.5 19.4 20.7 23.9 18.1 24.6 24.0 38.7</span></span>
-<span><span class="co">##  [61] 28.1 15.7 19.3 24.4 20.3 31.7 27.5  7.2 26.6 11.9 35.1 19.4 26.5 21.9 24.6</span></span>
-<span><span class="co">##  [76] 25.2 20.1 23.2 12.8 18.9 19.8 12.0 32.5 14.9 50.0 14.1 24.1 18.2 22.4 23.2</span></span>
-<span><span class="co">##  [91] 26.6  8.5 10.2 12.7 31.1 24.5 34.9 13.9 26.2 37.3 14.3 13.2 19.6 23.4  9.5</span></span>
-<span><span class="co">## [106] 22.3 26.4 50.0 22.2 23.7 19.8 24.7 20.1 29.1 18.0 19.5 21.4 50.0  5.0 20.1</span></span>
-<span><span class="co">## [121] 20.6 44.8 21.2 15.2  6.3 18.7 29.4 23.0 37.0 25.0 19.3 14.9 21.0 30.1 32.4</span></span>
-<span><span class="co">## [136] 33.8 21.6 21.1 19.7 13.8 12.6 23.0  8.8 22.8 18.9 22.5  5.0 21.7 16.4 22.9</span></span>
-<span><span class="co">## [151] 12.7 22.8 13.4 19.4 20.3 22.0 48.3 18.5 19.6 29.0 20.4 21.6 18.4 10.5 15.0</span></span>
-<span><span class="co">## [166] 22.5 21.2 22.6 27.1 21.5 23.9 23.8 17.9 31.6 20.8 50.0  8.8 23.7 18.3 30.5</span></span>
-<span><span class="co">## [181]  7.2 16.3 19.4 30.1 21.4 37.9 33.2 35.2 21.8 28.6 17.8 37.6 34.9 19.3 15.6</span></span>
-<span><span class="co">## [196] 19.2 27.1 19.1 20.9 22.4 10.9 36.2</span></span></code></pre>
+<span><span class="co">## 35  20.34</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="generate-predictions-and-prediction-intervals-1">Generate Predictions and Prediction Intervals<a class="anchor" aria-label="anchor" href="#generate-predictions-and-prediction-intervals-1"></a>

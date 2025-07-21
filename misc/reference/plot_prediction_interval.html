@@ -19,7 +19,7 @@ band and mean prediction line."><!-- mathjax --><script src="https://cdnjs.cloud
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -49,9 +49,15 @@ band and mean prediction line."><!-- mathjax --><script src="https://cdnjs.cloud
       <a href="../articles/getting-started.html">Getting started</a>
     </li>
     <li>
+      <a href="../articles/plot_pi.html">Plot prediction interval</a>
+    </li>
+    <li>
       <a href="../articles/timeit.html">Timing R code</a>
     </li>
   </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -74,14 +80,16 @@ band and mean prediction line.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_prediction_interval</span><span class="op">(</span></span>
-<span>  x <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">mean_pred</span>,</span>
 <span>  <span class="va">lower_pred</span>,</span>
 <span>  <span class="va">upper_pred</span>,</span>
 <span>  col_past <span class="op">=</span> <span class="st">"black"</span>,</span>
 <span>  col_mean <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>  col_future <span class="op">=</span> <span class="st">"blue"</span>,</span>
 <span>  col_ci <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html" class="external-link">rgb</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.5</span><span class="op">)</span>,</span>
 <span>  legend_position <span class="op">=</span> <span class="st">"topleft"</span>,</span>
+<span>  x_past <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  x_future <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -90,12 +98,7 @@ band and mean prediction line.</p>
     <h2>Arguments</h2>
 
 
-<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>Numeric vector of past observations. If `NULL`, the plot will contain
-only forecasted values. Default is `NULL`.</p></dd>
-
-
-<dt id="arg-mean-pred">mean_pred<a class="anchor" aria-label="anchor" href="#arg-mean-pred"></a></dt>
+<dl><dt id="arg-mean-pred">mean_pred<a class="anchor" aria-label="anchor" href="#arg-mean-pred"></a></dt>
 <dd><p>Numeric vector of mean forecasted values. Required.</p></dd>
 
 
@@ -115,6 +118,10 @@ only forecasted values. Default is `NULL`.</p></dd>
 <dd><p>Color for the mean forecast line. Default is `"red"`.</p></dd>
 
 
+<dt id="arg-col-future">col_future<a class="anchor" aria-label="anchor" href="#arg-col-future"></a></dt>
+<dd><p>Color for true future value. Default is `"blue"`.</p></dd>
+
+
 <dt id="arg-col-ci">col_ci<a class="anchor" aria-label="anchor" href="#arg-col-ci"></a></dt>
 <dd><p>Color for the confidence interval polygon. Default is `rgb(0.8, 0.8, 0.8, 0.5)`.</p></dd>
 
@@ -122,6 +129,15 @@ only forecasted values. Default is `NULL`.</p></dd>
 <dt id="arg-legend-position">legend_position<a class="anchor" aria-label="anchor" href="#arg-legend-position"></a></dt>
 <dd><p>Position of the legend. Passed to the `legend()` function.
 Default is `"topleft"`.</p></dd>
+
+
+<dt id="arg-x-past">x_past<a class="anchor" aria-label="anchor" href="#arg-x-past"></a></dt>
+<dd><p>Numeric vector of past observations. If `NULL`, the plot will contain
+only forecasted values. Default is `NULL`.</p></dd>
+
+
+<dt id="arg-x-future">x_future<a class="anchor" aria-label="anchor" href="#arg-x-future"></a></dt>
+<dd><p>Numeric vector of future observations.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -146,13 +162,26 @@ Default is `"topleft"`.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With past observations:</span></span></span>
 <span class="r-in"><span><span class="fu">plot_prediction_interval</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  x_past <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  mean_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  lower_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.3</span>,</span></span>
 <span class="r-in"><span>  upper_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.3</span>,</span></span>
 <span class="r-in"><span>  main <span class="op">=</span> <span class="st">"Forecast With History"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_prediction_interval-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># With past observations:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mean_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_prediction_interval</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x_past <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  mean_pred <span class="op">=</span> <span class="va">mean_pred</span>,</span></span>
+<span class="r-in"><span>  x_future <span class="op">=</span> <span class="va">mean_pred</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">mean_pred</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  lower_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.3</span>,</span></span>
+<span class="r-in"><span>  upper_pred <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">30</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.3</span>,</span></span>
+<span class="r-in"><span>  main <span class="op">=</span> <span class="st">"Forecast With History"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="plot_prediction_interval-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
       </span>
     </div>
 
@@ -64,9 +64,15 @@
       <a href="../articles/getting-started.html">Getting started</a>
     </li>
     <li>
+      <a href="../articles/plot_pi.html">Plot prediction interval</a>
+    </li>
+    <li>
       <a href="../articles/timeit.html">Timing R code</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
@@ -133,35 +139,13 @@ function as the <code>predict_func</code>.</p>
 <span>  split_ratio <span class="op">=</span> <span class="fl">0.8</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_pred's value:"</span></span>
-<span><span class="co">##        10        15        18        19        28        33        45        47 </span></span>
-<span><span class="co">## 1.7587270 0.4136018 0.9299653 2.6255858 2.9455003 3.2108057 1.0841493 1.5053460 </span></span>
-<span><span class="co">##        49        58        59        61        65        66        73        75 </span></span>
-<span><span class="co">## 2.7187733 3.1367864 3.7096010 3.8807275 3.5467970 2.5236275 2.3530161 2.9858474 </span></span>
-<span><span class="co">##        82        95       102       104       106       107       113       114 </span></span>
-<span><span class="co">## 2.3488926 2.4717286 1.0550776 4.3985255 3.7132151 3.1545958 1.5827951 3.0602809 </span></span>
-<span><span class="co">##       115       119       120       133       136       142       146       148 </span></span>
-<span><span class="co">## 2.9379282 2.5154630 2.9343982 3.5380945 3.0178942 1.5087646 1.4433821 0.9975480 </span></span>
-<span><span class="co">##       150       151       152       160       161       174       175       199 </span></span>
-<span><span class="co">## 3.4985747 2.9066515 3.4402581 2.3110797 1.8456383 3.2148796 3.1247111 0.7048373 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_y's value:"</span></span>
-<span><span class="co">##  [1]  1.68717364 -0.09215227  0.58253361  2.00752825  2.54432351  3.26354598</span></span>
-<span><span class="co">##  [7]  0.99154794  1.44649451  2.40032994  3.38409901  3.57146868  3.58620284</span></span>
-<span><span class="co">## [13]  4.62334939  3.27237760  2.61681617  3.39143939  2.64662691  3.47085590</span></span>
-<span><span class="co">## [19]  0.64098595  3.79594615  3.79846191  2.04948301  0.74535452  2.65303132</span></span>
-<span><span class="co">## [25]  2.69533179  3.30664012  3.38299733  3.13378986  1.93853703  1.94673711</span></span>
-<span><span class="co">## [31]  0.55729626  0.72078670  3.35304759  3.32291148  2.43114655  3.61021172</span></span>
-<span><span class="co">## [37]  1.69188315  3.56261005  3.32744997  0.06252609</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="generate-predictions-and-prediction-intervals">Generate Predictions and Prediction Intervals<a class="anchor" aria-label="anchor" href="#generate-predictions-and-prediction-intervals"></a>
 </h3>
 <p>We will use the <code>predict.conformalize</code> method to generate
 predictions and calculate prediction intervals.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># New data for prediction</span></span>
 <span><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, x2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -208,7 +192,7 @@ predictions and calculate prediction intervals.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "conformalize"</span></span></code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit        lwr      upr</span></span>
 <span><span class="co">## 1 1.6023773  0.5217324 2.683022</span></span>
@@ -223,7 +207,7 @@ predictions and calculate prediction intervals.</p>
 </h3>
 <p>The coverage rate is the proportion of true values that fall within
 the prediction intervals.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Simulate true values for the new data</span></span>
 <span><span class="va">true_y</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">new_data</span><span class="op">$</span><span class="va">x1</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">new_data</span><span class="op">$</span><span class="va">x2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span></span>
@@ -255,7 +239,7 @@ demonstrate conformal prediction.</p>
 </h3>
 <p>We will use the <code>MASS</code> package to access the
 <code>Boston</code> dataset.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Load the Boston dataset</span></span>
@@ -283,7 +267,7 @@ demonstrate conformal prediction.</p>
 </h3>
 <p>We will split the data into training and test sets to ensure they are
 disjoint.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">Boston</span><span class="op">)</span></span>
 <span><span class="va">train_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fl">0.8</span> <span class="op">*</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
@@ -293,7 +277,7 @@ disjoint.</p>
 <div class="section level3">
 <h3 id="fit-conformal-model-1">Fit Conformal Model 1<a class="anchor" aria-label="anchor" href="#fit-conformal-model-1"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define fit and predict functions</span></span>
 <span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -306,100 +290,13 @@ disjoint.</p>
 <span>  predict_func <span class="op">=</span> <span class="va">predict_func</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_pred's value:"</span></span>
-<span><span class="co">##         415         463         179         426         118         503 </span></span>
-<span><span class="co">## -10.7510122  19.9230164  31.5185995   6.6786062  22.5467797  22.2089777 </span></span>
-<span><span class="co">##          90         256         197         491         348         355 </span></span>
-<span><span class="co">##  31.8908549  19.3577108  35.0827312   2.2851814  23.8991951  12.6975920 </span></span>
-<span><span class="co">##           7         501         485         254         211          43 </span></span>
-<span><span class="co">##  22.3623719  20.2498033  18.0662477  34.7639612  20.2588665  25.2168997 </span></span>
-<span><span class="co">##         373         332         425         330          23         411 </span></span>
-<span><span class="co">##  21.9027095  18.4788194   9.6184467  24.7052019  16.4429496   7.1363943 </span></span>
-<span><span class="co">##         309         135         290          72          76          63 </span></span>
-<span><span class="co">##  28.6541061  12.2797649  25.7463640  20.8901521  23.2575239  23.5587732 </span></span>
-<span><span class="co">##         210         493         294          41         492         316 </span></span>
-<span><span class="co">##  13.8915941  15.8309919  25.1340335  32.8324851  13.7123527  19.4328196 </span></span>
-<span><span class="co">##          16          94         342          39         240           4 </span></span>
-<span><span class="co">##  19.0849447  26.9822909  31.4961969  22.4645410  27.5833419  30.2272580 </span></span>
-<span><span class="co">##          13         409         308          89          25         291 </span></span>
-<span><span class="co">##  20.6180699  10.7243130  31.3363712  31.2185111  15.7459318  31.0598677 </span></span>
-<span><span class="co">##         286         396         110         158         398          67 </span></span>
-<span><span class="co">##  25.9575625  20.0212237  19.4838085  32.9054613  14.7002950  21.5645193 </span></span>
-<span><span class="co">##         335          85         136         178         236          98 </span></span>
-<span><span class="co">##  22.8363610  24.8795083  18.1195364  28.1527758  24.0979392  38.2768168 </span></span>
-<span><span class="co">##         214         127         212         273         310         232 </span></span>
-<span><span class="co">##  25.3294182  13.3480313  14.2333019  27.5823872  22.5939958  34.3251093 </span></span>
-<span><span class="co">##         366         416         350         407         280         154 </span></span>
-<span><span class="co">##   7.0687360   7.8282801  23.9417669   1.6627501  34.3544056  17.8033020 </span></span>
-<span><span class="co">##         102         255         326         272         470         288 </span></span>
-<span><span class="co">##  26.3044792  21.7141826  25.6599103  26.3604529  15.8676929  24.8664209 </span></span>
-<span><span class="co">##         440          55         331         478         184         459 </span></span>
-<span><span class="co">##  12.0857775  13.3906303  21.8053054   7.9757105  29.9670035  16.8385981 </span></span>
-<span><span class="co">##         196         432         352          20         502         177 </span></span>
-<span><span class="co">##  40.5135589  16.7206773  20.8573574  17.6801529  24.6479376  24.7861400 </span></span>
-<span><span class="co">##          42         405         380         395         194         249 </span></span>
-<span><span class="co">##  29.3599058   3.9327280  15.4752366  16.1358989  30.9911385  21.3805830 </span></span>
-<span><span class="co">##         200         377         250         292         434          33 </span></span>
-<span><span class="co">##  28.8764096  17.5373924  25.1091895  32.6915343  16.0014411   9.1230169 </span></span>
-<span><span class="co">##         152          54         430         289         185         205 </span></span>
-<span><span class="co">##  18.3026283  23.1593766  11.4940532  25.1037143  20.3957809  42.2577310 </span></span>
-<span><span class="co">##         334         215         318          57         105         279 </span></span>
-<span><span class="co">##  23.3475381  10.8445036  17.9629655  23.2551312  20.7019461  28.6382860 </span></span>
-<span><span class="co">##         129         106         480         369         406         287 </span></span>
-<span><span class="co">##  19.7588518  17.2377805  19.6030886  18.1008648   3.2428357  18.4863446 </span></span>
-<span><span class="co">##         356         225         117         452         400         341 </span></span>
-<span><span class="co">##  15.3592737  40.9207212  22.8719139  20.1249319  10.2406435  21.2020459 </span></span>
-<span><span class="co">##         176         220         191          53         104         447 </span></span>
-<span><span class="co">##  30.6648246  27.9061697  30.5701378  27.6415501  19.7787486  17.7108334 </span></span>
-<span><span class="co">##         320         354         275         261           2         336 </span></span>
-<span><span class="co">##  21.5330307  24.8829332  33.5210609  35.8664158  24.9337907  21.2926956 </span></span>
-<span><span class="co">##         497         394         448         327         419         112 </span></span>
-<span><span class="co">##  13.1945357  19.2910225  18.0289641  24.2997967  -0.5370632  26.9174610 </span></span>
-<span><span class="co">##          36          87         399         111         461         351 </span></span>
-<span><span class="co">##  22.5015340  21.5992251   3.4521847  20.7249385  19.5192170  21.1407909 </span></span>
-<span><span class="co">##          31          73         424         333         122          92 </span></span>
-<span><span class="co">##  11.3470747  23.7686787  10.1458420  22.0764050  21.3973045  26.8734678 </span></span>
-<span><span class="co">##         234         338         472         300         323         314 </span></span>
-<span><span class="co">##  40.1021613  19.3254374  20.7501692  31.1592506  22.4066161  24.9947580 </span></span>
-<span><span class="co">##         443         387         376         208         499         206 </span></span>
-<span><span class="co">##  18.7201079   1.8760970  25.5735072  16.9928743  21.1111805  22.0502650 </span></span>
-<span><span class="co">##         297         219          82         169         413         228 </span></span>
-<span><span class="co">##  27.2139228  22.6363937  26.1307032  24.9567002  -4.7890163  32.7195829 </span></span>
-<span><span class="co">##         423         258         385         482         498         192 </span></span>
-<span><span class="co">##  14.7312882  47.0965692  -1.5888701  25.8169897  18.6489127  29.5093562 </span></span>
-<span><span class="co">##         386         414          50         260          97         183 </span></span>
-<span><span class="co">##   5.8590075   5.5807664  16.2640999  34.6740553  23.6527792  34.0873388 </span></span>
-<span><span class="co">##         100         274         484         296         357         227 </span></span>
-<span><span class="co">##  33.6611952  36.1678621  18.8250647  28.8095974  18.7538084  39.5641575 </span></span>
-<span><span class="co">##         190         329         156         131           8         468 </span></span>
-<span><span class="co">##  33.8903426  20.7253064  19.7782737  20.7893637  19.5814632  14.9795254 </span></span>
-<span><span class="co">##          70         213         382         182 </span></span>
-<span><span class="co">##  19.7314621  20.6109097  17.9718921  26.5244034 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_y's value:"</span></span>
-<span><span class="co">##   [1]  7.0 19.5 29.9  8.3 19.2 20.6 28.7 20.9 33.3  8.1 23.1 18.2 22.9 16.8 20.6</span></span>
-<span><span class="co">##  [16] 42.8 21.7 25.3 50.0 17.1 11.7 22.6 15.2 15.0 22.8 15.6 24.8 21.7 21.4 22.2</span></span>
-<span><span class="co">##  [31] 20.0 20.1 23.9 34.9 13.6 16.2 19.9 25.0 32.7 24.7 23.3 33.4 21.7 17.2 28.2</span></span>
-<span><span class="co">##  [46] 23.6 15.6 28.5 22.0 13.1 19.4 41.3  8.5 19.4 20.7 23.9 18.1 24.6 24.0 38.7</span></span>
-<span><span class="co">##  [61] 28.1 15.7 19.3 24.4 20.3 31.7 27.5  7.2 26.6 11.9 35.1 19.4 26.5 21.9 24.6</span></span>
-<span><span class="co">##  [76] 25.2 20.1 23.2 12.8 18.9 19.8 12.0 32.5 14.9 50.0 14.1 24.1 18.2 22.4 23.2</span></span>
-<span><span class="co">##  [91] 26.6  8.5 10.2 12.7 31.1 24.5 34.9 13.9 26.2 37.3 14.3 13.2 19.6 23.4  9.5</span></span>
-<span><span class="co">## [106] 22.3 26.4 50.0 22.2 23.7 19.8 24.7 20.1 29.1 18.0 19.5 21.4 50.0  5.0 20.1</span></span>
-<span><span class="co">## [121] 20.6 44.8 21.2 15.2  6.3 18.7 29.4 23.0 37.0 25.0 19.3 14.9 21.0 30.1 32.4</span></span>
-<span><span class="co">## [136] 33.8 21.6 21.1 19.7 13.8 12.6 23.0  8.8 22.8 18.9 22.5  5.0 21.7 16.4 22.9</span></span>
-<span><span class="co">## [151] 12.7 22.8 13.4 19.4 20.3 22.0 48.3 18.5 19.6 29.0 20.4 21.6 18.4 10.5 15.0</span></span>
-<span><span class="co">## [166] 22.5 21.2 22.6 27.1 21.5 23.9 23.8 17.9 31.6 20.8 50.0  8.8 23.7 18.3 30.5</span></span>
-<span><span class="co">## [181]  7.2 16.3 19.4 30.1 21.4 37.9 33.2 35.2 21.8 28.6 17.8 37.6 34.9 19.3 15.6</span></span>
-<span><span class="co">## [196] 19.2 27.1 19.1 20.9 22.4 10.9 36.2</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="generate-predictions-and-prediction-intervals-1">Generate Predictions and Prediction Intervals 1<a class="anchor" aria-label="anchor" href="#generate-predictions-and-prediction-intervals-1"></a>
 </h3>
 <p>We will use the <code>predict.conformalize</code> method to generate
 predictions and calculate prediction intervals for the test set.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
@@ -503,7 +400,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "conformalize"</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  29.92942 20.263283 39.59556</span></span>
@@ -518,7 +415,7 @@ predictions and calculate prediction intervals for the test set.</p>
 </h3>
 <p>The coverage rate is the proportion of true values in the test set
 that fall within the prediction intervals.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -531,7 +428,7 @@ that fall within the prediction intervals.</p>
 <div class="section level3">
 <h3 id="fit-conformal-model-2">Fit Conformal Model 2<a class="anchor" aria-label="anchor" href="#fit-conformal-model-2"></a>
 </h3>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define fit and predict functions</span></span>
 <span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -544,90 +441,13 @@ that fall within the prediction intervals.</p>
 <span>  predict_func <span class="op">=</span> <span class="va">predict_func</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_pred's value:"</span></span>
-<span><span class="co">##        415        463        179        426        118        503         90 </span></span>
-<span><span class="co">## -8.7644778 20.4887700 32.4431800  8.0537364 23.8121734 22.2938278 31.6500690 </span></span>
-<span><span class="co">##        256        197        491        348        355          7        501 </span></span>
-<span><span class="co">## 19.0300341 35.7306104  1.4585692 23.4878970 11.1516613 22.7052511 20.2938143 </span></span>
-<span><span class="co">##        485        254        211         43        373        332        425 </span></span>
-<span><span class="co">## 18.9060798 30.5070434 21.5618408 24.1459959 25.9721831 17.9036330 12.5399210 </span></span>
-<span><span class="co">##        330         23        411        309        135        290         72 </span></span>
-<span><span class="co">## 23.3226121 15.3677673 12.8320590 29.6251696 12.3248995 25.5594140 20.2696103 </span></span>
-<span><span class="co">##         76         63        210        493        294         41        492 </span></span>
-<span><span class="co">## 23.4200877 23.8745524 15.4131455 15.5476909 25.0260630 33.2030309 13.3378217 </span></span>
-<span><span class="co">##        316         16         94        342         39        240          4 </span></span>
-<span><span class="co">## 20.1703415 18.5664504 28.2417841 30.5026168 21.9246764 27.9948440 29.0931062 </span></span>
-<span><span class="co">##         13        409        308         89         25        291        286 </span></span>
-<span><span class="co">## 19.8035888 12.8261140 33.0949021 31.8487090 15.2011380 32.3218400 25.9934342 </span></span>
-<span><span class="co">##        396        110        158        398         67        335         85 </span></span>
-<span><span class="co">## 21.1528112 19.5747079 35.1293630 16.4121377 23.1791003 21.1203071 24.4056852 </span></span>
-<span><span class="co">##        136        178        236         98        214        127        212 </span></span>
-<span><span class="co">## 17.3779995 29.6825766 25.1125546 37.6996950 24.6829527 13.6314186 15.2709160 </span></span>
-<span><span class="co">##        273        310        232        366        416        350        407 </span></span>
-<span><span class="co">## 28.3734896 23.5577783 34.9175378 12.9957994  7.9899564 21.1785344  5.9424726 </span></span>
-<span><span class="co">##        280        154        102        255        326        272        470 </span></span>
-<span><span class="co">## 35.4886870 17.4120084 26.0339039 21.8928182 24.0415187 26.1183844 17.8232456 </span></span>
-<span><span class="co">##        288        440         55        331        478        184        459 </span></span>
-<span><span class="co">## 25.7538563 12.7911744 12.5504228 20.6041636 10.3361111 32.0606716 17.2599642 </span></span>
-<span><span class="co">##        196        432        352         20        502        177         42 </span></span>
-<span><span class="co">## 41.0881102 18.2461988 19.0540202 17.6366627 23.6808022 25.1921824 27.5022924 </span></span>
-<span><span class="co">##        405        380        395        194        249        200        377 </span></span>
-<span><span class="co">##  5.1723821 16.8672259 18.1006331 30.8682121 20.5225776 28.4212598 17.9233812 </span></span>
-<span><span class="co">##        250        292        434         33        152         54        430 </span></span>
-<span><span class="co">## 23.2677742 33.5271731 16.7486737  6.8414592 18.6530154 22.7714683 12.0467175 </span></span>
-<span><span class="co">##        289        185        205        334        215        318         57 </span></span>
-<span><span class="co">## 26.2412653 22.2977151 43.3929013 21.7699815  7.9719117 17.7004893 23.0554043 </span></span>
-<span><span class="co">##        105        279        129        106        480        369        406 </span></span>
-<span><span class="co">## 21.3706619 29.5260739 19.2713597 18.0736162 22.1926480 24.1558127  5.9687277 </span></span>
-<span><span class="co">##        287        356        225        117        452        400        341 </span></span>
-<span><span class="co">## 17.4436708 13.7473070 40.9180042 23.3522495 20.3660747  9.8032508 20.9623055 </span></span>
-<span><span class="co">##        176        220        191         53        104        447        320 </span></span>
-<span><span class="co">## 30.8175490 30.0356168 30.1363936 27.0229588 20.1027091 18.2050509 20.9066090 </span></span>
-<span><span class="co">##        354        275        261          2        336        497        394 </span></span>
-<span><span class="co">## 24.1108414 35.2517632 36.3976123 25.3136956 19.8363708 12.7245499 20.8504024 </span></span>
-<span><span class="co">##        448        327        419        112         36         87        399 </span></span>
-<span><span class="co">## 18.7870677 23.1387268  2.6959032 27.2667753 23.5168621 21.2154997  4.6992212 </span></span>
-<span><span class="co">##        111        461        351         31         73        424        333 </span></span>
-<span><span class="co">## 19.9418111 19.6213424 19.2806184 10.2712594 23.3276945 11.5543249 21.6217116 </span></span>
-<span><span class="co">##        122         92        234        338        472        300        323 </span></span>
-<span><span class="co">## 22.4897982 27.6669215 39.5246817 18.6624370 23.6006840 30.7842961 22.3775258 </span></span>
-<span><span class="co">##        314        443        387        376        208        499        206 </span></span>
-<span><span class="co">## 25.9959974 19.6012817  4.1922756 26.7380187 16.9621199 20.9530051 21.4977779 </span></span>
-<span><span class="co">##        297        219         82        169        413        228        423 </span></span>
-<span><span class="co">## 27.5602693 24.4871580 26.9210023 27.0052004 -1.9533084 33.7920242 18.0024708 </span></span>
-<span><span class="co">##        258        385        482        498        192        386        414 </span></span>
-<span><span class="co">## 46.5858214  0.5286619 28.1513628 18.5667871 29.7077926  6.7573764  9.8123753 </span></span>
-<span><span class="co">##         50        260         97        183        100        274        484 </span></span>
-<span><span class="co">## 16.0115456 36.7297450 24.3784267 35.4727852 33.2315844 35.7702568 20.5618277 </span></span>
-<span><span class="co">##        296        357        227        190        329        156        131 </span></span>
-<span><span class="co">## 28.5041263 19.7332012 40.1317263 34.5174330 19.8456908 19.1819223 20.5464449 </span></span>
-<span><span class="co">##          8        468         70        213        382        182 </span></span>
-<span><span class="co">## 19.4785721 16.7704167 19.3717667 21.1761913 18.8995599 27.6566413 </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_y's value:"</span></span>
-<span><span class="co">##   [1]  7.0 19.5 29.9  8.3 19.2 20.6 28.7 20.9 33.3  8.1 23.1 18.2 22.9 16.8 20.6</span></span>
-<span><span class="co">##  [16] 42.8 21.7 25.3 50.0 17.1 11.7 22.6 15.2 15.0 22.8 15.6 24.8 21.7 21.4 22.2</span></span>
-<span><span class="co">##  [31] 20.0 20.1 23.9 34.9 13.6 16.2 19.9 25.0 32.7 24.7 23.3 33.4 21.7 17.2 28.2</span></span>
-<span><span class="co">##  [46] 23.6 15.6 28.5 22.0 13.1 19.4 41.3  8.5 19.4 20.7 23.9 18.1 24.6 24.0 38.7</span></span>
-<span><span class="co">##  [61] 28.1 15.7 19.3 24.4 20.3 31.7 27.5  7.2 26.6 11.9 35.1 19.4 26.5 21.9 24.6</span></span>
-<span><span class="co">##  [76] 25.2 20.1 23.2 12.8 18.9 19.8 12.0 32.5 14.9 50.0 14.1 24.1 18.2 22.4 23.2</span></span>
-<span><span class="co">##  [91] 26.6  8.5 10.2 12.7 31.1 24.5 34.9 13.9 26.2 37.3 14.3 13.2 19.6 23.4  9.5</span></span>
-<span><span class="co">## [106] 22.3 26.4 50.0 22.2 23.7 19.8 24.7 20.1 29.1 18.0 19.5 21.4 50.0  5.0 20.1</span></span>
-<span><span class="co">## [121] 20.6 44.8 21.2 15.2  6.3 18.7 29.4 23.0 37.0 25.0 19.3 14.9 21.0 30.1 32.4</span></span>
-<span><span class="co">## [136] 33.8 21.6 21.1 19.7 13.8 12.6 23.0  8.8 22.8 18.9 22.5  5.0 21.7 16.4 22.9</span></span>
-<span><span class="co">## [151] 12.7 22.8 13.4 19.4 20.3 22.0 48.3 18.5 19.6 29.0 20.4 21.6 18.4 10.5 15.0</span></span>
-<span><span class="co">## [166] 22.5 21.2 22.6 27.1 21.5 23.9 23.8 17.9 31.6 20.8 50.0  8.8 23.7 18.3 30.5</span></span>
-<span><span class="co">## [181]  7.2 16.3 19.4 30.1 21.4 37.9 33.2 35.2 21.8 28.6 17.8 37.6 34.9 19.3 15.6</span></span>
-<span><span class="co">## [196] 19.2 27.1 19.1 20.9 22.4 10.9 36.2</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="generate-predictions-and-prediction-intervals-2">Generate Predictions and Prediction Intervals 2<a class="anchor" aria-label="anchor" href="#generate-predictions-and-prediction-intervals-2"></a>
 </h3>
 <p>We will use the <code>predict.conformalize</code> method to generate
 predictions and calculate prediction intervals for the test set.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
@@ -745,7 +565,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "conformalize"</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 21.864586 38.92410</span></span>
@@ -754,7 +574,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## 19 14.18587  5.656113 22.71563</span></span>
 <span><span class="co">## 28 13.85324  5.323482 22.38300</span></span>
 <span><span class="co">## 37 21.66451 13.134753 30.19427</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
@@ -872,7 +692,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "conformalize"</span></span></code></pre>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit      lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 22.37589 49.43768</span></span>
@@ -881,7 +701,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## 19 14.18587  6.77628 23.56133</span></span>
 <span><span class="co">## 28 13.85324  6.61761 27.71907</span></span>
 <span><span class="co">## 37 21.66451 13.49167 37.83532</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
@@ -1002,7 +822,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 22.482206 39.30623</span></span>
@@ -1011,7 +831,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## 19 14.18587  7.396239 29.63858</span></span>
 <span><span class="co">## 28 13.85324  6.134993 22.68221</span></span>
 <span><span class="co">## 37 21.66451 14.614108 33.95747</span></span></code></pre>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston</span>,</span>
@@ -1129,7 +949,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "conformalize"</span></span></code></pre>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston4</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##         fit       lwr      upr</span></span>
 <span><span class="co">## 1  30.39434 23.343942 45.84706</span></span>
@@ -1142,7 +962,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <div class="section level3">
 <h3 id="fit-conformal-model-2-1">Fit Conformal Model 2<a class="anchor" aria-label="anchor" href="#fit-conformal-model-2-1"></a>
 </h3>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define fit and predict functions</span></span>
 <span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">ranger</span><span class="fu">::</span><span class="fu"><a href="http://imbs-hl.github.io/ranger/reference/ranger.html" class="external-link">ranger</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
 <span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span><span class="op">)</span><span class="op">$</span><span class="va">predictions</span></span>
@@ -1154,57 +974,9 @@ predictions and calculate prediction intervals for the test set.</p>
 <span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span>
 <span>  predict_func <span class="op">=</span> <span class="va">predict_func</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_pred's value:"</span></span>
-<span><span class="co">##   [1] 10.419252 20.448372 27.224677 10.898150 20.123587 17.793151 31.526340</span></span>
-<span><span class="co">##   [8] 22.391453 35.789190 11.665246 25.236577 21.457890 20.277560 19.945675</span></span>
-<span><span class="co">##  [15] 20.844042 38.007683 19.701472 24.895207 27.314342 21.082500 14.371342</span></span>
-<span><span class="co">##  [22] 24.222233 16.660823 21.905261 28.799110 15.444499 24.407960 21.550467</span></span>
-<span><span class="co">##  [29] 22.330151 24.106895 17.826588 18.560532 22.959393 34.590640 14.865118</span></span>
-<span><span class="co">##  [36] 20.339177 19.819318 24.210000 33.370880 21.636240 25.011786 34.424087</span></span>
-<span><span class="co">##  [43] 19.416483 13.969285 29.060077 30.809290 16.560430 30.772120 25.188883</span></span>
-<span><span class="co">##  [50] 13.930568 18.371245 32.221203 12.333186 22.143470 23.763023 23.666013</span></span>
-<span><span class="co">##  [57] 17.002369 25.055677 22.993030 39.054477 23.336043 15.914310 18.324967</span></span>
-<span><span class="co">##  [64] 25.350043 21.407187 36.351613 21.562164 10.454903 27.878533 18.113082</span></span>
-<span><span class="co">##  [71] 30.653660 16.295641 23.167847 24.010590 25.177501 25.061933 18.591062</span></span>
-<span><span class="co">##  [78] 23.960330 12.537551 20.268659 23.398423 13.123332 28.750127 15.631447</span></span>
-<span><span class="co">##  [85] 43.982997 15.656024 25.782773 19.002122 20.605008 22.407643 27.984863</span></span>
-<span><span class="co">##  [92] 10.373169 11.670001 11.828249 28.181570 22.810380 31.332937 12.283840</span></span>
-<span><span class="co">##  [99] 25.592183 34.371947 15.904249 15.087963 18.328225 21.934827 13.236408</span></span>
-<span><span class="co">## [106] 23.679770 24.285343 45.620510 24.629900 19.165807 18.981140 25.674893</span></span>
-<span><span class="co">## [113] 19.713469 26.392217 17.045184 18.102572 19.649490 30.833157 10.368585</span></span>
-<span><span class="co">## [120] 24.932007 22.689930 44.005293 20.775961 16.112724 12.266196 20.558970</span></span>
-<span><span class="co">## [127] 27.911280 22.765835 28.884250 26.359113 19.584089 14.891015 21.644770</span></span>
-<span><span class="co">## [134] 31.241963 31.702887 35.185103 23.137040 21.628967 17.497420 14.282768</span></span>
-<span><span class="co">## [141] 14.577078 24.385645 10.148723 22.377710 21.797343 21.362853  9.545621</span></span>
-<span><span class="co">## [148] 20.645150 16.658624 25.468693 14.173340 23.654933 13.719573 22.469270</span></span>
-<span><span class="co">## [155] 20.238633 24.431423 43.391260 20.392460 21.033908 30.354687 22.265293</span></span>
-<span><span class="co">## [162] 22.718777 15.856220 10.036760 26.145921 19.103820 20.652243 21.881643</span></span>
-<span><span class="co">## [169] 24.579362 19.982683 25.319243 21.965685 13.186102 34.058633 19.401634</span></span>
-<span><span class="co">## [176] 42.328435 11.475717 24.782687 20.371097 27.915230 10.845967 13.301828</span></span>
-<span><span class="co">## [183] 19.002512 32.118284 24.504970 35.727872 33.880980 35.471110 21.034690</span></span>
-<span><span class="co">## [190] 25.421736 16.085362 44.463493 33.370627 22.705393 18.015633 18.985264</span></span>
-<span><span class="co">## [197] 17.514547 15.174432 20.548163 20.660860 11.102269 26.035857</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] "cal_y's value:"</span></span>
-<span><span class="co">##   [1]  7.0 19.5 29.9  8.3 19.2 20.6 28.7 20.9 33.3  8.1 23.1 18.2 22.9 16.8 20.6</span></span>
-<span><span class="co">##  [16] 42.8 21.7 25.3 50.0 17.1 11.7 22.6 15.2 15.0 22.8 15.6 24.8 21.7 21.4 22.2</span></span>
-<span><span class="co">##  [31] 20.0 20.1 23.9 34.9 13.6 16.2 19.9 25.0 32.7 24.7 23.3 33.4 21.7 17.2 28.2</span></span>
-<span><span class="co">##  [46] 23.6 15.6 28.5 22.0 13.1 19.4 41.3  8.5 19.4 20.7 23.9 18.1 24.6 24.0 38.7</span></span>
-<span><span class="co">##  [61] 28.1 15.7 19.3 24.4 20.3 31.7 27.5  7.2 26.6 11.9 35.1 19.4 26.5 21.9 24.6</span></span>
-<span><span class="co">##  [76] 25.2 20.1 23.2 12.8 18.9 19.8 12.0 32.5 14.9 50.0 14.1 24.1 18.2 22.4 23.2</span></span>
-<span><span class="co">##  [91] 26.6  8.5 10.2 12.7 31.1 24.5 34.9 13.9 26.2 37.3 14.3 13.2 19.6 23.4  9.5</span></span>
-<span><span class="co">## [106] 22.3 26.4 50.0 22.2 23.7 19.8 24.7 20.1 29.1 18.0 19.5 21.4 50.0  5.0 20.1</span></span>
-<span><span class="co">## [121] 20.6 44.8 21.2 15.2  6.3 18.7 29.4 23.0 37.0 25.0 19.3 14.9 21.0 30.1 32.4</span></span>
-<span><span class="co">## [136] 33.8 21.6 21.1 19.7 13.8 12.6 23.0  8.8 22.8 18.9 22.5  5.0 21.7 16.4 22.9</span></span>
-<span><span class="co">## [151] 12.7 22.8 13.4 19.4 20.3 22.0 48.3 18.5 19.6 29.0 20.4 21.6 18.4 10.5 15.0</span></span>
-<span><span class="co">## [166] 22.5 21.2 22.6 27.1 21.5 23.9 23.8 17.9 31.6 20.8 50.0  8.8 23.7 18.3 30.5</span></span>
-<span><span class="co">## [181]  7.2 16.3 19.4 30.1 21.4 37.9 33.2 35.2 21.8 28.6 17.8 37.6 34.9 19.3 15.6</span></span>
-<span><span class="co">## [196] 19.2 27.1 19.1 20.9 22.4 10.9 36.2</span></span></code></pre>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Predict with split conformal method on the test data</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Predict with split conformal method on the test data</span></span>
 <span><span class="va">predictions_boston_rf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span>
 <span>  <span class="va">conformal_model_boston_rf</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="va">test_data</span>,</span>
@@ -1282,7 +1054,7 @@ predictions and calculate prediction intervals for the test set.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "conformalize"</span></span></code></pre>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston_rf</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           fit       lwr      upr</span></span>
 <span><span class="co">## [1,] 27.03134 21.991838 32.43038</span></span>
@@ -1298,7 +1070,7 @@ predictions and calculate prediction intervals for the test set.</p>
 </h3>
 <p>The coverage rate is the proportion of true values in the test set
 that fall within the prediction intervals.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -1307,7 +1079,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9411765</span></span></code></pre>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -1316,7 +1088,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9607843</span></span></code></pre>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -1325,7 +1097,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9705882</span></span></code></pre>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
@@ -1334,7 +1106,7 @@ that fall within the prediction intervals.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Out-of-sample coverage rate for Boston dataset:"</span>, <span class="va">coverage_boston</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Out-of-sample coverage rate for Boston dataset: 0.9607843</span></span></code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># True values for the test set</span></span>
 <span><span class="va">true_y_boston</span> <span class="op">&lt;-</span> <span class="va">test_data</span><span class="op">$</span><span class="va">medv</span></span>
 <span></span>
