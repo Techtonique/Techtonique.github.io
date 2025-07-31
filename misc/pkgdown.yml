@@ -7,6 +7,7 @@ articles:
   fit_param_dist: fit_param_dist.html
   getting-started-parfor: getting-started-parfor.html
   getting-started: getting-started.html
+  monotonic: monotonic.html
   plot_pi: plot_pi.html
   timeit: timeit.html
-last_built: 2025-07-23T00:18Z
+last_built: 2025-07-31T09:35Z

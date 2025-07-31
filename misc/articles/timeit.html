@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
       </span>
     </div>
 
@@ -62,6 +62,9 @@
     </li>
     <li>
       <a href="../articles/getting-started.html">Getting started</a>
+    </li>
+    <li>
+      <a href="../articles/monotonic.html">Monotonic regression</a>
     </li>
     <li>
       <a href="../articles/plot_pi.html">Plot prediction interval</a>
@@ -106,7 +109,7 @@
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000L</span></span>
 <span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/timeit.html">timeit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Weibull.html" class="external-link">rweibull</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.003</span></span></code></pre>
+<span><span class="co">##   0.001</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="example-usage-2">Example usage 2<a class="anchor" aria-label="anchor" href="#example-usage-2"></a>
@@ -116,7 +119,7 @@
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000L</span></span>
 <span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/timeit.html">timeit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Weibull.html" class="external-link">rweibull</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">## 0.00100 0.00100 0.00200 0.00174 0.00200 0.00400</span></span></code></pre>
+<span><span class="co">## 0.00100 0.00100 0.00100 0.00143 0.00200 0.00200</span></span></code></pre>
 </div>
   </div>
 

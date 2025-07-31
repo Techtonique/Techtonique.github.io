@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
       </span>
     </div>
 
@@ -45,6 +45,9 @@
     </li>
     <li>
       <a href="../articles/getting-started.html">Getting started</a>
+    </li>
+    <li>
+      <a href="../articles/monotonic.html">Monotonic regression</a>
     </li>
     <li>
       <a href="../articles/plot_pi.html">Plot prediction interval</a>
@@ -125,6 +128,35 @@
     <p>A matrix with predictions and prediction intervals.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define fit and predict functions</span></span></span>
+<span class="r-in"><span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Apply conformalize using the training data</span></span></span>
+<span class="r-in"><span><span class="va">conformal_model_boston</span> <span class="op">&lt;-</span> <span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="conformalize.html">conformalize</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">train_data</span>,</span></span>
+<span class="r-in"><span>  fit_func <span class="op">=</span> <span class="va">fit_func</span>,</span></span>
+<span class="r-in"><span>  predict_func <span class="op">=</span> <span class="va">predict_func</span>,</span></span>
+<span class="r-in"><span>  seed <span class="op">=</span> <span class="fl">123</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'train_data' not found</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Predict with split conformal method on the test data</span></span></span>
+<span class="r-in"><span><span class="va">predictions_boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">conformal_model_boston</span>,</span></span>
+<span class="r-in"><span>  newdata <span class="op">=</span> <span class="va">test_data</span>,</span></span>
+<span class="r-in"><span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span></span>
+<span class="r-in"><span>  method <span class="op">=</span> <span class="st">"split"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'conformal_model_boston' not found</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'predictions_boston' not found</span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
