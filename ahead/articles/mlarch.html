@@ -382,14 +382,66 @@ how to use them:</p>
 <span><span class="co">## 218       542.2963 517.5191 584.6708</span></span>
 <span><span class="co">## 219       537.7170 524.9537 562.6072</span></span>
 <span><span class="co">## 220       557.4956 515.8869 751.6655</span></span></code></pre>
-<p>Visualizing the forecasts:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Gradient Boosting via caret and using clustering explicitly</span></span>
+<span><span class="op">(</span><span class="va">obj_glmboost2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, ml_method<span class="op">=</span><span class="st">"glmboost"</span>, n_clusters<span class="op">=</span><span class="fl">2</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## 201       536.9225 523.7163 562.2036</span></span>
+<span><span class="co">## 202       536.9471 517.1959 574.5499</span></span>
+<span><span class="co">## 203       536.2966 522.8488 562.4996</span></span>
+<span><span class="co">## 204       536.0937 516.9778 561.0505</span></span>
+<span><span class="co">## 205       535.6889 512.0026 554.6241</span></span>
+<span><span class="co">## 206       539.7174 520.3196 595.8779</span></span>
+<span><span class="co">## 207       539.2603 508.8961 583.6796</span></span>
+<span><span class="co">## 208       542.2021 515.5027 597.6522</span></span>
+<span><span class="co">## 209       536.8476 522.7240 562.9377</span></span>
+<span><span class="co">## 210       547.4995 500.9878 684.2028</span></span>
+<span><span class="co">## 211       540.4050 508.7910 588.8942</span></span>
+<span><span class="co">## 212       537.2980 523.9303 569.8259</span></span>
+<span><span class="co">## 213       537.9292 517.2455 565.5631</span></span>
+<span><span class="co">## 214       537.8840 515.6418 566.9770</span></span>
+<span><span class="co">## 215       539.0610 521.4258 605.9054</span></span>
+<span><span class="co">## 216       541.9962 523.4437 673.8011</span></span>
+<span><span class="co">## 217       541.4234 523.6455 606.9050</span></span>
+<span><span class="co">## 218       542.7548 516.9205 586.9355</span></span>
+<span><span class="co">## 219       537.9815 524.6718 563.9312</span></span>
+<span><span class="co">## 220       558.6009 515.2182 761.0361</span></span></code></pre>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_glmboost3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, ml_method<span class="op">=</span><span class="st">"glmboost"</span>, n_clusters<span class="op">=</span><span class="fl">3</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## 201       538.3365 521.7044 570.2428</span></span>
+<span><span class="co">## 202       537.3762 516.0485 577.9330</span></span>
+<span><span class="co">## 203       537.8459 520.0787 572.4882</span></span>
+<span><span class="co">## 204       536.2631 516.4572 562.1442</span></span>
+<span><span class="co">## 205       535.7876 511.5420 555.1489</span></span>
+<span><span class="co">## 206       539.4364 520.7182 593.7978</span></span>
+<span><span class="co">## 207       539.0040 509.6248 581.9638</span></span>
+<span><span class="co">## 208       541.6988 516.2605 594.6405</span></span>
+<span><span class="co">## 209       536.6059 523.1270 561.5101</span></span>
+<span><span class="co">## 210       546.7133 502.4584 676.5969</span></span>
+<span><span class="co">## 211       539.9740 509.8880 585.9456</span></span>
+<span><span class="co">## 212       537.0145 524.2773 567.9559</span></span>
+<span><span class="co">## 213       537.6154 517.9373 563.9057</span></span>
+<span><span class="co">## 214       537.5711 516.4084 565.2712</span></span>
+<span><span class="co">## 215       538.6930 521.9114 602.2429</span></span>
+<span><span class="co">## 216       541.4844 523.8324 666.8058</span></span>
+<span><span class="co">## 217       540.9307 524.0397 602.9741</span></span>
+<span><span class="co">## 218       542.2033 517.6247 584.2236</span></span>
+<span><span class="co">## 219       537.6651 525.0132 562.3637</span></span>
+<span><span class="co">## 220       557.2735 516.0045 750.0552</span></span></code></pre>
+<p>Visualizing the forecasts:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_rf</span>, main<span class="op">=</span><span class="st">"Random Forest (caret)"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_glmboost</span>, main<span class="op">=</span><span class="st">"Gradient Boosting (caret)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="mlarch_files/figure-html/plot_caret-1.png" width="691.2"></p>
+<p><img src="mlarch_files/figure-html/plot_caret-1.png" width="672"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_glmboost2</span>, main<span class="op">=</span><span class="st">"Gradient Boosting (caret) \n 2 clusters"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_glmboost3</span>, main<span class="op">=</span><span class="st">"Gradient Boosting (caret) \n 3 clusters"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="mlarch_files/figure-html/plot_caret-2.png" width="672"></p>
 <p>Looking at the simulation paths:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">obj_rf</span><span class="op">$</span><span class="va">sims</span>, type<span class="op">=</span><span class="st">'l'</span>, main<span class="op">=</span><span class="st">"RF Simulation Paths"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">obj_glmboost</span><span class="op">$</span><span class="va">sims</span>, type<span class="op">=</span><span class="st">'l'</span>, main<span class="op">=</span><span class="st">"GBM Simulation Paths"</span><span class="op">)</span></span></code></pre></div>
@@ -400,7 +452,7 @@ how to use them:</p>
 </h2>
 <p>You can also customize both the mean forecasting model and the model
 for forecasting standardized residuals:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Using RW + Theta method for mean and residuals along with SVM for volatility</span></span>
 <span><span class="op">(</span><span class="va">obj_svm</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>, </span>
 <span>                     predict_func <span class="op">=</span> <span class="va">predict</span>, h<span class="op">=</span><span class="fl">20L</span>, </span>
@@ -427,7 +479,7 @@ for forecasting standardized residuals:</p>
 <span><span class="co">## 218       543.2392 516.3275 589.2513</span></span>
 <span><span class="co">## 219       538.2161 524.4095 565.0870</span></span>
 <span><span class="co">## 220       559.7157 514.5775 769.9032</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Using Theta + Theta method for mean and residuals along with GLMNET for volatility</span></span>
 <span><span class="op">(</span><span class="va">obj_glmnet</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, </span>
 <span>                     predict_func <span class="op">=</span> <span class="va">predict</span>, h<span class="op">=</span><span class="fl">20L</span>, </span>
@@ -454,16 +506,16 @@ for forecasting standardized residuals:</p>
 <span><span class="co">## 218       549.8988 532.7408 588.1457</span></span>
 <span><span class="co">## 219       546.3406 535.2334 568.0789</span></span>
 <span><span class="co">## 220       564.5126 529.8817 740.9622</span></span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_svm</span>, main<span class="op">=</span><span class="st">"SVM with RW + Theta"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mlarch_files/figure-html/plot_custom-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_glmnet</span>, main<span class="op">=</span><span class="st">"Elastic Net with Theta + Theta"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mlarch_files/figure-html/plot_custom-2.png" width="691.2"></p>
 <p>When using non-ARIMA models for the mean forecast, it’s important to
 check if the residuals of the mean forecasting model are centered and
 stationary:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Diagnostic tests for residuals</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj_svm</span><span class="op">$</span><span class="va">resids_t_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -477,14 +529,14 @@ stationary:</p>
 <span><span class="co">## sample estimates:</span></span>
 <span><span class="co">## mean of x </span></span>
 <span><span class="co">## 0.7517111</span></span></code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj_svm</span><span class="op">$</span><span class="va">resids_kpss_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  KPSS Test for Level Stationarity</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## data:  resids</span></span>
-<span><span class="co">## KPSS Level = 7.5764e-76, Truncation lag parameter = 4, p-value = 0.1</span></span></code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<span><span class="co">## KPSS Level = 0.25272, Truncation lag parameter = 4, p-value = 0.1</span></span></code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj_glmnet</span><span class="op">$</span><span class="va">resids_t_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  One Sample t-test</span></span>
@@ -497,7 +549,7 @@ stationary:</p>
 <span><span class="co">## sample estimates:</span></span>
 <span><span class="co">## mean of x </span></span>
 <span><span class="co">## 0.8026479</span></span></code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj_glmnet</span><span class="op">$</span><span class="va">resids_kpss_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  KPSS Test for Level Stationarity</span></span>
