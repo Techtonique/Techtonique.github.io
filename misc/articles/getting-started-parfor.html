@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting started with parfor • misc</title>
+<title>Getting started with misc::parfor • misc</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Getting started with parfor">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Getting started with misc::parfor">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -58,7 +58,7 @@
       <a href="../articles/fit_param_dist.html">Fitting multiple parametric distributions to data and simulate best-fitting distribution</a>
     </li>
     <li>
-      <a href="../articles/getting-started-parfor.html">Getting started with parfor</a>
+      <a href="../articles/getting-started-parfor.html">Getting started with misc::parfor</a>
     </li>
     <li>
       <a href="../articles/getting-started.html">Getting started</a>
@@ -91,7 +91,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Getting started with parfor</h1>
+      <h1 data-toc-skip>Getting started with misc::parfor</h1>
             
       
 
@@ -101,515 +101,33 @@
 
     
     
-<p>This function is adapted from the excellent
-<code><a href="https://rdrr.io/pkg/foreach/man/foreach.html" class="external-link">foreach::foreach</a></code> package. The difference is:
-<code><a href="../reference/parfor.html">misc::parfor</a></code> calls a function in a loop. Two of the
-advantages of <code><a href="../reference/parfor.html">misc::parfor</a></code> over
-<code><a href="https://rdrr.io/pkg/foreach/man/foreach.html" class="external-link">foreach::foreach</a></code> are:</p>
-<ul>
-<li><p>you <strong>don’t have to register a parallel backend</strong>
-before using it. Just specify <code>cl</code> to use parallel
-processing.</p></li>
-<li><p>you can directly <strong>monitor the progress of the parallel
-computation with a progress bar</strong>.</p></li>
-</ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">misc</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Loading required package: MASS</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: foreach</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: doSNOW</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: iterators</span></span></code></pre>
-<pre><code><span><span class="co">## Loading required package: snow</span></span></code></pre>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## Attaching package: 'misc'</span></span></code></pre>
-<pre><code><span><span class="co">## The following object is masked from 'package:stats':</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##     integrate</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Basic usage - single arguments</span></span>
+<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, cl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Parallel with 2 cores</span></span>
+<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, cl <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%evaluation # 1:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |=======                                                               |  10%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## got results for task 1</span></span>
-<span><span class="co">## numValues: 1, numResults: 1, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 2:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |==============                                                        |  20%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## got results for task 2</span></span>
-<span><span class="co">## numValues: 2, numResults: 2, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 3:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |=====================                                                 |  30%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## got results for task 3</span></span>
-<span><span class="co">## numValues: 3, numResults: 3, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 4:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |============================                                          |  40%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 16</span></span>
-<span><span class="co">## got results for task 4</span></span>
-<span><span class="co">## numValues: 4, numResults: 4, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 5:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |===================================                                   |  50%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 25</span></span>
-<span><span class="co">## got results for task 5</span></span>
-<span><span class="co">## numValues: 5, numResults: 5, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 6:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |==========================================                            |  60%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 36</span></span>
-<span><span class="co">## got results for task 6</span></span>
-<span><span class="co">## numValues: 6, numResults: 6, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 7:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |=================================================                     |  70%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 49</span></span>
-<span><span class="co">## got results for task 7</span></span>
-<span><span class="co">## numValues: 7, numResults: 7, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 8:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |========================================================              |  80%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 64</span></span>
-<span><span class="co">## got results for task 8</span></span>
-<span><span class="co">## numValues: 8, numResults: 8, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 9:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |===============================================================       |  90%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 81</span></span>
-<span><span class="co">## got results for task 9</span></span>
-<span><span class="co">## numValues: 9, numResults: 9, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 10:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##   |                                                                              |======================================================================| 100%result of evaluating expression:</span></span>
-<span><span class="co">## [1] 100</span></span>
-<span><span class="co">## got results for task 10</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: TRUE</span></span>
-<span><span class="co">## first call to combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(result.1, result.2, result.3, result.4, result.5, result.6, </span></span>
-<span><span class="co">##     result.7, result.8, result.9, result.10)</span></span></code></pre>
-<pre><code><span><span class="co">##  [1]   1   4   9  16  25  36  49  64  81 100</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1]    1    8   27   64  125  216  343  512  729 1000</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1]    1    8   27   64  125  216  343  512  729 1000</span></span></code></pre>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">*</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="va">foo</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span>, </span>
-<span>verbose <span class="op">=</span> <span class="cn">TRUE</span>, combine <span class="op">=</span> <span class="va">rbind</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## evaluation # 1:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 0.5</span></span>
-<span><span class="co">## got results for task 1</span></span>
-<span><span class="co">## numValues: 1, numResults: 1, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 2:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## got results for task 2</span></span>
-<span><span class="co">## numValues: 2, numResults: 2, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 3:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1.5</span></span>
-<span><span class="co">## got results for task 3</span></span>
-<span><span class="co">## numValues: 3, numResults: 3, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 4:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## got results for task 4</span></span>
-<span><span class="co">## numValues: 4, numResults: 4, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 5:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 2.5</span></span>
-<span><span class="co">## got results for task 5</span></span>
-<span><span class="co">## numValues: 5, numResults: 5, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 6:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## got results for task 6</span></span>
-<span><span class="co">## numValues: 6, numResults: 6, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 7:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 3.5</span></span>
-<span><span class="co">## got results for task 7</span></span>
-<span><span class="co">## numValues: 7, numResults: 7, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 8:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## got results for task 8</span></span>
-<span><span class="co">## numValues: 8, numResults: 8, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 9:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4.5</span></span>
-<span><span class="co">## got results for task 9</span></span>
-<span><span class="co">## numValues: 9, numResults: 9, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 10:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## got results for task 10</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: TRUE</span></span>
-<span><span class="co">## first call to combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(result.1, result.2, result.3, result.4, result.5, result.6, </span></span>
-<span><span class="co">##     result.7, result.8, result.9, result.10)</span></span></code></pre>
-<pre><code><span><span class="co">##           [,1]</span></span>
-<span><span class="co">## result.1   0.5</span></span>
-<span><span class="co">## result.2   1.0</span></span>
-<span><span class="co">## result.3   1.5</span></span>
-<span><span class="co">## result.4   2.0</span></span>
-<span><span class="co">## result.5   2.5</span></span>
-<span><span class="co">## result.6   3.0</span></span>
-<span><span class="co">## result.7   3.5</span></span>
-<span><span class="co">## result.8   4.0</span></span>
-<span><span class="co">## result.9   4.5</span></span>
-<span><span class="co">## result.10  5.0</span></span></code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="va">foo</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span>, </span>
-<span>verbose <span class="op">=</span> <span class="cn">TRUE</span>, combine <span class="op">=</span> <span class="va">cbind</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## evaluation # 1:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 0.5</span></span>
-<span><span class="co">## got results for task 1</span></span>
-<span><span class="co">## numValues: 1, numResults: 1, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 2:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## got results for task 2</span></span>
-<span><span class="co">## numValues: 2, numResults: 2, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 3:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1.5</span></span>
-<span><span class="co">## got results for task 3</span></span>
-<span><span class="co">## numValues: 3, numResults: 3, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 4:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## got results for task 4</span></span>
-<span><span class="co">## numValues: 4, numResults: 4, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 5:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 2.5</span></span>
-<span><span class="co">## got results for task 5</span></span>
-<span><span class="co">## numValues: 5, numResults: 5, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 6:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## got results for task 6</span></span>
-<span><span class="co">## numValues: 6, numResults: 6, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 7:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 3.5</span></span>
-<span><span class="co">## got results for task 7</span></span>
-<span><span class="co">## numValues: 7, numResults: 7, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 8:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## got results for task 8</span></span>
-<span><span class="co">## numValues: 8, numResults: 8, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 9:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4.5</span></span>
-<span><span class="co">## got results for task 9</span></span>
-<span><span class="co">## numValues: 9, numResults: 9, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 10:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## got results for task 10</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: TRUE</span></span>
-<span><span class="co">## first call to combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(result.1, result.2, result.3, result.4, result.5, result.6, </span></span>
-<span><span class="co">##     result.7, result.8, result.9, result.10)</span></span></code></pre>
-<pre><code><span><span class="co">##      result.1 result.2 result.3 result.4 result.5 result.6 result.7 result.8</span></span>
-<span><span class="co">## [1,]      0.5        1      1.5        2      2.5        3      3.5        4</span></span>
-<span><span class="co">##      result.9 result.10</span></span>
-<span><span class="co">## [1,]      4.5         5</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">foo2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">x</span><span class="op">*</span><span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="va">foo2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, show_progress <span class="op">=</span> <span class="cn">FALSE</span>, </span>
-<span>verbose <span class="op">=</span> <span class="cn">TRUE</span>, combine <span class="op">=</span> <span class="st">'+'</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## evaluation # 1:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 0.5</span></span>
-<span><span class="co">## got results for task 1</span></span>
-<span><span class="co">## numValues: 1, numResults: 1, stopped: FALSE</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 2:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1</span></span>
-<span><span class="co">## got results for task 2</span></span>
-<span><span class="co">## numValues: 2, numResults: 2, stopped: FALSE</span></span>
-<span><span class="co">## first call to combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(result.1, result.2)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 3:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 1.5</span></span>
-<span><span class="co">## got results for task 3</span></span>
-<span><span class="co">## numValues: 3, numResults: 3, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.3)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 4:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 2</span></span>
-<span><span class="co">## got results for task 4</span></span>
-<span><span class="co">## numValues: 4, numResults: 4, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.4)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 5:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 2.5</span></span>
-<span><span class="co">## got results for task 5</span></span>
-<span><span class="co">## numValues: 5, numResults: 5, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.5)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 6:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 6</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 3</span></span>
-<span><span class="co">## got results for task 6</span></span>
-<span><span class="co">## numValues: 6, numResults: 6, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.6)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 7:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 7</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 3.5</span></span>
-<span><span class="co">## got results for task 7</span></span>
-<span><span class="co">## numValues: 7, numResults: 7, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.7)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 8:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 8</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4</span></span>
-<span><span class="co">## got results for task 8</span></span>
-<span><span class="co">## numValues: 8, numResults: 8, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.8)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 9:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 9</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 4.5</span></span>
-<span><span class="co">## got results for task 9</span></span>
-<span><span class="co">## numValues: 9, numResults: 9, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.9)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## evaluation # 10:</span></span>
-<span><span class="co">## $i</span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## [1] 10</span></span>
-<span><span class="co">## result of evaluating expression:</span></span>
-<span><span class="co">## [1] 5</span></span>
-<span><span class="co">## got results for task 10</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: FALSE</span></span>
-<span><span class="co">## calling combine function</span></span>
-<span><span class="co">## evaluating call object to combine results:</span></span>
-<span><span class="co">##   fun(accum, result.10)</span></span>
-<span><span class="co">## returning status FALSE</span></span>
-<span><span class="co">## numValues: 10, numResults: 10, stopped: TRUE</span></span></code></pre>
-<pre><code><span><span class="co">## [1] 27.5</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Multiple arguments using do.call style</span></span>
+<span><span class="va">args_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">1</span>, y<span class="op">=</span><span class="fl">2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">3</span>, y<span class="op">=</span><span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">5</span>, y<span class="op">=</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, <span class="va">args_list</span>, use_do_call <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |=======================                                               |  33%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1]  3  7 11</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># With additional fixed arguments</span></span>
+<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">power</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="va">power</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, power <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1]   1   8  27  64 125</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># With error handling</span></span>
+<span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="../reference/parfor.html">parfor</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="kw">if</span><span class="op">(</span><span class="va">x</span><span class="op">==</span><span class="fl">3</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"error"</span><span class="op">)</span> <span class="kw">else</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, </span>
+<span>      errorhandling <span class="op">=</span> <span class="st">"remove"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1]  1  4 16 25</span></span></code></pre>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

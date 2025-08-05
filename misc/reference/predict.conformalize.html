@@ -41,7 +41,7 @@
       <a href="../articles/fit_param_dist.html">Fitting multiple parametric distributions to data and simulate best-fitting distribution</a>
     </li>
     <li>
-      <a href="../articles/getting-started-parfor.html">Getting started with parfor</a>
+      <a href="../articles/getting-started-parfor.html">Getting started with misc::parfor</a>
     </li>
     <li>
       <a href="../articles/getting-started.html">Getting started</a>
@@ -130,7 +130,9 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define fit and predict functions</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># Define fit and predict functions</span></span></span>
 <span class="r-in"><span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">...</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">data</span>, <span class="va">...</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">predict_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit</span>, <span class="va">newdata</span>, <span class="va">...</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -142,7 +144,6 @@
 <span class="r-in"><span>  predict_func <span class="op">=</span> <span class="va">predict_func</span>,</span></span>
 <span class="r-in"><span>  seed <span class="op">=</span> <span class="fl">123</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'train_data' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Predict with split conformal method on the test data</span></span></span>
 <span class="r-in"><span><span class="va">predictions_boston</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span></span></span>
@@ -151,10 +152,9 @@
 <span class="r-in"><span>  level <span class="op">=</span> <span class="fl">0.95</span>,</span></span>
 <span class="r-in"><span>  method <span class="op">=</span> <span class="st">"split"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'conformal_model_boston' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">predictions_boston</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'predictions_boston' not found</span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
