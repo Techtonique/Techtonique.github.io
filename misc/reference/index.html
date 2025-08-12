@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">misc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
       </span>
     </div>
 
@@ -45,6 +45,12 @@
     </li>
     <li>
       <a href="../articles/getting-started.html">Getting started</a>
+    </li>
+    <li>
+      <a href="../articles/grad_shap.html">Gradient SHAP</a>
+    </li>
+    <li>
+      <a href="../articles/linear_shap.html">Linear SHAP</a>
     </li>
     <li>
       <a href="../articles/monotonic.html">Monotonic regression</a>
@@ -80,9 +86,21 @@
         </td>
         <td><p>Function to calculate KL divergence for continuous distributions using histograms</p></td>
       </tr><tr><td>
+          <p><code><a href="compute_finite_difference_gradients.html">compute_finite_difference_gradients()</a></code> </p>
+        </td>
+        <td><p>Compute finite difference gradients</p></td>
+      </tr><tr><td>
+          <p><code><a href="compute_linear_shap.html">compute_linear_shap()</a></code> </p>
+        </td>
+        <td><p>Compute SHAP values for linear models</p></td>
+      </tr><tr><td>
           <p><code><a href="conformalize.html">conformalize()</a></code> </p>
         </td>
         <td><p>Conformal Prediction for Regression Models</p></td>
+      </tr><tr><td>
+          <p><code><a href="correlation_aware_shap.html">correlation_aware_shap()</a></code> </p>
+        </td>
+        <td><p>Correlation-aware SHAP computation using sampling approach</p></td>
       </tr><tr><td>
           <p><code><a href="debug_print.html">debug_print()</a></code> </p>
         </td>
@@ -92,17 +110,45 @@
         </td>
         <td><p>Direct sampling</p></td>
       </tr><tr><td>
+          <p><code><a href="extract_coefficients.html">extract_coefficients()</a></code> </p>
+        </td>
+        <td><p>Extract coefficients and intercept from various model types</p></td>
+      </tr><tr><td>
+          <p><code><a href="fit_linear_model.html">fit_linear_model()</a></code> </p>
+        </td>
+        <td><p>Fit linear model based on specified type</p></td>
+      </tr><tr><td>
           <p><code><a href="fit_param_dist.html">fit_param_dist()</a></code> </p>
         </td>
         <td><p>Fit multiple parametric distributions, compute KL divergence, simulate best fit</p></td>
+      </tr><tr><td>
+          <p><code><a href="fit_predict_shap.html">fit_predict_shap()</a></code> </p>
+        </td>
+        <td><p>Fit a linear model and compute SHAP values with response centering</p></td>
+      </tr><tr><td>
+          <p><code><a href="get_model_predictions.html">get_model_predictions()</a></code> </p>
+        </td>
+        <td><p>Get predictions from various model types</p></td>
+      </tr><tr><td>
+          <p><code><a href="get_model_type.html">get_model_type()</a></code> </p>
+        </td>
+        <td><p>Get model type string</p></td>
       </tr><tr><td>
           <p><code><a href="get_next_date.html">get_next_date()</a></code> </p>
         </td>
         <td><p>Get next date for a time series object</p></td>
       </tr><tr><td>
+          <p><code><a href="gradient_shap.html">gradient_shap()</a></code> </p>
+        </td>
+        <td><p>Gradient-Based SHAP for Any Differentiable Function</p></td>
+      </tr><tr><td>
           <p><code><a href="integrate.html">integrate()</a></code> </p>
         </td>
         <td><p>Numerical Integration Using Trapezoidal or Simpson's Rule</p></td>
+      </tr><tr><td>
+          <p><code><a href="integrated_gradients.html">integrated_gradients()</a></code> </p>
+        </td>
+        <td><p>Integrated Gradients for Model Explanations</p></td>
       </tr><tr><td>
           <p><code><a href="is_package_available.html">is_package_available()</a></code> </p>
         </td>
@@ -111,6 +157,10 @@
           <p><code><a href="is_wholenumber.html">is_wholenumber()</a></code> </p>
         </td>
         <td><p>Check if a number is a whole number</p></td>
+      </tr><tr><td>
+          <p><code><a href="local_linear_shap.html">local_linear_shap()</a></code> </p>
+        </td>
+        <td><p>LIME-style local linear approximation using gradients</p></td>
       </tr><tr><td>
           <p><code><a href="monotonic_regression.html">monotonic_regression()</a></code> </p>
         </td>
@@ -131,6 +181,10 @@
           <p><code><a href="predict.conformalize.html">predict(<i>&lt;conformalize&gt;</i>)</a></code> </p>
         </td>
         <td><p>Predict method for conformalize objects</p></td>
+      </tr><tr><td>
+          <p><code><a href="print_shap_summary.html">print_shap_summary()</a></code> </p>
+        </td>
+        <td><p>Print summary of SHAP results</p></td>
       </tr><tr><td>
           <p><code><a href="residuals.conformalize.html">residuals(<i>&lt;conformalize&gt;</i>)</a></code> </p>
         </td>
@@ -167,6 +221,10 @@
           <p><code><a href="timeit.html">timeit()</a></code> </p>
         </td>
         <td><p>Timing an expression</p></td>
+      </tr><tr><td>
+          <p><code><a href="validate_shap_decomposition.html">validate_shap_decomposition()</a></code> </p>
+        </td>
+        <td><p>Validate SHAP decomposition</p></td>
       </tr><tr><td>
           <p><code><a href="vlookup.html">vlookup()</a></code> </p>
         </td>
