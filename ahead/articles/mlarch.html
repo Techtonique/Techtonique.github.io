@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.22.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.23.0</span>
       </span>
     </div>
 
@@ -213,26 +213,26 @@ from the <code>fpp2</code> package:</p>
 <span><span class="co"># Default model for volatility (Ridge regression for volatility)</span></span>
 <span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       532.8683 510.6072 549.0701</span></span>
-<span><span class="co">## 202       534.1620 510.1836 555.2200</span></span>
-<span><span class="co">## 203       537.8519 455.6482 621.4205</span></span>
-<span><span class="co">## 204       535.4597 523.3184 548.0685</span></span>
-<span><span class="co">## 205       536.2701 515.9482 557.4350</span></span>
-<span><span class="co">## 206       536.8562 516.9855 553.6221</span></span>
-<span><span class="co">## 207       537.0966 522.2134 548.3146</span></span>
-<span><span class="co">## 208       536.8214 509.8663 550.7663</span></span>
-<span><span class="co">## 209       538.5965 519.8896 550.6361</span></span>
-<span><span class="co">## 210       538.6741 514.6596 558.2802</span></span>
-<span><span class="co">## 211       539.4124 510.6087 557.9464</span></span>
-<span><span class="co">## 212       541.5197 524.6351 558.9229</span></span>
-<span><span class="co">## 213       541.3757 514.1783 567.5858</span></span>
-<span><span class="co">## 214       542.3874 520.2966 559.7851</span></span>
-<span><span class="co">## 215       542.7441 515.4962 562.8581</span></span>
-<span><span class="co">## 216       543.6913 518.4352 562.3159</span></span>
-<span><span class="co">## 217       544.1679 531.4607 553.9185</span></span>
-<span><span class="co">## 218       546.0748 513.9685 582.5379</span></span>
-<span><span class="co">## 219       545.6681 511.9970 571.1057</span></span>
-<span><span class="co">## 220       546.4334 524.3504 566.2234</span></span></code></pre>
+<span><span class="co">## 201       532.8648 511.4424 548.3967</span></span>
+<span><span class="co">## 202       533.9008 514.8648 550.5881</span></span>
+<span><span class="co">## 203       537.2518 466.9802 609.7614</span></span>
+<span><span class="co">## 204       535.5012 522.8427 548.6842</span></span>
+<span><span class="co">## 205       536.0773 518.7422 554.1445</span></span>
+<span><span class="co">## 206       536.7243 519.3636 551.1981</span></span>
+<span><span class="co">## 207       537.0383 523.4118 547.2380</span></span>
+<span><span class="co">## 208       536.8019 510.5811 550.8150</span></span>
+<span><span class="co">## 209       538.5397 521.0339 549.7639</span></span>
+<span><span class="co">## 210       538.7064 518.4739 555.4439</span></span>
+<span><span class="co">## 211       539.3805 512.8170 555.2925</span></span>
+<span><span class="co">## 212       541.3737 526.0164 557.3249</span></span>
+<span><span class="co">## 213       541.2943 516.5735 564.9897</span></span>
+<span><span class="co">## 214       542.2574 522.6771 558.0069</span></span>
+<span><span class="co">## 215       542.7220 517.7095 561.0110</span></span>
+<span><span class="co">## 216       543.6000 520.4339 560.4553</span></span>
+<span><span class="co">## 217       544.0907 532.4482 552.9748</span></span>
+<span><span class="co">## 218       545.8572 516.5338 578.5640</span></span>
+<span><span class="co">## 219       545.5247 514.8385 568.7366</span></span>
+<span><span class="co">## 220       546.3446 526.1687 564.2259</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="different-machine-learning-methods">Different Machine Learning Methods<a class="anchor" aria-label="anchor" href="#different-machine-learning-methods"></a>
@@ -244,76 +244,76 @@ modeling. Here are some examples:</p>
 <span><span class="op">(</span><span class="va">obj_rf</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, fit_func <span class="op">=</span> <span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span>, </span>
 <span>                     predict_func <span class="op">=</span> <span class="va">predict</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       532.9943 514.9818 546.3583</span></span>
-<span><span class="co">## 202       535.6430 473.9838 583.8987</span></span>
-<span><span class="co">## 203       536.6626 516.8293 586.4722</span></span>
-<span><span class="co">## 204       537.2098 512.6205 563.7898</span></span>
-<span><span class="co">## 205       535.3415 528.9124 541.6989</span></span>
-<span><span class="co">## 206       538.4757 504.1888 565.2346</span></span>
-<span><span class="co">## 207       536.5940 529.0149 541.9653</span></span>
-<span><span class="co">## 208       536.8695 456.9157 560.6926</span></span>
-<span><span class="co">## 209       538.3905 528.9728 544.5427</span></span>
-<span><span class="co">## 210       539.0829 488.7497 569.5273</span></span>
-<span><span class="co">## 211       539.1325 530.3422 544.4237</span></span>
-<span><span class="co">## 212       542.0685 521.4105 561.6385</span></span>
-<span><span class="co">## 213       541.0877 533.4657 548.2760</span></span>
-<span><span class="co">## 214       542.6126 507.4853 571.4893</span></span>
-<span><span class="co">## 215       542.0972 533.1655 547.1384</span></span>
-<span><span class="co">## 216       545.2356 495.8112 578.3687</span></span>
-<span><span class="co">## 217       543.8493 538.2177 547.9920</span></span>
-<span><span class="co">## 218       551.4629 485.5071 721.1598</span></span>
-<span><span class="co">## 219       544.8177 535.2052 554.2283</span></span>
-<span><span class="co">## 220       547.5296 508.4202 575.9079</span></span></code></pre>
+<span><span class="co">## 201       533.0647 505.2108 551.3739</span></span>
+<span><span class="co">## 202       533.9814 515.3387 551.6703</span></span>
+<span><span class="co">## 203       536.2540 480.7565 590.5581</span></span>
+<span><span class="co">## 204       535.8216 517.2924 552.4399</span></span>
+<span><span class="co">## 205       536.0875 515.8393 553.4820</span></span>
+<span><span class="co">## 206       536.8791 510.7081 555.5065</span></span>
+<span><span class="co">## 207       537.0006 523.0757 547.2557</span></span>
+<span><span class="co">## 208       536.8540 515.6604 551.5463</span></span>
+<span><span class="co">## 209       538.5174 521.9277 550.0015</span></span>
+<span><span class="co">## 210       539.3244 516.5401 559.4427</span></span>
+<span><span class="co">## 211       539.5390 512.2022 557.4035</span></span>
+<span><span class="co">## 212       541.3714 524.3105 556.3561</span></span>
+<span><span class="co">## 213       541.3257 518.0628 560.3512</span></span>
+<span><span class="co">## 214       542.3052 512.7001 561.7004</span></span>
+<span><span class="co">## 215       542.8366 515.1892 562.8098</span></span>
+<span><span class="co">## 216       543.5399 516.6474 563.5345</span></span>
+<span><span class="co">## 217       544.0327 532.4288 552.3724</span></span>
+<span><span class="co">## 218       545.5487 510.4867 576.6651</span></span>
+<span><span class="co">## 219       545.4049 516.2424 567.7456</span></span>
+<span><span class="co">## 220       546.3213 522.2010 565.2971</span></span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Support Vector Machine</span></span>
 <span><span class="op">(</span><span class="va">obj_svm</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, fit_func <span class="op">=</span> <span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span>, </span>
 <span>                     predict_func <span class="op">=</span> <span class="va">predict</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       532.4934 522.4649 539.7515</span></span>
-<span><span class="co">## 202       533.7948 517.0382 548.4818</span></span>
-<span><span class="co">## 203       535.8943 491.5423 582.5843</span></span>
-<span><span class="co">## 204       535.3236 524.5294 546.6604</span></span>
-<span><span class="co">## 205       535.8114 522.6526 549.5445</span></span>
-<span><span class="co">## 206       536.6484 520.1038 550.2097</span></span>
-<span><span class="co">## 207       536.8970 526.1589 544.8919</span></span>
-<span><span class="co">## 208       536.8676 515.4748 547.6928</span></span>
-<span><span class="co">## 209       538.3806 524.2927 547.3659</span></span>
-<span><span class="co">## 210       539.1035 517.5743 557.9289</span></span>
-<span><span class="co">## 211       539.5177 515.8533 554.2971</span></span>
-<span><span class="co">## 212       541.1323 528.2824 555.1481</span></span>
-<span><span class="co">## 213       541.1741 519.9923 560.9940</span></span>
-<span><span class="co">## 214       542.0895 524.9697 555.6496</span></span>
-<span><span class="co">## 215       542.6036 521.4297 559.3157</span></span>
-<span><span class="co">## 216       543.4293 523.8594 557.6665</span></span>
-<span><span class="co">## 217       543.9761 534.1496 551.4794</span></span>
-<span><span class="co">## 218       545.5987 520.7796 573.8206</span></span>
-<span><span class="co">## 219       545.4529 519.2999 565.1699</span></span>
-<span><span class="co">## 220       546.2045 528.9343 561.0275</span></span></code></pre>
+<span><span class="co">## 201       532.7029 516.4293 543.7419</span></span>
+<span><span class="co">## 202       533.3975 523.7162 542.0356</span></span>
+<span><span class="co">## 203       537.2060 468.0297 609.6553</span></span>
+<span><span class="co">## 204       535.4544 520.9289 547.9137</span></span>
+<span><span class="co">## 205       535.9698 519.9656 552.6915</span></span>
+<span><span class="co">## 206       536.5695 522.1038 548.0375</span></span>
+<span><span class="co">## 207       536.8726 526.5508 544.5536</span></span>
+<span><span class="co">## 208       536.6463 501.3550 555.7897</span></span>
+<span><span class="co">## 209       538.3425 525.0370 547.0060</span></span>
+<span><span class="co">## 210       538.6858 526.0986 549.0412</span></span>
+<span><span class="co">## 211       539.4008 514.6122 555.4771</span></span>
+<span><span class="co">## 212       541.1581 528.1516 554.9800</span></span>
+<span><span class="co">## 213       541.0990 521.9811 559.1868</span></span>
+<span><span class="co">## 214       541.8960 527.4235 551.7489</span></span>
+<span><span class="co">## 215       542.6087 522.9846 558.6791</span></span>
+<span><span class="co">## 216       543.7763 517.7584 562.8354</span></span>
+<span><span class="co">## 217       543.8991 534.5680 550.6356</span></span>
+<span><span class="co">## 218       545.2167 525.9466 565.8097</span></span>
+<span><span class="co">## 219       545.5026 512.1045 568.8775</span></span>
+<span><span class="co">## 220       546.2382 527.9931 561.8241</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Elastic Net</span></span>
 <span><span class="op">(</span><span class="va">obj_glmnet</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, </span>
 <span>                     predict_func <span class="op">=</span> <span class="va">predict</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       533.0081 506.2610 552.4747</span></span>
-<span><span class="co">## 202       534.0312 512.4848 552.9534</span></span>
-<span><span class="co">## 203       537.9979 452.9923 624.4150</span></span>
-<span><span class="co">## 204       535.4434 523.4675 547.8804</span></span>
-<span><span class="co">## 205       536.2787 515.8231 557.5828</span></span>
-<span><span class="co">## 206       536.8552 517.0005 553.6076</span></span>
-<span><span class="co">## 207       537.0983 522.1824 548.3408</span></span>
-<span><span class="co">## 208       536.8211 509.8375 550.7809</span></span>
-<span><span class="co">## 209       538.5978 519.8626 550.6556</span></span>
-<span><span class="co">## 210       538.6744 514.6277 558.3068</span></span>
-<span><span class="co">## 211       539.4128 510.5685 557.9729</span></span>
-<span><span class="co">## 212       541.5220 524.6141 558.9493</span></span>
-<span><span class="co">## 213       541.3769 514.1416 567.6234</span></span>
-<span><span class="co">## 214       542.3890 520.2676 559.8108</span></span>
-<span><span class="co">## 215       542.7453 515.4595 562.8872</span></span>
-<span><span class="co">## 216       543.6928 518.4017 562.3432</span></span>
-<span><span class="co">## 217       544.1691 531.4442 553.9332</span></span>
-<span><span class="co">## 218       546.0777 513.9268 582.5913</span></span>
-<span><span class="co">## 219       545.6694 511.9516 571.1424</span></span>
-<span><span class="co">## 220       546.4348 524.3211 566.2522</span></span></code></pre>
+<span><span class="co">## 201       532.9331 508.6424 550.6145</span></span>
+<span><span class="co">## 202       533.9265 514.3584 551.1130</span></span>
+<span><span class="co">## 203       537.5949 460.4002 616.1023</span></span>
+<span><span class="co">## 204       535.3364 524.4607 546.6328</span></span>
+<span><span class="co">## 205       536.1594 517.5820 555.5108</span></span>
+<span><span class="co">## 206       536.7470 518.7151 551.9627</span></span>
+<span><span class="co">## 207       537.0312 523.4845 547.2427</span></span>
+<span><span class="co">## 208       536.8434 512.3371 549.5237</span></span>
+<span><span class="co">## 209       538.5210 521.5062 549.4725</span></span>
+<span><span class="co">## 210       538.6548 516.8154 556.4870</span></span>
+<span><span class="co">## 211       539.3893 513.1937 556.2475</span></span>
+<span><span class="co">## 212       541.3689 526.0140 557.1989</span></span>
+<span><span class="co">## 213       541.3014 516.5666 565.1413</span></span>
+<span><span class="co">## 214       542.2843 522.1941 558.1090</span></span>
+<span><span class="co">## 215       542.6721 517.8916 560.9662</span></span>
+<span><span class="co">## 216       543.5964 520.6275 560.5366</span></span>
+<span><span class="co">## 217       544.0923 532.5358 552.9613</span></span>
+<span><span class="co">## 218       545.8914 516.6908 579.0662</span></span>
+<span><span class="co">## 219       545.5837 514.9618 568.7209</span></span>
+<span><span class="co">## 220       546.3425 526.2589 564.3438</span></span></code></pre>
 <p>Let’s visualize the forecasts:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -338,97 +338,97 @@ how to use them:</p>
 <span><span class="co"># Random Forest via caret</span></span>
 <span><span class="op">(</span><span class="va">obj_rf</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, ml_method<span class="op">=</span><span class="st">"ranger"</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       534.0896 527.2105 549.2119</span></span>
-<span><span class="co">## 202       540.8033 506.2501 676.2634</span></span>
-<span><span class="co">## 203       535.4651 525.0756 554.5970</span></span>
-<span><span class="co">## 204       536.0222 512.5343 561.4383</span></span>
-<span><span class="co">## 205       534.7667 513.1644 552.6010</span></span>
-<span><span class="co">## 206       536.8632 523.8917 577.7776</span></span>
-<span><span class="co">## 207       534.4352 523.6236 550.2029</span></span>
-<span><span class="co">## 208       540.1830 514.0565 591.3863</span></span>
-<span><span class="co">## 209       534.2758 525.7503 549.4391</span></span>
-<span><span class="co">## 210       539.9345 506.9003 611.3457</span></span>
-<span><span class="co">## 211       536.3750 518.6688 553.7465</span></span>
-<span><span class="co">## 212       538.4359 525.6782 618.8693</span></span>
-<span><span class="co">## 213       535.9024 517.3023 564.3173</span></span>
-<span><span class="co">## 214       538.7200 502.9221 580.7261</span></span>
-<span><span class="co">## 215       535.2246 524.7153 566.6379</span></span>
-<span><span class="co">## 216       536.5341 526.6102 586.9456</span></span>
-<span><span class="co">## 217       541.5191 520.9008 576.9608</span></span>
-<span><span class="co">## 218       541.0114 506.6884 575.3034</span></span>
-<span><span class="co">## 219       535.0434 527.2991 549.4959</span></span>
-<span><span class="co">## 220       544.4411 516.0606 639.3218</span></span></code></pre>
+<span><span class="co">## 201       536.1662 524.7471 558.1092</span></span>
+<span><span class="co">## 202       537.0199 518.4939 574.2488</span></span>
+<span><span class="co">## 203       534.1568 526.4800 548.1487</span></span>
+<span><span class="co">## 204       537.5965 513.0701 570.0375</span></span>
+<span><span class="co">## 205       533.4802 522.5175 542.5243</span></span>
+<span><span class="co">## 206       541.7548 517.7774 611.8930</span></span>
+<span><span class="co">## 207       535.2487 522.0128 554.5267</span></span>
+<span><span class="co">## 208       545.9202 510.6782 620.3432</span></span>
+<span><span class="co">## 209       535.3007 525.3032 553.5935</span></span>
+<span><span class="co">## 210       547.0942 500.9073 675.5000</span></span>
+<span><span class="co">## 211       537.5578 516.1121 569.7013</span></span>
+<span><span class="co">## 212       536.8836 525.1007 566.3320</span></span>
+<span><span class="co">## 213       536.4836 520.4026 557.2623</span></span>
+<span><span class="co">## 214       535.9492 521.0632 555.8864</span></span>
+<span><span class="co">## 215       537.0254 524.0796 586.2592</span></span>
+<span><span class="co">## 216       538.8368 526.0630 629.0061</span></span>
+<span><span class="co">## 217       538.7079 526.0953 583.7128</span></span>
+<span><span class="co">## 218       538.7183 522.2672 566.6169</span></span>
+<span><span class="co">## 219       536.2519 526.6673 553.9957</span></span>
+<span><span class="co">## 220       550.1796 521.1652 686.8117</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Gradient Boosting via caret</span></span>
 <span><span class="op">(</span><span class="va">obj_glmboost</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, ml_method<span class="op">=</span><span class="st">"glmboost"</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       536.7254 524.0021 561.1012</span></span>
-<span><span class="co">## 202       537.2241 516.4879 576.7179</span></span>
-<span><span class="co">## 203       536.0656 523.2692 561.0059</span></span>
-<span><span class="co">## 204       536.3933 516.0502 562.9614</span></span>
-<span><span class="co">## 205       535.4724 513.0202 553.4245</span></span>
-<span><span class="co">## 206       539.5897 520.5008 594.8892</span></span>
-<span><span class="co">## 207       538.9055 509.9366 581.2882</span></span>
-<span><span class="co">## 208       541.8347 516.0594 595.3970</span></span>
-<span><span class="co">## 209       536.6201 523.1016 561.5969</span></span>
-<span><span class="co">## 210       546.8758 502.1903 678.2426</span></span>
-<span><span class="co">## 211       540.0372 509.7394 586.5420</span></span>
-<span><span class="co">## 212       537.0641 524.2422 568.2773</span></span>
-<span><span class="co">## 213       537.6658 517.8344 564.1649</span></span>
-<span><span class="co">## 214       537.6244 516.2911 565.5337</span></span>
-<span><span class="co">## 215       538.7529 521.8397 602.8892</span></span>
-<span><span class="co">## 216       541.5688 523.7738 668.0133</span></span>
-<span><span class="co">## 217       541.0185 523.9721 603.8553</span></span>
-<span><span class="co">## 218       542.2963 517.5191 584.6708</span></span>
-<span><span class="co">## 219       537.7170 524.9537 562.6072</span></span>
-<span><span class="co">## 220       557.4956 515.8869 751.6655</span></span></code></pre>
+<span><span class="co">## 201       537.9068 522.3545 567.5418</span></span>
+<span><span class="co">## 202       535.8434 520.8874 565.6784</span></span>
+<span><span class="co">## 203       537.9850 519.2924 574.3039</span></span>
+<span><span class="co">## 204       536.9038 514.5199 565.8848</span></span>
+<span><span class="co">## 205       537.5581 504.0013 564.3252</span></span>
+<span><span class="co">## 206       539.5142 520.5127 594.7095</span></span>
+<span><span class="co">## 207       541.1827 503.0291 593.9580</span></span>
+<span><span class="co">## 208       544.9917 511.9194 614.4757</span></span>
+<span><span class="co">## 209       536.5907 522.9565 561.8286</span></span>
+<span><span class="co">## 210       549.2764 497.8520 703.1706</span></span>
+<span><span class="co">## 211       540.8083 507.1474 592.4693</span></span>
+<span><span class="co">## 212       537.6034 523.5690 572.1374</span></span>
+<span><span class="co">## 213       537.7653 517.2689 565.7723</span></span>
+<span><span class="co">## 214       537.8954 515.9821 566.7288</span></span>
+<span><span class="co">## 215       539.7231 520.7992 613.1262</span></span>
+<span><span class="co">## 216       542.3230 523.3182 680.7936</span></span>
+<span><span class="co">## 217       542.2202 523.1768 613.2110</span></span>
+<span><span class="co">## 218       543.5427 516.3539 589.4792</span></span>
+<span><span class="co">## 219       538.2295 524.2723 565.9944</span></span>
+<span><span class="co">## 220       560.7179 514.7329 778.2409</span></span></code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Gradient Boosting via caret and using clustering explicitly</span></span>
 <span><span class="op">(</span><span class="va">obj_glmboost2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, ml_method<span class="op">=</span><span class="st">"glmboost"</span>, n_clusters<span class="op">=</span><span class="fl">2</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       536.9225 523.7163 562.2036</span></span>
-<span><span class="co">## 202       536.9471 517.1959 574.5499</span></span>
-<span><span class="co">## 203       536.2966 522.8488 562.4996</span></span>
-<span><span class="co">## 204       536.0937 516.9778 561.0505</span></span>
-<span><span class="co">## 205       535.6889 512.0026 554.6241</span></span>
-<span><span class="co">## 206       539.7174 520.3196 595.8779</span></span>
-<span><span class="co">## 207       539.2603 508.8961 583.6796</span></span>
-<span><span class="co">## 208       542.2021 515.5027 597.6522</span></span>
-<span><span class="co">## 209       536.8476 522.7240 562.9377</span></span>
-<span><span class="co">## 210       547.4995 500.9878 684.2028</span></span>
-<span><span class="co">## 211       540.4050 508.7910 588.8942</span></span>
-<span><span class="co">## 212       537.2980 523.9303 569.8259</span></span>
-<span><span class="co">## 213       537.9292 517.2455 565.5631</span></span>
-<span><span class="co">## 214       537.8840 515.6418 566.9770</span></span>
-<span><span class="co">## 215       539.0610 521.4258 605.9054</span></span>
-<span><span class="co">## 216       541.9962 523.4437 673.8011</span></span>
-<span><span class="co">## 217       541.4234 523.6455 606.9050</span></span>
-<span><span class="co">## 218       542.7548 516.9205 586.9355</span></span>
-<span><span class="co">## 219       537.9815 524.6718 563.9312</span></span>
-<span><span class="co">## 220       558.6009 515.2182 761.0361</span></span></code></pre>
+<span><span class="co">## 201       538.2953 521.8032 569.7210</span></span>
+<span><span class="co">## 202       535.7107 521.2096 564.6382</span></span>
+<span><span class="co">## 203       537.9381 519.3803 573.9951</span></span>
+<span><span class="co">## 204       537.8907 511.4354 572.1430</span></span>
+<span><span class="co">## 205       537.2177 505.5396 562.4863</span></span>
+<span><span class="co">## 206       540.3345 519.3932 601.1644</span></span>
+<span><span class="co">## 207       540.1136 506.1633 587.0747</span></span>
+<span><span class="co">## 208       546.7858 509.3226 625.4953</span></span>
+<span><span class="co">## 209       536.1208 523.7398 559.0390</span></span>
+<span><span class="co">## 210       551.6566 493.3551 726.1312</span></span>
+<span><span class="co">## 211       539.7365 509.9426 585.4624</span></span>
+<span><span class="co">## 212       537.0556 524.2764 568.5011</span></span>
+<span><span class="co">## 213       537.2685 518.3918 563.0624</span></span>
+<span><span class="co">## 214       537.2084 517.6410 562.9550</span></span>
+<span><span class="co">## 215       538.9989 521.7372 605.9543</span></span>
+<span><span class="co">## 216       541.0790 524.2542 663.6652</span></span>
+<span><span class="co">## 217       541.4843 523.7455 607.6121</span></span>
+<span><span class="co">## 218       542.5290 517.6247 584.6058</span></span>
+<span><span class="co">## 219       537.6634 524.8765 563.1005</span></span>
+<span><span class="co">## 220       558.5891 515.9520 760.2753</span></span></code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_glmboost3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, ml_method<span class="op">=</span><span class="st">"glmboost"</span>, n_clusters<span class="op">=</span><span class="fl">3</span>, h<span class="op">=</span><span class="fl">20L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       538.3365 521.7044 570.2428</span></span>
-<span><span class="co">## 202       537.3762 516.0485 577.9330</span></span>
-<span><span class="co">## 203       537.8459 520.0787 572.4882</span></span>
-<span><span class="co">## 204       536.2631 516.4572 562.1442</span></span>
-<span><span class="co">## 205       535.7876 511.5420 555.1489</span></span>
-<span><span class="co">## 206       539.4364 520.7182 593.7978</span></span>
-<span><span class="co">## 207       539.0040 509.6248 581.9638</span></span>
-<span><span class="co">## 208       541.6988 516.2605 594.6405</span></span>
-<span><span class="co">## 209       536.6059 523.1270 561.5101</span></span>
-<span><span class="co">## 210       546.7133 502.4584 676.5969</span></span>
-<span><span class="co">## 211       539.9740 509.8880 585.9456</span></span>
-<span><span class="co">## 212       537.0145 524.2773 567.9559</span></span>
-<span><span class="co">## 213       537.6154 517.9373 563.9057</span></span>
-<span><span class="co">## 214       537.5711 516.4084 565.2712</span></span>
-<span><span class="co">## 215       538.6930 521.9114 602.2429</span></span>
-<span><span class="co">## 216       541.4844 523.8324 666.8058</span></span>
-<span><span class="co">## 217       540.9307 524.0397 602.9741</span></span>
-<span><span class="co">## 218       542.2033 517.6247 584.2236</span></span>
-<span><span class="co">## 219       537.6651 525.0132 562.3637</span></span>
-<span><span class="co">## 220       557.2735 516.0045 750.0552</span></span></code></pre>
+<span><span class="co">## 201       537.7093 522.6349 566.4337</span></span>
+<span><span class="co">## 202       535.6960 521.2451 564.5234</span></span>
+<span><span class="co">## 203       537.9044 519.4434 573.7732</span></span>
+<span><span class="co">## 204       537.6874 512.0709 570.8536</span></span>
+<span><span class="co">## 205       537.3105 505.1203 562.9875</span></span>
+<span><span class="co">## 206       539.6623 520.3106 595.8747</span></span>
+<span><span class="co">## 207       540.1784 505.9733 587.4919</span></span>
+<span><span class="co">## 208       545.3929 511.3387 616.9400</span></span>
+<span><span class="co">## 209       535.9412 524.0392 557.9729</span></span>
+<span><span class="co">## 210       549.7308 496.9935 707.5538</span></span>
+<span><span class="co">## 211       539.4956 510.5709 583.8876</span></span>
+<span><span class="co">## 212       536.9468 524.4169 567.7785</span></span>
+<span><span class="co">## 213       537.0903 518.7944 562.0906</span></span>
+<span><span class="co">## 214       537.0858 517.9370 562.2817</span></span>
+<span><span class="co">## 215       538.9343 521.8209 605.3146</span></span>
+<span><span class="co">## 216       540.9880 524.3227 662.4124</span></span>
+<span><span class="co">## 217       541.3000 523.8879 606.2101</span></span>
+<span><span class="co">## 218       542.3911 517.7977 583.9426</span></span>
+<span><span class="co">## 219       537.5582 524.9888 562.5624</span></span>
+<span><span class="co">## 220       558.3019 516.1165 757.8513</span></span></code></pre>
 <p>Visualizing the forecasts:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -459,26 +459,26 @@ for forecasting standardized residuals:</p>
 <span>                     mean_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/naive.html" class="external-link">rwf</a></span>,</span>
 <span>                     model_residuals<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       536.7001 524.0427 560.8327</span></span>
-<span><span class="co">## 202       538.0314 514.4173 583.0770</span></span>
-<span><span class="co">## 203       535.8869 523.5741 559.8654</span></span>
-<span><span class="co">## 204       537.4383 512.7645 569.5894</span></span>
-<span><span class="co">## 205       535.4157 513.2780 553.1443</span></span>
-<span><span class="co">## 206       540.9776 518.5788 605.5379</span></span>
-<span><span class="co">## 207       539.0655 509.5605 582.2023</span></span>
-<span><span class="co">## 208       543.2671 513.9431 604.0251</span></span>
-<span><span class="co">## 209       536.8391 522.7220 562.9176</span></span>
-<span><span class="co">## 210       548.6580 498.8522 695.3473</span></span>
-<span><span class="co">## 211       540.5741 508.3049 590.1480</span></span>
-<span><span class="co">## 212       537.6249 523.5462 571.9791</span></span>
-<span><span class="co">## 213       538.0943 516.8791 566.4469</span></span>
-<span><span class="co">## 214       538.1972 514.8895 568.6467</span></span>
-<span><span class="co">## 215       539.2980 521.1176 608.3200</span></span>
-<span><span class="co">## 216       542.4556 523.0970 680.1538</span></span>
-<span><span class="co">## 217       541.8127 523.3560 609.9607</span></span>
-<span><span class="co">## 218       543.2392 516.3275 589.2513</span></span>
-<span><span class="co">## 219       538.2161 524.4095 565.0870</span></span>
-<span><span class="co">## 220       559.7157 514.5775 769.9032</span></span></code></pre>
+<span><span class="co">## 201       536.0611 523.7248 555.0916</span></span>
+<span><span class="co">## 202       536.9444 516.6328 572.6381</span></span>
+<span><span class="co">## 203       534.4137 524.1067 549.4079</span></span>
+<span><span class="co">## 204       538.7837 510.3902 575.1710</span></span>
+<span><span class="co">## 205       534.1128 522.5138 548.3994</span></span>
+<span><span class="co">## 206       538.3217 516.6144 569.2249</span></span>
+<span><span class="co">## 207       534.3154 524.5893 555.2378</span></span>
+<span><span class="co">## 208       543.8541 514.0522 594.5224</span></span>
+<span><span class="co">## 209       534.7829 527.0739 549.2626</span></span>
+<span><span class="co">## 210       551.0439 493.4886 702.0912</span></span>
+<span><span class="co">## 211       536.6495 524.2763 561.0475</span></span>
+<span><span class="co">## 212       539.8005 518.9739 578.7811</span></span>
+<span><span class="co">## 213       536.3281 521.3675 554.3227</span></span>
+<span><span class="co">## 214       539.2460 516.1300 568.0429</span></span>
+<span><span class="co">## 215       536.7317 526.0333 562.7160</span></span>
+<span><span class="co">## 216       544.4344 520.6134 688.3766</span></span>
+<span><span class="co">## 217       538.4335 525.8095 587.4754</span></span>
+<span><span class="co">## 218       544.1933 518.7501 602.2242</span></span>
+<span><span class="co">## 219       536.4960 525.6372 557.0674</span></span>
+<span><span class="co">## 220       565.0100 517.4631 821.9754</span></span></code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Using Theta + Theta method for mean and residuals along with GLMNET for volatility</span></span>
 <span><span class="op">(</span><span class="va">obj_glmnet</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="va">y</span>, fit_func <span class="op">=</span> <span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">cv.glmnet</a></span>, </span>
@@ -486,26 +486,26 @@ for forecasting standardized residuals:</p>
 <span>                     mean_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>,</span>
 <span>                     model_residuals<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## 201       539.7210 521.7443 571.0620</span></span>
-<span><span class="co">## 202       536.1702 523.4416 562.4592</span></span>
-<span><span class="co">## 203       537.3178 525.2986 563.1430</span></span>
-<span><span class="co">## 204       537.1867 520.3207 560.1881</span></span>
-<span><span class="co">## 205       537.4467 516.6405 554.9163</span></span>
-<span><span class="co">## 206       540.9844 525.3315 584.7582</span></span>
-<span><span class="co">## 207       541.9160 515.3199 579.7897</span></span>
-<span><span class="co">## 208       544.2088 523.5243 589.6411</span></span>
-<span><span class="co">## 209       540.4673 529.1910 562.9970</span></span>
-<span><span class="co">## 210       550.2739 510.0462 671.8512</span></span>
-<span><span class="co">## 211       544.6859 517.0620 588.9166</span></span>
-<span><span class="co">## 212       542.2312 530.6821 571.1815</span></span>
-<span><span class="co">## 213       543.1535 527.9466 566.9051</span></span>
-<span><span class="co">## 214       543.4203 526.1855 568.1847</span></span>
-<span><span class="co">## 215       544.9848 530.6582 585.6213</span></span>
-<span><span class="co">## 216       547.9162 533.7306 662.0766</span></span>
-<span><span class="co">## 217       548.6211 532.6393 608.8480</span></span>
-<span><span class="co">## 218       549.8988 532.7408 588.1457</span></span>
-<span><span class="co">## 219       546.3406 535.2334 568.0789</span></span>
-<span><span class="co">## 220       564.5126 529.8817 740.9622</span></span></code></pre>
+<span><span class="co">## 201       540.3554 520.9814 574.1266</span></span>
+<span><span class="co">## 202       536.4905 522.7721 564.8219</span></span>
+<span><span class="co">## 203       537.6888 524.7349 565.5210</span></span>
+<span><span class="co">## 204       537.5091 519.3313 562.2976</span></span>
+<span><span class="co">## 205       537.7507 515.3271 556.5779</span></span>
+<span><span class="co">## 206       541.5249 524.6552 588.6952</span></span>
+<span><span class="co">## 207       542.4904 513.8270 583.3074</span></span>
+<span><span class="co">## 208       544.9229 522.6309 593.8807</span></span>
+<span><span class="co">## 209       540.8525 528.6994 565.1327</span></span>
+<span><span class="co">## 210       551.3820 508.0279 682.4038</span></span>
+<span><span class="co">## 211       545.3218 515.5507 592.9858</span></span>
+<span><span class="co">## 212       542.6381 530.1911 573.8377</span></span>
+<span><span class="co">## 213       543.5937 527.2041 569.1911</span></span>
+<span><span class="co">## 214       543.8428 525.2684 570.5311</span></span>
+<span><span class="co">## 215       545.4903 530.0497 589.2793</span></span>
+<span><span class="co">## 216       548.6111 533.3226 671.6388</span></span>
+<span><span class="co">## 217       549.3322 532.1086 614.2345</span></span>
+<span><span class="co">## 218       550.6709 532.1793 591.8900</span></span>
+<span><span class="co">## 219       546.7978 534.8269 570.2250</span></span>
+<span><span class="co">## 220       566.3431 529.0212 756.5023</span></span></code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_svm</span>, main<span class="op">=</span><span class="st">"SVM with RW + Theta"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mlarch_files/figure-html/plot_custom-1.png" width="691.2"></p>
@@ -535,7 +535,7 @@ stationary:</p>
 <span><span class="co">##  KPSS Test for Level Stationarity</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## data:  resids</span></span>
-<span><span class="co">## KPSS Level = 0.25199, Truncation lag parameter = 4, p-value = 0.1</span></span></code></pre>
+<span><span class="co">## KPSS Level = 0.25272, Truncation lag parameter = 4, p-value = 0.1</span></span></code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj_glmnet</span><span class="op">$</span><span class="va">resids_t_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
