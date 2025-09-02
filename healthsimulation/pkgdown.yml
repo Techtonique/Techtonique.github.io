@@ -1,0 +1,8 @@
+pandoc: '3.4'
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  MultimodalHealthGenerator: MultimodalHealthGenerator.html
+  SmartHealthSimulator: SmartHealthSimulator.html
+  WellnessData: WellnessData.html
+last_built: 2025-09-02T08:43Z
