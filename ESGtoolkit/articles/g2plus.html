@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.0</span>
       </span>
     </div>
 
@@ -116,12 +116,27 @@
 <pre><code><span><span class="co">## Loading required package: randtoolbox</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: rngWELL</span></span></code></pre>
 <pre><code><span><span class="co">## This is randtoolbox. For an overview, type 'help("randtoolbox")'.</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: zoo</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'zoo'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:base':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     as.Date, as.Date.numeric</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: data.table</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'data.table'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:zoo':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     yearmon, yearqtr</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:reshape2':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     dcast, melt</span></span></code></pre>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  </span></span>
-<span><span class="co">##  This is version 1.3.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
+<span><span class="co">##  This is version 1.6.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">## </span></span></code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Observed maturities</span></span>
 <span><span class="va">u</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">30</span></span>
 <span></span>
@@ -193,25 +208,25 @@
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Series "</span>, <span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co"># 4 types of simulations, by changing the number of scenarios</span></span>
 <span><span class="va">ptm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">r_SW</span> <span class="op">&lt;-</span> <span class="fu">simG2plus</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, methodyc <span class="op">=</span> <span class="st">"hyman"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">ptm</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.129   0.007   0.143</span></span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<span><span class="co">##   0.101   0.003   0.108</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">r_SW</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">r_SW</span>, type <span class="op">=</span> <span class="st">'l'</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="g2plus_files/figure-html/chunk-3-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Stochastic deflators :</span></span>
 <span><span class="va">deltat_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">deltat</a></span><span class="op">(</span><span class="va">r_SW</span><span class="op">)</span></span>
 <span><span class="va">Dt_SW</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgdiscountfactor.html">esgdiscountfactor</a></span><span class="op">(</span>r <span class="op">=</span> <span class="va">r_SW</span>, X <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">Dt_SW</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html" class="external-link">window</a></span><span class="op">(</span><span class="va">Dt_SW</span>, start <span class="op">=</span> <span class="va">deltat_r</span>, deltat <span class="op">=</span> <span class="fl">2</span><span class="op">*</span><span class="va">deltat_r</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Market prices</span></span>
 <span><span class="va">horizon</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
 <span><span class="va">marketprices</span> <span class="op">&lt;-</span> <span class="va">p</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">horizon</span><span class="op">]</span></span>
@@ -235,7 +250,7 @@
 <span><span class="co">##            [,17]       [,18]       [,19]       [,20]</span></span>
 <span><span class="co">## [1,] -0.01832062 -0.01750398 -0.01686035 -0.01594044</span></span>
 <span><span class="co">## [2,]  0.02597545  0.02822546  0.03034067  0.03247473</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">marketprices</span>, col <span class="op">=</span> <span class="st">"blue"</span>, type <span class="op">=</span> <span class="st">'l'</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"time"</span>, ylab <span class="op">=</span> <span class="st">"prices"</span>, main <span class="op">=</span> <span class="st">"Prices"</span><span class="op">)</span></span>
@@ -246,13 +261,13 @@
 <span>        ylab <span class="op">=</span> <span class="st">""</span>, main <span class="op">=</span> <span class="st">"Confidence Interval \n for the price difference"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">estim_SW</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="g2plus_files/figure-html/chunk-6-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">difference</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">Dt_SW</span> <span class="op">-</span> <span class="va">marketprices</span><span class="op">)</span></span></code></pre></div>
 <p><strong>test for the “martingale” difference</strong> (this
 implementation is very slow)</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">difference</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="fu">vrtest</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/vrtest/man/DL.test.html" class="external-link">DL.test</a></span><span class="op">(</span><span class="va">difference</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">difference</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, color <span class="op">=</span> <span class="st">"red"</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): "color" is</span></span>

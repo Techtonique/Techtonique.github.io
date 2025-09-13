@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.0</span>
       </span>
     </div>
 
@@ -114,12 +114,27 @@
 <pre><code><span><span class="co">## Loading required package: randtoolbox</span></span></code></pre>
 <pre><code><span><span class="co">## Loading required package: rngWELL</span></span></code></pre>
 <pre><code><span><span class="co">## This is randtoolbox. For an overview, type 'help("randtoolbox")'.</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: zoo</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'zoo'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:base':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     as.Date, as.Date.numeric</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: data.table</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'data.table'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:zoo':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     yearmon, yearqtr</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:reshape2':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     dcast, melt</span></span></code></pre>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  </span></span>
-<span><span class="co">##  This is version 1.3.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
+<span><span class="co">##  This is version 1.6.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">## </span></span></code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Spot variance</span></span>
 <span><span class="va">V0</span> <span class="op">&lt;-</span> <span class="fl">0.1372</span></span>
 <span></span>
@@ -161,7 +176,7 @@
 <span><span class="va">end_</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">end</a></span><span class="op">(</span><span class="va">EuStockMarkets</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">end_</span> <span class="op">-</span> <span class="va">start_</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  7 39</span></span></code></pre>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">freq_</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">EuStockMarkets</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Simulation of shocks, with antithetic variates</span></span>
@@ -173,19 +188,19 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">start_</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1991  130</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">freq_</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 260</span></span></code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">end_</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1998  169</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">shocks</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1991  130</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">shocks</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 260</span></span></code></pre>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">end</a></span><span class="op">(</span><span class="va">shocks</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1999  129</span></span></code></pre>
 <div class="section level2">
@@ -199,7 +214,7 @@
 <div class="section level2">
 <h2 id="section-1">============================================================================<a class="anchor" aria-label="anchor" href="#section-1"></a>
 </h2>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Vol simulation</span></span>
 <span><span class="va">sim_vol</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, </span>
 <span>                   model <span class="op">=</span> <span class="st">"CIR"</span>, x0 <span class="op">=</span> <span class="va">V0</span>,</span>
@@ -211,10 +226,10 @@
 <span>                   horizon <span class="op">=</span> <span class="fl">8L</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">sim_vol</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1991  130</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">sim_vol</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 260</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">end</a></span><span class="op">(</span><span class="va">sim_vol</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1999  130</span></span></code></pre>
 </div>
@@ -229,7 +244,7 @@
 <div class="section level2">
 <h2 id="section-3">============================================================================<a class="anchor" aria-label="anchor" href="#section-3"></a>
 </h2>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># prices simulation</span></span>
 <span><span class="va">sim_price</span> <span class="op">&lt;-</span> <span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/simdiff.html">simdiff</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, start <span class="op">=</span> <span class="va">start_</span>, </span>
 <span>                                 end <span class="op">=</span> <span class="va">end_</span>,</span>
@@ -242,16 +257,16 @@
 <span>                     eps <span class="op">=</span> <span class="va">shocks</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">sim_price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1991  130</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">sim_price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 260</span></span></code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">end</a></span><span class="op">(</span><span class="va">sim_price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1998  169</span></span></code></pre>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">sim_price</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1860  300</span></span></code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the simulated price paths</span></span>
 <span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">sim_price</span><span class="op">)</span></span></code></pre></div>
 <p><img src="simdiffts_files/figure-html/4-plot-1.png" width="691.2"></p>
