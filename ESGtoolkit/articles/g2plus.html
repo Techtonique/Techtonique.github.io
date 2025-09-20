@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esgtoolkit</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.8.0</span>
       </span>
     </div>
 
@@ -65,6 +65,9 @@
     </li>
     <li>
       <a href="../articles/simdiffts.html">More flexibility for simulations</a>
+    </li>
+    <li>
+      <a href="../articles/syntheticopula.html">Synthetic Copula simulation</a>
     </li>
   </ul>
 </li>
@@ -133,7 +136,7 @@
 <span><span class="co">##     dcast, melt</span></span></code></pre>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  </span></span>
-<span><span class="co">##  This is version 1.6.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
+<span><span class="co">##  This is version 1.8.0 of esgtoolkit. Starting with 1.0.0, package renamed as: 'esgtoolkit' (lowercase) </span></span>
 <span><span class="co">##  </span></span>
 <span><span class="co">## </span></span></code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -215,7 +218,7 @@
 <span><span class="va">r_SW</span> <span class="op">&lt;-</span> <span class="fu">simG2plus</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100</span>, methodyc <span class="op">=</span> <span class="st">"hyman"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="va">ptm</span></span></code></pre></div>
 <pre><code><span><span class="co">##    user  system elapsed </span></span>
-<span><span class="co">##   0.101   0.003   0.108</span></span></code></pre>
+<span><span class="co">##   0.211   0.012   0.256</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">esgtoolkit</span><span class="fu">::</span><span class="fu"><a href="../reference/esgplotbands.html">esgplotbands</a></span><span class="op">(</span><span class="va">r_SW</span>, xlab <span class="op">=</span> <span class="st">'time'</span>, ylab <span class="op">=</span> <span class="st">'short rate'</span><span class="op">)</span></span>
