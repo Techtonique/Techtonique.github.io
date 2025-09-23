@@ -9,6 +9,7 @@ articles:
   ahead-ridge2-prediction-intervals: ahead-ridge2-prediction-intervals.html
   ahead-univariate-season: ahead-univariate-season.html
   ahead-vignette: ahead-vignette.html
+  anymodelplusgarch: anymodelplusgarch.html
   caretfitpredict: caretfitpredict.html
   comb_OLS: comb_OLS.html
   comb_OLS2: comb_OLS2.html
@@ -24,4 +25,4 @@ articles:
   glmthetaf: glmthetaf.html
   mlarch: mlarch.html
   mlarch2: mlarch2.html
-last_built: 2025-09-19T00:48Z
+last_built: 2025-09-23T07:29Z
