@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.26.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.26.1</span>
       </span>
     </div>
 
@@ -147,18 +147,134 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
 <span>                           FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, </span>
-<span>                           FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, </span>
-<span>                           FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/ridge2f.html">ridge2f</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, </span>
+<pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## 201       532.1750 518.1879 546.1621</span></span>
+<span><span class="co">## 202       532.8717 518.8757 546.8678</span></span>
+<span><span class="co">## 203       533.5684 519.5635 547.5734</span></span>
+<span><span class="co">## 204       534.2652 520.2513 548.2790</span></span>
+<span><span class="co">## 205       534.9619 520.9391 548.9847</span></span>
+<span><span class="co">## 206       535.6586 521.6269 549.6903</span></span>
+<span><span class="co">## 207       536.3553 522.3148 550.3959</span></span>
+<span><span class="co">## 208       537.0521 523.0026 551.1015</span></span>
+<span><span class="co">## 209       537.7488 523.6905 551.8071</span></span>
+<span><span class="co">## 210       538.4455 524.3783 552.5127</span></span>
+<span><span class="co">## 211       539.1422 525.0662 553.2183</span></span>
+<span><span class="co">## 212       539.8390 525.7540 553.9239</span></span>
+<span><span class="co">## 213       540.5357 526.4419 554.6295</span></span>
+<span><span class="co">## 214       541.2324 527.1298 555.3351</span></span>
+<span><span class="co">## 215       541.9291 527.8176 556.0407</span></span>
+<span><span class="co">## 216       542.6259 528.5055 556.7462</span></span>
+<span><span class="co">## 217       543.3226 529.1934 557.4518</span></span>
+<span><span class="co">## 218       544.0193 529.8813 558.1573</span></span>
+<span><span class="co">## 219       544.7160 530.5692 558.8629</span></span>
+<span><span class="co">## 220       545.4128 531.2571 559.5684</span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-1.png" width="672"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
+<span>                           FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## 201       531.4982 518.2318 544.7647</span></span>
+<span><span class="co">## 202       531.7610 516.1991 547.3230</span></span>
+<span><span class="co">## 203       532.0238 514.1041 549.9436</span></span>
+<span><span class="co">## 204       532.2867 511.9078 552.6655</span></span>
+<span><span class="co">## 205       532.5495 509.5788 555.5202</span></span>
+<span><span class="co">## 206       532.8123 507.0890 558.5356</span></span>
+<span><span class="co">## 207       533.0751 504.4117 561.7385</span></span>
+<span><span class="co">## 208       533.3379 501.5205 565.1553</span></span>
+<span><span class="co">## 209       533.6007 498.3882 568.8131</span></span>
+<span><span class="co">## 210       533.8635 494.9868 572.7402</span></span>
+<span><span class="co">## 211       534.1263 491.2862 576.9664</span></span>
+<span><span class="co">## 212       534.3891 487.2548 581.5234</span></span>
+<span><span class="co">## 213       534.6519 482.8583 586.4455</span></span>
+<span><span class="co">## 214       534.9147 478.0601 591.7694</span></span>
+<span><span class="co">## 215       535.1775 472.8201 597.5349</span></span>
+<span><span class="co">## 216       535.4403 467.0955 603.7852</span></span>
+<span><span class="co">## 217       535.7031 460.8392 610.5671</span></span>
+<span><span class="co">## 218       535.9659 454.0003 617.9316</span></span>
+<span><span class="co">## 219       536.2288 446.5234 625.9341</span></span>
+<span><span class="co">## 220       536.4916 438.3481 634.6350</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-2.png" width="672"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
+<span>                           FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/ridge2f.html">ridge2f</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## 201       532.1740 519.4742 544.8737</span></span>
+<span><span class="co">## 202       532.9003 517.9900 547.8106</span></span>
+<span><span class="co">## 203       533.6547 516.8217 550.4877</span></span>
+<span><span class="co">## 204       534.4346 515.8770 552.9921</span></span>
+<span><span class="co">## 205       535.2377 515.1028 555.3726</span></span>
+<span><span class="co">## 206       536.0622 514.4648 557.6596</span></span>
+<span><span class="co">## 207       536.9062 513.9392 559.8731</span></span>
+<span><span class="co">## 208       537.7679 513.5087 562.0272</span></span>
+<span><span class="co">## 209       538.6460 513.1598 564.1321</span></span>
+<span><span class="co">## 210       539.5390 512.8824 566.1956</span></span>
+<span><span class="co">## 211       540.4458 512.6679 568.2236</span></span>
+<span><span class="co">## 212       541.3651 512.5096 570.2207</span></span>
+<span><span class="co">## 213       542.2961 512.4018 572.1905</span></span>
+<span><span class="co">## 214       543.2378 512.3395 574.1361</span></span>
+<span><span class="co">## 215       544.1894 512.3188 576.0601</span></span>
+<span><span class="co">## 216       545.1501 512.3359 577.9643</span></span>
+<span><span class="co">## 217       546.1193 512.3879 579.8506</span></span>
+<span><span class="co">## 218       547.0963 512.4721 581.7205</span></span>
+<span><span class="co">## 219       548.0805 512.5859 583.5751</span></span>
+<span><span class="co">## 220       549.0716 512.7274 585.4158</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-3.png" width="672"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
 <span>                           FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/loessf.html">loessf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## 201       544.3276 520.1558 568.4994</span></span>
+<span><span class="co">## 202       548.2888 523.7199 572.8577</span></span>
+<span><span class="co">## 203       552.0027 527.0698 576.9356</span></span>
+<span><span class="co">## 204       554.1810 528.9140 579.4481</span></span>
+<span><span class="co">## 205       556.8539 531.2797 582.4282</span></span>
+<span><span class="co">## 206       560.3601 534.5032 586.2170</span></span>
+<span><span class="co">## 207       561.5067 535.3894 587.6240</span></span>
+<span><span class="co">## 208       565.6928 539.3354 592.0502</span></span>
+<span><span class="co">## 209       567.2796 540.7007 593.8586</span></span>
+<span><span class="co">## 210       570.1362 543.3526 596.9198</span></span>
+<span><span class="co">## 211       574.0123 547.0396 600.9850</span></span>
+<span><span class="co">## 212       578.5510 551.4034 605.6985</span></span>
+<span><span class="co">## 213       580.8285 553.5192 608.1378</span></span>
+<span><span class="co">## 214       584.2104 556.7513 611.6694</span></span>
+<span><span class="co">## 215       587.9165 560.3188 615.5143</span></span>
+<span><span class="co">## 216       591.1329 563.4067 618.8592</span></span>
+<span><span class="co">## 217       594.0383 566.1930 621.8836</span></span>
+<span><span class="co">## 218       595.6430 567.6873 623.5987</span></span>
+<span><span class="co">## 219       602.2172 574.1591 630.2753</span></span>
+<span><span class="co">## 220       604.7474 576.5944 632.9005</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-4.png" width="672"></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<span>                             fit_func<span class="op">=</span><span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span><span class="op">)</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<span>                             fit_func<span class="op">=</span><span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">)</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-2-2.png" width="672"></p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/eatf.html">eatf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">agnosticgarchf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/glmthetaf.html">glmthetaf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-3-2.png" width="672"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
