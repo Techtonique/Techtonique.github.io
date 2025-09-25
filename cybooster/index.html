@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
-        <link rel="canonical" href="https://techtonique.github.io/cybooster/index.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>cybooster documentation</title>
@@ -616,6 +615,48 @@ number of bins for histogram features (same as numpy.histogram, default is ‘au
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="cybooster.BoosterRegressor.get_feature_importances">
+<span class="sig-name descname"><span class="pre">get_feature_importances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.BoosterRegressor.get_feature_importances" title="Link to this definition">¶</a></dt>
+<dd><p>Compute average absolute sensitivity for each feature across the dataset.
+This serves as a feature importance measure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.BoosterRegressor.get_sensitivities">
+<span class="sig-name descname"><span class="pre">get_sensitivities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.BoosterRegressor.get_sensitivities" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the gradient (sensitivity) of the response with respect to each input feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray</em>) – Input data of shape (n_samples, n_features).</p></li>
+<li><p><strong>columns</strong> (<em>list</em><em>, </em><em>optional</em>) – List of features .
+If None, automatically named.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to display a progress bar. Default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of sensitivities for each sample and feature (∂F_M/∂x_j)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.BoosterRegressor.get_summary">
+<span class="sig-name descname"><span class="pre">get_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf_level=0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress=True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.BoosterRegressor.get_summary" title="Link to this definition">¶</a></dt>
+<dd><p>Given a DataFrame of sensitivities (n_obs x n_features), this function
+returns a summary similar to <cite>skim</cite> in R with confidence intervals around
+average effects.</p>
+<p>Parameters:
+- n_bootstrap: Number of bootstrap iterations for confidence intervals.
+- conf_level: Confidence level for the intervals (default: 95%).</p>
+<p>Returns:
+- summary_df: A pandas DataFrame with feature-level summary statistics.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="cybooster.BoosterRegressor.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.BoosterRegressor.predict" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -624,6 +665,333 @@ number of bins for histogram features (same as numpy.histogram, default is ‘au
 <dt class="sig sig-object py" id="cybooster.BoosterRegressor.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:]</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">alpha=0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.BoosterRegressor.update" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">NGBRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_estimators=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">learning_rate=0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">tol=1e-4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">early_stopping=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_iter_no_change=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">verbose=1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Optimized NGBoost implementation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Fit NGBoost model with improved numerical stability</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.get_params" title="Link to this definition">¶</a></dt>
+<dd><p>Get parameters for sklearn compatibility</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">return_std=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Predict distribution parameters or point estimates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.predict_dist">
+<span class="sig-name descname"><span class="pre">predict_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.predict_dist" title="Link to this definition">¶</a></dt>
+<dd><p>Predict full distribution parameters (mu, sigma)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_samples=1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.sample" title="Link to this definition">¶</a></dt>
+<dd><p>Sample from the predicted distributions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.score" title="Link to this definition">¶</a></dt>
+<dd><p>Compute log-likelihood score</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBRegressor.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor.set_params" title="Link to this definition">¶</a></dt>
+<dd><p>Set parameters for sklearn compatibility</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cybooster.SkBoosterClassifier">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">SkBoosterClassifier</span></span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterClassifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterClassifier" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cybooster.BoosterClassifier" title="cybooster._boosterc.BoosterClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BoosterClassifier</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassifierMixin</span></code></p>
+<p>A scikit-learn compatible wrapper for BoosterClassifier.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterClassifier.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long[:]</span> <span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterClassifier.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterClassifier.fit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterClassifier.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterClassifier.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterClassifier.predict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterClassifier.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterClassifier.predict_proba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterClassifier.predict_proba" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterClassifier.set_score_request">
+<span class="sig-name descname"><span class="pre">set_score_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cybooster.SkBoosterClassifier" title="cybooster.booster.SkBoosterClassifier"><span class="pre">SkBoosterClassifier</span></a></span></span><a class="headerlink" href="#cybooster.SkBoosterClassifier.set_score_request" title="Link to this definition">¶</a></dt>
+<dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">score</span></code> method.</p>
+<p>Note that this method is only relevant when this estimator is used as a
+sub-estimator within a <span class="xref std std-term">meta-estimator</span> and metadata routing is enabled
+with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code>).
+Please check the <span class="xref std std-ref">User Guide</span> on how the routing
+mechanism works.</p>
+<p>The options for each parameter are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: metadata is requested, and passed to <code class="docutils literal notranslate"><span class="pre">score</span></code> if provided. The request is ignored if metadata is not provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: metadata is not requested and the meta-estimator will not pass it to <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: metadata is not requested, and the meta-estimator will raise an error if the user provides it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: metadata should be passed to the meta-estimator with this given alias instead of the original name.</p></li>
+</ul>
+<p>The default (<code class="docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing.UNCHANGED</span></code>) retains the
+existing request. This allows you to change the request for some
+parameters and not others.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.3.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_weight</strong> (<em>str</em><em>, </em><em>True</em><em>, </em><em>False</em><em>, or </em><em>None</em><em>,                     </em><em>default=sklearn.utils.metadata_routing.UNCHANGED</em>) – Metadata routing for <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>self</strong> – The updated object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cybooster.SkBoosterRegressor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">SkBoosterRegressor</span></span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterRegressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterRegressor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cybooster.BoosterRegressor" title="cybooster._boosterc.BoosterRegressor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BoosterRegressor</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">RegressorMixin</span></code></p>
+<p>A scikit-learn compatible wrapper for BoosterRegressor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterRegressor.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:]</span> <span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterRegressor.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterRegressor.fit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterRegressor.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double[:</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">::1]</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/booster.html#SkBoosterRegressor.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkBoosterRegressor.predict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkBoosterRegressor.set_score_request">
+<span class="sig-name descname"><span class="pre">set_score_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cybooster.SkBoosterRegressor" title="cybooster.booster.SkBoosterRegressor"><span class="pre">SkBoosterRegressor</span></a></span></span><a class="headerlink" href="#cybooster.SkBoosterRegressor.set_score_request" title="Link to this definition">¶</a></dt>
+<dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">score</span></code> method.</p>
+<p>Note that this method is only relevant when this estimator is used as a
+sub-estimator within a <span class="xref std std-term">meta-estimator</span> and metadata routing is enabled
+with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code>).
+Please check the <span class="xref std std-ref">User Guide</span> on how the routing
+mechanism works.</p>
+<p>The options for each parameter are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: metadata is requested, and passed to <code class="docutils literal notranslate"><span class="pre">score</span></code> if provided. The request is ignored if metadata is not provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: metadata is not requested and the meta-estimator will not pass it to <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: metadata is not requested, and the meta-estimator will raise an error if the user provides it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: metadata should be passed to the meta-estimator with this given alias instead of the original name.</p></li>
+</ul>
+<p>The default (<code class="docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing.UNCHANGED</span></code>) retains the
+existing request. This allows you to change the request for some
+parameters and not others.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.3.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_weight</strong> (<em>str</em><em>, </em><em>True</em><em>, </em><em>False</em><em>, or </em><em>None</em><em>,                     </em><em>default=sklearn.utils.metadata_routing.UNCHANGED</em>) – Metadata routing for <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>self</strong> – The updated object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cybooster.SkNGBRegressor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">SkNGBRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter_no_change</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_jax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBRegressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBRegressor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">RegressorMixin</span></code></p>
+<p>Scikit-learn compatible NGBoost regressor (Python wrapper).</p>
+<p>This is a thin wrapper around the high-performance Cython implementation
+exposed as <code class="docutils literal notranslate"><span class="pre">cybooster._ngboost.NGBRegressor</span></code>. It mirrors a scikit-learn
+estimator interface while providing an optional JAX acceleration hook for
+internal linear algebra utilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<em>Any</em><em>, </em><em>optional</em>) – Placeholder for future objectives (kept for backward compatibility).
+The current Cython backend expects this positional slot.</p></li>
+<li><p><strong>n_estimators</strong> (<em>int</em><em>, </em><em>default=500</em>) – Number of boosting iterations.</p></li>
+<li><p><strong>learning_rate</strong> (<em>float</em><em>, </em><em>default=0.01</em>) – Shrinkage applied to each boosting step.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>default=1e-4</em>) – Tolerance used for early stopping monitoring in the backend.</p></li>
+<li><p><strong>early_stopping</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Whether to enable early stopping based on log-likelihood improvement.</p></li>
+<li><p><strong>n_iter_no_change</strong> (<em>int</em><em>, </em><em>default=10</em>) – Number of successive iterations with change &lt; <code class="docutils literal notranslate"><span class="pre">tol</span></code> to trigger stop.</p></li>
+<li><p><strong>use_jax</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True and JAX is available, enables small JIT-compiled helpers.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>default=False</em>) – If True, prints fitting diagnostics.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The underlying predictive distribution is Normal with parameters
+(mu, log_sigma). The backend learns both via natural gradients.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict(X,</span> <span class="pre">return_std=False)</span></code> returns point estimates. When
+<code class="docutils literal notranslate"><span class="pre">return_std=True</span></code>, it returns a 2D array with columns <code class="docutils literal notranslate"><span class="pre">(mu,</span> <span class="pre">sigma)</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">predict_dist(X)</span></code> to directly obtain distribution parameters
+as <code class="docutils literal notranslate"><span class="pre">(mu,</span> <span class="pre">sigma)</span></code>.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBRegressor.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBRegressor.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBRegressor.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Fit the NGBoost model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Training features.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>,</em><em>)</em>) – Target values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>self</strong> – Fitted estimator.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#cybooster.SkNGBRegressor" title="cybooster.SkNGBRegressor">SkNGBRegressor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBRegressor.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBRegressor.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBRegressor.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Predict values or distribution parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input features.</p></li>
+<li><p><strong>return_std</strong> (<em>bool</em><em>, </em><em>default=False</em>) – <ul>
+<li><p>If False, returns point predictions (mu).</p></li>
+<li><p>If True, returns an array of shape (n_samples, 2) with
+columns <code class="docutils literal notranslate"><span class="pre">(mu,</span> <span class="pre">sigma)</span></code>.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Either <code class="docutils literal notranslate"><span class="pre">(n_samples,)</span></code> array of means or <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">2)</span></code>
+with <code class="docutils literal notranslate"><span class="pre">(mu,</span> <span class="pre">sigma)</span></code> per sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBRegressor.predict_dist">
+<span class="sig-name descname"><span class="pre">predict_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBRegressor.predict_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBRegressor.predict_dist" title="Link to this definition">¶</a></dt>
+<dd><p>Predict Normal distributions for each input sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>array-like</em><em> of </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Input features.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of Normal distributions parameterized by predicted
+<code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> for each input sample.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[scipy.stats.rv_continuous]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBRegressor.set_predict_request">
+<span class="sig-name descname"><span class="pre">set_predict_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cybooster.SkNGBRegressor" title="cybooster.ngboost.SkNGBRegressor"><span class="pre">SkNGBRegressor</span></a></span></span><a class="headerlink" href="#cybooster.SkNGBRegressor.set_predict_request" title="Link to this definition">¶</a></dt>
+<dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method.</p>
+<p>Note that this method is only relevant when this estimator is used as a
+sub-estimator within a <span class="xref std std-term">meta-estimator</span> and metadata routing is enabled
+with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code>).
+Please check the <span class="xref std std-ref">User Guide</span> on how the routing
+mechanism works.</p>
+<p>The options for each parameter are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: metadata is requested, and passed to <code class="docutils literal notranslate"><span class="pre">predict</span></code> if provided. The request is ignored if metadata is not provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: metadata is not requested and the meta-estimator will not pass it to <code class="docutils literal notranslate"><span class="pre">predict</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: metadata is not requested, and the meta-estimator will raise an error if the user provides it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: metadata should be passed to the meta-estimator with this given alias instead of the original name.</p></li>
+</ul>
+<p>The default (<code class="docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing.UNCHANGED</span></code>) retains the
+existing request. This allows you to change the request for some
+parameters and not others.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.3.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>return_std</strong> (<em>str</em><em>, </em><em>True</em><em>, </em><em>False</em><em>, or </em><em>None</em><em>,                     </em><em>default=sklearn.utils.metadata_routing.UNCHANGED</em>) – Metadata routing for <code class="docutils literal notranslate"><span class="pre">return_std</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">predict</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>self</strong> – The updated object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBRegressor.set_score_request">
+<span class="sig-name descname"><span class="pre">set_score_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cybooster.SkNGBRegressor" title="cybooster.ngboost.SkNGBRegressor"><span class="pre">SkNGBRegressor</span></a></span></span><a class="headerlink" href="#cybooster.SkNGBRegressor.set_score_request" title="Link to this definition">¶</a></dt>
+<dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">score</span></code> method.</p>
+<p>Note that this method is only relevant when this estimator is used as a
+sub-estimator within a <span class="xref std std-term">meta-estimator</span> and metadata routing is enabled
+with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code>).
+Please check the <span class="xref std std-ref">User Guide</span> on how the routing
+mechanism works.</p>
+<p>The options for each parameter are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: metadata is requested, and passed to <code class="docutils literal notranslate"><span class="pre">score</span></code> if provided. The request is ignored if metadata is not provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: metadata is not requested and the meta-estimator will not pass it to <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: metadata is not requested, and the meta-estimator will raise an error if the user provides it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: metadata should be passed to the meta-estimator with this given alias instead of the original name.</p></li>
+</ul>
+<p>The default (<code class="docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing.UNCHANGED</span></code>) retains the
+existing request. This allows you to change the request for some
+parameters and not others.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.3.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_weight</strong> (<em>str</em><em>, </em><em>True</em><em>, </em><em>False</em><em>, or </em><em>None</em><em>,                     </em><em>default=sklearn.utils.metadata_routing.UNCHANGED</em>) – Metadata routing for <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>self</strong> – The updated object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -722,8 +1090,42 @@ number of bins for histogram features (same as numpy.histogram, default is ‘au
 <li><a class="reference internal" href="#cybooster.BoosterRegressor.hist"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.hist</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.BoosterRegressor.bins"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.bins</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.BoosterRegressor.fit"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.BoosterRegressor.get_feature_importances"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.get_feature_importances()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.BoosterRegressor.get_sensitivities"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.get_sensitivities()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.BoosterRegressor.get_summary"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.get_summary()</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.BoosterRegressor.predict"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.predict()</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.BoosterRegressor.update"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor"><code class="docutils literal notranslate"><span class="pre">NGBRegressor</span></code></a><ul>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.fit"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.get_params"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.get_params()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.predict"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.predict()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.predict_dist"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.predict_dist()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.sample"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.sample()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.score"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.score()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBRegressor.set_params"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.set_params()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cybooster.SkBoosterClassifier"><code class="docutils literal notranslate"><span class="pre">SkBoosterClassifier</span></code></a><ul>
+<li><a class="reference internal" href="#cybooster.SkBoosterClassifier.fit"><code class="docutils literal notranslate"><span class="pre">SkBoosterClassifier.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkBoosterClassifier.predict"><code class="docutils literal notranslate"><span class="pre">SkBoosterClassifier.predict()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkBoosterClassifier.predict_proba"><code class="docutils literal notranslate"><span class="pre">SkBoosterClassifier.predict_proba()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkBoosterClassifier.set_score_request"><code class="docutils literal notranslate"><span class="pre">SkBoosterClassifier.set_score_request()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cybooster.SkBoosterRegressor"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor</span></code></a><ul>
+<li><a class="reference internal" href="#cybooster.SkBoosterRegressor.fit"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkBoosterRegressor.predict"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor.predict()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkBoosterRegressor.set_score_request"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor.set_score_request()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cybooster.SkNGBRegressor"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor</span></code></a><ul>
+<li><a class="reference internal" href="#cybooster.SkNGBRegressor.fit"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBRegressor.predict"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor.predict()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBRegressor.predict_dist"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor.predict_dist()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBRegressor.set_predict_request"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor.set_predict_request()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBRegressor.set_score_request"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor.set_score_request()</span></code></a></li>
 </ul>
 </li>
 </ul>
