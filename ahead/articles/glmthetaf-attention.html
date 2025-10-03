@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.0</span>
       </span>
     </div>
 
@@ -112,6 +112,9 @@
       <a href="../articles/glmthetaf.html">Generalized Linear Model Theta Forecast</a>
     </li>
     <li>
+      <a href="../articles/meboost.html">Max Entropy Bootstrap</a>
+    </li>
+    <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
     </li>
     <li>
@@ -156,450 +159,15 @@ attention</h1>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span>
-<span></span>
-<span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8268.704 6521.060 10016.349</span></span>
-<span><span class="co">## Feb 1979       7309.039 5561.394  9056.683</span></span>
-<span><span class="co">## Mar 1979       8154.793 6407.149  9902.438</span></span>
-<span><span class="co">## Apr 1979       8531.014 6783.369 10278.658</span></span>
-<span><span class="co">## May 1979       9393.218 7645.573 11140.862</span></span>
-<span><span class="co">## Jun 1979       9741.994 7994.350 11489.638</span></span>
-<span><span class="co">## Jul 1979      11003.200 9255.555 12750.844</span></span>
-<span><span class="co">## Aug 1979       9835.339 8087.694 11582.983</span></span>
-<span><span class="co">## Sep 1979       8712.499 6964.854 10460.143</span></span>
-<span><span class="co">## Oct 1979       9231.334 7483.690 10978.978</span></span>
-<span><span class="co">## Nov 1979       8576.564 6828.920 10324.209</span></span>
-<span><span class="co">## Dec 1979       9249.011 7501.367 10996.656</span></span>
-<span><span class="co">## Jan 1980       8268.724 6521.080 10016.368</span></span>
-<span><span class="co">## Feb 1980       7309.056 5561.412  9056.701</span></span>
-<span><span class="co">## Mar 1980       8154.813 6407.168  9902.457</span></span>
-<span><span class="co">## Apr 1980       8531.034 6783.390 10278.679</span></span>
-<span><span class="co">## May 1980       9393.240 7645.596 11140.884</span></span>
-<span><span class="co">## Jun 1980       9742.017 7994.373 11489.662</span></span>
-<span><span class="co">## Jul 1980      11003.226 9255.581 12750.870</span></span>
-<span><span class="co">## Aug 1980       9835.362 8087.718 11583.007</span></span>
-<span><span class="co">## Sep 1980       8712.519 6964.875 10460.164</span></span>
-<span><span class="co">## Oct 1980       9231.356 7483.712 10979.000</span></span>
-<span><span class="co">## Nov 1980       8576.585 6828.940 10324.229</span></span>
-<span><span class="co">## Dec 1980       9249.033 7501.389 10996.678</span></span>
-<span><span class="co">## Jan 1981       8268.744 6521.099 10016.388</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
-<span><span class="co">## Feb 1979       7350.413 5510.857  9189.969</span></span>
-<span><span class="co">## Mar 1979       8214.982 6375.427 10054.538</span></span>
-<span><span class="co">## Apr 1979       8608.657 6769.101 10448.213</span></span>
-<span><span class="co">## May 1979       9494.868 7655.312 11334.424</span></span>
-<span><span class="co">## Jun 1979       9864.178 8024.622 11703.734</span></span>
-<span><span class="co">## Jul 1979      11160.131 9320.575 12999.687</span></span>
-<span><span class="co">## Aug 1979       9992.534 8152.978 11832.090</span></span>
-<span><span class="co">## Sep 1979       8866.736 7027.180 10706.292</span></span>
-<span><span class="co">## Oct 1979       9410.638 7571.082 11250.194</span></span>
-<span><span class="co">## Nov 1979       8757.905 6918.349 10597.461</span></span>
-<span><span class="co">## Dec 1979       9460.481 7620.926 11300.037</span></span>
-<span><span class="co">## Jan 1980       8472.006 6632.450 10311.562</span></span>
-<span><span class="co">## Feb 1980       7501.319 5661.763  9340.875</span></span>
-<span><span class="co">## Mar 1980       8383.352 6543.796 10222.908</span></span>
-<span><span class="co">## Apr 1980       8784.794 6945.238 10624.350</span></span>
-<span><span class="co">## May 1980       9688.806 7849.250 11528.362</span></span>
-<span><span class="co">## Jun 1980      10065.318 8225.762 11904.874</span></span>
-<span><span class="co">## Jul 1980      11387.310 9547.754 13226.866</span></span>
-<span><span class="co">## Aug 1980      10195.601 8356.045 12035.157</span></span>
-<span><span class="co">## Sep 1980       9046.621 7207.065 10886.176</span></span>
-<span><span class="co">## Oct 1980       9601.234 7761.678 11440.790</span></span>
-<span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
-<span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
-<span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Loading required package: simulatetimeseries</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: keras3</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'ahead'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:simulatetimeseries':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     meboot, removenas, rfitdistr, rgaussiandens, rsurrogate</span></span></code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8305.253 6471.433 10139.072</span></span>
-<span><span class="co">## Feb 1979       7355.442 5521.622  9189.261</span></span>
-<span><span class="co">## Mar 1979       8222.297 6388.478 10056.117</span></span>
-<span><span class="co">## Apr 1979       8618.093 6784.273 10451.913</span></span>
-<span><span class="co">## May 1979       9507.221 7673.402 11341.041</span></span>
-<span><span class="co">## Jun 1979       9879.027 8045.208 11712.847</span></span>
-<span><span class="co">## Jul 1979      11179.203 9345.383 13013.023</span></span>
-<span><span class="co">## Aug 1979      10011.638 8177.818 11845.458</span></span>
-<span><span class="co">## Sep 1979       8885.481 7051.662 10719.301</span></span>
-<span><span class="co">## Oct 1979       9432.429 7598.609 11266.249</span></span>
-<span><span class="co">## Nov 1979       8779.944 6946.124 10613.764</span></span>
-<span><span class="co">## Dec 1979       9486.182 7652.362 11320.002</span></span>
-<span><span class="co">## Jan 1980       8496.711 6662.892 10330.531</span></span>
-<span><span class="co">## Feb 1980       7524.686 5690.866  9358.506</span></span>
-<span><span class="co">## Mar 1980       8411.128 6577.308 10244.947</span></span>
-<span><span class="co">## Apr 1980       8815.634 6981.814 10649.454</span></span>
-<span><span class="co">## May 1980       9724.727 7890.908 11558.547</span></span>
-<span><span class="co">## Jun 1980      10104.609 8270.790 11938.429</span></span>
-<span><span class="co">## Jul 1980      11433.989 9600.170 13267.809</span></span>
-<span><span class="co">## Aug 1980      10239.382 8405.562 12073.202</span></span>
-<span><span class="co">## Sep 1980       9087.225 7253.405 10921.045</span></span>
-<span><span class="co">## Oct 1980       9646.187 7812.367 11480.007</span></span>
-<span><span class="co">## Nov 1980       8978.540 7144.720 10812.360</span></span>
-<span><span class="co">## Dec 1980       9700.349 7866.530 11534.169</span></span>
-<span><span class="co">## Jan 1981       8688.179 6854.360 10521.999</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-3.png" width="720"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8293.554 6464.587 10122.521</span></span>
-<span><span class="co">## Feb 1979       7340.589 5511.621  9169.556</span></span>
-<span><span class="co">## Mar 1979       8200.690 6371.723 10029.658</span></span>
-<span><span class="co">## Apr 1979       8590.220 6761.253 10419.188</span></span>
-<span><span class="co">## May 1979       9470.730 7641.763 11299.698</span></span>
-<span><span class="co">## Jun 1979       9835.165 8006.197 11664.132</span></span>
-<span><span class="co">## Jul 1979      11122.867 9293.899 12951.834</span></span>
-<span><span class="co">## Aug 1979       9955.207 8126.240 11784.175</span></span>
-<span><span class="co">## Sep 1979       8830.112 7001.144 10659.079</span></span>
-<span><span class="co">## Oct 1979       9368.061 7539.094 11197.029</span></span>
-<span><span class="co">## Nov 1979       8714.845 6885.877 10543.812</span></span>
-<span><span class="co">## Dec 1979       9410.267 7581.300 11239.234</span></span>
-<span><span class="co">## Jan 1980       8423.736 6594.768 10252.703</span></span>
-<span><span class="co">## Feb 1980       7455.666 5626.698  9284.633</span></span>
-<span><span class="co">## Mar 1980       8329.085 6500.117 10158.052</span></span>
-<span><span class="co">## Apr 1980       8724.538 6895.570 10553.505</span></span>
-<span><span class="co">## May 1980       9618.623 7789.655 11447.590</span></span>
-<span><span class="co">## Jun 1980       9988.549 8159.581 11817.516</span></span>
-<span><span class="co">## Jul 1980      11296.108 9467.140 13125.075</span></span>
-<span><span class="co">## Aug 1980      10110.061 8281.093 11939.028</span></span>
-<span><span class="co">## Sep 1980       8967.287 7138.319 10796.254</span></span>
-<span><span class="co">## Oct 1980       9513.405 7684.438 11342.372</span></span>
-<span><span class="co">## Nov 1980       8849.879 7020.912 10678.847</span></span>
-<span><span class="co">## Dec 1980       9555.889 7726.921 11384.856</span></span>
-<span><span class="co">## Jan 1981       8553.923 6724.956 10382.891</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-4.png" width="720"></p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
-<span><span class="co">## Feb 1979       7350.413 5510.857  9189.969</span></span>
-<span><span class="co">## Mar 1979       8214.982 6375.427 10054.538</span></span>
-<span><span class="co">## Apr 1979       8608.657 6769.101 10448.213</span></span>
-<span><span class="co">## May 1979       9494.868 7655.312 11334.424</span></span>
-<span><span class="co">## Jun 1979       9864.178 8024.622 11703.734</span></span>
-<span><span class="co">## Jul 1979      11160.131 9320.575 12999.687</span></span>
-<span><span class="co">## Aug 1979       9992.534 8152.978 11832.090</span></span>
-<span><span class="co">## Sep 1979       8866.736 7027.180 10706.292</span></span>
-<span><span class="co">## Oct 1979       9410.638 7571.082 11250.194</span></span>
-<span><span class="co">## Nov 1979       8757.905 6918.349 10597.461</span></span>
-<span><span class="co">## Dec 1979       9460.481 7620.926 11300.037</span></span>
-<span><span class="co">## Jan 1980       8472.006 6632.450 10311.562</span></span>
-<span><span class="co">## Feb 1980       7501.319 5661.763  9340.875</span></span>
-<span><span class="co">## Mar 1980       8383.352 6543.796 10222.908</span></span>
-<span><span class="co">## Apr 1980       8784.794 6945.238 10624.350</span></span>
-<span><span class="co">## May 1980       9688.806 7849.250 11528.362</span></span>
-<span><span class="co">## Jun 1980      10065.318 8225.762 11904.874</span></span>
-<span><span class="co">## Jul 1980      11387.310 9547.754 13226.866</span></span>
-<span><span class="co">## Aug 1980      10195.601 8356.045 12035.157</span></span>
-<span><span class="co">## Sep 1980       9046.621 7207.065 10886.176</span></span>
-<span><span class="co">## Oct 1980       9601.234 7761.678 11440.790</span></span>
-<span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
-<span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
-<span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-2-1.png" width="720"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
-<span><span class="co">## Feb 1979       7350.413 5510.857  9189.969</span></span>
-<span><span class="co">## Mar 1979       8214.982 6375.427 10054.538</span></span>
-<span><span class="co">## Apr 1979       8608.657 6769.101 10448.213</span></span>
-<span><span class="co">## May 1979       9494.868 7655.312 11334.424</span></span>
-<span><span class="co">## Jun 1979       9864.178 8024.622 11703.734</span></span>
-<span><span class="co">## Jul 1979      11160.131 9320.575 12999.687</span></span>
-<span><span class="co">## Aug 1979       9992.534 8152.978 11832.090</span></span>
-<span><span class="co">## Sep 1979       8866.736 7027.180 10706.292</span></span>
-<span><span class="co">## Oct 1979       9410.638 7571.082 11250.194</span></span>
-<span><span class="co">## Nov 1979       8757.905 6918.349 10597.461</span></span>
-<span><span class="co">## Dec 1979       9460.481 7620.926 11300.037</span></span>
-<span><span class="co">## Jan 1980       8472.006 6632.450 10311.562</span></span>
-<span><span class="co">## Feb 1980       7501.319 5661.763  9340.875</span></span>
-<span><span class="co">## Mar 1980       8383.352 6543.796 10222.908</span></span>
-<span><span class="co">## Apr 1980       8784.794 6945.238 10624.350</span></span>
-<span><span class="co">## May 1980       9688.806 7849.250 11528.362</span></span>
-<span><span class="co">## Jun 1980      10065.318 8225.762 11904.874</span></span>
-<span><span class="co">## Jul 1980      11387.310 9547.754 13226.866</span></span>
-<span><span class="co">## Aug 1980      10195.601 8356.045 12035.157</span></span>
-<span><span class="co">## Sep 1980       9046.621 7207.065 10886.176</span></span>
-<span><span class="co">## Oct 1980       9601.234 7761.678 11440.790</span></span>
-<span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
-<span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
-<span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-3-1.png" width="720"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
-<span><span class="co">## Jan 1979       8302.178 6488.053 10116.303</span></span>
-<span><span class="co">## Feb 1979       7351.538 5537.413  9165.663</span></span>
-<span><span class="co">## Mar 1979       8216.619 6402.494 10030.744</span></span>
-<span><span class="co">## Apr 1979       8610.768 6796.643 10424.893</span></span>
-<span><span class="co">## May 1979       9497.631 7683.506 11311.756</span></span>
-<span><span class="co">## Jun 1979       9867.500 8053.375 11681.625</span></span>
-<span><span class="co">## Jul 1979      11164.397 9350.272 12978.522</span></span>
-<span><span class="co">## Aug 1979       9996.807 8182.682 11810.932</span></span>
-<span><span class="co">## Sep 1979       8870.929 7056.804 10685.054</span></span>
-<span><span class="co">## Oct 1979       9415.512 7601.387 11229.637</span></span>
-<span><span class="co">## Nov 1979       8762.835 6948.710 10576.960</span></span>
-<span><span class="co">## Dec 1979       9466.230 7652.105 11280.356</span></span>
-<span><span class="co">## Jan 1980       8477.532 6663.407 10291.657</span></span>
-<span><span class="co">## Feb 1980       7506.546 5692.421  9320.671</span></span>
-<span><span class="co">## Mar 1980       8389.565 6575.440 10203.690</span></span>
-<span><span class="co">## Apr 1980       8791.693 6977.568 10605.818</span></span>
-<span><span class="co">## May 1980       9696.841 7882.716 11510.967</span></span>
-<span><span class="co">## Jun 1980      10074.107 8259.982 11888.232</span></span>
-<span><span class="co">## Jul 1980      11397.752 9583.627 13211.877</span></span>
-<span><span class="co">## Aug 1980      10205.394 8391.269 12019.519</span></span>
-<span><span class="co">## Sep 1980       9055.703 7241.578 10869.828</span></span>
-<span><span class="co">## Oct 1980       9611.290 7797.165 11425.415</span></span>
-<span><span class="co">## Nov 1980       8944.726 7130.601 10758.851</span></span>
-<span><span class="co">## Dec 1980       9662.383 7848.258 11476.508</span></span>
-<span><span class="co">## Jan 1981       8652.895 6838.770 10467.020</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-4-1.png" width="720"></p>
-</div>
-<div class="section level2">
-<h2 id="airpassengers-methodadj">AirPassengers (method=“adj”)<a class="anchor" aria-label="anchor" href="#airpassengers-methodadj"></a>
-</h2>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       441.8635 312.5333 571.1937</span></span>
-<span><span class="co">## Feb 1961       415.3291 285.9989 544.6593</span></span>
-<span><span class="co">## Mar 1961       470.6896 341.3593 600.0198</span></span>
-<span><span class="co">## Apr 1961       466.2480 336.9178 595.5782</span></span>
-<span><span class="co">## May 1961       477.9124 348.5822 607.2426</span></span>
-<span><span class="co">## Jun 1961       552.5151 423.1849 681.8453</span></span>
-<span><span class="co">## Jul 1961       618.1805 488.8503 747.5107</span></span>
-<span><span class="co">## Aug 1961       611.8440 482.5138 741.1742</span></span>
-<span><span class="co">## Sep 1961       517.8328 388.5026 647.1630</span></span>
-<span><span class="co">## Oct 1961       448.5658 319.2356 577.8961</span></span>
-<span><span class="co">## Nov 1961       389.6833 260.3531 519.0136</span></span>
-<span><span class="co">## Dec 1961       432.9705 303.6403 562.3007</span></span>
-<span><span class="co">## Jan 1962       441.9510 312.6208 571.2812</span></span>
-<span><span class="co">## Feb 1962       415.4114 286.0811 544.7416</span></span>
-<span><span class="co">## Mar 1962       470.7828 341.4526 600.1130</span></span>
-<span><span class="co">## Apr 1962       466.3404 337.0101 595.6706</span></span>
-<span><span class="co">## May 1962       478.0071 348.6769 607.3373</span></span>
-<span><span class="co">## Jun 1962       552.6245 423.2943 681.9547</span></span>
-<span><span class="co">## Jul 1962       618.3029 488.9727 747.6332</span></span>
-<span><span class="co">## Aug 1962       611.9652 482.6350 741.2954</span></span>
-<span><span class="co">## Sep 1962       517.9353 388.6051 647.2656</span></span>
-<span><span class="co">## Oct 1962       448.6547 319.3245 577.9849</span></span>
-<span><span class="co">## Nov 1962       389.7605 260.4303 519.0907</span></span>
-<span><span class="co">## Dec 1962       433.0562 303.7260 562.3864</span></span>
-<span><span class="co">## Jan 1963       442.0385 312.7083 571.3687</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-5-1.png" width="528"></p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
-<span><span class="co">## Feb 1961       421.4846 355.1003 487.8689</span></span>
-<span><span class="co">## Mar 1961       480.5743 414.1900 546.9586</span></span>
-<span><span class="co">## Apr 1961       478.9194 412.5352 545.3037</span></span>
-<span><span class="co">## May 1961       493.8543 427.4701 560.2386</span></span>
-<span><span class="co">## Jun 1961       574.3600 507.9757 640.7442</span></span>
-<span><span class="co">## Jul 1961       646.4418 580.0575 712.8260</span></span>
-<span><span class="co">## Aug 1961       643.5965 577.2122 709.9808</span></span>
-<span><span class="co">## Sep 1961       547.9063 481.5220 614.2906</span></span>
-<span><span class="co">## Oct 1961       477.3884 411.0042 543.7727</span></span>
-<span><span class="co">## Nov 1961       417.1303 350.7460 483.5146</span></span>
-<span><span class="co">## Dec 1961       466.1416 399.7574 532.5259</span></span>
-<span><span class="co">## Jan 1962       478.5409 412.1566 544.9252</span></span>
-<span><span class="co">## Feb 1962       452.3707 385.9864 518.7549</span></span>
-<span><span class="co">## Mar 1962       515.5772 449.1929 581.9615</span></span>
-<span><span class="co">## Apr 1962       513.5933 447.2090 579.9775</span></span>
-<span><span class="co">## May 1962       529.3953 463.0111 595.7796</span></span>
-<span><span class="co">## Jun 1962       615.4486 549.0643 681.8329</span></span>
-<span><span class="co">## Jul 1962       692.4133 626.0290 758.7976</span></span>
-<span><span class="co">## Aug 1962       689.0964 622.7121 755.4807</span></span>
-<span><span class="co">## Sep 1962       586.4147 520.0304 652.7990</span></span>
-<span><span class="co">## Oct 1962       510.7455 444.3612 577.1297</span></span>
-<span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
-<span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
-<span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-5-2.png" width="528"></p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       445.6975 379.5912 511.8037</span></span>
-<span><span class="co">## Feb 1961       421.5139 355.4077 487.6201</span></span>
-<span><span class="co">## Mar 1961       480.6214 414.5152 546.7276</span></span>
-<span><span class="co">## Apr 1961       478.9798 412.8736 545.0860</span></span>
-<span><span class="co">## May 1961       493.9303 427.8240 560.0365</span></span>
-<span><span class="co">## Jun 1961       574.4640 508.3578 640.5702</span></span>
-<span><span class="co">## Jul 1961       646.5764 580.4701 712.6826</span></span>
-<span><span class="co">## Aug 1961       643.7477 577.6415 709.8539</span></span>
-<span><span class="co">## Sep 1961       548.0495 481.9433 614.1558</span></span>
-<span><span class="co">## Oct 1961       477.5257 411.4195 543.6319</span></span>
-<span><span class="co">## Nov 1961       417.2610 351.1548 483.3672</span></span>
-<span><span class="co">## Dec 1961       466.2996 400.1934 532.4058</span></span>
-<span><span class="co">## Jan 1962       478.7151 412.6089 544.8214</span></span>
-<span><span class="co">## Feb 1962       452.5467 386.4404 518.6529</span></span>
-<span><span class="co">## Mar 1962       515.7905 449.6843 581.8967</span></span>
-<span><span class="co">## Apr 1962       513.8183 447.7121 579.9245</span></span>
-<span><span class="co">## May 1962       529.6401 463.5338 595.7463</span></span>
-<span><span class="co">## Jun 1962       615.7478 549.6415 681.8540</span></span>
-<span><span class="co">## Jul 1962       692.7662 626.6600 758.8725</span></span>
-<span><span class="co">## Aug 1962       689.4637 623.3575 755.5699</span></span>
-<span><span class="co">## Sep 1962       586.7408 520.6346 652.8470</span></span>
-<span><span class="co">## Oct 1962       511.0412 444.9349 577.1474</span></span>
-<span><span class="co">## Nov 1962       446.3767 380.2704 512.4829</span></span>
-<span><span class="co">## Dec 1962       498.6491 432.5429 564.7554</span></span>
-<span><span class="co">## Jan 1963       511.7353 445.6291 577.8416</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-5-3.png" width="528"></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
-<span><span class="co">## Feb 1961       421.4846 355.1003 487.8689</span></span>
-<span><span class="co">## Mar 1961       480.5743 414.1900 546.9586</span></span>
-<span><span class="co">## Apr 1961       478.9194 412.5352 545.3037</span></span>
-<span><span class="co">## May 1961       493.8543 427.4701 560.2386</span></span>
-<span><span class="co">## Jun 1961       574.3600 507.9757 640.7442</span></span>
-<span><span class="co">## Jul 1961       646.4418 580.0575 712.8260</span></span>
-<span><span class="co">## Aug 1961       643.5965 577.2122 709.9808</span></span>
-<span><span class="co">## Sep 1961       547.9063 481.5220 614.2906</span></span>
-<span><span class="co">## Oct 1961       477.3884 411.0042 543.7727</span></span>
-<span><span class="co">## Nov 1961       417.1303 350.7460 483.5146</span></span>
-<span><span class="co">## Dec 1961       466.1416 399.7574 532.5259</span></span>
-<span><span class="co">## Jan 1962       478.5409 412.1566 544.9252</span></span>
-<span><span class="co">## Feb 1962       452.3707 385.9864 518.7549</span></span>
-<span><span class="co">## Mar 1962       515.5772 449.1929 581.9615</span></span>
-<span><span class="co">## Apr 1962       513.5933 447.2090 579.9775</span></span>
-<span><span class="co">## May 1962       529.3953 463.0111 595.7796</span></span>
-<span><span class="co">## Jun 1962       615.4486 549.0643 681.8329</span></span>
-<span><span class="co">## Jul 1962       692.4133 626.0290 758.7976</span></span>
-<span><span class="co">## Aug 1962       689.0964 622.7121 755.4807</span></span>
-<span><span class="co">## Sep 1962       586.4147 520.0304 652.7990</span></span>
-<span><span class="co">## Oct 1962       510.7455 444.3612 577.1297</span></span>
-<span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
-<span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
-<span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-6-1.png" width="528"></p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       445.7580 380.2957 511.2204</span></span>
-<span><span class="co">## Feb 1961       421.6116 356.1492 487.0740</span></span>
-<span><span class="co">## Mar 1961       480.7783 415.3159 546.2407</span></span>
-<span><span class="co">## Apr 1961       479.1810 413.7186 544.6433</span></span>
-<span><span class="co">## May 1961       494.1833 428.7210 559.6457</span></span>
-<span><span class="co">## Jun 1961       574.8108 509.3484 640.2732</span></span>
-<span><span class="co">## Jul 1961       647.0250 581.5626 712.4874</span></span>
-<span><span class="co">## Aug 1961       644.2518 578.7894 709.7142</span></span>
-<span><span class="co">## Sep 1961       548.5270 483.0646 613.9894</span></span>
-<span><span class="co">## Oct 1961       477.9833 412.5209 543.4457</span></span>
-<span><span class="co">## Nov 1961       417.6968 352.2344 483.1592</span></span>
-<span><span class="co">## Dec 1961       466.8262 401.3638 532.2886</span></span>
-<span><span class="co">## Jan 1962       479.2961 413.8337 544.7584</span></span>
-<span><span class="co">## Feb 1962       453.1334 387.6710 518.5958</span></span>
-<span><span class="co">## Mar 1962       516.5017 451.0393 581.9641</span></span>
-<span><span class="co">## Apr 1962       514.5685 449.1061 580.0309</span></span>
-<span><span class="co">## May 1962       530.4559 464.9935 595.9183</span></span>
-<span><span class="co">## Jun 1962       616.7452 551.2828 682.2076</span></span>
-<span><span class="co">## Jul 1962       693.9428 628.4804 759.4052</span></span>
-<span><span class="co">## Aug 1962       690.6883 625.2259 756.1507</span></span>
-<span><span class="co">## Sep 1962       587.8280 522.3656 653.2904</span></span>
-<span><span class="co">## Oct 1962       512.0269 446.5645 577.4893</span></span>
-<span><span class="co">## Nov 1962       447.2713 381.8089 512.7336</span></span>
-<span><span class="co">## Dec 1962       499.6856 434.2232 565.1480</span></span>
-<span><span class="co">## Jan 1963       512.8366 447.3742 578.2990</span></span></code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-7-1.png" width="528"></p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
-<span><span class="co">## Feb 1961       421.4846 355.1003 487.8689</span></span>
-<span><span class="co">## Mar 1961       480.5743 414.1900 546.9586</span></span>
-<span><span class="co">## Apr 1961       478.9194 412.5352 545.3037</span></span>
-<span><span class="co">## May 1961       493.8543 427.4701 560.2386</span></span>
-<span><span class="co">## Jun 1961       574.3600 507.9757 640.7442</span></span>
-<span><span class="co">## Jul 1961       646.4418 580.0575 712.8260</span></span>
-<span><span class="co">## Aug 1961       643.5965 577.2122 709.9808</span></span>
-<span><span class="co">## Sep 1961       547.9063 481.5220 614.2906</span></span>
-<span><span class="co">## Oct 1961       477.3884 411.0042 543.7727</span></span>
-<span><span class="co">## Nov 1961       417.1303 350.7460 483.5146</span></span>
-<span><span class="co">## Dec 1961       466.1416 399.7574 532.5259</span></span>
-<span><span class="co">## Jan 1962       478.5409 412.1566 544.9252</span></span>
-<span><span class="co">## Feb 1962       452.3707 385.9864 518.7549</span></span>
-<span><span class="co">## Mar 1962       515.5772 449.1929 581.9615</span></span>
-<span><span class="co">## Apr 1962       513.5933 447.2090 579.9775</span></span>
-<span><span class="co">## May 1962       529.3953 463.0111 595.7796</span></span>
-<span><span class="co">## Jun 1962       615.4486 549.0643 681.8329</span></span>
-<span><span class="co">## Jul 1962       692.4133 626.0290 758.7976</span></span>
-<span><span class="co">## Aug 1962       689.0964 622.7121 755.4807</span></span>
-<span><span class="co">## Sep 1962       586.4147 520.0304 652.7990</span></span>
-<span><span class="co">## Oct 1962       510.7455 444.3612 577.1297</span></span>
-<span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
-<span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
-<span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-8-1.png" width="528"></p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       445.7602 380.0337 511.4867</span></span>
-<span><span class="co">## Feb 1961       421.6152 355.8887 487.3417</span></span>
-<span><span class="co">## Mar 1961       480.7840 415.0575 546.5105</span></span>
-<span><span class="co">## Apr 1961       479.1882 413.4617 544.9147</span></span>
-<span><span class="co">## May 1961       494.1925 428.4660 559.9190</span></span>
-<span><span class="co">## Jun 1961       574.8234 509.0969 640.5499</span></span>
-<span><span class="co">## Jul 1961       647.0413 581.3148 712.7678</span></span>
-<span><span class="co">## Aug 1961       644.2701 578.5436 709.9966</span></span>
-<span><span class="co">## Sep 1961       548.5443 482.8178 614.2708</span></span>
-<span><span class="co">## Oct 1961       477.9999 412.2734 543.7264</span></span>
-<span><span class="co">## Nov 1961       417.7126 351.9861 483.4391</span></span>
-<span><span class="co">## Dec 1961       466.8453 401.1188 532.5718</span></span>
-<span><span class="co">## Jan 1962       479.3171 413.5906 545.0436</span></span>
-<span><span class="co">## Feb 1962       453.1547 387.4282 518.8812</span></span>
-<span><span class="co">## Mar 1962       516.5275 450.8010 582.2540</span></span>
-<span><span class="co">## Apr 1962       514.5957 448.8692 580.3222</span></span>
-<span><span class="co">## May 1962       530.4855 464.7590 596.2120</span></span>
-<span><span class="co">## Jun 1962       616.7813 551.0548 682.5078</span></span>
-<span><span class="co">## Jul 1962       693.9855 628.2590 759.7120</span></span>
-<span><span class="co">## Aug 1962       690.7327 625.0062 756.4592</span></span>
-<span><span class="co">## Sep 1962       587.8674 522.1409 653.5939</span></span>
-<span><span class="co">## Oct 1962       512.0627 446.3362 577.7892</span></span>
-<span><span class="co">## Nov 1962       447.3037 381.5772 513.0302</span></span>
-<span><span class="co">## Dec 1962       499.7231 433.9966 565.4496</span></span>
-<span><span class="co">## Jan 1963       512.8765 447.1500 578.6030</span></span></code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-9-1.png" width="528"></p>
-</div>
-<div class="section level2">
-<h2 id="usaccdeaths-methodadj-1">USAccDeaths (method=‘adj’)<a class="anchor" aria-label="anchor" href="#usaccdeaths-methodadj-1"></a>
-</h2>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8268.704 6521.060 10016.349</span></span>
@@ -627,10 +195,10 @@ attention</h1>
 <span><span class="co">## Nov 1980       8576.585 6828.940 10324.229</span></span>
 <span><span class="co">## Dec 1980       9249.033 7501.389 10996.678</span></span>
 <span><span class="co">## Jan 1981       8268.744 6521.099 10016.388</span></span></code></pre>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-1.png" width="720"></p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
@@ -658,10 +226,10 @@ attention</h1>
 <span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
 <span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
 <span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-2.png" width="720"></p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8305.253 6471.433 10139.072</span></span>
@@ -689,10 +257,10 @@ attention</h1>
 <span><span class="co">## Nov 1980       8978.540 7144.720 10812.360</span></span>
 <span><span class="co">## Dec 1980       9700.349 7866.530 11534.169</span></span>
 <span><span class="co">## Jan 1981       8688.179 6854.360 10521.999</span></span></code></pre>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-3.png" width="720"></p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-3.png" width="720"></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8293.554 6464.587 10122.521</span></span>
@@ -720,10 +288,10 @@ attention</h1>
 <span><span class="co">## Nov 1980       8849.879 7020.912 10678.847</span></span>
 <span><span class="co">## Dec 1980       9555.889 7726.921 11384.856</span></span>
 <span><span class="co">## Jan 1981       8553.923 6724.956 10382.891</span></span></code></pre>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-4.png" width="720"></p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-1-4.png" width="720"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
@@ -751,10 +319,10 @@ attention</h1>
 <span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
 <span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
 <span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-11-1.png" width="720"></p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-2-1.png" width="720"></p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
@@ -782,10 +350,10 @@ attention</h1>
 <span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
 <span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
 <span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-12-1.png" width="720"></p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-3-1.png" width="720"></p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8302.178 6488.053 10116.303</span></span>
@@ -813,14 +381,14 @@ attention</h1>
 <span><span class="co">## Nov 1980       8944.726 7130.601 10758.851</span></span>
 <span><span class="co">## Dec 1980       9662.383 7848.258 11476.508</span></span>
 <span><span class="co">## Jan 1981       8652.895 6838.770 10467.020</span></span></code></pre>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-13-1.png" width="720"></p>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-4-1.png" width="720"></p>
 </div>
 <div class="section level2">
-<h2 id="airpassengers-methodadj-1">AirPassengers (method=‘adj’)<a class="anchor" aria-label="anchor" href="#airpassengers-methodadj-1"></a>
+<h2 id="airpassengers-methodadj">AirPassengers (method=“adj”)<a class="anchor" aria-label="anchor" href="#airpassengers-methodadj"></a>
 </h2>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       441.8635 312.5333 571.1937</span></span>
@@ -848,10 +416,10 @@ attention</h1>
 <span><span class="co">## Nov 1962       389.7605 260.4303 519.0907</span></span>
 <span><span class="co">## Dec 1962       433.0562 303.7260 562.3864</span></span>
 <span><span class="co">## Jan 1963       442.0385 312.7083 571.3687</span></span></code></pre>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-14-1.png" width="528"></p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-5-1.png" width="528"></p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
@@ -879,10 +447,10 @@ attention</h1>
 <span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
 <span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
 <span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-14-2.png" width="528"></p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-5-2.png" width="528"></p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       445.6975 379.5912 511.8037</span></span>
@@ -910,10 +478,10 @@ attention</h1>
 <span><span class="co">## Nov 1962       446.3767 380.2704 512.4829</span></span>
 <span><span class="co">## Dec 1962       498.6491 432.5429 564.7554</span></span>
 <span><span class="co">## Jan 1963       511.7353 445.6291 577.8416</span></span></code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-14-3.png" width="528"></p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-5-3.png" width="528"></p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
@@ -941,10 +509,10 @@ attention</h1>
 <span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
 <span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
 <span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-15-1.png" width="528"></p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-6-1.png" width="528"></p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       445.7580 380.2957 511.2204</span></span>
@@ -972,10 +540,10 @@ attention</h1>
 <span><span class="co">## Nov 1962       447.2713 381.8089 512.7336</span></span>
 <span><span class="co">## Dec 1962       499.6856 434.2232 565.1480</span></span>
 <span><span class="co">## Jan 1963       512.8366 447.3742 578.2990</span></span></code></pre>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-16-1.png" width="528"></p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-7-1.png" width="528"></p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
@@ -1003,10 +571,10 @@ attention</h1>
 <span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
 <span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
 <span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
-<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-17-1.png" width="528"></p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-8-1.png" width="528"></p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       445.7602 380.0337 511.4867</span></span>
@@ -1034,7 +602,449 @@ attention</h1>
 <span><span class="co">## Nov 1962       447.3037 381.5772 513.0302</span></span>
 <span><span class="co">## Dec 1962       499.7231 433.9966 565.4496</span></span>
 <span><span class="co">## Jan 1963       512.8765 447.1500 578.6030</span></span></code></pre>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-9-1.png" width="528"></p>
+</div>
+<div class="section level2">
+<h2 id="usaccdeaths-methodadj-1">USAccDeaths (method=‘adj’)<a class="anchor" aria-label="anchor" href="#usaccdeaths-methodadj-1"></a>
+</h2>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8268.704 6521.060 10016.349</span></span>
+<span><span class="co">## Feb 1979       7309.039 5561.394  9056.683</span></span>
+<span><span class="co">## Mar 1979       8154.793 6407.149  9902.438</span></span>
+<span><span class="co">## Apr 1979       8531.014 6783.369 10278.658</span></span>
+<span><span class="co">## May 1979       9393.218 7645.573 11140.862</span></span>
+<span><span class="co">## Jun 1979       9741.994 7994.350 11489.638</span></span>
+<span><span class="co">## Jul 1979      11003.200 9255.555 12750.844</span></span>
+<span><span class="co">## Aug 1979       9835.339 8087.694 11582.983</span></span>
+<span><span class="co">## Sep 1979       8712.499 6964.854 10460.143</span></span>
+<span><span class="co">## Oct 1979       9231.334 7483.690 10978.978</span></span>
+<span><span class="co">## Nov 1979       8576.564 6828.920 10324.209</span></span>
+<span><span class="co">## Dec 1979       9249.011 7501.367 10996.656</span></span>
+<span><span class="co">## Jan 1980       8268.724 6521.080 10016.368</span></span>
+<span><span class="co">## Feb 1980       7309.056 5561.412  9056.701</span></span>
+<span><span class="co">## Mar 1980       8154.813 6407.168  9902.457</span></span>
+<span><span class="co">## Apr 1980       8531.034 6783.390 10278.679</span></span>
+<span><span class="co">## May 1980       9393.240 7645.596 11140.884</span></span>
+<span><span class="co">## Jun 1980       9742.017 7994.373 11489.662</span></span>
+<span><span class="co">## Jul 1980      11003.226 9255.581 12750.870</span></span>
+<span><span class="co">## Aug 1980       9835.362 8087.718 11583.007</span></span>
+<span><span class="co">## Sep 1980       8712.519 6964.875 10460.164</span></span>
+<span><span class="co">## Oct 1980       9231.356 7483.712 10979.000</span></span>
+<span><span class="co">## Nov 1980       8576.585 6828.940 10324.229</span></span>
+<span><span class="co">## Dec 1980       9249.033 7501.389 10996.678</span></span>
+<span><span class="co">## Jan 1981       8268.744 6521.099 10016.388</span></span></code></pre>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-1.png" width="720"></p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
+<span><span class="co">## Feb 1979       7350.413 5510.857  9189.969</span></span>
+<span><span class="co">## Mar 1979       8214.982 6375.427 10054.538</span></span>
+<span><span class="co">## Apr 1979       8608.657 6769.101 10448.213</span></span>
+<span><span class="co">## May 1979       9494.868 7655.312 11334.424</span></span>
+<span><span class="co">## Jun 1979       9864.178 8024.622 11703.734</span></span>
+<span><span class="co">## Jul 1979      11160.131 9320.575 12999.687</span></span>
+<span><span class="co">## Aug 1979       9992.534 8152.978 11832.090</span></span>
+<span><span class="co">## Sep 1979       8866.736 7027.180 10706.292</span></span>
+<span><span class="co">## Oct 1979       9410.638 7571.082 11250.194</span></span>
+<span><span class="co">## Nov 1979       8757.905 6918.349 10597.461</span></span>
+<span><span class="co">## Dec 1979       9460.481 7620.926 11300.037</span></span>
+<span><span class="co">## Jan 1980       8472.006 6632.450 10311.562</span></span>
+<span><span class="co">## Feb 1980       7501.319 5661.763  9340.875</span></span>
+<span><span class="co">## Mar 1980       8383.352 6543.796 10222.908</span></span>
+<span><span class="co">## Apr 1980       8784.794 6945.238 10624.350</span></span>
+<span><span class="co">## May 1980       9688.806 7849.250 11528.362</span></span>
+<span><span class="co">## Jun 1980      10065.318 8225.762 11904.874</span></span>
+<span><span class="co">## Jul 1980      11387.310 9547.754 13226.866</span></span>
+<span><span class="co">## Aug 1980      10195.601 8356.045 12035.157</span></span>
+<span><span class="co">## Sep 1980       9046.621 7207.065 10886.176</span></span>
+<span><span class="co">## Oct 1980       9601.234 7761.678 11440.790</span></span>
+<span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
+<span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
+<span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-2.png" width="720"></p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8305.253 6471.433 10139.072</span></span>
+<span><span class="co">## Feb 1979       7355.442 5521.622  9189.261</span></span>
+<span><span class="co">## Mar 1979       8222.297 6388.478 10056.117</span></span>
+<span><span class="co">## Apr 1979       8618.093 6784.273 10451.913</span></span>
+<span><span class="co">## May 1979       9507.221 7673.402 11341.041</span></span>
+<span><span class="co">## Jun 1979       9879.027 8045.208 11712.847</span></span>
+<span><span class="co">## Jul 1979      11179.203 9345.383 13013.023</span></span>
+<span><span class="co">## Aug 1979      10011.638 8177.818 11845.458</span></span>
+<span><span class="co">## Sep 1979       8885.481 7051.662 10719.301</span></span>
+<span><span class="co">## Oct 1979       9432.429 7598.609 11266.249</span></span>
+<span><span class="co">## Nov 1979       8779.944 6946.124 10613.764</span></span>
+<span><span class="co">## Dec 1979       9486.182 7652.362 11320.002</span></span>
+<span><span class="co">## Jan 1980       8496.711 6662.892 10330.531</span></span>
+<span><span class="co">## Feb 1980       7524.686 5690.866  9358.506</span></span>
+<span><span class="co">## Mar 1980       8411.128 6577.308 10244.947</span></span>
+<span><span class="co">## Apr 1980       8815.634 6981.814 10649.454</span></span>
+<span><span class="co">## May 1980       9724.727 7890.908 11558.547</span></span>
+<span><span class="co">## Jun 1980      10104.609 8270.790 11938.429</span></span>
+<span><span class="co">## Jul 1980      11433.989 9600.170 13267.809</span></span>
+<span><span class="co">## Aug 1980      10239.382 8405.562 12073.202</span></span>
+<span><span class="co">## Sep 1980       9087.225 7253.405 10921.045</span></span>
+<span><span class="co">## Oct 1980       9646.187 7812.367 11480.007</span></span>
+<span><span class="co">## Nov 1980       8978.540 7144.720 10812.360</span></span>
+<span><span class="co">## Dec 1980       9700.349 7866.530 11534.169</span></span>
+<span><span class="co">## Jan 1981       8688.179 6854.360 10521.999</span></span></code></pre>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-3.png" width="720"></p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8293.554 6464.587 10122.521</span></span>
+<span><span class="co">## Feb 1979       7340.589 5511.621  9169.556</span></span>
+<span><span class="co">## Mar 1979       8200.690 6371.723 10029.658</span></span>
+<span><span class="co">## Apr 1979       8590.220 6761.253 10419.188</span></span>
+<span><span class="co">## May 1979       9470.730 7641.763 11299.698</span></span>
+<span><span class="co">## Jun 1979       9835.165 8006.197 11664.132</span></span>
+<span><span class="co">## Jul 1979      11122.867 9293.899 12951.834</span></span>
+<span><span class="co">## Aug 1979       9955.207 8126.240 11784.175</span></span>
+<span><span class="co">## Sep 1979       8830.112 7001.144 10659.079</span></span>
+<span><span class="co">## Oct 1979       9368.061 7539.094 11197.029</span></span>
+<span><span class="co">## Nov 1979       8714.845 6885.877 10543.812</span></span>
+<span><span class="co">## Dec 1979       9410.267 7581.300 11239.234</span></span>
+<span><span class="co">## Jan 1980       8423.736 6594.768 10252.703</span></span>
+<span><span class="co">## Feb 1980       7455.666 5626.698  9284.633</span></span>
+<span><span class="co">## Mar 1980       8329.085 6500.117 10158.052</span></span>
+<span><span class="co">## Apr 1980       8724.538 6895.570 10553.505</span></span>
+<span><span class="co">## May 1980       9618.623 7789.655 11447.590</span></span>
+<span><span class="co">## Jun 1980       9988.549 8159.581 11817.516</span></span>
+<span><span class="co">## Jul 1980      11296.108 9467.140 13125.075</span></span>
+<span><span class="co">## Aug 1980      10110.061 8281.093 11939.028</span></span>
+<span><span class="co">## Sep 1980       8967.287 7138.319 10796.254</span></span>
+<span><span class="co">## Oct 1980       9513.405 7684.438 11342.372</span></span>
+<span><span class="co">## Nov 1980       8849.879 7020.912 10678.847</span></span>
+<span><span class="co">## Dec 1980       9555.889 7726.921 11384.856</span></span>
+<span><span class="co">## Jan 1981       8553.923 6724.956 10382.891</span></span></code></pre>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-10-4.png" width="720"></p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
+<span><span class="co">## Feb 1979       7350.413 5510.857  9189.969</span></span>
+<span><span class="co">## Mar 1979       8214.982 6375.427 10054.538</span></span>
+<span><span class="co">## Apr 1979       8608.657 6769.101 10448.213</span></span>
+<span><span class="co">## May 1979       9494.868 7655.312 11334.424</span></span>
+<span><span class="co">## Jun 1979       9864.178 8024.622 11703.734</span></span>
+<span><span class="co">## Jul 1979      11160.131 9320.575 12999.687</span></span>
+<span><span class="co">## Aug 1979       9992.534 8152.978 11832.090</span></span>
+<span><span class="co">## Sep 1979       8866.736 7027.180 10706.292</span></span>
+<span><span class="co">## Oct 1979       9410.638 7571.082 11250.194</span></span>
+<span><span class="co">## Nov 1979       8757.905 6918.349 10597.461</span></span>
+<span><span class="co">## Dec 1979       9460.481 7620.926 11300.037</span></span>
+<span><span class="co">## Jan 1980       8472.006 6632.450 10311.562</span></span>
+<span><span class="co">## Feb 1980       7501.319 5661.763  9340.875</span></span>
+<span><span class="co">## Mar 1980       8383.352 6543.796 10222.908</span></span>
+<span><span class="co">## Apr 1980       8784.794 6945.238 10624.350</span></span>
+<span><span class="co">## May 1980       9688.806 7849.250 11528.362</span></span>
+<span><span class="co">## Jun 1980      10065.318 8225.762 11904.874</span></span>
+<span><span class="co">## Jul 1980      11387.310 9547.754 13226.866</span></span>
+<span><span class="co">## Aug 1980      10195.601 8356.045 12035.157</span></span>
+<span><span class="co">## Sep 1980       9046.621 7207.065 10886.176</span></span>
+<span><span class="co">## Oct 1980       9601.234 7761.678 11440.790</span></span>
+<span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
+<span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
+<span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-11-1.png" width="720"></p>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8301.292 6461.736 10140.848</span></span>
+<span><span class="co">## Feb 1979       7350.413 5510.857  9189.969</span></span>
+<span><span class="co">## Mar 1979       8214.982 6375.427 10054.538</span></span>
+<span><span class="co">## Apr 1979       8608.657 6769.101 10448.213</span></span>
+<span><span class="co">## May 1979       9494.868 7655.312 11334.424</span></span>
+<span><span class="co">## Jun 1979       9864.178 8024.622 11703.734</span></span>
+<span><span class="co">## Jul 1979      11160.131 9320.575 12999.687</span></span>
+<span><span class="co">## Aug 1979       9992.534 8152.978 11832.090</span></span>
+<span><span class="co">## Sep 1979       8866.736 7027.180 10706.292</span></span>
+<span><span class="co">## Oct 1979       9410.638 7571.082 11250.194</span></span>
+<span><span class="co">## Nov 1979       8757.905 6918.349 10597.461</span></span>
+<span><span class="co">## Dec 1979       9460.481 7620.926 11300.037</span></span>
+<span><span class="co">## Jan 1980       8472.006 6632.450 10311.562</span></span>
+<span><span class="co">## Feb 1980       7501.319 5661.763  9340.875</span></span>
+<span><span class="co">## Mar 1980       8383.352 6543.796 10222.908</span></span>
+<span><span class="co">## Apr 1980       8784.794 6945.238 10624.350</span></span>
+<span><span class="co">## May 1980       9688.806 7849.250 11528.362</span></span>
+<span><span class="co">## Jun 1980      10065.318 8225.762 11904.874</span></span>
+<span><span class="co">## Jul 1980      11387.310 9547.754 13226.866</span></span>
+<span><span class="co">## Aug 1980      10195.601 8356.045 12035.157</span></span>
+<span><span class="co">## Sep 1980       9046.621 7207.065 10886.176</span></span>
+<span><span class="co">## Oct 1980       9601.234 7761.678 11440.790</span></span>
+<span><span class="co">## Nov 1980       8934.983 7095.427 10774.539</span></span>
+<span><span class="co">## Dec 1980       9651.443 7811.887 11490.999</span></span>
+<span><span class="co">## Jan 1981       8642.728 6803.172 10482.284</span></span></code></pre>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-12-1.png" width="720"></p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
+<span><span class="co">## Jan 1979       8302.178 6488.053 10116.303</span></span>
+<span><span class="co">## Feb 1979       7351.538 5537.413  9165.663</span></span>
+<span><span class="co">## Mar 1979       8216.619 6402.494 10030.744</span></span>
+<span><span class="co">## Apr 1979       8610.768 6796.643 10424.893</span></span>
+<span><span class="co">## May 1979       9497.631 7683.506 11311.756</span></span>
+<span><span class="co">## Jun 1979       9867.500 8053.375 11681.625</span></span>
+<span><span class="co">## Jul 1979      11164.397 9350.272 12978.522</span></span>
+<span><span class="co">## Aug 1979       9996.807 8182.682 11810.932</span></span>
+<span><span class="co">## Sep 1979       8870.929 7056.804 10685.054</span></span>
+<span><span class="co">## Oct 1979       9415.512 7601.387 11229.637</span></span>
+<span><span class="co">## Nov 1979       8762.835 6948.710 10576.960</span></span>
+<span><span class="co">## Dec 1979       9466.230 7652.105 11280.356</span></span>
+<span><span class="co">## Jan 1980       8477.532 6663.407 10291.657</span></span>
+<span><span class="co">## Feb 1980       7506.546 5692.421  9320.671</span></span>
+<span><span class="co">## Mar 1980       8389.565 6575.440 10203.690</span></span>
+<span><span class="co">## Apr 1980       8791.693 6977.568 10605.818</span></span>
+<span><span class="co">## May 1980       9696.841 7882.716 11510.967</span></span>
+<span><span class="co">## Jun 1980      10074.107 8259.982 11888.232</span></span>
+<span><span class="co">## Jul 1980      11397.752 9583.627 13211.877</span></span>
+<span><span class="co">## Aug 1980      10205.394 8391.269 12019.519</span></span>
+<span><span class="co">## Sep 1980       9055.703 7241.578 10869.828</span></span>
+<span><span class="co">## Oct 1980       9611.290 7797.165 11425.415</span></span>
+<span><span class="co">## Nov 1980       8944.726 7130.601 10758.851</span></span>
+<span><span class="co">## Dec 1980       9662.383 7848.258 11476.508</span></span>
+<span><span class="co">## Jan 1981       8652.895 6838.770 10467.020</span></span></code></pre>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-13-1.png" width="720"></p>
+</div>
+<div class="section level2">
+<h2 id="airpassengers-methodadj-1">AirPassengers (method=‘adj’)<a class="anchor" aria-label="anchor" href="#airpassengers-methodadj-1"></a>
+</h2>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       441.8635 312.5333 571.1937</span></span>
+<span><span class="co">## Feb 1961       415.3291 285.9989 544.6593</span></span>
+<span><span class="co">## Mar 1961       470.6896 341.3593 600.0198</span></span>
+<span><span class="co">## Apr 1961       466.2480 336.9178 595.5782</span></span>
+<span><span class="co">## May 1961       477.9124 348.5822 607.2426</span></span>
+<span><span class="co">## Jun 1961       552.5151 423.1849 681.8453</span></span>
+<span><span class="co">## Jul 1961       618.1805 488.8503 747.5107</span></span>
+<span><span class="co">## Aug 1961       611.8440 482.5138 741.1742</span></span>
+<span><span class="co">## Sep 1961       517.8328 388.5026 647.1630</span></span>
+<span><span class="co">## Oct 1961       448.5658 319.2356 577.8961</span></span>
+<span><span class="co">## Nov 1961       389.6833 260.3531 519.0136</span></span>
+<span><span class="co">## Dec 1961       432.9705 303.6403 562.3007</span></span>
+<span><span class="co">## Jan 1962       441.9510 312.6208 571.2812</span></span>
+<span><span class="co">## Feb 1962       415.4114 286.0811 544.7416</span></span>
+<span><span class="co">## Mar 1962       470.7828 341.4526 600.1130</span></span>
+<span><span class="co">## Apr 1962       466.3404 337.0101 595.6706</span></span>
+<span><span class="co">## May 1962       478.0071 348.6769 607.3373</span></span>
+<span><span class="co">## Jun 1962       552.6245 423.2943 681.9547</span></span>
+<span><span class="co">## Jul 1962       618.3029 488.9727 747.6332</span></span>
+<span><span class="co">## Aug 1962       611.9652 482.6350 741.2954</span></span>
+<span><span class="co">## Sep 1962       517.9353 388.6051 647.2656</span></span>
+<span><span class="co">## Oct 1962       448.6547 319.3245 577.9849</span></span>
+<span><span class="co">## Nov 1962       389.7605 260.4303 519.0907</span></span>
+<span><span class="co">## Dec 1962       433.0562 303.7260 562.3864</span></span>
+<span><span class="co">## Jan 1963       442.0385 312.7083 571.3687</span></span></code></pre>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-14-1.png" width="528"></p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
+<span><span class="co">## Feb 1961       421.4846 355.1003 487.8689</span></span>
+<span><span class="co">## Mar 1961       480.5743 414.1900 546.9586</span></span>
+<span><span class="co">## Apr 1961       478.9194 412.5352 545.3037</span></span>
+<span><span class="co">## May 1961       493.8543 427.4701 560.2386</span></span>
+<span><span class="co">## Jun 1961       574.3600 507.9757 640.7442</span></span>
+<span><span class="co">## Jul 1961       646.4418 580.0575 712.8260</span></span>
+<span><span class="co">## Aug 1961       643.5965 577.2122 709.9808</span></span>
+<span><span class="co">## Sep 1961       547.9063 481.5220 614.2906</span></span>
+<span><span class="co">## Oct 1961       477.3884 411.0042 543.7727</span></span>
+<span><span class="co">## Nov 1961       417.1303 350.7460 483.5146</span></span>
+<span><span class="co">## Dec 1961       466.1416 399.7574 532.5259</span></span>
+<span><span class="co">## Jan 1962       478.5409 412.1566 544.9252</span></span>
+<span><span class="co">## Feb 1962       452.3707 385.9864 518.7549</span></span>
+<span><span class="co">## Mar 1962       515.5772 449.1929 581.9615</span></span>
+<span><span class="co">## Apr 1962       513.5933 447.2090 579.9775</span></span>
+<span><span class="co">## May 1962       529.3953 463.0111 595.7796</span></span>
+<span><span class="co">## Jun 1962       615.4486 549.0643 681.8329</span></span>
+<span><span class="co">## Jul 1962       692.4133 626.0290 758.7976</span></span>
+<span><span class="co">## Aug 1962       689.0964 622.7121 755.4807</span></span>
+<span><span class="co">## Sep 1962       586.4147 520.0304 652.7990</span></span>
+<span><span class="co">## Oct 1962       510.7455 444.3612 577.1297</span></span>
+<span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
+<span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
+<span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-14-2.png" width="528"></p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.6975 379.5912 511.8037</span></span>
+<span><span class="co">## Feb 1961       421.5139 355.4077 487.6201</span></span>
+<span><span class="co">## Mar 1961       480.6214 414.5152 546.7276</span></span>
+<span><span class="co">## Apr 1961       478.9798 412.8736 545.0860</span></span>
+<span><span class="co">## May 1961       493.9303 427.8240 560.0365</span></span>
+<span><span class="co">## Jun 1961       574.4640 508.3578 640.5702</span></span>
+<span><span class="co">## Jul 1961       646.5764 580.4701 712.6826</span></span>
+<span><span class="co">## Aug 1961       643.7477 577.6415 709.8539</span></span>
+<span><span class="co">## Sep 1961       548.0495 481.9433 614.1558</span></span>
+<span><span class="co">## Oct 1961       477.5257 411.4195 543.6319</span></span>
+<span><span class="co">## Nov 1961       417.2610 351.1548 483.3672</span></span>
+<span><span class="co">## Dec 1961       466.2996 400.1934 532.4058</span></span>
+<span><span class="co">## Jan 1962       478.7151 412.6089 544.8214</span></span>
+<span><span class="co">## Feb 1962       452.5467 386.4404 518.6529</span></span>
+<span><span class="co">## Mar 1962       515.7905 449.6843 581.8967</span></span>
+<span><span class="co">## Apr 1962       513.8183 447.7121 579.9245</span></span>
+<span><span class="co">## May 1962       529.6401 463.5338 595.7463</span></span>
+<span><span class="co">## Jun 1962       615.7478 549.6415 681.8540</span></span>
+<span><span class="co">## Jul 1962       692.7662 626.6600 758.8725</span></span>
+<span><span class="co">## Aug 1962       689.4637 623.3575 755.5699</span></span>
+<span><span class="co">## Sep 1962       586.7408 520.6346 652.8470</span></span>
+<span><span class="co">## Oct 1962       511.0412 444.9349 577.1474</span></span>
+<span><span class="co">## Nov 1962       446.3767 380.2704 512.4829</span></span>
+<span><span class="co">## Dec 1962       498.6491 432.5429 564.7554</span></span>
+<span><span class="co">## Jan 1963       511.7353 445.6291 577.8416</span></span></code></pre>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-14-3.png" width="528"></p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
+<span><span class="co">## Feb 1961       421.4846 355.1003 487.8689</span></span>
+<span><span class="co">## Mar 1961       480.5743 414.1900 546.9586</span></span>
+<span><span class="co">## Apr 1961       478.9194 412.5352 545.3037</span></span>
+<span><span class="co">## May 1961       493.8543 427.4701 560.2386</span></span>
+<span><span class="co">## Jun 1961       574.3600 507.9757 640.7442</span></span>
+<span><span class="co">## Jul 1961       646.4418 580.0575 712.8260</span></span>
+<span><span class="co">## Aug 1961       643.5965 577.2122 709.9808</span></span>
+<span><span class="co">## Sep 1961       547.9063 481.5220 614.2906</span></span>
+<span><span class="co">## Oct 1961       477.3884 411.0042 543.7727</span></span>
+<span><span class="co">## Nov 1961       417.1303 350.7460 483.5146</span></span>
+<span><span class="co">## Dec 1961       466.1416 399.7574 532.5259</span></span>
+<span><span class="co">## Jan 1962       478.5409 412.1566 544.9252</span></span>
+<span><span class="co">## Feb 1962       452.3707 385.9864 518.7549</span></span>
+<span><span class="co">## Mar 1962       515.5772 449.1929 581.9615</span></span>
+<span><span class="co">## Apr 1962       513.5933 447.2090 579.9775</span></span>
+<span><span class="co">## May 1962       529.3953 463.0111 595.7796</span></span>
+<span><span class="co">## Jun 1962       615.4486 549.0643 681.8329</span></span>
+<span><span class="co">## Jul 1962       692.4133 626.0290 758.7976</span></span>
+<span><span class="co">## Aug 1962       689.0964 622.7121 755.4807</span></span>
+<span><span class="co">## Sep 1962       586.4147 520.0304 652.7990</span></span>
+<span><span class="co">## Oct 1962       510.7455 444.3612 577.1297</span></span>
+<span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
+<span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
+<span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-15-1.png" width="528"></p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.7580 380.2957 511.2204</span></span>
+<span><span class="co">## Feb 1961       421.6116 356.1492 487.0740</span></span>
+<span><span class="co">## Mar 1961       480.7783 415.3159 546.2407</span></span>
+<span><span class="co">## Apr 1961       479.1810 413.7186 544.6433</span></span>
+<span><span class="co">## May 1961       494.1833 428.7210 559.6457</span></span>
+<span><span class="co">## Jun 1961       574.8108 509.3484 640.2732</span></span>
+<span><span class="co">## Jul 1961       647.0250 581.5626 712.4874</span></span>
+<span><span class="co">## Aug 1961       644.2518 578.7894 709.7142</span></span>
+<span><span class="co">## Sep 1961       548.5270 483.0646 613.9894</span></span>
+<span><span class="co">## Oct 1961       477.9833 412.5209 543.4457</span></span>
+<span><span class="co">## Nov 1961       417.6968 352.2344 483.1592</span></span>
+<span><span class="co">## Dec 1961       466.8262 401.3638 532.2886</span></span>
+<span><span class="co">## Jan 1962       479.2961 413.8337 544.7584</span></span>
+<span><span class="co">## Feb 1962       453.1334 387.6710 518.5958</span></span>
+<span><span class="co">## Mar 1962       516.5017 451.0393 581.9641</span></span>
+<span><span class="co">## Apr 1962       514.5685 449.1061 580.0309</span></span>
+<span><span class="co">## May 1962       530.4559 464.9935 595.9183</span></span>
+<span><span class="co">## Jun 1962       616.7452 551.2828 682.2076</span></span>
+<span><span class="co">## Jul 1962       693.9428 628.4804 759.4052</span></span>
+<span><span class="co">## Aug 1962       690.6883 625.2259 756.1507</span></span>
+<span><span class="co">## Sep 1962       587.8280 522.3656 653.2904</span></span>
+<span><span class="co">## Oct 1962       512.0269 446.5645 577.4893</span></span>
+<span><span class="co">## Nov 1962       447.2713 381.8089 512.7336</span></span>
+<span><span class="co">## Dec 1962       499.6856 434.2232 565.1480</span></span>
+<span><span class="co">## Jan 1963       512.8366 447.3742 578.2990</span></span></code></pre>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-16-1.png" width="528"></p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.6793 379.2950 512.0636</span></span>
+<span><span class="co">## Feb 1961       421.4846 355.1003 487.8689</span></span>
+<span><span class="co">## Mar 1961       480.5743 414.1900 546.9586</span></span>
+<span><span class="co">## Apr 1961       478.9194 412.5352 545.3037</span></span>
+<span><span class="co">## May 1961       493.8543 427.4701 560.2386</span></span>
+<span><span class="co">## Jun 1961       574.3600 507.9757 640.7442</span></span>
+<span><span class="co">## Jul 1961       646.4418 580.0575 712.8260</span></span>
+<span><span class="co">## Aug 1961       643.5965 577.2122 709.9808</span></span>
+<span><span class="co">## Sep 1961       547.9063 481.5220 614.2906</span></span>
+<span><span class="co">## Oct 1961       477.3884 411.0042 543.7727</span></span>
+<span><span class="co">## Nov 1961       417.1303 350.7460 483.5146</span></span>
+<span><span class="co">## Dec 1961       466.1416 399.7574 532.5259</span></span>
+<span><span class="co">## Jan 1962       478.5409 412.1566 544.9252</span></span>
+<span><span class="co">## Feb 1962       452.3707 385.9864 518.7549</span></span>
+<span><span class="co">## Mar 1962       515.5772 449.1929 581.9615</span></span>
+<span><span class="co">## Apr 1962       513.5933 447.2090 579.9775</span></span>
+<span><span class="co">## May 1962       529.3953 463.0111 595.7796</span></span>
+<span><span class="co">## Jun 1962       615.4486 549.0643 681.8329</span></span>
+<span><span class="co">## Jul 1962       692.4133 626.0290 758.7976</span></span>
+<span><span class="co">## Aug 1962       689.0964 622.7121 755.4807</span></span>
+<span><span class="co">## Sep 1962       586.4147 520.0304 652.7990</span></span>
+<span><span class="co">## Oct 1962       510.7455 444.3612 577.1297</span></span>
+<span><span class="co">## Nov 1962       446.1083 379.7240 512.4926</span></span>
+<span><span class="co">## Dec 1962       498.3383 431.9540 564.7225</span></span>
+<span><span class="co">## Jan 1963       511.4050 445.0207 577.7893</span></span></code></pre>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
+<p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-17-1.png" width="528"></p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
+<span><span class="co">## Jan 1961       445.7602 380.0337 511.4867</span></span>
+<span><span class="co">## Feb 1961       421.6152 355.8887 487.3417</span></span>
+<span><span class="co">## Mar 1961       480.7840 415.0575 546.5105</span></span>
+<span><span class="co">## Apr 1961       479.1882 413.4617 544.9147</span></span>
+<span><span class="co">## May 1961       494.1925 428.4660 559.9190</span></span>
+<span><span class="co">## Jun 1961       574.8234 509.0969 640.5499</span></span>
+<span><span class="co">## Jul 1961       647.0413 581.3148 712.7678</span></span>
+<span><span class="co">## Aug 1961       644.2701 578.5436 709.9966</span></span>
+<span><span class="co">## Sep 1961       548.5443 482.8178 614.2708</span></span>
+<span><span class="co">## Oct 1961       477.9999 412.2734 543.7264</span></span>
+<span><span class="co">## Nov 1961       417.7126 351.9861 483.4391</span></span>
+<span><span class="co">## Dec 1961       466.8453 401.1188 532.5718</span></span>
+<span><span class="co">## Jan 1962       479.3171 413.5906 545.0436</span></span>
+<span><span class="co">## Feb 1962       453.1547 387.4282 518.8812</span></span>
+<span><span class="co">## Mar 1962       516.5275 450.8010 582.2540</span></span>
+<span><span class="co">## Apr 1962       514.5957 448.8692 580.3222</span></span>
+<span><span class="co">## May 1962       530.4855 464.7590 596.2120</span></span>
+<span><span class="co">## Jun 1962       616.7813 551.0548 682.5078</span></span>
+<span><span class="co">## Jul 1962       693.9855 628.2590 759.7120</span></span>
+<span><span class="co">## Aug 1962       690.7327 625.0062 756.4592</span></span>
+<span><span class="co">## Sep 1962       587.8674 522.1409 653.5939</span></span>
+<span><span class="co">## Oct 1962       512.0627 446.3362 577.7892</span></span>
+<span><span class="co">## Nov 1962       447.3037 381.5772 513.0302</span></span>
+<span><span class="co">## Dec 1962       499.7231 433.9966 565.4496</span></span>
+<span><span class="co">## Jan 1963       512.8765 447.1500 578.6030</span></span></code></pre>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-18-1.png" width="528"></p>
 </div>

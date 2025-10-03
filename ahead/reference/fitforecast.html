@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.0</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@
       <a href="../articles/glmthetaf.html">Generalized Linear Model Theta Forecast</a>
     </li>
     <li>
+      <a href="../articles/meboost.html">Max Entropy Bootstrap</a>
+    </li>
+    <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
     </li>
     <li>
@@ -129,7 +132,7 @@
 <span>  pct_train <span class="op">=</span> <span class="fl">0.9</span>,</span>
 <span>  pct_calibration <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>  method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"thetaf"</span>, <span class="st">"arima"</span>, <span class="st">"ets"</span>, <span class="st">"te"</span>, <span class="st">"tbats"</span>, <span class="st">"tslm"</span>, <span class="st">"dynrmf"</span>, <span class="st">"ridge2f"</span>,</span>
-<span>    <span class="st">"naive"</span>, <span class="st">"snaive"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"naive"</span>, <span class="st">"snaive"</span>, <span class="st">"arimagarch"</span><span class="op">)</span>,</span>
 <span>  level <span class="op">=</span> <span class="fl">95</span>,</span>
 <span>  B <span class="op">=</span> <span class="fl">1000L</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">17223L</span>,</span>
@@ -139,7 +142,7 @@
 <span>  gap <span class="op">=</span> <span class="fl">3L</span>,</span>
 <span>  agg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"median"</span><span class="op">)</span>,</span>
 <span>  vol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"constant"</span>, <span class="st">"garch"</span><span class="op">)</span>,</span>
-<span>  type_sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kde"</span>, <span class="st">"surrogate"</span>, <span class="st">"bootstrap"</span><span class="op">)</span>,</span>
+<span>  type_sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kde"</span>, <span class="st">"surrogate"</span>, <span class="st">"bootstrap"</span>, <span class="st">"meboot"</span>, <span class="st">"gan"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.0</span>
       </span>
     </div>
 
@@ -112,6 +112,9 @@
       <a href="../articles/glmthetaf.html">Generalized Linear Model Theta Forecast</a>
     </li>
     <li>
+      <a href="../articles/meboost.html">Max Entropy Bootstrap</a>
+    </li>
+    <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
     </li>
     <li>
@@ -150,12 +153,19 @@ in <code>ahead</code>
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Loading required package: simulatetimeseries</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: keras3</span></span></code></pre>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'ahead'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:simulatetimeseries':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     meboot, removenas, rfitdistr, rgaussiandens, rsurrogate</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">fdeaths</span> </span>
 <span><span class="va">xreg</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/createtrendseason.html">createtrendseason</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="va">x</span>, xreg <span class="op">=</span> <span class="va">xreg</span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -180,10 +190,10 @@ in <code>ahead</code>
 <span><span class="co">## Jun 1981       400.9575 268.7312 533.1838</span></span>
 <span><span class="co">## Jul 1981       339.2549 207.0286 471.4812</span></span>
 <span><span class="co">## Aug 1981       318.8176 186.5913 451.0439</span></span></code></pre>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-univariate-season_files/figure-html/unnamed-chunk-2-1.png" width="624"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">USAccDeaths</span></span>
 <span><span class="va">xreg</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/createtrendseason.html">createtrendseason</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">(</span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="va">x</span>, xreg <span class="op">=</span> <span class="va">xreg</span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -208,7 +218,7 @@ in <code>ahead</code>
 <span><span class="co">## Jun 1980       9406.964 8559.377 10254.550</span></span>
 <span><span class="co">## Jul 1980       9389.390 8541.803 10236.976</span></span>
 <span><span class="co">## Aug 1980       8802.501 7954.914  9650.087</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-univariate-season_files/figure-html/unnamed-chunk-3-1.png" width="624"></p>
   </div>

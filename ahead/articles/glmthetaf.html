@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.0</span>
       </span>
     </div>
 
@@ -112,6 +112,9 @@
       <a href="../articles/glmthetaf.html">Generalized Linear Model Theta Forecast</a>
     </li>
     <li>
+      <a href="../articles/meboost.html">Max Entropy Bootstrap</a>
+    </li>
+    <li>
       <a href="../articles/mlarch.html">Beyond GARCH</a>
     </li>
     <li>
@@ -155,9 +158,16 @@
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span>
-<span></span>
-<span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Loading required package: simulatetimeseries</span></span></code></pre>
+<pre><code><span><span class="co">## Loading required package: keras3</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'ahead'</span></span></code></pre>
+<pre><code><span><span class="co">## The following objects are masked from 'package:simulatetimeseries':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     meboot, removenas, rfitdistr, rgaussiandens, rsurrogate</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8268.702 6521.054 10016.351</span></span>
 <span><span class="co">## Feb 1979       7309.036 5561.388  9056.685</span></span>
@@ -184,10 +194,10 @@
 <span><span class="co">## Nov 1980       8576.564 6828.916 10324.213</span></span>
 <span><span class="co">## Dec 1980       9249.010 7501.362 10996.659</span></span>
 <span><span class="co">## Jan 1981       8268.722 6521.074 10016.371</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8284.993 6498.136 10071.849</span></span>
@@ -215,10 +225,10 @@
 <span><span class="co">## Nov 1980       8755.760 6968.904 10542.617</span></span>
 <span><span class="co">## Dec 1980       9450.212 7663.355 11237.068</span></span>
 <span><span class="co">## Jan 1981       8455.711 6668.855 10242.567</span></span></code></pre>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-1-2.png" width="720"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8286.973 6502.984 10070.961</span></span>
@@ -246,10 +256,10 @@
 <span><span class="co">## Nov 1980       8777.538 6993.550 10561.526</span></span>
 <span><span class="co">## Dec 1980       9474.664 7690.676 11258.652</span></span>
 <span><span class="co">## Jan 1981       8478.436 6694.448 10262.424</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-1-3.png" width="720"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#(obj &lt;- suppressWarnings(ahead::glmthetaf(USAccDeaths, h=25L, fit_func=rvfl::rvfl, attention=FALSE)))</span></span>
 <span><span class="co">#plot(obj)</span></span>
 <span></span>
@@ -280,10 +290,10 @@
 <span><span class="co">## Nov 1980       8713.209 6931.648 10494.771</span></span>
 <span><span class="co">## Dec 1980       9402.436 7620.874 11183.997</span></span>
 <span><span class="co">## Jan 1981       8411.310 6629.748 10192.872</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-1-4.png" width="720"></p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8284.993 6498.136 10071.849</span></span>
@@ -311,10 +321,10 @@
 <span><span class="co">## Nov 1980       8755.760 6968.904 10542.617</span></span>
 <span><span class="co">## Dec 1980       9450.212 7663.355 11237.068</span></span>
 <span><span class="co">## Jan 1981       8455.711 6668.855 10242.567</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-2-1.png" width="720"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8284.993 6498.136 10071.849</span></span>
@@ -342,10 +352,10 @@
 <span><span class="co">## Nov 1980       8755.760 6968.904 10542.617</span></span>
 <span><span class="co">## Dec 1980       9450.212 7663.355 11237.068</span></span>
 <span><span class="co">## Jan 1981       8455.711 6668.855 10242.567</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-3-1.png" width="720"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8285.436 6512.270 10058.601</span></span>
@@ -373,14 +383,14 @@
 <span><span class="co">## Nov 1980       8760.632 6987.466 10533.797</span></span>
 <span><span class="co">## Dec 1980       9455.681 7682.516 11228.847</span></span>
 <span><span class="co">## Jan 1981       8460.794 6687.629 10233.960</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-4-1.png" width="720"></p>
 </div>
 <div class="section level2">
 <h2 id="airpassengers">AirPassengers<a class="anchor" aria-label="anchor" href="#airpassengers"></a>
 </h2>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       441.8584 312.3678 571.3490</span></span>
@@ -408,10 +418,10 @@
 <span><span class="co">## Nov 1962       389.6853 260.1947 519.1759</span></span>
 <span><span class="co">## Dec 1962       432.9691 303.4785 562.4596</span></span>
 <span><span class="co">## Jan 1963       441.9459 312.4553 571.4365</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-5-1.png" width="528"></p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       443.7666 345.3856 542.1477</span></span>
@@ -439,10 +449,10 @@
 <span><span class="co">## Nov 1962       417.8575 319.4764 516.2386</span></span>
 <span><span class="co">## Dec 1962       465.6080 367.2269 563.9891</span></span>
 <span><span class="co">## Jan 1963       476.6268 378.2458 575.0079</span></span></code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-5-2.png" width="528"></p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/rlm.html" class="external-link">rlm</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       443.7757 345.5306 542.0209</span></span>
@@ -470,13 +480,13 @@
 <span><span class="co">## Nov 1962       417.9916 319.7465 516.2368</span></span>
 <span><span class="co">## Dec 1962       465.7634 367.5183 564.0086</span></span>
 <span><span class="co">## Jan 1963       476.7920 378.5468 575.0371</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-5-3.png" width="528"></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#(obj &lt;- suppressWarnings(ahead::glmthetaf(AirPassengers, h=25L, fit_func=rvfl::rvfl, attention=FALSE)))</span></span>
 <span><span class="co">#plot(obj)</span></span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       443.7666 345.3856 542.1477</span></span>
@@ -504,10 +514,10 @@
 <span><span class="co">## Nov 1962       417.8575 319.4764 516.2386</span></span>
 <span><span class="co">## Dec 1962       465.6080 367.2269 563.9891</span></span>
 <span><span class="co">## Jan 1963       476.6268 378.2458 575.0079</span></span></code></pre>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-6-1.png" width="528"></p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       443.8060 345.8756 541.7365</span></span>
@@ -535,10 +545,10 @@
 <span><span class="co">## Nov 1962       418.4389 320.5085 516.3694</span></span>
 <span><span class="co">## Dec 1962       466.2816 368.3512 564.2121</span></span>
 <span><span class="co">## Jan 1963       477.3426 379.4121 575.2730</span></span></code></pre>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-7-1.png" width="528"></p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">gam</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       443.7666 345.3856 542.1477</span></span>
@@ -566,10 +576,10 @@
 <span><span class="co">## Nov 1962       417.8575 319.4764 516.2386</span></span>
 <span><span class="co">## Dec 1962       465.6080 367.2269 563.9891</span></span>
 <span><span class="co">## Jan 1963       476.6268 378.2458 575.0079</span></span></code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-8-1.png" width="528"></p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">quantreg</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/quantreg/man/rq.html" class="external-link">rq</a></span>, attention<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       443.8071 345.7476 541.8667</span></span>
@@ -597,7 +607,7 @@
 <span><span class="co">## Nov 1962       418.4551 320.3956 516.5147</span></span>
 <span><span class="co">## Dec 1962       466.3004 368.2408 564.3599</span></span>
 <span><span class="co">## Jan 1963       477.3625 379.3030 575.4221</span></span></code></pre>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf_files/figure-html/unnamed-chunk-9-1.png" width="528"></p>
 </div>
