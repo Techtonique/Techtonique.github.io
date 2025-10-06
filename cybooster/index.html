@@ -1,14 +1,14 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="./">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.09.25 -->
         <title>cybooster documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=580074bf" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
@@ -22,14 +22,14 @@
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #2b2b2b;
-  --color-code-foreground: #f8f8f2;
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
   
       }
     }
@@ -144,14 +144,10 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -161,8 +157,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -170,8 +165,7 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -179,8 +173,7 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -222,8 +215,7 @@
   </a>
 </div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -231,8 +223,7 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
@@ -669,8 +660,69 @@ average effects.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">NGBClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_estimators=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">learning_rate=0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">tol=1e-4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">early_stopping=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_iter_no_change=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">verbose=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_engineering=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Optimized NGBoost Classifier with Multinomial distribution (softmax)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.accuracy_score">
+<span class="sig-name descname"><span class="pre">accuracy_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.accuracy_score" title="Link to this definition">¶</a></dt>
+<dd><p>Compute classification accuracy</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Fit NGBoost classifier with multinomial distribution</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.get_params" title="Link to this definition">¶</a></dt>
+<dd><p>Get parameters for sklearn compatibility</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Predict class labels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.predict_logit">
+<span class="sig-name descname"><span class="pre">predict_logit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.predict_logit" title="Link to this definition">¶</a></dt>
+<dd><p>Predict raw logit values</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.predict_proba" title="Link to this definition">¶</a></dt>
+<dd><p>Predict class probabilities</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_samples=1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.sample" title="Link to this definition">¶</a></dt>
+<dd><p>Sample from the predicted categorical distributions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndarray</span> <span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.score" title="Link to this definition">¶</a></dt>
+<dd><p>Compute average log-likelihood score</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.NGBClassifier.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBClassifier.set_params" title="Link to this definition">¶</a></dt>
+<dd><p>Set parameters for sklearn compatibility</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="cybooster.NGBRegressor">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">NGBRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_estimators=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">learning_rate=0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">tol=1e-4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">early_stopping=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_iter_no_change=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">verbose=1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">NGBRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_estimators=500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">learning_rate=0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double</span> <span class="pre">tol=1e-4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span> <span class="pre">early_stopping=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">n_iter_no_change=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int</span> <span class="pre">verbose=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_engineering=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cybooster.NGBRegressor" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Optimized NGBoost implementation</p>
 <dl class="py method">
@@ -827,8 +879,64 @@ parameters and not others.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="cybooster.SkNGBClassifier">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">SkNGBClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter_no_change</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_engineering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_jax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBClassifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBClassifier" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassifierMixin</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBClassifier.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBClassifier.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBClassifier.fit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBClassifier.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBClassifier.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBClassifier.predict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBClassifier.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBClassifier.predict_proba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBClassifier.predict_proba" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cybooster.SkNGBClassifier.set_score_request">
+<span class="sig-name descname"><span class="pre">set_score_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'$UNCHANGED$'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cybooster.SkNGBClassifier" title="cybooster.ngboost.SkNGBClassifier"><span class="pre">SkNGBClassifier</span></a></span></span><a class="headerlink" href="#cybooster.SkNGBClassifier.set_score_request" title="Link to this definition">¶</a></dt>
+<dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">score</span></code> method.</p>
+<p>Note that this method is only relevant when this estimator is used as a
+sub-estimator within a <span class="xref std std-term">meta-estimator</span> and metadata routing is enabled
+with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code>).
+Please check the <span class="xref std std-ref">User Guide</span> on how the routing
+mechanism works.</p>
+<p>The options for each parameter are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: metadata is requested, and passed to <code class="docutils literal notranslate"><span class="pre">score</span></code> if provided. The request is ignored if metadata is not provided.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: metadata is not requested and the meta-estimator will not pass it to <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: metadata is not requested, and the meta-estimator will raise an error if the user provides it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: metadata should be passed to the meta-estimator with this given alias instead of the original name.</p></li>
+</ul>
+<p>The default (<code class="docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing.UNCHANGED</span></code>) retains the
+existing request. This allows you to change the request for some
+parameters and not others.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 1.3.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_weight</strong> (<em>str</em><em>, </em><em>True</em><em>, </em><em>False</em><em>, or </em><em>None</em><em>,                     </em><em>default=sklearn.utils.metadata_routing.UNCHANGED</em>) – Metadata routing for <code class="docutils literal notranslate"><span class="pre">sample_weight</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>self</strong> – The updated object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="cybooster.SkNGBRegressor">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">SkNGBRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter_no_change</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_jax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBRegressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBRegressor" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cybooster.</span></span><span class="sig-name descname"><span class="pre">SkNGBRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter_no_change</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_engineering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_jax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cybooster/ngboost.html#SkNGBRegressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cybooster.SkNGBRegressor" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">RegressorMixin</span></code></p>
 <p>Scikit-learn compatible NGBoost regressor (Python wrapper).</p>
 <p>This is a thin wrapper around the high-performance Cython implementation
@@ -845,6 +953,7 @@ The current Cython backend expects this positional slot.</p></li>
 <li><p><strong>tol</strong> (<em>float</em><em>, </em><em>default=1e-4</em>) – Tolerance used for early stopping monitoring in the backend.</p></li>
 <li><p><strong>early_stopping</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Whether to enable early stopping based on log-likelihood improvement.</p></li>
 <li><p><strong>n_iter_no_change</strong> (<em>int</em><em>, </em><em>default=10</em>) – Number of successive iterations with change &lt; <code class="docutils literal notranslate"><span class="pre">tol</span></code> to trigger stop.</p></li>
+<li><p><strong>feature_engineering</strong> (<em>bool</em><em>, </em><em>default=False</em>) – If True, enables feature engineering through nnetsauce.</p></li>
 <li><p><strong>use_jax</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True and JAX is available, enables small JIT-compiled helpers.</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>default=False</em>) – If True, prints fitting diagnostics.</p></li>
 </ul>
@@ -1097,6 +1206,18 @@ parameters and not others.</p>
 <li><a class="reference internal" href="#cybooster.BoosterRegressor.update"><code class="docutils literal notranslate"><span class="pre">BoosterRegressor.update()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier"><code class="docutils literal notranslate"><span class="pre">NGBClassifier</span></code></a><ul>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.accuracy_score"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.accuracy_score()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.fit"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.get_params"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.get_params()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.predict"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.predict()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.predict_logit"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.predict_logit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.predict_proba"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.predict_proba()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.sample"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.sample()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.score"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.score()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.NGBClassifier.set_params"><code class="docutils literal notranslate"><span class="pre">NGBClassifier.set_params()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#cybooster.NGBRegressor"><code class="docutils literal notranslate"><span class="pre">NGBRegressor</span></code></a><ul>
 <li><a class="reference internal" href="#cybooster.NGBRegressor.fit"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.fit()</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.NGBRegressor.get_params"><code class="docutils literal notranslate"><span class="pre">NGBRegressor.get_params()</span></code></a></li>
@@ -1118,6 +1239,13 @@ parameters and not others.</p>
 <li><a class="reference internal" href="#cybooster.SkBoosterRegressor.fit"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor.fit()</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.SkBoosterRegressor.predict"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor.predict()</span></code></a></li>
 <li><a class="reference internal" href="#cybooster.SkBoosterRegressor.set_score_request"><code class="docutils literal notranslate"><span class="pre">SkBoosterRegressor.set_score_request()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cybooster.SkNGBClassifier"><code class="docutils literal notranslate"><span class="pre">SkNGBClassifier</span></code></a><ul>
+<li><a class="reference internal" href="#cybooster.SkNGBClassifier.fit"><code class="docutils literal notranslate"><span class="pre">SkNGBClassifier.fit()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBClassifier.predict"><code class="docutils literal notranslate"><span class="pre">SkNGBClassifier.predict()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBClassifier.predict_proba"><code class="docutils literal notranslate"><span class="pre">SkNGBClassifier.predict_proba()</span></code></a></li>
+<li><a class="reference internal" href="#cybooster.SkNGBClassifier.set_score_request"><code class="docutils literal notranslate"><span class="pre">SkNGBClassifier.set_score_request()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cybooster.SkNGBRegressor"><code class="docutils literal notranslate"><span class="pre">SkNGBRegressor</span></code></a><ul>
