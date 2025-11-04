@@ -54,6 +54,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -80,19 +83,21 @@
 <blockquote>
 <p>A Unified Machine Learning Interface for R</p>
 </blockquote>
-<p><a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a></p>
+<p><a href="https://techtonique.github.io/unifiedml/index.html" class="external-link"><img src="https://img.shields.io/badge/documentation-is_here-green" alt="Documentation"></a></p>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><code>unifiedml</code> provides a consistent, scikit-learn-inspired interface for various machine learning models in R. It eliminates the need to remember different function signatures across packages by automatically detecting the appropriate interface (formula vs matrix) and task type (regression vs classification).</p>
+<p><code>unifiedml</code> provides a consistent, sklearn-like interface for various (any) machine learning models in R.</p>
+<p>It eliminates the need to remember different function signatures across packages by <strong>automatically detecting the appropriate interface</strong> (formula vs matrix) and <strong>task type</strong> (regression vs classification).</p>
 <div class="section level3">
 <h3 id="key-features">Key Features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h3>
+<p>For now:</p>
 <ul>
 <li>
 <strong>Automatic Task Detection</strong>: Automatically detects regression vs classification based on response variable type (numeric → regression, factor → classification)</li>
 <li>
-<strong>Universal Interface</strong>: Works seamlessly with <code>glmnet</code>, <code>randomForest</code>, <code><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">e1071::svm</a></code>, and other popular ML packages</li>
+<strong>Universal Interface</strong>: Works seamlessly with <code>glmnet</code>, <code>randomForest</code>, <code><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">e1071::svm</a></code>, and other popular ML packages with formula or matrix interface</li>
 <li>
 <strong>Built-in Cross-Validation</strong>: Consistent <code><a href="reference/cross_val_score.html">cross_val_score()</a></code> function with automatic metric selection</li>
 <li>
@@ -110,11 +115,8 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install from GitHub (development version)</span></span>
-<span><span class="co"># devtools::install_github("yourusername/unifiedml")</span></span>
-<span></span>
-<span><span class="co"># Or install locally</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Install from GitHub (development version, for now)</span></span>
+<span><span class="co"># devtools::install_github("Techtonique/unifiedml")</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
