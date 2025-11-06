@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="pdoc 16.0.0"/>
-    <title>mlsauce.kernelridge API documentation</title>
+    <title>mlsauce.lstm API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
     <style>/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}</style>
@@ -29,39 +29,10 @@
                    pattern=".+" required>
 
 
-
-            <h2>API Documentation</h2>            
-                <ul class="memberlist">
-            <li>
-                    <a class="class" href="#KRLSRegressor">KRLSRegressor</a>
-                            <ul class="memberlist">
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
-                        </li>
-                </ul>
-
-                
-            </li>
-    </ul>
+            <h2>Submodules</h2>
+            <ul>
+                    <li><a href="lstm/lstm.html">lstm</a></li>
+            </ul>
 
 
 
@@ -75,202 +46,20 @@
     <main class="pdoc">
             <section class="module-info">
                     <h1 class="modulename">
-<a href="./../mlsauce.html">mlsauce</a><wbr>.kernelridge    </h1>
+<a href="./../mlsauce.html">mlsauce</a><wbr>.lstm    </h1>
 
                 
-                        <input id="mod-kernelridge-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                        <input id="mod-lstm-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
-                        <label class="view-source-button" for="mod-kernelridge-view-source"><span>View Source</span></label>
+                        <label class="view-source-button" for="mod-lstm-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.krr</span><span class="w"> </span><span class="kn">import</span> <span class="n">KRLSRegressor</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="c1"># from .lstm import LSTMRegressor</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;KRLSRegressor&quot;</span><span class="p">]</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="c1"># __all__ = [&#39;LSTMRegressor&#39;]</span>
 </span></pre></div>
 
 
             </section>
-                <section id="KRLSRegressor">
-                            <input id="KRLSRegressor-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">KRLSRegressor</span><wbr>(<span class="base">sklearn.base.BaseEstimator</span>, <span class="base">sklearn.base.RegressorMixin</span>):
-
-                <label class="view-source-button" for="KRLSRegressor-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#KRLSRegressor"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="KRLSRegressor-36"><a href="#KRLSRegressor-36"><span class="linenos">36</span></a><span class="k">class</span><span class="w"> </span><span class="nc">KRLSRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
-</span><span id="KRLSRegressor-37"><a href="#KRLSRegressor-37"><span class="linenos">37</span></a>
-</span><span id="KRLSRegressor-38"><a href="#KRLSRegressor-38"><span class="linenos">38</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regularization</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
-</span><span id="KRLSRegressor-39"><a href="#KRLSRegressor-39"><span class="linenos">39</span></a>
-</span><span id="KRLSRegressor-40"><a href="#KRLSRegressor-40"><span class="linenos">40</span></a>        <span class="k">if</span> <span class="n">kernel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="KRLSRegressor-41"><a href="#KRLSRegressor-41"><span class="linenos">41</span></a>            <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;cpu&quot;</span><span class="p">:</span>
-</span><span id="KRLSRegressor-42"><a href="#KRLSRegressor-42"><span class="linenos">42</span></a>
-</span><span id="KRLSRegressor-43"><a href="#KRLSRegressor-43"><span class="linenos">43</span></a>                <span class="k">def</span><span class="w"> </span><span class="nf">kernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span id="KRLSRegressor-44"><a href="#KRLSRegressor-44"><span class="linenos">44</span></a>                    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)))</span>
-</span><span id="KRLSRegressor-45"><a href="#KRLSRegressor-45"><span class="linenos">45</span></a>
-</span><span id="KRLSRegressor-46"><a href="#KRLSRegressor-46"><span class="linenos">46</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="KRLSRegressor-47"><a href="#KRLSRegressor-47"><span class="linenos">47</span></a>
-</span><span id="KRLSRegressor-48"><a href="#KRLSRegressor-48"><span class="linenos">48</span></a>                <span class="k">def</span><span class="w"> </span><span class="nf">kernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span id="KRLSRegressor-49"><a href="#KRLSRegressor-49"><span class="linenos">49</span></a>                    <span class="n">device_put</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span><span id="KRLSRegressor-50"><a href="#KRLSRegressor-50"><span class="linenos">50</span></a>                    <span class="n">device_put</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span id="KRLSRegressor-51"><a href="#KRLSRegressor-51"><span class="linenos">51</span></a>                    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)))</span>
-</span><span id="KRLSRegressor-52"><a href="#KRLSRegressor-52"><span class="linenos">52</span></a>
-</span><span id="KRLSRegressor-53"><a href="#KRLSRegressor-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="n">backend</span>
-</span><span id="KRLSRegressor-54"><a href="#KRLSRegressor-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span>
-</span><span id="KRLSRegressor-55"><a href="#KRLSRegressor-55"><span class="linenos">55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">=</span> <span class="n">regularization</span>
-</span><span id="KRLSRegressor-56"><a href="#KRLSRegressor-56"><span class="linenos">56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="KRLSRegressor-57"><a href="#KRLSRegressor-57"><span class="linenos">57</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-</span><span id="KRLSRegressor-58"><a href="#KRLSRegressor-58"><span class="linenos">58</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="KRLSRegressor-59"><a href="#KRLSRegressor-59"><span class="linenos">59</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="KRLSRegressor-60"><a href="#KRLSRegressor-60"><span class="linenos">60</span></a>
-</span><span id="KRLSRegressor-61"><a href="#KRLSRegressor-61"><span class="linenos">61</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span id="KRLSRegressor-62"><a href="#KRLSRegressor-62"><span class="linenos">62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span id="KRLSRegressor-63"><a href="#KRLSRegressor-63"><span class="linenos">63</span></a>        <span class="n">centered_y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span>
-</span><span id="KRLSRegressor-64"><a href="#KRLSRegressor-64"><span class="linenos">64</span></a>        <span class="n">X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="KRLSRegressor-65"><a href="#KRLSRegressor-65"><span class="linenos">65</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;cpu&quot;</span><span class="p">:</span>
-</span><span id="KRLSRegressor-66"><a href="#KRLSRegressor-66"><span class="linenos">66</span></a>            <span class="n">K</span> <span class="o">=</span> <span class="n">compute_kernel_matrix</span><span class="p">(</span>
-</span><span id="KRLSRegressor-67"><a href="#KRLSRegressor-67"><span class="linenos">67</span></a>                <span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span>
-</span><span id="KRLSRegressor-68"><a href="#KRLSRegressor-68"><span class="linenos">68</span></a>            <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="KRLSRegressor-69"><a href="#KRLSRegressor-69"><span class="linenos">69</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">centered_y</span><span class="p">)</span>
-</span><span id="KRLSRegressor-70"><a href="#KRLSRegressor-70"><span class="linenos">70</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="KRLSRegressor-71"><a href="#KRLSRegressor-71"><span class="linenos">71</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
-</span><span id="KRLSRegressor-72"><a href="#KRLSRegressor-72"><span class="linenos">72</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="n">centered_y</span><span class="p">)</span>
-</span><span id="KRLSRegressor-73"><a href="#KRLSRegressor-73"><span class="linenos">73</span></a>            <span class="n">K</span> <span class="o">=</span> <span class="n">compute_kernel_matrix</span><span class="p">(</span>
-</span><span id="KRLSRegressor-74"><a href="#KRLSRegressor-74"><span class="linenos">74</span></a>                <span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span>
-</span><span id="KRLSRegressor-75"><a href="#KRLSRegressor-75"><span class="linenos">75</span></a>            <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="KRLSRegressor-76"><a href="#KRLSRegressor-76"><span class="linenos">76</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">centered_y</span><span class="p">)</span>
-</span><span id="KRLSRegressor-77"><a href="#KRLSRegressor-77"><span class="linenos">77</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X_</span>
-</span><span id="KRLSRegressor-78"><a href="#KRLSRegressor-78"><span class="linenos">78</span></a>        <span class="k">return</span> <span class="bp">self</span>
-</span><span id="KRLSRegressor-79"><a href="#KRLSRegressor-79"><span class="linenos">79</span></a>
-</span><span id="KRLSRegressor-80"><a href="#KRLSRegressor-80"><span class="linenos">80</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="KRLSRegressor-81"><a href="#KRLSRegressor-81"><span class="linenos">81</span></a>        <span class="n">X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="KRLSRegressor-82"><a href="#KRLSRegressor-82"><span class="linenos">82</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">!=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">:</span>
-</span><span id="KRLSRegressor-83"><a href="#KRLSRegressor-83"><span class="linenos">83</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
-</span><span id="KRLSRegressor-84"><a href="#KRLSRegressor-84"><span class="linenos">84</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">)</span>
-</span><span id="KRLSRegressor-85"><a href="#KRLSRegressor-85"><span class="linenos">85</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-</span><span id="KRLSRegressor-86"><a href="#KRLSRegressor-86"><span class="linenos">86</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ym_</span><span class="p">)</span>
-</span><span id="KRLSRegressor-87"><a href="#KRLSRegressor-87"><span class="linenos">87</span></a>        <span class="k">return</span> <span class="p">(</span>
-</span><span id="KRLSRegressor-88"><a href="#KRLSRegressor-88"><span class="linenos">88</span></a>            <span class="n">compute_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="p">,</span> <span class="n">X_</span><span class="p">)</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span>
-</span><span id="KRLSRegressor-89"><a href="#KRLSRegressor-89"><span class="linenos">89</span></a>            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span>
-</span><span id="KRLSRegressor-90"><a href="#KRLSRegressor-90"><span class="linenos">90</span></a>        <span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Base class for all estimators in scikit-learn.</p>
-
-<p>Inheriting from this class provides default implementations of:</p>
-
-<ul>
-<li>setting and getting parameters used by <code>GridSearchCV</code> and friends;</li>
-<li>textual and HTML representation displayed in terminals and IDEs;</li>
-<li>estimator serialization;</li>
-<li>parameters validation;</li>
-<li>data validation;</li>
-<li>feature names validation.</li>
-</ul>
-
-<p>Read more in the :ref:<code>User Guide &lt;rolling_your_own_estimator&gt;</code>.</p>
-
-<h2 id="notes">Notes</h2>
-
-<p>All estimators should specify all the parameters that can be set
-at the class level in their <code><a href="#KRLSRegressor.__init__">__init__</a></code> as explicit keyword
-arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
-
-<h2 id="examples">Examples</h2>
-
-<div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyEstimator</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
-<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">is_fitted_</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="bp">self</span>
-<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
-<span class="go">{&#39;param&#39;: 2}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="go">array([2, 2, 2])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="go">array([3, 3, 3])</span>
-</code></pre>
-</div>
-</div>
-
-
-                                <div id="KRLSRegressor.fit" class="classattr">
-                                            <input id="KRLSRegressor.fit-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">fit</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span>, </span><span class="param"><span class="n">y</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="KRLSRegressor.fit-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#KRLSRegressor.fit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="KRLSRegressor.fit-61"><a href="#KRLSRegressor.fit-61"><span class="linenos">61</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span id="KRLSRegressor.fit-62"><a href="#KRLSRegressor.fit-62"><span class="linenos">62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span id="KRLSRegressor.fit-63"><a href="#KRLSRegressor.fit-63"><span class="linenos">63</span></a>        <span class="n">centered_y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span>
-</span><span id="KRLSRegressor.fit-64"><a href="#KRLSRegressor.fit-64"><span class="linenos">64</span></a>        <span class="n">X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="KRLSRegressor.fit-65"><a href="#KRLSRegressor.fit-65"><span class="linenos">65</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;cpu&quot;</span><span class="p">:</span>
-</span><span id="KRLSRegressor.fit-66"><a href="#KRLSRegressor.fit-66"><span class="linenos">66</span></a>            <span class="n">K</span> <span class="o">=</span> <span class="n">compute_kernel_matrix</span><span class="p">(</span>
-</span><span id="KRLSRegressor.fit-67"><a href="#KRLSRegressor.fit-67"><span class="linenos">67</span></a>                <span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span>
-</span><span id="KRLSRegressor.fit-68"><a href="#KRLSRegressor.fit-68"><span class="linenos">68</span></a>            <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="KRLSRegressor.fit-69"><a href="#KRLSRegressor.fit-69"><span class="linenos">69</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">centered_y</span><span class="p">)</span>
-</span><span id="KRLSRegressor.fit-70"><a href="#KRLSRegressor.fit-70"><span class="linenos">70</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="KRLSRegressor.fit-71"><a href="#KRLSRegressor.fit-71"><span class="linenos">71</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
-</span><span id="KRLSRegressor.fit-72"><a href="#KRLSRegressor.fit-72"><span class="linenos">72</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="n">centered_y</span><span class="p">)</span>
-</span><span id="KRLSRegressor.fit-73"><a href="#KRLSRegressor.fit-73"><span class="linenos">73</span></a>            <span class="n">K</span> <span class="o">=</span> <span class="n">compute_kernel_matrix</span><span class="p">(</span>
-</span><span id="KRLSRegressor.fit-74"><a href="#KRLSRegressor.fit-74"><span class="linenos">74</span></a>                <span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span>
-</span><span id="KRLSRegressor.fit-75"><a href="#KRLSRegressor.fit-75"><span class="linenos">75</span></a>            <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">regularization</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="KRLSRegressor.fit-76"><a href="#KRLSRegressor.fit-76"><span class="linenos">76</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">centered_y</span><span class="p">)</span>
-</span><span id="KRLSRegressor.fit-77"><a href="#KRLSRegressor.fit-77"><span class="linenos">77</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X_</span>
-</span><span id="KRLSRegressor.fit-78"><a href="#KRLSRegressor.fit-78"><span class="linenos">78</span></a>        <span class="k">return</span> <span class="bp">self</span>
-</span></pre></div>
-
-
-    
-
-                                </div>
-                                <div id="KRLSRegressor.predict" class="classattr">
-                                            <input id="KRLSRegressor.predict-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">predict</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">X</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="KRLSRegressor.predict-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#KRLSRegressor.predict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="KRLSRegressor.predict-80"><a href="#KRLSRegressor.predict-80"><span class="linenos">80</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="KRLSRegressor.predict-81"><a href="#KRLSRegressor.predict-81"><span class="linenos">81</span></a>        <span class="n">X_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</span><span id="KRLSRegressor.predict-82"><a href="#KRLSRegressor.predict-82"><span class="linenos">82</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">!=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">:</span>
-</span><span id="KRLSRegressor.predict-83"><a href="#KRLSRegressor.predict-83"><span class="linenos">83</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="n">X_</span><span class="p">)</span>
-</span><span id="KRLSRegressor.predict-84"><a href="#KRLSRegressor.predict-84"><span class="linenos">84</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">)</span>
-</span><span id="KRLSRegressor.predict-85"><a href="#KRLSRegressor.predict-85"><span class="linenos">85</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-</span><span id="KRLSRegressor.predict-86"><a href="#KRLSRegressor.predict-86"><span class="linenos">86</span></a>            <span class="n">device_put</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ym_</span><span class="p">)</span>
-</span><span id="KRLSRegressor.predict-87"><a href="#KRLSRegressor.predict-87"><span class="linenos">87</span></a>        <span class="k">return</span> <span class="p">(</span>
-</span><span id="KRLSRegressor.predict-88"><a href="#KRLSRegressor.predict-88"><span class="linenos">88</span></a>            <span class="n">compute_kernel_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="p">,</span> <span class="n">X_</span><span class="p">)</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span>
-</span><span id="KRLSRegressor.predict-89"><a href="#KRLSRegressor.predict-89"><span class="linenos">89</span></a>            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ym_</span>
-</span><span id="KRLSRegressor.predict-90"><a href="#KRLSRegressor.predict-90"><span class="linenos">90</span></a>        <span class="p">)</span>
-</span></pre></div>
-
-
-    
-
-                                </div>
-                        
-                </section>
     </main>
 <script>
     function escapeHTML(html) {
