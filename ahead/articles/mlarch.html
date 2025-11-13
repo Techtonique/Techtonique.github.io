@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
       </span>
     </div>
 
@@ -94,16 +94,28 @@
       <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
+      <a href="../articles/ctx-theta.html">Context-aware Theta</a>
+    </li>
+    <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
     <li>
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+    </li>
+    <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention.html">Generalized Linear Model Theta Forecast with attention</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-attention2.html">Generalized Linear Model Theta Forecast with attention Pt.2</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-attention3.html">Generalized Linear Model Theta Forecast with attention Pt.3</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-ridge-attention.html">Ridge Theta Forecast with attention - conformal uncertainty</a>
@@ -122,6 +134,9 @@
     </li>
     <li>
       <a href="../articles/stacking-ridge2f.html">Stacking ridge2f</a>
+    </li>
+    <li>
+      <a href="../articles/synthsimulation.html">Synthetic simulation</a>
     </li>
   </ul>
 </li>
@@ -166,7 +181,7 @@ approaches with ARCH effects.</p>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>μ</mi><mi>t</mi></msub><mo>+</mo><msub><mi>σ</mi><mi>t</mi></msub><msub><mi>ε</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t = \mu_t + \sigma_t \varepsilon_t</annotation></semantics></math>
 </li>
 <li>Volatility component:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ε</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>,</mo><msubsup><mi>ε</mi><mrow><mi>t</mi><mo>−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sigma_t^2 = f(\varepsilon_{t-1}^2, \varepsilon_{t-2}^2, ...)</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msubsup><mi>ε</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>,</mo><msubsup><mi>ε</mi><mrow><mi>t</mi><mo>−</mo><mn>2</mn></mrow><mn>2</mn></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sigma_t^2 = f(\varepsilon_{t-1}^2, \varepsilon_{t-2}^2, ...)</annotation></semantics></math>
 </li>
 </ol>
 <p>where:</p>
@@ -197,7 +212,7 @@ through the <code>caret</code> package.</p>
 work, the residuals from the mean model need to be centered, so
 that</li>
 </ul>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><msubsup><mi>ϵ</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="false" form="prefix">|</mo><msub><mi>F</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝔼</mi><mo stretchy="false" form="prefix">[</mo><msubsup><mi>ϵ</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="false" form="prefix">|</mo><msub><mi>F</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">
 \mathbb{E}[\epsilon_t^2|F_{t-1}]
 </annotation></semantics></math></p>
 <p>(basically a supervised regression of squared residuals on their
@@ -544,7 +559,7 @@ stationary:</p>
 <span><span class="co">##  KPSS Test for Level Stationarity</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## data:  resids</span></span>
-<span><span class="co">## KPSS Level = 0.25344, Truncation lag parameter = 4, p-value = 0.1</span></span></code></pre>
+<span><span class="co">## KPSS Level = 0.25272, Truncation lag parameter = 4, p-value = 0.1</span></span></code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj_glmnet</span><span class="op">$</span><span class="va">resids_t_test</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>

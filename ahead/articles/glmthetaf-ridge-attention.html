@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
       </span>
     </div>
 
@@ -94,16 +94,28 @@
       <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
+      <a href="../articles/ctx-theta.html">Context-aware Theta</a>
+    </li>
+    <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
     <li>
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+    </li>
+    <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention.html">Generalized Linear Model Theta Forecast with attention</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-attention2.html">Generalized Linear Model Theta Forecast with attention Pt.2</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-attention3.html">Generalized Linear Model Theta Forecast with attention Pt.3</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-ridge-attention.html">Ridge Theta Forecast with attention - conformal uncertainty</a>
@@ -122,6 +134,9 @@
     </li>
     <li>
       <a href="../articles/stacking-ridge2f.html">Stacking ridge2f</a>
+    </li>
+    <li>
+      <a href="../articles/synthsimulation.html">Synthetic simulation</a>
     </li>
   </ul>
 </li>
@@ -163,30 +178,30 @@ uncertainty</h1>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
 <span><span class="co">## Jan 1979       8268.704 6521.060 10016.349</span></span>
-<span><span class="co">## Feb 1979       7309.039 5561.394  9056.683</span></span>
+<span><span class="co">## Feb 1979       7309.039 5561.394  9056.684</span></span>
 <span><span class="co">## Mar 1979       8154.793 6407.149  9902.438</span></span>
-<span><span class="co">## Apr 1979       8531.014 6783.369 10278.658</span></span>
-<span><span class="co">## May 1979       9393.218 7645.573 11140.862</span></span>
-<span><span class="co">## Jun 1979       9741.994 7994.350 11489.638</span></span>
-<span><span class="co">## Jul 1979      11003.200 9255.555 12750.844</span></span>
-<span><span class="co">## Aug 1979       9835.339 8087.694 11582.983</span></span>
-<span><span class="co">## Sep 1979       8712.499 6964.854 10460.143</span></span>
-<span><span class="co">## Oct 1979       9231.334 7483.690 10978.978</span></span>
-<span><span class="co">## Nov 1979       8576.564 6828.920 10324.209</span></span>
-<span><span class="co">## Dec 1979       9249.011 7501.367 10996.656</span></span>
-<span><span class="co">## Jan 1980       8268.724 6521.080 10016.368</span></span>
-<span><span class="co">## Feb 1980       7309.056 5561.412  9056.701</span></span>
-<span><span class="co">## Mar 1980       8154.813 6407.168  9902.457</span></span>
-<span><span class="co">## Apr 1980       8531.034 6783.390 10278.679</span></span>
-<span><span class="co">## May 1980       9393.240 7645.596 11140.884</span></span>
-<span><span class="co">## Jun 1980       9742.017 7994.373 11489.662</span></span>
-<span><span class="co">## Jul 1980      11003.226 9255.581 12750.870</span></span>
-<span><span class="co">## Aug 1980       9835.362 8087.718 11583.007</span></span>
-<span><span class="co">## Sep 1980       8712.519 6964.875 10460.164</span></span>
-<span><span class="co">## Oct 1980       9231.356 7483.712 10979.000</span></span>
-<span><span class="co">## Nov 1980       8576.585 6828.940 10324.229</span></span>
-<span><span class="co">## Dec 1980       9249.033 7501.389 10996.678</span></span>
-<span><span class="co">## Jan 1981       8268.744 6521.099 10016.388</span></span></code></pre>
+<span><span class="co">## Apr 1979       8531.014 6783.369 10278.659</span></span>
+<span><span class="co">## May 1979       9393.218 7645.573 11140.863</span></span>
+<span><span class="co">## Jun 1979       9741.994 7994.350 11489.639</span></span>
+<span><span class="co">## Jul 1979      11003.200 9255.555 12750.845</span></span>
+<span><span class="co">## Aug 1979       9835.339 8087.695 11582.984</span></span>
+<span><span class="co">## Sep 1979       8712.499 6964.854 10460.144</span></span>
+<span><span class="co">## Oct 1979       9231.334 7483.690 10978.979</span></span>
+<span><span class="co">## Nov 1979       8576.565 6828.920 10324.209</span></span>
+<span><span class="co">## Dec 1979       9249.012 7501.367 10996.656</span></span>
+<span><span class="co">## Jan 1980       8268.724 6521.080 10016.369</span></span>
+<span><span class="co">## Feb 1980       7309.057 5561.412  9056.701</span></span>
+<span><span class="co">## Mar 1980       8154.813 6407.168  9902.458</span></span>
+<span><span class="co">## Apr 1980       8531.035 6783.390 10278.679</span></span>
+<span><span class="co">## May 1980       9393.241 7645.596 11140.885</span></span>
+<span><span class="co">## Jun 1980       9742.018 7994.373 11489.662</span></span>
+<span><span class="co">## Jul 1980      11003.226 9255.582 12750.871</span></span>
+<span><span class="co">## Aug 1980       9835.363 8087.718 11583.007</span></span>
+<span><span class="co">## Sep 1980       8712.520 6964.875 10460.165</span></span>
+<span><span class="co">## Oct 1980       9231.357 7483.712 10979.001</span></span>
+<span><span class="co">## Nov 1980       8576.585 6828.941 10324.230</span></span>
+<span><span class="co">## Dec 1980       9249.034 7501.389 10996.679</span></span>
+<span><span class="co">## Jan 1981       8268.744 6521.100 10016.389</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf-ridge-attention_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
@@ -197,31 +212,31 @@ uncertainty</h1>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">glm.nb</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span>, type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       441.8635 312.5333 571.1937</span></span>
-<span><span class="co">## Feb 1961       415.3291 285.9989 544.6593</span></span>
-<span><span class="co">## Mar 1961       470.6896 341.3593 600.0198</span></span>
-<span><span class="co">## Apr 1961       466.2480 336.9178 595.5782</span></span>
-<span><span class="co">## May 1961       477.9124 348.5822 607.2426</span></span>
-<span><span class="co">## Jun 1961       552.5151 423.1849 681.8453</span></span>
-<span><span class="co">## Jul 1961       618.1805 488.8503 747.5107</span></span>
-<span><span class="co">## Aug 1961       611.8440 482.5138 741.1742</span></span>
-<span><span class="co">## Sep 1961       517.8328 388.5026 647.1630</span></span>
-<span><span class="co">## Oct 1961       448.5658 319.2356 577.8961</span></span>
-<span><span class="co">## Nov 1961       389.6833 260.3531 519.0136</span></span>
-<span><span class="co">## Dec 1961       432.9705 303.6403 562.3007</span></span>
-<span><span class="co">## Jan 1962       441.9510 312.6208 571.2812</span></span>
-<span><span class="co">## Feb 1962       415.4114 286.0811 544.7416</span></span>
-<span><span class="co">## Mar 1962       470.7828 341.4526 600.1130</span></span>
-<span><span class="co">## Apr 1962       466.3404 337.0101 595.6706</span></span>
-<span><span class="co">## May 1962       478.0071 348.6769 607.3373</span></span>
-<span><span class="co">## Jun 1962       552.6245 423.2943 681.9547</span></span>
-<span><span class="co">## Jul 1962       618.3029 488.9727 747.6332</span></span>
-<span><span class="co">## Aug 1962       611.9652 482.6350 741.2954</span></span>
-<span><span class="co">## Sep 1962       517.9353 388.6051 647.2656</span></span>
-<span><span class="co">## Oct 1962       448.6547 319.3245 577.9849</span></span>
-<span><span class="co">## Nov 1962       389.7605 260.4303 519.0907</span></span>
-<span><span class="co">## Dec 1962       433.0562 303.7260 562.3864</span></span>
-<span><span class="co">## Jan 1963       442.0385 312.7083 571.3687</span></span></code></pre>
+<span><span class="co">## Jan 1961       441.8646 312.5514 571.1778</span></span>
+<span><span class="co">## Feb 1961       415.3320 286.0188 544.6452</span></span>
+<span><span class="co">## Mar 1961       470.6940 341.3808 600.0072</span></span>
+<span><span class="co">## Apr 1961       466.2535 336.9403 595.5667</span></span>
+<span><span class="co">## May 1961       477.9190 348.6059 607.2322</span></span>
+<span><span class="co">## Jun 1961       552.5238 423.2106 681.8370</span></span>
+<span><span class="co">## Jul 1961       618.1915 488.8783 747.5046</span></span>
+<span><span class="co">## Aug 1961       611.8559 482.5427 741.1691</span></span>
+<span><span class="co">## Sep 1961       517.8437 388.5305 647.1569</span></span>
+<span><span class="co">## Oct 1961       448.5760 319.2628 577.8892</span></span>
+<span><span class="co">## Nov 1961       389.6927 260.3795 519.0059</span></span>
+<span><span class="co">## Dec 1961       432.9815 303.6683 562.2947</span></span>
+<span><span class="co">## Jan 1962       441.9628 312.6497 571.2760</span></span>
+<span><span class="co">## Feb 1962       415.4230 286.1098 544.7362</span></span>
+<span><span class="co">## Mar 1962       470.7965 341.4833 600.1097</span></span>
+<span><span class="co">## Apr 1962       466.3545 337.0413 595.6677</span></span>
+<span><span class="co">## May 1962       478.0221 348.7089 607.3353</span></span>
+<span><span class="co">## Jun 1962       552.6424 423.3292 681.9556</span></span>
+<span><span class="co">## Jul 1962       618.3236 489.0104 747.6368</span></span>
+<span><span class="co">## Aug 1962       611.9862 482.6730 741.2994</span></span>
+<span><span class="co">## Sep 1962       517.9536 388.6404 647.2668</span></span>
+<span><span class="co">## Oct 1962       448.6709 319.3577 577.9841</span></span>
+<span><span class="co">## Nov 1962       389.7749 260.4617 519.0881</span></span>
+<span><span class="co">## Dec 1962       433.0726 303.7594 562.3857</span></span>
+<span><span class="co">## Jan 1963       442.0555 312.7424 571.3687</span></span></code></pre>
 </div>
   </div>
 

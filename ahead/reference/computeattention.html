@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.27.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
       </span>
     </div>
 
@@ -77,16 +77,28 @@
       <a href="../articles/conformal-ml2.html">Conformalized Forecasting using Machine Leaning models 2</a>
     </li>
     <li>
+      <a href="../articles/ctx-theta.html">Context-aware Theta</a>
+    </li>
+    <li>
       <a href="../articles/fitforecastbench.html">Fit and forecast for benchmarking purposes</a>
     </li>
     <li>
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+    </li>
+    <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention.html">Generalized Linear Model Theta Forecast with attention</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-attention2.html">Generalized Linear Model Theta Forecast with attention Pt.2</a>
+    </li>
+    <li>
+      <a href="../articles/glmthetaf-attention3.html">Generalized Linear Model Theta Forecast with attention Pt.3</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-ridge-attention.html">Ridge Theta Forecast with attention - conformal uncertainty</a>
@@ -105,6 +117,9 @@
     </li>
     <li>
       <a href="../articles/stacking-ridge2f.html">Stacking ridge2f</a>
+    </li>
+    <li>
+      <a href="../articles/synthsimulation.html">Synthetic simulation</a>
     </li>
   </ul></li>
 <li>
@@ -131,7 +146,8 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">computeattention</span><span class="op">(</span></span>
 <span>  <span class="va">series</span>,</span>
-<span>  attention_type <span class="op">=</span> <span class="st">"cosine"</span>,</span>
+<span>  attention_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dot_product"</span>, <span class="st">"scaled_dot_product"</span>, <span class="st">"cosine"</span>, <span class="st">"exponential"</span>,</span>
+<span>    <span class="st">"gaussian"</span>, <span class="st">"linear"</span>, <span class="st">"value_based"</span>, <span class="st">"hybrid"</span>, <span class="st">"parametric"</span><span class="op">)</span>,</span>
 <span>  window_size <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  decay_factor <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  temperature <span class="op">=</span> <span class="fl">1</span>,</span>
