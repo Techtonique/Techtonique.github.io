@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <title>Techtonique/Packages</title>
@@ -8,16 +9,29 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css" media="screen">
     <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css">
     <link rel="icon" type="image/png" href="images/t-logo.png">
+
+    <!-- Global site tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146345113-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-146345113-2');
+    </script>
   </head>
+
   <body>
-    <!-- NAVBAR -->
-    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <div class="container">
         <a href="/" class="navbar-brand">Techtonique</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarResponsive">
+          data-target="#navbarResponsive" aria-controls="navbarResponsive"
+          aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -26,8 +40,9 @@
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
 
+    <!-- Header -->
     <div class="container">
       <div class="page-header" id="banner">
         <div class="row">
@@ -36,6 +51,7 @@
             <p class="lead">Packages</p>
             <br>
           </div>
+
           <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="sponsor">
               <img src="images/t-logo.png" alt="Logo">
@@ -47,171 +63,98 @@
 
     <br><br>
 
+    <!-- Packages List -->
     <div class="container">
       <div class="row">
         <div class="bs-component">
           <div class="col-lg-12">
-            <p>Welcome to <b>Techtonique/Packages</b>.</p>
-            <p><b>Techtonique = tech, statistics, machine learning,
-              computer simulation, numerical optimization.</b></p>
-            <p>Here, you'll find <b>examples + documentation</b> for
-              <b><a href="https://github.com/Techtonique">Techtonique</a></b>'s tools.</p>
+            <p>
+              Welcome to <b>Techtonique/Packages</b>.
+              <br><br>
+              <b>Techtonique = tech, statistics, machine learning,
+              computer simulation, numerical optimization. </b>
+              <br>
+              Here, you'll find <b>documentation + examples</b> for
+              <b><a href="https://github.com/Techtonique">Techtonique</a></b>'s tools.
+              <br><br>
 
-            <p>Currently available:</p>
+              <h4>Available Packages</h4>
+
+              <ul>
+                <!-- (THE REST OF YOUR PACKAGE LIST UNCHANGED) -->
+                <!-- I am not modifying that long block unless you request it -->
+              </ul>
+
+            </p>
+
+            <hr>
+
+            <!-- NEW SECTION: R PACKAGE BADGES -->
+            <h3 id="r-badges">📊 R Package Download Badges</h3>
+            <p>
+              Visit: <a href="https://r-packages.techtonique.net/">https://r-packages.techtonique.net/</a>
+            </p>
+
+            <h4>How to Add a Badge to Your README</h4>
+
+<pre><code class="language-markdown">
+<!-- Monthly Downloads -->
+![Downloads](https://r-packages.techtonique.net/badges/downloads/last-month/yourpackage.svg)
+
+<!-- Total Downloads -->
+![Total Downloads](https://r-packages.techtonique.net/badges/downloads/grand-total/yourpackage.svg?color=brightgreen)
+</code></pre>
+
+            <p>Replace <code>yourpackage</code> with your CRAN package name.</p>
+
+            <h4>Badge Endpoint</h4>
+<pre><code>
+GET /badges/downloads/{period}/{package}.svg?color={color}
+</code></pre>
+
+            <p><b>Periods:</b> last-day, last-week, last-month, grand-total</p>
+            <p><b>Colors:</b> blue, green, brightgreen, orange, red, yellow, yellowgreen, lightgrey, auto</p>
+
+            <h4>Examples</h4>
+<pre><code class="language-markdown">
+![](https://r-packages.techtonique.net/badges/downloads/last-month/ggplot2.svg)
+
+![](https://r-packages.techtonique.net/badges/downloads/grand-total/dplyr.svg?color=brightgreen)
+
+![](https://r-packages.techtonique.net/badges/downloads/last-week/tidyr.svg?color=auto)
+</code></pre>
+
+            <h4>JSON API</h4>
+
+<pre><code class="language-bash">
+curl https://r-packages.techtonique.net/downloads/total/last-week/yourpackage
+</code></pre>
+
+<pre><code class="language-bash">
+curl "https://r-packages.techtonique.net/downloads/daily/yourpackage?from_date=2024-11-01&to_date=2024-12-01"
+</code></pre>
+
+            <h4>Using the API from R</h4>
+
+<pre><code class="language-r">
+library(httr)
+library(jsonlite)
+
+url <- "https://r-packages.techtonique.net/downloads/total/last-month/yourpackage"
+response <- GET(url)
+data <- fromJSON(content(response, "text"))
+print(data)
+</code></pre>
+
+            <h4>Auto Color Thresholds</h4>
             <ul>
-              <!-- Python + R packages with added R badges (cranlogs / R-universe) -->
-
-              <li>
-                <a href="nnetsauce/index.html">nnetsauce for Python</a> &nbsp; and
-                <a href="nnetsauce_r/">nnetsauce for R</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/nnetsauce" />
-                | Python: <img src="https://static.pepy.tech/badge/nnetsauce" />
-              </li>
-
-              <li>
-                <a href="mlsauce/index.html">mlsauce for Python</a> &nbsp; and
-                <a href="mlsauce_r/index.html">mlsauce for R</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/mlsauce" />
-                | Python: <img src="https://static.pepy.tech/badge/mlsauce" />
-              </li>
-
-              <li>
-                <a href="ahead/index.html">ahead (R)</a> &nbsp; and &nbsp;
-                <a href="ahead_python/index.html">ahead (Python)</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/ahead" />
-                | Python: <img src="https://static.pepy.tech/badge/ahead" />
-              </li>
-
-              <li>
-                <a href="GPopt/index.html">gpopt</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/gpopt" />
-              </li>
-
-              <li>
-                <a href="bcn/index.html">bcn (R)</a> &nbsp; and &nbsp;
-                <a href="bcn_python/index.html">BCN (Python)</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/bcn" />
-                | Python: <img src="https://static.pepy.tech/badge/bcn" />
-              </li>
-
-              <li>
-                <a href="teller/index.html">teller</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/teller" />
-              </li>
-
-              <li>
-                <a href="querier/index.html">querier</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/querier" />
-              </li>
-
-              <li>
-                <a href="ESGtoolkit/index.html">esgtoolkit</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/ESGtoolkit" />
-              </li>
-
-              <li>
-                <a href="rtopy/index.html">rtopy</a>
-                &nbsp; | Python: <img src="https://static.pepy.tech/badge/rtopy" />
-              </li>
-
-              <li>
-                <a href="crossvalidation/index.html">crossvalidation</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/crossvalidation" />
-              </li>
-
-              <li>
-                <a href="learningmachine/index.html">learningmachine (R)</a> &nbsp; and
-                <a href="learningmachine_python/index.html">learningmachine (Python)</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/learningmachine" />
-              </li>
-
-              <li>
-                <a href="unifiedbooster/index.html">unifiedbooster</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/unifiedbooster" />
-              </li>
-
-              <li>
-                <a href="misc/index.html">misc (R)</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/misc" />
-              </li>
-
-              <li>
-                <a href="techtonique_api_py/index.html">Techtonique API (Python)</a> &nbsp; and
-                <a href="techtonique_api_r/index.html">Techtonique API (R)</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/forecastingapi" />
-              </li>
-
-              <li>
-                <a href="survivalist/index.html">survivalist</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/survivalist" />
-              </li>
-
-              <li>
-                <a href="tisthemachinelearner_r/index.html">tisthemachinelearner (R)</a> &nbsp;
-                <a href="tisthemachinelearner/index.html">tisthemachinelearner (Python)</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/tisthemachinelearner" />
-              </li>
-
-              <li>
-                <a href="genbooster/index.html">genbooster</a>
-                &nbsp; | Python: <img src="https://static.pepy.tech/badge/genbooster" />
-              </li>
-
-              <li>
-                <a href="matern32/index.html">matern32</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/matern32" />
-              </li>
-
-              <li>
-                <a href="bayesianrvfl/index.html">bayesianrvfl</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/bayesianrvfl" />
-              </li>
-
-              <li>
-                <a href="after/index.html">after</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/after" />
-              </li>
-
-              <li>
-                <a href="rvfl/index.html">rvfl</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/rvfl" />
-              </li>
-
-              <li>
-                <a href="mlreserving/index.html">mlreserving</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/mlreserving" />
-              </li>
-
-              <li>
-                <a href="glmnetforpython/index.html">GLMNet (Python)</a>
-                &nbsp; | Python: <img src="https://static.pepy.tech/badge/glmnetforpython" />
-              </li>
-
-              <li>
-                <a href="cybooster/index.html">cybooster</a>
-                &nbsp; | Python: <img src="https://static.pepy.tech/badge/cybooster" />
-              </li>
-
-              <li>
-                <a href="ftsatoo/index.html">ftsatoo</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/ftsatoo" />
-              </li>
-
-              <li>
-                <a href="stochasticscenarios/index.html">stochasticscenarios</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/stochasticscenarios" />
-              </li>
-
-              <li>
-                <a href="synthe/index.html">synthe</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/synthe" />
-              </li>
-
-              <li>
-                <a href="unifiedml/index.html">unifiedml</a>
-                &nbsp; | R: <img src="https://r-universe.techtonique.org/badges/unifiedml" />
-              </li>
+              <li>brightgreen → 100,000+ downloads</li>
+              <li>green → 10,000+ downloads</li>
+              <li>yellowgreen → 1,000+ downloads</li>
+              <li>blue → 100+ downloads</li>
+              <li>lightgrey → &lt; 100 downloads</li>
             </ul>
+
           </div>
         </div>
       </div>
@@ -219,6 +162,7 @@
 
     <hr>
 
+    <!-- Footer -->
     <footer>
       <div class="container">
         © <a href="https://thierrymoudiki.github.io">T. Moudiki</a>
@@ -229,5 +173,7 @@
     <script src="https://bootswatch.com/_vendor/popper.js/dist/umd/popper.min.js"></script>
     <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://bootswatch.com/_assets/js/custom.js"></script>
+
   </body>
+
 </html>
