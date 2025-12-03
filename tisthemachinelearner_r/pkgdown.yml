@@ -1,4 +1,4 @@
-pandoc: 3.1.11.1
+pandoc: 3.8.2.1
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
@@ -8,4 +8,4 @@ articles:
   intro_S3_boosterCpp: intro_S3_boosterCpp.html
   intro_S3_calib: intro_S3_calib.html
   intro_S3: intro_S3.html
-last_built: 2025-04-21T06:40Z
+last_built: 2025-12-03T15:59Z

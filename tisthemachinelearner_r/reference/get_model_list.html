@@ -19,7 +19,7 @@ filtering them into classifiers and regressors."><!-- mathjax --><script src="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tisthemachinelearner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.5</span>
       </span>
     </div>
 
@@ -37,13 +37,13 @@ filtering them into classifiers and regressors."><!-- mathjax --><script src="ht
       <a href="../articles/bayesian.html">Bayesian</a>
     </li>
     <li>
-      <a href="../articles/intro_R6.html">Introduction to tisthemachinelearner, R6 interface</a>
+      <a href="../articles/intro_R6.html">Introduction to tisthemachinelearner R6 interface</a>
     </li>
     <li>
       <a href="../articles/intro_S3_booster.html">Introduction to tisthemachinelearner, S3 interface booster</a>
     </li>
     <li>
-      <a href="../articles/intro_S3_boosterCpp.html">Introduction to tisthemachinelearner, S3 interface booster</a>
+      <a href="../articles/intro_S3_boosterCpp.html">Introduction to tisthemachinelearner, S3 interface booster with cpp</a>
     </li>
     <li>
       <a href="../articles/intro_S3_calib.html">Introduction to tisthemachinelearner, S3 interface with calibration</a>
@@ -73,7 +73,7 @@ filtering them into classifiers and regressors.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_model_list</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_model_list</span><span class="op">(</span>venv_path <span class="op">=</span> <span class="st">"venv"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="value">
@@ -85,30 +85,10 @@ filtering them into classifiers and regressors.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">model_list</span> <span class="op">&lt;-</span> <span class="fu">get_model_list</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">model_list</span><span class="op">$</span><span class="va">classifiers</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "AdaBoostClassifier"             "BaggingClassifier"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "BernoulliNB"                    "CalibratedClassifierCV"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "CategoricalNB"                  "ClassifierChain"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "ComplementNB"                   "DecisionTreeClassifier"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "DummyClassifier"                "ExtraTreeClassifier"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "ExtraTreesClassifier"           "FixedThresholdClassifier"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "GaussianNB"                     "GaussianProcessClassifier"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "GradientBoostingClassifier"     "HistGradientBoostingClassifier"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "KNeighborsClassifier"           "LabelPropagation"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "LabelSpreading"                 "LinearDiscriminantAnalysis"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "LinearSVC"                      "LogisticRegression"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "LogisticRegressionCV"           "MLPClassifier"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "MultiOutputClassifier"          "MultinomialNB"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "NearestCentroid"                "NuSVC"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "OneVsOneClassifier"             "OneVsRestClassifier"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "OutputCodeClassifier"           "PassiveAggressiveClassifier"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Perceptron"                     "QuadraticDiscriminantAnalysis" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "RadiusNeighborsClassifier"      "RandomForestClassifier"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "RidgeClassifier"                "RidgeClassifierCV"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "SGDClassifier"                  "SVC"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "SelfTrainingClassifier"         "StackingClassifier"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "TunedThresholdClassifierCV"     "VotingClassifier"              </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># model_list &lt;- get_model_list()</span></span></span>
+<span class="r-in"><span><span class="co"># print(model_list$classifiers)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
