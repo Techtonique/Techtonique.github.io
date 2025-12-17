@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tisthemachinelearner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.9.0</span>
       </span>
     </div>
 
@@ -68,6 +68,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -86,7 +89,7 @@
 interface</h1>
                         <h4 data-toc-skip class="author">T. Moudiki</h4>
             
-            <h4 data-toc-skip class="date">2025-12-03</h4>
+            <h4 data-toc-skip class="date">2025-12-17</h4>
       
 
       <div class="hidden name"><code>intro_S3.Rmd</code></div>
@@ -112,6 +115,7 @@ dataset.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/reticulate/" class="external-link">reticulate</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">tisthemachinelearner</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: Matrix</span></span>
+<span><span class="co">#&gt; Loading required package: memoise</span></span>
 <span><span class="co">#&gt; Python environment detected: venv</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -153,14 +157,14 @@ per gallon (mpg) based on other car characteristics:</p>
 <span><span class="va">reg_linear</span> <span class="op">&lt;-</span> <span class="fu">tisthemachinelearner</span><span class="fu">::</span><span class="fu">regressor</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, <span class="st">"LinearRegression"</span>, venv_path <span class="op">=</span> <span class="st">"../venv"</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 9.209 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 21.39 seconds</span></span>
 <span></span>
 <span><span class="co"># Make predictions</span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_linear</span>, <span class="va">X_test</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.007 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.03 seconds</span></span>
 <span></span>
 <span><span class="co"># Calculate RMSE</span></span>
 <span><span class="va">rmse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">predictions</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -194,14 +198,14 @@ hyperparameter tuning:</p>
 <span><span class="va">reg_ridge</span> <span class="op">&lt;-</span> <span class="fu">regressor</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, <span class="st">"RidgeCV"</span>, venv_path <span class="op">=</span> <span class="st">"../venv"</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.728 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 1.038 seconds</span></span>
 <span></span>
 <span><span class="co"># Make predictions</span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">predictions_ridge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_ridge</span>, <span class="va">X_test</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.003 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.019 seconds</span></span>
 <span></span>
 <span><span class="co"># Calculate RMSE</span></span>
 <span><span class="va">rmse_ridge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">predictions_ridge</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -276,7 +280,7 @@ structures with the power of Python’s machine learning ecosystem.</p>
 <span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
-<span><span class="co">#&gt; [1] fr_FR.UTF-8/fr_FR.UTF-8/fr_FR.UTF-8/C/fr_FR.UTF-8/fr_FR.UTF-8</span></span>
+<span><span class="co">#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; time zone: Europe/Paris</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
@@ -285,18 +289,18 @@ structures with the power of Python’s machine learning ecosystem.</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] tisthemachinelearner_0.8.5 Matrix_1.6-5              </span></span>
-<span><span class="co">#&gt; [3] reticulate_1.43.0         </span></span>
+<span><span class="co">#&gt; [1] tisthemachinelearner_0.9.0 memoise_2.0.1             </span></span>
+<span><span class="co">#&gt; [3] Matrix_1.6-5               reticulate_1.43.0         </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] cli_3.6.5         knitr_1.50        rlang_1.1.6       xfun_0.52        </span></span>
 <span><span class="co">#&gt;  [5] png_0.1-8         textshaping_1.0.0 jsonlite_2.0.0    htmltools_0.5.8.1</span></span>
 <span><span class="co">#&gt;  [9] ragg_1.3.3        sass_0.4.10       rmarkdown_2.29    grid_4.3.3       </span></span>
 <span><span class="co">#&gt; [13] evaluate_1.0.4    jquerylib_0.1.4   fastmap_1.2.0     yaml_2.3.10      </span></span>
-<span><span class="co">#&gt; [17] lifecycle_1.0.4   compiler_4.3.3    fs_1.6.6          htmlwidgets_1.6.4</span></span>
-<span><span class="co">#&gt; [21] Rcpp_1.1.0        systemfonts_1.1.0 lattice_0.22-5    digest_0.6.37    </span></span>
-<span><span class="co">#&gt; [25] R6_2.6.1          bslib_0.9.0       tools_4.3.3       pkgdown_2.1.1    </span></span>
-<span><span class="co">#&gt; [29] cachem_1.1.0      desc_1.4.3</span></span></code></pre></div>
+<span><span class="co">#&gt; [17] lifecycle_1.0.4   compiler_4.3.3    fs_1.6.6          Rcpp_1.1.0       </span></span>
+<span><span class="co">#&gt; [21] htmlwidgets_1.6.4 rstudioapi_0.17.1 systemfonts_1.1.0 lattice_0.22-5   </span></span>
+<span><span class="co">#&gt; [25] digest_0.6.37     R6_2.6.1          bslib_0.9.0       tools_4.3.3      </span></span>
+<span><span class="co">#&gt; [29] pkgdown_2.1.1     cachem_1.1.0      desc_1.4.3</span></span></code></pre></div>
 </div>
   </div>
 
