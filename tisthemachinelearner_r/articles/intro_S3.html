@@ -153,14 +153,14 @@ per gallon (mpg) based on other car characteristics:</p>
 <span><span class="va">reg_linear</span> <span class="op">&lt;-</span> <span class="fu">tisthemachinelearner</span><span class="fu">::</span><span class="fu">regressor</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, <span class="st">"LinearRegression"</span>, venv_path <span class="op">=</span> <span class="st">"../venv"</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 11.058 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 9.209 seconds</span></span>
 <span></span>
 <span><span class="co"># Make predictions</span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_linear</span>, <span class="va">X_test</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.017 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.007 seconds</span></span>
 <span></span>
 <span><span class="co"># Calculate RMSE</span></span>
 <span><span class="va">rmse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">predictions</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -194,14 +194,14 @@ hyperparameter tuning:</p>
 <span><span class="va">reg_ridge</span> <span class="op">&lt;-</span> <span class="fu">regressor</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, <span class="st">"RidgeCV"</span>, venv_path <span class="op">=</span> <span class="st">"../venv"</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.831 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.728 seconds</span></span>
 <span></span>
 <span><span class="co"># Make predictions</span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">predictions_ridge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">reg_ridge</span>, <span class="va">X_test</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.005 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.003 seconds</span></span>
 <span></span>
 <span><span class="co"># Calculate RMSE</span></span>
 <span><span class="va">rmse_ridge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">predictions_ridge</span> <span class="op">-</span> <span class="va">y_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>

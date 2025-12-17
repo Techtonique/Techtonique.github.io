@@ -17,13 +17,26 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nnetsauce</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.45.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/getting-started.html">Introduction to R package `nnetsauce`</a>
+    </li>
+  </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -62,7 +75,9 @@
 <span>  n_jobs <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">123L</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="fl">1L</span>,</span>
-<span>  backend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cpu"</span>, <span class="st">"gpu"</span>, <span class="st">"tpu"</span><span class="op">)</span></span>
+<span>  backend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cpu"</span>, <span class="st">"gpu"</span>, <span class="st">"tpu"</span><span class="op">)</span>,</span>
+<span>  venv_path <span class="op">=</span> <span class="st">"./venv"</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -91,46 +106,16 @@
 <span class="r-in"><span><span class="va">y_test</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="op">-</span><span class="va">index_train</span><span class="op">]</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="va">sklearn</span><span class="op">$</span><span class="va">tree</span><span class="op">$</span><span class="fu">DecisionTreeClassifier</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'sklearn' not found</span>
 <span class="r-in"><span><span class="va">obj2</span> <span class="op">&lt;-</span> <span class="fu">RandomBagClassifier</span><span class="op">(</span><span class="va">obj</span>, n_estimators<span class="op">=</span><span class="fl">50L</span>,</span></span>
 <span class="r-in"><span>n_hidden_features<span class="op">=</span><span class="fl">5L</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in reticulate::use_virtualenv(venv_path, required = TRUE):</span> Directory ./venv is not a Python virtualenv</span>
 <span class="r-in"><span><span class="va">obj2</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RandomBagClassifier(col_sample=1.0, dropout=0.0, n_estimators=50,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     n_hidden_features=5, obj=DecisionTreeClassifier(),</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     row_sample=1.0)</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'obj2' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="va">X_test</span>, <span class="va">y_test</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.7333333</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'obj2' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj2</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]      [,2] [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] 1.0000000 0.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] 1.0000000 0.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] 1.0000000 0.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,] 0.8861416 0.1138584 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] 1.0000000 0.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,] 0.8861416 0.1138584 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,] 0.8861416 0.1138584 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,] 1.0000000 0.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,] 1.0000000 0.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10,] 0.0000000 0.4000000 0.60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11,] 0.8861416 0.1138584 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12,] 0.0000000 0.4400000 0.56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13,] 0.0000000 0.1000000 0.90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15,] 0.0000000 1.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16,] 0.0000000 1.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17,] 0.0000000 1.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18,] 0.0000000 1.0000000 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19,] 0.8861416 0.1138584 0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20,] 0.0000000 0.9000000 0.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24,] 0.0000000 0.8000000 0.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25,] 0.0000000 0.1200000 0.88</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29,] 0.0000000 0.0000000 1.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30,] 0.0000000 0.0000000 1.00</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'obj2' not found</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -149,13 +149,13 @@ per gallon (mpg) based on other car characteristics:</p>
 <span><span class="va">model</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.022 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.031 seconds</span></span>
 <span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">preds</span> <span class="op">&lt;-</span> <span class="va">model</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_test</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.005 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.007 seconds</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">preds</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 19.97085 20.25755 29.09144 29.61140 19.25911 26.09742 17.92195</span></span>
 <span></span>
@@ -164,13 +164,13 @@ per gallon (mpg) based on other car characteristics:</p>
 <span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">regressor</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span>, model_name <span class="op">=</span> <span class="st">"LinearRegression"</span>, venv_path <span class="op">=</span> <span class="st">"../venv"</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.991 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 1.951 seconds</span></span>
 <span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">X_test</span><span class="op">)</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Time taken:"</span>, <span class="va">end</span> <span class="op">-</span> <span class="va">start</span>, <span class="st">"seconds\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time taken: 0.004 seconds</span></span>
+<span><span class="co">#&gt; Time taken: 0.012 seconds</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">preds</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 19.97085 20.25755 29.09144 29.61140 19.25911 26.09742 17.92195</span></span></code></pre></div>
 </div>
