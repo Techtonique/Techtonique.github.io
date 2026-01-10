@@ -1,6 +1,7 @@
-pandoc: '3.4'
+pandoc: 3.8.2.1
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
+  formula_vs_matrix: formula_vs_matrix.html
   unifiedml-vignette: unifiedml-vignette.html
-last_built: 2025-11-05T00:08Z
+last_built: 2026-01-10T11:09Z

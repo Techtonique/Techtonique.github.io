@@ -1,6 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
 <url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/articles/formula_vs_matrix.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/articles/unifiedml-vignette.html</loc></url>
 <url><loc>/authors.html</loc></url>
@@ -8,7 +9,10 @@
 <url><loc>/news/index.html</loc></url>
 <url><loc>/reference/Model.html</loc></url>
 <url><loc>/reference/cross_val_score.html</loc></url>
+<url><loc>/reference/formula_to_matrix.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/matrix_to_formula.html</loc></url>
+<url><loc>/reference/print.model_adapter.html</loc></url>
 <url><loc>/reference/rcpp_hello_world.html</loc></url>
 <url><loc>/reference/unifiedml-package.html</loc></url>
 </urlset>
