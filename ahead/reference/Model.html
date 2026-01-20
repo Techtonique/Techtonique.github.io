@@ -23,7 +23,7 @@ from the response variable type."><!-- mathjax --><script src="https://cdnjs.clo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">unifiedml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -38,9 +38,15 @@ from the response variable type."><!-- mathjax --><script src="https://cdnjs.clo
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/formula_vs_matrix.html">Formula vs matricial interfaces</a>
+    </li>
+    <li>
       <a href="../articles/unifiedml-vignette.html">Introduction to R package `unifiedml`</a>
     </li>
   </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/Techtonique/unifiedml/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
@@ -138,8 +144,8 @@ from the response variable type.</p>
 <h3 id="method-fit-">Method <code>fit()</code><a class="anchor" aria-label="anchor" href="#method-fit-"></a></h3>
 <p>Fit the model to training data</p>
 <p>Automatically detects task type (regression vs classification) based on
-the type of the response variable y. Numeric y → regression,
-factor y → classification.</p><div class="section">
+the type of the response variable y. Numeric y -&gt; regression,
+factor y -&gt; classification.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -300,30 +306,65 @@ multiple independent model instances are needed.</p><div class="section">
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Regression example with glmnet</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://glmnet.stanford.edu" class="external-link">glmnet</a></span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Matrix</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loaded glmnet 4.1-10</span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">*</span><span class="va">X</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="fl">1.5</span><span class="op">*</span><span class="va">X</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span>  <span class="co"># numeric → regression</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">*</span><span class="va">X</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="fl">1.5</span><span class="op">*</span><span class="va">X</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span>  <span class="co"># numeric -&gt; regression</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="va">Model</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, alpha <span class="op">=</span> <span class="fl">0</span>, lambda <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model Summary - Numerical Derivatives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ======================================</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Task: regression </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Samples: 25 | Features: 4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Step size (h): 0.01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Feature Mean_Derivative    Std_Error       t_value      p_value Significance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       X1      1.91049526 3.046816e-15  6.270466e+14  0.00000e+00          ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       X2     -0.81015913 2.124291e-15 -3.813786e+14  0.00000e+00          ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       X3      0.05898194 2.266233e-16  2.602642e+14  0.00000e+00          ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       X4     -0.20547449 1.952581e-15 -1.052323e+14 1.72923e-321          ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Significance codes: 0 '***' 0.01 '**' 0.05 '*' 0.1 ' ' 1</span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="va">mod</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Classification example  </span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">iris_binary</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span><span class="op">)</span>, <span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">X_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris_binary</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">y_class</span> <span class="op">&lt;-</span> <span class="va">iris_binary</span><span class="op">$</span><span class="va">Species</span>  <span class="co"># factor → classification</span></span></span>
+<span class="r-in"><span><span class="va">y_class</span> <span class="op">&lt;-</span> <span class="va">iris_binary</span><span class="op">$</span><span class="va">Species</span>  <span class="co"># factor -&gt; classification</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="va">Model</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod2</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_class</span>, <span class="va">y_class</span>, kernel <span class="op">=</span> <span class="st">"radial"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod2</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model Summary - Numerical Derivatives</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ======================================</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Task: classification </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Samples: 100 | Features: 4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Step size (h): 0.01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Feature Mean_Derivative Std_Error t_value p_value Significance</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Sepal.Length              NA        NA      NA      NA           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Width              NA        NA      NA      NA           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Petal.Length              NA        NA      NA      NA           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Petal.Width              NA        NA      NA      NA           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Significance codes: 0 '***' 0.01 '**' 0.05 '*' 0.1 ' ' 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cross-validation</span></span></span>
 <span class="r-in"><span><span class="va">cv_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod</span>, <span class="va">X</span>, <span class="va">y</span>, cv <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

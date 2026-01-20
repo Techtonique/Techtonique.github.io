@@ -2,34 +2,6 @@ pandoc: 3.8.2.1
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  ahead-loess-forecasting: ahead-loess-forecasting.html
-  ahead-neutralize: ahead-neutralize.html
-  ahead-plotting-functions: ahead-plotting-functions.html
-  ahead-ridge2-conformal: ahead-ridge2-conformal.html
-  ahead-ridge2-prediction-intervals: ahead-ridge2-prediction-intervals.html
-  ahead-univariate-season: ahead-univariate-season.html
-  ahead-vignette: ahead-vignette.html
-  anymodelplusgarch: anymodelplusgarch.html
-  caretfitpredict: caretfitpredict.html
-  comb_OLS: comb_OLS.html
-  comb_OLS2: comb_OLS2.html
-  conformal-ml-stacking: conformal-ml-stacking.html
-  conformal-ml-stacking2: conformal-ml-stacking2.html
-  conformal-ml: conformal-ml.html
-  conformal-ml2: conformal-ml2.html
-  ctx-theta: ctx-theta.html
-  fitforecastbench: fitforecastbench.html
-  generic-conformal: generic-conformal.html
-  glmthetaf-anymodel: glmthetaf-anymodel.html
-  glmthetaf-attention-conformal: glmthetaf-attention-conformal.html
-  glmthetaf-attention: glmthetaf-attention.html
-  glmthetaf-attention2: glmthetaf-attention2.html
-  glmthetaf-attention3: glmthetaf-attention3.html
-  glmthetaf-ridge-attention: glmthetaf-ridge-attention.html
-  glmthetaf: glmthetaf.html
-  meboost: meboost.html
-  mlarch: mlarch.html
-  mlarch2: mlarch2.html
-  stacking-ridge2f: stacking-ridge2f.html
-  synthsimulation: synthsimulation.html
-last_built: 2025-11-13T05:31Z
+  formula_vs_matrix: formula_vs_matrix.html
+  unifiedml-vignette: unifiedml-vignette.html
+last_built: 2026-01-10T10:56Z
