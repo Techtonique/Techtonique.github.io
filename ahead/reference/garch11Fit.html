@@ -19,7 +19,7 @@ This function estimates the parameters of the GARCH(1,1) model:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.0</span>
       </span>
     </div>
 
@@ -65,12 +65,6 @@ This function estimates the parameters of the GARCH(1,1) model:
     </li>
     <li>
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
@@ -204,9 +198,8 @@ standard errors, t-values, and p-values.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Fit GARCH(1,1) model</span></span></span>
 <span class="r-in"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">garch11Fit</span><span class="op">(</span><span class="va">y</span>, return_model <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11Fit(y, return_model = TRUE):</span> could not find function "garch11Fit"</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">model</span><span class="op">$</span><span class="va">coefficients</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'x' in selecting a method for function 'print': object 'model' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

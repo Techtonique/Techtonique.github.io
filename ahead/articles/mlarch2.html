@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.0</span>
       </span>
     </div>
 
@@ -80,12 +80,6 @@
     </li>
     <li>
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
@@ -171,7 +165,7 @@
 Statistical models for modeling the volatility</strong>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Default model for volatility (Ridge regression for volatility)</span></span>
-<span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       536.2054 505.6594 581.3465</span></span>
 <span><span class="co">## 202       535.6320 509.9505 574.8681</span></span>
@@ -197,7 +191,7 @@ Statistical models for modeling the volatility</strong>.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_ridge</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mlarch2_files/figure-html/basic_example-1.png" width="480"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/meanf.html" class="external-link">meanf</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/meanf.html" class="external-link">meanf</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       533.6063 481.0192 570.9506</span></span>
 <span><span class="co">## 202       536.4092 503.3624 581.2989</span></span>
@@ -223,7 +217,7 @@ Statistical models for modeling the volatility</strong>.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_ridge</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mlarch2_files/figure-html/basic_example2-1.png" width="480"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       533.4403 493.6588 554.9328</span></span>
 <span><span class="co">## 202       535.2631 481.7112 579.0914</span></span>
@@ -249,7 +243,7 @@ Statistical models for modeling the volatility</strong>.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_ridge</span><span class="op">)</span></span></code></pre></div>
 <p><img src="mlarch2_files/figure-html/basic_example3-1.png" width="480"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/ets.html" class="external-link">ets</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlarchf.html">mlarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, ml<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/ets.html" class="external-link">ets</a></span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       533.6582 490.8830 569.6219</span></span>
 <span><span class="co">## 202       535.1014 508.9334 572.7208</span></span>

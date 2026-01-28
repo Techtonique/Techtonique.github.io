@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.0</span>
       </span>
     </div>
 
@@ -80,12 +80,6 @@
     </li>
     <li>
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
@@ -168,7 +162,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>,</span>
 <span>                           FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
@@ -198,7 +192,7 @@
 <code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-1.png" width="672"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>,</span>
 <span>                           FUN<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       531.4982 518.2318 544.7647</span></span>
@@ -225,7 +219,7 @@
 <code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-2.png" width="672"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>,</span>
 <span>                           FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/ridge2f.html">ridge2f</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       532.1740 519.4742 544.8737</span></span>
@@ -252,7 +246,7 @@
 <code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-3.png" width="672"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>,</span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>,</span>
 <span>                           FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/loessf.html">loessf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## 201       544.3276 520.1558 568.4994</span></span>
@@ -279,21 +273,21 @@
 <code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-1-4.png" width="672"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, h<span class="op">=</span><span class="fl">20</span>, </span>
 <span>                             fit_func<span class="op">=</span><span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, h<span class="op">=</span><span class="fl">20</span>, </span>
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/dynrmf.html">dynrmf</a></span>, h<span class="op">=</span><span class="fl">20</span>, </span>
 <span>                             fit_func<span class="op">=</span><span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-2-2.png" width="672"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/eatf.html">eatf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/eatf.html">eatf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/reference/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/glmthetaf.html">glmthetaf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/agnosticgarchf.html">agnosticgarchf</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/goog.html" class="external-link">goog200</a></span>, FUN<span class="op">=</span><span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="../reference/glmthetaf.html">glmthetaf</a></span>, h<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p><img src="anymodelplusgarch_files/figure-html/unnamed-chunk-3-2.png" width="672"></p>
   </div>

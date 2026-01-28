@@ -18,7 +18,7 @@ point forecasts, and prediction intervals."><!-- mathjax --><script src="https:/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.0</span>
       </span>
     </div>
 
@@ -64,12 +64,6 @@ point forecasts, and prediction intervals."><!-- mathjax --><script src="https:/
     </li>
     <li>
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
@@ -188,7 +182,11 @@ point forecasts, and prediction intervals.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># After creating forecasts with garch11f()</span></span></span>
 <span class="r-in"><span><span class="va">forecasts</span> <span class="op">&lt;-</span> <span class="fu"><a href="garch11f.html">garch11f</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(rnorm(100), h = 10):</span> could not find function "garch11f"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y: </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.5604756 -0.2301775 1.558708 0.07050839 0.1292877 1.715065 0.4609162 -1.265061 -0.6868529 -0.445662 1.224082 0.3598138 0.4007715 0.1106827 -0.5558411 1.786913 0.4978505 -1.966617 0.7013559 -0.4727914 -1.067824 -0.2179749 -1.026004 -0.7288912 -0.6250393 -1.686693 0.837787 0.1533731 -1.138137 1.253815 0.4264642 -0.2950715 0.8951257 0.8781335 0.8215811 0.6886403 0.5539177 -0.06191171 -0.3059627 -0.380471 -0.694707 -0.2079173 -1.265396 2.168956 1.207962 -1.123109 -0.4028848 -0.4666554 0.7799651 -0.08336907 0.2533185 -0.02854676 -0.04287046 1.368602 -0.225771 1.516471 -1.548753 0.5846137 0.1238542 0.2159416 0.3796395 -0.5023235 -0.3332074 -1.018575 -1.071791 0.3035286 0.4482098 0.05300423 0.9222675 2.050085 -0.4910312 -2.309169 1.005739 -0.7092008 -0.6880086 1.025571 -0.284773 -1.220718 0.1813035 -0.1388914 0.005764186 0.3852804 -0.37066 0.6443765 -0.2204866 0.331782 1.096839 0.4351815 -0.3259316 1.148808 0.9935039 0.548397 0.2387317 -0.6279061 1.360652 -0.6002596 2.187333 1.532611 -0.2357004 -1.026421 </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> ugarchfit--&gt;warning: solver failer to converge.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data.frame(dist = model$modeldesc$distribution, lambda = ipars[idx["ghlambda",     1], 1], skew = ipars[idx["skew", 1], 1], shape = ipars[idx["shape",     1], 1], n = n * m.sim, seed = sseed[1]):</span> arguments imply differing number of rows: 1, 0</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">forecasts</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'forecasts' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">forecasts</span>, main <span class="op">=</span> <span class="st">"Custom Title"</span>, ylab <span class="op">=</span> <span class="st">"Returns"</span><span class="op">)</span></span></span>

@@ -22,7 +22,7 @@ and bootstrap-based prediction intervals."><!-- mathjax --><script src="https://
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.30.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.31.0</span>
       </span>
     </div>
 
@@ -68,12 +68,6 @@ and bootstrap-based prediction intervals."><!-- mathjax --><script src="https://
     </li>
     <li>
       <a href="../articles/comb_OLS2.html">comb OLS AirPassengers</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
-    </li>
-    <li>
-      <a href="../articles/conformal-ml-stacking2.html">Conformalized Forecasting using Machine Leaning models -- with stacked generalization</a>
     </li>
     <li>
       <a href="../articles/conformal-ml.html">Conformalized Forecasting using Machine Leaning models</a>
@@ -229,7 +223,7 @@ for plotting forecasts</p></div>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate forecasts</span></span></span>
 <span class="r-in"><span><span class="va">forecasts</span> <span class="op">&lt;-</span> <span class="fu">garch11f</span><span class="op">(</span><span class="va">y</span>, h <span class="op">=</span> <span class="fl">20</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">95</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(y, h = 20, level = c(80, 95)):</span> could not find function "garch11f"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(y, h = 20, level = c(80, 95)):</span> unused argument (level = c(80, 95))</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">forecasts</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'x' in selecting a method for function 'print': object 'forecasts' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">forecasts</span><span class="op">)</span></span></span>
@@ -237,28 +231,7 @@ for plotting forecasts</p></div>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use bootstrap method</span></span></span>
 <span class="r-in"><span><span class="va">forecasts_boot</span> <span class="op">&lt;-</span> <span class="fu">garch11f</span><span class="op">(</span><span class="va">y</span>, h <span class="op">=</span> <span class="fl">20</span>, bootstrap <span class="op">=</span> <span class="cn">TRUE</span>, npaths <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(y, h = 20, bootstrap = TRUE, npaths = 500):</span> could not find function "garch11f"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">forecasts_boot</span>, main <span class="op">=</span> <span class="st">"Bootstrap GARCH Forecasts"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'forecasts_boot' not found</span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span><span class="co"># Generate sample data</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>  <span class="co"># Simple example with normal data</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Generate forecasts</span></span></span>
-<span class="r-in"><span><span class="va">forecasts</span> <span class="op">&lt;-</span> <span class="fu">garch11f</span><span class="op">(</span><span class="va">y</span>, h <span class="op">=</span> <span class="fl">20</span>, level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">95</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(y, h = 20, level = c(80, 95)):</span> could not find function "garch11f"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">forecasts</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'x' in selecting a method for function 'print': object 'forecasts' not found</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">forecasts</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'forecasts' not found</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use bootstrap method</span></span></span>
-<span class="r-in"><span><span class="va">forecasts_boot</span> <span class="op">&lt;-</span> <span class="fu">garch11f</span><span class="op">(</span><span class="va">y</span>, h <span class="op">=</span> <span class="fl">20</span>, bootstrap <span class="op">=</span> <span class="cn">TRUE</span>, npaths <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(y, h = 20, bootstrap = TRUE, npaths = 500):</span> could not find function "garch11f"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in garch11f(y, h = 20, bootstrap = TRUE, npaths = 500):</span> unused arguments (bootstrap = TRUE, npaths = 500)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">forecasts_boot</span>, main <span class="op">=</span> <span class="st">"Bootstrap GARCH Forecasts"</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'forecasts_boot' not found</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
