@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.32.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.34.0</span>
       </span>
     </div>
 
@@ -204,7 +204,7 @@ Networks</a>.</p>
 <h2 id="multivariate">Multivariate<a class="anchor" aria-label="anchor" href="#multivariate"></a>
 </h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                      h<span class="op">=</span><span class="fl">10L</span>, lags<span class="op">=</span><span class="fl">2L</span>, </span>
 <span>                      type_pi <span class="op">=</span> <span class="st">"conformal-split"</span><span class="op">)</span></span>
 <span></span>
@@ -215,7 +215,7 @@ Networks</a>.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-conformal_files/figure-html/unnamed-chunk-8-2.png" width="480"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                      n_hidden_features <span class="op">=</span> <span class="fl">0L</span>, </span>
 <span>                      h<span class="op">=</span><span class="fl">10L</span>, lags<span class="op">=</span><span class="fl">1L</span>, </span>
 <span>                      type_pi <span class="op">=</span> <span class="st">"conformal-block-bootstrap"</span><span class="op">)</span></span>
@@ -227,7 +227,7 @@ Networks</a>.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ahead-ridge2-conformal_files/figure-html/unnamed-chunk-9-2.png" width="720"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                      h<span class="op">=</span><span class="fl">10L</span>, lags<span class="op">=</span><span class="fl">2L</span>, </span>
 <span>                      type_pi <span class="op">=</span> <span class="st">"conformal-bootstrap"</span><span class="op">)</span></span>
 <span></span>

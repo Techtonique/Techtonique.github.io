@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.32.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.34.0</span>
       </span>
     </div>
 
@@ -224,7 +224,7 @@ bootstrap</strong>
 <p>And here are the packages that will be used in this vignette:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ahead</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://otexts.com/fpp/" class="external-link">fpp</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/" class="external-link">fpp2</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="prediction-intervals-based-on-gaussian-distribution-meh-but-quick">1 - Prediction intervals based on Gaussian distribution (meh, but
@@ -236,7 +236,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">10L</span> <span class="co"># forecasting horizon</span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">res1</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">res1</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt;            Quotes TV.advert</span></span>
 <span><span class="co">#&gt; May 2005 14.76393  8.947782</span></span>
@@ -462,8 +462,8 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <h3 id="with-external-regressors">1 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">xreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">(</span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">xreg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt;            Quotes TV.advert</span></span>
 <span><span class="co">#&gt; May 2005 15.45580  9.403836</span></span>
@@ -691,7 +691,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">centers</span> <span class="op">&lt;-</span> <span class="fl">2L</span></span>
-<span><span class="op">(</span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt;            Quotes TV.advert</span></span>
 <span><span class="co">#&gt; May 2005 16.32230 10.130363</span></span>
@@ -920,7 +920,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">centers</span> <span class="op">&lt;-</span> <span class="fl">2L</span></span>
-<span><span class="op">(</span><span class="va">res10</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, centers <span class="op">=</span> <span class="va">centers</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">res10</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, centers <span class="op">=</span> <span class="va">centers</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
 <span><span class="co">#&gt;            Quotes TV.advert</span></span>
 <span><span class="co">#&gt; May 2005 14.12856  8.433588</span></span>
@@ -1152,7 +1152,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 </h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">B</span> <span class="op">&lt;-</span> <span class="fl">10L</span> <span class="co"># number of bootstrap replications -- increase this</span></span>
-<span><span class="op">(</span><span class="va">res4</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<span><span class="op">(</span><span class="va">res4</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span>
 <span><span class="co">#&gt; $mean</span></span>
@@ -1499,7 +1499,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <h3 id="with-external-regressors-1">2 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors-1"></a>
 </h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res5</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res5</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span>
 <span><span class="co">#&gt; $mean</span></span>
@@ -1846,7 +1846,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <h3 id="with-external-regressors-and-k-means-clustering-1">2 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering-1"></a>
 </h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res6</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res6</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1864,7 +1864,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 </h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">centers</span> <span class="op">&lt;-</span> <span class="fl">2L</span></span>
-<span><span class="op">(</span><span class="va">res11</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<span><span class="op">(</span><span class="va">res11</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span></span>
@@ -2217,7 +2217,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 </h3>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">block_length</span> <span class="op">&lt;-</span> <span class="fl">5L</span></span>
-<span><span class="op">(</span><span class="va">res7</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<span><span class="op">(</span><span class="va">res7</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
 <span>                        B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -2566,7 +2566,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <h3 id="with-external-regressors-2">3 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors-2"></a>
 </h3>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res8</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res8</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
 <span>                        B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -2915,7 +2915,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <h3 id="with-external-regressors-and-k-means-clustering-2">3 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering-2"></a>
 </h3>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res9</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res9</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
@@ -3265,7 +3265,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 <h3 id="with-k-means-clustering-2">3 - 4 With K-Means clustering<a class="anchor" aria-label="anchor" href="#with-k-means-clustering-2"></a>
 </h3>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res12</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res12</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
 <span>                         block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
@@ -3616,7 +3616,7 @@ quick)<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on
 aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead-of-the-mean-in-bootstrap-aggregation"></a>
 </h3>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res13</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res13</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, </span>
 <span>                         type_aggregation <span class="op">=</span> <span class="st">"median"</span>,</span>
@@ -3972,7 +3972,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 </h3>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">block_length</span> <span class="op">&lt;-</span> <span class="fl">5L</span></span>
-<span><span class="op">(</span><span class="va">res16</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<span><span class="op">(</span><span class="va">res16</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
 <span>                        B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -4321,7 +4321,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <h3 id="with-external-regressors-3">4 - 2 With external regressors<a class="anchor" aria-label="anchor" href="#with-external-regressors-3"></a>
 </h3>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res8</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res8</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, xreg <span class="op">=</span> <span class="va">xreg</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
 <span>                        B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
@@ -4670,7 +4670,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <h3 id="with-external-regressors-and-k-means-clustering-3">4 - 3 With external regressors and K-Means clustering<a class="anchor" aria-label="anchor" href="#with-external-regressors-and-k-means-clustering-3"></a>
 </h3>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res15</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res15</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                        xreg <span class="op">=</span> <span class="va">xreg</span>, centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                        type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
 <span>                        block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
@@ -5020,7 +5020,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <h3 id="with-k-means-clustering-3">4 - 4 With K-Means clustering<a class="anchor" aria-label="anchor" href="#with-k-means-clustering-3"></a>
 </h3>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res12</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res12</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
 <span>                         block_length <span class="op">=</span> <span class="va">block_length</span>,</span>
@@ -5371,7 +5371,7 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead-of-the-mean-in-bootstrap-aggregation-1"></a>
 </h3>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res14</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res14</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         centers <span class="op">=</span> <span class="va">centers</span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, </span>
 <span>                         type_aggregation <span class="op">=</span> <span class="st">"median"</span>,</span>
@@ -5723,360 +5723,13 @@ aggregation<a class="anchor" aria-label="anchor" href="#using-the-median-instead
 <h2 id="prediction-intervals-based-on-r-vine-copula-simulation">5 - Prediction intervals based on R-Vine copula simulation<a class="anchor" aria-label="anchor" href="#prediction-intervals-based-on-r-vine-copula-simulation"></a>
 </h2>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp/man/insurance.html" class="external-link">insurance</a></span>, </span>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/ridge2f.html">ridge2f</a></span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, </span>
 <span>                         type_pi <span class="op">=</span> <span class="st">"rvinecopula"</span>, </span>
 <span>                         B <span class="op">=</span> <span class="va">B</span>, h <span class="op">=</span> <span class="va">h</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $mean</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 15.31002  9.226379</span></span>
-<span><span class="co">#&gt; Jun 2005 14.79886  8.907883</span></span>
-<span><span class="co">#&gt; Jul 2005 14.69090  8.827267</span></span>
-<span><span class="co">#&gt; Aug 2005 13.84373  8.454779</span></span>
-<span><span class="co">#&gt; Sep 2005 14.24753  8.815409</span></span>
-<span><span class="co">#&gt; Oct 2005 14.34184  8.562135</span></span>
-<span><span class="co">#&gt; Nov 2005 14.27625  8.705987</span></span>
-<span><span class="co">#&gt; Dec 2005 13.68829  8.423866</span></span>
-<span><span class="co">#&gt; Jan 2006 13.43270  8.073619</span></span>
-<span><span class="co">#&gt; Feb 2006 14.13381  8.591550</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $lower</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 14.36799  8.113840</span></span>
-<span><span class="co">#&gt; Jun 2005 11.38913  7.103785</span></span>
-<span><span class="co">#&gt; Jul 2005 13.71769  8.065010</span></span>
-<span><span class="co">#&gt; Aug 2005 11.21805  6.285053</span></span>
-<span><span class="co">#&gt; Sep 2005 12.75942  7.497283</span></span>
-<span><span class="co">#&gt; Oct 2005 12.01240  6.759396</span></span>
-<span><span class="co">#&gt; Nov 2005 12.00517  7.184455</span></span>
-<span><span class="co">#&gt; Dec 2005 11.98408  6.689318</span></span>
-<span><span class="co">#&gt; Jan 2006 11.33370  6.726070</span></span>
-<span><span class="co">#&gt; Feb 2006 11.49345  7.273658</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $upper</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 17.41644 10.773176</span></span>
-<span><span class="co">#&gt; Jun 2005 17.02214 10.527019</span></span>
-<span><span class="co">#&gt; Jul 2005 15.93492  9.663288</span></span>
-<span><span class="co">#&gt; Aug 2005 17.10199 10.801843</span></span>
-<span><span class="co">#&gt; Sep 2005 15.73552  9.983540</span></span>
-<span><span class="co">#&gt; Oct 2005 16.10716  9.894525</span></span>
-<span><span class="co">#&gt; Nov 2005 15.71202  9.710339</span></span>
-<span><span class="co">#&gt; Dec 2005 15.41633  9.427269</span></span>
-<span><span class="co">#&gt; Jan 2006 15.27358  9.197813</span></span>
-<span><span class="co">#&gt; Feb 2006 15.84641  9.555500</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims</span></span>
-<span><span class="co">#&gt; $sims[[1]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 14.30454  7.922151</span></span>
-<span><span class="co">#&gt; Jun 2005 15.39684  9.474422</span></span>
-<span><span class="co">#&gt; Jul 2005 13.61132  8.018403</span></span>
-<span><span class="co">#&gt; Aug 2005 14.79509  8.853827</span></span>
-<span><span class="co">#&gt; Sep 2005 14.86888  9.087402</span></span>
-<span><span class="co">#&gt; Oct 2005 16.02594  9.976760</span></span>
-<span><span class="co">#&gt; Nov 2005 15.18795  9.697184</span></span>
-<span><span class="co">#&gt; Dec 2005 14.10462  8.661040</span></span>
-<span><span class="co">#&gt; Jan 2006 15.50597  9.328438</span></span>
-<span><span class="co">#&gt; Feb 2006 13.85247  7.707187</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[2]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 15.16700  8.873611</span></span>
-<span><span class="co">#&gt; Jun 2005 14.13293  7.794348</span></span>
-<span><span class="co">#&gt; Jul 2005 15.02135  8.761327</span></span>
-<span><span class="co">#&gt; Aug 2005 12.10252  7.190436</span></span>
-<span><span class="co">#&gt; Sep 2005 12.61971  7.407260</span></span>
-<span><span class="co">#&gt; Oct 2005 14.26606  8.819319</span></span>
-<span><span class="co">#&gt; Nov 2005 14.69218  8.938429</span></span>
-<span><span class="co">#&gt; Dec 2005 14.34228  8.756040</span></span>
-<span><span class="co">#&gt; Jan 2006 10.96740  6.436479</span></span>
-<span><span class="co">#&gt; Feb 2006 14.43336  8.809632</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[3]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 15.11036  8.774100</span></span>
-<span><span class="co">#&gt; Jun 2005 10.59254  6.903299</span></span>
-<span><span class="co">#&gt; Jul 2005 14.97116  9.042900</span></span>
-<span><span class="co">#&gt; Aug 2005 15.09260  9.808833</span></span>
-<span><span class="co">#&gt; Sep 2005 14.19820  8.952254</span></span>
-<span><span class="co">#&gt; Oct 2005 15.35600  9.529417</span></span>
-<span><span class="co">#&gt; Nov 2005 14.31119  8.667339</span></span>
-<span><span class="co">#&gt; Dec 2005 12.18599  7.624836</span></span>
-<span><span class="co">#&gt; Jan 2006 14.07058  8.522981</span></span>
-<span><span class="co">#&gt; Feb 2006 15.09665  9.428995</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[4]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 14.62871  9.125950</span></span>
-<span><span class="co">#&gt; Jun 2005 16.38452 10.189155</span></span>
-<span><span class="co">#&gt; Jul 2005 16.14851  9.798552</span></span>
-<span><span class="co">#&gt; Aug 2005 13.84074  8.374269</span></span>
-<span><span class="co">#&gt; Sep 2005 15.34916  9.348647</span></span>
-<span><span class="co">#&gt; Oct 2005 15.78587  9.336611</span></span>
-<span><span class="co">#&gt; Nov 2005 14.22790  8.189069</span></span>
-<span><span class="co">#&gt; Dec 2005 11.92546  6.417716</span></span>
-<span><span class="co">#&gt; Jan 2006 12.99929  8.274889</span></span>
-<span><span class="co">#&gt; Feb 2006 11.36920  7.172730</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[5]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 15.57734  9.316228</span></span>
-<span><span class="co">#&gt; Jun 2005 15.48842  9.271059</span></span>
-<span><span class="co">#&gt; Jul 2005 15.19923  9.197380</span></span>
-<span><span class="co">#&gt; Aug 2005 14.81119  9.556891</span></span>
-<span><span class="co">#&gt; Sep 2005 13.24064  8.785248</span></span>
-<span><span class="co">#&gt; Oct 2005 12.35213  6.925970</span></span>
-<span><span class="co">#&gt; Nov 2005 11.99369  7.081032</span></span>
-<span><span class="co">#&gt; Dec 2005 14.31366  8.795979</span></span>
-<span><span class="co">#&gt; Jan 2006 14.47314  8.747883</span></span>
-<span><span class="co">#&gt; Feb 2006 15.89136  9.490070</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[6]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 14.97411  9.106063</span></span>
-<span><span class="co">#&gt; Jun 2005 17.20726 10.625109</span></span>
-<span><span class="co">#&gt; Jul 2005 14.50950  8.691795</span></span>
-<span><span class="co">#&gt; Aug 2005 14.11632  8.408133</span></span>
-<span><span class="co">#&gt; Sep 2005 13.98775  8.495862</span></span>
-<span><span class="co">#&gt; Oct 2005 11.91377  6.711036</span></span>
-<span><span class="co">#&gt; Nov 2005 12.04474  7.540691</span></span>
-<span><span class="co">#&gt; Dec 2005 12.51957  7.633600</span></span>
-<span><span class="co">#&gt; Jan 2006 13.84837  7.779032</span></span>
-<span><span class="co">#&gt; Feb 2006 15.11033  9.023259</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[7]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 14.97313  8.935483</span></span>
-<span><span class="co">#&gt; Jun 2005 14.82365  8.982032</span></span>
-<span><span class="co">#&gt; Jul 2005 14.32267  8.273417</span></span>
-<span><span class="co">#&gt; Aug 2005 12.57208  7.749678</span></span>
-<span><span class="co">#&gt; Sep 2005 15.51601  9.664412</span></span>
-<span><span class="co">#&gt; Oct 2005 13.70746  7.888991</span></span>
-<span><span class="co">#&gt; Nov 2005 15.22292  9.168991</span></span>
-<span><span class="co">#&gt; Dec 2005 13.76598  8.928246</span></span>
-<span><span class="co">#&gt; Jan 2006 13.11415  7.870575</span></span>
-<span><span class="co">#&gt; Feb 2006 13.70643  8.547298</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[8]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 14.58655  9.243993</span></span>
-<span><span class="co">#&gt; Jun 2005 14.86911  8.758953</span></span>
-<span><span class="co">#&gt; Jul 2005 14.08406  8.225544</span></span>
-<span><span class="co">#&gt; Aug 2005 12.46013  7.493386</span></span>
-<span><span class="co">#&gt; Sep 2005 15.79925 10.076191</span></span>
-<span><span class="co">#&gt; Oct 2005 16.13074  9.611269</span></span>
-<span><span class="co">#&gt; Nov 2005 14.88994  9.307531</span></span>
-<span><span class="co">#&gt; Dec 2005 14.72159  9.411932</span></span>
-<span><span class="co">#&gt; Jan 2006 12.59542  7.844081</span></span>
-<span><span class="co">#&gt; Feb 2006 15.69158  9.574496</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[9]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 15.93061  9.955696</span></span>
-<span><span class="co">#&gt; Jun 2005 14.72513  8.466719</span></span>
-<span><span class="co">#&gt; Jul 2005 14.73991  9.195801</span></span>
-<span><span class="co">#&gt; Aug 2005 17.68536 11.090136</span></span>
-<span><span class="co">#&gt; Sep 2005 13.24996  7.807364</span></span>
-<span><span class="co">#&gt; Oct 2005 13.71088  8.620053</span></span>
-<span><span class="co">#&gt; Nov 2005 14.33793  8.755450</span></span>
-<span><span class="co">#&gt; Dec 2005 15.61802  9.431722</span></span>
-<span><span class="co">#&gt; Jan 2006 13.81751  8.208286</span></span>
-<span><span class="co">#&gt; Feb 2006 14.26531  8.540535</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sims[[10]]</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; May 2005 17.84780 11.010509</span></span>
-<span><span class="co">#&gt; Jun 2005 14.36824  8.613730</span></span>
-<span><span class="co">#&gt; Jul 2005 14.30128  9.067548</span></span>
-<span><span class="co">#&gt; Aug 2005 10.96127  6.022200</span></span>
-<span><span class="co">#&gt; Sep 2005 13.64573  8.529455</span></span>
-<span><span class="co">#&gt; Oct 2005 14.16951  8.201922</span></span>
-<span><span class="co">#&gt; Nov 2005 15.85402  9.714159</span></span>
-<span><span class="co">#&gt; Dec 2005 13.38572  8.577552</span></span>
-<span><span class="co">#&gt; Jan 2006 12.93521  7.723549</span></span>
-<span><span class="co">#&gt; Feb 2006 11.92145  7.621296</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $x</span></span>
-<span><span class="co">#&gt;            Quotes TV.advert</span></span>
-<span><span class="co">#&gt; Jan 2002 12.97065  7.212725</span></span>
-<span><span class="co">#&gt; Feb 2002 15.38714  9.443570</span></span>
-<span><span class="co">#&gt; Mar 2002 13.22957  7.534250</span></span>
-<span><span class="co">#&gt; Apr 2002 12.97065  7.212725</span></span>
-<span><span class="co">#&gt; May 2002 15.38714  9.443570</span></span>
-<span><span class="co">#&gt; Jun 2002 11.72288  6.415215</span></span>
-<span><span class="co">#&gt; Jul 2002 10.06177  5.806990</span></span>
-<span><span class="co">#&gt; Aug 2002 10.82279  6.203600</span></span>
-<span><span class="co">#&gt; Sep 2002 13.28707  7.586430</span></span>
-<span><span class="co">#&gt; Oct 2002 14.57832  8.004935</span></span>
-<span><span class="co">#&gt; Nov 2002 15.60542  8.834980</span></span>
-<span><span class="co">#&gt; Dec 2002 15.93515  8.957255</span></span>
-<span><span class="co">#&gt; Jan 2003 16.99486  9.532990</span></span>
-<span><span class="co">#&gt; Feb 2003 16.87821  9.392950</span></span>
-<span><span class="co">#&gt; Mar 2003 16.45128  8.918560</span></span>
-<span><span class="co">#&gt; Apr 2003 15.28118  8.374120</span></span>
-<span><span class="co">#&gt; May 2003 15.88901  9.844505</span></span>
-<span><span class="co">#&gt; Jun 2003 15.67747  9.849390</span></span>
-<span><span class="co">#&gt; Jul 2003 13.28780  8.402730</span></span>
-<span><span class="co">#&gt; Aug 2003 12.64484  7.920675</span></span>
-<span><span class="co">#&gt; Sep 2003 11.82771  7.436085</span></span>
-<span><span class="co">#&gt; Oct 2003  9.69184  6.340490</span></span>
-<span><span class="co">#&gt; Nov 2003 10.30415  6.939995</span></span>
-<span><span class="co">#&gt; Dec 2003 11.38253  6.977100</span></span>
-<span><span class="co">#&gt; Jan 2004 12.95149  8.010201</span></span>
-<span><span class="co">#&gt; Feb 2004 13.63092  9.565460</span></span>
-<span><span class="co">#&gt; Mar 2004  9.12098  6.272510</span></span>
-<span><span class="co">#&gt; Apr 2004  8.39468  5.707495</span></span>
-<span><span class="co">#&gt; May 2004 12.30076  7.963540</span></span>
-<span><span class="co">#&gt; Jun 2004 13.84831  8.494221</span></span>
-<span><span class="co">#&gt; Jul 2004 15.96246  9.789085</span></span>
-<span><span class="co">#&gt; Aug 2004 14.19738  8.692825</span></span>
-<span><span class="co">#&gt; Sep 2004 12.85922  8.057230</span></span>
-<span><span class="co">#&gt; Oct 2004 12.08837  7.588995</span></span>
-<span><span class="co">#&gt; Nov 2004 12.93375  8.244881</span></span>
-<span><span class="co">#&gt; Dec 2004 11.72235  6.675540</span></span>
-<span><span class="co">#&gt; Jan 2005 15.47126  9.219604</span></span>
-<span><span class="co">#&gt; Feb 2005 18.43898 10.963800</span></span>
-<span><span class="co">#&gt; Mar 2005 17.49186 10.456290</span></span>
-<span><span class="co">#&gt; Apr 2005 14.49168  8.728600</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $level</span></span>
-<span><span class="co">#&gt; [1] 95</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $method</span></span>
-<span><span class="co">#&gt; [1] "ridge2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $fitted</span></span>
-<span><span class="co">#&gt;             Quotes TV.advert</span></span>
-<span><span class="co">#&gt; Jan 2002 13.983454  8.113042</span></span>
-<span><span class="co">#&gt; Feb 2002 14.310140  8.680078</span></span>
-<span><span class="co">#&gt; Mar 2002 14.204085  8.367422</span></span>
-<span><span class="co">#&gt; Apr 2002 13.983454  8.113042</span></span>
-<span><span class="co">#&gt; May 2002 14.310140  8.680078</span></span>
-<span><span class="co">#&gt; Jun 2002 13.136549  7.573500</span></span>
-<span><span class="co">#&gt; Jul 2002 12.139564  7.269130</span></span>
-<span><span class="co">#&gt; Aug 2002 12.630260  7.516240</span></span>
-<span><span class="co">#&gt; Sep 2002 14.247551  8.406368</span></span>
-<span><span class="co">#&gt; Oct 2002 15.085483  8.610639</span></span>
-<span><span class="co">#&gt; Nov 2002 15.834616  9.129753</span></span>
-<span><span class="co">#&gt; Dec 2002 16.037153  9.175375</span></span>
-<span><span class="co">#&gt; Jan 2003 16.609951  9.409639</span></span>
-<span><span class="co">#&gt; Feb 2003 16.579674  9.347087</span></span>
-<span><span class="co">#&gt; Mar 2003 16.452555  9.136445</span></span>
-<span><span class="co">#&gt; Apr 2003 15.691303  8.874788</span></span>
-<span><span class="co">#&gt; May 2003 14.054876  8.529575</span></span>
-<span><span class="co">#&gt; Jun 2003 13.434843  8.229103</span></span>
-<span><span class="co">#&gt; Jul 2003 12.715293  7.977976</span></span>
-<span><span class="co">#&gt; Aug 2003 12.998432  8.104914</span></span>
-<span><span class="co">#&gt; Sep 2003 12.590713  7.879126</span></span>
-<span><span class="co">#&gt; Oct 2003 10.931512  7.005044</span></span>
-<span><span class="co">#&gt; Nov 2003 10.416928  6.781919</span></span>
-<span><span class="co">#&gt; Dec 2003 13.045036  8.079712</span></span>
-<span><span class="co">#&gt; Jan 2004 13.471769  8.342884</span></span>
-<span><span class="co">#&gt; Feb 2004  8.822228  6.015318</span></span>
-<span><span class="co">#&gt; Mar 2004  9.707979  6.398258</span></span>
-<span><span class="co">#&gt; Apr 2004  9.811491  6.420448</span></span>
-<span><span class="co">#&gt; May 2004 11.936553  7.582567</span></span>
-<span><span class="co">#&gt; Jun 2004 13.921151  8.555557</span></span>
-<span><span class="co">#&gt; Jul 2004 14.494976  8.746341</span></span>
-<span><span class="co">#&gt; Aug 2004 14.079472  8.618854</span></span>
-<span><span class="co">#&gt; Sep 2004 13.046936  8.135087</span></span>
-<span><span class="co">#&gt; Oct 2004 12.726572  7.953926</span></span>
-<span><span class="co">#&gt; Nov 2004 12.426974  7.834539</span></span>
-<span><span class="co">#&gt; Dec 2004 13.211185  7.811190</span></span>
-<span><span class="co">#&gt; Jan 2005 15.485788  9.264229</span></span>
-<span><span class="co">#&gt; Feb 2005 16.598686  9.685778</span></span>
-<span><span class="co">#&gt; Mar 2005 16.037908  9.448414</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $residuals</span></span>
-<span><span class="co">#&gt;               Quotes   TV.advert</span></span>
-<span><span class="co">#&gt; Jan 2002  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; Feb 2002 -1.08056990 -1.14582835</span></span>
-<span><span class="co">#&gt; Mar 2002 -1.23343504 -1.15469695</span></span>
-<span><span class="co">#&gt; Apr 2002  1.40368643  1.33052782</span></span>
-<span><span class="co">#&gt; May 2002 -2.58725990 -2.26486335</span></span>
-<span><span class="co">#&gt; Jun 2002 -3.07477874 -1.76651025</span></span>
-<span><span class="co">#&gt; Jul 2002 -1.31677412 -1.06553020</span></span>
-<span><span class="co">#&gt; Aug 2002  0.65681006  0.07019039</span></span>
-<span><span class="co">#&gt; Sep 2002  0.33076863 -0.40143292</span></span>
-<span><span class="co">#&gt; Oct 2002  0.51993723  0.22434076</span></span>
-<span><span class="co">#&gt; Nov 2002  0.10053432 -0.17249791</span></span>
-<span><span class="co">#&gt; Dec 2002  0.95770684  0.35761548</span></span>
-<span><span class="co">#&gt; Jan 2003  0.26825909 -0.01668861</span></span>
-<span><span class="co">#&gt; Feb 2003 -0.12839403 -0.42852687</span></span>
-<span><span class="co">#&gt; Mar 2003 -1.17137522 -0.76232506</span></span>
-<span><span class="co">#&gt; Apr 2003  0.19770654  0.96971721</span></span>
-<span><span class="co">#&gt; May 2003  1.62259434  1.31981494</span></span>
-<span><span class="co">#&gt; Jun 2003 -0.14704277  0.17362676</span></span>
-<span><span class="co">#&gt; Jul 2003 -0.07045343 -0.05730098</span></span>
-<span><span class="co">#&gt; Aug 2003 -1.17072203 -0.66882907</span></span>
-<span><span class="co">#&gt; Sep 2003 -2.89887258 -1.53863637</span></span>
-<span><span class="co">#&gt; Oct 2003 -0.62736155 -0.06504866</span></span>
-<span><span class="co">#&gt; Nov 2003  0.96560231  0.19518092</span></span>
-<span><span class="co">#&gt; Dec 2003 -0.09354593 -0.06951135</span></span>
-<span><span class="co">#&gt; Jan 2004  0.15915097  1.22257588</span></span>
-<span><span class="co">#&gt; Feb 2004  0.29875209  0.25719228</span></span>
-<span><span class="co">#&gt; Mar 2004 -1.31329880 -0.69076345</span></span>
-<span><span class="co">#&gt; Apr 2004  2.48926902  1.54309187</span></span>
-<span><span class="co">#&gt; May 2004  1.91175656  0.91165371</span></span>
-<span><span class="co">#&gt; Jun 2004  2.04130891  1.23352769</span></span>
-<span><span class="co">#&gt; Jul 2004 -0.29759583 -0.05351566</span></span>
-<span><span class="co">#&gt; Aug 2004 -1.22025180 -0.56162404</span></span>
-<span><span class="co">#&gt; Sep 2004 -0.95856611 -0.54609232</span></span>
-<span><span class="co">#&gt; Oct 2004  0.20717781  0.29095534</span></span>
-<span><span class="co">#&gt; Nov 2004 -0.70462371 -1.15899926</span></span>
-<span><span class="co">#&gt; Dec 2004  2.26007518  1.40841386</span></span>
-<span><span class="co">#&gt; Jan 2005  2.95319223  1.69957104</span></span>
-<span><span class="co">#&gt; Feb 2005  0.89317411  0.77051186</span></span>
-<span><span class="co">#&gt; Mar 2005 -1.54622760 -0.71981400</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $copula</span></span>
-<span><span class="co">#&gt; $copula$params</span></span>
-<span><span class="co">#&gt; $copula$params$Quotes</span></span>
-<span><span class="co">#&gt;        mean             sd      </span></span>
-<span><span class="co">#&gt;   -4.099785e-16    1.409030e+00 </span></span>
-<span><span class="co">#&gt;  ( 2.256254e-01) ( 1.595412e-01)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $copula$params$TV.advert</span></span>
-<span><span class="co">#&gt;        mean             sd      </span></span>
-<span><span class="co">#&gt;   -2.733218e-16    9.751965e-01 </span></span>
-<span><span class="co">#&gt;  ( 1.561564e-01) ( 1.104193e-01)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $copula$distro</span></span>
-<span><span class="co">#&gt; [1] "normal"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $copula$RVM_U</span></span>
-<span><span class="co">#&gt; C-vine copula with the following pair-copulas:</span></span>
-<span><span class="co">#&gt; Tree 1:</span></span>
-<span><span class="co">#&gt; 1,2  Gumbel (par = 4.19, tau = 0.76) </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ---</span></span>
-<span><span class="co">#&gt; 1 &lt;-&gt; Quotes,   2 &lt;-&gt; TV.advert,   1 &lt;-&gt; Quotes,</span></span>
-<span><span class="co">#&gt; 2 &lt;-&gt; TV.advert</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $margins</span></span>
-<span><span class="co">#&gt; [1] "gaussian"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $loocv</span></span>
-<span><span class="co">#&gt; [1] 1.924173</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $weighted_loocv</span></span>
-<span><span class="co">#&gt; [1] 3.601775e-17</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $loocv_per_series</span></span>
-<span><span class="co">#&gt;    Quotes TV.advert </span></span>
-<span><span class="co">#&gt;  2.601976  1.246370 </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; attr(,"class")</span></span>
-<span><span class="co">#&gt; [1] "mtsforecast"</span></span>
 <span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ahead-ridge2-prediction-intervals_files/figure-html/RVineCopula-1.png" width="691.2"></p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ahead-ridge2-prediction-intervals_files/figure-html/RVineCopula-2.png" width="691.2"></p>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"Quotes"</span>, type <span class="op">=</span> <span class="st">"dist"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span>, <span class="st">"TV.advert"</span>, type <span class="op">=</span> <span class="st">"sims"</span><span class="op">)</span></span></code></pre></div>
 </div>
   </div>
 

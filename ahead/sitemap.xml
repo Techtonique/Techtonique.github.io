@@ -50,6 +50,7 @@
 <url><loc>/reference/ctxthetaf.html</loc></url>
 <url><loc>/reference/direct_sampling.html</loc></url>
 <url><loc>/reference/dynrmf.html</loc></url>
+<url><loc>/reference/dynrmf_shap.html</loc></url>
 <url><loc>/reference/eatf.html</loc></url>
 <url><loc>/reference/example_2level_forecast.html</loc></url>
 <url><loc>/reference/fit_func.html</loc></url>
@@ -75,6 +76,7 @@
 <url><loc>/reference/plot.garch11forecast.html</loc></url>
 <url><loc>/reference/plot.mtsforecast.html</loc></url>
 <url><loc>/reference/plot.synthetic_ts.html</loc></url>
+<url><loc>/reference/plot_dynrmf_shap_waterfall.html</loc></url>
 <url><loc>/reference/plot_hts_forecast.html</loc></url>
 <url><loc>/reference/plot_simulations.html</loc></url>
 <url><loc>/reference/predict.foreccomb_res.html</loc></url>
