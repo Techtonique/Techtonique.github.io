@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">unifiedml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
@@ -49,7 +49,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/formula_vs_matrix.html">Formula vs matricial interfaces</a>
+      <a href="../articles/formula_vs_matrix.html">Matrix or Formula interface</a>
     </li>
     <li>
       <a href="../articles/unifiedml-vignette.html">Introduction to R package `unifiedml`</a>
@@ -176,7 +176,7 @@
 <code class="sourceCode R"><span><span class="va">mod1</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>feature <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="unifiedml-vignette_files/figure-html/unnamed-chunk-1-1.png" width="672"></p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod1</span>, <span class="va">X</span>, <span class="va">y</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses RMSE</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod1</span>, <span class="va">X</span>, <span class="va">y</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses RMSE </span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
 <pre><code><span><span class="co">## [1] 5.255488 6.050598 6.147428 5.054657 4.942869</span></span></code></pre>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
@@ -245,12 +245,101 @@
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">iris_binary</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span><span class="op">)</span>, <span class="op">]</span></span>
 <span><span class="va">X_binary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris_binary</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">y_binary</span> <span class="op">&lt;-</span> <span class="va">iris_binary</span><span class="op">$</span><span class="va">Species</span>  <span class="co"># factor → classification</span></span>
+<span><span class="va">y_binary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">iris_binary</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span><span class="op">)</span>  <span class="co"># factor → classification</span></span>
 <span></span>
-<span><span class="co"># Multi-class classification</span></span>
+<span></span>
+<span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Model.html">Model</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">randomForest</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">)</span>  <span class="co"># No task parameter!</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_binary</span>, <span class="va">y_binary</span>, ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Model Object</span></span>
+<span><span class="co">## ------------</span></span>
+<span><span class="co">## Model function: self$model_fn </span></span>
+<span><span class="co">## Fitted: TRUE </span></span>
+<span><span class="co">## Task: classification </span></span>
+<span><span class="co">## Training samples: 100 </span></span>
+<span><span class="co">## Features: 4 </span></span>
+<span><span class="co">## Classes: setosa, versicolor </span></span>
+<span><span class="co">## Class distribution:</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     setosa versicolor </span></span>
+<span><span class="co">##         50         50</span></span></code></pre>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_binary</span>, <span class="va">y_binary</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1 1 1 1 1</span></span></code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Mean Accuracy: 1</span></span></code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Model.html">Model</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span><span class="op">)</span>  <span class="co"># No task parameter!</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_binary</span>, <span class="va">y_binary</span>, ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Model Object</span></span>
+<span><span class="co">## ------------</span></span>
+<span><span class="co">## Model function: self$model_fn </span></span>
+<span><span class="co">## Fitted: TRUE </span></span>
+<span><span class="co">## Task: classification </span></span>
+<span><span class="co">## Training samples: 100 </span></span>
+<span><span class="co">## Features: 4 </span></span>
+<span><span class="co">## Classes: setosa, versicolor </span></span>
+<span><span class="co">## Class distribution:</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     setosa versicolor </span></span>
+<span><span class="co">##         50         50</span></span></code></pre>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_binary</span>, <span class="va">y_binary</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1 1 1 1 1</span></span></code></pre>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Mean Accuracy: 1</span></span></code></pre>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y_binary_numeric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">y_binary</span><span class="op">)</span></span>
+<span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Model.html">Model</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span><span class="op">)</span>  <span class="co"># No task parameter!</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_binary</span>, <span class="va">y_binary_numeric</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Model Object</span></span>
+<span><span class="co">## ------------</span></span>
+<span><span class="co">## Model function: self$model_fn </span></span>
+<span><span class="co">## Fitted: TRUE </span></span>
+<span><span class="co">## Task: regression </span></span>
+<span><span class="co">## Training samples: 100 </span></span>
+<span><span class="co">## Features: 4</span></span></code></pre>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_binary</span>, <span class="va">y_binary_numeric</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 0.1998040 0.2053053 0.1821635 0.1764083 0.1693427</span></span></code></pre>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Mean Accuracy: 0.1866048</span></span></code></pre>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y_binary_numeric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">y_binary</span><span class="op">)</span></span>
+<span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Model.html">Model</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span><span class="op">)</span>  <span class="co"># No task parameter!</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_binary</span>, <span class="va">y_binary_numeric</span>, family<span class="op">=</span><span class="st">"multinomial"</span><span class="op">)</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Model Object</span></span>
+<span><span class="co">## ------------</span></span>
+<span><span class="co">## Model function: self$model_fn </span></span>
+<span><span class="co">## Fitted: TRUE </span></span>
+<span><span class="co">## Task: regression </span></span>
+<span><span class="co">## Training samples: 100 </span></span>
+<span><span class="co">## Features: 4</span></span></code></pre>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_binary</span>, <span class="va">y_binary_numeric</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 0.1925777 0.1693243 0.2021682 0.2020270 0.1961306</span></span></code></pre>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Mean Accuracy: 0.1924456</span></span></code></pre>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Multi-class classification</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"4. Multi-class Classification\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## 4. Multi-class Classification</span></span></code></pre>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X_multi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">y_multi</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">$</span><span class="va">Species</span>  <span class="co"># factor with 3 levels → multi-class classification</span></span>
 <span></span>
@@ -269,15 +358,39 @@
 <span><span class="co">## </span></span>
 <span><span class="co">##     setosa versicolor  virginica </span></span>
 <span><span class="co">##         50         50         50</span></span></code></pre>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_multi</span>, <span class="va">y_multi</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
-<pre><code><span><span class="co">## [1] 0.9666667 0.9333333 1.0000000 0.9666667 0.9333333</span></span></code></pre>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## [1] 0.9000000 0.9333333 0.9666667 0.9666667 1.0000000</span></span></code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Mean Accuracy: 0.9533333</span></span></code></pre>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Model.html">Model</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span><span class="op">)</span>  <span class="co"># No task parameter!</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_multi</span>, <span class="va">y_multi</span>, ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">mod4</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Model Object</span></span>
+<span><span class="co">## ------------</span></span>
+<span><span class="co">## Model function: self$model_fn </span></span>
+<span><span class="co">## Fitted: TRUE </span></span>
+<span><span class="co">## Task: classification </span></span>
+<span><span class="co">## Training samples: 150 </span></span>
+<span><span class="co">## Features: 4 </span></span>
+<span><span class="co">## Classes: setosa, versicolor, virginica </span></span>
+<span><span class="co">## Class distribution:</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     setosa versicolor  virginica </span></span>
+<span><span class="co">##         50         50         50</span></span></code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_multi</span>, <span class="va">y_multi</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
+<pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1.0000000 0.9333333 1.0000000 0.9666667 0.9000000</span></span></code></pre>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## Mean Accuracy: 0.96</span></span></code></pre>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y_multi_numeric</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">y_multi</span><span class="op">)</span></span>
 <span><span class="va">mod4</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Model.html">Model</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">glmnet</span><span class="fu">::</span><span class="va"><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet</a></span><span class="op">)</span>  <span class="co"># No task parameter!</span></span>
 <span><span class="va">mod4</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_multi</span>, <span class="va">y_multi_numeric</span>, family<span class="op">=</span><span class="st">"multinomial"</span><span class="op">)</span></span>
@@ -289,14 +402,14 @@
 <span><span class="co">## Task: regression </span></span>
 <span><span class="co">## Training samples: 150 </span></span>
 <span><span class="co">## Features: 4</span></span></code></pre>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">cv4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod4</span>, <span class="va">X_multi</span>, <span class="va">y_multi_numeric</span>, cv <span class="op">=</span> <span class="fl">5L</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Auto-uses accuracy</span></span></code></pre></div>
 <pre><code><span><span class="co">##   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span></span></code></pre>
-<pre><code><span><span class="co">## [1] 0.3186251 0.3500136 0.3191357 0.2776998 0.3485864</span></span></code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## [1] 0.3738221 0.3319652 0.2936681 0.2958335 0.3293197</span></span></code></pre>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nMean Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cv4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
-<span><span class="co">## Mean Accuracy: 0.3228121</span></span></code></pre>
+<span><span class="co">## Mean Accuracy: 0.3249217</span></span></code></pre>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
