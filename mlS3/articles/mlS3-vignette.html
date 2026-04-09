@@ -78,6 +78,9 @@
 
     
     
+<div class="section level2">
+<h2 id="classification">Classification<a class="anchor" aria-label="anchor" href="#classification"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">mlS3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Loading required package: knitr</span></span></code></pre>
@@ -141,8 +144,8 @@
 <span><span class="va">acc_ranger</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">pred_multi_ranger</span> <span class="op">==</span> <span class="va">y_multi_test</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># svm</span></span>
-<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_svm.html">wrap_svm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_multi_train</span><span class="op">)</span>, <span class="va">y_multi_train</span>, kernel <span class="op">=</span> <span class="st">"radial"</span><span class="op">)</span></span>
-<span><span class="va">pred_multi_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_multi_test</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_svm.html">wrap_svm</a></span><span class="op">(</span><span class="va">X_multi_train</span>, <span class="va">y_multi_train</span>, kernel <span class="op">=</span> <span class="st">"radial"</span><span class="op">)</span></span>
+<span><span class="va">pred_multi_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X_multi_test</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span></span>
 <span><span class="va">acc_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">pred_multi_svm</span> <span class="op">==</span> <span class="va">y_multi_test</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Accuracy (lightgbm): "</span>, <span class="va">acc_lightgbm</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
@@ -153,6 +156,10 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Accuracy (svm): "</span>, <span class="va">acc_svm</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Accuracy (svm):  0.9777778</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="regression">Regression<a class="anchor" aria-label="anchor" href="#regression"></a>
+</h2>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># =============================================================================</span></span>
 <span><span class="co"># Regression examples (mtcars)</span></span>
@@ -167,26 +174,26 @@
 <span><span class="va">X_reg_test</span>  <span class="op">&lt;-</span> <span class="va">X_reg</span><span class="op">[</span><span class="op">-</span><span class="va">idx_reg</span>, <span class="op">]</span>; <span class="va">y_reg_test</span>  <span class="op">&lt;-</span> <span class="va">y_reg</span><span class="op">[</span><span class="op">-</span><span class="va">idx_reg</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># xgboost</span></span>
-<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_xgboost.html">wrap_xgboost</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_train</span><span class="op">)</span>, <span class="va">y_reg_train</span>,</span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_xgboost.html">wrap_xgboost</a></span><span class="op">(</span><span class="va">X_reg_train</span>, <span class="va">y_reg_train</span>,</span>
 <span>                    nrounds <span class="op">=</span> <span class="fl">50</span>, objective <span class="op">=</span> <span class="st">"reg:squarederror"</span>, verbose <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="va">pred_reg_xgboost</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_test</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">pred_reg_xgboost</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X_reg_test</span><span class="op">)</span></span>
 <span><span class="va">rmse_xgboost</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pred_reg_xgboost</span> <span class="op">-</span> <span class="va">y_reg_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># lightgbm</span></span>
-<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_lightgbm.html">wrap_lightgbm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_train</span><span class="op">)</span>, <span class="va">y_reg_train</span>,</span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_lightgbm.html">wrap_lightgbm</a></span><span class="op">(</span><span class="va">X_reg_train</span>, <span class="va">y_reg_train</span>,</span>
 <span>                     params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>objective <span class="op">=</span> <span class="st">"regression"</span>, verbose <span class="op">=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>                     nrounds <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
-<span><span class="va">pred_reg_lightgbm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_test</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">pred_reg_lightgbm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X_reg_test</span><span class="op">)</span></span>
 <span><span class="va">rmse_lightgbm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pred_reg_lightgbm</span> <span class="op">-</span> <span class="va">y_reg_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># glmnet</span></span>
-<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_glmnet.html">wrap_glmnet</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_train</span><span class="op">)</span>, <span class="va">y_reg_train</span>, alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="va">pred_reg_glmnet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_test</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_glmnet.html">wrap_glmnet</a></span><span class="op">(</span><span class="va">X_reg_train</span>, <span class="va">y_reg_train</span>, alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">pred_reg_glmnet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X_reg_test</span><span class="op">)</span></span>
 <span><span class="va">rmse_glmnet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pred_reg_glmnet</span> <span class="op">-</span> <span class="va">y_reg_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># svm</span></span>
-<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_svm.html">wrap_svm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_train</span><span class="op">)</span>, <span class="va">y_reg_train</span><span class="op">)</span></span>
-<span><span class="va">pred_reg_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">X_reg_test</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_svm.html">wrap_svm</a></span><span class="op">(</span><span class="va">X_reg_train</span>, <span class="va">y_reg_train</span><span class="op">)</span></span>
+<span><span class="va">pred_reg_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X_reg_test</span><span class="op">)</span></span>
 <span><span class="va">rmse_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">pred_reg_svm</span> <span class="op">-</span> <span class="va">y_reg_test</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># ranger</span></span>
@@ -208,6 +215,7 @@
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"RMSE (ranger): "</span>, <span class="va">rmse_ranger</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## RMSE (ranger):  1.837629</span></span></code></pre>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
