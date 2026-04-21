@@ -1,0 +1,8 @@
+pandoc: 3.8.2.1
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  cv_rvflnet: cv_rvflnet.html
+  rvflnet_cox: rvflnet_cox.html
+  rvflnet: rvflnet.html
+last_built: 2026-04-21T01:07Z
