@@ -806,6 +806,7 @@ btnRead.addEventListener('click', async () => {
 });
 
 /* ── Run R code ───────────────────────────────── */
+/* ── Run R code ───────────────────────────────── */
 async function runCode() {
   if (!webR) return;
   setBusy(true);
@@ -826,10 +827,71 @@ async function runCode() {
     }
 
     const last = result.result;
+    
+    // ===== DEBUG INFO =====
+    log('=== DEBUG: Result Object ===', 'info');
+    log('Result exists: ' + (last ? 'yes' : 'no'), 'info');
+    
+    if (last) {
+      log('Result type (typeof): ' + typeof last, 'info');
+      log('Result constructor: ' + (last.constructor ? last.constructor.name : 'unknown'), 'info');
+      
+      // Check for type property
+      if (last.type !== undefined) {
+        log('last.type: ' + last.type, 'info');
+      } else {
+        log('No .type property found', 'error');
+      }
+      
+      // List all properties
+      const props = Object.getOwnPropertyNames(last);
+      log('Properties: ' + JSON.stringify(props), 'info');
+      
+      // Check for methods
+      const methods = [];
+      if (typeof last.toArray === 'function') methods.push('toArray');
+      if (typeof last.toScalar === 'function') methods.push('toScalar');
+      if (typeof last.toString === 'function') methods.push('toString');
+      log('Available methods: ' + (methods.length ? methods.join(', ') : 'none'), 'info');
+      
+      // Try to get value via different methods
+      try {
+        if (typeof last.toScalar === 'function') {
+          const scalarVal = await last.toScalar();
+          log(`toScalar() result: ${scalarVal} (type: ${typeof scalarVal})`, 'info');
+        }
+      } catch (e) {
+        log(`toScalar() failed: ${e.message}`, 'error');
+      }
+      
+      try {
+        if (typeof last.toArray === 'function') {
+          const arrayVal = await last.toArray();
+          log(`toArray() result: ${JSON.stringify(arrayVal).substring(0, 200)}`, 'info');
+          log(`Array length: ${arrayVal.length}`, 'info');
+        }
+      } catch (e) {
+        log(`toArray() failed: ${e.message}`, 'error');
+      }
+      
+      try {
+        if (typeof last.toString === 'function') {
+          const strVal = await last.toString();
+          log(`toString() result: ${strVal.substring(0, 200)}`, 'info');
+        }
+      } catch (e) {
+        log(`toString() failed: ${e.message}`, 'error');
+      }
+    }
+    log('=== END DEBUG ===', 'info');
+    // ===== END DEBUG =====
+
     if (last && last.type !== 'null') {
       lastResult = last;
       btnWrite.disabled = false;
       log('— result stored (click ↓ Write to Sheet) —', 'info');
+    } else {
+      log('— No result to store —', 'info');
     }
 
     shelter.purge();
@@ -839,7 +901,7 @@ async function runCode() {
   }
 
   setBusy(false);
-}
+};
 
 btnRun.addEventListener('click', runCode);
 
@@ -853,6 +915,7 @@ editor.addEventListener('keydown', e => {
   }
 });
 
+
 /* ── Write result to sheet ────────────────────── */
 btnWrite.addEventListener('click', async () => {
   if (!lastResult || !officeReady) return;
@@ -860,76 +923,82 @@ btnWrite.addEventListener('click', async () => {
   log('Writing result to sheet…', 'info');
 
   try {
-    let grid;
+    // DEBUG: Log everything about lastResult
+    log('=== DEBUG INFO ===', 'info');
+    log('lastResult exists: ' + (lastResult ? 'yes' : 'no'), 'info');
+    log('lastResult type: ' + typeof lastResult, 'info');
+    log('lastResult.constructor.name: ' + (lastResult.constructor ? lastResult.constructor.name : 'unknown'), 'info');
     
-    // Check if the result is a matrix or data frame by asking R for its dimensions
-    const rCode = `
-      result <- .Last.value
-      if (is.matrix(result) || is.data.frame(result)) {
-        list(
-          is_matrix = TRUE,
-          dims = dim(result),
-          data = as.vector(result)  # Force column-major flattening
-        )
-      } else {
-        list(
-          is_matrix = FALSE,
-          data = result
-        )
-      }
-    `;
-    
-    const shelter = await new webR.Shelter();
-    const rResult = await shelter.captureR(rCode, { captureStreams: false });
-    
-    // Parse the R result
-    const rObj = rResult.result;
-    const rData = await rObj.toArray();
-    
-    if (rData && rData.is_matrix === true) {
-      // It's a matrix - reshape from column-major to row-major
-      const rows = rData.dims[0];
-      const cols = rData.dims[1];
-      const flatData = rData.data;
-      
-      grid = [];
-      for (let row = 0; row < rows; row++) {
-        const excelRow = [];
-        for (let col = 0; col < cols; col++) {
-          // R stores column-major: index = row + col * rows
-          excelRow.push(flatData[row + col * rows]);
-        }
-        grid.push(excelRow);
-      }
-      log(`Matrix: ${rows} rows × ${cols} columns (reshaped for Excel)`, 'info');
+    // Check if it has a type property
+    if (lastResult.type !== undefined) {
+      log('lastResult.type: ' + lastResult.type, 'info');
     } else {
-      // Not a matrix - handle as before
-      const raw = rData ? rData.data : await lastResult.toArray();
-      
-      if (Array.isArray(raw) && raw.length > 0) {
-        if (Array.isArray(raw[0])) {
-          grid = raw;
-        } else {
-          // Write vectors as a single column (vertical)
-          grid = raw.map(v => [v]);
-        }
-      } else if (raw !== undefined && raw !== null) {
-        grid = [[raw]];
-      } else {
-        throw new Error('Empty result');
-      }
+      log('lastResult has NO .type property!', 'error');
     }
     
-    shelter.purge();
+    // List all properties of lastResult
+    const props = Object.getOwnPropertyNames(lastResult);
+    log('Properties: ' + props.join(', '), 'info');
+    
+    // Try to get methods
+    const methods = [];
+    if (lastResult.toArray) methods.push('toArray');
+    if (lastResult.toScalar) methods.push('toScalar');
+    if (lastResult.toString) methods.push('toString');
+    log('Methods found: ' + methods.join(', ') || 'none', 'info');
+    
+    // Try to convert to array directly
+    try {
+      const arr = await lastResult.toArray();
+      log('toArray() succeeded, length: ' + arr.length, 'success');
+      log('First few values: ' + JSON.stringify(arr.slice(0, 3)), 'info');
+    } catch (e) {
+      log('toArray() failed: ' + e.message, 'error');
+    }
+    
+    // Try to convert to scalar
+    try {
+      const scalar = await lastResult.toScalar();
+      log('toScalar() succeeded: ' + scalar, 'success');
+    } catch (e) {
+      log('toScalar() failed: ' + e.message, 'error');
+    }
+    
+    log('=== END DEBUG ===', 'info');
+    
+    // Now try the original logic with type check
+    let grid = [];
+    const type = lastResult.type;
+    log('Using type: ' + type, 'info');
+    
+    if (['double','integer','character','logical'].includes(type)) {
+      log('Type matched - processing as vector', 'info');
+      const vals = await lastResult.toArray();
+      grid = [vals];
+      log(`Vector values: ${vals.length} items`, 'info');
+    } else if (type === 'list') {
+      log('Type matched - processing as list', 'info');
+      const csvShelter = await new webR.Shelter();
+      const csv = await csvShelter.captureR('cat(format(as.data.frame(.Last.value)), fill=TRUE)', { captureStreams:true });
+      const lines = csv.output.filter(o=>o.type==='stdout').map(o=>o.data).join('\n').split('\n').filter(Boolean);
+      grid = lines.map(l => l.split(/\s{2,}/));
+      csvShelter.purge();
+    } else {
+      log('No type match - using fallback', 'info');
+      const sh = await new webR.Shelter();
+      const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams:true });
+      const txt = res.output.filter(o=>o.type==='stdout').map(o=>o.data);
+      grid = txt.map(l => [l]);
+      sh.purge();
+    }
 
-    // Validate and write
-    if (!grid || grid.length === 0 || !grid[0]) {
-      throw new Error('No valid data to write');
+    if (grid.length === 0) {
+      throw new Error('Grid is empty after processing');
     }
 
     await Excel.run(async ctx => {
-      const cell = ctx.workbook.getSelectedRange().getCell(0, 0);
-      const writeRng = cell.getResizedRange(grid.length - 1, grid[0].length - 1);
+      const cell = ctx.workbook.getSelectedRange().getCell(0,0);
+      const writeRng = cell.getResizedRange(grid.length-1, grid[0].length-1);
       writeRng.values = grid;
       await ctx.sync();
     });
@@ -937,7 +1006,7 @@ btnWrite.addEventListener('click', async () => {
     log(`Written ${grid.length} row(s) × ${grid[0].length} col(s) to sheet ✓`, 'success');
   } catch (err) {
     log('Write error: ' + err.message, 'error');
-    console.error(err);
+    console.error('Full error:', err);
   }
 
   setBusy(false);
