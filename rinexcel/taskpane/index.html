@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RinExcel — R in Excel</title>
+
+  <!-- Office.js -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+  <!-- highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/r.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Design tokens ─────────────────────────────── */
+    :root {
+      --bg-0:     #050705;
+      --bg-1:     #0a0f0a;
+      --bg-2:     #101510;
+      --bg-3:     #172017;
+      --bg-4:     #1e2b1e;
+
+      --border:   #1f2e1f;
+      --border-hi:#2e442e;
+
+      --fg-0:     #e8f0e8;
+      --fg-1:     #9ab49a;
+      --fg-2:     #4d6b4d;
+
+      --g-bright: #4ade80;
+      --g-mid:    #22c55e;
+      --g-dim:    #15803d;
+      --g-dark:   #14532d;
+
+      --amber:    #fbbf24;
+      --red:      #f87171;
+      --teal:     #34d399;
+      --blue:     #60a5fa;
+
+      --accent:        var(--g-bright);
+      --accent-glow:   rgba(74, 222, 128, 0.12);
+      --accent-glow2:  rgba(74, 222, 128, 0.22);
+
+      --radius: 5px;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-ui:   'Space Grotesk', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg-0);
+      color: var(--fg-0);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── Layout ────────────────────────────────────── */
+    #app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 30% at 50% 0%, rgba(74,222,128,0.04) 0%, transparent 70%),
+        var(--bg-0);
+    }
+
+    /* ── Header ────────────────────────────────────── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 14px 8px;
+      background: var(--bg-1);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .logo { display: flex; align-items: center; gap: 9px; }
+
+    .logo-icon {
+      width: 26px; height: 26px;
+      background: var(--g-dim);
+      border: 1px solid var(--g-mid);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--g-bright);
+      box-shadow: 0 0 10px rgba(74,222,128,0.25);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.2px;
+      color: var(--fg-0);
+    }
+    .logo-text span { color: var(--g-bright); }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--fg-2);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--fg-2);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    .status-dot.ready  { background: var(--g-bright); box-shadow: 0 0 6px var(--g-bright); }
+    .status-dot.busy   { background: var(--amber);    box-shadow: 0 0 6px var(--amber); animation: pulse 1s infinite; }
+    .status-dot.error  { background: var(--red);      box-shadow: 0 0 6px var(--red); }
+
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.35} }
+
+    /* ── Toolbar ───────────────────────────────────── */
+    .toolbar {
+      display: flex;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--bg-1);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 11px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-hi);
+      background: var(--bg-2);
+      color: var(--fg-1);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .btn:hover:not(:disabled) {
+      background: var(--bg-3);
+      border-color: var(--g-dim);
+      color: var(--fg-0);
+    }
+    .btn:active:not(:disabled) { transform: translateY(1px); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* Green primary */
+    .btn.primary {
+      background: rgba(34,197,94,0.1);
+      border-color: rgba(34,197,94,0.35);
+      color: var(--g-bright);
+    }
+    .btn.primary:hover:not(:disabled) {
+      background: rgba(34,197,94,0.2);
+      border-color: var(--g-mid);
+      box-shadow: 0 0 12px rgba(74,222,128,0.15);
+    }
+
+    /* Darker green secondary */
+    .btn.success {
+      background: rgba(21,128,61,0.15);
+      border-color: rgba(34,197,94,0.25);
+      color: var(--teal);
+    }
+    .btn.success:hover:not(:disabled) {
+      background: rgba(21,128,61,0.28);
+      border-color: var(--teal);
+    }
+
+    /* Danger stays red */
+    .btn.danger {
+      background: rgba(248,113,113,0.07);
+      border-color: rgba(248,113,113,0.25);
+      color: var(--red);
+    }
+    .btn.danger:hover:not(:disabled) {
+      background: rgba(248,113,113,0.15);
+      border-color: var(--red);
+    }
+
+    .toolbar-sep {
+      width: 1px;
+      background: var(--border-hi);
+      margin: 2px 2px;
+      align-self: stretch;
+    }
+
+    /* ── Header row checkbox ───────────────────────── */
+    .header-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--fg-2);
+      cursor: pointer;
+      user-select: none;
+    }
+    .header-toggle input[type=checkbox] {
+      accent-color: var(--g-mid);
+      width: 12px; height: 12px;
+      cursor: pointer;
+    }
+
+    /* ── Range bar ─────────────────────────────────── */
+    .range-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .range-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--fg-2);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .range-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--g-bright);
+      font-weight: 500;
+    }
+    .range-empty { color: var(--fg-2); font-style: italic; }
+
+    /* ── Editor section ────────────────────────────── */
+    .editor-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 10px 14px;
+      gap: 8px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--fg-2);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Code editor with highlight overlay ─────────── */
+    .editor-wrap {
+      flex: 1;
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #0d1117;
+      transition: border-color 0.2s;
+      min-height: 0;
+    }
+    .editor-wrap:focus-within {
+      border-color: rgba(74,222,128,0.35);
+      box-shadow: 0 0 0 2px var(--accent-glow);
+    }
+
+    /* The trick: highlight layer behind, textarea on top (transparent) */
+    .editor-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* highlighted code layer */
+    #hl-layer {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow: hidden;
+      pointer-events: none;
+      border-radius: 0;
+      background: transparent;
+      /* hljs theme overrides – we control bg elsewhere */
+      color: #abb2bf;
+    }
+
+    /* override atom-one-dark background so our bg-1 shows */
+    #hl-layer.hljs,
+    #hl-layer pre,
+    #hl-layer code { background: transparent !important; }
+
+    /* textarea – transparent so highlight shows through */
+    #code-editor {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      color: transparent;
+      caret-color: var(--g-bright);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.65;
+      padding: 12px;
+      border: none;
+      outline: none;
+      resize: none;
+      tab-size: 2;
+      -webkit-text-fill-color: transparent;
+    }
+    #code-editor::selection {
+      background: rgba(74,222,128,0.18);
+      -webkit-text-fill-color: transparent;
+    }
+    /* placeholder when empty */
+    #placeholder-text {
+      position: absolute;
+      inset: 0;
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--fg-2);
+      font-style: italic;
+      pointer-events: none;
+      white-space: pre;
+    }
+
+    /* ── Output panel ──────────────────────────────── */
+    .output-section {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .output-wrap {
+      max-height: 160px;
+      min-height: 56px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #0d1117;
+      padding: 9px 12px;
+    }
+
+    #output {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .out-line-stdout  { color: var(--fg-0); }
+    .out-line-stderr  { color: var(--amber); }
+    .out-line-error   { color: var(--red); }
+    .out-line-info    { color: var(--fg-2); font-style: italic; }
+    .out-line-success { color: var(--g-bright); }
+
+    .output-wrap::-webkit-scrollbar { width: 3px; }
+    .output-wrap::-webkit-scrollbar-track { background: transparent; }
+    .output-wrap::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ── Keyboard shortcut hint ────────────────────── */
+    .kbd {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-2);
+      border: 1px solid var(--border-hi);
+      border-radius: 3px;
+      padding: 1px 4px;
+      background: var(--bg-2);
+    }
+
+    /* ── Init overlay ──────────────────────────────── */
+    #init-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5,7,5,0.94);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 100;
+      backdrop-filter: blur(3px);
+    }
+
+    .init-logo {
+      width: 52px; height: 52px;
+      background: var(--g-dark);
+      border: 1px solid var(--g-mid);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--g-bright);
+      animation: breathe 2.2s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%,100% { box-shadow: 0 0 18px rgba(74,222,128,0.2); }
+      50%      { box-shadow: 0 0 40px rgba(74,222,128,0.5); }
+    }
+
+    .init-text {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--fg-1);
+      text-align: center;
+    }
+
+    .init-progress {
+      width: 160px; height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .init-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--g-dim), var(--g-bright));
+      border-radius: 2px;
+      animation: loading 1.8s ease-in-out infinite;
+    }
+
+    @keyframes loading {
+      0%   { width:0%;  margin-left:0 }
+      50%  { width:55%; margin-left:22% }
+      100% { width:0%;  margin-left:100% }
+    }
+
+    /* ── Snippets dropdown ─────────────────────────── */
+    .snippets-wrap { position: relative; }
+
+    .snippets-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      min-width: 210px;
+      background: var(--bg-2);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      z-index: 50;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+    }
+    .snippets-wrap.open .snippets-menu { display: block; }
+
+    .snippet-item {
+      padding: 7px 12px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-1);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s, color 0.1s;
+    }
+    .snippet-item:last-child { border-bottom: none; }
+    .snippet-item:hover { background: var(--bg-4); color: var(--fg-0); }
+
+    .snippet-name { font-weight: 600; color: var(--g-bright); }
+    .snippet-desc { font-size: 10px; color: var(--fg-2); margin-top: 1px; }
+
+    /* ── Privacy bar ───────────────────────────────── */
+    .privacy-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(21,128,61,0.06);
+      border-top: 1px solid rgba(34,197,94,0.12);
+      font-size: 10px;
+      color: var(--fg-2);
+      flex-shrink: 0;
+    }
+    .privacy-bar .shield { color: var(--g-mid); }
+  </style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Init overlay -->
+  <div id="init-overlay">
+    <div class="init-logo">R</div>
+    <div class="init-text">Initialising WebR<br><small style="color:var(--fg-2)">Compiling R to WebAssembly…</small></div>
+    <div class="init-progress"><div class="init-bar"></div></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">R</div>
+      <span class="logo-text">rin<span>excel</span></span>
+    </div>
+    <div class="status-badge">
+      <div class="status-dot" id="status-dot"></div>
+      <span id="status-text">loading</span>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn primary" id="btn-read" disabled>⬆ Read → df</button>
+    <div class="header-toggle">
+      <input type="checkbox" id="has-header" checked />
+      <label for="has-header">header row</label>
+    </div>
+    <div class="toolbar-sep"></div>
+    <button class="btn primary" id="btn-run" disabled title="Ctrl+Enter">
+      ▶ Run <span class="kbd">^↵</span>
+    </button>
+    <button class="btn success" id="btn-write" disabled>↓ Write to Sheet</button>
+    <div class="toolbar-sep"></div>
+    <div class="snippets-wrap" id="snippets-wrap">
+      <button class="btn" id="btn-snippets">Snippets ▾</button>
+      <div class="snippets-menu" id="snippets-menu"></div>
+    </div>
+    <button class="btn danger" id="btn-clear">✕ Clear</button>
+  </div>
+
+  <!-- Range bar -->
+  <div style="padding: 8px 14px 0; flex-shrink:0">
+    <div class="range-bar">
+      <span class="range-label">Selection</span>
+      <span class="range-value range-empty" id="range-display">No selection</span>
+    </div>
+  </div>
+
+  <!-- Editor -->
+  <div class="editor-section">
+    <div class="section-label">R Editor</div>
+    <div class="editor-wrap">
+      <div class="editor-inner">
+        <!-- Highlighted layer -->
+        <pre id="hl-layer" aria-hidden="true"><code class="language-r"></code></pre>
+        <!-- Placeholder -->
+        <div id="placeholder-text"># df is loaded from your Excel selection
+# Example:
+summary(df)
+cor(df[, sapply(df, is.numeric)])</div>
+        <!-- Raw textarea -->
+        <textarea id="code-editor"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"></textarea>
+      </div>
+    </div>
+
+    <!-- Output -->
+    <div class="output-section">
+      <div class="section-label">Output</div>
+      <div class="output-wrap">
+        <div id="output"><span class="out-line-info">WebR initialising — please wait…</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy bar -->
+  <div class="privacy-bar">
+    <span class="shield">🛡</span>
+    Pure R computation runs entirely in your browser via WebAssembly — your data never leaves this machine.
+  </div>
+
+</div>
+
+<script>
+/* ── Snippet library ─────────────────────────── */
+const SNIPPETS = [
+  { name:'summary(df)',  desc:'Descriptive statistics',       code:'summary(df)' },
+  { name:'head(df)',     desc:'First 6 rows',                 code:'head(df)' },
+  { name:'str(df)',      desc:'Structure of df',              code:'str(df)' },
+  { name:'cor()',        desc:'Correlation matrix (numeric)', code:'cor(df[, sapply(df, is.numeric)])' },
+  { name:'colSums()',    desc:'Column totals',                code:'colSums(df[, sapply(df, is.numeric)])' },
+  { name:'scale()',      desc:'Standardise columns',          code:'as.data.frame(scale(df[, sapply(df, is.numeric)]))' },
+  { name:'lm()',         desc:'Linear model skeleton',        code:'# Adjust formula to your columns\nfit <- lm(y ~ x, data = df)\nsummary(fit)' },
+  { name:'table()',      desc:'Frequency table',              code:'table(df[[1]])' },
+  { name:'tapply()',     desc:'Group means',                  code:'tapply(df[[2]], df[[1]], mean)' },
+  { name:'rank()',       desc:'Rank a numeric column',        code:'rank(df[[1]])' },
+];
+
+/* ── DOM refs ──────────────────────────────────── */
+const $ = id => document.getElementById(id);
+const overlay      = $('init-overlay');
+const statusDot    = $('status-dot');
+const statusText   = $('status-text');
+const btnRead      = $('btn-read');
+const btnRun       = $('btn-run');
+const btnWrite     = $('btn-write');
+const btnClear     = $('btn-clear');
+const btnSnippets  = $('btn-snippets');
+const snippetsWrap = $('snippets-wrap');
+const snippetsMenu = $('snippets-menu');
+const hasHeader    = $('has-header');
+const editor       = $('code-editor');
+const outputEl     = $('output');
+const rangeDisplay = $('range-display');
+const hlCode       = document.querySelector('#hl-layer code');
+const placeholder  = $('placeholder-text');
+
+/* ── State ─────────────────────────────────────── */
+let webR       = null;
+let lastResult = null;
+let officeReady = false;
+
+/* ── Syntax highlight sync ─────────────────────── */
+function syncHighlight() {
+  const val = editor.value;
+  placeholder.style.display = val ? 'none' : 'block';
+  hlCode.textContent = val;
+  hljs.highlightElement(hlCode);
+}
+
+editor.addEventListener('input', syncHighlight);
+syncHighlight();
+
+/* ── Output helpers ───────────────────────────── */
+function clearOutput() { outputEl.innerHTML = ''; }
+
+function log(msg, type = 'stdout') {
+  const line = document.createElement('div');
+  line.className = `out-line-${type}`;
+  line.textContent = msg;
+  outputEl.appendChild(line);
+  outputEl.parentElement.scrollTop = outputEl.parentElement.scrollHeight;
+}
+
+/* ── Status helpers ───────────────────────────── */
+function setStatus(state, label) {
+  statusDot.className = 'status-dot ' + state;
+  statusText.textContent = label;
+}
+
+function setBusy(yes) {
+  setStatus(yes ? 'busy' : 'ready', yes ? 'running' : 'ready');
+  btnRun.disabled   = yes;
+  btnRead.disabled  = yes || !officeReady;
+  btnWrite.disabled = yes || lastResult === null;
+}
+
+/* ── Snippets ─────────────────────────────────── */
+SNIPPETS.forEach(s => {
+  const el = document.createElement('div');
+  el.className = 'snippet-item';
+  el.innerHTML = `<div class="snippet-name">${s.name}</div><div class="snippet-desc">${s.desc}</div>`;
+  el.addEventListener('click', () => {
+    editor.value = s.code;
+    syncHighlight();
+    snippetsWrap.classList.remove('open');
+    editor.focus();
+  });
+  snippetsMenu.appendChild(el);
+});
+
+btnSnippets.addEventListener('click', e => {
+  snippetsWrap.classList.toggle('open');
+  e.stopPropagation();
+});
+document.addEventListener('click', () => snippetsWrap.classList.remove('open'));
+
+/* ── WebR init ────────────────────────────────── */
+async function initWebR() {
+  try {
+    const { WebR } = await import('https://webr.r-wasm.org/latest/webr.mjs');
+    webR = new WebR();
+    await webR.init();
+
+    overlay.style.display = 'none';
+    setStatus('ready', 'ready');
+    clearOutput();
+    log('WebR ready ✓  R runs entirely in WebAssembly — no server calls.', 'success');
+    log('Select a range in Excel, click "Read → df", then write R code.', 'info');
+    btnRun.disabled = false;
+  } catch (err) {
+    setStatus('error', 'error');
+    log('WebR failed to initialise: ' + err.message, 'error');
+  }
+}
+
+/* ── Office.js init ───────────────────────────── */
+function initOffice() {
+  Office.onReady(() => {
+    officeReady = true;
+    btnRead.disabled = (webR === null);
+    btnWrite.disabled = true;
+    pollSelection();
+  });
+}
+
+/* ── Selection polling ────────────────────────── */
+async function pollSelection() {
+  if (!officeReady) return;
+  try {
+    await Excel.run(async ctx => {
+      const rng = ctx.workbook.getSelectedRange();
+      rng.load('address');
+      await ctx.sync();
+      rangeDisplay.textContent = rng.address;
+      rangeDisplay.classList.remove('range-empty');
+    });
+  } catch {
+    rangeDisplay.textContent = 'No selection';
+    rangeDisplay.classList.add('range-empty');
+  }
+  setTimeout(pollSelection, 1500);
+}
+
+/* ── Read from Excel ──────────────────────────── */
+btnRead.addEventListener('click', async () => {
+  if (!webR || !officeReady) return;
+  setBusy(true);
+  clearOutput();
+  log('Reading selection from Excel…', 'info');
+
+  try {
+    let values = [];
+    await Excel.run(async ctx => {
+      const rng = ctx.workbook.getSelectedRange();
+      rng.load(['values','address','rowCount','columnCount']);
+      await ctx.sync();
+      values = rng.values;
+      log(`Read ${rng.rowCount} row(s) × ${rng.columnCount} col(s) from ${rng.address}`, 'info');
+    });
+
+    const header = hasHeader.checked;
+    let colNames, rows;
+    if (header) {
+      colNames = values[0].map((h,i) => String(h).trim() || `V${i+1}`);
+      rows = values.slice(1);
+    } else {
+      colNames = values[0].map((_,i) => `V${i+1}`);
+      rows = values;
+    }
+
+    const colData = colNames.map((name, ci) => {
+      const col = rows.map(r => r[ci]);
+      const allNum = col.every(v => v===null||v===''||!isNaN(Number(v)));
+      if (allNum) {
+        const vec = col.map(v => (v===null||v==='') ? 'NA' : Number(v));
+        return `\`${name}\` = c(${vec.join(',')})`;
+      } else {
+        const vec = col.map(v => (v===null||v==='') ? 'NA_character_' : `"${String(v).replace(/"/g,'\\"')}"`);
+        return `\`${name}\` = c(${vec.join(',')})`;
+      }
+    });
+
+    await webR.evalR(`df <- data.frame(${colData.join(', ')}, stringsAsFactors=FALSE)`);
+    log(`df loaded: ${rows.length} row(s), ${colNames.length} col(s)`, 'success');
+    log(`Columns: ${colNames.join(', ')}`, 'stdout');
+  } catch (err) {
+    log('Error reading Excel: ' + err.message, 'error');
+    setStatus('error', 'error');
+  }
+
+  setBusy(false);
+});
+
+/* ── Run R code ───────────────────────────────── */
+async function runCode() {
+  if (!webR) return;
+  setBusy(true);
+  clearOutput();
+  const code = editor.value.trim();
+  if (!code) { setBusy(false); return; }
+
+  try {
+    const shelter = await new webR.Shelter();
+    const result = await shelter.captureR(code, {
+      captureStreams: true,
+      captureConditions: true
+    });
+
+    for (const msg of result.output) {
+      if (msg.type === 'stdout') log(msg.data, 'stdout');
+      else if (msg.type === 'stderr') log(msg.data, 'stderr');
+    }
+
+    const last = result.result;
+    if (last && last.type !== 'null') {
+      lastResult = last;
+      btnWrite.disabled = false;
+      log('— result stored (click ↓ Write to Sheet) —', 'info');
+    }
+
+    shelter.purge();
+  } catch (err) {
+    log(err.message, 'error');
+    setStatus('error', 'error');
+  }
+
+  setBusy(false);
+}
+
+btnRun.addEventListener('click', runCode);
+
+editor.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); runCode(); }
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const s = editor.selectionStart;
+    editor.setRangeText('  ', s, s, 'end');
+    syncHighlight();
+  }
+});
+
+/* ── Write result to sheet ────────────────────── */
+btnWrite.addEventListener('click', async () => {
+  if (!lastResult || !officeReady) return;
+  setBusy(true);
+  log('Writing result to sheet…', 'info');
+
+  try {
+    let grid = [];
+    const type = lastResult.type;
+
+    if (['double','integer','character','logical'].includes(type)) {
+      const vals = await lastResult.toArray();
+      grid = [vals];
+    } else if (type === 'list') {
+      const csvShelter = await new webR.Shelter();
+      const csv = await csvShelter.captureR('cat(format(as.data.frame(.Last.value)), fill=TRUE)', { captureStreams:true });
+      const lines = csv.output.filter(o=>o.type==='stdout').map(o=>o.data).join('\n').split('\n').filter(Boolean);
+      grid = lines.map(l => l.split(/\s{2,}/));
+      csvShelter.purge();
+    } else {
+      const sh = await new webR.Shelter();
+      const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams:true });
+      const txt = res.output.filter(o=>o.type==='stdout').map(o=>o.data);
+      grid = txt.map(l => [l]);
+      sh.purge();
+    }
+
+    await Excel.run(async ctx => {
+      const cell = ctx.workbook.getSelectedRange().getCell(0,0);
+      const writeRng = cell.getResizedRange(grid.length-1, grid[0].length-1);
+      writeRng.values = grid;
+      await ctx.sync();
+    });
+
+    log(`Written ${grid.length} row(s) × ${grid[0].length} col(s) to sheet ✓`, 'success');
+  } catch (err) {
+    log('Write error: ' + err.message, 'error');
+  }
+
+  setBusy(false);
+});
+
+/* ── Clear ────────────────────────────────────── */
+btnClear.addEventListener('click', () => {
+  clearOutput();
+  lastResult = null;
+  btnWrite.disabled = true;
+  log('Output cleared.', 'info');
+});
+
+/* ── Boot ─────────────────────────────────────── */
+initOffice();
+initWebR();
+</script>
+</body>
+</html>

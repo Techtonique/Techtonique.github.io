@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>RinExcel Commands</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script>
+    Office.onReady(() => {});
+
+    // Ribbon button command: open task pane
+    function openTaskPane(event) {
+      event.completed();
+    }
+
+    // Expose for manifest command bindings
+    window.openTaskPane = openTaskPane;
+  </script>
+</head>
+<body></body>
+</html>
