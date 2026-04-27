@@ -924,68 +924,60 @@ btnWrite.addEventListener('click', async () => {
   log('Writing result to sheet…', 'info');
 
   try {
-    // DEBUG: Log everything about lastResult
-    log('=== DEBUG INFO ===', 'info');
-    log('lastResult exists: ' + (lastResult ? 'yes' : 'no'), 'info');
-    log('lastResult type: ' + typeof lastResult, 'info');
-    log('lastResult.constructor.name: ' + (lastResult.constructor ? lastResult.constructor.name : 'unknown'), 'info');
-    
-    // Check if it has a type property
-    if (lastResult.type !== undefined) {
-      log('lastResult.type: ' + lastResult.type, 'info');
-    } else {
-      log('lastResult has NO .type property!', 'error');
-    }
-    
-    // List all properties of lastResult
-    const props = Object.getOwnPropertyNames(lastResult);
-    log('Properties: ' + props.join(', '), 'info');
-    
-    // Try to get methods
-    const methods = [];
-    if (lastResult.toArray) methods.push('toArray');
-    if (lastResult.toScalar) methods.push('toScalar');
-    if (lastResult.toString) methods.push('toString');
-    log('Methods found: ' + methods.join(', ') || 'none', 'info');
-    
-    // Try to convert to array directly
-    try {
-      const arr = await lastResult.toArray();
-      log('toArray() succeeded, length: ' + arr.length, 'success');
-      log('First few values: ' + JSON.stringify(arr.slice(0, 3)), 'info');
-    } catch (e) {
-      log('toArray() failed: ' + e.message, 'error');
-    }
-    
-    // Try to convert to scalar
-    try {
-      const scalar = await lastResult.toScalar();
-      log('toScalar() succeeded: ' + scalar, 'success');
-    } catch (e) {
-      log('toScalar() failed: ' + e.message, 'error');
-    }
-    
-    log('=== END DEBUG ===', 'info');
-    
-    // Now try the original logic with type check
     let grid = [];
-    const type = lastResult.type;
-    log('Using type: ' + type, 'info');
     
-    if (['double','integer','character','logical'].includes(type)) {
-      log('Type matched - processing as vector', 'info');
+    // Get the payload type from the correct property
+    const payloadType = lastResult.payloadType;
+    log(`Payload type: ${payloadType}`, 'info');
+    
+    if (payloadType === 'double' || payloadType === 'integer' || 
+        payloadType === 'character' || payloadType === 'logical') {
+      // It's a vector or scalar
       const vals = await lastResult.toArray();
-      grid = [vals];
-      log(`Vector values: ${vals.length} items`, 'info');
-    } else if (type === 'list') {
-      log('Type matched - processing as list', 'info');
+      log(`toArray() returned: ${JSON.stringify(vals)}`, 'info');
+      
+      // Check if it's a matrix by asking R directly
+      const isMatrix = await webR.evalR(`
+        is.matrix(.Last.value)
+      `);
+      const isMatrixVal = await isMatrix.toScalar();
+      
+      if (isMatrixVal === true) {
+        // It's a matrix - get dimensions and reshape
+        const dimInfo = await webR.evalR(`
+          paste(dim(.Last.value), collapse=",")
+        `);
+        const dimStr = await dimInfo.toScalar();
+        const [rows, cols] = dimStr.split(',').map(Number);
+        
+        if (vals.length === rows * cols) {
+          // Reshape from column-major to row-major
+          const reshaped = [];
+          for (let row = 0; row < rows; row++) {
+            const rowData = [];
+            for (let col = 0; col < cols; col++) {
+              rowData.push(vals[row + col * rows]);
+            }
+            reshaped.push(rowData);
+          }
+          grid = reshaped;
+          log(`Reshaped ${rows}×${cols} matrix`, 'success');
+        } else {
+          grid = [vals];
+        }
+      } else {
+        // Not a matrix - write as single row
+        grid = [vals];
+      }
+    } else if (payloadType === 'list') {
+      // Handle lists/data frames
       const csvShelter = await new webR.Shelter();
       const csv = await csvShelter.captureR('cat(format(as.data.frame(.Last.value)), fill=TRUE)', { captureStreams:true });
       const lines = csv.output.filter(o=>o.type==='stdout').map(o=>o.data).join('\n').split('\n').filter(Boolean);
       grid = lines.map(l => l.split(/\s{2,}/));
       csvShelter.purge();
     } else {
-      log('No type match - using fallback', 'info');
+      // Fallback
       const sh = await new webR.Shelter();
       const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams:true });
       const txt = res.output.filter(o=>o.type==='stdout').map(o=>o.data);
@@ -993,8 +985,8 @@ btnWrite.addEventListener('click', async () => {
       sh.purge();
     }
 
-    if (grid.length === 0) {
-      throw new Error('Grid is empty after processing');
+    if (!grid || grid.length === 0) {
+      throw new Error('No data to write');
     }
 
     await Excel.run(async ctx => {
@@ -1004,10 +996,10 @@ btnWrite.addEventListener('click', async () => {
       await ctx.sync();
     });
 
-    log(`Written ${grid.length} row(s) × ${grid[0].length} col(s) to sheet ✓`, 'success');
+    log(`✓ Written ${grid.length} × ${grid[0].length} to sheet`, 'success');
   } catch (err) {
     log('Write error: ' + err.message, 'error');
-    console.error('Full error:', err);
+    console.error(err);
   }
 
   setBusy(false);
