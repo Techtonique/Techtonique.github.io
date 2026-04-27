@@ -926,63 +926,49 @@ btnWrite.addEventListener('click', async () => {
   try {
     let grid = [];
     
-    // Get the payload type from the correct property
-    const payloadType = lastResult.payloadType;
-    log(`Payload type: ${payloadType}`, 'info');
+    // The result is a pointer - we need to get the actual data
+    // Use toArray() directly - it handles dereferencing
+    const vals = await lastResult.toArray();
+    log(`Retrieved ${vals.length} value(s)`, 'info');
     
-    if (payloadType === 'double' || payloadType === 'integer' || 
-        payloadType === 'character' || payloadType === 'logical') {
-      // It's a vector or scalar
-      const vals = await lastResult.toArray();
-      log(`toArray() returned: ${JSON.stringify(vals)}`, 'info');
-      
-      // Check if it's a matrix by asking R directly
-      const isMatrix = await webR.evalR(`
-        is.matrix(.Last.value)
-      `);
-      const isMatrixVal = await isMatrix.toScalar();
-      
-      if (isMatrixVal === true) {
-        // It's a matrix - get dimensions and reshape
-        const dimInfo = await webR.evalR(`
-          paste(dim(.Last.value), collapse=",")
-        `);
-        const dimStr = await dimInfo.toScalar();
-        const [rows, cols] = dimStr.split(',').map(Number);
-        
-        if (vals.length === rows * cols) {
-          // Reshape from column-major to row-major
-          const reshaped = [];
-          for (let row = 0; row < rows; row++) {
-            const rowData = [];
-            for (let col = 0; col < cols; col++) {
-              rowData.push(vals[row + col * rows]);
-            }
-            reshaped.push(rowData);
-          }
-          grid = reshaped;
-          log(`Reshaped ${rows}×${cols} matrix`, 'success');
-        } else {
-          grid = [vals];
-        }
+    // Check if it's a matrix by asking R
+    const dimCheck = await webR.evalR(`
+      result <- .Last.value
+      if (is.matrix(result) || is.data.frame(result)) {
+        paste(dim(result), collapse=",")
       } else {
-        // Not a matrix - write as single row
+        "scalar_or_vector"
+      }
+    `);
+    
+    const dimInfo = await dimCheck.toScalar();
+    log(`Dimension info from R: ${dimInfo}`, 'info');
+    
+    if (dimInfo !== "scalar_or_vector") {
+      // It's a matrix or data frame
+      const [rows, cols] = dimInfo.split(',').map(Number);
+      
+      if (vals.length === rows * cols) {
+        // Reshape from column-major to row-major
+        const reshaped = [];
+        for (let row = 0; row < rows; row++) {
+          const rowData = [];
+          for (let col = 0; col < cols; col++) {
+            rowData.push(vals[row + col * rows]);
+          }
+          reshaped.push(rowData);
+        }
+        grid = reshaped;
+        log(`Reshaped ${rows}×${cols} matrix`, 'success');
+      } else {
         grid = [vals];
       }
-    } else if (payloadType === 'list') {
-      // Handle lists/data frames
-      const csvShelter = await new webR.Shelter();
-      const csv = await csvShelter.captureR('cat(format(as.data.frame(.Last.value)), fill=TRUE)', { captureStreams:true });
-      const lines = csv.output.filter(o=>o.type==='stdout').map(o=>o.data).join('\n').split('\n').filter(Boolean);
-      grid = lines.map(l => l.split(/\s{2,}/));
-      csvShelter.purge();
+    } else if (vals.length === 1) {
+      // Scalar value
+      grid = [[vals[0]]];
     } else {
-      // Fallback
-      const sh = await new webR.Shelter();
-      const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams:true });
-      const txt = res.output.filter(o=>o.type==='stdout').map(o=>o.data);
-      grid = txt.map(l => [l]);
-      sh.purge();
+      // Vector - write as single row
+      grid = [vals];
     }
 
     if (!grid || grid.length === 0) {
