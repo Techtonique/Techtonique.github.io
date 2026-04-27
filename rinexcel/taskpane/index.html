@@ -855,6 +855,7 @@ editor.addEventListener('keydown', e => {
 
 /* ── Write result to sheet ────────────────────── */
 /* ── Write result to sheet ────────────────────── */
+/* ── Write result to sheet ────────────────────── */
 btnWrite.addEventListener('click', async () => {
   if (!lastResult || !officeReady) return;
   setBusy(true);
@@ -863,67 +864,55 @@ btnWrite.addEventListener('click', async () => {
   try {
     let grid;
     
-    // Try to convert WebR result to a JavaScript array
-    try {
-      // Attempt to get as 2D array
-      const asJs = await lastResult.toArray();
-      
-      // Check if it's a 2D array (matrix/data frame)
-      if (Array.isArray(asJs) && asJs.length > 0) {
-        // Check if it's already a 2D structure (row-major)
-        if (Array.isArray(asJs[0])) {
-          grid = asJs;
-        } 
-        // Check if it's a named list (data frame in WebR)
-        else if (asJs.length > 0 && asJs[0] && typeof asJs[0] === 'object') {
-          // Convert list of columns to row-major 2D array
-          const colNames = Object.keys(asJs);
-          const rowCount = asJs[colNames[0]].length;
-          grid = [];
-          for (let i = 0; i < rowCount; i++) {
-            const row = [];
-            for (let j = 0; j < colNames.length; j++) {
-              row.push(asJs[colNames[j]][i]);
-            }
-            grid.push(row);
-          }
-        }
-        // Vector (1D)
-        else {
-          grid = [asJs];
-        }
-      } else if (asJs !== undefined && asJs !== null) {
-        // Scalar or single value
-        grid = [[asJs]];
+    // Try to detect if it's a matrix with dimensions
+    const dimResult = await webR.evalR(`
+      if (is.matrix(.Last.value) || is.data.frame(.Last.value)) {
+        dim(.Last.value)
       } else {
-        throw new Error('Empty result');
+        NULL
       }
-    } catch (toArrayErr) {
-      console.warn('toArray failed, trying scalar:', toArrayErr);
-      // Fallback: try scalar extraction
-      try {
-        const scalar = await lastResult.toScalar();
-        grid = [[scalar]];
-      } catch (scalarErr) {
-        // Final fallback: try converting via R's capture.output
-        const sh = await new webR.Shelter();
-        const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams: true });
-        const txt = res.output.filter(o => o.type === 'stdout').map(o => o.data);
-        if (txt.length === 0) throw new Error('No output captured');
-        grid = txt.map(l => [l]);
-        sh.purge();
+    `);
+    
+    let dimensions = null;
+    if (dimResult && dimResult.type !== 'null') {
+      const dimArray = await dimResult.toArray();
+      if (dimArray && dimArray.length === 2) {
+        dimensions = { rows: dimArray[0], cols: dimArray[1] };
       }
+    }
+    
+    const raw = await lastResult.toArray();
+    
+    if (dimensions && raw.length === dimensions.rows * dimensions.cols) {
+      // It's a matrix - reshape from column-major to row-major
+      grid = [];
+      for (let row = 0; row < dimensions.rows; row++) {
+        grid[row] = [];
+        for (let col = 0; col < dimensions.cols; col++) {
+          // R stores column-major: index = row + col * rows
+          grid[row][col] = raw[row + col * dimensions.rows];
+        }
+      }
+      log(`Detected ${dimensions.rows}×${dimensions.cols} matrix, reshaping for Excel`, 'info');
+    } 
+    else if (Array.isArray(raw) && raw.length > 0 && Array.isArray(raw[0])) {
+      // Already row-major (data frame format)
+      grid = raw;
+    }
+    else if (Array.isArray(raw) && raw.length > 0) {
+      // Vector - write as single column (vertical)
+      grid = raw.map(v => [v]);
+    }
+    else {
+      // Scalar
+      grid = [[raw]];
     }
 
     // Validate grid before writing
     if (!grid || grid.length === 0) {
-      throw new Error('No data to write (grid is empty)');
-    }
-    if (!grid[0] || grid[0].length === 0) {
-      throw new Error('No columns in data');
+      throw new Error('No data to write');
     }
 
-    // Write to Excel
     await Excel.run(async ctx => {
       const cell = ctx.workbook.getSelectedRange().getCell(0, 0);
       const writeRng = cell.getResizedRange(grid.length - 1, grid[0].length - 1);
