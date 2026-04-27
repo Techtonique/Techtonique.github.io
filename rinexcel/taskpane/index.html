@@ -854,8 +854,6 @@ editor.addEventListener('keydown', e => {
 });
 
 /* ── Write result to sheet ────────────────────── */
-/* ── Write result to sheet ────────────────────── */
-/* ── Write result to sheet ────────────────────── */
 btnWrite.addEventListener('click', async () => {
   if (!lastResult || !officeReady) return;
   setBusy(true);
@@ -864,53 +862,69 @@ btnWrite.addEventListener('click', async () => {
   try {
     let grid;
     
-    // Try to detect if it's a matrix with dimensions
-    const dimResult = await webR.evalR(`
-      if (is.matrix(.Last.value) || is.data.frame(.Last.value)) {
-        dim(.Last.value)
+    // Check if the result is a matrix or data frame by asking R for its dimensions
+    const rCode = `
+      result <- .Last.value
+      if (is.matrix(result) || is.data.frame(result)) {
+        list(
+          is_matrix = TRUE,
+          dims = dim(result),
+          data = as.vector(result)  # Force column-major flattening
+        )
       } else {
-        NULL
+        list(
+          is_matrix = FALSE,
+          data = result
+        )
       }
-    `);
+    `;
     
-    let dimensions = null;
-    if (dimResult && dimResult.type !== 'null') {
-      const dimArray = await dimResult.toArray();
-      if (dimArray && dimArray.length === 2) {
-        dimensions = { rows: dimArray[0], cols: dimArray[1] };
-      }
-    }
+    const shelter = await new webR.Shelter();
+    const rResult = await shelter.captureR(rCode, { captureStreams: false });
     
-    const raw = await lastResult.toArray();
+    // Parse the R result
+    const rObj = rResult.result;
+    const rData = await rObj.toArray();
     
-    if (dimensions && raw.length === dimensions.rows * dimensions.cols) {
+    if (rData && rData.is_matrix === true) {
       // It's a matrix - reshape from column-major to row-major
+      const rows = rData.dims[0];
+      const cols = rData.dims[1];
+      const flatData = rData.data;
+      
       grid = [];
-      for (let row = 0; row < dimensions.rows; row++) {
-        grid[row] = [];
-        for (let col = 0; col < dimensions.cols; col++) {
+      for (let row = 0; row < rows; row++) {
+        const excelRow = [];
+        for (let col = 0; col < cols; col++) {
           // R stores column-major: index = row + col * rows
-          grid[row][col] = raw[row + col * dimensions.rows];
+          excelRow.push(flatData[row + col * rows]);
         }
+        grid.push(excelRow);
       }
-      log(`Detected ${dimensions.rows}×${dimensions.cols} matrix, reshaping for Excel`, 'info');
-    } 
-    else if (Array.isArray(raw) && raw.length > 0 && Array.isArray(raw[0])) {
-      // Already row-major (data frame format)
-      grid = raw;
+      log(`Matrix: ${rows} rows × ${cols} columns (reshaped for Excel)`, 'info');
+    } else {
+      // Not a matrix - handle as before
+      const raw = rData ? rData.data : await lastResult.toArray();
+      
+      if (Array.isArray(raw) && raw.length > 0) {
+        if (Array.isArray(raw[0])) {
+          grid = raw;
+        } else {
+          // Write vectors as a single column (vertical)
+          grid = raw.map(v => [v]);
+        }
+      } else if (raw !== undefined && raw !== null) {
+        grid = [[raw]];
+      } else {
+        throw new Error('Empty result');
+      }
     }
-    else if (Array.isArray(raw) && raw.length > 0) {
-      // Vector - write as single column (vertical)
-      grid = raw.map(v => [v]);
-    }
-    else {
-      // Scalar
-      grid = [[raw]];
-    }
+    
+    shelter.purge();
 
-    // Validate grid before writing
-    if (!grid || grid.length === 0) {
-      throw new Error('No data to write');
+    // Validate and write
+    if (!grid || grid.length === 0 || !grid[0]) {
+      throw new Error('No valid data to write');
     }
 
     await Excel.run(async ctx => {
