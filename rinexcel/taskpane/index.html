@@ -854,35 +854,79 @@ editor.addEventListener('keydown', e => {
 });
 
 /* ── Write result to sheet ────────────────────── */
+/* ── Write result to sheet ────────────────────── */
 btnWrite.addEventListener('click', async () => {
   if (!lastResult || !officeReady) return;
   setBusy(true);
   log('Writing result to sheet…', 'info');
 
   try {
-    let grid = [];
-    const type = lastResult.type;
-
-    if (['double','integer','character','logical'].includes(type)) {
-      const vals = await lastResult.toArray();
-      grid = [vals];
-    } else if (type === 'list') {
-      const csvShelter = await new webR.Shelter();
-      const csv = await csvShelter.captureR('cat(format(as.data.frame(.Last.value)), fill=TRUE)', { captureStreams:true });
-      const lines = csv.output.filter(o=>o.type==='stdout').map(o=>o.data).join('\n').split('\n').filter(Boolean);
-      grid = lines.map(l => l.split(/\s{2,}/));
-      csvShelter.purge();
-    } else {
-      const sh = await new webR.Shelter();
-      const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams:true });
-      const txt = res.output.filter(o=>o.type==='stdout').map(o=>o.data);
-      grid = txt.map(l => [l]);
-      sh.purge();
+    let grid;
+    
+    // Try to convert WebR result to a JavaScript array
+    try {
+      // Attempt to get as 2D array
+      const asJs = await lastResult.toArray();
+      
+      // Check if it's a 2D array (matrix/data frame)
+      if (Array.isArray(asJs) && asJs.length > 0) {
+        // Check if it's already a 2D structure (row-major)
+        if (Array.isArray(asJs[0])) {
+          grid = asJs;
+        } 
+        // Check if it's a named list (data frame in WebR)
+        else if (asJs.length > 0 && asJs[0] && typeof asJs[0] === 'object') {
+          // Convert list of columns to row-major 2D array
+          const colNames = Object.keys(asJs);
+          const rowCount = asJs[colNames[0]].length;
+          grid = [];
+          for (let i = 0; i < rowCount; i++) {
+            const row = [];
+            for (let j = 0; j < colNames.length; j++) {
+              row.push(asJs[colNames[j]][i]);
+            }
+            grid.push(row);
+          }
+        }
+        // Vector (1D)
+        else {
+          grid = [asJs];
+        }
+      } else if (asJs !== undefined && asJs !== null) {
+        // Scalar or single value
+        grid = [[asJs]];
+      } else {
+        throw new Error('Empty result');
+      }
+    } catch (toArrayErr) {
+      console.warn('toArray failed, trying scalar:', toArrayErr);
+      // Fallback: try scalar extraction
+      try {
+        const scalar = await lastResult.toScalar();
+        grid = [[scalar]];
+      } catch (scalarErr) {
+        // Final fallback: try converting via R's capture.output
+        const sh = await new webR.Shelter();
+        const res = await sh.captureR('capture.output(print(.Last.value))', { captureStreams: true });
+        const txt = res.output.filter(o => o.type === 'stdout').map(o => o.data);
+        if (txt.length === 0) throw new Error('No output captured');
+        grid = txt.map(l => [l]);
+        sh.purge();
+      }
     }
 
+    // Validate grid before writing
+    if (!grid || grid.length === 0) {
+      throw new Error('No data to write (grid is empty)');
+    }
+    if (!grid[0] || grid[0].length === 0) {
+      throw new Error('No columns in data');
+    }
+
+    // Write to Excel
     await Excel.run(async ctx => {
-      const cell = ctx.workbook.getSelectedRange().getCell(0,0);
-      const writeRng = cell.getResizedRange(grid.length-1, grid[0].length-1);
+      const cell = ctx.workbook.getSelectedRange().getCell(0, 0);
+      const writeRng = cell.getResizedRange(grid.length - 1, grid[0].length - 1);
       writeRng.values = grid;
       await ctx.sync();
     });
@@ -890,6 +934,7 @@ btnWrite.addEventListener('click', async () => {
     log(`Written ${grid.length} row(s) × ${grid[0].length} col(s) to sheet ✓`, 'success');
   } catch (err) {
     log('Write error: ' + err.message, 'error');
+    console.error(err);
   }
 
   setBusy(false);
