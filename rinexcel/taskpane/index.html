@@ -711,7 +711,7 @@ document.addEventListener('click', () => snippetsWrap.classList.remove('open'));
 /* ── WebR init ────────────────────────────────── */
 async function initWebR() {
   try {
-    const { WebR } = await import('https://webr.r-wasm.org/latest/webr.mjs');
+    const { WebR } = await import('https://webr.r-wasm.org/latest/webr.mjs?v=' + Date.now());
     webR = new WebR();
     await webR.init();
 
@@ -729,6 +729,7 @@ async function initWebR() {
 
 /* ── Office.js init ───────────────────────────── */
 function initOffice() {
+  console.log("=== RINEXCEL VERSION: 2026-04-27-DEBUG ===");
   Office.onReady(() => {
     officeReady = true;
     btnRead.disabled = (webR === null);
