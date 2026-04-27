@@ -15,10 +15,10 @@
   <DisplayName DefaultValue="RinExcel" />
   <Description DefaultValue="Run R code directly in Excel via WebAssembly — your data never leaves your machine." />
 
-  <IconUrl DefaultValue="https://techtonique.github.io/rinexcel/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://techtonique.github.io/rinexcel/assets/icon-80.png" />
+  <IconUrl DefaultValue="https://docs.techtonique.net/rinexcel/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://docs.techtonique.net/rinexcel/assets/icon-80.png" />
 
-  <SupportUrl DefaultValue="https://techtonique.github.io/rinexcel" />
+  <SupportUrl DefaultValue="https://docs.techtonique.net/rinexcel" />
 
   <!-- ── Host requirements ─────────────────────────────── -->
   <Hosts>
@@ -33,7 +33,7 @@
 
   <!-- ── Default task pane (legacy fallback) ───────────── -->
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://techtonique.github.io/rinexcel/taskpane/index.html" />
+    <SourceLocation DefaultValue="https://docs.techtonique.net/rinexcel/taskpane/index.html" />
   </DefaultSettings>
 
   <!-- ── Permissions ───────────────────────────────────── -->
@@ -90,14 +90,14 @@
     <!-- ── Resources ─────────────────────────────────────── -->
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://techtonique.github.io/rinexcel/assets/icon-16.png" />
-        <bt:Image id="Icon.32x32" DefaultValue="https://techtonique.github.io/rinexcel/assets/icon-32.png" />
-        <bt:Image id="Icon.80x80" DefaultValue="https://techtonique.github.io/rinexcel/assets/icon-80.png" />
+        <bt:Image id="Icon.16x16" DefaultValue="https://docs.techtonique.net/rinexcel/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://docs.techtonique.net/rinexcel/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://docs.techtonique.net/rinexcel/assets/icon-80.png" />
       </bt:Images>
 
       <bt:Urls>
-        <bt:Url id="Taskpane.Url"  DefaultValue="https://techtonique.github.io/rinexcel/taskpane/index.html" />
-        <bt:Url id="Commands.Url"  DefaultValue="https://techtonique.github.io/rinexcel/taskpane/commands.html" />
+        <bt:Url id="Taskpane.Url"  DefaultValue="https://docs.techtonique.net/rinexcel/taskpane/index.html" />
+        <bt:Url id="Commands.Url"  DefaultValue="https://docs.techtonique.net/rinexcel/taskpane/commands.html" />
       </bt:Urls>
 
       <bt:ShortStrings>
