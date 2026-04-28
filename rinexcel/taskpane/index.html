@@ -711,7 +711,7 @@ document.addEventListener('click', () => snippetsWrap.classList.remove('open'));
 /* ── WebR init ────────────────────────────────── */
 async function initWebR() {
   try {
-    const { WebR } = await import('https://webr.r-wasm.org/latest/webr.mjs?v=' + Date.now());
+    const { WebR } = await import('https://webr.r-wasm.org/latest/webr.mjs');
     webR = new WebR();
     await webR.init();
 
@@ -729,7 +729,6 @@ async function initWebR() {
 
 /* ── Office.js init ───────────────────────────── */
 function initOffice() {
-  console.log("=== RINEXCEL VERSION: 2026-04-27-DEBUG ===");
   Office.onReady(() => {
     officeReady = true;
     btnRead.disabled = (webR === null);
@@ -807,7 +806,6 @@ btnRead.addEventListener('click', async () => {
 });
 
 /* ── Run R code ───────────────────────────────── */
-/* ── Run R code ───────────────────────────────── */
 async function runCode() {
   if (!webR) return;
   setBusy(true);
@@ -828,71 +826,10 @@ async function runCode() {
     }
 
     const last = result.result;
-    
-    // ===== DEBUG INFO =====
-    log('=== DEBUG: Result Object ===', 'info');
-    log('Result exists: ' + (last ? 'yes' : 'no'), 'info');
-    
-    if (last) {
-      log('Result type (typeof): ' + typeof last, 'info');
-      log('Result constructor: ' + (last.constructor ? last.constructor.name : 'unknown'), 'info');
-      
-      // Check for type property
-      if (last.type !== undefined) {
-        log('last.type: ' + last.type, 'info');
-      } else {
-        log('No .type property found', 'error');
-      }
-      
-      // List all properties
-      const props = Object.getOwnPropertyNames(last);
-      log('Properties: ' + JSON.stringify(props), 'info');
-      
-      // Check for methods
-      const methods = [];
-      if (typeof last.toArray === 'function') methods.push('toArray');
-      if (typeof last.toScalar === 'function') methods.push('toScalar');
-      if (typeof last.toString === 'function') methods.push('toString');
-      log('Available methods: ' + (methods.length ? methods.join(', ') : 'none'), 'info');
-      
-      // Try to get value via different methods
-      try {
-        if (typeof last.toScalar === 'function') {
-          const scalarVal = await last.toScalar();
-          log(`toScalar() result: ${scalarVal} (type: ${typeof scalarVal})`, 'info');
-        }
-      } catch (e) {
-        log(`toScalar() failed: ${e.message}`, 'error');
-      }
-      
-      try {
-        if (typeof last.toArray === 'function') {
-          const arrayVal = await last.toArray();
-          log(`toArray() result: ${JSON.stringify(arrayVal).substring(0, 200)}`, 'info');
-          log(`Array length: ${arrayVal.length}`, 'info');
-        }
-      } catch (e) {
-        log(`toArray() failed: ${e.message}`, 'error');
-      }
-      
-      try {
-        if (typeof last.toString === 'function') {
-          const strVal = await last.toString();
-          log(`toString() result: ${strVal.substring(0, 200)}`, 'info');
-        }
-      } catch (e) {
-        log(`toString() failed: ${e.message}`, 'error');
-      }
-    }
-    log('=== END DEBUG ===', 'info');
-    // ===== END DEBUG =====
-
     if (last && last.type !== 'null') {
       lastResult = last;
       btnWrite.disabled = false;
       log('— result stored (click ↓ Write to Sheet) —', 'info');
-    } else {
-      log('— No result to store —', 'info');
     }
 
     shelter.purge();
@@ -902,7 +839,7 @@ async function runCode() {
   }
 
   setBusy(false);
-};
+}
 
 btnRun.addEventListener('click', runCode);
 
@@ -916,7 +853,6 @@ editor.addEventListener('keydown', e => {
   }
 });
 
-
 /* ── Write result to sheet ────────────────────── */
 btnWrite.addEventListener('click', async () => {
   if (!lastResult || !officeReady) return;
@@ -924,65 +860,25 @@ btnWrite.addEventListener('click', async () => {
   log('Writing result to sheet…', 'info');
 
   try {
-    let grid = [];
-    
-    // The result is a pointer - we need to get the actual data
-    // Use toArray() directly - it handles dereferencing
-    const vals = await lastResult.toArray();
-    log(`Retrieved ${vals.length} value(s)`, 'info');
-    
-    // Check if it's a matrix by asking R
-    const dimCheck = await webR.evalR(`
-      result <- .Last.value
-      if (is.matrix(result) || is.data.frame(result)) {
-        paste(dim(result), collapse=",")
-      } else {
-        "scalar_or_vector"
-      }
-    `);
-    
-    const dimInfo = await dimCheck.toScalar();
-    log(`Dimension info from R: ${dimInfo}`, 'info');
-    
-    if (dimInfo !== "scalar_or_vector") {
-      // It's a matrix or data frame
-      const [rows, cols] = dimInfo.split(',').map(Number);
-      
-      if (vals.length === rows * cols) {
-        // Reshape from column-major to row-major
-        const reshaped = [];
-        for (let row = 0; row < rows; row++) {
-          const rowData = [];
-          for (let col = 0; col < cols; col++) {
-            rowData.push(vals[row + col * rows]);
-          }
-          reshaped.push(rowData);
-        }
-        grid = reshaped;
-        log(`Reshaped ${rows}×${cols} matrix`, 'success');
-      } else {
-        grid = [vals];
-      }
-    } else if (vals.length === 1) {
-      // Scalar value
-      grid = [[vals[0]]];
-    } else {
-      // Vector - write as single row
-      grid = [vals];
-    }
-
-    if (!grid || grid.length === 0) {
-      throw new Error('No data to write');
+    const grid = await resultToGrid(lastResult);
+    if (!grid || grid.length === 0 || grid[0].length === 0) {
+      throw new Error('Result produced an empty grid — nothing to write.');
     }
 
     await Excel.run(async ctx => {
-      const cell = ctx.workbook.getSelectedRange().getCell(0,0);
-      const writeRng = cell.getResizedRange(grid.length-1, grid[0].length-1);
+      const cell = ctx.workbook.getSelectedRange().getCell(0, 0);
+      const writeRng = cell.getResizedRange(grid.length - 1, grid[0].length - 1);
       writeRng.values = grid;
       await ctx.sync();
     });
 
-    log(`✓ Written ${grid.length} × ${grid[0].length} to sheet`, 'success');
+    const shape = grid.length === 1 && grid[0].length === 1
+      ? 'scalar'
+      : grid.length === 1
+        ? `vector (1 × ${grid[0].length})`
+        : `${grid.length} × ${grid[0].length}`;
+    log(`✓ Written ${shape} to sheet`, 'success');
+
   } catch (err) {
     log('Write error: ' + err.message, 'error');
     console.error(err);
@@ -990,6 +886,130 @@ btnWrite.addEventListener('click', async () => {
 
   setBusy(false);
 });
+
+/**
+ * Convert a WebR RObject (lastResult) into a 2-D array suitable for
+ * Excel.Range.values.
+ *
+ * Dispatch rules (checked in order):
+ *   data.frame → header row + data rows, one column per variable
+ *   matrix     → rows × cols, column-major → row-major reorder
+ *   scalar     → [[value]]
+ *   vector     → [[v0, v1, …]]   (single row)
+ *   list/other → serialise via capture.output and return as text lines
+ */
+async function resultToGrid(robj) {
+  const shelter = await new webR.Shelter();
+  try {
+    const type = robj.type;   // e.g. 'double', 'integer', 'character', 'logical', 'list'
+
+    /* ── data.frame ─────────────────────────────────────────────────── */
+    if (type === 'list') {
+      // Ask R to convert to data.frame (works for named lists too) and
+      // extract column-by-column via the WebR JS API.
+      const dfObj = await shelter.evalR(
+        '(function(x) if (is.data.frame(x)) x else as.data.frame(x))(.rinexcel_tmp)',
+        // We need to pass the object; stash it in a temp R var first.
+      );
+
+      // Stash lastResult into a known R variable so we can operate on it.
+      await webR.objs.globalEnv.bind('.rinexcel_tmp', robj);
+      const dfR = await shelter.evalR(
+        'if (is.data.frame(.rinexcel_tmp)) .rinexcel_tmp else as.data.frame(.rinexcel_tmp)'
+      );
+
+      // Get column names and nrow
+      const colNamesR = await shelter.evalR('names(.rinexcel_tmp)');
+      const nrowR     = await shelter.evalR('nrow(as.data.frame(.rinexcel_tmp))');
+      const colNames  = await colNamesR.toArray();
+      const nrow      = await nrowR.toNumber();
+
+      // Build grid: header row first
+      const headerRow = colNames.map(String);
+      const dataRows  = Array.from({ length: nrow }, () => []);
+
+      for (let ci = 0; ci < colNames.length; ci++) {
+        const colR  = await shelter.evalR(`as.character(as.data.frame(.rinexcel_tmp)[[${ci + 1}]])`);
+        const colVals = await colR.toArray();
+        for (let ri = 0; ri < nrow; ri++) {
+          // Try numeric coercion; fall back to string
+          const raw = colVals[ri];
+          const num = Number(raw);
+          dataRows[ri].push(isNaN(num) ? String(raw) : num);
+        }
+      }
+
+      return [headerRow, ...dataRows];
+    }
+
+    /* ── atomic vectors (double / integer / character / logical) ─────── */
+    if (['double', 'integer', 'character', 'logical'].includes(type)) {
+      // Stash so we can query dim()
+      await webR.objs.globalEnv.bind('.rinexcel_tmp', robj);
+
+      // Check for matrix dims (R stores matrix as vector + dim attribute)
+      const dimR = await shelter.evalR('dim(.rinexcel_tmp)');
+      const dims = dimR.type !== 'null' ? await dimR.toArray() : null;
+
+      const vals = await robj.toArray();
+
+      /* scalar */
+      if (vals.length === 1) {
+        const v = vals[0];
+        return [[typeof v === 'number' ? v : String(v)]];
+      }
+
+      /* matrix: reshape column-major → row-major */
+      if (dims && dims.length === 2) {
+        const [nrow, ncol] = dims.map(Number);
+        // Optionally fetch rownames / colnames as header
+        const colNamesR = await shelter.evalR('colnames(.rinexcel_tmp)');
+        const rowNamesR = await shelter.evalR('rownames(.rinexcel_tmp)');
+        const hasColNames = colNamesR.type !== 'null';
+        const hasRowNames = rowNamesR.type !== 'null';
+
+        const colNamesArr = hasColNames ? await colNamesR.toArray() : null;
+        const rowNamesArr = hasRowNames ? await rowNamesR.toArray() : null;
+
+        const grid = [];
+
+        // header row (colnames)
+        if (hasColNames) {
+          const headerRow = hasRowNames ? ['', ...colNamesArr.map(String)] : colNamesArr.map(String);
+          grid.push(headerRow);
+        }
+
+        for (let r = 0; r < nrow; r++) {
+          const row = [];
+          if (hasRowNames) row.push(String(rowNamesArr[r]));
+          for (let c = 0; c < ncol; c++) {
+            const v = vals[r + c * nrow];   // column-major index
+            row.push(typeof v === 'number' ? v : String(v));
+          }
+          grid.push(row);
+        }
+        return grid;
+      }
+
+      /* plain vector → single row */
+      return [vals.map(v => typeof v === 'number' ? v : String(v))];
+    }
+
+    /* ── fallback: capture printed output as text ───────────────────── */
+    await webR.objs.globalEnv.bind('.rinexcel_tmp', robj);
+    const printR = await shelter.captureR('capture.output(print(.rinexcel_tmp))', { captureStreams: true });
+    const lines  = printR.output
+      .filter(o => o.type === 'stdout')
+      .map(o => o.data)
+      .filter(Boolean);
+    return lines.map(l => [l]);
+
+  } finally {
+    // Clean up temp variable
+    try { await webR.evalR('rm(.rinexcel_tmp)'); } catch (_) {}
+    shelter.purge();
+  }
+}
 
 /* ── Clear ────────────────────────────────────── */
 btnClear.addEventListener('click', () => {
