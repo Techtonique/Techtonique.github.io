@@ -306,7 +306,9 @@
       height: 100%;
     }
 
-    /* highlighted code layer */
+    /* highlighted code layer — must match textarea pixel-for-pixel.
+       <pre> has a browser-default margin; kill it with margin:0.
+       Scroll is driven by the textarea; hl-layer mirrors it via JS.   */
     #hl-layer {
       position: absolute;
       inset: 0;
@@ -317,18 +319,29 @@
       line-height: 1.65;
       white-space: pre-wrap;
       word-break: break-word;
-      overflow: hidden;
+      overflow: auto;
       pointer-events: none;
       border-radius: 0;
       background: transparent;
-      /* hljs theme overrides – we control bg elsewhere */
+      tab-size: 2;
       color: #abb2bf;
+      scrollbar-width: none;   /* hide its own scrollbar */
     }
+    #hl-layer::-webkit-scrollbar { display: none; }
 
-    /* override atom-one-dark background so our bg-1 shows */
-    #hl-layer.hljs,
-    #hl-layer pre,
-    #hl-layer code { background: transparent !important; }
+    /* hljs injects a <code> child — reset it so it doesn't add offsets */
+    #hl-layer code {
+      display: block;
+      background: transparent !important;
+      padding: 0;
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      white-space: inherit;
+      word-break: inherit;
+      tab-size: inherit;
+    }
 
     /* textarea – transparent so highlight shows through */
     #code-editor {
@@ -347,6 +360,7 @@
       outline: none;
       resize: none;
       tab-size: 2;
+      overflow-y: auto;
       -webkit-text-fill-color: transparent;
     }
     #code-editor::selection {
@@ -361,6 +375,7 @@
       font-family: var(--font-mono);
       font-size: 12.5px;
       line-height: 1.65;
+      tab-size: 2;
       color: var(--fg-2);
       font-style: italic;
       pointer-events: none;
@@ -645,7 +660,8 @@ const hasHeader    = $('has-header');
 const editor       = $('code-editor');
 const outputEl     = $('output');
 const rangeDisplay = $('range-display');
-const hlCode       = document.querySelector('#hl-layer code');
+const hlLayer      = $('hl-layer');
+const hlCode       = hlLayer.querySelector('code');
 const placeholder  = $('placeholder-text');
 
 /* ── State ─────────────────────────────────────── */
@@ -662,6 +678,11 @@ function syncHighlight() {
 }
 
 editor.addEventListener('input', syncHighlight);
+// Mirror textarea scroll position into the highlight layer so they stay in lock-step
+editor.addEventListener('scroll', () => {
+  hlLayer.scrollTop  = editor.scrollTop;
+  hlLayer.scrollLeft = editor.scrollLeft;
+});
 syncHighlight();
 
 /* ── Output helpers ───────────────────────────── */
@@ -888,125 +909,116 @@ btnWrite.addEventListener('click', async () => {
 });
 
 /**
- * Convert a WebR RObject (lastResult) into a 2-D array suitable for
- * Excel.Range.values.
+ * Convert a WebR RObject into a 2-D array for Excel.Range.values.
  *
- * Dispatch rules (checked in order):
- *   data.frame → header row + data rows, one column per variable
- *   matrix     → rows × cols, column-major → row-major reorder
- *   scalar     → [[value]]
- *   vector     → [[v0, v1, …]]   (single row)
- *   list/other → serialise via capture.output and return as text lines
+ * Dispatch (in order):
+ *   data.frame  → header row + typed data rows
+ *   matrix      → [colnames row?] + nrow rows, column-major reindexed
+ *   scalar      → [[value]]
+ *   vector      → [[v0, v1, …]]  (single row)
+ *   list/other  → capture.output lines, one per row
+ *
+ * CRITICAL: bind robj to R env BEFORE any evalR calls.
  */
 async function resultToGrid(robj) {
   const shelter = await new webR.Shelter();
   try {
-    const type = robj.type;   // e.g. 'double', 'integer', 'character', 'logical', 'list'
 
-    /* ── data.frame ─────────────────────────────────────────────────── */
-    if (type === 'list') {
-      // Ask R to convert to data.frame (works for named lists too) and
-      // extract column-by-column via the WebR JS API.
-      const dfObj = await shelter.evalR(
-        '(function(x) if (is.data.frame(x)) x else as.data.frame(x))(.rinexcel_tmp)',
-        // We need to pass the object; stash it in a temp R var first.
-      );
+    // ── 1. Bind the object into R's global env under a known name ──────
+    await webR.objs.globalEnv.bind('.rx_tmp', robj);
 
-      // Stash lastResult into a known R variable so we can operate on it.
-      await webR.objs.globalEnv.bind('.rinexcel_tmp', robj);
-      const dfR = await shelter.evalR(
-        'if (is.data.frame(.rinexcel_tmp)) .rinexcel_tmp else as.data.frame(.rinexcel_tmp)'
-      );
+    // ── 2. Ask R what it really is ─────────────────────────────────────
+    const isDF  = await (await shelter.evalR('is.data.frame(.rx_tmp)')).toLogical();
+    const dimR  = await shelter.evalR('dim(.rx_tmp)');
+    const dims  = dimR.type !== 'null' ? (await dimR.toArray()).map(Number) : null;
 
-      // Get column names and nrow
-      const colNamesR = await shelter.evalR('names(.rinexcel_tmp)');
-      const nrowR     = await shelter.evalR('nrow(as.data.frame(.rinexcel_tmp))');
-      const colNames  = await colNamesR.toArray();
-      const nrow      = await nrowR.toNumber();
+    // ── 3. Grab the flat values array (works for atomic types) ─────────
+    const atomicTypes = ['double','integer','character','logical'];
+    const isAtomic    = atomicTypes.includes(robj.type);
+    const vals        = isAtomic ? await robj.toArray() : null;
 
-      // Build grid: header row first
-      const headerRow = colNames.map(String);
-      const dataRows  = Array.from({ length: nrow }, () => []);
+    /* ── data.frame ───────────────────────────────────────────────────── */
+    if (isDF) {
+      const colNamesArr = await (await shelter.evalR('names(.rx_tmp)')).toArray();
+      const nrow        = Number(await (await shelter.evalR('nrow(.rx_tmp)')).toNumber());
+      const grid        = [colNamesArr.map(String)];
 
-      for (let ci = 0; ci < colNames.length; ci++) {
-        const colR  = await shelter.evalR(`as.character(as.data.frame(.rinexcel_tmp)[[${ci + 1}]])`);
-        const colVals = await colR.toArray();
+      for (let ri = 0; ri < nrow; ri++) grid.push([]);
+
+      for (let ci = 0; ci < colNamesArr.length; ci++) {
+        // Convert each column to numeric if possible, otherwise character
+        const isNum = await (await shelter.evalR(
+          `is.numeric(.rx_tmp[[${ci + 1}]])`
+        )).toLogical();
+
+        let colVals;
+        if (isNum) {
+          colVals = await (await shelter.evalR(
+            `as.double(.rx_tmp[[${ci + 1}]])`
+          )).toArray();
+        } else {
+          colVals = await (await shelter.evalR(
+            `as.character(.rx_tmp[[${ci + 1}]])`
+          )).toArray();
+        }
+
         for (let ri = 0; ri < nrow; ri++) {
-          // Try numeric coercion; fall back to string
-          const raw = colVals[ri];
-          const num = Number(raw);
-          dataRows[ri].push(isNaN(num) ? String(raw) : num);
+          const v = colVals[ri];
+          grid[ri + 1].push(v == null ? '' : v);
         }
       }
-
-      return [headerRow, ...dataRows];
+      return grid;
     }
 
-    /* ── atomic vectors (double / integer / character / logical) ─────── */
-    if (['double', 'integer', 'character', 'logical'].includes(type)) {
-      // Stash so we can query dim()
-      await webR.objs.globalEnv.bind('.rinexcel_tmp', robj);
+    /* ── matrix (has a 2-element dim attribute) ───────────────────────── */
+    if (dims && dims.length === 2 && isAtomic) {
+      const [nrow, ncol] = dims;
 
-      // Check for matrix dims (R stores matrix as vector + dim attribute)
-      const dimR = await shelter.evalR('dim(.rinexcel_tmp)');
-      const dims = dimR.type !== 'null' ? await dimR.toArray() : null;
+      const colNamesR   = await shelter.evalR('colnames(.rx_tmp)');
+      const rowNamesR   = await shelter.evalR('rownames(.rx_tmp)');
+      const hasColNames = colNamesR.type !== 'null';
+      const hasRowNames = rowNamesR.type !== 'null';
+      const colNamesArr = hasColNames ? await colNamesR.toArray() : null;
+      const rowNamesArr = hasRowNames ? await rowNamesR.toArray() : null;
 
-      const vals = await robj.toArray();
+      const grid = [];
 
-      /* scalar */
-      if (vals.length === 1) {
-        const v = vals[0];
-        return [[typeof v === 'number' ? v : String(v)]];
+      if (hasColNames) {
+        grid.push(hasRowNames
+          ? ['', ...colNamesArr.map(String)]
+          : colNamesArr.map(String));
       }
 
-      /* matrix: reshape column-major → row-major */
-      if (dims && dims.length === 2) {
-        const [nrow, ncol] = dims.map(Number);
-        // Optionally fetch rownames / colnames as header
-        const colNamesR = await shelter.evalR('colnames(.rinexcel_tmp)');
-        const rowNamesR = await shelter.evalR('rownames(.rinexcel_tmp)');
-        const hasColNames = colNamesR.type !== 'null';
-        const hasRowNames = rowNamesR.type !== 'null';
-
-        const colNamesArr = hasColNames ? await colNamesR.toArray() : null;
-        const rowNamesArr = hasRowNames ? await rowNamesR.toArray() : null;
-
-        const grid = [];
-
-        // header row (colnames)
-        if (hasColNames) {
-          const headerRow = hasRowNames ? ['', ...colNamesArr.map(String)] : colNamesArr.map(String);
-          grid.push(headerRow);
+      for (let r = 0; r < nrow; r++) {
+        const row = [];
+        if (hasRowNames) row.push(String(rowNamesArr[r]));
+        for (let c = 0; c < ncol; c++) {
+          const v = vals[r + c * nrow];  // R is column-major
+          row.push(typeof v === 'number' ? v : String(v ?? ''));
         }
-
-        for (let r = 0; r < nrow; r++) {
-          const row = [];
-          if (hasRowNames) row.push(String(rowNamesArr[r]));
-          for (let c = 0; c < ncol; c++) {
-            const v = vals[r + c * nrow];   // column-major index
-            row.push(typeof v === 'number' ? v : String(v));
-          }
-          grid.push(row);
-        }
-        return grid;
+        grid.push(row);
       }
-
-      /* plain vector → single row */
-      return [vals.map(v => typeof v === 'number' ? v : String(v))];
+      return grid;
     }
 
-    /* ── fallback: capture printed output as text ───────────────────── */
-    await webR.objs.globalEnv.bind('.rinexcel_tmp', robj);
-    const printR = await shelter.captureR('capture.output(print(.rinexcel_tmp))', { captureStreams: true });
-    const lines  = printR.output
-      .filter(o => o.type === 'stdout')
-      .map(o => o.data)
-      .filter(Boolean);
-    return lines.map(l => [l]);
+    /* ── scalar (length-1 atomic) ─────────────────────────────────────── */
+    if (isAtomic && vals.length === 1) {
+      const v = vals[0];
+      return [[typeof v === 'number' ? v : String(v ?? '')]];
+    }
+
+    /* ── plain vector ─────────────────────────────────────────────────── */
+    if (isAtomic && vals.length > 0) {
+      return [vals.map(v => typeof v === 'number' ? v : String(v ?? ''))];
+    }
+
+    /* ── fallback: print to text ──────────────────────────────────────── */
+    const cap   = await shelter.captureR('capture.output(print(.rx_tmp))', { captureStreams: true });
+    const lines = cap.output.filter(o => o.type === 'stdout').map(o => o.data).filter(Boolean);
+    return lines.length ? lines.map(l => [l]) : [['(empty result)']];
 
   } finally {
-    // Clean up temp variable
-    try { await webR.evalR('rm(.rinexcel_tmp)'); } catch (_) {}
+    try { await webR.evalR('rm(.rx_tmp)'); } catch (_) {}
     shelter.purge();
   }
 }
