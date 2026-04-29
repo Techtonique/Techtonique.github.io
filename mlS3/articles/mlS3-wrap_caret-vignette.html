@@ -56,6 +56,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -470,58 +473,36 @@ with caret</h1>
 <span><span class="co">## 3      1 9.887659e-19 2.439272e-36</span></span></code></pre>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ----------------------------------------------------------------------------</span></span>
-<span><span class="co"># Example 6: XGBoost via caret (multiclass)</span></span>
-<span><span class="co"># ----------------------------------------------------------------------------</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\n=== Example 6: XGBoost via caret ===\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## === Example 6: XGBoost via caret ===</span></span></code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mod_xgb_caret</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wrap_caret.html">wrap_caret</a></span><span class="op">(</span><span class="va">X_multi_train</span>, <span class="va">y_multi_train</span>,</span>
-<span>                            method <span class="op">=</span> <span class="st">"xgbTree"</span>,</span>
-<span>                            nrounds <span class="op">=</span> <span class="fl">50</span>,</span>
-<span>                            max_depth <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>                            eta <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>                            gamma <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>                            colsample_bytree <span class="op">=</span> <span class="fl">0.8</span>,</span>
-<span>                            min_child_weight <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>                            subsample <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">pred_xgb_caret</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod_xgb_caret</span>, newx <span class="op">=</span> <span class="va">X_multi_test</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span></span>
-<span><span class="va">acc_xgb_caret</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">pred_xgb_caret</span> <span class="op">==</span> <span class="va">y_multi_test</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"XGBoost Accuracy:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">acc_xgb_caret</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## XGBoost Accuracy: 0.9778</span></span></code></pre>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># ----------------------------------------------------------------------------</span></span>
 <span><span class="co"># Example 7: Compare all classification models</span></span>
 <span><span class="co"># ----------------------------------------------------------------------------</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\n=== Model Comparison (Multiclass) ===\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## === Model Comparison (Multiclass) ===</span></span></code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  Model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Random Forest"</span>, <span class="st">"SVM"</span>, <span class="st">"KNN"</span>, <span class="st">"LDA"</span>, <span class="st">"XGBoost"</span><span class="op">)</span>,</span>
-<span>  Accuracy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">acc_rf_multi</span>, <span class="va">acc_svm_multi</span>, <span class="va">acc_knn</span>, <span class="va">acc_lda</span>, <span class="va">acc_xgb_caret</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span>  Model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Random Forest"</span>, <span class="st">"SVM"</span>, <span class="st">"KNN"</span>, <span class="st">"LDA"</span><span class="op">)</span>,</span>
+<span>  Accuracy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">acc_rf_multi</span>, <span class="va">acc_svm_multi</span>, <span class="va">acc_knn</span>, <span class="va">acc_lda</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">results_class</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="op">-</span><span class="va">results_class</span><span class="op">$</span><span class="va">Accuracy</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           Model Accuracy</span></span>
 <span><span class="co">## 1 Random Forest   0.9778</span></span>
 <span><span class="co">## 2           SVM   0.9778</span></span>
 <span><span class="co">## 3           KNN   0.9778</span></span>
-<span><span class="co">## 4           LDA   0.9778</span></span>
-<span><span class="co">## 5       XGBoost   0.9778</span></span></code></pre>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<span><span class="co">## 4           LDA   0.9778</span></span></code></pre>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ----------------------------------------------------------------------------</span></span>
 <span><span class="co"># Example 8: Advanced - Probability calibration check</span></span>
 <span><span class="co"># ----------------------------------------------------------------------------</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\n=== Probability Distributions (LDA) ===\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## === Probability Distributions (LDA) ===</span></span></code></pre>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get probabilities for all classes</span></span>
 <span><span class="va">probs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod_lda</span>, newx <span class="op">=</span> <span class="va">X_multi_test</span>, type <span class="op">=</span> <span class="st">"prob"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Show distribution of predicted probabilities for each class</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">oldpar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">class_name</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">probs</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">probs</span><span class="op">[</span>, <span class="va">class_name</span><span class="op">]</span>, </span>
 <span>       main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Probabilities for"</span>, <span class="va">class_name</span><span class="op">)</span>,</span>
@@ -529,7 +510,7 @@ with caret</h1>
 <span>       col <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="mlS3-wrap_caret-vignette_files/figure-html/classification-1.png" width="672"></p>
+<p><img src="mlS3-wrap_caret-vignette_files/figure-html/classification-1.png" width="672"><img src="mlS3-wrap_caret-vignette_files/figure-html/classification-2.png" width="672"><img src="mlS3-wrap_caret-vignette_files/figure-html/classification-3.png" width="672"></p>
 </div>
   </div>
 

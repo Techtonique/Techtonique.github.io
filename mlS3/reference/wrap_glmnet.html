@@ -39,6 +39,9 @@ interface. Supports regression and binary classification."><!-- mathjax --><scri
       <a href="../articles/mlS3-wrap_caret-vignette.html">Introduction to R package `mlS3` -- with caret</a>
     </li>
   </ul></li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul><ul class="nav navbar-nav navbar-right"></ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -126,7 +129,7 @@ lambda path. Pass `s = cv_fit$lambda.min` if using [glmnet::cv.glmnet()].</p></d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">!=</span> <span class="st">"virginica"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">!=</span> <span class="st">"virginica"</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">wrap_glmnet</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></span></span>
@@ -251,7 +254,133 @@ lambda path. Pass `s = cv_fit$lambda.min` if using [glmnet::cv.glmnet()].</p></d
 <span class="r-out co"><span class="r-pr">#&gt;</span> 98  0.013028213 0.986971787</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 99  0.124852867 0.875147133</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 0.016539899 0.983460101</span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">!=</span> <span class="st">"virginica"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">!=</span> <span class="st">"virginica"</span>, <span class="st">"Species"</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">wrap_glmnet</span><span class="op">(</span><span class="va">X</span>, <span class="va">y</span>, family <span class="op">=</span> <span class="st">"binomial"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X</span>, type <span class="op">=</span> <span class="st">"class"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] setosa     setosa     setosa     setosa     setosa     setosa    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] setosa     setosa     versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] versicolor versicolor versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] versicolor versicolor versicolor versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: setosa versicolor</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">mod</span>, newx <span class="op">=</span> <span class="va">X</span>, type <span class="op">=</span> <span class="st">"prob"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          setosa  versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.987162476 0.012837524</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.978222799 0.021777201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.985149785 0.014850215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.976740818 0.023259182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.988456017 0.011543983</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0.976128195 0.023871805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.981411182 0.018588818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0.983044703 0.016955297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.975810653 0.024189347</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  0.982120067 0.017879933</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  0.987661643 0.012338357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  0.979869911 0.020130089</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  0.983265177 0.016734823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  0.990028450 0.009971550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  0.994673874 0.005326126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  0.990030689 0.009969311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  0.987995263 0.012004737</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  0.983274420 0.016725580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  0.979605634 0.020394366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  0.985537552 0.014462448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  0.976115098 0.023884902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  0.979073715 0.020926285</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  0.994230941 0.005769059</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  0.942528486 0.057471514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  0.966450029 0.033549971</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  0.969383865 0.030616135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  0.966045113 0.033954887</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  0.984746751 0.015253249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  0.985726081 0.014273919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  0.975160545 0.024839455</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  0.972418772 0.027581228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  0.971336487 0.028663513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  0.993825975 0.006174025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  0.993910528 0.006089472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  0.976740818 0.023259182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  0.987502490 0.012497510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  0.989199807 0.010800193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  0.991150391 0.008849609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  0.981652500 0.018347500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  0.983044703 0.016955297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  0.985919990 0.014080010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  0.950668719 0.049331281</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  0.985149785 0.014850215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  0.948761636 0.051238364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45  0.962803613 0.037196387</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46  0.971704822 0.028295178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  0.986813334 0.013186666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48  0.982362086 0.017637914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49  0.987661643 0.012338357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50  0.984131552 0.015868448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51  0.006874998 0.993125002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52  0.007452406 0.992547594</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53  0.003339010 0.996660990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54  0.011566372 0.988433628</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55  0.004083623 0.995916377</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56  0.008286700 0.991713300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57  0.004485214 0.995514786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58  0.090226617 0.909773383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59  0.007751134 0.992248866</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  0.016117641 0.983882359</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61  0.043493251 0.956506749</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  0.010129093 0.989870907</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  0.022977422 0.977022578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  0.004989001 0.995010999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  0.042965873 0.957034127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  0.010396118 0.989603882</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  0.006019142 0.993980858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  0.032695383 0.967304617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  0.002555587 0.997444413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  0.028718141 0.971281859</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  0.001981559 0.998018441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  0.019638465 0.980361535</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  0.001754453 0.998245547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  0.007645149 0.992354851</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  0.013028213 0.986971787</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  0.009346250 0.990653750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  0.003766236 0.996233764</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  0.001474221 0.998525779</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  0.005408873 0.994591127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  0.079762661 0.920237339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  0.030657663 0.969342337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  0.046960398 0.953039602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  0.027263469 0.972736531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  0.001172949 0.998827051</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  0.006019142 0.993980858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  0.007067079 0.992932921</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  0.004730437 0.995269563</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  0.005780313 0.994219687</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  0.020426861 0.979573139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  0.014301526 0.985698474</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  0.010390339 0.989609661</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  0.006606123 0.993393877</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  0.020694951 0.979305049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  0.081781170 0.918218830</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  0.012521725 0.987478275</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  0.022387225 0.977612775</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  0.015479258 0.984520742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  0.013028213 0.986971787</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  0.124852867 0.875147133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 0.016539899 0.983460101</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
