@@ -23,12 +23,15 @@ from the response variable type."><!-- mathjax --><script src="https://cdnjs.clo
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">unifiedml</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li>
+  <a href="../articles/unifiedml.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -41,7 +44,13 @@ from the response variable type."><!-- mathjax --><script src="https://cdnjs.clo
       <a href="../articles/formula_vs_matrix.html">Matrix or Formula interface</a>
     </li>
     <li>
-      <a href="../articles/unifiedml-vignette.html">Introduction to R package `unifiedml`</a>
+      <a href="../articles/unifiedml-benchmark.html">Use `unifiedml` for benchmarking models</a>
+    </li>
+    <li>
+      <a href="../articles/unifiedml-caret.html">Use `unifiedml` with caret without tuning</a>
+    </li>
+    <li>
+      <a href="../articles/unifiedml-predict-proba.html">Predict proba</a>
     </li>
   </ul></li>
 <li>
@@ -115,6 +124,7 @@ from the response variable type.</p>
 <ul><li><p><a href="#method-Model-new"><code>Model$new()</code></a></p></li>
 <li><p><a href="#method-Model-fit"><code>Model$fit()</code></a></p></li>
 <li><p><a href="#method-Model-predict"><code>Model$predict()</code></a></p></li>
+<li><p><a href="#method-Model-predict_proba"><code>Model$predict_proba()</code></a></p></li>
 <li><p><a href="#method-Model-print"><code>Model$print()</code></a></p></li>
 <li><p><a href="#method-Model-summary"><code>Model$summary()</code></a></p></li>
 <li><p><a href="#method-Model-plot"><code>Model$plot()</code></a></p></li>
@@ -195,10 +205,26 @@ factor y -&gt; classification.</p><div class="section">
 <p>Vector of predictions</p>
 </div>
 
+</div><p></p><hr><a id="method-Model-predict_proba"></a><div class="section">
+<h3 id="method-predict-proba-">Method <code>predict_proba()</code><a class="anchor" aria-label="anchor" href="#method-predict-proba-"></a></h3>
+<p>Predict probabilities from fitted model</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>X</code></dt>
+<dd><p>Feature matrix for prediction</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
 </div><p></p><hr><a id="method-Model-print"></a><div class="section">
 <h3 id="method-print-">Method <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code><a class="anchor" aria-label="anchor" href="#method-print-"></a></h3>
 <p>Print model information</p><div class="section">
-<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">print</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -212,12 +238,12 @@ factor y -&gt; classification.</p><div class="section">
 <p>Compute numerical derivatives and statistical significance</p>
 <p>Uses finite differences to compute approximate partial derivatives
 for each feature, providing model-agnostic interpretability.</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0.01</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>h</code></dt>
 <dd><p>Step size for finite differences (default: 0.01)</p></dd>
 
@@ -245,12 +271,12 @@ estimates across samples.</p>
 <p>Create partial dependence plot for a feature</p>
 <p>Visualizes the relationship between a feature and the predicted outcome
 while holding other features at their mean values.</p><div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">plot</span><span class="op">(</span>feature <span class="op">=</span> <span class="fl">1</span>, n_points <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>feature</code></dt>
 <dd><p>Index or name of feature to plot</p></dd>
 
@@ -271,7 +297,7 @@ while holding other features at their mean values.</p><div class="section">
 <p>Create a deep copy of the model</p>
 <p>Useful for cross-validation and parallel processing where
 multiple independent model instances are needed.</p><div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
+<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">clone_model</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -283,12 +309,12 @@ multiple independent model instances are needed.</p><div class="section">
 </div><p></p><hr><a id="method-Model-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Model</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -333,33 +359,124 @@ multiple independent model instances are needed.</p><div class="section">
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">iris_binary</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span><span class="op">)</span>, <span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">X_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">iris_binary</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">y_class</span> <span class="op">&lt;-</span> <span class="va">iris_binary</span><span class="op">$</span><span class="va">Species</span>  <span class="co"># factor -&gt; classification</span></span></span>
+<span class="r-in"><span><span class="va">y_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="va">iris_binary</span><span class="op">$</span><span class="va">Species</span><span class="op">)</span>  <span class="co"># factor -&gt; classification</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="va">Model</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu">e1071</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/e1071/man/svm.html" class="external-link">svm</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">mod2</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_class</span>, <span class="va">y_class</span>, kernel <span class="op">=</span> <span class="st">"radial"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">mod2</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>‘-’ not meaningful for factors</span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">&lt;-</span> <span class="va">mod2</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">X_class</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mod2</span><span class="op">$</span><span class="fu">predict_proba</span><span class="op">(</span><span class="va">X_class</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     setosa versicolor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9        1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50       1          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99       0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100      0          1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"assign")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"contrasts")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"contrasts")$pred</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "contr.treatment"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model Summary - Numerical Derivatives</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ======================================</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Task: classification </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Samples: 100 | Features: 4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Step size (h): 0.01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       Feature Mean_Derivative Std_Error t_value p_value Significance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Sepal.Length              NA        NA      NA      NA           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Width              NA        NA      NA      NA           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Petal.Length              NA        NA      NA      NA           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Petal.Width              NA        NA      NA      NA           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Significance codes: 0 '***' 0.01 '**' 0.05 '*' 0.1 ' ' 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"extraction_method")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "fallback::1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"model_class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "svm.formula"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Cross-validation</span></span></span>
-<span class="r-in"><span><span class="va">cv_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="cross_val_score.html">cross_val_score</a></span><span class="op">(</span><span class="va">mod</span>, <span class="va">X</span>, <span class="va">y</span>, cv <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

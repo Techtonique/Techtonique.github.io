@@ -3,5 +3,8 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   formula_vs_matrix: formula_vs_matrix.html
-  unifiedml-vignette: unifiedml-vignette.html
-last_built: 2026-04-04T22:02Z
+  unifiedml-benchmark: unifiedml-benchmark.html
+  unifiedml-caret: unifiedml-caret.html
+  unifiedml-predict-proba: unifiedml-predict-proba.html
+  unifiedml: unifiedml.html
+last_built: 2026-05-09T02:25Z
