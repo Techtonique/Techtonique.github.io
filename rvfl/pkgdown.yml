@@ -1,4 +1,4 @@
-pandoc: 3.1.11.1
+pandoc: 3.8.2.1
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
@@ -12,5 +12,6 @@ articles:
   rvfl: rvfl.html
   surrogate: surrogate.html
   svm: svm.html
+  tsrvfl: tsrvfl.html
   zeroinfl: zeroinfl.html
-last_built: 2025-03-31T22:39Z
+last_built: 2026-05-09T02:31Z

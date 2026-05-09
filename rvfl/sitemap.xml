@@ -12,11 +12,22 @@
 <url><loc>/articles/rvfl_summary_plot.html</loc></url>
 <url><loc>/articles/surrogate.html</loc></url>
 <url><loc>/articles/svm.html</loc></url>
+<url><loc>/articles/tsrvfl.html</loc></url>
 <url><loc>/articles/zeroinfl.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
+<url><loc>/reference/dropout_layer.html</loc></url>
+<url><loc>/reference/fitted.rvfl2.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/krvfl.html</loc></url>
+<url><loc>/reference/predict.krvfl.html</loc></url>
+<url><loc>/reference/predict.rvfl2.html</loc></url>
+<url><loc>/reference/print.krvfl.html</loc></url>
+<url><loc>/reference/residuals.rvfl2.html</loc></url>
 <url><loc>/reference/rvfl.html</loc></url>
+<url><loc>/reference/rvfl2.html</loc></url>
+<url><loc>/reference/summary.krvfl.html</loc></url>
+<url><loc>/reference/summary.rvfl2.html</loc></url>
 <url><loc>/reference/tsrvflf.html</loc></url>
 </urlset>
 

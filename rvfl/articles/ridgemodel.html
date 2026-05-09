@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rvfl</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -77,6 +77,9 @@
     </li>
     <li>
       <a href="../articles/svm.html">SVM model</a>
+    </li>
+    <li>
+      <a href="../articles/tsrvfl.html">RVFL model for univariate time series</a>
     </li>
     <li>
       <a href="../articles/zeroinfl.html">Zero-inflated GLM model (plus other models)</a>
@@ -132,7 +135,7 @@
 <span><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.012</span></span></code></pre>
+<span><span class="co">##   0.007</span></span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -182,7 +185,7 @@
 <span><span class="va">ridge_model</span> <span class="op">&lt;-</span> <span class="fu">rvfl</span><span class="fu">::</span><span class="fu">calibmodel</span><span class="op">(</span>lambda<span class="op">=</span><span class="fl">10</span><span class="op">**</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length.out<span class="op">=</span><span class="fl">100</span><span class="op">)</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">train_data</span><span class="op">[</span>,<span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">train_data</span><span class="op">$</span><span class="va">mpg</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.027</span></span></code></pre>
+<span><span class="co">##   0.016</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ridge_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $model_summary</span></span>
@@ -223,7 +226,59 @@
 <span><span class="co">## vs        0.857626338 1.185444e-11 1.287167e-235  0.857626338  0.857626338</span></span>
 <span><span class="co">## am        1.460396700 6.124848e-12 1.572499e-247  1.460396700  1.460396700</span></span>
 <span><span class="co">## gear      0.638082724 1.510165e-11 3.031228e-230  0.638082724  0.638082724</span></span>
-<span><span class="co">## carb     -0.532426743 1.504239e-11 1.780484e-228 -0.532426743 -0.532426743</span></span></code></pre>
+<span><span class="co">## carb     -0.532426743 1.504239e-11 1.780484e-228 -0.532426743 -0.532426743</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $all_derivatives</span></span>
+<span><span class="co">##              cyl         disp          hp     drat         wt      qsec</span></span>
+<span><span class="co">##  [1,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [2,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [3,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [4,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [5,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [6,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [7,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [8,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##  [9,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [10,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [11,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [12,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [13,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [14,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [15,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [16,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [17,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [18,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [19,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [20,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [21,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [22,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [23,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">## [24,] -0.2725624 -0.004417317 -0.01172896 1.594839 -0.7487828 0.1880501</span></span>
+<span><span class="co">##              vs       am      gear       carb</span></span>
+<span><span class="co">##  [1,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [2,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [3,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [4,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [5,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [6,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [7,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [8,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">##  [9,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [10,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [11,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [12,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [13,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [14,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [15,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [16,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [17,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [18,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [19,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [20,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [21,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [22,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [23,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span>
+<span><span class="co">## [24,] 0.8576263 1.460397 0.6380827 -0.5324267</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="make-predictions">Make predictions<a class="anchor" aria-label="anchor" href="#make-predictions"></a>
@@ -356,7 +411,7 @@
 <span><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">medv</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.009</span></span></code></pre>
+<span><span class="co">##   0.005</span></span></code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -412,7 +467,7 @@
 <span><span class="va">ridge_model</span> <span class="op">&lt;-</span> <span class="fu">rvfl</span><span class="fu">::</span><span class="fu">calibmodel</span><span class="op">(</span>lambda<span class="op">=</span><span class="fl">10</span><span class="op">**</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length.out<span class="op">=</span><span class="fl">100</span><span class="op">)</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">train_data</span><span class="op">[</span>,<span class="op">-</span><span class="fl">14</span><span class="op">]</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">train_data</span><span class="op">$</span><span class="va">medv</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.059</span></span></code></pre>
+<span><span class="co">##   0.011</span></span></code></pre>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ridge_model</span><span class="op">$</span><span class="va">model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -578,7 +633,7 @@
 <span><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Employed</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.008</span></span></code></pre>
+<span><span class="co">##   0.003</span></span></code></pre>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -622,7 +677,7 @@
 <span><span class="va">ridge_model</span> <span class="op">&lt;-</span> <span class="fu">rvfl</span><span class="fu">::</span><span class="fu">calibmodel</span><span class="op">(</span>lambda<span class="op">=</span><span class="fl">10</span><span class="op">**</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length.out<span class="op">=</span><span class="fl">100</span><span class="op">)</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">train_data</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">train_data</span><span class="op">$</span><span class="va">Employed</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.014</span></span></code></pre>
+<span><span class="co">##   0.006</span></span></code></pre>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ridge_model</span><span class="op">$</span><span class="va">model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -772,7 +827,7 @@
 <span><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.027</span></span></code></pre>
+<span><span class="co">##   0.004</span></span></code></pre>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -832,7 +887,7 @@
 <span><span class="va">ridge_model</span> <span class="op">&lt;-</span> <span class="fu">rvfl</span><span class="fu">::</span><span class="fu">calibmodel</span><span class="op">(</span>lambda<span class="op">=</span><span class="fl">10</span><span class="op">**</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span>, length.out<span class="op">=</span><span class="fl">100</span><span class="op">)</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">train_data</span><span class="op">[</span>,<span class="op">-</span><span class="fl">16</span><span class="op">]</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">train_data</span><span class="op">$</span><span class="va">y</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.046</span></span></code></pre>
+<span><span class="co">##   0.012</span></span></code></pre>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ridge_model</span><span class="op">$</span><span class="va">model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -1013,7 +1068,7 @@
 <span><span class="va">lm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Price</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">train_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.023</span></span></code></pre>
+<span><span class="co">##   0.004</span></span></code></pre>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">lm_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -1068,7 +1123,7 @@
 <span>                               y <span class="op">=</span> <span class="va">train_data</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/proc.time.html" class="external-link">proc.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="va">start</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## elapsed </span></span>
-<span><span class="co">##   0.021</span></span></code></pre>
+<span><span class="co">##   0.009</span></span></code></pre>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ridge_model</span><span class="op">$</span><span class="va">model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
