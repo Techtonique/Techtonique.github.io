@@ -11,7 +11,9 @@
 <url><loc>https://techtonique.github.io/esgtoolkit/authors.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/index.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/news/index.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/calculate_V.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/calculatereturns.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/enforce_monotonicity.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/esgcortest.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/esgdiscountfactor.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/esgfwdrates.html</loc></url>
@@ -29,6 +31,7 @@
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/plot.rvine_simulation.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/print.rvine_simulation.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/rg2plus.html</loc></url>
+<url><loc>https://techtonique.github.io/esgtoolkit/reference/rpriceg2plus.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/rsvjd.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/rsvjdg2plus.html</loc></url>
 <url><loc>https://techtonique.github.io/esgtoolkit/reference/sim_to_zoo.html</loc></url>
