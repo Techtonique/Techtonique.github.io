@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mlsauce</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.25.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.1</span>
       </span>
     </div>
 
@@ -59,14 +59,15 @@
 <div class="page-header"><h1 id="mlsauce">mlsauce<a class="anchor" aria-label="anchor" href="#mlsauce"></a>
 </h1></div>
 <p><strong>Miscellaneous Statistical/Machine learning stuff.</strong></p>
-<p><a href="https://r-packages.techtonique.net/mlsauce" class="external-link"><img src="https://r-packages.techtonique.net/badges/mlsauce" alt="r-universe"></a> <a href="https://techtonique.github.io/mlsauce_r/" class="external-link"><img src="https://img.shields.io/badge/documentation-is_here-green" alt="Documentation"></a></p>
+<p><a href="https://techtonique.github.io/mlsauce_r/" class="external-link"><img src="https://img.shields.io/badge/documentation-is_here-green" alt="Documentation"></a> <img src="https://r-packages.techtonique.net/badges/downloads/last-month/mlsauce.svg" alt="Downloads"><img src="https://r-packages.techtonique.net/badges/downloads/grand-total/mlsauce.svg?color=brightgreen" alt="Total Downloads"></p>
 <p>R version of the Python package <a href="https://github.com/Techtonique/mlsauce" class="external-link">mlsauce</a>.</p>
-<p>Only for Linux, for now. Windows users can envisage using <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">WSL</a>, the <strong>Windows Subsystem for Linux</strong>.</p>
 <p><strong>Install from GitHub</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">remotes::install_github</span><span class="er">(</span><span class="st">"Techtonique/mlsauce_r"</span><span class="kw">)</span> <span class="co"># the repo is in this organization</span></span></code></pre></div>
-<p><strong>Install from R-universe</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">'mlsauce'</span><span class="ex">,</span> repos = c<span class="er">(</span><span class="st">'https://r-packages.techtonique.net'</span><span class="ex">,</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="st">'https://cloud.r-project.org'</span><span class="kw">))</span></span></code></pre></div>
+<p>In the same directory:</p>
+<pre><code># pip install uv # if necessary
+uv venv venv
+source venv/bin/activate
+uv pip install pip scikit-learn mlsauce</code></pre>
 <p><strong>General rule for using the package in R</strong>: object accesses with <code>.</code>’s are replaced by <code>$</code>’s. R Examples can be found in the package, once installed, by typing (in R console):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">mlsauce</span><span class="fu">::</span><span class="va"><a href="reference/AdaOpt.html">AdaOpt</a></span></span></code></pre></div>

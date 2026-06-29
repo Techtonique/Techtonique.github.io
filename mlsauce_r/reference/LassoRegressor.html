@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlsauce</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.25.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.1</span>
       </span>
     </div>
 
@@ -44,7 +44,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">LassoRegressor</span><span class="op">(</span>reg_lambda <span class="op">=</span> <span class="fl">0.1</span>, max_iter <span class="op">=</span> <span class="fl">10L</span>, tol <span class="op">=</span> <span class="fl">0.001</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">LassoRegressor</span><span class="op">(</span></span>
+<span>  reg_lambda <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  max_iter <span class="op">=</span> <span class="fl">10L</span>,</span>
+<span>  tol <span class="op">=</span> <span class="fl">0.001</span>,</span>
+<span>  venv_path <span class="op">=</span> <span class="st">"./venv"</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -93,7 +99,8 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="va">X_test</span>, <span class="va">y_test</span><span class="op">)</span><span class="op">)</span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="va">X_test</span>, <span class="va">y_test</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

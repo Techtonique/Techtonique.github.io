@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mlsauce</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.25.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.1</span>
       </span>
     </div>
 
@@ -61,7 +61,9 @@
 <span>  n_clusters_input <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  clustering_method <span class="op">=</span> <span class="st">"kmeans"</span>,</span>
 <span>  cluster_scaling <span class="op">=</span> <span class="st">"standard"</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">123L</span></span>
+<span>  seed <span class="op">=</span> <span class="fl">123L</span>,</span>
+<span>  venv_path <span class="op">=</span> <span class="st">"./venv"</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -169,7 +171,8 @@ calculated as whole), <code>euclidean</code> (euclidean distances calculated row
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">obj</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="va">X_train</span>, <span class="va">y_train</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="va">X_test</span>, <span class="va">y_test</span><span class="op">)</span><span class="op">)</span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">obj</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="va">X_test</span>, <span class="va">y_test</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
