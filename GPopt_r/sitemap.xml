@@ -1,0 +1,18 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/BOstopping.html</loc></url>
+<url><loc>/reference/GPOpt.html</loc></url>
+<url><loc>/reference/GeneralizationOpt.html</loc></url>
+<url><loc>/reference/GenericSurrogate.html</loc></url>
+<url><loc>/reference/MLOptimizer.html</loc></url>
+<url><loc>/reference/get_GPopt.html</loc></url>
+<url><loc>/reference/get_nnetsauce.html</loc></url>
+<url><loc>/reference/get_numpy.html</loc></url>
+<url><loc>/reference/get_sklearn.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+</urlset>
+
