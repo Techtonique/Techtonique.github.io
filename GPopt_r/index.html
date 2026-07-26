@@ -69,6 +69,7 @@
 <div class="page-header"><h1 id="gpopt-r">GPopt (R)<a class="anchor" aria-label="anchor" href="#gpopt-r"></a>
 </h1></div>
 <p>This is the <code>R</code> version of Python’s <a href="https://github.com/Techtonique/GPopt" class="external-link">Techtonique/GPopt</a> (<a href="https://docs.techtonique.net/GPopt/GPopt.html" class="external-link">https://docs.techtonique.net/GPopt/GPopt.html</a>), a package for ‘Bayesian’ optimization of black-box functions (and machine learning hyperparameter tuning) using Gaussian Process Regression and other surrogate models.</p>
+<p>Keep in mind that this package is for Machine Learning hyperparameter tuning. The global minimum won’t always be found, but it isn’t an <em>issue</em>, since it means you aren’t overfitting the training set.</p>
 <p>It’s ported the same way as <a href="https://github.com/Techtonique/nnetsauce_r" class="external-link">nnetsauce for R</a> was: with <code>uv</code> to create an isolated Python virtual environment containing the Python <code>GPopt</code> package, and <code>reticulate</code> to call into it from R. Every function in this R package is a thin wrapper that returns the underlying Python object; the general rule is: <strong>object accesses with <code>.</code>’s in Python are replaced by <code>$</code>’s in R.</strong></p>
 <p>See this post for the technique: <a href="https://thierrymoudiki.github.io/blog/2025/12/17/r/python/new-nnetsauce-R-uv" class="external-link">Finally figured out a way to port python packages to R using uv and reticulate</a>.</p>
 <div class="section level2">
