@@ -58,15 +58,15 @@
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="c1">#     from tensorflow.keras.optimizers import Adam</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="c1">#     from tensorflow.keras.callbacks import EarlyStopping</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="c1"># except ImportError:</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="c1">#     raise ImportError(&quot;TensorFlow is required for LSTMRegressor. Please install it manually using &#39;pip install tensorflow&#39;.&quot;)</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="c1">#     raise ImportError("TensorFlow is required for LSTMRegressor. Please install it manually using 'pip install tensorflow'.")</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="c1"># from sklearn.preprocessing import MinMaxScaler</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="c1"># from sklearn.base import BaseEstimator, RegressorMixin</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="c1"># import warnings</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="c1"># warnings.filterwarnings(&#39;ignore&#39;)</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="c1"># warnings.filterwarnings('ignore')</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a>
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="c1"># class LSTMRegressor(BaseEstimator, RegressorMixin):</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="c1">#     &quot;&quot;&quot;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="c1">#     """</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="c1">#     LSTM Regressor for time series forecasting.</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a><span class="c1">#     This regressor learns to predict the next value in a sequence based on historical values.</span>
@@ -89,7 +89,7 @@
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="c1">#         Verbosity</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="c1">#     random_state : int, default=42</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="c1">#         Random seed</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="c1">#     &quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="c1">#     """</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="c1">#     def __init__(self, sequence_length=10, lstm_units=50, dropout_rate=0.2,</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="c1">#                  learning_rate=0.001, epochs=50, batch_size=32, verbose=0, random_state=42):</span>
@@ -115,7 +115,7 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="c1">#         tf.random.set_seed(random_state)</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="c1">#     def _create_sequences(self, data):</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="c1">#         &quot;&quot;&quot;Create sequences for LSTM training&quot;&quot;&quot;</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="c1">#         """Create sequences for LSTM training"""</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="c1">#         sequences_X = []</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="c1">#         sequences_y = []</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
@@ -126,7 +126,7 @@
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="c1">#         return np.array(sequences_X), np.array(sequences_y)</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="c1">#     def fit(self, X, xreg=None, **kwargs):</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="c1">#         """</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="c1">#         Fit MTS model to training data X, with optional regressors xreg</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="c1">#         X: {array-like}, shape = [n_samples, n_features]</span>
@@ -134,7 +134,7 @@
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="c1">#         xreg: {array-like}, shape = [n_samples, n_features_xreg]</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="c1">#             Optional external regressors.</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="c1">#         """</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="c1">#         # Convert and handle input data</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="c1">#         X = np.array(X, dtype=np.float32)</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
@@ -188,7 +188,7 @@
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
 </span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a><span class="c1">#         self.model.compile(</span>
 </span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a><span class="c1">#             optimizer=Adam(learning_rate=self.learning_rate),</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="c1">#             loss=&#39;mse&#39;</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="c1">#             loss='mse'</span>
 </span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="c1">#         )</span>
 </span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>
 </span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="c1">#         # Reshape sequences for LSTM input</span>
@@ -210,15 +210,15 @@
 </span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a><span class="c1">#         return self</span>
 </span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
 </span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a><span class="c1">#     def predict(self, h=5, **kwargs):</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a><span class="c1">#         """</span>
 </span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a><span class="c1">#         Forecast all the time series, h steps ahead</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a><span class="c1">#         """</span>
 </span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a><span class="c1">#         if not self.is_fitted:</span>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="c1">#             raise ValueError(&quot;Model must be fitted first&quot;)</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a><span class="c1">#             raise ValueError("Model must be fitted first")</span>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
 </span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="c1">#         # Handle fallback case</span>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="c1">#         if not hasattr(self, &#39;model&#39;) or self.model is None:</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="c1">#             return np.full(h, getattr(self, &#39;mean_target&#39;, 0.0))</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="c1">#         if not hasattr(self, 'model') or self.model is None:</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a><span class="c1">#             return np.full(h, getattr(self, 'mean_target', 0.0))</span>
 </span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>
 </span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="c1">#         predictions = []</span>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="c1">#         current_sequence = self.last_sequence.copy()</span>
@@ -244,9 +244,9 @@
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a><span class="c1">#         return predictions</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="c1">#     def score(self, X, y):</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a><span class="c1">#         """</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a><span class="c1">#         Calculate R² score using walk-forward validation</span>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a><span class="c1">#         """</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a><span class="c1">#         if not self.is_fitted:</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a><span class="c1">#             return 0.0</span>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>
@@ -262,26 +262,26 @@
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="c1">#         try:</span>
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="c1">#             return r2_score(y[-len(predictions):], predictions)</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="c1">#         except Exception as e:</span>
-</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="c1">#             print(f&quot;Error in scoring: {e}&quot;)</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a><span class="c1">#             print(f"Error in scoring: {e}")</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a><span class="c1">#             return 0.0</span>
 </span><span id="L-216"><a href="#L-216"><span class="linenos">216</span></a>
 </span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a><span class="c1">#     def save_model(self, path):</span>
-</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a><span class="c1">#         """</span>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a><span class="c1">#         Save the trained model to a file.</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a><span class="c1">#         """</span>
 </span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a><span class="c1">#         if self.model is not None:</span>
 </span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a><span class="c1">#             self.model.save(path)</span>
-</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="c1">#             print(f&quot;Model saved to {path}&quot;)</span>
+</span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a><span class="c1">#             print(f"Model saved to {path}")</span>
 </span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a><span class="c1">#         else:</span>
-</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="c1">#             print(&quot;Model is not trained yet.&quot;)</span>
+</span><span id="L-225"><a href="#L-225"><span class="linenos">225</span></a><span class="c1">#             print("Model is not trained yet.")</span>
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a><span class="c1">#     def load_model(self, path):</span>
-</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a><span class="c1">#         """</span>
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="c1">#         Load a pre-trained model from a file.</span>
-</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="c1">#         &quot;&quot;&quot;</span>
+</span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a><span class="c1">#         """</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a><span class="c1">#         from tensorflow.keras.models import load_model</span>
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="c1">#         self.model = load_model(path)</span>
-</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="c1">#         print(f&quot;Model loaded from {path}&quot;)</span>
+</span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a><span class="c1">#         print(f"Model loaded from {path}")</span>
 </span></pre></div>
 
 

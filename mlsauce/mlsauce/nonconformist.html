@@ -147,15 +147,15 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="ch">#!/usr/bin/env python</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">"""</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">docstring</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">"""</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="c1"># Authors: Henrik Linusson</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="c1"># Yaniv Romano modified np.py file to include CQR</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="c1"># T. Moudiki modified __init__.py to import classes</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="c1"># __version__ = &#39;2.1.0&#39;</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="c1"># __version__ = '2.1.0'</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.nc</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="n">AbsErrorErrFunc</span><span class="p">,</span>
@@ -167,12 +167,12 @@
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegressorAdapter</span>
 </span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="s2">&quot;AbsErrorErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="s2">&quot;QuantileRegErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="s2">&quot;RegressorAdapter&quot;</span><span class="p">,</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="s2">&quot;RegressorNc&quot;</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="s2">&quot;RegressorNormalizer&quot;</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="s2">&quot;IcpRegressor&quot;</span><span class="p">,</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="s2">"AbsErrorErrFunc"</span><span class="p">,</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="s2">"QuantileRegErrFunc"</span><span class="p">,</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="s2">"RegressorAdapter"</span><span class="p">,</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="s2">"RegressorNc"</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="s2">"RegressorNormalizer"</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="s2">"IcpRegressor"</span><span class="p">,</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="p">]</span>
 </span></pre></div>
 
@@ -190,13 +190,13 @@
     </div>
     <a class="headerlink" href="#AbsErrorErrFunc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AbsErrorErrFunc-146"><a href="#AbsErrorErrFunc-146"><span class="linenos">146</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AbsErrorErrFunc</span><span class="p">(</span><span class="n">RegressionErrFunc</span><span class="p">):</span>
-</span><span id="AbsErrorErrFunc-147"><a href="#AbsErrorErrFunc-147"><span class="linenos">147</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates absolute error nonconformity for regression problems.</span>
+</span><span id="AbsErrorErrFunc-147"><a href="#AbsErrorErrFunc-147"><span class="linenos">147</span></a><span class="w">    </span><span class="sd">"""Calculates absolute error nonconformity for regression problems.</span>
 </span><span id="AbsErrorErrFunc-148"><a href="#AbsErrorErrFunc-148"><span class="linenos">148</span></a>
 </span><span id="AbsErrorErrFunc-149"><a href="#AbsErrorErrFunc-149"><span class="linenos">149</span></a><span class="sd">    For each correct output in ``y``, nonconformity is defined as</span>
 </span><span id="AbsErrorErrFunc-150"><a href="#AbsErrorErrFunc-150"><span class="linenos">150</span></a>
 </span><span id="AbsErrorErrFunc-151"><a href="#AbsErrorErrFunc-151"><span class="linenos">151</span></a><span class="sd">    .. math::</span>
 </span><span id="AbsErrorErrFunc-152"><a href="#AbsErrorErrFunc-152"><span class="linenos">152</span></a><span class="sd">        | y_i - \hat{y}_i |</span>
-</span><span id="AbsErrorErrFunc-153"><a href="#AbsErrorErrFunc-153"><span class="linenos">153</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="AbsErrorErrFunc-153"><a href="#AbsErrorErrFunc-153"><span class="linenos">153</span></a><span class="sd">    """</span>
 </span><span id="AbsErrorErrFunc-154"><a href="#AbsErrorErrFunc-154"><span class="linenos">154</span></a>
 </span><span id="AbsErrorErrFunc-155"><a href="#AbsErrorErrFunc-155"><span class="linenos">155</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AbsErrorErrFunc-156"><a href="#AbsErrorErrFunc-156"><span class="linenos">156</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">AbsErrorErrFunc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -235,14 +235,14 @@
     </div>
     <a class="headerlink" href="#QuantileRegErrFunc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="QuantileRegErrFunc-207"><a href="#QuantileRegErrFunc-207"><span class="linenos">207</span></a><span class="k">class</span><span class="w"> </span><span class="nc">QuantileRegErrFunc</span><span class="p">(</span><span class="n">RegressionErrFunc</span><span class="p">):</span>
-</span><span id="QuantileRegErrFunc-208"><a href="#QuantileRegErrFunc-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates conformalized quantile regression error.</span>
+</span><span id="QuantileRegErrFunc-208"><a href="#QuantileRegErrFunc-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">"""Calculates conformalized quantile regression error.</span>
 </span><span id="QuantileRegErrFunc-209"><a href="#QuantileRegErrFunc-209"><span class="linenos">209</span></a>
 </span><span id="QuantileRegErrFunc-210"><a href="#QuantileRegErrFunc-210"><span class="linenos">210</span></a><span class="sd">    For each correct output in ``y``, nonconformity is defined as</span>
 </span><span id="QuantileRegErrFunc-211"><a href="#QuantileRegErrFunc-211"><span class="linenos">211</span></a>
 </span><span id="QuantileRegErrFunc-212"><a href="#QuantileRegErrFunc-212"><span class="linenos">212</span></a><span class="sd">    .. math::</span>
 </span><span id="QuantileRegErrFunc-213"><a href="#QuantileRegErrFunc-213"><span class="linenos">213</span></a><span class="sd">        max{\hat{q}_low - y, y - \hat{q}_high}</span>
 </span><span id="QuantileRegErrFunc-214"><a href="#QuantileRegErrFunc-214"><span class="linenos">214</span></a>
-</span><span id="QuantileRegErrFunc-215"><a href="#QuantileRegErrFunc-215"><span class="linenos">215</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="QuantileRegErrFunc-215"><a href="#QuantileRegErrFunc-215"><span class="linenos">215</span></a><span class="sd">    """</span>
 </span><span id="QuantileRegErrFunc-216"><a href="#QuantileRegErrFunc-216"><span class="linenos">216</span></a>
 </span><span id="QuantileRegErrFunc-217"><a href="#QuantileRegErrFunc-217"><span class="linenos">217</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="QuantileRegErrFunc-218"><a href="#QuantileRegErrFunc-218"><span class="linenos">218</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">QuantileRegErrFunc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -329,7 +329,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
-<span class="go">{&#39;param&#39;: 2}</span>
+<span class="go">{'param': 2}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -355,7 +355,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#RegressorNc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="RegressorNc-514"><a href="#RegressorNc-514"><span class="linenos">514</span></a><span class="k">class</span><span class="w"> </span><span class="nc">RegressorNc</span><span class="p">(</span><span class="n">BaseModelNc</span><span class="p">):</span>
-</span><span id="RegressorNc-515"><a href="#RegressorNc-515"><span class="linenos">515</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Nonconformity scorer using an underlying regression model.</span>
+</span><span id="RegressorNc-515"><a href="#RegressorNc-515"><span class="linenos">515</span></a><span class="w">    </span><span class="sd">"""Nonconformity scorer using an underlying regression model.</span>
 </span><span id="RegressorNc-516"><a href="#RegressorNc-516"><span class="linenos">516</span></a>
 </span><span id="RegressorNc-517"><a href="#RegressorNc-517"><span class="linenos">517</span></a><span class="sd">    Parameters</span>
 </span><span id="RegressorNc-518"><a href="#RegressorNc-518"><span class="linenos">518</span></a><span class="sd">    ----------</span>
@@ -384,7 +384,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc-541"><a href="#RegressorNc-541"><span class="linenos">541</span></a><span class="sd">    See also</span>
 </span><span id="RegressorNc-542"><a href="#RegressorNc-542"><span class="linenos">542</span></a><span class="sd">    --------</span>
 </span><span id="RegressorNc-543"><a href="#RegressorNc-543"><span class="linenos">543</span></a><span class="sd">    ProbEstClassifierNc, NormalizedRegressorNc</span>
-</span><span id="RegressorNc-544"><a href="#RegressorNc-544"><span class="linenos">544</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="RegressorNc-544"><a href="#RegressorNc-544"><span class="linenos">544</span></a><span class="sd">    """</span>
 </span><span id="RegressorNc-545"><a href="#RegressorNc-545"><span class="linenos">545</span></a>
 </span><span id="RegressorNc-546"><a href="#RegressorNc-546"><span class="linenos">546</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="RegressorNc-547"><a href="#RegressorNc-547"><span class="linenos">547</span></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="o">=</span><span class="n">AbsErrorErrFunc</span><span class="p">(),</span> <span class="n">normalizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1e-6</span>
@@ -392,7 +392,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc-549"><a href="#RegressorNc-549"><span class="linenos">549</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">RegressorNc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
 </span><span id="RegressorNc-550"><a href="#RegressorNc-550"><span class="linenos">550</span></a>
 </span><span id="RegressorNc-551"><a href="#RegressorNc-551"><span class="linenos">551</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="RegressorNc-552"><a href="#RegressorNc-552"><span class="linenos">552</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructs prediction intervals for a set of test examples.</span>
+</span><span id="RegressorNc-552"><a href="#RegressorNc-552"><span class="linenos">552</span></a><span class="w">        </span><span class="sd">"""Constructs prediction intervals for a set of test examples.</span>
 </span><span id="RegressorNc-553"><a href="#RegressorNc-553"><span class="linenos">553</span></a>
 </span><span id="RegressorNc-554"><a href="#RegressorNc-554"><span class="linenos">554</span></a><span class="sd">        Predicts the output of each test pattern using the underlying model,</span>
 </span><span id="RegressorNc-555"><a href="#RegressorNc-555"><span class="linenos">555</span></a><span class="sd">        and applies the (partial) inverse nonconformity function to each</span>
@@ -418,7 +418,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc-575"><a href="#RegressorNc-575"><span class="linenos">575</span></a><span class="sd">            0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="RegressorNc-576"><a href="#RegressorNc-576"><span class="linenos">576</span></a><span class="sd">            maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="RegressorNc-577"><a href="#RegressorNc-577"><span class="linenos">577</span></a><span class="sd">            significance level.</span>
-</span><span id="RegressorNc-578"><a href="#RegressorNc-578"><span class="linenos">578</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="RegressorNc-578"><a href="#RegressorNc-578"><span class="linenos">578</span></a><span class="sd">        """</span>
 </span><span id="RegressorNc-579"><a href="#RegressorNc-579"><span class="linenos">579</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="RegressorNc-580"><a href="#RegressorNc-580"><span class="linenos">580</span></a>        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="RegressorNc-581"><a href="#RegressorNc-581"><span class="linenos">581</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -499,7 +499,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#RegressorNc.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="RegressorNc.predict-551"><a href="#RegressorNc.predict-551"><span class="linenos">551</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="RegressorNc.predict-552"><a href="#RegressorNc.predict-552"><span class="linenos">552</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructs prediction intervals for a set of test examples.</span>
+</span><span id="RegressorNc.predict-552"><a href="#RegressorNc.predict-552"><span class="linenos">552</span></a><span class="w">        </span><span class="sd">"""Constructs prediction intervals for a set of test examples.</span>
 </span><span id="RegressorNc.predict-553"><a href="#RegressorNc.predict-553"><span class="linenos">553</span></a>
 </span><span id="RegressorNc.predict-554"><a href="#RegressorNc.predict-554"><span class="linenos">554</span></a><span class="sd">        Predicts the output of each test pattern using the underlying model,</span>
 </span><span id="RegressorNc.predict-555"><a href="#RegressorNc.predict-555"><span class="linenos">555</span></a><span class="sd">        and applies the (partial) inverse nonconformity function to each</span>
@@ -525,7 +525,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc.predict-575"><a href="#RegressorNc.predict-575"><span class="linenos">575</span></a><span class="sd">            0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="RegressorNc.predict-576"><a href="#RegressorNc.predict-576"><span class="linenos">576</span></a><span class="sd">            maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="RegressorNc.predict-577"><a href="#RegressorNc.predict-577"><span class="linenos">577</span></a><span class="sd">            significance level.</span>
-</span><span id="RegressorNc.predict-578"><a href="#RegressorNc.predict-578"><span class="linenos">578</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="RegressorNc.predict-578"><a href="#RegressorNc.predict-578"><span class="linenos">578</span></a><span class="sd">        """</span>
 </span><span id="RegressorNc.predict-579"><a href="#RegressorNc.predict-579"><span class="linenos">579</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="RegressorNc.predict-580"><a href="#RegressorNc.predict-580"><span class="linenos">580</span></a>        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="RegressorNc.predict-581"><a href="#RegressorNc.predict-581"><span class="linenos">581</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -679,7 +679,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
-<span class="go">{&#39;param&#39;: 2}</span>
+<span class="go">{'param': 2}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -766,7 +766,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#IcpRegressor"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IcpRegressor-302"><a href="#IcpRegressor-302"><span class="linenos">302</span></a><span class="k">class</span><span class="w"> </span><span class="nc">IcpRegressor</span><span class="p">(</span><span class="n">BaseIcp</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
-</span><span id="IcpRegressor-303"><a href="#IcpRegressor-303"><span class="linenos">303</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Inductive conformal regressor.</span>
+</span><span id="IcpRegressor-303"><a href="#IcpRegressor-303"><span class="linenos">303</span></a><span class="w">    </span><span class="sd">"""Inductive conformal regressor.</span>
 </span><span id="IcpRegressor-304"><a href="#IcpRegressor-304"><span class="linenos">304</span></a>
 </span><span id="IcpRegressor-305"><a href="#IcpRegressor-305"><span class="linenos">305</span></a><span class="sd">    Parameters</span>
 </span><span id="IcpRegressor-306"><a href="#IcpRegressor-306"><span class="linenos">306</span></a><span class="sd">    ----------</span>
@@ -825,13 +825,13 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpRegressor-359"><a href="#IcpRegressor-359"><span class="linenos">359</span></a><span class="sd">            ...,</span>
 </span><span id="IcpRegressor-360"><a href="#IcpRegressor-360"><span class="linenos">360</span></a><span class="sd">            [ 14.2,  29.8],</span>
 </span><span id="IcpRegressor-361"><a href="#IcpRegressor-361"><span class="linenos">361</span></a><span class="sd">            [ 11.6,  27.2]])</span>
-</span><span id="IcpRegressor-362"><a href="#IcpRegressor-362"><span class="linenos">362</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="IcpRegressor-362"><a href="#IcpRegressor-362"><span class="linenos">362</span></a><span class="sd">    """</span>
 </span><span id="IcpRegressor-363"><a href="#IcpRegressor-363"><span class="linenos">363</span></a>
 </span><span id="IcpRegressor-364"><a href="#IcpRegressor-364"><span class="linenos">364</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="IcpRegressor-365"><a href="#IcpRegressor-365"><span class="linenos">365</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">IcpRegressor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
 </span><span id="IcpRegressor-366"><a href="#IcpRegressor-366"><span class="linenos">366</span></a>
 </span><span id="IcpRegressor-367"><a href="#IcpRegressor-367"><span class="linenos">367</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="IcpRegressor-368"><a href="#IcpRegressor-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpRegressor-368"><a href="#IcpRegressor-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="IcpRegressor-369"><a href="#IcpRegressor-369"><span class="linenos">369</span></a>
 </span><span id="IcpRegressor-370"><a href="#IcpRegressor-370"><span class="linenos">370</span></a><span class="sd">        Parameters</span>
 </span><span id="IcpRegressor-371"><a href="#IcpRegressor-371"><span class="linenos">371</span></a><span class="sd">        ----------</span>
@@ -853,7 +853,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpRegressor-387"><a href="#IcpRegressor-387"><span class="linenos">387</span></a><span class="sd">                0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="IcpRegressor-388"><a href="#IcpRegressor-388"><span class="linenos">388</span></a><span class="sd">                maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="IcpRegressor-389"><a href="#IcpRegressor-389"><span class="linenos">389</span></a><span class="sd">                significance level.</span>
-</span><span id="IcpRegressor-390"><a href="#IcpRegressor-390"><span class="linenos">390</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpRegressor-390"><a href="#IcpRegressor-390"><span class="linenos">390</span></a><span class="sd">        """</span>
 </span><span id="IcpRegressor-391"><a href="#IcpRegressor-391"><span class="linenos">391</span></a>        <span class="c1"># TODO: interpolated p-values</span>
 </span><span id="IcpRegressor-392"><a href="#IcpRegressor-392"><span class="linenos">392</span></a>
 </span><span id="IcpRegressor-393"><a href="#IcpRegressor-393"><span class="linenos">393</span></a>        <span class="n">n_significance</span> <span class="o">=</span> <span class="p">(</span>
@@ -959,7 +959,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#IcpRegressor.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IcpRegressor.predict-367"><a href="#IcpRegressor.predict-367"><span class="linenos">367</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="IcpRegressor.predict-368"><a href="#IcpRegressor.predict-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpRegressor.predict-368"><a href="#IcpRegressor.predict-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="IcpRegressor.predict-369"><a href="#IcpRegressor.predict-369"><span class="linenos">369</span></a>
 </span><span id="IcpRegressor.predict-370"><a href="#IcpRegressor.predict-370"><span class="linenos">370</span></a><span class="sd">        Parameters</span>
 </span><span id="IcpRegressor.predict-371"><a href="#IcpRegressor.predict-371"><span class="linenos">371</span></a><span class="sd">        ----------</span>
@@ -981,7 +981,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpRegressor.predict-387"><a href="#IcpRegressor.predict-387"><span class="linenos">387</span></a><span class="sd">                0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="IcpRegressor.predict-388"><a href="#IcpRegressor.predict-388"><span class="linenos">388</span></a><span class="sd">                maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="IcpRegressor.predict-389"><a href="#IcpRegressor.predict-389"><span class="linenos">389</span></a><span class="sd">                significance level.</span>
-</span><span id="IcpRegressor.predict-390"><a href="#IcpRegressor.predict-390"><span class="linenos">390</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpRegressor.predict-390"><a href="#IcpRegressor.predict-390"><span class="linenos">390</span></a><span class="sd">        """</span>
 </span><span id="IcpRegressor.predict-391"><a href="#IcpRegressor.predict-391"><span class="linenos">391</span></a>        <span class="c1"># TODO: interpolated p-values</span>
 </span><span id="IcpRegressor.predict-392"><a href="#IcpRegressor.predict-392"><span class="linenos">392</span></a>
 </span><span id="IcpRegressor.predict-393"><a href="#IcpRegressor.predict-393"><span class="linenos">393</span></a>        <span class="n">n_significance</span> <span class="o">=</span> <span class="p">(</span>

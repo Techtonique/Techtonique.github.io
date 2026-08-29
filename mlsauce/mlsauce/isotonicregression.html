@@ -77,9 +77,9 @@
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="k">try</span><span class="p">:</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">.isotonicregressor</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsotonicRegressor</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not import IsotonicRegressor: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Could not import IsotonicRegressor: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">6</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IsotonicRegressor&quot;</span><span class="p">]</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">6</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"IsotonicRegressor"</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -96,7 +96,7 @@
     </div>
     <a class="headerlink" href="#IsotonicRegressor"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IsotonicRegressor-8"><a href="#IsotonicRegressor-8"><span class="linenos"> 8</span></a><span class="k">class</span><span class="w"> </span><span class="nc">IsotonicRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
-</span><span id="IsotonicRegressor-9"><a href="#IsotonicRegressor-9"><span class="linenos"> 9</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Isotonic Regressor with postprocessing.</span>
+</span><span id="IsotonicRegressor-9"><a href="#IsotonicRegressor-9"><span class="linenos"> 9</span></a><span class="w">    </span><span class="sd">"""Isotonic Regressor with postprocessing.</span>
 </span><span id="IsotonicRegressor-10"><a href="#IsotonicRegressor-10"><span class="linenos">10</span></a>
 </span><span id="IsotonicRegressor-11"><a href="#IsotonicRegressor-11"><span class="linenos">11</span></a><span class="sd">    This class takes a base regressor and applies isotonic regression as</span>
 </span><span id="IsotonicRegressor-12"><a href="#IsotonicRegressor-12"><span class="linenos">12</span></a><span class="sd">    postprocessing in the predict method. The isotonic regression ensures</span>
@@ -110,13 +110,13 @@
 </span><span id="IsotonicRegressor-20"><a href="#IsotonicRegressor-20"><span class="linenos">20</span></a><span class="sd">            If True, the isotonic regression will be monotonically increasing.</span>
 </span><span id="IsotonicRegressor-21"><a href="#IsotonicRegressor-21"><span class="linenos">21</span></a><span class="sd">            If False, it will be monotonically decreasing.</span>
 </span><span id="IsotonicRegressor-22"><a href="#IsotonicRegressor-22"><span class="linenos">22</span></a>
-</span><span id="IsotonicRegressor-23"><a href="#IsotonicRegressor-23"><span class="linenos">23</span></a><span class="sd">        out_of_bounds: str, default=&#39;nan&#39;</span>
+</span><span id="IsotonicRegressor-23"><a href="#IsotonicRegressor-23"><span class="linenos">23</span></a><span class="sd">        out_of_bounds: str, default='nan'</span>
 </span><span id="IsotonicRegressor-24"><a href="#IsotonicRegressor-24"><span class="linenos">24</span></a><span class="sd">            The out_of_bounds parameter for IsotonicRegression.</span>
-</span><span id="IsotonicRegressor-25"><a href="#IsotonicRegressor-25"><span class="linenos">25</span></a><span class="sd">            Can be &#39;nan&#39;, &#39;clip&#39;, or &#39;raise&#39;.</span>
-</span><span id="IsotonicRegressor-26"><a href="#IsotonicRegressor-26"><span class="linenos">26</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="IsotonicRegressor-25"><a href="#IsotonicRegressor-25"><span class="linenos">25</span></a><span class="sd">            Can be 'nan', 'clip', or 'raise'.</span>
+</span><span id="IsotonicRegressor-26"><a href="#IsotonicRegressor-26"><span class="linenos">26</span></a><span class="sd">    """</span>
 </span><span id="IsotonicRegressor-27"><a href="#IsotonicRegressor-27"><span class="linenos">27</span></a>
-</span><span id="IsotonicRegressor-28"><a href="#IsotonicRegressor-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regr</span><span class="p">,</span> <span class="n">increasing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">out_of_bounds</span><span class="o">=</span><span class="s2">&quot;nan&quot;</span><span class="p">):</span>
-</span><span id="IsotonicRegressor-29"><a href="#IsotonicRegressor-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the IsotonicRegressor.</span>
+</span><span id="IsotonicRegressor-28"><a href="#IsotonicRegressor-28"><span class="linenos">28</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regr</span><span class="p">,</span> <span class="n">increasing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">out_of_bounds</span><span class="o">=</span><span class="s2">"nan"</span><span class="p">):</span>
+</span><span id="IsotonicRegressor-29"><a href="#IsotonicRegressor-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">"""Initialize the IsotonicRegressor.</span>
 </span><span id="IsotonicRegressor-30"><a href="#IsotonicRegressor-30"><span class="linenos">30</span></a>
 </span><span id="IsotonicRegressor-31"><a href="#IsotonicRegressor-31"><span class="linenos">31</span></a><span class="sd">        Args:</span>
 </span><span id="IsotonicRegressor-32"><a href="#IsotonicRegressor-32"><span class="linenos">32</span></a><span class="sd">            regr: estimator</span>
@@ -126,16 +126,16 @@
 </span><span id="IsotonicRegressor-36"><a href="#IsotonicRegressor-36"><span class="linenos">36</span></a><span class="sd">                If True, the isotonic regression will be monotonically increasing.</span>
 </span><span id="IsotonicRegressor-37"><a href="#IsotonicRegressor-37"><span class="linenos">37</span></a><span class="sd">                If False, it will be monotonically decreasing.</span>
 </span><span id="IsotonicRegressor-38"><a href="#IsotonicRegressor-38"><span class="linenos">38</span></a>
-</span><span id="IsotonicRegressor-39"><a href="#IsotonicRegressor-39"><span class="linenos">39</span></a><span class="sd">            out_of_bounds: str, default=&#39;nan&#39;</span>
+</span><span id="IsotonicRegressor-39"><a href="#IsotonicRegressor-39"><span class="linenos">39</span></a><span class="sd">            out_of_bounds: str, default='nan'</span>
 </span><span id="IsotonicRegressor-40"><a href="#IsotonicRegressor-40"><span class="linenos">40</span></a><span class="sd">                The out_of_bounds parameter for IsotonicRegression.</span>
-</span><span id="IsotonicRegressor-41"><a href="#IsotonicRegressor-41"><span class="linenos">41</span></a><span class="sd">                Can be &#39;nan&#39;, &#39;clip&#39;, or &#39;raise&#39;.</span>
-</span><span id="IsotonicRegressor-42"><a href="#IsotonicRegressor-42"><span class="linenos">42</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IsotonicRegressor-41"><a href="#IsotonicRegressor-41"><span class="linenos">41</span></a><span class="sd">                Can be 'nan', 'clip', or 'raise'.</span>
+</span><span id="IsotonicRegressor-42"><a href="#IsotonicRegressor-42"><span class="linenos">42</span></a><span class="sd">        """</span>
 </span><span id="IsotonicRegressor-43"><a href="#IsotonicRegressor-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">regr</span> <span class="o">=</span> <span class="n">regr</span>
 </span><span id="IsotonicRegressor-44"><a href="#IsotonicRegressor-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">increasing</span> <span class="o">=</span> <span class="n">increasing</span>
 </span><span id="IsotonicRegressor-45"><a href="#IsotonicRegressor-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">out_of_bounds</span> <span class="o">=</span> <span class="n">out_of_bounds</span>
 </span><span id="IsotonicRegressor-46"><a href="#IsotonicRegressor-46"><span class="linenos">46</span></a>
 </span><span id="IsotonicRegressor-47"><a href="#IsotonicRegressor-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="IsotonicRegressor-48"><a href="#IsotonicRegressor-48"><span class="linenos">48</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.</span>
+</span><span id="IsotonicRegressor-48"><a href="#IsotonicRegressor-48"><span class="linenos">48</span></a><span class="w">        </span><span class="sd">"""Fit the model.</span>
 </span><span id="IsotonicRegressor-49"><a href="#IsotonicRegressor-49"><span class="linenos">49</span></a>
 </span><span id="IsotonicRegressor-50"><a href="#IsotonicRegressor-50"><span class="linenos">50</span></a><span class="sd">        Args:</span>
 </span><span id="IsotonicRegressor-51"><a href="#IsotonicRegressor-51"><span class="linenos">51</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
@@ -149,7 +149,7 @@
 </span><span id="IsotonicRegressor-59"><a href="#IsotonicRegressor-59"><span class="linenos">59</span></a>
 </span><span id="IsotonicRegressor-60"><a href="#IsotonicRegressor-60"><span class="linenos">60</span></a><span class="sd">        Returns:</span>
 </span><span id="IsotonicRegressor-61"><a href="#IsotonicRegressor-61"><span class="linenos">61</span></a><span class="sd">            self: object.</span>
-</span><span id="IsotonicRegressor-62"><a href="#IsotonicRegressor-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IsotonicRegressor-62"><a href="#IsotonicRegressor-62"><span class="linenos">62</span></a><span class="sd">        """</span>
 </span><span id="IsotonicRegressor-63"><a href="#IsotonicRegressor-63"><span class="linenos">63</span></a>        <span class="c1"># Validate input</span>
 </span><span id="IsotonicRegressor-64"><a href="#IsotonicRegressor-64"><span class="linenos">64</span></a>        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </span><span id="IsotonicRegressor-65"><a href="#IsotonicRegressor-65"><span class="linenos">65</span></a>        <span class="c1"># Fit the base regressor</span>
@@ -164,7 +164,7 @@
 </span><span id="IsotonicRegressor-74"><a href="#IsotonicRegressor-74"><span class="linenos">74</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span><span id="IsotonicRegressor-75"><a href="#IsotonicRegressor-75"><span class="linenos">75</span></a>
 </span><span id="IsotonicRegressor-76"><a href="#IsotonicRegressor-76"><span class="linenos">76</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="IsotonicRegressor-77"><a href="#IsotonicRegressor-77"><span class="linenos">77</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict using the model.</span>
+</span><span id="IsotonicRegressor-77"><a href="#IsotonicRegressor-77"><span class="linenos">77</span></a><span class="w">        </span><span class="sd">"""Predict using the model.</span>
 </span><span id="IsotonicRegressor-78"><a href="#IsotonicRegressor-78"><span class="linenos">78</span></a>
 </span><span id="IsotonicRegressor-79"><a href="#IsotonicRegressor-79"><span class="linenos">79</span></a><span class="sd">        Args:</span>
 </span><span id="IsotonicRegressor-80"><a href="#IsotonicRegressor-80"><span class="linenos">80</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
@@ -175,9 +175,9 @@
 </span><span id="IsotonicRegressor-85"><a href="#IsotonicRegressor-85"><span class="linenos">85</span></a><span class="sd">        Returns:</span>
 </span><span id="IsotonicRegressor-86"><a href="#IsotonicRegressor-86"><span class="linenos">86</span></a><span class="sd">            y_pred: array-like, shape = [n_samples]</span>
 </span><span id="IsotonicRegressor-87"><a href="#IsotonicRegressor-87"><span class="linenos">87</span></a><span class="sd">                Predicted values.</span>
-</span><span id="IsotonicRegressor-88"><a href="#IsotonicRegressor-88"><span class="linenos">88</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IsotonicRegressor-88"><a href="#IsotonicRegressor-88"><span class="linenos">88</span></a><span class="sd">        """</span>
 </span><span id="IsotonicRegressor-89"><a href="#IsotonicRegressor-89"><span class="linenos">89</span></a>        <span class="c1"># Check if fitted</span>
-</span><span id="IsotonicRegressor-90"><a href="#IsotonicRegressor-90"><span class="linenos">90</span></a>        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;regr&quot;</span><span class="p">,</span> <span class="s2">&quot;isotonic_regressor_&quot;</span><span class="p">])</span>
+</span><span id="IsotonicRegressor-90"><a href="#IsotonicRegressor-90"><span class="linenos">90</span></a>        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">"regr"</span><span class="p">,</span> <span class="s2">"isotonic_regressor_"</span><span class="p">])</span>
 </span><span id="IsotonicRegressor-91"><a href="#IsotonicRegressor-91"><span class="linenos">91</span></a>        <span class="c1"># Validate input</span>
 </span><span id="IsotonicRegressor-92"><a href="#IsotonicRegressor-92"><span class="linenos">92</span></a>        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span><span id="IsotonicRegressor-93"><a href="#IsotonicRegressor-93"><span class="linenos">93</span></a>        <span class="c1"># Get predictions from base regressor</span>
@@ -220,7 +220,7 @@ out_of_bounds: str, default='nan'
     </div>
     <a class="headerlink" href="#IsotonicRegressor.fit"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IsotonicRegressor.fit-47"><a href="#IsotonicRegressor.fit-47"><span class="linenos">47</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="IsotonicRegressor.fit-48"><a href="#IsotonicRegressor.fit-48"><span class="linenos">48</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model.</span>
+</span><span id="IsotonicRegressor.fit-48"><a href="#IsotonicRegressor.fit-48"><span class="linenos">48</span></a><span class="w">        </span><span class="sd">"""Fit the model.</span>
 </span><span id="IsotonicRegressor.fit-49"><a href="#IsotonicRegressor.fit-49"><span class="linenos">49</span></a>
 </span><span id="IsotonicRegressor.fit-50"><a href="#IsotonicRegressor.fit-50"><span class="linenos">50</span></a><span class="sd">        Args:</span>
 </span><span id="IsotonicRegressor.fit-51"><a href="#IsotonicRegressor.fit-51"><span class="linenos">51</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
@@ -234,7 +234,7 @@ out_of_bounds: str, default='nan'
 </span><span id="IsotonicRegressor.fit-59"><a href="#IsotonicRegressor.fit-59"><span class="linenos">59</span></a>
 </span><span id="IsotonicRegressor.fit-60"><a href="#IsotonicRegressor.fit-60"><span class="linenos">60</span></a><span class="sd">        Returns:</span>
 </span><span id="IsotonicRegressor.fit-61"><a href="#IsotonicRegressor.fit-61"><span class="linenos">61</span></a><span class="sd">            self: object.</span>
-</span><span id="IsotonicRegressor.fit-62"><a href="#IsotonicRegressor.fit-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IsotonicRegressor.fit-62"><a href="#IsotonicRegressor.fit-62"><span class="linenos">62</span></a><span class="sd">        """</span>
 </span><span id="IsotonicRegressor.fit-63"><a href="#IsotonicRegressor.fit-63"><span class="linenos">63</span></a>        <span class="c1"># Validate input</span>
 </span><span id="IsotonicRegressor.fit-64"><a href="#IsotonicRegressor.fit-64"><span class="linenos">64</span></a>        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </span><span id="IsotonicRegressor.fit-65"><a href="#IsotonicRegressor.fit-65"><span class="linenos">65</span></a>        <span class="c1"># Fit the base regressor</span>
@@ -281,7 +281,7 @@ out_of_bounds: str, default='nan'
     </div>
     <a class="headerlink" href="#IsotonicRegressor.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IsotonicRegressor.predict-76"><a href="#IsotonicRegressor.predict-76"><span class="linenos">76</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="IsotonicRegressor.predict-77"><a href="#IsotonicRegressor.predict-77"><span class="linenos">77</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict using the model.</span>
+</span><span id="IsotonicRegressor.predict-77"><a href="#IsotonicRegressor.predict-77"><span class="linenos">77</span></a><span class="w">        </span><span class="sd">"""Predict using the model.</span>
 </span><span id="IsotonicRegressor.predict-78"><a href="#IsotonicRegressor.predict-78"><span class="linenos">78</span></a>
 </span><span id="IsotonicRegressor.predict-79"><a href="#IsotonicRegressor.predict-79"><span class="linenos">79</span></a><span class="sd">        Args:</span>
 </span><span id="IsotonicRegressor.predict-80"><a href="#IsotonicRegressor.predict-80"><span class="linenos">80</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
@@ -292,9 +292,9 @@ out_of_bounds: str, default='nan'
 </span><span id="IsotonicRegressor.predict-85"><a href="#IsotonicRegressor.predict-85"><span class="linenos">85</span></a><span class="sd">        Returns:</span>
 </span><span id="IsotonicRegressor.predict-86"><a href="#IsotonicRegressor.predict-86"><span class="linenos">86</span></a><span class="sd">            y_pred: array-like, shape = [n_samples]</span>
 </span><span id="IsotonicRegressor.predict-87"><a href="#IsotonicRegressor.predict-87"><span class="linenos">87</span></a><span class="sd">                Predicted values.</span>
-</span><span id="IsotonicRegressor.predict-88"><a href="#IsotonicRegressor.predict-88"><span class="linenos">88</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IsotonicRegressor.predict-88"><a href="#IsotonicRegressor.predict-88"><span class="linenos">88</span></a><span class="sd">        """</span>
 </span><span id="IsotonicRegressor.predict-89"><a href="#IsotonicRegressor.predict-89"><span class="linenos">89</span></a>        <span class="c1"># Check if fitted</span>
-</span><span id="IsotonicRegressor.predict-90"><a href="#IsotonicRegressor.predict-90"><span class="linenos">90</span></a>        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;regr&quot;</span><span class="p">,</span> <span class="s2">&quot;isotonic_regressor_&quot;</span><span class="p">])</span>
+</span><span id="IsotonicRegressor.predict-90"><a href="#IsotonicRegressor.predict-90"><span class="linenos">90</span></a>        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">"regr"</span><span class="p">,</span> <span class="s2">"isotonic_regressor_"</span><span class="p">])</span>
 </span><span id="IsotonicRegressor.predict-91"><a href="#IsotonicRegressor.predict-91"><span class="linenos">91</span></a>        <span class="c1"># Validate input</span>
 </span><span id="IsotonicRegressor.predict-92"><a href="#IsotonicRegressor.predict-92"><span class="linenos">92</span></a>        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span><span id="IsotonicRegressor.predict-93"><a href="#IsotonicRegressor.predict-93"><span class="linenos">93</span></a>        <span class="c1"># Get predictions from base regressor</span>
