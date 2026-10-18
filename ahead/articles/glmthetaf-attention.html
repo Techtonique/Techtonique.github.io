@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -520,31 +520,31 @@ attention</h1>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       442.4331 421.3516 463.5146</span></span>
-<span><span class="co">## Feb 1961       433.1881 405.6864 460.6897</span></span>
-<span><span class="co">## Mar 1961       497.6369 464.9528 530.3211</span></span>
-<span><span class="co">## Apr 1961       485.7328 448.5822 522.8834</span></span>
-<span><span class="co">## May 1961       492.0875 450.9526 533.2224</span></span>
-<span><span class="co">## Jun 1961       562.0627 517.2967 606.8286</span></span>
-<span><span class="co">## Jul 1961       624.0108 575.8870 672.1347</span></span>
-<span><span class="co">## Aug 1961       625.0574 573.7951 676.3196</span></span>
-<span><span class="co">## Sep 1961       547.2013 492.9821 601.4206</span></span>
-<span><span class="co">## Oct 1961       478.9253 421.9021 535.9485</span></span>
-<span><span class="co">## Nov 1961       419.1382 359.4426 478.8337</span></span>
-<span><span class="co">## Dec 1961       473.4209 411.1677 535.6742</span></span>
-<span><span class="co">## Jan 1962       482.6562 417.9463 547.3662</span></span>
-<span><span class="co">## Feb 1962       471.6720 404.5952 538.7488</span></span>
-<span><span class="co">## Mar 1962       541.2748 471.9119 610.6376</span></span>
-<span><span class="co">## Apr 1962       527.8026 456.2267 599.3786</span></span>
-<span><span class="co">## May 1962       534.2067 460.4840 607.9293</span></span>
-<span><span class="co">## Jun 1962       609.6319 533.8234 685.4405</span></span>
-<span><span class="co">## Jul 1962       676.2593 598.4207 754.0980</span></span>
-<span><span class="co">## Aug 1962       676.8623 597.0453 756.6794</span></span>
-<span><span class="co">## Sep 1962       592.1162 510.3686 673.8639</span></span>
-<span><span class="co">## Oct 1962       517.8759 434.2423 601.5096</span></span>
-<span><span class="co">## Nov 1962       452.9298 367.4517 538.4079</span></span>
-<span><span class="co">## Dec 1962       511.2735 423.9899 598.5570</span></span>
-<span><span class="co">## Jan 1963       520.9439 431.8915 609.9963</span></span></code></pre>
+<span><span class="co">## Jan 1961       442.4317 421.3503 463.5132</span></span>
+<span><span class="co">## Feb 1961       433.1854 405.6837 460.6870</span></span>
+<span><span class="co">## Mar 1961       497.6324 464.9483 530.3166</span></span>
+<span><span class="co">## Apr 1961       485.7271 448.5765 522.8777</span></span>
+<span><span class="co">## May 1961       492.0804 450.9455 533.2153</span></span>
+<span><span class="co">## Jun 1961       562.0531 517.2871 606.8191</span></span>
+<span><span class="co">## Jul 1961       623.9986 575.8747 672.1224</span></span>
+<span><span class="co">## Aug 1961       625.0435 573.7813 676.3057</span></span>
+<span><span class="co">## Sep 1961       547.1878 492.9686 601.4071</span></span>
+<span><span class="co">## Oct 1961       478.9123 421.8891 535.9355</span></span>
+<span><span class="co">## Nov 1961       419.1258 359.4303 478.8213</span></span>
+<span><span class="co">## Dec 1961       473.4058 411.1526 535.6591</span></span>
+<span><span class="co">## Jan 1962       482.6397 417.9297 547.3496</span></span>
+<span><span class="co">## Feb 1962       471.6547 404.5779 538.7315</span></span>
+<span><span class="co">## Mar 1962       541.2537 471.8908 610.6165</span></span>
+<span><span class="co">## Apr 1962       527.7809 456.2049 599.3568</span></span>
+<span><span class="co">## May 1962       534.1834 460.4608 607.9061</span></span>
+<span><span class="co">## Jun 1962       609.6041 533.7955 685.4127</span></span>
+<span><span class="co">## Jul 1962       676.2269 598.3883 754.0656</span></span>
+<span><span class="co">## Aug 1962       676.8284 597.0113 756.6455</span></span>
+<span><span class="co">## Sep 1962       592.0852 510.3376 673.8329</span></span>
+<span><span class="co">## Oct 1962       517.8477 434.2140 601.4814</span></span>
+<span><span class="co">## Nov 1962       452.9041 367.4260 538.3822</span></span>
+<span><span class="co">## Dec 1962       511.2434 423.9598 598.5269</span></span>
+<span><span class="co">## Jan 1963       520.9121 431.8597 609.9645</span></span></code></pre>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-7-1.png" width="528"></p>
@@ -962,31 +962,31 @@ attention</h1>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/glmthetaf.html">glmthetaf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, fit_func<span class="op">=</span><span class="fu">MASS</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MASS/man/lqs.html" class="external-link">lqs</a></span>, attention <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
-<span><span class="co">## Jan 1961       442.4311 421.3496 463.5126</span></span>
-<span><span class="co">## Feb 1961       433.1841 405.6825 460.6858</span></span>
-<span><span class="co">## Mar 1961       497.6303 464.9461 530.3144</span></span>
-<span><span class="co">## Apr 1961       485.7244 448.5738 522.8750</span></span>
-<span><span class="co">## May 1961       492.0770 450.9421 533.2119</span></span>
-<span><span class="co">## Jun 1961       562.0486 517.2826 606.8145</span></span>
-<span><span class="co">## Jul 1961       623.9928 575.8689 672.1166</span></span>
-<span><span class="co">## Aug 1961       625.0370 573.7747 676.2992</span></span>
-<span><span class="co">## Sep 1961       547.1814 492.9622 601.4007</span></span>
-<span><span class="co">## Oct 1961       478.9061 421.8830 535.9293</span></span>
-<span><span class="co">## Nov 1961       419.1199 359.4244 478.8154</span></span>
-<span><span class="co">## Dec 1961       473.3987 411.1454 535.6519</span></span>
-<span><span class="co">## Jan 1962       482.6318 417.9219 547.3418</span></span>
-<span><span class="co">## Feb 1962       471.6465 404.5698 538.7233</span></span>
-<span><span class="co">## Mar 1962       541.2437 471.8809 610.6066</span></span>
-<span><span class="co">## Apr 1962       527.7705 456.1946 599.3465</span></span>
-<span><span class="co">## May 1962       534.1724 460.4498 607.8951</span></span>
-<span><span class="co">## Jun 1962       609.5909 533.7823 685.3995</span></span>
-<span><span class="co">## Jul 1962       676.2115 598.3729 754.0502</span></span>
-<span><span class="co">## Aug 1962       676.8123 596.9952 756.6294</span></span>
-<span><span class="co">## Sep 1962       592.0705 510.3229 673.8182</span></span>
-<span><span class="co">## Oct 1962       517.8343 434.2006 601.4680</span></span>
-<span><span class="co">## Nov 1962       452.8919 367.4138 538.3700</span></span>
-<span><span class="co">## Dec 1962       511.2291 423.9456 598.5127</span></span>
-<span><span class="co">## Jan 1963       520.8970 431.8446 609.9494</span></span></code></pre>
+<span><span class="co">## Jan 1961       442.4314 421.3499 463.5129</span></span>
+<span><span class="co">## Feb 1961       433.1848 405.6831 460.6864</span></span>
+<span><span class="co">## Mar 1961       497.6314 464.9472 530.3155</span></span>
+<span><span class="co">## Apr 1961       485.7257 448.5752 522.8763</span></span>
+<span><span class="co">## May 1961       492.0787 450.9438 533.2136</span></span>
+<span><span class="co">## Jun 1961       562.0509 517.2849 606.8168</span></span>
+<span><span class="co">## Jul 1961       623.9957 575.8719 672.1196</span></span>
+<span><span class="co">## Aug 1961       625.0403 573.7781 676.3025</span></span>
+<span><span class="co">## Sep 1961       547.1847 492.9654 601.4040</span></span>
+<span><span class="co">## Oct 1961       478.9093 421.8861 535.9324</span></span>
+<span><span class="co">## Nov 1961       419.1229 359.4274 478.8184</span></span>
+<span><span class="co">## Dec 1961       473.4023 411.1491 535.6556</span></span>
+<span><span class="co">## Jan 1962       482.6358 417.9259 547.3458</span></span>
+<span><span class="co">## Feb 1962       471.6507 404.5739 538.7275</span></span>
+<span><span class="co">## Mar 1962       541.2488 471.8859 610.6116</span></span>
+<span><span class="co">## Apr 1962       527.7758 456.1998 599.3517</span></span>
+<span><span class="co">## May 1962       534.1780 460.4554 607.9007</span></span>
+<span><span class="co">## Jun 1962       609.5976 533.7890 685.4062</span></span>
+<span><span class="co">## Jul 1962       676.2194 598.3807 754.0580</span></span>
+<span><span class="co">## Aug 1962       676.8205 597.0034 756.6376</span></span>
+<span><span class="co">## Sep 1962       592.0780 510.3303 673.8257</span></span>
+<span><span class="co">## Oct 1962       517.8411 434.2074 601.4748</span></span>
+<span><span class="co">## Nov 1962       452.8981 367.4200 538.3762</span></span>
+<span><span class="co">## Dec 1962       511.2364 423.9528 598.5199</span></span>
+<span><span class="co">## Jan 1963       520.9047 431.8523 609.9571</span></span></code></pre>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></code></pre></div>
 <p><img src="glmthetaf-attention_files/figure-html/unnamed-chunk-16-1.png" width="528"></p>

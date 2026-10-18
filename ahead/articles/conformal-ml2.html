@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -163,11 +163,13 @@ models 2</h1>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
-<span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Registered S3 method overwritten by 'quantmod':</span></span>
 <span><span class="co">##   method            from</span></span>
 <span><span class="co">##   as.zoo.data.frame zoo</span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
+<span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1961       460.2157 385.1324 570.6067</span></span>
 <span><span class="co">## Feb 1961       423.2877 346.7835 513.9668</span></span>
@@ -194,7 +196,7 @@ models 2</h1>
 <span><span class="co">## Nov 1962       473.2208 404.3596 583.5686</span></span>
 <span><span class="co">## Dec 1962       500.7060 436.4639 622.1696</span></span>
 <span><span class="co">## Jan 1963       529.7078 451.1332 639.8503</span></span></code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">fdeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, </span>
 <span>type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95     Hi 95</span></span>
@@ -223,12 +225,12 @@ models 2</h1>
 <span><span class="co">## Nov 1981       538.1649 276.3705  798.1206</span></span>
 <span><span class="co">## Dec 1981       586.5090 362.7278  844.2893</span></span>
 <span><span class="co">## Jan 1982       650.1907 417.8179  910.6355</span></span></code></pre>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="conformal-ml2_files/figure-html/unnamed-chunk-1-1.png" width="720"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_func</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
 <span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span> <span class="co"># naming of columns is mandatory for `predict`</span></span>
@@ -269,7 +271,7 @@ models 2</h1>
 <span><span class="co">## Nov 1962       514.0292 396.4510 714.9256</span></span>
 <span><span class="co">## Dec 1962       503.3533 385.2900 732.5616</span></span>
 <span><span class="co">## Jan 1963       523.4104 383.0124 735.0640</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/mlf.html">mlf</a></span><span class="op">(</span><span class="va">fdeaths</span>, h<span class="op">=</span><span class="fl">25L</span>, lags<span class="op">=</span><span class="fl">15L</span>, fit_func<span class="op">=</span><span class="va">fit_func</span>, predict_func<span class="op">=</span><span class="va">predict_func</span>, type_pi<span class="op">=</span><span class="st">"kde"</span>, B<span class="op">=</span><span class="fl">250L</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          Point Forecast    Lo 95    Hi 95</span></span>
 <span><span class="co">## Jan 1980       699.8649 510.8082 768.6348</span></span>
@@ -297,7 +299,7 @@ models 2</h1>
 <span><span class="co">## Nov 1981       528.9495 416.2136 604.8012</span></span>
 <span><span class="co">## Dec 1981       597.2601 488.9810 675.3408</span></span>
 <span><span class="co">## Jan 1982       619.9532 506.4952 704.0765</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span><span class="op">)</span></span></code></pre></div>

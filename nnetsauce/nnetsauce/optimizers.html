@@ -90,7 +90,7 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.optimizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optimizer</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Optimizer&quot;</span><span class="p">]</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Optimizer"</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -107,13 +107,13 @@
     </div>
     <a class="headerlink" href="#Optimizer"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Optimizer-9"><a href="#Optimizer-9"><span class="linenos">  9</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Optimizer</span><span class="p">:</span>
-</span><span id="Optimizer-10"><a href="#Optimizer-10"><span class="linenos"> 10</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Optimizer class</span>
+</span><span id="Optimizer-10"><a href="#Optimizer-10"><span class="linenos"> 10</span></a><span class="w">    </span><span class="sd">"""Optimizer class</span>
 </span><span id="Optimizer-11"><a href="#Optimizer-11"><span class="linenos"> 11</span></a>
 </span><span id="Optimizer-12"><a href="#Optimizer-12"><span class="linenos"> 12</span></a><span class="sd">    Attributes:</span>
 </span><span id="Optimizer-13"><a href="#Optimizer-13"><span class="linenos"> 13</span></a>
 </span><span id="Optimizer-14"><a href="#Optimizer-14"><span class="linenos"> 14</span></a><span class="sd">        type_optim: str</span>
-</span><span id="Optimizer-15"><a href="#Optimizer-15"><span class="linenos"> 15</span></a><span class="sd">            type of optimizer, (currently) either &#39;sgd&#39; (stochastic minibatch gradient descent)</span>
-</span><span id="Optimizer-16"><a href="#Optimizer-16"><span class="linenos"> 16</span></a><span class="sd">            or &#39;scd&#39; (stochastic minibatch coordinate descent)</span>
+</span><span id="Optimizer-15"><a href="#Optimizer-15"><span class="linenos"> 15</span></a><span class="sd">            type of optimizer, (currently) either 'sgd' (stochastic minibatch gradient descent)</span>
+</span><span id="Optimizer-16"><a href="#Optimizer-16"><span class="linenos"> 16</span></a><span class="sd">            or 'scd' (stochastic minibatch coordinate descent)</span>
 </span><span id="Optimizer-17"><a href="#Optimizer-17"><span class="linenos"> 17</span></a>
 </span><span id="Optimizer-18"><a href="#Optimizer-18"><span class="linenos"> 18</span></a><span class="sd">        num_iters: int</span>
 </span><span id="Optimizer-19"><a href="#Optimizer-19"><span class="linenos"> 19</span></a><span class="sd">            number of iterations of the optimizer</span>
@@ -125,23 +125,23 @@
 </span><span id="Optimizer-25"><a href="#Optimizer-25"><span class="linenos"> 25</span></a><span class="sd">            proportion of the initial data used at each optimization step</span>
 </span><span id="Optimizer-26"><a href="#Optimizer-26"><span class="linenos"> 26</span></a>
 </span><span id="Optimizer-27"><a href="#Optimizer-27"><span class="linenos"> 27</span></a><span class="sd">        learning_method: str</span>
-</span><span id="Optimizer-28"><a href="#Optimizer-28"><span class="linenos"> 28</span></a><span class="sd">            &quot;poly&quot; - learning rate decreasing as a polynomial function</span>
+</span><span id="Optimizer-28"><a href="#Optimizer-28"><span class="linenos"> 28</span></a><span class="sd">            "poly" - learning rate decreasing as a polynomial function</span>
 </span><span id="Optimizer-29"><a href="#Optimizer-29"><span class="linenos"> 29</span></a><span class="sd">            of # of iterations (default)</span>
-</span><span id="Optimizer-30"><a href="#Optimizer-30"><span class="linenos"> 30</span></a><span class="sd">            &quot;exp&quot; - learning rate decreasing as an exponential function</span>
+</span><span id="Optimizer-30"><a href="#Optimizer-30"><span class="linenos"> 30</span></a><span class="sd">            "exp" - learning rate decreasing as an exponential function</span>
 </span><span id="Optimizer-31"><a href="#Optimizer-31"><span class="linenos"> 31</span></a><span class="sd">            of # of iterations</span>
-</span><span id="Optimizer-32"><a href="#Optimizer-32"><span class="linenos"> 32</span></a><span class="sd">            &quot;momentum&quot; - gradient descent using momentum</span>
+</span><span id="Optimizer-32"><a href="#Optimizer-32"><span class="linenos"> 32</span></a><span class="sd">            "momentum" - gradient descent using momentum</span>
 </span><span id="Optimizer-33"><a href="#Optimizer-33"><span class="linenos"> 33</span></a>
 </span><span id="Optimizer-34"><a href="#Optimizer-34"><span class="linenos"> 34</span></a><span class="sd">        randomization: str</span>
 </span><span id="Optimizer-35"><a href="#Optimizer-35"><span class="linenos"> 35</span></a><span class="sd">            type of randomization applied at each step</span>
-</span><span id="Optimizer-36"><a href="#Optimizer-36"><span class="linenos"> 36</span></a><span class="sd">            &quot;strat&quot; - stratified subsampling (default)</span>
-</span><span id="Optimizer-37"><a href="#Optimizer-37"><span class="linenos"> 37</span></a><span class="sd">            &quot;shuffle&quot; - random subsampling</span>
+</span><span id="Optimizer-36"><a href="#Optimizer-36"><span class="linenos"> 36</span></a><span class="sd">            "strat" - stratified subsampling (default)</span>
+</span><span id="Optimizer-37"><a href="#Optimizer-37"><span class="linenos"> 37</span></a><span class="sd">            "shuffle" - random subsampling</span>
 </span><span id="Optimizer-38"><a href="#Optimizer-38"><span class="linenos"> 38</span></a>
 </span><span id="Optimizer-39"><a href="#Optimizer-39"><span class="linenos"> 39</span></a><span class="sd">        mass: float</span>
-</span><span id="Optimizer-40"><a href="#Optimizer-40"><span class="linenos"> 40</span></a><span class="sd">            mass on velocity, for `method` == &quot;momentum&quot;</span>
+</span><span id="Optimizer-40"><a href="#Optimizer-40"><span class="linenos"> 40</span></a><span class="sd">            mass on velocity, for `method` == "momentum"</span>
 </span><span id="Optimizer-41"><a href="#Optimizer-41"><span class="linenos"> 41</span></a>
 </span><span id="Optimizer-42"><a href="#Optimizer-42"><span class="linenos"> 42</span></a><span class="sd">        decay: float</span>
 </span><span id="Optimizer-43"><a href="#Optimizer-43"><span class="linenos"> 43</span></a><span class="sd">            coefficient of decrease of the learning rate for</span>
-</span><span id="Optimizer-44"><a href="#Optimizer-44"><span class="linenos"> 44</span></a><span class="sd">            `method` == &quot;poly&quot; and `method` == &quot;exp&quot;</span>
+</span><span id="Optimizer-44"><a href="#Optimizer-44"><span class="linenos"> 44</span></a><span class="sd">            `method` == "poly" and `method` == "exp"</span>
 </span><span id="Optimizer-45"><a href="#Optimizer-45"><span class="linenos"> 45</span></a>
 </span><span id="Optimizer-46"><a href="#Optimizer-46"><span class="linenos"> 46</span></a><span class="sd">        tolerance: float</span>
 </span><span id="Optimizer-47"><a href="#Optimizer-47"><span class="linenos"> 47</span></a><span class="sd">            early stopping parameter (convergence of loss function)</span>
@@ -152,18 +152,18 @@
 </span><span id="Optimizer-52"><a href="#Optimizer-52"><span class="linenos"> 52</span></a><span class="sd">            1 - a progress bar is printed</span>
 </span><span id="Optimizer-53"><a href="#Optimizer-53"><span class="linenos"> 53</span></a><span class="sd">            2 - successive loss function values are printed</span>
 </span><span id="Optimizer-54"><a href="#Optimizer-54"><span class="linenos"> 54</span></a>
-</span><span id="Optimizer-55"><a href="#Optimizer-55"><span class="linenos"> 55</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="Optimizer-55"><a href="#Optimizer-55"><span class="linenos"> 55</span></a><span class="sd">    """</span>
 </span><span id="Optimizer-56"><a href="#Optimizer-56"><span class="linenos"> 56</span></a>
 </span><span id="Optimizer-57"><a href="#Optimizer-57"><span class="linenos"> 57</span></a>    <span class="c1"># construct the object -----</span>
 </span><span id="Optimizer-58"><a href="#Optimizer-58"><span class="linenos"> 58</span></a>
 </span><span id="Optimizer-59"><a href="#Optimizer-59"><span class="linenos"> 59</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="Optimizer-60"><a href="#Optimizer-60"><span class="linenos"> 60</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="Optimizer-61"><a href="#Optimizer-61"><span class="linenos"> 61</span></a>        <span class="n">type_optim</span><span class="o">=</span><span class="s2">&quot;sgd&quot;</span><span class="p">,</span>
+</span><span id="Optimizer-61"><a href="#Optimizer-61"><span class="linenos"> 61</span></a>        <span class="n">type_optim</span><span class="o">=</span><span class="s2">"sgd"</span><span class="p">,</span>
 </span><span id="Optimizer-62"><a href="#Optimizer-62"><span class="linenos"> 62</span></a>        <span class="n">num_iters</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 </span><span id="Optimizer-63"><a href="#Optimizer-63"><span class="linenos"> 63</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
 </span><span id="Optimizer-64"><a href="#Optimizer-64"><span class="linenos"> 64</span></a>        <span class="n">batch_prop</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-</span><span id="Optimizer-65"><a href="#Optimizer-65"><span class="linenos"> 65</span></a>        <span class="n">learning_method</span><span class="o">=</span><span class="s2">&quot;momentum&quot;</span><span class="p">,</span>
-</span><span id="Optimizer-66"><a href="#Optimizer-66"><span class="linenos"> 66</span></a>        <span class="n">randomization</span><span class="o">=</span><span class="s2">&quot;strat&quot;</span><span class="p">,</span>
+</span><span id="Optimizer-65"><a href="#Optimizer-65"><span class="linenos"> 65</span></a>        <span class="n">learning_method</span><span class="o">=</span><span class="s2">"momentum"</span><span class="p">,</span>
+</span><span id="Optimizer-66"><a href="#Optimizer-66"><span class="linenos"> 66</span></a>        <span class="n">randomization</span><span class="o">=</span><span class="s2">"strat"</span><span class="p">,</span>
 </span><span id="Optimizer-67"><a href="#Optimizer-67"><span class="linenos"> 67</span></a>        <span class="n">mass</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
 </span><span id="Optimizer-68"><a href="#Optimizer-68"><span class="linenos"> 68</span></a>        <span class="n">decay</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
 </span><span id="Optimizer-69"><a href="#Optimizer-69"><span class="linenos"> 69</span></a>        <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
@@ -182,7 +182,7 @@
 </span><span id="Optimizer-82"><a href="#Optimizer-82"><span class="linenos"> 82</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">opt</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="Optimizer-83"><a href="#Optimizer-83"><span class="linenos"> 83</span></a>
 </span><span id="Optimizer-84"><a href="#Optimizer-84"><span class="linenos"> 84</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss_func</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="Optimizer-85"><a href="#Optimizer-85"><span class="linenos"> 85</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit GLM model to training data (X, y).</span>
+</span><span id="Optimizer-85"><a href="#Optimizer-85"><span class="linenos"> 85</span></a><span class="w">        </span><span class="sd">"""Fit GLM model to training data (X, y).</span>
 </span><span id="Optimizer-86"><a href="#Optimizer-86"><span class="linenos"> 86</span></a>
 </span><span id="Optimizer-87"><a href="#Optimizer-87"><span class="linenos"> 87</span></a><span class="sd">        Args:</span>
 </span><span id="Optimizer-88"><a href="#Optimizer-88"><span class="linenos"> 88</span></a>
@@ -201,9 +201,9 @@
 </span><span id="Optimizer-101"><a href="#Optimizer-101"><span class="linenos">101</span></a>
 </span><span id="Optimizer-102"><a href="#Optimizer-102"><span class="linenos">102</span></a><span class="sd">            self: object</span>
 </span><span id="Optimizer-103"><a href="#Optimizer-103"><span class="linenos">103</span></a>
-</span><span id="Optimizer-104"><a href="#Optimizer-104"><span class="linenos">104</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Optimizer-104"><a href="#Optimizer-104"><span class="linenos">104</span></a><span class="sd">        """</span>
 </span><span id="Optimizer-105"><a href="#Optimizer-105"><span class="linenos">105</span></a>
-</span><span id="Optimizer-106"><a href="#Optimizer-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">&quot;scd&quot;</span><span class="p">:</span>
+</span><span id="Optimizer-106"><a href="#Optimizer-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">"scd"</span><span class="p">:</span>
 </span><span id="Optimizer-107"><a href="#Optimizer-107"><span class="linenos">107</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">scd</span><span class="p">(</span>
 </span><span id="Optimizer-108"><a href="#Optimizer-108"><span class="linenos">108</span></a>                <span class="n">loss_func</span><span class="p">,</span>
 </span><span id="Optimizer-109"><a href="#Optimizer-109"><span class="linenos">109</span></a>                <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
@@ -220,7 +220,7 @@
 </span><span id="Optimizer-120"><a href="#Optimizer-120"><span class="linenos">120</span></a>                <span class="o">**</span><span class="n">kwargs</span>
 </span><span id="Optimizer-121"><a href="#Optimizer-121"><span class="linenos">121</span></a>            <span class="p">)</span>
 </span><span id="Optimizer-122"><a href="#Optimizer-122"><span class="linenos">122</span></a>
-</span><span id="Optimizer-123"><a href="#Optimizer-123"><span class="linenos">123</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">&quot;sgd&quot;</span><span class="p">:</span>
+</span><span id="Optimizer-123"><a href="#Optimizer-123"><span class="linenos">123</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">"sgd"</span><span class="p">:</span>
 </span><span id="Optimizer-124"><a href="#Optimizer-124"><span class="linenos">124</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">sgd</span><span class="p">(</span>
 </span><span id="Optimizer-125"><a href="#Optimizer-125"><span class="linenos">125</span></a>                <span class="n">loss_func</span><span class="p">,</span>
 </span><span id="Optimizer-126"><a href="#Optimizer-126"><span class="linenos">126</span></a>                <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
@@ -304,7 +304,7 @@ verbose: int
     </div>
     <a class="headerlink" href="#Optimizer.fit"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Optimizer.fit-84"><a href="#Optimizer.fit-84"><span class="linenos"> 84</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss_func</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="Optimizer.fit-85"><a href="#Optimizer.fit-85"><span class="linenos"> 85</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit GLM model to training data (X, y).</span>
+</span><span id="Optimizer.fit-85"><a href="#Optimizer.fit-85"><span class="linenos"> 85</span></a><span class="w">        </span><span class="sd">"""Fit GLM model to training data (X, y).</span>
 </span><span id="Optimizer.fit-86"><a href="#Optimizer.fit-86"><span class="linenos"> 86</span></a>
 </span><span id="Optimizer.fit-87"><a href="#Optimizer.fit-87"><span class="linenos"> 87</span></a><span class="sd">        Args:</span>
 </span><span id="Optimizer.fit-88"><a href="#Optimizer.fit-88"><span class="linenos"> 88</span></a>
@@ -323,9 +323,9 @@ verbose: int
 </span><span id="Optimizer.fit-101"><a href="#Optimizer.fit-101"><span class="linenos">101</span></a>
 </span><span id="Optimizer.fit-102"><a href="#Optimizer.fit-102"><span class="linenos">102</span></a><span class="sd">            self: object</span>
 </span><span id="Optimizer.fit-103"><a href="#Optimizer.fit-103"><span class="linenos">103</span></a>
-</span><span id="Optimizer.fit-104"><a href="#Optimizer.fit-104"><span class="linenos">104</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Optimizer.fit-104"><a href="#Optimizer.fit-104"><span class="linenos">104</span></a><span class="sd">        """</span>
 </span><span id="Optimizer.fit-105"><a href="#Optimizer.fit-105"><span class="linenos">105</span></a>
-</span><span id="Optimizer.fit-106"><a href="#Optimizer.fit-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">&quot;scd&quot;</span><span class="p">:</span>
+</span><span id="Optimizer.fit-106"><a href="#Optimizer.fit-106"><span class="linenos">106</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">"scd"</span><span class="p">:</span>
 </span><span id="Optimizer.fit-107"><a href="#Optimizer.fit-107"><span class="linenos">107</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">scd</span><span class="p">(</span>
 </span><span id="Optimizer.fit-108"><a href="#Optimizer.fit-108"><span class="linenos">108</span></a>                <span class="n">loss_func</span><span class="p">,</span>
 </span><span id="Optimizer.fit-109"><a href="#Optimizer.fit-109"><span class="linenos">109</span></a>                <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
@@ -342,7 +342,7 @@ verbose: int
 </span><span id="Optimizer.fit-120"><a href="#Optimizer.fit-120"><span class="linenos">120</span></a>                <span class="o">**</span><span class="n">kwargs</span>
 </span><span id="Optimizer.fit-121"><a href="#Optimizer.fit-121"><span class="linenos">121</span></a>            <span class="p">)</span>
 </span><span id="Optimizer.fit-122"><a href="#Optimizer.fit-122"><span class="linenos">122</span></a>
-</span><span id="Optimizer.fit-123"><a href="#Optimizer.fit-123"><span class="linenos">123</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">&quot;sgd&quot;</span><span class="p">:</span>
+</span><span id="Optimizer.fit-123"><a href="#Optimizer.fit-123"><span class="linenos">123</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type_optim</span> <span class="o">==</span> <span class="s2">"sgd"</span><span class="p">:</span>
 </span><span id="Optimizer.fit-124"><a href="#Optimizer.fit-124"><span class="linenos">124</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">sgd</span><span class="p">(</span>
 </span><span id="Optimizer.fit-125"><a href="#Optimizer.fit-125"><span class="linenos">125</span></a>                <span class="n">loss_func</span><span class="p">,</span>
 </span><span id="Optimizer.fit-126"><a href="#Optimizer.fit-126"><span class="linenos">126</span></a>                <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>

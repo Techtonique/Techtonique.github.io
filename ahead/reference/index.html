@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -164,6 +164,10 @@
         </td>
         <td><p>Compute global attention weights and context vectors for time series</p></td>
       </tr><tr><td>
+          <p><code><a href="condvolf.html">condvolf()</a></code> </p>
+        </td>
+        <td><p>Model-agnostic statistical probabilistic forecasting with conditional volatility</p></td>
+      </tr><tr><td>
           <p><code><a href="conformalize.html">conformalize()</a></code> </p>
         </td>
         <td><p>Conformalize a forecasting function</p></td>
@@ -204,6 +208,10 @@
         </td>
         <td><p>Combined ets-arima-theta forecasts</p></td>
       </tr><tr><td>
+          <p><code><a href="estimate_theta_slope.html">estimate_theta_slope()</a></code> </p>
+        </td>
+        <td><p>Estimate local slope of a fitted model's response surface with respect to time</p></td>
+      </tr><tr><td>
           <p><code><a href="example_2level_forecast.html">example_2level_forecast()</a></code> </p>
         </td>
         <td><p>Example usage</p></td>
@@ -211,6 +219,10 @@
           <p><code><a href="fit_func.html">fit_func()</a></code> </p>
         </td>
         <td><p>Fit univariate time series using caret ML model (for use with <code>dynrmf</code>)</p></td>
+      </tr><tr><td>
+          <p><code><a href="fitdistr_ahead.html">fitdistr_ahead()</a></code> </p>
+        </td>
+        <td><p>Fit a Univariate Distribution to Data via Maximum Likelihood</p></td>
       </tr><tr><td>
           <p><code><a href="fitforecast.html">fitforecast()</a></code> </p>
         </td>
@@ -286,11 +298,11 @@
       </tr><tr><td>
           <p><code><a href="plot_hts_forecast.html">plot_hts_forecast()</a></code> </p>
         </td>
-        <td><p>Plot forecast results with simulation intervals</p></td>
+        <td><p>Plot hierarchical time series forecast</p></td>
       </tr><tr><td>
           <p><code><a href="plot_simulations.html">plot_simulations()</a></code> </p>
         </td>
-        <td><p>Plot simulation paths</p></td>
+        <td><p>Plot simulation paths for a hierarchical time series forecast</p></td>
       </tr><tr><td>
           <p><code><a href="predict.foreccomb_res.html">predict(<i>&lt;foreccomb_res&gt;</i>)</a></code> </p>
         </td>
@@ -304,13 +316,21 @@
         </td>
         <td><p>Print method for summary.synthetic_ts objects</p></td>
       </tr><tr><td>
+          <p><code><a href="removenas.html">removenas()</a></code> </p>
+        </td>
+        <td><p>Remove Missing Values from a Time Series via Linear Interpolation</p></td>
+      </tr><tr><td>
           <p><code><a href="rfitdistr.html">rfitdistr()</a></code> </p>
         </td>
-        <td><p>Simulate from parametric distribution</p></td>
+        <td><p>Random generation from a fitted distribution</p></td>
       </tr><tr><td>
           <p><code><a href="rgaussiandens.html">rgaussiandens()</a></code> </p>
         </td>
         <td><p>Simulate Gaussian Kernel Density</p></td>
+      </tr><tr><td>
+          <p><code><a href="ridge.html">ridge()</a></code> </p>
+        </td>
+        <td><p>Fit Ridge Regression Across a Grid of Penalty Values</p></td>
       </tr><tr><td>
           <p><code><a href="ridge2f.html">ridge2f()</a></code> </p>
         </td>
@@ -322,7 +342,7 @@
       </tr><tr><td>
           <p><code><a href="rsurrogate.html">rsurrogate()</a></code> </p>
         </td>
-        <td><p>Simulate using surrogate data</p></td>
+        <td><p>Random generation of surrogate series</p></td>
       </tr><tr><td>
           <p><code><a href="sequential_conformal_hts.html">sequential_conformal_hts()</a></code> </p>
         </td>
@@ -355,10 +375,6 @@
           <p><code><a href="topdown_forecast.html">topdown_forecast()</a></code> </p>
         </td>
         <td><p>Top-down forecast using historical proportions</p></td>
-      </tr><tr><td>
-          <p><code><a href="transformerreturnsf.html">transformerreturnsf()</a></code> </p>
-        </td>
-        <td><p>Transformer Forecasting for Financial Returns</p></td>
       </tr><tr><td>
           <p><code><a href="varf.html">varf()</a></code> </p>
         </td>

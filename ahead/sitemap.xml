@@ -13,8 +13,6 @@
 <url><loc>/articles/caretfitpredict.html</loc></url>
 <url><loc>/articles/comb_OLS.html</loc></url>
 <url><loc>/articles/comb_OLS2.html</loc></url>
-<url><loc>/articles/conformal-ml-stacking.html</loc></url>
-<url><loc>/articles/conformal-ml-stacking2.html</loc></url>
 <url><loc>/articles/conformal-ml.html</loc></url>
 <url><loc>/articles/conformal-ml2.html</loc></url>
 <url><loc>/articles/ctx-theta.html</loc></url>
@@ -43,6 +41,7 @@
 <url><loc>/reference/comb_OLS.html</loc></url>
 <url><loc>/reference/comb_Ridge.html</loc></url>
 <url><loc>/reference/computeattention.html</loc></url>
+<url><loc>/reference/condvolf.html</loc></url>
 <url><loc>/reference/conformalize.html</loc></url>
 <url><loc>/reference/contextridge2f.html</loc></url>
 <url><loc>/reference/create_2level_hts.html</loc></url>
@@ -53,15 +52,13 @@
 <url><loc>/reference/dynrmf_sensi.html</loc></url>
 <url><loc>/reference/dynrmf_shap.html</loc></url>
 <url><loc>/reference/eatf.html</loc></url>
+<url><loc>/reference/estimate_theta_slope.html</loc></url>
 <url><loc>/reference/example_2level_forecast.html</loc></url>
 <url><loc>/reference/fit_func.html</loc></url>
+<url><loc>/reference/fitdistr_ahead.html</loc></url>
 <url><loc>/reference/fitforecast.html</loc></url>
-<url><loc>/reference/garch11Fit.html</loc></url>
-<url><loc>/reference/garch11_bootstrap_forecast.html</loc></url>
-<url><loc>/reference/garch11f.html</loc></url>
 <url><loc>/reference/generate_synthetic_ts.html</loc></url>
 <url><loc>/reference/genericforecast.html</loc></url>
-<url><loc>/reference/get_error.html</loc></url>
 <url><loc>/reference/geterror.html</loc></url>
 <url><loc>/reference/getreturns.html</loc></url>
 <url><loc>/reference/getsimulations.html</loc></url>
@@ -74,7 +71,6 @@
 <url><loc>/reference/mlarchf.html</loc></url>
 <url><loc>/reference/mlf.html</loc></url>
 <url><loc>/reference/plot.foreccomb_res.html</loc></url>
-<url><loc>/reference/plot.garch11forecast.html</loc></url>
 <url><loc>/reference/plot.mtsforecast.html</loc></url>
 <url><loc>/reference/plot.synthetic_ts.html</loc></url>
 <url><loc>/reference/plot_dynrmf_sensitivity.html</loc></url>
@@ -83,10 +79,11 @@
 <url><loc>/reference/plot_simulations.html</loc></url>
 <url><loc>/reference/predict.foreccomb_res.html</loc></url>
 <url><loc>/reference/predict_func.html</loc></url>
-<url><loc>/reference/print.garch11forecast.html</loc></url>
 <url><loc>/reference/print.summary.synthetic_ts.html</loc></url>
+<url><loc>/reference/removenas.html</loc></url>
 <url><loc>/reference/rfitdistr.html</loc></url>
 <url><loc>/reference/rgaussiandens.html</loc></url>
+<url><loc>/reference/ridge.html</loc></url>
 <url><loc>/reference/ridge2f.html</loc></url>
 <url><loc>/reference/rmultivariate.html</loc></url>
 <url><loc>/reference/rsurrogate.html</loc></url>
@@ -96,10 +93,8 @@
 <url><loc>/reference/splitts.html</loc></url>
 <url><loc>/reference/stackridge2f.html</loc></url>
 <url><loc>/reference/summary.foreccomb_res.html</loc></url>
-<url><loc>/reference/summary.garch11forecast.html</loc></url>
 <url><loc>/reference/summary.synthetic_ts.html</loc></url>
 <url><loc>/reference/topdown_forecast.html</loc></url>
-<url><loc>/reference/transformerreturnsf.html</loc></url>
 <url><loc>/reference/varf.html</loc></url>
 </urlset>
 

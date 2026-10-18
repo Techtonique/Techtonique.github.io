@@ -66,7 +66,7 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.votingregressor</span><span class="w"> </span><span class="kn">import</span> <span class="n">MedianVotingRegressor</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MedianVotingRegressor&quot;</span><span class="p">]</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"MedianVotingRegressor"</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -84,15 +84,15 @@
     <a class="headerlink" href="#MedianVotingRegressor"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MedianVotingRegressor-6"><a href="#MedianVotingRegressor-6"><span class="linenos"> 6</span></a><span class="k">class</span><span class="w"> </span><span class="nc">MedianVotingRegressor</span><span class="p">(</span><span class="n">VotingRegressor</span><span class="p">):</span>
 </span><span id="MedianVotingRegressor-7"><a href="#MedianVotingRegressor-7"><span class="linenos"> 7</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="MedianVotingRegressor-8"><a href="#MedianVotingRegressor-8"><span class="linenos"> 8</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="MedianVotingRegressor-9"><a href="#MedianVotingRegressor-9"><span class="linenos"> 9</span></a><span class="sd">        Predict using the median of the base regressors&#39; predictions.</span>
+</span><span id="MedianVotingRegressor-8"><a href="#MedianVotingRegressor-8"><span class="linenos"> 8</span></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="MedianVotingRegressor-9"><a href="#MedianVotingRegressor-9"><span class="linenos"> 9</span></a><span class="sd">        Predict using the median of the base regressors' predictions.</span>
 </span><span id="MedianVotingRegressor-10"><a href="#MedianVotingRegressor-10"><span class="linenos">10</span></a>
 </span><span id="MedianVotingRegressor-11"><a href="#MedianVotingRegressor-11"><span class="linenos">11</span></a><span class="sd">        Parameters:</span>
 </span><span id="MedianVotingRegressor-12"><a href="#MedianVotingRegressor-12"><span class="linenos">12</span></a><span class="sd">        X (array-like): Feature matrix for predictions.</span>
 </span><span id="MedianVotingRegressor-13"><a href="#MedianVotingRegressor-13"><span class="linenos">13</span></a>
 </span><span id="MedianVotingRegressor-14"><a href="#MedianVotingRegressor-14"><span class="linenos">14</span></a><span class="sd">        Returns:</span>
 </span><span id="MedianVotingRegressor-15"><a href="#MedianVotingRegressor-15"><span class="linenos">15</span></a><span class="sd">        y_pred (array): Median of predictions from the base regressors.</span>
-</span><span id="MedianVotingRegressor-16"><a href="#MedianVotingRegressor-16"><span class="linenos">16</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MedianVotingRegressor-16"><a href="#MedianVotingRegressor-16"><span class="linenos">16</span></a><span class="sd">        """</span>
 </span><span id="MedianVotingRegressor-17"><a href="#MedianVotingRegressor-17"><span class="linenos">17</span></a>        <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
 </span><span id="MedianVotingRegressor-18"><a href="#MedianVotingRegressor-18"><span class="linenos">18</span></a>            <span class="p">[</span><span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">regressor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="p">]</span>
 </span><span id="MedianVotingRegressor-19"><a href="#MedianVotingRegressor-19"><span class="linenos">19</span></a>        <span class="p">)</span>
@@ -186,7 +186,7 @@ support was removed in 0.24.
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r3</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">36</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">er</span> <span class="o">=</span> <span class="n">VotingRegressor</span><span class="p">([(</span><span class="s1">&#39;lr&#39;</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;r3&#39;</span><span class="p">,</span> <span class="n">r3</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">er</span> <span class="o">=</span> <span class="n">VotingRegressor</span><span class="p">([(</span><span class="s1">'lr'</span><span class="p">,</span> <span class="n">r1</span><span class="p">),</span> <span class="p">(</span><span class="s1">'rf'</span><span class="p">,</span> <span class="n">r2</span><span class="p">),</span> <span class="p">(</span><span class="s1">'r3'</span><span class="p">,</span> <span class="n">r3</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">er</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 <span class="go">[ 6.8  8.4 12.5 17.8 26  34]</span>
 </code></pre>
@@ -196,7 +196,7 @@ support was removed in 0.24.
 <code>~VotingRegressor.set_params()</code> and fit the remaining two estimators:</p>
 
 <div class="pdoc-code codehilite">
-<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">er</span> <span class="o">=</span> <span class="n">er</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">)</span>
+<pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">er</span> <span class="o">=</span> <span class="n">er</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="s1">'drop'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">er</span> <span class="o">=</span> <span class="n">er</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">er</span><span class="o">.</span><span class="n">estimators_</span><span class="p">)</span>
 <span class="go">2</span>
@@ -217,15 +217,15 @@ support was removed in 0.24.
     </div>
     <a class="headerlink" href="#MedianVotingRegressor.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MedianVotingRegressor.predict-7"><a href="#MedianVotingRegressor.predict-7"><span class="linenos"> 7</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="MedianVotingRegressor.predict-8"><a href="#MedianVotingRegressor.predict-8"><span class="linenos"> 8</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="MedianVotingRegressor.predict-9"><a href="#MedianVotingRegressor.predict-9"><span class="linenos"> 9</span></a><span class="sd">        Predict using the median of the base regressors&#39; predictions.</span>
+</span><span id="MedianVotingRegressor.predict-8"><a href="#MedianVotingRegressor.predict-8"><span class="linenos"> 8</span></a><span class="w">        </span><span class="sd">"""</span>
+</span><span id="MedianVotingRegressor.predict-9"><a href="#MedianVotingRegressor.predict-9"><span class="linenos"> 9</span></a><span class="sd">        Predict using the median of the base regressors' predictions.</span>
 </span><span id="MedianVotingRegressor.predict-10"><a href="#MedianVotingRegressor.predict-10"><span class="linenos">10</span></a>
 </span><span id="MedianVotingRegressor.predict-11"><a href="#MedianVotingRegressor.predict-11"><span class="linenos">11</span></a><span class="sd">        Parameters:</span>
 </span><span id="MedianVotingRegressor.predict-12"><a href="#MedianVotingRegressor.predict-12"><span class="linenos">12</span></a><span class="sd">        X (array-like): Feature matrix for predictions.</span>
 </span><span id="MedianVotingRegressor.predict-13"><a href="#MedianVotingRegressor.predict-13"><span class="linenos">13</span></a>
 </span><span id="MedianVotingRegressor.predict-14"><a href="#MedianVotingRegressor.predict-14"><span class="linenos">14</span></a><span class="sd">        Returns:</span>
 </span><span id="MedianVotingRegressor.predict-15"><a href="#MedianVotingRegressor.predict-15"><span class="linenos">15</span></a><span class="sd">        y_pred (array): Median of predictions from the base regressors.</span>
-</span><span id="MedianVotingRegressor.predict-16"><a href="#MedianVotingRegressor.predict-16"><span class="linenos">16</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MedianVotingRegressor.predict-16"><a href="#MedianVotingRegressor.predict-16"><span class="linenos">16</span></a><span class="sd">        """</span>
 </span><span id="MedianVotingRegressor.predict-17"><a href="#MedianVotingRegressor.predict-17"><span class="linenos">17</span></a>        <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
 </span><span id="MedianVotingRegressor.predict-18"><a href="#MedianVotingRegressor.predict-18"><span class="linenos">18</span></a>            <span class="p">[</span><span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">regressor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="p">]</span>
 </span><span id="MedianVotingRegressor.predict-19"><a href="#MedianVotingRegressor.predict-19"><span class="linenos">19</span></a>        <span class="p">)</span>

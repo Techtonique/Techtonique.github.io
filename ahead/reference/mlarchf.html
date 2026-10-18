@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -143,7 +143,7 @@
 <span>  h <span class="op">=</span> <span class="fl">10L</span>,</span>
 <span>  mean_model <span class="op">=</span> <span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span>,</span>
 <span>  model_residuals <span class="op">=</span> <span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/meanf.html" class="external-link">meanf</a></span>,</span>
-<span>  fit_func <span class="op">=</span> <span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/ForecastComb/man/ridge.html" class="external-link">ridge</a></span>,</span>
+<span>  fit_func <span class="op">=</span> <span class="fu">ahead</span><span class="fu">::</span><span class="va"><a href="ridge.html">ridge</a></span>,</span>
 <span>  predict_func <span class="op">=</span> <span class="va">predict</span>,</span>
 <span>  conformal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  lags_vol <span class="op">=</span> <span class="fl">10L</span>,</span>
@@ -183,7 +183,7 @@
 
 
 <dt id="arg-fit-func">fit_func<a class="anchor" aria-label="anchor" href="#arg-fit-func"></a></dt>
-<dd><p>Fitting function for the variance model (default: <code><a href="https://rdrr.io/pkg/ForecastComb/man/ridge.html" class="external-link">ahead::ridge</a></code>)</p></dd>
+<dd><p>Fitting function for the variance model (default: <code><a href="ridge.html">ahead::ridge</a></code>)</p></dd>
 
 
 <dt id="arg-predict-func">predict_func<a class="anchor" aria-label="anchor" href="#arg-predict-func"></a></dt>
@@ -283,31 +283,32 @@ If NULL, uses <code>fit_func</code> and <code>predict_func</code>. See <code>uni
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlarchf</span><span class="op">(</span><span class="va">y</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, conformal<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Point Forecast    Lo 95    Hi 95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 201       532.2466 517.5339 549.7756</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 202       531.7224 508.7408 551.2735</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 203       533.2419 519.0815 549.6869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 204       538.2220 519.6208 558.4489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 205       533.6841 515.4832 550.8369</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 206       536.0713 522.1240 551.1259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 201       532.2466 517.5336 549.7757</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 202       531.7224 508.7407 551.2736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 203       533.2419 519.0814 549.6870</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 204       538.2219 519.6206 558.4492</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 205       533.6841 515.4831 550.8374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 206       536.0713 522.1237 551.1261</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 207       537.9695 520.3529 550.8776</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 208       536.6699 519.0575 552.6136</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 209       540.0722 520.8841 557.9272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 208       536.6699 519.0572 552.6137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 209       540.0722 520.8839 557.9275</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 210       540.1827 527.2999 564.3716</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 211       541.1687 524.6547 553.8595</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 212       540.4668 524.1068 562.6405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 213       540.3615 522.8569 564.6440</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 214       541.6808 524.9869 556.9404</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 215       541.9843 526.4018 563.4523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 216       542.8743 527.5210 562.6983</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 217       543.3401 528.7225 560.6608</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 218       543.5208 522.6618 565.3813</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 212       540.4668 524.1063 562.6405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213       540.3615 522.8568 564.6440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 214       541.6808 524.9868 556.9405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215       541.9843 526.4016 563.4524</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216       542.8743 527.5210 562.6984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 217       543.3400 528.7223 560.6608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 218       543.5208 522.6618 565.3814</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 219       544.4165 528.6999 560.2330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 220       544.7700 526.8607 563.6331</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220       544.7700 526.8605 563.6332</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj_ridge</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">obj_ridge</span><span class="op">$</span><span class="va">upper</span> <span class="op">-</span> <span class="va">obj_ridge</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35.17146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35.17171</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlarchf</span><span class="op">(</span><span class="va">y</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, conformal<span class="op">=</span><span class="cn">TRUE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, ml <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlarchf</span><span class="op">(</span><span class="va">y</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, conformal<span class="op">=</span><span class="cn">TRUE</span>, </span></span>
+<span class="r-in"><span>stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, ml <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Point Forecast    Lo 95    Hi 95</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 201       538.0943 511.3731 599.5316</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 202       532.7592 492.6637 561.5746</span>
@@ -333,7 +334,8 @@ If NULL, uses <code>fit_func</code> and <code>predict_func</code>. See <code>uni
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">obj_ridge</span><span class="op">$</span><span class="va">upper</span> <span class="op">-</span> <span class="va">obj_ridge</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 68.34035</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlarchf</span><span class="op">(</span><span class="va">y</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, conformal<span class="op">=</span><span class="cn">FALSE</span>, stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, ml <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">obj_ridge</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">mlarchf</span><span class="op">(</span><span class="va">y</span>, h<span class="op">=</span><span class="fl">20L</span>, B<span class="op">=</span><span class="fl">500L</span>, conformal<span class="op">=</span><span class="cn">FALSE</span>, </span></span>
+<span class="r-in"><span>stat_model<span class="op">=</span><span class="fu">forecast</span><span class="fu">::</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/reference/thetaf.html" class="external-link">thetaf</a></span>, ml <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Point Forecast    Lo 95    Hi 95</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 201       531.6567 514.0526 548.3243</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 202       532.9804 511.2759 560.9922</span>

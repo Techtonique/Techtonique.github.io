@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -138,7 +138,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">splitts</span><span class="op">(</span><span class="va">y</span>, split_prob <span class="op">=</span> <span class="fl">0.5</span>, return_indices <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">splitts</span><span class="op">(</span><span class="va">y</span>, split_prob <span class="op">=</span> <span class="fl">0.5</span>, return_indices <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -150,18 +150,18 @@
 
 
 <dt id="arg-split-prob">split_prob<a class="anchor" aria-label="anchor" href="#arg-split-prob"></a></dt>
-<dd><p>Splitting ratio</p></dd>
+<dd><p>A float; Splitting ratio</p></dd>
 
 
 <dt id="arg-return-indices">return_indices<a class="anchor" aria-label="anchor" href="#arg-return-indices"></a></dt>
-<dd><p>if TRUE, returns series' indices, otherwise, time series objects</p></dd>
+<dd><p>A boolean; if TRUE, returns series' indices, otherwise, time series objects</p></dd>
 
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">misc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/misc/man/splitts.html" class="external-link">splitts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">splitts</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $training</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Time Series:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Start = 1 </span>

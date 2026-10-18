@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -97,7 +97,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -212,17 +212,13 @@ how to install the R version of the package:</p>
 <span><span class="va">EuStocksLogReturns</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="../reference/getreturns.html">getreturns</a></span><span class="op">(</span><span class="va">EuStocks</span>, type <span class="op">=</span> <span class="st">"log"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">EuStocksLogReturns</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Time Series:</span></span>
-<span><span class="co">## Start = c(1991, 131) </span></span>
-<span><span class="co">## End = c(1991, 136) </span></span>
-<span><span class="co">## Frequency = 260 </span></span>
-<span><span class="co">##                   DAX          SMI          CAC         FTSE</span></span>
-<span><span class="co">## 1991.500 -0.009326550  0.006178360 -0.012658756  0.006770286</span></span>
-<span><span class="co">## 1991.504 -0.004422175 -0.005880448 -0.018740638 -0.004889587</span></span>
-<span><span class="co">## 1991.508  0.009003794  0.003271184 -0.005779182  0.009027020</span></span>
-<span><span class="co">## 1991.512 -0.001778217  0.001483372  0.008743353  0.005771847</span></span>
-<span><span class="co">## 1991.515 -0.004676712 -0.008933417 -0.005120160 -0.007230164</span></span>
-<span><span class="co">## 1991.519  0.012427042  0.006737244  0.011714353  0.008517217</span></span></code></pre>
+<pre><code><span><span class="co">##               DAX          SMI          CAC         FTSE</span></span>
+<span><span class="co">## [1,] -0.009326550  0.006178360 -0.012658756  0.006770286</span></span>
+<span><span class="co">## [2,] -0.004422175 -0.005880448 -0.018740638 -0.004889587</span></span>
+<span><span class="co">## [3,]  0.009003794  0.003271184 -0.005779182  0.009027020</span></span>
+<span><span class="co">## [4,] -0.001778217  0.001483372  0.008743353  0.005771847</span></span>
+<span><span class="co">## [5,] -0.004676712 -0.008933417 -0.005120160 -0.007230164</span></span>
+<span><span class="co">## [6,]  0.012427042  0.006737244  0.011714353  0.008517217</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="risk-neutralize-simulations">2 - Risk-neutralize simulations<a class="anchor" aria-label="anchor" href="#risk-neutralize-simulations"></a>

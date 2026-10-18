@@ -18,7 +18,7 @@ forecast::auto.arima, forecast::thetaf)"><!-- mathjax --><script src="https://cd
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@ forecast::auto.arima, forecast::thetaf)"><!-- mathjax --><script src="https://cd
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -244,12 +244,12 @@ International J. Forecasting, 19, 287-290.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"EAT"</span>,</span></span>
-<span class="r-in"><span>weights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#print(ahead::eatf(WWWusage, method = "EAT",</span></span></span>
+<span class="r-in"><span><span class="co">#weights = c(0.5, 0, 0.5)))</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"EAT"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#print(ahead::eatf(WWWusage, method = "EAT"))</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#print(ahead::eatf(WWWusage, method = "A"))</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"EAT"</span>,</span></span>
@@ -261,18 +261,17 @@ International J. Forecasting, 19, 287-290.</p>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, method <span class="op">=</span> <span class="st">"EAT"</span>,</span></span>
 <span class="r-in"><span>weights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span><span class="op">)</span>, h<span class="op">=</span><span class="fl">10</span>, type_pi<span class="op">=</span><span class="st">"A"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">USAccDeaths</span>, h<span class="op">=</span><span class="fl">10</span>, level<span class="op">=</span><span class="fl">95</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">AirPassengers</span>, h<span class="op">=</span><span class="fl">10</span>, level<span class="op">=</span><span class="fl">95</span>, type_pi <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">lynx</span>, h<span class="op">=</span><span class="fl">10</span>, level<span class="op">=</span><span class="fl">95</span>, type_pi <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#plot(ahead::eatf(lynx, h=10, level=95, type_pi = "A"))</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">WWWusage</span>, h<span class="op">=</span><span class="fl">10</span>, level<span class="op">=</span><span class="fl">95</span>, type_pi <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">Nile</span>, h<span class="op">=</span><span class="fl">10</span>, level<span class="op">=</span><span class="fl">95</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu">ahead</span><span class="fu">::</span><span class="fu">eatf</span><span class="op">(</span><span class="va">fdeaths</span>, h<span class="op">=</span><span class="fl">10</span>, level<span class="op">=</span><span class="fl">95</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="eatf-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

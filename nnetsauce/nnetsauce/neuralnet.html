@@ -136,7 +136,7 @@
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.neuralnetregression</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeuralNetRegressor</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.neuralnetclassification</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeuralNetClassifier</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a>
-</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NeuralNetRegressor&quot;</span><span class="p">,</span> <span class="s2">&quot;NeuralNetClassifier&quot;</span><span class="p">]</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"NeuralNetRegressor"</span><span class="p">,</span> <span class="s2">"NeuralNetClassifier"</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -153,7 +153,7 @@
     </div>
     <a class="headerlink" href="#NeuralNetRegressor"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="NeuralNetRegressor-112"><a href="#NeuralNetRegressor-112"><span class="linenos">112</span></a><span class="k">class</span><span class="w"> </span><span class="nc">NeuralNetRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
-</span><span id="NeuralNetRegressor-113"><a href="#NeuralNetRegressor-113"><span class="linenos">113</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="NeuralNetRegressor-113"><a href="#NeuralNetRegressor-113"><span class="linenos">113</span></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="NeuralNetRegressor-114"><a href="#NeuralNetRegressor-114"><span class="linenos">114</span></a><span class="sd">    (Pretrained) Neural Network Regressor.</span>
 </span><span id="NeuralNetRegressor-115"><a href="#NeuralNetRegressor-115"><span class="linenos">115</span></a>
 </span><span id="NeuralNetRegressor-116"><a href="#NeuralNetRegressor-116"><span class="linenos">116</span></a><span class="sd">    Parameters:</span>
@@ -168,7 +168,7 @@
 </span><span id="NeuralNetRegressor-125"><a href="#NeuralNetRegressor-125"><span class="linenos">125</span></a><span class="sd">            The ratio of L1 regularization.</span>
 </span><span id="NeuralNetRegressor-126"><a href="#NeuralNetRegressor-126"><span class="linenos">126</span></a><span class="sd">        alpha : float, default=1e-6</span>
 </span><span id="NeuralNetRegressor-127"><a href="#NeuralNetRegressor-127"><span class="linenos">127</span></a><span class="sd">            The regularization parameter.</span>
-</span><span id="NeuralNetRegressor-128"><a href="#NeuralNetRegressor-128"><span class="linenos">128</span></a><span class="sd">        activation_name : str, default=&quot;relu&quot;</span>
+</span><span id="NeuralNetRegressor-128"><a href="#NeuralNetRegressor-128"><span class="linenos">128</span></a><span class="sd">        activation_name : str, default="relu"</span>
 </span><span id="NeuralNetRegressor-129"><a href="#NeuralNetRegressor-129"><span class="linenos">129</span></a><span class="sd">            The activation function to use.</span>
 </span><span id="NeuralNetRegressor-130"><a href="#NeuralNetRegressor-130"><span class="linenos">130</span></a><span class="sd">        dropout : float, default=0.0</span>
 </span><span id="NeuralNetRegressor-131"><a href="#NeuralNetRegressor-131"><span class="linenos">131</span></a><span class="sd">            The dropout rate.</span>
@@ -198,7 +198,7 @@
 </span><span id="NeuralNetRegressor-155"><a href="#NeuralNetRegressor-155"><span class="linenos">155</span></a><span class="sd">            Get the weights of the model.</span>
 </span><span id="NeuralNetRegressor-156"><a href="#NeuralNetRegressor-156"><span class="linenos">156</span></a><span class="sd">        set_weights(weights)</span>
 </span><span id="NeuralNetRegressor-157"><a href="#NeuralNetRegressor-157"><span class="linenos">157</span></a><span class="sd">            Set the weights of the model.</span>
-</span><span id="NeuralNetRegressor-158"><a href="#NeuralNetRegressor-158"><span class="linenos">158</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="NeuralNetRegressor-158"><a href="#NeuralNetRegressor-158"><span class="linenos">158</span></a><span class="sd">    """</span>
 </span><span id="NeuralNetRegressor-159"><a href="#NeuralNetRegressor-159"><span class="linenos">159</span></a>
 </span><span id="NeuralNetRegressor-160"><a href="#NeuralNetRegressor-160"><span class="linenos">160</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="NeuralNetRegressor-161"><a href="#NeuralNetRegressor-161"><span class="linenos">161</span></a>        <span class="bp">self</span><span class="p">,</span>
@@ -207,14 +207,14 @@
 </span><span id="NeuralNetRegressor-164"><a href="#NeuralNetRegressor-164"><span class="linenos">164</span></a>        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-165"><a href="#NeuralNetRegressor-165"><span class="linenos">165</span></a>        <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-166"><a href="#NeuralNetRegressor-166"><span class="linenos">166</span></a>        <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
-</span><span id="NeuralNetRegressor-167"><a href="#NeuralNetRegressor-167"><span class="linenos">167</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="NeuralNetRegressor-167"><a href="#NeuralNetRegressor-167"><span class="linenos">167</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-168"><a href="#NeuralNetRegressor-168"><span class="linenos">168</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-169"><a href="#NeuralNetRegressor-169"><span class="linenos">169</span></a>        <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-170"><a href="#NeuralNetRegressor-170"><span class="linenos">170</span></a>        <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-171"><a href="#NeuralNetRegressor-171"><span class="linenos">171</span></a>    <span class="p">):</span>
 </span><span id="NeuralNetRegressor-172"><a href="#NeuralNetRegressor-172"><span class="linenos">172</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">JAX_AVAILABLE</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-173"><a href="#NeuralNetRegressor-173"><span class="linenos">173</span></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-174"><a href="#NeuralNetRegressor-174"><span class="linenos">174</span></a>                <span class="s2">&quot;JAX is required for this feature. Install with: pip install yourpackage[jax]&quot;</span>
+</span><span id="NeuralNetRegressor-174"><a href="#NeuralNetRegressor-174"><span class="linenos">174</span></a>                <span class="s2">"JAX is required for this feature. Install with: pip install yourpackage[jax]"</span>
 </span><span id="NeuralNetRegressor-175"><a href="#NeuralNetRegressor-175"><span class="linenos">175</span></a>            <span class="p">)</span>
 </span><span id="NeuralNetRegressor-176"><a href="#NeuralNetRegressor-176"><span class="linenos">176</span></a>
 </span><span id="NeuralNetRegressor-177"><a href="#NeuralNetRegressor-177"><span class="linenos">177</span></a>        <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">hidden_layer_sizes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -233,36 +233,36 @@
 </span><span id="NeuralNetRegressor-190"><a href="#NeuralNetRegressor-190"><span class="linenos">190</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">y_mean_</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="NeuralNetRegressor-191"><a href="#NeuralNetRegressor-191"><span class="linenos">191</span></a>
 </span><span id="NeuralNetRegressor-192"><a href="#NeuralNetRegressor-192"><span class="linenos">192</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">):</span>
-</span><span id="NeuralNetRegressor-193"><a href="#NeuralNetRegressor-193"><span class="linenos">193</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that weights dimensions are coherent.&quot;&quot;&quot;</span>
+</span><span id="NeuralNetRegressor-193"><a href="#NeuralNetRegressor-193"><span class="linenos">193</span></a><span class="w">        </span><span class="sd">"""Validate that weights dimensions are coherent."""</span>
 </span><span id="NeuralNetRegressor-194"><a href="#NeuralNetRegressor-194"><span class="linenos">194</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-195"><a href="#NeuralNetRegressor-195"><span class="linenos">195</span></a>            <span class="k">return</span> <span class="kc">False</span>
 </span><span id="NeuralNetRegressor-196"><a href="#NeuralNetRegressor-196"><span class="linenos">196</span></a>
 </span><span id="NeuralNetRegressor-197"><a href="#NeuralNetRegressor-197"><span class="linenos">197</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="NeuralNetRegressor-198"><a href="#NeuralNetRegressor-198"><span class="linenos">198</span></a>            <span class="c1"># Check each layer&#39;s weights and biases</span>
+</span><span id="NeuralNetRegressor-198"><a href="#NeuralNetRegressor-198"><span class="linenos">198</span></a>            <span class="c1"># Check each layer's weights and biases</span>
 </span><span id="NeuralNetRegressor-199"><a href="#NeuralNetRegressor-199"><span class="linenos">199</span></a>            <span class="n">prev_dim</span> <span class="o">=</span> <span class="n">input_dim</span>
 </span><span id="NeuralNetRegressor-200"><a href="#NeuralNetRegressor-200"><span class="linenos">200</span></a>            <span class="k">for</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-201"><a href="#NeuralNetRegressor-201"><span class="linenos">201</span></a>                <span class="c1"># Check weight matrix dimensions</span>
 </span><span id="NeuralNetRegressor-202"><a href="#NeuralNetRegressor-202"><span class="linenos">202</span></a>                <span class="k">if</span> <span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">prev_dim</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-203"><a href="#NeuralNetRegressor-203"><span class="linenos">203</span></a>                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-204"><a href="#NeuralNetRegressor-204"><span class="linenos">204</span></a>                        <span class="sa">f</span><span class="s2">&quot;Weight matrix input dimension </span><span class="si">{</span><span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> does not match, previous layer output dimension </span><span class="si">{</span><span class="n">prev_dim</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="NeuralNetRegressor-204"><a href="#NeuralNetRegressor-204"><span class="linenos">204</span></a>                        <span class="sa">f</span><span class="s2">"Weight matrix input dimension </span><span class="si">{</span><span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> does not match, previous layer output dimension </span><span class="si">{</span><span class="n">prev_dim</span><span class="si">}</span><span class="s2">"</span>
 </span><span id="NeuralNetRegressor-205"><a href="#NeuralNetRegressor-205"><span class="linenos">205</span></a>                    <span class="p">)</span>
 </span><span id="NeuralNetRegressor-206"><a href="#NeuralNetRegressor-206"><span class="linenos">206</span></a>                <span class="c1"># Check bias dimension matches weight matrix output</span>
 </span><span id="NeuralNetRegressor-207"><a href="#NeuralNetRegressor-207"><span class="linenos">207</span></a>                <span class="k">if</span> <span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
 </span><span id="NeuralNetRegressor-208"><a href="#NeuralNetRegressor-208"><span class="linenos">208</span></a>                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-209"><a href="#NeuralNetRegressor-209"><span class="linenos">209</span></a>                        <span class="sa">f</span><span class="s2">&quot;Bias dimension </span><span class="si">{</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> does not match weight matrix, output dimension </span><span class="si">{</span><span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="NeuralNetRegressor-209"><a href="#NeuralNetRegressor-209"><span class="linenos">209</span></a>                        <span class="sa">f</span><span class="s2">"Bias dimension </span><span class="si">{</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> does not match weight matrix, output dimension </span><span class="si">{</span><span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
 </span><span id="NeuralNetRegressor-210"><a href="#NeuralNetRegressor-210"><span class="linenos">210</span></a>                    <span class="p">)</span>
 </span><span id="NeuralNetRegressor-211"><a href="#NeuralNetRegressor-211"><span class="linenos">211</span></a>                <span class="n">prev_dim</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </span><span id="NeuralNetRegressor-212"><a href="#NeuralNetRegressor-212"><span class="linenos">212</span></a>
 </span><span id="NeuralNetRegressor-213"><a href="#NeuralNetRegressor-213"><span class="linenos">213</span></a>            <span class="c1"># Check final output dimension is 1 for regression</span>
 </span><span id="NeuralNetRegressor-214"><a href="#NeuralNetRegressor-214"><span class="linenos">214</span></a>            <span class="k">if</span> <span class="n">prev_dim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-215"><a href="#NeuralNetRegressor-215"><span class="linenos">215</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-216"><a href="#NeuralNetRegressor-216"><span class="linenos">216</span></a>                    <span class="sa">f</span><span class="s2">&quot;Final layer output dimension </span><span class="si">{</span><span class="n">prev_dim</span><span class="si">}</span><span class="s2"> must be 1 for regression&quot;</span>
+</span><span id="NeuralNetRegressor-216"><a href="#NeuralNetRegressor-216"><span class="linenos">216</span></a>                    <span class="sa">f</span><span class="s2">"Final layer output dimension </span><span class="si">{</span><span class="n">prev_dim</span><span class="si">}</span><span class="s2"> must be 1 for regression"</span>
 </span><span id="NeuralNetRegressor-217"><a href="#NeuralNetRegressor-217"><span class="linenos">217</span></a>                <span class="p">)</span>
 </span><span id="NeuralNetRegressor-218"><a href="#NeuralNetRegressor-218"><span class="linenos">218</span></a>
 </span><span id="NeuralNetRegressor-219"><a href="#NeuralNetRegressor-219"><span class="linenos">219</span></a>            <span class="k">return</span> <span class="kc">True</span>
 </span><span id="NeuralNetRegressor-220"><a href="#NeuralNetRegressor-220"><span class="linenos">220</span></a>        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
 </span><span id="NeuralNetRegressor-221"><a href="#NeuralNetRegressor-221"><span class="linenos">221</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-222"><a href="#NeuralNetRegressor-222"><span class="linenos">222</span></a>                <span class="s2">&quot;Weights format is invalid. Expected list of (weight, bias) tuples&quot;</span>
+</span><span id="NeuralNetRegressor-222"><a href="#NeuralNetRegressor-222"><span class="linenos">222</span></a>                <span class="s2">"Weights format is invalid. Expected list of (weight, bias) tuples"</span>
 </span><span id="NeuralNetRegressor-223"><a href="#NeuralNetRegressor-223"><span class="linenos">223</span></a>            <span class="p">)</span>
 </span><span id="NeuralNetRegressor-224"><a href="#NeuralNetRegressor-224"><span class="linenos">224</span></a>
 </span><span id="NeuralNetRegressor-225"><a href="#NeuralNetRegressor-225"><span class="linenos">225</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -279,7 +279,7 @@
 </span><span id="NeuralNetRegressor-236"><a href="#NeuralNetRegressor-236"><span class="linenos">236</span></a>        <span class="k">else</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-237"><a href="#NeuralNetRegressor-237"><span class="linenos">237</span></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer_sizes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-238"><a href="#NeuralNetRegressor-238"><span class="linenos">238</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-239"><a href="#NeuralNetRegressor-239"><span class="linenos">239</span></a>                    <span class="s2">&quot;Either weights or hidden_layer_sizes must be provided&quot;</span>
+</span><span id="NeuralNetRegressor-239"><a href="#NeuralNetRegressor-239"><span class="linenos">239</span></a>                    <span class="s2">"Either weights or hidden_layer_sizes must be provided"</span>
 </span><span id="NeuralNetRegressor-240"><a href="#NeuralNetRegressor-240"><span class="linenos">240</span></a>                <span class="p">)</span>
 </span><span id="NeuralNetRegressor-241"><a href="#NeuralNetRegressor-241"><span class="linenos">241</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">initialize_params</span><span class="p">(</span>
 </span><span id="NeuralNetRegressor-242"><a href="#NeuralNetRegressor-242"><span class="linenos">242</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer_sizes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span>
@@ -304,22 +304,22 @@
 </span><span id="NeuralNetRegressor-261"><a href="#NeuralNetRegressor-261"><span class="linenos">261</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span><span id="NeuralNetRegressor-262"><a href="#NeuralNetRegressor-262"><span class="linenos">262</span></a>
 </span><span id="NeuralNetRegressor-263"><a href="#NeuralNetRegressor-263"><span class="linenos">263</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="NeuralNetRegressor-264"><a href="#NeuralNetRegressor-264"><span class="linenos">264</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the current weights of the model.&quot;&quot;&quot;</span>
+</span><span id="NeuralNetRegressor-264"><a href="#NeuralNetRegressor-264"><span class="linenos">264</span></a><span class="w">        </span><span class="sd">"""Return the current weights of the model."""</span>
 </span><span id="NeuralNetRegressor-265"><a href="#NeuralNetRegressor-265"><span class="linenos">265</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor-266"><a href="#NeuralNetRegressor-266"><span class="linenos">266</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor-267"><a href="#NeuralNetRegressor-267"><span class="linenos">267</span></a>                <span class="s2">&quot;No weights available. Model has not been fitted yet.&quot;</span>
+</span><span id="NeuralNetRegressor-267"><a href="#NeuralNetRegressor-267"><span class="linenos">267</span></a>                <span class="s2">"No weights available. Model has not been fitted yet."</span>
 </span><span id="NeuralNetRegressor-268"><a href="#NeuralNetRegressor-268"><span class="linenos">268</span></a>            <span class="p">)</span>
 </span><span id="NeuralNetRegressor-269"><a href="#NeuralNetRegressor-269"><span class="linenos">269</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span>
 </span><span id="NeuralNetRegressor-270"><a href="#NeuralNetRegressor-270"><span class="linenos">270</span></a>
 </span><span id="NeuralNetRegressor-271"><a href="#NeuralNetRegressor-271"><span class="linenos">271</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
-</span><span id="NeuralNetRegressor-272"><a href="#NeuralNetRegressor-272"><span class="linenos">272</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the weights of the model manually.&quot;&quot;&quot;</span>
+</span><span id="NeuralNetRegressor-272"><a href="#NeuralNetRegressor-272"><span class="linenos">272</span></a><span class="w">        </span><span class="sd">"""Set the weights of the model manually."""</span>
 </span><span id="NeuralNetRegressor-273"><a href="#NeuralNetRegressor-273"><span class="linenos">273</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span>
 </span><span id="NeuralNetRegressor-274"><a href="#NeuralNetRegressor-274"><span class="linenos">274</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">weights</span>
 </span><span id="NeuralNetRegressor-275"><a href="#NeuralNetRegressor-275"><span class="linenos">275</span></a>
 </span><span id="NeuralNetRegressor-276"><a href="#NeuralNetRegressor-276"><span class="linenos">276</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 </span><span id="NeuralNetRegressor-277"><a href="#NeuralNetRegressor-277"><span class="linenos">277</span></a>        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span><span id="NeuralNetRegressor-278"><a href="#NeuralNetRegressor-278"><span class="linenos">278</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="NeuralNetRegressor-279"><a href="#NeuralNetRegressor-279"><span class="linenos">279</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model has not been fitted yet.&quot;</span><span class="p">)</span>
+</span><span id="NeuralNetRegressor-279"><a href="#NeuralNetRegressor-279"><span class="linenos">279</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Model has not been fitted yet."</span><span class="p">)</span>
 </span><span id="NeuralNetRegressor-280"><a href="#NeuralNetRegressor-280"><span class="linenos">280</span></a>        <span class="n">predictions</span> <span class="o">=</span> <span class="n">predict_internal</span><span class="p">(</span>
 </span><span id="NeuralNetRegressor-281"><a href="#NeuralNetRegressor-281"><span class="linenos">281</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor-282"><a href="#NeuralNetRegressor-282"><span class="linenos">282</span></a>            <span class="n">X</span><span class="p">,</span>
@@ -406,7 +406,7 @@ set_weights(weights)
 </span><span id="NeuralNetRegressor.fit-236"><a href="#NeuralNetRegressor.fit-236"><span class="linenos">236</span></a>        <span class="k">else</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor.fit-237"><a href="#NeuralNetRegressor.fit-237"><span class="linenos">237</span></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer_sizes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="NeuralNetRegressor.fit-238"><a href="#NeuralNetRegressor.fit-238"><span class="linenos">238</span></a>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="NeuralNetRegressor.fit-239"><a href="#NeuralNetRegressor.fit-239"><span class="linenos">239</span></a>                    <span class="s2">&quot;Either weights or hidden_layer_sizes must be provided&quot;</span>
+</span><span id="NeuralNetRegressor.fit-239"><a href="#NeuralNetRegressor.fit-239"><span class="linenos">239</span></a>                    <span class="s2">"Either weights or hidden_layer_sizes must be provided"</span>
 </span><span id="NeuralNetRegressor.fit-240"><a href="#NeuralNetRegressor.fit-240"><span class="linenos">240</span></a>                <span class="p">)</span>
 </span><span id="NeuralNetRegressor.fit-241"><a href="#NeuralNetRegressor.fit-241"><span class="linenos">241</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">initialize_params</span><span class="p">(</span>
 </span><span id="NeuralNetRegressor.fit-242"><a href="#NeuralNetRegressor.fit-242"><span class="linenos">242</span></a>                <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer_sizes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span>
@@ -449,7 +449,7 @@ set_weights(weights)
             <div class="pdoc-code codehilite"><pre><span></span><span id="NeuralNetRegressor.predict-276"><a href="#NeuralNetRegressor.predict-276"><span class="linenos">276</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
 </span><span id="NeuralNetRegressor.predict-277"><a href="#NeuralNetRegressor.predict-277"><span class="linenos">277</span></a>        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span><span id="NeuralNetRegressor.predict-278"><a href="#NeuralNetRegressor.predict-278"><span class="linenos">278</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="NeuralNetRegressor.predict-279"><a href="#NeuralNetRegressor.predict-279"><span class="linenos">279</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model has not been fitted yet.&quot;</span><span class="p">)</span>
+</span><span id="NeuralNetRegressor.predict-279"><a href="#NeuralNetRegressor.predict-279"><span class="linenos">279</span></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Model has not been fitted yet."</span><span class="p">)</span>
 </span><span id="NeuralNetRegressor.predict-280"><a href="#NeuralNetRegressor.predict-280"><span class="linenos">280</span></a>        <span class="n">predictions</span> <span class="o">=</span> <span class="n">predict_internal</span><span class="p">(</span>
 </span><span id="NeuralNetRegressor.predict-281"><a href="#NeuralNetRegressor.predict-281"><span class="linenos">281</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
 </span><span id="NeuralNetRegressor.predict-282"><a href="#NeuralNetRegressor.predict-282"><span class="linenos">282</span></a>            <span class="n">X</span><span class="p">,</span>
@@ -478,7 +478,7 @@ set_weights(weights)
     </div>
     <a class="headerlink" href="#NeuralNetClassifier"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="NeuralNetClassifier-10"><a href="#NeuralNetClassifier-10"><span class="linenos"> 10</span></a><span class="k">class</span><span class="w"> </span><span class="nc">NeuralNetClassifier</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier-11"><a href="#NeuralNetClassifier-11"><span class="linenos"> 11</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier-11"><a href="#NeuralNetClassifier-11"><span class="linenos"> 11</span></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="NeuralNetClassifier-12"><a href="#NeuralNetClassifier-12"><span class="linenos"> 12</span></a><span class="sd">    (Pretrained) Neural Network Classifier.</span>
 </span><span id="NeuralNetClassifier-13"><a href="#NeuralNetClassifier-13"><span class="linenos"> 13</span></a>
 </span><span id="NeuralNetClassifier-14"><a href="#NeuralNetClassifier-14"><span class="linenos"> 14</span></a><span class="sd">    Parameters:</span>
@@ -493,7 +493,7 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier-23"><a href="#NeuralNetClassifier-23"><span class="linenos"> 23</span></a><span class="sd">            The ratio of L1 regularization.</span>
 </span><span id="NeuralNetClassifier-24"><a href="#NeuralNetClassifier-24"><span class="linenos"> 24</span></a><span class="sd">        alpha : float, default=1e-6</span>
 </span><span id="NeuralNetClassifier-25"><a href="#NeuralNetClassifier-25"><span class="linenos"> 25</span></a><span class="sd">            The regularization parameter.</span>
-</span><span id="NeuralNetClassifier-26"><a href="#NeuralNetClassifier-26"><span class="linenos"> 26</span></a><span class="sd">        activation_name : str, default=&quot;relu&quot;</span>
+</span><span id="NeuralNetClassifier-26"><a href="#NeuralNetClassifier-26"><span class="linenos"> 26</span></a><span class="sd">        activation_name : str, default="relu"</span>
 </span><span id="NeuralNetClassifier-27"><a href="#NeuralNetClassifier-27"><span class="linenos"> 27</span></a><span class="sd">            The activation function to use.</span>
 </span><span id="NeuralNetClassifier-28"><a href="#NeuralNetClassifier-28"><span class="linenos"> 28</span></a><span class="sd">        dropout : float, default=0.0</span>
 </span><span id="NeuralNetClassifier-29"><a href="#NeuralNetClassifier-29"><span class="linenos"> 29</span></a><span class="sd">            The dropout rate.</span>
@@ -525,9 +525,9 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier-55"><a href="#NeuralNetClassifier-55"><span class="linenos"> 55</span></a><span class="sd">            Get the weights of the model.</span>
 </span><span id="NeuralNetClassifier-56"><a href="#NeuralNetClassifier-56"><span class="linenos"> 56</span></a><span class="sd">        set_weights(weights)</span>
 </span><span id="NeuralNetClassifier-57"><a href="#NeuralNetClassifier-57"><span class="linenos"> 57</span></a><span class="sd">            Set the weights of the model.</span>
-</span><span id="NeuralNetClassifier-58"><a href="#NeuralNetClassifier-58"><span class="linenos"> 58</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier-58"><a href="#NeuralNetClassifier-58"><span class="linenos"> 58</span></a><span class="sd">    """</span>
 </span><span id="NeuralNetClassifier-59"><a href="#NeuralNetClassifier-59"><span class="linenos"> 59</span></a>
-</span><span id="NeuralNetClassifier-60"><a href="#NeuralNetClassifier-60"><span class="linenos"> 60</span></a>    <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;classifier&quot;</span>
+</span><span id="NeuralNetClassifier-60"><a href="#NeuralNetClassifier-60"><span class="linenos"> 60</span></a>    <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">"classifier"</span>
 </span><span id="NeuralNetClassifier-61"><a href="#NeuralNetClassifier-61"><span class="linenos"> 61</span></a>
 </span><span id="NeuralNetClassifier-62"><a href="#NeuralNetClassifier-62"><span class="linenos"> 62</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="NeuralNetClassifier-63"><a href="#NeuralNetClassifier-63"><span class="linenos"> 63</span></a>        <span class="bp">self</span><span class="p">,</span>
@@ -537,7 +537,7 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier-67"><a href="#NeuralNetClassifier-67"><span class="linenos"> 67</span></a>        <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier-68"><a href="#NeuralNetClassifier-68"><span class="linenos"> 68</span></a>        <span class="n">l1_ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier-69"><a href="#NeuralNetClassifier-69"><span class="linenos"> 69</span></a>        <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
-</span><span id="NeuralNetClassifier-70"><a href="#NeuralNetClassifier-70"><span class="linenos"> 70</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="NeuralNetClassifier-70"><a href="#NeuralNetClassifier-70"><span class="linenos"> 70</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier-71"><a href="#NeuralNetClassifier-71"><span class="linenos"> 71</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier-72"><a href="#NeuralNetClassifier-72"><span class="linenos"> 72</span></a>        <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier-73"><a href="#NeuralNetClassifier-73"><span class="linenos"> 73</span></a>    <span class="p">):</span>
@@ -553,7 +553,7 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier-83"><a href="#NeuralNetClassifier-83"><span class="linenos"> 83</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">regr</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="NeuralNetClassifier-84"><a href="#NeuralNetClassifier-84"><span class="linenos"> 84</span></a>
 </span><span id="NeuralNetClassifier-85"><a href="#NeuralNetClassifier-85"><span class="linenos"> 85</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier-86"><a href="#NeuralNetClassifier-86"><span class="linenos"> 86</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the data.</span>
+</span><span id="NeuralNetClassifier-86"><a href="#NeuralNetClassifier-86"><span class="linenos"> 86</span></a><span class="w">        </span><span class="sd">"""Fit the model to the data.</span>
 </span><span id="NeuralNetClassifier-87"><a href="#NeuralNetClassifier-87"><span class="linenos"> 87</span></a>
 </span><span id="NeuralNetClassifier-88"><a href="#NeuralNetClassifier-88"><span class="linenos"> 88</span></a><span class="sd">        Parameters:</span>
 </span><span id="NeuralNetClassifier-89"><a href="#NeuralNetClassifier-89"><span class="linenos"> 89</span></a>
@@ -562,7 +562,7 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier-92"><a href="#NeuralNetClassifier-92"><span class="linenos"> 92</span></a><span class="sd">                n_features is the number of features.</span>
 </span><span id="NeuralNetClassifier-93"><a href="#NeuralNetClassifier-93"><span class="linenos"> 93</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
 </span><span id="NeuralNetClassifier-94"><a href="#NeuralNetClassifier-94"><span class="linenos"> 94</span></a><span class="sd">                Target values.</span>
-</span><span id="NeuralNetClassifier-95"><a href="#NeuralNetClassifier-95"><span class="linenos"> 95</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier-95"><a href="#NeuralNetClassifier-95"><span class="linenos"> 95</span></a><span class="sd">        """</span>
 </span><span id="NeuralNetClassifier-96"><a href="#NeuralNetClassifier-96"><span class="linenos"> 96</span></a>        <span class="n">regressor</span> <span class="o">=</span> <span class="n">NeuralNetRegressor</span><span class="p">(</span>
 </span><span id="NeuralNetClassifier-97"><a href="#NeuralNetClassifier-97"><span class="linenos"> 97</span></a>            <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer_sizes</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier-98"><a href="#NeuralNetClassifier-98"><span class="linenos"> 98</span></a>            <span class="n">max_iter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">,</span>
@@ -591,30 +591,30 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier-121"><a href="#NeuralNetClassifier-121"><span class="linenos">121</span></a>        <span class="k">return</span> <span class="bp">self</span>
 </span><span id="NeuralNetClassifier-122"><a href="#NeuralNetClassifier-122"><span class="linenos">122</span></a>
 </span><span id="NeuralNetClassifier-123"><a href="#NeuralNetClassifier-123"><span class="linenos">123</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier-124"><a href="#NeuralNetClassifier-124"><span class="linenos">124</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the probability of the target variable.</span>
+</span><span id="NeuralNetClassifier-124"><a href="#NeuralNetClassifier-124"><span class="linenos">124</span></a><span class="w">        </span><span class="sd">"""Predict the probability of the target variable.</span>
 </span><span id="NeuralNetClassifier-125"><a href="#NeuralNetClassifier-125"><span class="linenos">125</span></a>
 </span><span id="NeuralNetClassifier-126"><a href="#NeuralNetClassifier-126"><span class="linenos">126</span></a><span class="sd">        Parameters:</span>
 </span><span id="NeuralNetClassifier-127"><a href="#NeuralNetClassifier-127"><span class="linenos">127</span></a>
 </span><span id="NeuralNetClassifier-128"><a href="#NeuralNetClassifier-128"><span class="linenos">128</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="NeuralNetClassifier-129"><a href="#NeuralNetClassifier-129"><span class="linenos">129</span></a><span class="sd">                Training vectors, where n_samples is the number of samples and</span>
 </span><span id="NeuralNetClassifier-130"><a href="#NeuralNetClassifier-130"><span class="linenos">130</span></a><span class="sd">                n_features is the number of features.</span>
-</span><span id="NeuralNetClassifier-131"><a href="#NeuralNetClassifier-131"><span class="linenos">131</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier-131"><a href="#NeuralNetClassifier-131"><span class="linenos">131</span></a><span class="sd">        """</span>
 </span><span id="NeuralNetClassifier-132"><a href="#NeuralNetClassifier-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">regr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span><span id="NeuralNetClassifier-133"><a href="#NeuralNetClassifier-133"><span class="linenos">133</span></a>
 </span><span id="NeuralNetClassifier-134"><a href="#NeuralNetClassifier-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier-135"><a href="#NeuralNetClassifier-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the target variable.</span>
+</span><span id="NeuralNetClassifier-135"><a href="#NeuralNetClassifier-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">"""Predict the target variable.</span>
 </span><span id="NeuralNetClassifier-136"><a href="#NeuralNetClassifier-136"><span class="linenos">136</span></a>
 </span><span id="NeuralNetClassifier-137"><a href="#NeuralNetClassifier-137"><span class="linenos">137</span></a><span class="sd">        Parameters:</span>
 </span><span id="NeuralNetClassifier-138"><a href="#NeuralNetClassifier-138"><span class="linenos">138</span></a>
 </span><span id="NeuralNetClassifier-139"><a href="#NeuralNetClassifier-139"><span class="linenos">139</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="NeuralNetClassifier-140"><a href="#NeuralNetClassifier-140"><span class="linenos">140</span></a><span class="sd">                Training vectors, where n_samples is the number of samples and</span>
 </span><span id="NeuralNetClassifier-141"><a href="#NeuralNetClassifier-141"><span class="linenos">141</span></a><span class="sd">                n_features is the number of features.</span>
-</span><span id="NeuralNetClassifier-142"><a href="#NeuralNetClassifier-142"><span class="linenos">142</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier-142"><a href="#NeuralNetClassifier-142"><span class="linenos">142</span></a><span class="sd">        """</span>
 </span><span id="NeuralNetClassifier-143"><a href="#NeuralNetClassifier-143"><span class="linenos">143</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span><span id="NeuralNetClassifier-144"><a href="#NeuralNetClassifier-144"><span class="linenos">144</span></a>
 </span><span id="NeuralNetClassifier-145"><a href="#NeuralNetClassifier-145"><span class="linenos">145</span></a>    <span class="nd">@property</span>
 </span><span id="NeuralNetClassifier-146"><a href="#NeuralNetClassifier-146"><span class="linenos">146</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_estimator_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier-147"><a href="#NeuralNetClassifier-147"><span class="linenos">147</span></a>        <span class="k">return</span> <span class="s2">&quot;classifier&quot;</span>
+</span><span id="NeuralNetClassifier-147"><a href="#NeuralNetClassifier-147"><span class="linenos">147</span></a>        <span class="k">return</span> <span class="s2">"classifier"</span>
 </span></pre></div>
 
 
@@ -682,7 +682,7 @@ set_weights(weights)
     </div>
     <a class="headerlink" href="#NeuralNetClassifier.fit"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="NeuralNetClassifier.fit-85"><a href="#NeuralNetClassifier.fit-85"><span class="linenos"> 85</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier.fit-86"><a href="#NeuralNetClassifier.fit-86"><span class="linenos"> 86</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the data.</span>
+</span><span id="NeuralNetClassifier.fit-86"><a href="#NeuralNetClassifier.fit-86"><span class="linenos"> 86</span></a><span class="w">        </span><span class="sd">"""Fit the model to the data.</span>
 </span><span id="NeuralNetClassifier.fit-87"><a href="#NeuralNetClassifier.fit-87"><span class="linenos"> 87</span></a>
 </span><span id="NeuralNetClassifier.fit-88"><a href="#NeuralNetClassifier.fit-88"><span class="linenos"> 88</span></a><span class="sd">        Parameters:</span>
 </span><span id="NeuralNetClassifier.fit-89"><a href="#NeuralNetClassifier.fit-89"><span class="linenos"> 89</span></a>
@@ -691,7 +691,7 @@ set_weights(weights)
 </span><span id="NeuralNetClassifier.fit-92"><a href="#NeuralNetClassifier.fit-92"><span class="linenos"> 92</span></a><span class="sd">                n_features is the number of features.</span>
 </span><span id="NeuralNetClassifier.fit-93"><a href="#NeuralNetClassifier.fit-93"><span class="linenos"> 93</span></a><span class="sd">            y: array-like, shape = [n_samples]</span>
 </span><span id="NeuralNetClassifier.fit-94"><a href="#NeuralNetClassifier.fit-94"><span class="linenos"> 94</span></a><span class="sd">                Target values.</span>
-</span><span id="NeuralNetClassifier.fit-95"><a href="#NeuralNetClassifier.fit-95"><span class="linenos"> 95</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier.fit-95"><a href="#NeuralNetClassifier.fit-95"><span class="linenos"> 95</span></a><span class="sd">        """</span>
 </span><span id="NeuralNetClassifier.fit-96"><a href="#NeuralNetClassifier.fit-96"><span class="linenos"> 96</span></a>        <span class="n">regressor</span> <span class="o">=</span> <span class="n">NeuralNetRegressor</span><span class="p">(</span>
 </span><span id="NeuralNetClassifier.fit-97"><a href="#NeuralNetClassifier.fit-97"><span class="linenos"> 97</span></a>            <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer_sizes</span><span class="p">,</span>
 </span><span id="NeuralNetClassifier.fit-98"><a href="#NeuralNetClassifier.fit-98"><span class="linenos"> 98</span></a>            <span class="n">max_iter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">,</span>
@@ -747,14 +747,14 @@ y: array-like, shape = [n_samples]
     </div>
     <a class="headerlink" href="#NeuralNetClassifier.predict_proba"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="NeuralNetClassifier.predict_proba-123"><a href="#NeuralNetClassifier.predict_proba-123"><span class="linenos">123</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier.predict_proba-124"><a href="#NeuralNetClassifier.predict_proba-124"><span class="linenos">124</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the probability of the target variable.</span>
+</span><span id="NeuralNetClassifier.predict_proba-124"><a href="#NeuralNetClassifier.predict_proba-124"><span class="linenos">124</span></a><span class="w">        </span><span class="sd">"""Predict the probability of the target variable.</span>
 </span><span id="NeuralNetClassifier.predict_proba-125"><a href="#NeuralNetClassifier.predict_proba-125"><span class="linenos">125</span></a>
 </span><span id="NeuralNetClassifier.predict_proba-126"><a href="#NeuralNetClassifier.predict_proba-126"><span class="linenos">126</span></a><span class="sd">        Parameters:</span>
 </span><span id="NeuralNetClassifier.predict_proba-127"><a href="#NeuralNetClassifier.predict_proba-127"><span class="linenos">127</span></a>
 </span><span id="NeuralNetClassifier.predict_proba-128"><a href="#NeuralNetClassifier.predict_proba-128"><span class="linenos">128</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="NeuralNetClassifier.predict_proba-129"><a href="#NeuralNetClassifier.predict_proba-129"><span class="linenos">129</span></a><span class="sd">                Training vectors, where n_samples is the number of samples and</span>
 </span><span id="NeuralNetClassifier.predict_proba-130"><a href="#NeuralNetClassifier.predict_proba-130"><span class="linenos">130</span></a><span class="sd">                n_features is the number of features.</span>
-</span><span id="NeuralNetClassifier.predict_proba-131"><a href="#NeuralNetClassifier.predict_proba-131"><span class="linenos">131</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier.predict_proba-131"><a href="#NeuralNetClassifier.predict_proba-131"><span class="linenos">131</span></a><span class="sd">        """</span>
 </span><span id="NeuralNetClassifier.predict_proba-132"><a href="#NeuralNetClassifier.predict_proba-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">regr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 
@@ -783,14 +783,14 @@ y: array-like, shape = [n_samples]
     </div>
     <a class="headerlink" href="#NeuralNetClassifier.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="NeuralNetClassifier.predict-134"><a href="#NeuralNetClassifier.predict-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-</span><span id="NeuralNetClassifier.predict-135"><a href="#NeuralNetClassifier.predict-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the target variable.</span>
+</span><span id="NeuralNetClassifier.predict-135"><a href="#NeuralNetClassifier.predict-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">"""Predict the target variable.</span>
 </span><span id="NeuralNetClassifier.predict-136"><a href="#NeuralNetClassifier.predict-136"><span class="linenos">136</span></a>
 </span><span id="NeuralNetClassifier.predict-137"><a href="#NeuralNetClassifier.predict-137"><span class="linenos">137</span></a><span class="sd">        Parameters:</span>
 </span><span id="NeuralNetClassifier.predict-138"><a href="#NeuralNetClassifier.predict-138"><span class="linenos">138</span></a>
 </span><span id="NeuralNetClassifier.predict-139"><a href="#NeuralNetClassifier.predict-139"><span class="linenos">139</span></a><span class="sd">            X: {array-like}, shape = [n_samples, n_features]</span>
 </span><span id="NeuralNetClassifier.predict-140"><a href="#NeuralNetClassifier.predict-140"><span class="linenos">140</span></a><span class="sd">                Training vectors, where n_samples is the number of samples and</span>
 </span><span id="NeuralNetClassifier.predict-141"><a href="#NeuralNetClassifier.predict-141"><span class="linenos">141</span></a><span class="sd">                n_features is the number of features.</span>
-</span><span id="NeuralNetClassifier.predict-142"><a href="#NeuralNetClassifier.predict-142"><span class="linenos">142</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="NeuralNetClassifier.predict-142"><a href="#NeuralNetClassifier.predict-142"><span class="linenos">142</span></a><span class="sd">        """</span>
 </span><span id="NeuralNetClassifier.predict-143"><a href="#NeuralNetClassifier.predict-143"><span class="linenos">143</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </span></pre></div>
 

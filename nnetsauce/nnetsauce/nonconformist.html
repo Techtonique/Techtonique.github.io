@@ -230,15 +230,15 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="ch">#!/usr/bin/env python</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">"""</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">docstring</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">"""</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="c1"># Authors: Henrik Linusson</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="c1"># Yaniv Romano modified np.py file to include CQR</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="c1"># T. Moudiki modified __init__.py to import classes</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="c1"># __version__ = &#39;2.1.0&#39;</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="c1"># __version__ = '2.1.0'</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.nc</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="n">AbsErrorErrFunc</span><span class="p">,</span>
@@ -252,17 +252,17 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegressorAdapter</span><span class="p">,</span> <span class="n">ClassifierAdapter</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="s2">&quot;AbsErrorErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="s2">&quot;MarginErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="s2">&quot;QuantileRegErrFunc&quot;</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="s2">&quot;RegressorAdapter&quot;</span><span class="p">,</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="s2">&quot;ClassifierAdapter&quot;</span><span class="p">,</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="s2">&quot;RegressorNc&quot;</span><span class="p">,</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="s2">&quot;ClassifierNc&quot;</span><span class="p">,</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="s2">&quot;RegressorNormalizer&quot;</span><span class="p">,</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="s2">&quot;IcpRegressor&quot;</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="s2">&quot;IcpClassifier&quot;</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="s2">&quot;TcpClassifier&quot;</span><span class="p">,</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="s2">"AbsErrorErrFunc"</span><span class="p">,</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="s2">"MarginErrFunc"</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="s2">"QuantileRegErrFunc"</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="s2">"RegressorAdapter"</span><span class="p">,</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="s2">"ClassifierAdapter"</span><span class="p">,</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="s2">"RegressorNc"</span><span class="p">,</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="s2">"ClassifierNc"</span><span class="p">,</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="s2">"RegressorNormalizer"</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="s2">"IcpRegressor"</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="s2">"IcpClassifier"</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="s2">"TcpClassifier"</span><span class="p">,</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="p">]</span>
 </span></pre></div>
 
@@ -280,7 +280,7 @@
     </div>
     <a class="headerlink" href="#AbsErrorErrFunc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AbsErrorErrFunc-135"><a href="#AbsErrorErrFunc-135"><span class="linenos">135</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AbsErrorErrFunc</span><span class="p">(</span><span class="n">RegressionErrFunc</span><span class="p">):</span>
-</span><span id="AbsErrorErrFunc-136"><a href="#AbsErrorErrFunc-136"><span class="linenos">136</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates absolute error nonconformity for regression problems.&quot;&quot;&quot;</span>
+</span><span id="AbsErrorErrFunc-136"><a href="#AbsErrorErrFunc-136"><span class="linenos">136</span></a><span class="w">    </span><span class="sd">"""Calculates absolute error nonconformity for regression problems."""</span>
 </span><span id="AbsErrorErrFunc-137"><a href="#AbsErrorErrFunc-137"><span class="linenos">137</span></a>
 </span><span id="AbsErrorErrFunc-138"><a href="#AbsErrorErrFunc-138"><span class="linenos">138</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="AbsErrorErrFunc-139"><a href="#AbsErrorErrFunc-139"><span class="linenos">139</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">AbsErrorErrFunc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -315,9 +315,9 @@
     </div>
     <a class="headerlink" href="#MarginErrFunc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MarginErrFunc-116"><a href="#MarginErrFunc-116"><span class="linenos">116</span></a><span class="k">class</span><span class="w"> </span><span class="nc">MarginErrFunc</span><span class="p">(</span><span class="n">ClassificationErrFunc</span><span class="p">):</span>
-</span><span id="MarginErrFunc-117"><a href="#MarginErrFunc-117"><span class="linenos">117</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="MarginErrFunc-117"><a href="#MarginErrFunc-117"><span class="linenos">117</span></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="MarginErrFunc-118"><a href="#MarginErrFunc-118"><span class="linenos">118</span></a><span class="sd">    Calculates the margin error.</span>
-</span><span id="MarginErrFunc-119"><a href="#MarginErrFunc-119"><span class="linenos">119</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="MarginErrFunc-119"><a href="#MarginErrFunc-119"><span class="linenos">119</span></a><span class="sd">    """</span>
 </span><span id="MarginErrFunc-120"><a href="#MarginErrFunc-120"><span class="linenos">120</span></a>
 </span><span id="MarginErrFunc-121"><a href="#MarginErrFunc-121"><span class="linenos">121</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="MarginErrFunc-122"><a href="#MarginErrFunc-122"><span class="linenos">122</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">MarginErrFunc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -352,7 +352,7 @@
     </div>
     <a class="headerlink" href="#QuantileRegErrFunc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="QuantileRegErrFunc-177"><a href="#QuantileRegErrFunc-177"><span class="linenos">177</span></a><span class="k">class</span><span class="w"> </span><span class="nc">QuantileRegErrFunc</span><span class="p">(</span><span class="n">RegressionErrFunc</span><span class="p">):</span>
-</span><span id="QuantileRegErrFunc-178"><a href="#QuantileRegErrFunc-178"><span class="linenos">178</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates conformalized quantile regression error.&quot;&quot;&quot;</span>
+</span><span id="QuantileRegErrFunc-178"><a href="#QuantileRegErrFunc-178"><span class="linenos">178</span></a><span class="w">    </span><span class="sd">"""Calculates conformalized quantile regression error."""</span>
 </span><span id="QuantileRegErrFunc-179"><a href="#QuantileRegErrFunc-179"><span class="linenos">179</span></a>
 </span><span id="QuantileRegErrFunc-180"><a href="#QuantileRegErrFunc-180"><span class="linenos">180</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="QuantileRegErrFunc-181"><a href="#QuantileRegErrFunc-181"><span class="linenos">181</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">QuantileRegErrFunc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -435,7 +435,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
-<span class="go">{&#39;param&#39;: 2}</span>
+<span class="go">{'param': 2}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -505,7 +505,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
-<span class="go">{&#39;param&#39;: 2}</span>
+<span class="go">{'param': 2}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -531,7 +531,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#RegressorNc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="RegressorNc-468"><a href="#RegressorNc-468"><span class="linenos">468</span></a><span class="k">class</span><span class="w"> </span><span class="nc">RegressorNc</span><span class="p">(</span><span class="n">BaseModelNc</span><span class="p">):</span>
-</span><span id="RegressorNc-469"><a href="#RegressorNc-469"><span class="linenos">469</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Nonconformity scorer using an underlying regression model.</span>
+</span><span id="RegressorNc-469"><a href="#RegressorNc-469"><span class="linenos">469</span></a><span class="w">    </span><span class="sd">"""Nonconformity scorer using an underlying regression model.</span>
 </span><span id="RegressorNc-470"><a href="#RegressorNc-470"><span class="linenos">470</span></a>
 </span><span id="RegressorNc-471"><a href="#RegressorNc-471"><span class="linenos">471</span></a><span class="sd">    Parameters</span>
 </span><span id="RegressorNc-472"><a href="#RegressorNc-472"><span class="linenos">472</span></a><span class="sd">    ----------</span>
@@ -560,7 +560,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc-495"><a href="#RegressorNc-495"><span class="linenos">495</span></a><span class="sd">    See also</span>
 </span><span id="RegressorNc-496"><a href="#RegressorNc-496"><span class="linenos">496</span></a><span class="sd">    --------</span>
 </span><span id="RegressorNc-497"><a href="#RegressorNc-497"><span class="linenos">497</span></a><span class="sd">    ProbEstClassifierNc, NormalizedRegressorNc</span>
-</span><span id="RegressorNc-498"><a href="#RegressorNc-498"><span class="linenos">498</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="RegressorNc-498"><a href="#RegressorNc-498"><span class="linenos">498</span></a><span class="sd">    """</span>
 </span><span id="RegressorNc-499"><a href="#RegressorNc-499"><span class="linenos">499</span></a>
 </span><span id="RegressorNc-500"><a href="#RegressorNc-500"><span class="linenos">500</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="RegressorNc-501"><a href="#RegressorNc-501"><span class="linenos">501</span></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="o">=</span><span class="n">AbsErrorErrFunc</span><span class="p">(),</span> <span class="n">normalizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1e-6</span>
@@ -568,7 +568,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc-503"><a href="#RegressorNc-503"><span class="linenos">503</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">RegressorNc</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
 </span><span id="RegressorNc-504"><a href="#RegressorNc-504"><span class="linenos">504</span></a>
 </span><span id="RegressorNc-505"><a href="#RegressorNc-505"><span class="linenos">505</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="RegressorNc-506"><a href="#RegressorNc-506"><span class="linenos">506</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructs prediction intervals for a set of test examples.</span>
+</span><span id="RegressorNc-506"><a href="#RegressorNc-506"><span class="linenos">506</span></a><span class="w">        </span><span class="sd">"""Constructs prediction intervals for a set of test examples.</span>
 </span><span id="RegressorNc-507"><a href="#RegressorNc-507"><span class="linenos">507</span></a>
 </span><span id="RegressorNc-508"><a href="#RegressorNc-508"><span class="linenos">508</span></a><span class="sd">        Predicts the output of each test pattern using the underlying model,</span>
 </span><span id="RegressorNc-509"><a href="#RegressorNc-509"><span class="linenos">509</span></a><span class="sd">        and applies the (partial) inverse nonconformity function to each</span>
@@ -594,7 +594,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc-529"><a href="#RegressorNc-529"><span class="linenos">529</span></a><span class="sd">            0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="RegressorNc-530"><a href="#RegressorNc-530"><span class="linenos">530</span></a><span class="sd">            maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="RegressorNc-531"><a href="#RegressorNc-531"><span class="linenos">531</span></a><span class="sd">            significance level.</span>
-</span><span id="RegressorNc-532"><a href="#RegressorNc-532"><span class="linenos">532</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="RegressorNc-532"><a href="#RegressorNc-532"><span class="linenos">532</span></a><span class="sd">        """</span>
 </span><span id="RegressorNc-533"><a href="#RegressorNc-533"><span class="linenos">533</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="RegressorNc-534"><a href="#RegressorNc-534"><span class="linenos">534</span></a>        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="RegressorNc-535"><a href="#RegressorNc-535"><span class="linenos">535</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -675,7 +675,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#RegressorNc.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="RegressorNc.predict-505"><a href="#RegressorNc.predict-505"><span class="linenos">505</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="RegressorNc.predict-506"><a href="#RegressorNc.predict-506"><span class="linenos">506</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructs prediction intervals for a set of test examples.</span>
+</span><span id="RegressorNc.predict-506"><a href="#RegressorNc.predict-506"><span class="linenos">506</span></a><span class="w">        </span><span class="sd">"""Constructs prediction intervals for a set of test examples.</span>
 </span><span id="RegressorNc.predict-507"><a href="#RegressorNc.predict-507"><span class="linenos">507</span></a>
 </span><span id="RegressorNc.predict-508"><a href="#RegressorNc.predict-508"><span class="linenos">508</span></a><span class="sd">        Predicts the output of each test pattern using the underlying model,</span>
 </span><span id="RegressorNc.predict-509"><a href="#RegressorNc.predict-509"><span class="linenos">509</span></a><span class="sd">        and applies the (partial) inverse nonconformity function to each</span>
@@ -701,7 +701,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="RegressorNc.predict-529"><a href="#RegressorNc.predict-529"><span class="linenos">529</span></a><span class="sd">            0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="RegressorNc.predict-530"><a href="#RegressorNc.predict-530"><span class="linenos">530</span></a><span class="sd">            maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="RegressorNc.predict-531"><a href="#RegressorNc.predict-531"><span class="linenos">531</span></a><span class="sd">            significance level.</span>
-</span><span id="RegressorNc.predict-532"><a href="#RegressorNc.predict-532"><span class="linenos">532</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="RegressorNc.predict-532"><a href="#RegressorNc.predict-532"><span class="linenos">532</span></a><span class="sd">        """</span>
 </span><span id="RegressorNc.predict-533"><a href="#RegressorNc.predict-533"><span class="linenos">533</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="RegressorNc.predict-534"><a href="#RegressorNc.predict-534"><span class="linenos">534</span></a>        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="RegressorNc.predict-535"><a href="#RegressorNc.predict-535"><span class="linenos">535</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -782,7 +782,7 @@ prediction, resulting in a prediction interval for each test pattern.</p>
     </div>
     <a class="headerlink" href="#ClassifierNc"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="ClassifierNc-425"><a href="#ClassifierNc-425"><span class="linenos">425</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ClassifierNc</span><span class="p">(</span><span class="n">BaseModelNc</span><span class="p">):</span>
-</span><span id="ClassifierNc-426"><a href="#ClassifierNc-426"><span class="linenos">426</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Nonconformity scorer using an underlying class probability estimating</span>
+</span><span id="ClassifierNc-426"><a href="#ClassifierNc-426"><span class="linenos">426</span></a><span class="w">    </span><span class="sd">"""Nonconformity scorer using an underlying class probability estimating</span>
 </span><span id="ClassifierNc-427"><a href="#ClassifierNc-427"><span class="linenos">427</span></a><span class="sd">    model.</span>
 </span><span id="ClassifierNc-428"><a href="#ClassifierNc-428"><span class="linenos">428</span></a>
 </span><span id="ClassifierNc-429"><a href="#ClassifierNc-429"><span class="linenos">429</span></a><span class="sd">    Parameters</span>
@@ -813,7 +813,7 @@ prediction, resulting in a prediction interval for each test pattern.</p>
 </span><span id="ClassifierNc-454"><a href="#ClassifierNc-454"><span class="linenos">454</span></a><span class="sd">    See also</span>
 </span><span id="ClassifierNc-455"><a href="#ClassifierNc-455"><span class="linenos">455</span></a><span class="sd">    --------</span>
 </span><span id="ClassifierNc-456"><a href="#ClassifierNc-456"><span class="linenos">456</span></a><span class="sd">    RegressorNc, NormalizedRegressorNc</span>
-</span><span id="ClassifierNc-457"><a href="#ClassifierNc-457"><span class="linenos">457</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ClassifierNc-457"><a href="#ClassifierNc-457"><span class="linenos">457</span></a><span class="sd">    """</span>
 </span><span id="ClassifierNc-458"><a href="#ClassifierNc-458"><span class="linenos">458</span></a>
 </span><span id="ClassifierNc-459"><a href="#ClassifierNc-459"><span class="linenos">459</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="ClassifierNc-460"><a href="#ClassifierNc-460"><span class="linenos">460</span></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">err_func</span><span class="o">=</span><span class="n">MarginErrFunc</span><span class="p">(),</span> <span class="n">normalizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1e-6</span>
@@ -942,7 +942,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span> <span class="o">=</span> <span class="n">MyEstimator</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
-<span class="go">{&#39;param&#39;: 2}</span>
+<span class="go">{'param': 2}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1028,7 +1028,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#IcpRegressor"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IcpRegressor-302"><a href="#IcpRegressor-302"><span class="linenos">302</span></a><span class="k">class</span><span class="w"> </span><span class="nc">IcpRegressor</span><span class="p">(</span><span class="n">BaseIcp</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
-</span><span id="IcpRegressor-303"><a href="#IcpRegressor-303"><span class="linenos">303</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Inductive conformal regressor.</span>
+</span><span id="IcpRegressor-303"><a href="#IcpRegressor-303"><span class="linenos">303</span></a><span class="w">    </span><span class="sd">"""Inductive conformal regressor.</span>
 </span><span id="IcpRegressor-304"><a href="#IcpRegressor-304"><span class="linenos">304</span></a>
 </span><span id="IcpRegressor-305"><a href="#IcpRegressor-305"><span class="linenos">305</span></a><span class="sd">    Parameters</span>
 </span><span id="IcpRegressor-306"><a href="#IcpRegressor-306"><span class="linenos">306</span></a><span class="sd">    ----------</span>
@@ -1087,13 +1087,13 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpRegressor-359"><a href="#IcpRegressor-359"><span class="linenos">359</span></a><span class="sd">            ...,</span>
 </span><span id="IcpRegressor-360"><a href="#IcpRegressor-360"><span class="linenos">360</span></a><span class="sd">            [ 14.2,  29.8],</span>
 </span><span id="IcpRegressor-361"><a href="#IcpRegressor-361"><span class="linenos">361</span></a><span class="sd">            [ 11.6,  27.2]])</span>
-</span><span id="IcpRegressor-362"><a href="#IcpRegressor-362"><span class="linenos">362</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="IcpRegressor-362"><a href="#IcpRegressor-362"><span class="linenos">362</span></a><span class="sd">    """</span>
 </span><span id="IcpRegressor-363"><a href="#IcpRegressor-363"><span class="linenos">363</span></a>
 </span><span id="IcpRegressor-364"><a href="#IcpRegressor-364"><span class="linenos">364</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="IcpRegressor-365"><a href="#IcpRegressor-365"><span class="linenos">365</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">IcpRegressor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
 </span><span id="IcpRegressor-366"><a href="#IcpRegressor-366"><span class="linenos">366</span></a>
 </span><span id="IcpRegressor-367"><a href="#IcpRegressor-367"><span class="linenos">367</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="IcpRegressor-368"><a href="#IcpRegressor-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpRegressor-368"><a href="#IcpRegressor-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="IcpRegressor-369"><a href="#IcpRegressor-369"><span class="linenos">369</span></a>
 </span><span id="IcpRegressor-370"><a href="#IcpRegressor-370"><span class="linenos">370</span></a><span class="sd">        Parameters</span>
 </span><span id="IcpRegressor-371"><a href="#IcpRegressor-371"><span class="linenos">371</span></a><span class="sd">        ----------</span>
@@ -1115,7 +1115,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpRegressor-387"><a href="#IcpRegressor-387"><span class="linenos">387</span></a><span class="sd">                0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="IcpRegressor-388"><a href="#IcpRegressor-388"><span class="linenos">388</span></a><span class="sd">                maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="IcpRegressor-389"><a href="#IcpRegressor-389"><span class="linenos">389</span></a><span class="sd">                significance level.</span>
-</span><span id="IcpRegressor-390"><a href="#IcpRegressor-390"><span class="linenos">390</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpRegressor-390"><a href="#IcpRegressor-390"><span class="linenos">390</span></a><span class="sd">        """</span>
 </span><span id="IcpRegressor-391"><a href="#IcpRegressor-391"><span class="linenos">391</span></a>        <span class="c1"># TODO: interpolated p-values</span>
 </span><span id="IcpRegressor-392"><a href="#IcpRegressor-392"><span class="linenos">392</span></a>
 </span><span id="IcpRegressor-393"><a href="#IcpRegressor-393"><span class="linenos">393</span></a>        <span class="n">n_significance</span> <span class="o">=</span> <span class="p">(</span>
@@ -1221,7 +1221,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#IcpRegressor.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IcpRegressor.predict-367"><a href="#IcpRegressor.predict-367"><span class="linenos">367</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="IcpRegressor.predict-368"><a href="#IcpRegressor.predict-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpRegressor.predict-368"><a href="#IcpRegressor.predict-368"><span class="linenos">368</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="IcpRegressor.predict-369"><a href="#IcpRegressor.predict-369"><span class="linenos">369</span></a>
 </span><span id="IcpRegressor.predict-370"><a href="#IcpRegressor.predict-370"><span class="linenos">370</span></a><span class="sd">        Parameters</span>
 </span><span id="IcpRegressor.predict-371"><a href="#IcpRegressor.predict-371"><span class="linenos">371</span></a><span class="sd">        ----------</span>
@@ -1243,7 +1243,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpRegressor.predict-387"><a href="#IcpRegressor.predict-387"><span class="linenos">387</span></a><span class="sd">                0 and 1, then p contains the prediction intervals (minimum and</span>
 </span><span id="IcpRegressor.predict-388"><a href="#IcpRegressor.predict-388"><span class="linenos">388</span></a><span class="sd">                maximum	boundaries) for the set of test patterns at the chosen</span>
 </span><span id="IcpRegressor.predict-389"><a href="#IcpRegressor.predict-389"><span class="linenos">389</span></a><span class="sd">                significance level.</span>
-</span><span id="IcpRegressor.predict-390"><a href="#IcpRegressor.predict-390"><span class="linenos">390</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpRegressor.predict-390"><a href="#IcpRegressor.predict-390"><span class="linenos">390</span></a><span class="sd">        """</span>
 </span><span id="IcpRegressor.predict-391"><a href="#IcpRegressor.predict-391"><span class="linenos">391</span></a>        <span class="c1"># TODO: interpolated p-values</span>
 </span><span id="IcpRegressor.predict-392"><a href="#IcpRegressor.predict-392"><span class="linenos">392</span></a>
 </span><span id="IcpRegressor.predict-393"><a href="#IcpRegressor.predict-393"><span class="linenos">393</span></a>        <span class="n">n_significance</span> <span class="o">=</span> <span class="p">(</span>
@@ -1314,7 +1314,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#IcpClassifier"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IcpClassifier-127"><a href="#IcpClassifier-127"><span class="linenos">127</span></a><span class="k">class</span><span class="w"> </span><span class="nc">IcpClassifier</span><span class="p">(</span><span class="n">BaseIcp</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
-</span><span id="IcpClassifier-128"><a href="#IcpClassifier-128"><span class="linenos">128</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Inductive conformal classifier.</span>
+</span><span id="IcpClassifier-128"><a href="#IcpClassifier-128"><span class="linenos">128</span></a><span class="w">    </span><span class="sd">"""Inductive conformal classifier.</span>
 </span><span id="IcpClassifier-129"><a href="#IcpClassifier-129"><span class="linenos">129</span></a>
 </span><span id="IcpClassifier-130"><a href="#IcpClassifier-130"><span class="linenos">130</span></a><span class="sd">    Parameters</span>
 </span><span id="IcpClassifier-131"><a href="#IcpClassifier-131"><span class="linenos">131</span></a><span class="sd">    ----------</span>
@@ -1376,7 +1376,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier-187"><a href="#IcpClassifier-187"><span class="linenos">187</span></a><span class="sd">            ...,</span>
 </span><span id="IcpClassifier-188"><a href="#IcpClassifier-188"><span class="linenos">188</span></a><span class="sd">            [False,  True, False],</span>
 </span><span id="IcpClassifier-189"><a href="#IcpClassifier-189"><span class="linenos">189</span></a><span class="sd">            [False,  True, False]], dtype=bool)</span>
-</span><span id="IcpClassifier-190"><a href="#IcpClassifier-190"><span class="linenos">190</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier-190"><a href="#IcpClassifier-190"><span class="linenos">190</span></a><span class="sd">    """</span>
 </span><span id="IcpClassifier-191"><a href="#IcpClassifier-191"><span class="linenos">191</span></a>
 </span><span id="IcpClassifier-192"><a href="#IcpClassifier-192"><span class="linenos">192</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 </span><span id="IcpClassifier-193"><a href="#IcpClassifier-193"><span class="linenos">193</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">IcpClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
@@ -1393,7 +1393,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier-204"><a href="#IcpClassifier-204"><span class="linenos">204</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span> <span class="n">y</span><span class="p">]))</span>
 </span><span id="IcpClassifier-205"><a href="#IcpClassifier-205"><span class="linenos">205</span></a>
 </span><span id="IcpClassifier-206"><a href="#IcpClassifier-206"><span class="linenos">206</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="IcpClassifier-207"><a href="#IcpClassifier-207"><span class="linenos">207</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpClassifier-207"><a href="#IcpClassifier-207"><span class="linenos">207</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="IcpClassifier-208"><a href="#IcpClassifier-208"><span class="linenos">208</span></a>
 </span><span id="IcpClassifier-209"><a href="#IcpClassifier-209"><span class="linenos">209</span></a><span class="sd">        Parameters</span>
 </span><span id="IcpClassifier-210"><a href="#IcpClassifier-210"><span class="linenos">210</span></a><span class="sd">        ----------</span>
@@ -1412,7 +1412,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier-223"><a href="#IcpClassifier-223"><span class="linenos">223</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
 </span><span id="IcpClassifier-224"><a href="#IcpClassifier-224"><span class="linenos">224</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
 </span><span id="IcpClassifier-225"><a href="#IcpClassifier-225"><span class="linenos">225</span></a><span class="sd">                prediction sets.</span>
-</span><span id="IcpClassifier-226"><a href="#IcpClassifier-226"><span class="linenos">226</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier-226"><a href="#IcpClassifier-226"><span class="linenos">226</span></a><span class="sd">        """</span>
 </span><span id="IcpClassifier-227"><a href="#IcpClassifier-227"><span class="linenos">227</span></a>        <span class="c1"># TODO: if x == self.last_x ...</span>
 </span><span id="IcpClassifier-228"><a href="#IcpClassifier-228"><span class="linenos">228</span></a>        <span class="n">n_test_objects</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="IcpClassifier-229"><a href="#IcpClassifier-229"><span class="linenos">229</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test_objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
@@ -1449,8 +1449,8 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier-260"><a href="#IcpClassifier-260"><span class="linenos">260</span></a>                <span class="n">cal_scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cal_scores</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="p">))][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </span><span id="IcpClassifier-261"><a href="#IcpClassifier-261"><span class="linenos">261</span></a>                <span class="n">n_cal</span> <span class="o">=</span> <span class="n">cal_scores</span><span class="o">.</span><span class="n">size</span>
 </span><span id="IcpClassifier-262"><a href="#IcpClassifier-262"><span class="linenos">262</span></a>
-</span><span id="IcpClassifier-263"><a href="#IcpClassifier-263"><span class="linenos">263</span></a>                <span class="n">idx_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cal_scores</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
-</span><span id="IcpClassifier-264"><a href="#IcpClassifier-264"><span class="linenos">264</span></a>                <span class="n">idx_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cal_scores</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">)</span>
+</span><span id="IcpClassifier-263"><a href="#IcpClassifier-263"><span class="linenos">263</span></a>                <span class="n">idx_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cal_scores</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">)</span>
+</span><span id="IcpClassifier-264"><a href="#IcpClassifier-264"><span class="linenos">264</span></a>                <span class="n">idx_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">cal_scores</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">)</span>
 </span><span id="IcpClassifier-265"><a href="#IcpClassifier-265"><span class="linenos">265</span></a>
 </span><span id="IcpClassifier-266"><a href="#IcpClassifier-266"><span class="linenos">266</span></a>                <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_cal</span>
 </span><span id="IcpClassifier-267"><a href="#IcpClassifier-267"><span class="linenos">267</span></a>                <span class="n">ncal_ngt_neq</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_cal</span> <span class="o">-</span> <span class="n">idx_right</span>
@@ -1459,7 +1459,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier-270"><a href="#IcpClassifier-270"><span class="linenos">270</span></a>        <span class="k">return</span> <span class="n">ncal_ngt_neq</span>
 </span><span id="IcpClassifier-271"><a href="#IcpClassifier-271"><span class="linenos">271</span></a>
 </span><span id="IcpClassifier-272"><a href="#IcpClassifier-272"><span class="linenos">272</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-</span><span id="IcpClassifier-273"><a href="#IcpClassifier-273"><span class="linenos">273</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns, using</span>
+</span><span id="IcpClassifier-273"><a href="#IcpClassifier-273"><span class="linenos">273</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns, using</span>
 </span><span id="IcpClassifier-274"><a href="#IcpClassifier-274"><span class="linenos">274</span></a><span class="sd">        the confidence-and-credibility output scheme.</span>
 </span><span id="IcpClassifier-275"><a href="#IcpClassifier-275"><span class="linenos">275</span></a>
 </span><span id="IcpClassifier-276"><a href="#IcpClassifier-276"><span class="linenos">276</span></a><span class="sd">        Parameters</span>
@@ -1474,7 +1474,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier-285"><a href="#IcpClassifier-285"><span class="linenos">285</span></a><span class="sd">                likely class for each test pattern; the second column contains</span>
 </span><span id="IcpClassifier-286"><a href="#IcpClassifier-286"><span class="linenos">286</span></a><span class="sd">                the confidence in the predicted class label, and the third column</span>
 </span><span id="IcpClassifier-287"><a href="#IcpClassifier-287"><span class="linenos">287</span></a><span class="sd">                contains the credibility of the prediction.</span>
-</span><span id="IcpClassifier-288"><a href="#IcpClassifier-288"><span class="linenos">288</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier-288"><a href="#IcpClassifier-288"><span class="linenos">288</span></a><span class="sd">        """</span>
 </span><span id="IcpClassifier-289"><a href="#IcpClassifier-289"><span class="linenos">289</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </span><span id="IcpClassifier-290"><a href="#IcpClassifier-290"><span class="linenos">290</span></a>        <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="IcpClassifier-291"><a href="#IcpClassifier-291"><span class="linenos">291</span></a>        <span class="n">credibility</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1568,7 +1568,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#IcpClassifier.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="IcpClassifier.predict-206"><a href="#IcpClassifier.predict-206"><span class="linenos">206</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="IcpClassifier.predict-207"><a href="#IcpClassifier.predict-207"><span class="linenos">207</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="IcpClassifier.predict-207"><a href="#IcpClassifier.predict-207"><span class="linenos">207</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="IcpClassifier.predict-208"><a href="#IcpClassifier.predict-208"><span class="linenos">208</span></a>
 </span><span id="IcpClassifier.predict-209"><a href="#IcpClassifier.predict-209"><span class="linenos">209</span></a><span class="sd">        Parameters</span>
 </span><span id="IcpClassifier.predict-210"><a href="#IcpClassifier.predict-210"><span class="linenos">210</span></a><span class="sd">        ----------</span>
@@ -1587,7 +1587,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="IcpClassifier.predict-223"><a href="#IcpClassifier.predict-223"><span class="linenos">223</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
 </span><span id="IcpClassifier.predict-224"><a href="#IcpClassifier.predict-224"><span class="linenos">224</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
 </span><span id="IcpClassifier.predict-225"><a href="#IcpClassifier.predict-225"><span class="linenos">225</span></a><span class="sd">                prediction sets.</span>
-</span><span id="IcpClassifier.predict-226"><a href="#IcpClassifier.predict-226"><span class="linenos">226</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="IcpClassifier.predict-226"><a href="#IcpClassifier.predict-226"><span class="linenos">226</span></a><span class="sd">        """</span>
 </span><span id="IcpClassifier.predict-227"><a href="#IcpClassifier.predict-227"><span class="linenos">227</span></a>        <span class="c1"># TODO: if x == self.last_x ...</span>
 </span><span id="IcpClassifier.predict-228"><a href="#IcpClassifier.predict-228"><span class="linenos">228</span></a>        <span class="n">n_test_objects</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="IcpClassifier.predict-229"><a href="#IcpClassifier.predict-229"><span class="linenos">229</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test_objects</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
@@ -1647,7 +1647,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#TcpClassifier"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="TcpClassifier-10"><a href="#TcpClassifier-10"><span class="linenos"> 10</span></a><span class="k">class</span><span class="w"> </span><span class="nc">TcpClassifier</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
-</span><span id="TcpClassifier-11"><a href="#TcpClassifier-11"><span class="linenos"> 11</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Transductive conformal classifier.</span>
+</span><span id="TcpClassifier-11"><a href="#TcpClassifier-11"><span class="linenos"> 11</span></a><span class="w">    </span><span class="sd">"""Transductive conformal classifier.</span>
 </span><span id="TcpClassifier-12"><a href="#TcpClassifier-12"><span class="linenos"> 12</span></a>
 </span><span id="TcpClassifier-13"><a href="#TcpClassifier-13"><span class="linenos"> 13</span></a><span class="sd">    Parameters</span>
 </span><span id="TcpClassifier-14"><a href="#TcpClassifier-14"><span class="linenos"> 14</span></a><span class="sd">    ----------</span>
@@ -1706,7 +1706,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="TcpClassifier-67"><a href="#TcpClassifier-67"><span class="linenos"> 67</span></a><span class="sd">            ...,</span>
 </span><span id="TcpClassifier-68"><a href="#TcpClassifier-68"><span class="linenos"> 68</span></a><span class="sd">            [False,  True, False],</span>
 </span><span id="TcpClassifier-69"><a href="#TcpClassifier-69"><span class="linenos"> 69</span></a><span class="sd">            [False,  True, False]], dtype=bool)</span>
-</span><span id="TcpClassifier-70"><a href="#TcpClassifier-70"><span class="linenos"> 70</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier-70"><a href="#TcpClassifier-70"><span class="linenos"> 70</span></a><span class="sd">    """</span>
 </span><span id="TcpClassifier-71"><a href="#TcpClassifier-71"><span class="linenos"> 71</span></a>
 </span><span id="TcpClassifier-72"><a href="#TcpClassifier-72"><span class="linenos"> 72</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nc_function</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 </span><span id="TcpClassifier-73"><a href="#TcpClassifier-73"><span class="linenos"> 73</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_y</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
@@ -1746,7 +1746,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="TcpClassifier-107"><a href="#TcpClassifier-107"><span class="linenos">107</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </span><span id="TcpClassifier-108"><a href="#TcpClassifier-108"><span class="linenos">108</span></a>
 </span><span id="TcpClassifier-109"><a href="#TcpClassifier-109"><span class="linenos">109</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="TcpClassifier-110"><a href="#TcpClassifier-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="TcpClassifier-110"><a href="#TcpClassifier-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="TcpClassifier-111"><a href="#TcpClassifier-111"><span class="linenos">111</span></a>
 </span><span id="TcpClassifier-112"><a href="#TcpClassifier-112"><span class="linenos">112</span></a><span class="sd">        Parameters</span>
 </span><span id="TcpClassifier-113"><a href="#TcpClassifier-113"><span class="linenos">113</span></a><span class="sd">        ----------</span>
@@ -1765,7 +1765,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="TcpClassifier-126"><a href="#TcpClassifier-126"><span class="linenos">126</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
 </span><span id="TcpClassifier-127"><a href="#TcpClassifier-127"><span class="linenos">127</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
 </span><span id="TcpClassifier-128"><a href="#TcpClassifier-128"><span class="linenos">128</span></a><span class="sd">                prediction sets.</span>
-</span><span id="TcpClassifier-129"><a href="#TcpClassifier-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier-129"><a href="#TcpClassifier-129"><span class="linenos">129</span></a><span class="sd">        """</span>
 </span><span id="TcpClassifier-130"><a href="#TcpClassifier-130"><span class="linenos">130</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="TcpClassifier-131"><a href="#TcpClassifier-131"><span class="linenos">131</span></a>        <span class="n">n_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="TcpClassifier-132"><a href="#TcpClassifier-132"><span class="linenos">132</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
@@ -1786,7 +1786,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="TcpClassifier-147"><a href="#TcpClassifier-147"><span class="linenos">147</span></a>            <span class="k">return</span> <span class="n">p</span>
 </span><span id="TcpClassifier-148"><a href="#TcpClassifier-148"><span class="linenos">148</span></a>
 </span><span id="TcpClassifier-149"><a href="#TcpClassifier-149"><span class="linenos">149</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_conf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-</span><span id="TcpClassifier-150"><a href="#TcpClassifier-150"><span class="linenos">150</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns, using</span>
+</span><span id="TcpClassifier-150"><a href="#TcpClassifier-150"><span class="linenos">150</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns, using</span>
 </span><span id="TcpClassifier-151"><a href="#TcpClassifier-151"><span class="linenos">151</span></a><span class="sd">        the confidence-and-credibility output scheme.</span>
 </span><span id="TcpClassifier-152"><a href="#TcpClassifier-152"><span class="linenos">152</span></a>
 </span><span id="TcpClassifier-153"><a href="#TcpClassifier-153"><span class="linenos">153</span></a><span class="sd">        Parameters</span>
@@ -1801,7 +1801,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="TcpClassifier-162"><a href="#TcpClassifier-162"><span class="linenos">162</span></a><span class="sd">                likely class for each test pattern; the second column contains</span>
 </span><span id="TcpClassifier-163"><a href="#TcpClassifier-163"><span class="linenos">163</span></a><span class="sd">                the confidence in the predicted class label, and the third column</span>
 </span><span id="TcpClassifier-164"><a href="#TcpClassifier-164"><span class="linenos">164</span></a><span class="sd">                contains the credibility of the prediction.</span>
-</span><span id="TcpClassifier-165"><a href="#TcpClassifier-165"><span class="linenos">165</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier-165"><a href="#TcpClassifier-165"><span class="linenos">165</span></a><span class="sd">        """</span>
 </span><span id="TcpClassifier-166"><a href="#TcpClassifier-166"><span class="linenos">166</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </span><span id="TcpClassifier-167"><a href="#TcpClassifier-167"><span class="linenos">167</span></a>        <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="TcpClassifier-168"><a href="#TcpClassifier-168"><span class="linenos">168</span></a>        <span class="n">credibility</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1915,7 +1915,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
     </div>
     <a class="headerlink" href="#TcpClassifier.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="TcpClassifier.predict-109"><a href="#TcpClassifier.predict-109"><span class="linenos">109</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">significance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="TcpClassifier.predict-110"><a href="#TcpClassifier.predict-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict the output values for a set of input patterns.</span>
+</span><span id="TcpClassifier.predict-110"><a href="#TcpClassifier.predict-110"><span class="linenos">110</span></a><span class="w">        </span><span class="sd">"""Predict the output values for a set of input patterns.</span>
 </span><span id="TcpClassifier.predict-111"><a href="#TcpClassifier.predict-111"><span class="linenos">111</span></a>
 </span><span id="TcpClassifier.predict-112"><a href="#TcpClassifier.predict-112"><span class="linenos">112</span></a><span class="sd">        Parameters</span>
 </span><span id="TcpClassifier.predict-113"><a href="#TcpClassifier.predict-113"><span class="linenos">113</span></a><span class="sd">        ----------</span>
@@ -1934,7 +1934,7 @@ arguments (no <code>*args</code> or <code>**kwargs</code>).</p>
 </span><span id="TcpClassifier.predict-126"><a href="#TcpClassifier.predict-126"><span class="linenos">126</span></a><span class="sd">                sample-class pair; if significance is a float between 0 and 1, then</span>
 </span><span id="TcpClassifier.predict-127"><a href="#TcpClassifier.predict-127"><span class="linenos">127</span></a><span class="sd">                p is a boolean array denoting which labels are included in the</span>
 </span><span id="TcpClassifier.predict-128"><a href="#TcpClassifier.predict-128"><span class="linenos">128</span></a><span class="sd">                prediction sets.</span>
-</span><span id="TcpClassifier.predict-129"><a href="#TcpClassifier.predict-129"><span class="linenos">129</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="TcpClassifier.predict-129"><a href="#TcpClassifier.predict-129"><span class="linenos">129</span></a><span class="sd">        """</span>
 </span><span id="TcpClassifier.predict-130"><a href="#TcpClassifier.predict-130"><span class="linenos">130</span></a>        <span class="n">n_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="TcpClassifier.predict-131"><a href="#TcpClassifier.predict-131"><span class="linenos">131</span></a>        <span class="n">n_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </span><span id="TcpClassifier.predict-132"><a href="#TcpClassifier.predict-132"><span class="linenos">132</span></a>        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_test</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>

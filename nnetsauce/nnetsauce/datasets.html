@@ -74,7 +74,7 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.dowload</span><span class="w"> </span><span class="kn">import</span> <span class="n">Downloader</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Downloader&quot;</span><span class="p">]</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Downloader"</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -91,7 +91,7 @@
     </div>
     <a class="headerlink" href="#Downloader"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Downloader-6"><a href="#Downloader-6"><span class="linenos"> 6</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Downloader</span><span class="p">:</span>
-</span><span id="Downloader-7"><a href="#Downloader-7"><span class="linenos"> 7</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Download datasets from data sources (R-universe for now)&quot;&quot;&quot;</span>
+</span><span id="Downloader-7"><a href="#Downloader-7"><span class="linenos"> 7</span></a><span class="w">    </span><span class="sd">"""Download datasets from data sources (R-universe for now)"""</span>
 </span><span id="Downloader-8"><a href="#Downloader-8"><span class="linenos"> 8</span></a>
 </span><span id="Downloader-9"><a href="#Downloader-9"><span class="linenos"> 9</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="Downloader-10"><a href="#Downloader-10"><span class="linenos">10</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pkgname</span> <span class="o">=</span> <span class="kc">None</span>
@@ -102,12 +102,12 @@
 </span><span id="Downloader-15"><a href="#Downloader-15"><span class="linenos">15</span></a>
 </span><span id="Downloader-16"><a href="#Downloader-16"><span class="linenos">16</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span>
 </span><span id="Downloader-17"><a href="#Downloader-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="Downloader-18"><a href="#Downloader-18"><span class="linenos">18</span></a>        <span class="n">pkgname</span><span class="o">=</span><span class="s2">&quot;MASS&quot;</span><span class="p">,</span>
-</span><span id="Downloader-19"><a href="#Downloader-19"><span class="linenos">19</span></a>        <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;Boston&quot;</span><span class="p">,</span>
-</span><span id="Downloader-20"><a href="#Downloader-20"><span class="linenos">20</span></a>        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;https://cran.r-universe.dev/&quot;</span><span class="p">,</span>
+</span><span id="Downloader-18"><a href="#Downloader-18"><span class="linenos">18</span></a>        <span class="n">pkgname</span><span class="o">=</span><span class="s2">"MASS"</span><span class="p">,</span>
+</span><span id="Downloader-19"><a href="#Downloader-19"><span class="linenos">19</span></a>        <span class="n">dataset</span><span class="o">=</span><span class="s2">"Boston"</span><span class="p">,</span>
+</span><span id="Downloader-20"><a href="#Downloader-20"><span class="linenos">20</span></a>        <span class="n">source</span><span class="o">=</span><span class="s2">"https://cran.r-universe.dev/"</span><span class="p">,</span>
 </span><span id="Downloader-21"><a href="#Downloader-21"><span class="linenos">21</span></a>        <span class="o">**</span><span class="n">kwargs</span>
 </span><span id="Downloader-22"><a href="#Downloader-22"><span class="linenos">22</span></a>    <span class="p">):</span>
-</span><span id="Downloader-23"><a href="#Downloader-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Download datasets from data sources (R-universe for now)</span>
+</span><span id="Downloader-23"><a href="#Downloader-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">"""Download datasets from data sources (R-universe for now)</span>
 </span><span id="Downloader-24"><a href="#Downloader-24"><span class="linenos">24</span></a>
 </span><span id="Downloader-25"><a href="#Downloader-25"><span class="linenos">25</span></a><span class="sd">        Examples:</span>
 </span><span id="Downloader-26"><a href="#Downloader-26"><span class="linenos">26</span></a>
@@ -115,14 +115,14 @@
 </span><span id="Downloader-28"><a href="#Downloader-28"><span class="linenos">28</span></a><span class="sd">        import nnetsauce as ns</span>
 </span><span id="Downloader-29"><a href="#Downloader-29"><span class="linenos">29</span></a>
 </span><span id="Downloader-30"><a href="#Downloader-30"><span class="linenos">30</span></a><span class="sd">        downloader = ns.Downloader()</span>
-</span><span id="Downloader-31"><a href="#Downloader-31"><span class="linenos">31</span></a><span class="sd">        df = downloader.download(pkgname=&quot;MASS&quot;, dataset=&quot;Boston&quot;)</span>
+</span><span id="Downloader-31"><a href="#Downloader-31"><span class="linenos">31</span></a><span class="sd">        df = downloader.download(pkgname="MASS", dataset="Boston")</span>
 </span><span id="Downloader-32"><a href="#Downloader-32"><span class="linenos">32</span></a><span class="sd">        ```</span>
 </span><span id="Downloader-33"><a href="#Downloader-33"><span class="linenos">33</span></a>
-</span><span id="Downloader-34"><a href="#Downloader-34"><span class="linenos">34</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Downloader-34"><a href="#Downloader-34"><span class="linenos">34</span></a><span class="sd">        """</span>
 </span><span id="Downloader-35"><a href="#Downloader-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pkgname</span> <span class="o">=</span> <span class="n">pkgname</span>
 </span><span id="Downloader-36"><a href="#Downloader-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
 </span><span id="Downloader-37"><a href="#Downloader-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
-</span><span id="Downloader-38"><a href="#Downloader-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">source</span> <span class="o">+</span> <span class="n">pkgname</span> <span class="o">+</span> <span class="s2">&quot;/data/&quot;</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s2">&quot;/json&quot;</span>
+</span><span id="Downloader-38"><a href="#Downloader-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">source</span> <span class="o">+</span> <span class="n">pkgname</span> <span class="o">+</span> <span class="s2">"/data/"</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s2">"/json"</span>
 </span><span id="Downloader-39"><a href="#Downloader-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 </span><span id="Downloader-40"><a href="#Downloader-40"><span class="linenos">40</span></a>        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
@@ -137,7 +137,7 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">download</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">pkgname</span><span class="o">=</span><span class="s1">&#39;MASS&#39;</span>,</span><span class="param">	<span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;Boston&#39;</span>,</span><span class="param">	<span class="n">source</span><span class="o">=</span><span class="s1">&#39;https://cran.r-universe.dev/&#39;</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
+        <span class="name">download</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">pkgname</span><span class="o">=</span><span class="s1">'MASS'</span>,</span><span class="param">	<span class="n">dataset</span><span class="o">=</span><span class="s1">'Boston'</span>,</span><span class="param">	<span class="n">source</span><span class="o">=</span><span class="s1">'https://cran.r-universe.dev/'</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="Downloader.download-view-source"><span>View Source</span></label>
 
@@ -145,12 +145,12 @@
     <a class="headerlink" href="#Downloader.download"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Downloader.download-16"><a href="#Downloader.download-16"><span class="linenos">16</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span>
 </span><span id="Downloader.download-17"><a href="#Downloader.download-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="Downloader.download-18"><a href="#Downloader.download-18"><span class="linenos">18</span></a>        <span class="n">pkgname</span><span class="o">=</span><span class="s2">&quot;MASS&quot;</span><span class="p">,</span>
-</span><span id="Downloader.download-19"><a href="#Downloader.download-19"><span class="linenos">19</span></a>        <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;Boston&quot;</span><span class="p">,</span>
-</span><span id="Downloader.download-20"><a href="#Downloader.download-20"><span class="linenos">20</span></a>        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;https://cran.r-universe.dev/&quot;</span><span class="p">,</span>
+</span><span id="Downloader.download-18"><a href="#Downloader.download-18"><span class="linenos">18</span></a>        <span class="n">pkgname</span><span class="o">=</span><span class="s2">"MASS"</span><span class="p">,</span>
+</span><span id="Downloader.download-19"><a href="#Downloader.download-19"><span class="linenos">19</span></a>        <span class="n">dataset</span><span class="o">=</span><span class="s2">"Boston"</span><span class="p">,</span>
+</span><span id="Downloader.download-20"><a href="#Downloader.download-20"><span class="linenos">20</span></a>        <span class="n">source</span><span class="o">=</span><span class="s2">"https://cran.r-universe.dev/"</span><span class="p">,</span>
 </span><span id="Downloader.download-21"><a href="#Downloader.download-21"><span class="linenos">21</span></a>        <span class="o">**</span><span class="n">kwargs</span>
 </span><span id="Downloader.download-22"><a href="#Downloader.download-22"><span class="linenos">22</span></a>    <span class="p">):</span>
-</span><span id="Downloader.download-23"><a href="#Downloader.download-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Download datasets from data sources (R-universe for now)</span>
+</span><span id="Downloader.download-23"><a href="#Downloader.download-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">"""Download datasets from data sources (R-universe for now)</span>
 </span><span id="Downloader.download-24"><a href="#Downloader.download-24"><span class="linenos">24</span></a>
 </span><span id="Downloader.download-25"><a href="#Downloader.download-25"><span class="linenos">25</span></a><span class="sd">        Examples:</span>
 </span><span id="Downloader.download-26"><a href="#Downloader.download-26"><span class="linenos">26</span></a>
@@ -158,14 +158,14 @@
 </span><span id="Downloader.download-28"><a href="#Downloader.download-28"><span class="linenos">28</span></a><span class="sd">        import nnetsauce as ns</span>
 </span><span id="Downloader.download-29"><a href="#Downloader.download-29"><span class="linenos">29</span></a>
 </span><span id="Downloader.download-30"><a href="#Downloader.download-30"><span class="linenos">30</span></a><span class="sd">        downloader = ns.Downloader()</span>
-</span><span id="Downloader.download-31"><a href="#Downloader.download-31"><span class="linenos">31</span></a><span class="sd">        df = downloader.download(pkgname=&quot;MASS&quot;, dataset=&quot;Boston&quot;)</span>
+</span><span id="Downloader.download-31"><a href="#Downloader.download-31"><span class="linenos">31</span></a><span class="sd">        df = downloader.download(pkgname="MASS", dataset="Boston")</span>
 </span><span id="Downloader.download-32"><a href="#Downloader.download-32"><span class="linenos">32</span></a><span class="sd">        ```</span>
 </span><span id="Downloader.download-33"><a href="#Downloader.download-33"><span class="linenos">33</span></a>
-</span><span id="Downloader.download-34"><a href="#Downloader.download-34"><span class="linenos">34</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Downloader.download-34"><a href="#Downloader.download-34"><span class="linenos">34</span></a><span class="sd">        """</span>
 </span><span id="Downloader.download-35"><a href="#Downloader.download-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pkgname</span> <span class="o">=</span> <span class="n">pkgname</span>
 </span><span id="Downloader.download-36"><a href="#Downloader.download-36"><span class="linenos">36</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span>
 </span><span id="Downloader.download-37"><a href="#Downloader.download-37"><span class="linenos">37</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
-</span><span id="Downloader.download-38"><a href="#Downloader.download-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">source</span> <span class="o">+</span> <span class="n">pkgname</span> <span class="o">+</span> <span class="s2">&quot;/data/&quot;</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s2">&quot;/json&quot;</span>
+</span><span id="Downloader.download-38"><a href="#Downloader.download-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">source</span> <span class="o">+</span> <span class="n">pkgname</span> <span class="o">+</span> <span class="s2">"/data/"</span> <span class="o">+</span> <span class="n">dataset</span> <span class="o">+</span> <span class="s2">"/json"</span>
 </span><span id="Downloader.download-39"><a href="#Downloader.download-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 </span><span id="Downloader.download-40"><a href="#Downloader.download-40"><span class="linenos">40</span></a>        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
@@ -179,7 +179,7 @@
 <pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">nnetsauce</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ns</span>
 
 <span class="n">downloader</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">Downloader</span><span class="p">()</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">downloader</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">pkgname</span><span class="o">=</span><span class="s2">&quot;MASS&quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;Boston&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">downloader</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">pkgname</span><span class="o">=</span><span class="s2">"MASS"</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s2">"Boston"</span><span class="p">)</span>
 </code></pre>
 </div>
 </div>

@@ -70,7 +70,7 @@
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ut</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">nnetsauce</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ns</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a>
-</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> ----- Running: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="si">}</span><span class="s2">... ----- </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2"> ----- Running: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="si">}</span><span class="s2">... ----- </span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a>
 </span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="k">class</span><span class="w"> </span><span class="nc">TestCustom</span><span class="p">(</span><span class="n">ut</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
@@ -90,8 +90,8 @@
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos"> 26</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos"> 27</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>        <span class="p">)</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>
@@ -100,8 +100,8 @@
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;halton&quot;</span><span class="p">,</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"halton"</span><span class="p">,</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">,</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>        <span class="p">)</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>
@@ -110,8 +110,8 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"uniform"</span><span class="p">,</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"tanh"</span><span class="p">,</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>        <span class="p">)</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
@@ -120,8 +120,8 @@
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>        <span class="p">)</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
@@ -130,8 +130,8 @@
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>        <span class="p">)</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
@@ -140,8 +140,8 @@
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="p">)</span>
@@ -151,8 +151,8 @@
 </span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
 </span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
@@ -163,8 +163,8 @@
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 </span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -175,8 +175,8 @@
 </span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 </span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
@@ -262,8 +262,8 @@
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 </span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>        <span class="p">)</span>
 </span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>
@@ -273,7 +273,7 @@
 </span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
 </span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a>        <span class="p">)</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a>
@@ -283,8 +283,8 @@
 </span><span id="L-217"><a href="#L-217"><span class="linenos">217</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
 </span><span id="L-218"><a href="#L-218"><span class="linenos">218</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-219"><a href="#L-219"><span class="linenos">219</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="L-220"><a href="#L-220"><span class="linenos">220</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="L-221"><a href="#L-221"><span class="linenos">221</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="L-222"><a href="#L-222"><span class="linenos">222</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-223"><a href="#L-223"><span class="linenos">223</span></a>        <span class="p">)</span>
 </span><span id="L-224"><a href="#L-224"><span class="linenos">224</span></a>
@@ -294,7 +294,7 @@
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 </span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+</span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"tanh"</span><span class="p">,</span>
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="L-233"><a href="#L-233"><span class="linenos">233</span></a>        <span class="p">)</span>
 </span><span id="L-234"><a href="#L-234"><span class="linenos">234</span></a>
@@ -311,7 +311,7 @@
 </span><span id="L-245"><a href="#L-245"><span class="linenos">245</span></a>        <span class="p">)</span>
 </span><span id="L-246"><a href="#L-246"><span class="linenos">246</span></a>
 </span><span id="L-247"><a href="#L-247"><span class="linenos">247</span></a>
-</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="L-248"><a href="#L-248"><span class="linenos">248</span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 </span><span id="L-249"><a href="#L-249"><span class="linenos">249</span></a>    <span class="n">ut</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </span></pre></div>
 
@@ -345,8 +345,8 @@
 </span><span id="TestCustom-25"><a href="#TestCustom-25"><span class="linenos"> 25</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 </span><span id="TestCustom-26"><a href="#TestCustom-26"><span class="linenos"> 26</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="TestCustom-27"><a href="#TestCustom-27"><span class="linenos"> 27</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="TestCustom-28"><a href="#TestCustom-28"><span class="linenos"> 28</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-29"><a href="#TestCustom-29"><span class="linenos"> 29</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-28"><a href="#TestCustom-28"><span class="linenos"> 28</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="TestCustom-29"><a href="#TestCustom-29"><span class="linenos"> 29</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="TestCustom-30"><a href="#TestCustom-30"><span class="linenos"> 30</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="TestCustom-31"><a href="#TestCustom-31"><span class="linenos"> 31</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-32"><a href="#TestCustom-32"><span class="linenos"> 32</span></a>
@@ -355,8 +355,8 @@
 </span><span id="TestCustom-35"><a href="#TestCustom-35"><span class="linenos"> 35</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
 </span><span id="TestCustom-36"><a href="#TestCustom-36"><span class="linenos"> 36</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="TestCustom-37"><a href="#TestCustom-37"><span class="linenos"> 37</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-38"><a href="#TestCustom-38"><span class="linenos"> 38</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;halton&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-39"><a href="#TestCustom-39"><span class="linenos"> 39</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-38"><a href="#TestCustom-38"><span class="linenos"> 38</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"halton"</span><span class="p">,</span>
+</span><span id="TestCustom-39"><a href="#TestCustom-39"><span class="linenos"> 39</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">,</span>
 </span><span id="TestCustom-40"><a href="#TestCustom-40"><span class="linenos"> 40</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-41"><a href="#TestCustom-41"><span class="linenos"> 41</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-42"><a href="#TestCustom-42"><span class="linenos"> 42</span></a>
@@ -365,8 +365,8 @@
 </span><span id="TestCustom-45"><a href="#TestCustom-45"><span class="linenos"> 45</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
 </span><span id="TestCustom-46"><a href="#TestCustom-46"><span class="linenos"> 46</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-47"><a href="#TestCustom-47"><span class="linenos"> 47</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="TestCustom-48"><a href="#TestCustom-48"><span class="linenos"> 48</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-49"><a href="#TestCustom-49"><span class="linenos"> 49</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-48"><a href="#TestCustom-48"><span class="linenos"> 48</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"uniform"</span><span class="p">,</span>
+</span><span id="TestCustom-49"><a href="#TestCustom-49"><span class="linenos"> 49</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"tanh"</span><span class="p">,</span>
 </span><span id="TestCustom-50"><a href="#TestCustom-50"><span class="linenos"> 50</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="TestCustom-51"><a href="#TestCustom-51"><span class="linenos"> 51</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-52"><a href="#TestCustom-52"><span class="linenos"> 52</span></a>
@@ -375,8 +375,8 @@
 </span><span id="TestCustom-55"><a href="#TestCustom-55"><span class="linenos"> 55</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
 </span><span id="TestCustom-56"><a href="#TestCustom-56"><span class="linenos"> 56</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-57"><a href="#TestCustom-57"><span class="linenos"> 57</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-58"><a href="#TestCustom-58"><span class="linenos"> 58</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-59"><a href="#TestCustom-59"><span class="linenos"> 59</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-58"><a href="#TestCustom-58"><span class="linenos"> 58</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="TestCustom-59"><a href="#TestCustom-59"><span class="linenos"> 59</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="TestCustom-60"><a href="#TestCustom-60"><span class="linenos"> 60</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-61"><a href="#TestCustom-61"><span class="linenos"> 61</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-62"><a href="#TestCustom-62"><span class="linenos"> 62</span></a>
@@ -385,8 +385,8 @@
 </span><span id="TestCustom-65"><a href="#TestCustom-65"><span class="linenos"> 65</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="TestCustom-66"><a href="#TestCustom-66"><span class="linenos"> 66</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-67"><a href="#TestCustom-67"><span class="linenos"> 67</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-68"><a href="#TestCustom-68"><span class="linenos"> 68</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-69"><a href="#TestCustom-69"><span class="linenos"> 69</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-68"><a href="#TestCustom-68"><span class="linenos"> 68</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="TestCustom-69"><a href="#TestCustom-69"><span class="linenos"> 69</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="TestCustom-70"><a href="#TestCustom-70"><span class="linenos"> 70</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 </span><span id="TestCustom-71"><a href="#TestCustom-71"><span class="linenos"> 71</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-72"><a href="#TestCustom-72"><span class="linenos"> 72</span></a>
@@ -395,8 +395,8 @@
 </span><span id="TestCustom-75"><a href="#TestCustom-75"><span class="linenos"> 75</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="TestCustom-76"><a href="#TestCustom-76"><span class="linenos"> 76</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-77"><a href="#TestCustom-77"><span class="linenos"> 77</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-78"><a href="#TestCustom-78"><span class="linenos"> 78</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-79"><a href="#TestCustom-79"><span class="linenos"> 79</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-78"><a href="#TestCustom-78"><span class="linenos"> 78</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="TestCustom-79"><a href="#TestCustom-79"><span class="linenos"> 79</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="TestCustom-80"><a href="#TestCustom-80"><span class="linenos"> 80</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 </span><span id="TestCustom-81"><a href="#TestCustom-81"><span class="linenos"> 81</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
 </span><span id="TestCustom-82"><a href="#TestCustom-82"><span class="linenos"> 82</span></a>        <span class="p">)</span>
@@ -406,8 +406,8 @@
 </span><span id="TestCustom-86"><a href="#TestCustom-86"><span class="linenos"> 86</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="TestCustom-87"><a href="#TestCustom-87"><span class="linenos"> 87</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-88"><a href="#TestCustom-88"><span class="linenos"> 88</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-89"><a href="#TestCustom-89"><span class="linenos"> 89</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;hammersley&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-90"><a href="#TestCustom-90"><span class="linenos"> 90</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-89"><a href="#TestCustom-89"><span class="linenos"> 89</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"hammersley"</span><span class="p">,</span>
+</span><span id="TestCustom-90"><a href="#TestCustom-90"><span class="linenos"> 90</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"elu"</span><span class="p">,</span>
 </span><span id="TestCustom-91"><a href="#TestCustom-91"><span class="linenos"> 91</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-92"><a href="#TestCustom-92"><span class="linenos"> 92</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
 </span><span id="TestCustom-93"><a href="#TestCustom-93"><span class="linenos"> 93</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
@@ -418,8 +418,8 @@
 </span><span id="TestCustom-98"><a href="#TestCustom-98"><span class="linenos"> 98</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 </span><span id="TestCustom-99"><a href="#TestCustom-99"><span class="linenos"> 99</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="TestCustom-100"><a href="#TestCustom-100"><span class="linenos">100</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="TestCustom-101"><a href="#TestCustom-101"><span class="linenos">101</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-102"><a href="#TestCustom-102"><span class="linenos">102</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-101"><a href="#TestCustom-101"><span class="linenos">101</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="TestCustom-102"><a href="#TestCustom-102"><span class="linenos">102</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="TestCustom-103"><a href="#TestCustom-103"><span class="linenos">103</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="TestCustom-104"><a href="#TestCustom-104"><span class="linenos">104</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
 </span><span id="TestCustom-105"><a href="#TestCustom-105"><span class="linenos">105</span></a>            <span class="n">row_sample</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -430,8 +430,8 @@
 </span><span id="TestCustom-110"><a href="#TestCustom-110"><span class="linenos">110</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 </span><span id="TestCustom-111"><a href="#TestCustom-111"><span class="linenos">111</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="TestCustom-112"><a href="#TestCustom-112"><span class="linenos">112</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span id="TestCustom-113"><a href="#TestCustom-113"><span class="linenos">113</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-114"><a href="#TestCustom-114"><span class="linenos">114</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-113"><a href="#TestCustom-113"><span class="linenos">113</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="TestCustom-114"><a href="#TestCustom-114"><span class="linenos">114</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="TestCustom-115"><a href="#TestCustom-115"><span class="linenos">115</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-116"><a href="#TestCustom-116"><span class="linenos">116</span></a>            <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="TestCustom-117"><a href="#TestCustom-117"><span class="linenos">117</span></a>            <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
@@ -517,8 +517,8 @@
 </span><span id="TestCustom-197"><a href="#TestCustom-197"><span class="linenos">197</span></a>            <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 </span><span id="TestCustom-198"><a href="#TestCustom-198"><span class="linenos">198</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-199"><a href="#TestCustom-199"><span class="linenos">199</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-200"><a href="#TestCustom-200"><span class="linenos">200</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-201"><a href="#TestCustom-201"><span class="linenos">201</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-200"><a href="#TestCustom-200"><span class="linenos">200</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="TestCustom-201"><a href="#TestCustom-201"><span class="linenos">201</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="TestCustom-202"><a href="#TestCustom-202"><span class="linenos">202</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-203"><a href="#TestCustom-203"><span class="linenos">203</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-204"><a href="#TestCustom-204"><span class="linenos">204</span></a>
@@ -528,7 +528,7 @@
 </span><span id="TestCustom-208"><a href="#TestCustom-208"><span class="linenos">208</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-209"><a href="#TestCustom-209"><span class="linenos">209</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
 </span><span id="TestCustom-210"><a href="#TestCustom-210"><span class="linenos">210</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-211"><a href="#TestCustom-211"><span class="linenos">211</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-211"><a href="#TestCustom-211"><span class="linenos">211</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="TestCustom-212"><a href="#TestCustom-212"><span class="linenos">212</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="TestCustom-213"><a href="#TestCustom-213"><span class="linenos">213</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-214"><a href="#TestCustom-214"><span class="linenos">214</span></a>
@@ -538,8 +538,8 @@
 </span><span id="TestCustom-218"><a href="#TestCustom-218"><span class="linenos">218</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
 </span><span id="TestCustom-219"><a href="#TestCustom-219"><span class="linenos">219</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-220"><a href="#TestCustom-220"><span class="linenos">220</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-221"><a href="#TestCustom-221"><span class="linenos">221</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
-</span><span id="TestCustom-222"><a href="#TestCustom-222"><span class="linenos">222</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-221"><a href="#TestCustom-221"><span class="linenos">221</span></a>            <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
+</span><span id="TestCustom-222"><a href="#TestCustom-222"><span class="linenos">222</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="TestCustom-223"><a href="#TestCustom-223"><span class="linenos">223</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-224"><a href="#TestCustom-224"><span class="linenos">224</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-225"><a href="#TestCustom-225"><span class="linenos">225</span></a>
@@ -549,7 +549,7 @@
 </span><span id="TestCustom-229"><a href="#TestCustom-229"><span class="linenos">229</span></a>            <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 </span><span id="TestCustom-230"><a href="#TestCustom-230"><span class="linenos">230</span></a>            <span class="n">direct_link</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="TestCustom-231"><a href="#TestCustom-231"><span class="linenos">231</span></a>            <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="TestCustom-232"><a href="#TestCustom-232"><span class="linenos">232</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+</span><span id="TestCustom-232"><a href="#TestCustom-232"><span class="linenos">232</span></a>            <span class="n">activation_name</span><span class="o">=</span><span class="s2">"tanh"</span><span class="p">,</span>
 </span><span id="TestCustom-233"><a href="#TestCustom-233"><span class="linenos">233</span></a>            <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="TestCustom-234"><a href="#TestCustom-234"><span class="linenos">234</span></a>        <span class="p">)</span>
 </span><span id="TestCustom-235"><a href="#TestCustom-235"><span class="linenos">235</span></a>

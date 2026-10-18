@@ -18,7 +18,7 @@ to small perturbations in an external regressor (xreg) using the dynrmf function
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@ to small perturbations in an external regressor (xreg) using the dynrmf function
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -214,16 +214,8 @@ to small perturbations in an external regressor (<code>xreg</code>) using the <c
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">plot1</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu"><a href="plot_dynrmf_sensitivity.html">plot_dynrmf_sensitivity</a></span><span class="op">(</span><span class="va">sensitivity_results_auto</span>, </span></span>
 <span class="r-in"><span>                          title <span class="op">=</span> <span class="st">"Sensitivity of Consumption to Income"</span>,</span></span>
-<span class="r-in"><span>                          y_label <span class="op">=</span> <span class="st">"Effect (ΔConsumption / ΔIncome)"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                          y_label <span class="op">=</span> <span class="st">"Effect (DeltaConsumption / DeltaIncome)"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">plot1</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;ce&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;94&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;ce&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;94&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;ce&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;94&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;ce&gt;</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>conversion failure on 'Effect (ΔConsumption / ΔIncome)' in 'mbcsToSbcs': dot substituted for &lt;94&gt;</span>
 <span class="r-plt img"><img src="dynrmf_sensi-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

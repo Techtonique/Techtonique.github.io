@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -160,10 +160,6 @@
 <dt id="arg-seed">seed<a class="anchor" aria-label="anchor" href="#arg-seed"></a></dt>
 <dd><p>Integer. Random seed for reproducibility (default: 123).</p></dd>
 
-
-<dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
-<dd><p>Character. Sampling method: "antithetic" or "traditional".</p></dd>
-
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -174,17 +170,17 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">rgaussiandens</span><span class="op">(</span><span class="va">x</span>, n <span class="op">=</span> <span class="fl">10</span>, p <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             [,1]       [,2]       [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] -0.2201135 -0.5132901  0.2264192</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] -0.2829092 -0.4697736  0.9784991</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] -0.5348349 -2.1589900 -1.1324550</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]  0.8101387 -0.6655741  0.3041711</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] -1.9037032 -0.2946513 -0.2593461</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]  0.3151243 -0.1831067 -1.4839787</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,] -1.2674475 -3.0390254 -2.9418626</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,] -0.2587634 -0.2318015 -1.1045857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,] -0.1346452  0.2664400 -0.6504609</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10,]  0.1245560  0.1104622 -0.6789287</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              [,1]       [,2]        [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] -0.78620588 -0.1485986 -0.27711583</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] -0.05922425 -0.2070549  0.38267381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] -0.26604610 -0.7926222 -0.70999578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]  0.23002135 -0.4061867 -0.31083673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] -0.56115353 -0.8537893 -0.01626027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]  0.48301301 -0.7526518  0.67685024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,] -0.07838559 -1.5905507 -0.64501389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]  0.94905502  0.1066272  1.02084599</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]  0.94872679  0.4604703  1.43260119</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10,] -0.47369387 -0.4864727  0.45522467</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

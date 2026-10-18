@@ -88,7 +88,7 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.adaBoostClassifier</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AdaBoostClassifier&quot;</span><span class="p">]</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"AdaBoostClassifier"</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -105,7 +105,7 @@
     </div>
     <a class="headerlink" href="#AdaBoostClassifier"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AdaBoostClassifier-21"><a href="#AdaBoostClassifier-21"><span class="linenos"> 21</span></a><span class="k">class</span><span class="w"> </span><span class="nc">AdaBoostClassifier</span><span class="p">(</span><span class="n">Boosting</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier-22"><a href="#AdaBoostClassifier-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;AdaBoost Classification (SAMME) model class derived from class Boosting</span>
+</span><span id="AdaBoostClassifier-22"><a href="#AdaBoostClassifier-22"><span class="linenos"> 22</span></a><span class="w">    </span><span class="sd">"""AdaBoost Classification (SAMME) model class derived from class Boosting</span>
 </span><span id="AdaBoostClassifier-23"><a href="#AdaBoostClassifier-23"><span class="linenos"> 23</span></a>
 </span><span id="AdaBoostClassifier-24"><a href="#AdaBoostClassifier-24"><span class="linenos"> 24</span></a><span class="sd">    Parameters:</span>
 </span><span id="AdaBoostClassifier-25"><a href="#AdaBoostClassifier-25"><span class="linenos"> 25</span></a>
@@ -129,14 +129,14 @@
 </span><span id="AdaBoostClassifier-43"><a href="#AdaBoostClassifier-43"><span class="linenos"> 43</span></a><span class="sd">            controls compromize between l1 and l2 norm of weights</span>
 </span><span id="AdaBoostClassifier-44"><a href="#AdaBoostClassifier-44"><span class="linenos"> 44</span></a>
 </span><span id="AdaBoostClassifier-45"><a href="#AdaBoostClassifier-45"><span class="linenos"> 45</span></a><span class="sd">        activation_name: str</span>
-</span><span id="AdaBoostClassifier-46"><a href="#AdaBoostClassifier-46"><span class="linenos"> 46</span></a><span class="sd">            activation function: &#39;relu&#39;, &#39;tanh&#39;, &#39;sigmoid&#39;, &#39;prelu&#39; or &#39;elu&#39;</span>
+</span><span id="AdaBoostClassifier-46"><a href="#AdaBoostClassifier-46"><span class="linenos"> 46</span></a><span class="sd">            activation function: 'relu', 'tanh', 'sigmoid', 'prelu' or 'elu'</span>
 </span><span id="AdaBoostClassifier-47"><a href="#AdaBoostClassifier-47"><span class="linenos"> 47</span></a>
 </span><span id="AdaBoostClassifier-48"><a href="#AdaBoostClassifier-48"><span class="linenos"> 48</span></a><span class="sd">        a: float</span>
-</span><span id="AdaBoostClassifier-49"><a href="#AdaBoostClassifier-49"><span class="linenos"> 49</span></a><span class="sd">            hyperparameter for &#39;prelu&#39; or &#39;elu&#39; activation function</span>
+</span><span id="AdaBoostClassifier-49"><a href="#AdaBoostClassifier-49"><span class="linenos"> 49</span></a><span class="sd">            hyperparameter for 'prelu' or 'elu' activation function</span>
 </span><span id="AdaBoostClassifier-50"><a href="#AdaBoostClassifier-50"><span class="linenos"> 50</span></a>
 </span><span id="AdaBoostClassifier-51"><a href="#AdaBoostClassifier-51"><span class="linenos"> 51</span></a><span class="sd">        nodes_sim: str</span>
-</span><span id="AdaBoostClassifier-52"><a href="#AdaBoostClassifier-52"><span class="linenos"> 52</span></a><span class="sd">            type of simulation for the nodes: &#39;sobol&#39;, &#39;hammersley&#39;, &#39;halton&#39;,</span>
-</span><span id="AdaBoostClassifier-53"><a href="#AdaBoostClassifier-53"><span class="linenos"> 53</span></a><span class="sd">            &#39;uniform&#39;</span>
+</span><span id="AdaBoostClassifier-52"><a href="#AdaBoostClassifier-52"><span class="linenos"> 52</span></a><span class="sd">            type of simulation for the nodes: 'sobol', 'hammersley', 'halton',</span>
+</span><span id="AdaBoostClassifier-53"><a href="#AdaBoostClassifier-53"><span class="linenos"> 53</span></a><span class="sd">            'uniform'</span>
 </span><span id="AdaBoostClassifier-54"><a href="#AdaBoostClassifier-54"><span class="linenos"> 54</span></a>
 </span><span id="AdaBoostClassifier-55"><a href="#AdaBoostClassifier-55"><span class="linenos"> 55</span></a><span class="sd">        bias: boolean</span>
 </span><span id="AdaBoostClassifier-56"><a href="#AdaBoostClassifier-56"><span class="linenos"> 56</span></a><span class="sd">            indicates if the hidden layer contains a bias term (True) or not</span>
@@ -147,11 +147,11 @@
 </span><span id="AdaBoostClassifier-61"><a href="#AdaBoostClassifier-61"><span class="linenos"> 61</span></a><span class="sd">            of the training</span>
 </span><span id="AdaBoostClassifier-62"><a href="#AdaBoostClassifier-62"><span class="linenos"> 62</span></a>
 </span><span id="AdaBoostClassifier-63"><a href="#AdaBoostClassifier-63"><span class="linenos"> 63</span></a><span class="sd">        direct_link: boolean</span>
-</span><span id="AdaBoostClassifier-64"><a href="#AdaBoostClassifier-64"><span class="linenos"> 64</span></a><span class="sd">            indicates if the original predictors are included (True) in model&#39;s</span>
+</span><span id="AdaBoostClassifier-64"><a href="#AdaBoostClassifier-64"><span class="linenos"> 64</span></a><span class="sd">            indicates if the original predictors are included (True) in model's</span>
 </span><span id="AdaBoostClassifier-65"><a href="#AdaBoostClassifier-65"><span class="linenos"> 65</span></a><span class="sd">            fitting or not (False)</span>
 </span><span id="AdaBoostClassifier-66"><a href="#AdaBoostClassifier-66"><span class="linenos"> 66</span></a>
 </span><span id="AdaBoostClassifier-67"><a href="#AdaBoostClassifier-67"><span class="linenos"> 67</span></a><span class="sd">        n_clusters: int</span>
-</span><span id="AdaBoostClassifier-68"><a href="#AdaBoostClassifier-68"><span class="linenos"> 68</span></a><span class="sd">            number of clusters for &#39;kmeans&#39; or &#39;gmm&#39; clustering (could be 0:</span>
+</span><span id="AdaBoostClassifier-68"><a href="#AdaBoostClassifier-68"><span class="linenos"> 68</span></a><span class="sd">            number of clusters for 'kmeans' or 'gmm' clustering (could be 0:</span>
 </span><span id="AdaBoostClassifier-69"><a href="#AdaBoostClassifier-69"><span class="linenos"> 69</span></a><span class="sd">                no clustering)</span>
 </span><span id="AdaBoostClassifier-70"><a href="#AdaBoostClassifier-70"><span class="linenos"> 70</span></a>
 </span><span id="AdaBoostClassifier-71"><a href="#AdaBoostClassifier-71"><span class="linenos"> 71</span></a><span class="sd">        cluster_encode: bool</span>
@@ -159,13 +159,13 @@
 </span><span id="AdaBoostClassifier-73"><a href="#AdaBoostClassifier-73"><span class="linenos"> 73</span></a><span class="sd">            if `False`, then labels are used, without one-hot encoding</span>
 </span><span id="AdaBoostClassifier-74"><a href="#AdaBoostClassifier-74"><span class="linenos"> 74</span></a>
 </span><span id="AdaBoostClassifier-75"><a href="#AdaBoostClassifier-75"><span class="linenos"> 75</span></a><span class="sd">        type_clust: str</span>
-</span><span id="AdaBoostClassifier-76"><a href="#AdaBoostClassifier-76"><span class="linenos"> 76</span></a><span class="sd">            type of clustering method: currently k-means (&#39;kmeans&#39;) or Gaussian</span>
-</span><span id="AdaBoostClassifier-77"><a href="#AdaBoostClassifier-77"><span class="linenos"> 77</span></a><span class="sd">            Mixture Model (&#39;gmm&#39;)</span>
+</span><span id="AdaBoostClassifier-76"><a href="#AdaBoostClassifier-76"><span class="linenos"> 76</span></a><span class="sd">            type of clustering method: currently k-means ('kmeans') or Gaussian</span>
+</span><span id="AdaBoostClassifier-77"><a href="#AdaBoostClassifier-77"><span class="linenos"> 77</span></a><span class="sd">            Mixture Model ('gmm')</span>
 </span><span id="AdaBoostClassifier-78"><a href="#AdaBoostClassifier-78"><span class="linenos"> 78</span></a>
 </span><span id="AdaBoostClassifier-79"><a href="#AdaBoostClassifier-79"><span class="linenos"> 79</span></a><span class="sd">        type_scaling: a tuple of 3 strings</span>
 </span><span id="AdaBoostClassifier-80"><a href="#AdaBoostClassifier-80"><span class="linenos"> 80</span></a><span class="sd">            scaling methods for inputs, hidden layer, and clustering respectively</span>
 </span><span id="AdaBoostClassifier-81"><a href="#AdaBoostClassifier-81"><span class="linenos"> 81</span></a><span class="sd">            (and when relevant).</span>
-</span><span id="AdaBoostClassifier-82"><a href="#AdaBoostClassifier-82"><span class="linenos"> 82</span></a><span class="sd">            Currently available: standardization (&#39;std&#39;) or MinMax scaling (&#39;minmax&#39;)</span>
+</span><span id="AdaBoostClassifier-82"><a href="#AdaBoostClassifier-82"><span class="linenos"> 82</span></a><span class="sd">            Currently available: standardization ('std') or MinMax scaling ('minmax')</span>
 </span><span id="AdaBoostClassifier-83"><a href="#AdaBoostClassifier-83"><span class="linenos"> 83</span></a>
 </span><span id="AdaBoostClassifier-84"><a href="#AdaBoostClassifier-84"><span class="linenos"> 84</span></a><span class="sd">        col_sample: float</span>
 </span><span id="AdaBoostClassifier-85"><a href="#AdaBoostClassifier-85"><span class="linenos"> 85</span></a><span class="sd">            percentage of covariates randomly chosen for training</span>
@@ -174,16 +174,16 @@
 </span><span id="AdaBoostClassifier-88"><a href="#AdaBoostClassifier-88"><span class="linenos"> 88</span></a><span class="sd">            percentage of rows chosen for training, by stratified bootstrapping</span>
 </span><span id="AdaBoostClassifier-89"><a href="#AdaBoostClassifier-89"><span class="linenos"> 89</span></a>
 </span><span id="AdaBoostClassifier-90"><a href="#AdaBoostClassifier-90"><span class="linenos"> 90</span></a><span class="sd">        seed: int</span>
-</span><span id="AdaBoostClassifier-91"><a href="#AdaBoostClassifier-91"><span class="linenos"> 91</span></a><span class="sd">            reproducibility seed for nodes_sim==&#39;uniform&#39;</span>
+</span><span id="AdaBoostClassifier-91"><a href="#AdaBoostClassifier-91"><span class="linenos"> 91</span></a><span class="sd">            reproducibility seed for nodes_sim=='uniform'</span>
 </span><span id="AdaBoostClassifier-92"><a href="#AdaBoostClassifier-92"><span class="linenos"> 92</span></a>
 </span><span id="AdaBoostClassifier-93"><a href="#AdaBoostClassifier-93"><span class="linenos"> 93</span></a><span class="sd">        verbose: int</span>
 </span><span id="AdaBoostClassifier-94"><a href="#AdaBoostClassifier-94"><span class="linenos"> 94</span></a><span class="sd">            0 for no output, 1 for a progress bar (default is 1)</span>
 </span><span id="AdaBoostClassifier-95"><a href="#AdaBoostClassifier-95"><span class="linenos"> 95</span></a>
 </span><span id="AdaBoostClassifier-96"><a href="#AdaBoostClassifier-96"><span class="linenos"> 96</span></a><span class="sd">        method: str</span>
-</span><span id="AdaBoostClassifier-97"><a href="#AdaBoostClassifier-97"><span class="linenos"> 97</span></a><span class="sd">            type of Adaboost method, &#39;SAMME&#39; (discrete) or &#39;SAMME.R&#39; (real)</span>
+</span><span id="AdaBoostClassifier-97"><a href="#AdaBoostClassifier-97"><span class="linenos"> 97</span></a><span class="sd">            type of Adaboost method, 'SAMME' (discrete) or 'SAMME.R' (real)</span>
 </span><span id="AdaBoostClassifier-98"><a href="#AdaBoostClassifier-98"><span class="linenos"> 98</span></a>
 </span><span id="AdaBoostClassifier-99"><a href="#AdaBoostClassifier-99"><span class="linenos"> 99</span></a><span class="sd">        backend: str</span>
-</span><span id="AdaBoostClassifier-100"><a href="#AdaBoostClassifier-100"><span class="linenos">100</span></a><span class="sd">            &quot;cpu&quot; or &quot;gpu&quot; or &quot;tpu&quot;</span>
+</span><span id="AdaBoostClassifier-100"><a href="#AdaBoostClassifier-100"><span class="linenos">100</span></a><span class="sd">            "cpu" or "gpu" or "tpu"</span>
 </span><span id="AdaBoostClassifier-101"><a href="#AdaBoostClassifier-101"><span class="linenos">101</span></a>
 </span><span id="AdaBoostClassifier-102"><a href="#AdaBoostClassifier-102"><span class="linenos">102</span></a><span class="sd">    Attributes:</span>
 </span><span id="AdaBoostClassifier-103"><a href="#AdaBoostClassifier-103"><span class="linenos">103</span></a>
@@ -213,7 +213,7 @@
 </span><span id="AdaBoostClassifier-127"><a href="#AdaBoostClassifier-127"><span class="linenos">127</span></a><span class="sd">    X_train, X_test, y_train, y_test = train_test_split(Z, t, test_size=0.2)</span>
 </span><span id="AdaBoostClassifier-128"><a href="#AdaBoostClassifier-128"><span class="linenos">128</span></a>
 </span><span id="AdaBoostClassifier-129"><a href="#AdaBoostClassifier-129"><span class="linenos">129</span></a><span class="sd">    # SAMME.R</span>
-</span><span id="AdaBoostClassifier-130"><a href="#AdaBoostClassifier-130"><span class="linenos">130</span></a><span class="sd">    clf = LogisticRegression(solver=&#39;liblinear&#39;, multi_class = &#39;ovr&#39;,</span>
+</span><span id="AdaBoostClassifier-130"><a href="#AdaBoostClassifier-130"><span class="linenos">130</span></a><span class="sd">    clf = LogisticRegression(solver='liblinear', multi_class = 'ovr',</span>
 </span><span id="AdaBoostClassifier-131"><a href="#AdaBoostClassifier-131"><span class="linenos">131</span></a><span class="sd">                            random_state=123)</span>
 </span><span id="AdaBoostClassifier-132"><a href="#AdaBoostClassifier-132"><span class="linenos">132</span></a><span class="sd">    fit_obj = ns.AdaBoostClassifier(clf,</span>
 </span><span id="AdaBoostClassifier-133"><a href="#AdaBoostClassifier-133"><span class="linenos">133</span></a><span class="sd">                                    n_hidden_features=int(11.22338867),</span>
@@ -221,17 +221,17 @@
 </span><span id="AdaBoostClassifier-135"><a href="#AdaBoostClassifier-135"><span class="linenos">135</span></a><span class="sd">                                    n_estimators=250, learning_rate=0.01126343,</span>
 </span><span id="AdaBoostClassifier-136"><a href="#AdaBoostClassifier-136"><span class="linenos">136</span></a><span class="sd">                                    col_sample=0.72684326, row_sample=0.86429443,</span>
 </span><span id="AdaBoostClassifier-137"><a href="#AdaBoostClassifier-137"><span class="linenos">137</span></a><span class="sd">                                    dropout=0.63078613, n_clusters=2,</span>
-</span><span id="AdaBoostClassifier-138"><a href="#AdaBoostClassifier-138"><span class="linenos">138</span></a><span class="sd">                                    type_clust=&quot;gmm&quot;,</span>
+</span><span id="AdaBoostClassifier-138"><a href="#AdaBoostClassifier-138"><span class="linenos">138</span></a><span class="sd">                                    type_clust="gmm",</span>
 </span><span id="AdaBoostClassifier-139"><a href="#AdaBoostClassifier-139"><span class="linenos">139</span></a><span class="sd">                                    verbose=1, seed = 123,</span>
-</span><span id="AdaBoostClassifier-140"><a href="#AdaBoostClassifier-140"><span class="linenos">140</span></a><span class="sd">                                    method=&quot;SAMME.R&quot;)</span>
+</span><span id="AdaBoostClassifier-140"><a href="#AdaBoostClassifier-140"><span class="linenos">140</span></a><span class="sd">                                    method="SAMME.R")</span>
 </span><span id="AdaBoostClassifier-141"><a href="#AdaBoostClassifier-141"><span class="linenos">141</span></a>
 </span><span id="AdaBoostClassifier-142"><a href="#AdaBoostClassifier-142"><span class="linenos">142</span></a><span class="sd">    start = time()</span>
 </span><span id="AdaBoostClassifier-143"><a href="#AdaBoostClassifier-143"><span class="linenos">143</span></a><span class="sd">    fit_obj.fit(X_train, y_train)</span>
-</span><span id="AdaBoostClassifier-144"><a href="#AdaBoostClassifier-144"><span class="linenos">144</span></a><span class="sd">    print(f&quot;Elapsed {time() - start}&quot;)</span>
+</span><span id="AdaBoostClassifier-144"><a href="#AdaBoostClassifier-144"><span class="linenos">144</span></a><span class="sd">    print(f"Elapsed {time() - start}")</span>
 </span><span id="AdaBoostClassifier-145"><a href="#AdaBoostClassifier-145"><span class="linenos">145</span></a>
 </span><span id="AdaBoostClassifier-146"><a href="#AdaBoostClassifier-146"><span class="linenos">146</span></a><span class="sd">    start = time()</span>
 </span><span id="AdaBoostClassifier-147"><a href="#AdaBoostClassifier-147"><span class="linenos">147</span></a><span class="sd">    print(fit_obj.score(X_test, y_test))</span>
-</span><span id="AdaBoostClassifier-148"><a href="#AdaBoostClassifier-148"><span class="linenos">148</span></a><span class="sd">    print(f&quot;Elapsed {time() - start}&quot;)</span>
+</span><span id="AdaBoostClassifier-148"><a href="#AdaBoostClassifier-148"><span class="linenos">148</span></a><span class="sd">    print(f"Elapsed {time() - start}")</span>
 </span><span id="AdaBoostClassifier-149"><a href="#AdaBoostClassifier-149"><span class="linenos">149</span></a>
 </span><span id="AdaBoostClassifier-150"><a href="#AdaBoostClassifier-150"><span class="linenos">150</span></a><span class="sd">    preds = fit_obj.predict(X_test)</span>
 </span><span id="AdaBoostClassifier-151"><a href="#AdaBoostClassifier-151"><span class="linenos">151</span></a>
@@ -239,10 +239,10 @@
 </span><span id="AdaBoostClassifier-153"><a href="#AdaBoostClassifier-153"><span class="linenos">153</span></a>
 </span><span id="AdaBoostClassifier-154"><a href="#AdaBoostClassifier-154"><span class="linenos">154</span></a><span class="sd">    ```</span>
 </span><span id="AdaBoostClassifier-155"><a href="#AdaBoostClassifier-155"><span class="linenos">155</span></a>
-</span><span id="AdaBoostClassifier-156"><a href="#AdaBoostClassifier-156"><span class="linenos">156</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier-156"><a href="#AdaBoostClassifier-156"><span class="linenos">156</span></a><span class="sd">    """</span>
 </span><span id="AdaBoostClassifier-157"><a href="#AdaBoostClassifier-157"><span class="linenos">157</span></a>
 </span><span id="AdaBoostClassifier-158"><a href="#AdaBoostClassifier-158"><span class="linenos">158</span></a>    <span class="c1"># construct the object -----</span>
-</span><span id="AdaBoostClassifier-159"><a href="#AdaBoostClassifier-159"><span class="linenos">159</span></a>    <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">&quot;classifier&quot;</span>
+</span><span id="AdaBoostClassifier-159"><a href="#AdaBoostClassifier-159"><span class="linenos">159</span></a>    <span class="n">_estimator_type</span> <span class="o">=</span> <span class="s2">"classifier"</span>
 </span><span id="AdaBoostClassifier-160"><a href="#AdaBoostClassifier-160"><span class="linenos">160</span></a>
 </span><span id="AdaBoostClassifier-161"><a href="#AdaBoostClassifier-161"><span class="linenos">161</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="AdaBoostClassifier-162"><a href="#AdaBoostClassifier-162"><span class="linenos">162</span></a>        <span class="bp">self</span><span class="p">,</span>
@@ -252,24 +252,24 @@
 </span><span id="AdaBoostClassifier-166"><a href="#AdaBoostClassifier-166"><span class="linenos">166</span></a>        <span class="n">n_hidden_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-167"><a href="#AdaBoostClassifier-167"><span class="linenos">167</span></a>        <span class="n">reg_lambda</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-168"><a href="#AdaBoostClassifier-168"><span class="linenos">168</span></a>        <span class="n">reg_alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-169"><a href="#AdaBoostClassifier-169"><span class="linenos">169</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-169"><a href="#AdaBoostClassifier-169"><span class="linenos">169</span></a>        <span class="n">activation_name</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-170"><a href="#AdaBoostClassifier-170"><span class="linenos">170</span></a>        <span class="n">a</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-171"><a href="#AdaBoostClassifier-171"><span class="linenos">171</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">&quot;sobol&quot;</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-171"><a href="#AdaBoostClassifier-171"><span class="linenos">171</span></a>        <span class="n">nodes_sim</span><span class="o">=</span><span class="s2">"sobol"</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-172"><a href="#AdaBoostClassifier-172"><span class="linenos">172</span></a>        <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-173"><a href="#AdaBoostClassifier-173"><span class="linenos">173</span></a>        <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-174"><a href="#AdaBoostClassifier-174"><span class="linenos">174</span></a>        <span class="n">direct_link</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-175"><a href="#AdaBoostClassifier-175"><span class="linenos">175</span></a>        <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-176"><a href="#AdaBoostClassifier-176"><span class="linenos">176</span></a>        <span class="n">cluster_encode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-177"><a href="#AdaBoostClassifier-177"><span class="linenos">177</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;kmeans&quot;</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-178"><a href="#AdaBoostClassifier-178"><span class="linenos">178</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">),</span>
+</span><span id="AdaBoostClassifier-177"><a href="#AdaBoostClassifier-177"><span class="linenos">177</span></a>        <span class="n">type_clust</span><span class="o">=</span><span class="s2">"kmeans"</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-178"><a href="#AdaBoostClassifier-178"><span class="linenos">178</span></a>        <span class="n">type_scaling</span><span class="o">=</span><span class="p">(</span><span class="s2">"std"</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">),</span>
 </span><span id="AdaBoostClassifier-179"><a href="#AdaBoostClassifier-179"><span class="linenos">179</span></a>        <span class="n">col_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-180"><a href="#AdaBoostClassifier-180"><span class="linenos">180</span></a>        <span class="n">row_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-181"><a href="#AdaBoostClassifier-181"><span class="linenos">181</span></a>        <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-182"><a href="#AdaBoostClassifier-182"><span class="linenos">182</span></a>        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-183"><a href="#AdaBoostClassifier-183"><span class="linenos">183</span></a>        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;SAMME&quot;</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-184"><a href="#AdaBoostClassifier-184"><span class="linenos">184</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-183"><a href="#AdaBoostClassifier-183"><span class="linenos">183</span></a>        <span class="n">method</span><span class="o">=</span><span class="s2">"SAMME"</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-184"><a href="#AdaBoostClassifier-184"><span class="linenos">184</span></a>        <span class="n">backend</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span>
 </span><span id="AdaBoostClassifier-185"><a href="#AdaBoostClassifier-185"><span class="linenos">185</span></a>    <span class="p">):</span>
-</span><span id="AdaBoostClassifier-186"><a href="#AdaBoostClassifier-186"><span class="linenos">186</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">&quot;classification&quot;</span>
+</span><span id="AdaBoostClassifier-186"><a href="#AdaBoostClassifier-186"><span class="linenos">186</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">type_fit</span> <span class="o">=</span> <span class="s2">"classification"</span>
 </span><span id="AdaBoostClassifier-187"><a href="#AdaBoostClassifier-187"><span class="linenos">187</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
 </span><span id="AdaBoostClassifier-188"><a href="#AdaBoostClassifier-188"><span class="linenos">188</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
 </span><span id="AdaBoostClassifier-189"><a href="#AdaBoostClassifier-189"><span class="linenos">189</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">reg_lambda</span> <span class="o">=</span> <span class="n">reg_lambda</span>
@@ -300,7 +300,7 @@
 </span><span id="AdaBoostClassifier-214"><a href="#AdaBoostClassifier-214"><span class="linenos">214</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">base_learners_</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_estimators</span><span class="p">))</span>
 </span><span id="AdaBoostClassifier-215"><a href="#AdaBoostClassifier-215"><span class="linenos">215</span></a>
 </span><span id="AdaBoostClassifier-216"><a href="#AdaBoostClassifier-216"><span class="linenos">216</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier-217"><a href="#AdaBoostClassifier-217"><span class="linenos">217</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit Boosting model to training data (X, y).</span>
+</span><span id="AdaBoostClassifier-217"><a href="#AdaBoostClassifier-217"><span class="linenos">217</span></a><span class="w">        </span><span class="sd">"""Fit Boosting model to training data (X, y).</span>
 </span><span id="AdaBoostClassifier-218"><a href="#AdaBoostClassifier-218"><span class="linenos">218</span></a>
 </span><span id="AdaBoostClassifier-219"><a href="#AdaBoostClassifier-219"><span class="linenos">219</span></a><span class="sd">        Parameters:</span>
 </span><span id="AdaBoostClassifier-220"><a href="#AdaBoostClassifier-220"><span class="linenos">220</span></a>
@@ -317,22 +317,22 @@
 </span><span id="AdaBoostClassifier-231"><a href="#AdaBoostClassifier-231"><span class="linenos">231</span></a><span class="sd">        Returns:</span>
 </span><span id="AdaBoostClassifier-232"><a href="#AdaBoostClassifier-232"><span class="linenos">232</span></a>
 </span><span id="AdaBoostClassifier-233"><a href="#AdaBoostClassifier-233"><span class="linenos">233</span></a><span class="sd">             self: object</span>
-</span><span id="AdaBoostClassifier-234"><a href="#AdaBoostClassifier-234"><span class="linenos">234</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier-234"><a href="#AdaBoostClassifier-234"><span class="linenos">234</span></a><span class="sd">        """</span>
 </span><span id="AdaBoostClassifier-235"><a href="#AdaBoostClassifier-235"><span class="linenos">235</span></a>
-</span><span id="AdaBoostClassifier-236"><a href="#AdaBoostClassifier-236"><span class="linenos">236</span></a>        <span class="k">assert</span> <span class="n">mx</span><span class="o">.</span><span class="n">is_factor</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">&quot;y must contain only integers&quot;</span>
+</span><span id="AdaBoostClassifier-236"><a href="#AdaBoostClassifier-236"><span class="linenos">236</span></a>        <span class="k">assert</span> <span class="n">mx</span><span class="o">.</span><span class="n">is_factor</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">"y must contain only integers"</span>
 </span><span id="AdaBoostClassifier-237"><a href="#AdaBoostClassifier-237"><span class="linenos">237</span></a>
 </span><span id="AdaBoostClassifier-238"><a href="#AdaBoostClassifier-238"><span class="linenos">238</span></a>        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">(</span>
-</span><span id="AdaBoostClassifier-239"><a href="#AdaBoostClassifier-239"><span class="linenos">239</span></a>            <span class="s2">&quot;SAMME&quot;</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-240"><a href="#AdaBoostClassifier-240"><span class="linenos">240</span></a>            <span class="s2">&quot;SAMME.R&quot;</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier-241"><a href="#AdaBoostClassifier-241"><span class="linenos">241</span></a>        <span class="p">),</span> <span class="s2">&quot;`method` must be either &#39;SAMME&#39; or &#39;SAMME.R&#39;&quot;</span>
+</span><span id="AdaBoostClassifier-239"><a href="#AdaBoostClassifier-239"><span class="linenos">239</span></a>            <span class="s2">"SAMME"</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-240"><a href="#AdaBoostClassifier-240"><span class="linenos">240</span></a>            <span class="s2">"SAMME.R"</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier-241"><a href="#AdaBoostClassifier-241"><span class="linenos">241</span></a>        <span class="p">),</span> <span class="s2">"`method` must be either 'SAMME' or 'SAMME.R'"</span>
 </span><span id="AdaBoostClassifier-242"><a href="#AdaBoostClassifier-242"><span class="linenos">242</span></a>
 </span><span id="AdaBoostClassifier-243"><a href="#AdaBoostClassifier-243"><span class="linenos">243</span></a>        <span class="k">assert</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reg_lambda</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
 </span><span id="AdaBoostClassifier-244"><a href="#AdaBoostClassifier-244"><span class="linenos">244</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">reg_lambda</span> <span class="o">&gt;=</span> <span class="mi">0</span>
-</span><span id="AdaBoostClassifier-245"><a href="#AdaBoostClassifier-245"><span class="linenos">245</span></a>        <span class="p">),</span> <span class="s2">&quot;must have self.reg_lambda &lt;= 1 &amp;  self.reg_lambda &gt;= 0&quot;</span>
+</span><span id="AdaBoostClassifier-245"><a href="#AdaBoostClassifier-245"><span class="linenos">245</span></a>        <span class="p">),</span> <span class="s2">"must have self.reg_lambda &lt;= 1 &amp;  self.reg_lambda &gt;= 0"</span>
 </span><span id="AdaBoostClassifier-246"><a href="#AdaBoostClassifier-246"><span class="linenos">246</span></a>
 </span><span id="AdaBoostClassifier-247"><a href="#AdaBoostClassifier-247"><span class="linenos">247</span></a>        <span class="k">assert</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reg_alpha</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
 </span><span id="AdaBoostClassifier-248"><a href="#AdaBoostClassifier-248"><span class="linenos">248</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">reg_alpha</span> <span class="o">&gt;=</span> <span class="mi">0</span>
-</span><span id="AdaBoostClassifier-249"><a href="#AdaBoostClassifier-249"><span class="linenos">249</span></a>        <span class="p">),</span> <span class="s2">&quot;must have self.reg_alpha &lt;= 1 &amp;  self.reg_alpha &gt;= 0&quot;</span>
+</span><span id="AdaBoostClassifier-249"><a href="#AdaBoostClassifier-249"><span class="linenos">249</span></a>        <span class="p">),</span> <span class="s2">"must have self.reg_alpha &lt;= 1 &amp;  self.reg_alpha &gt;= 0"</span>
 </span><span id="AdaBoostClassifier-250"><a href="#AdaBoostClassifier-250"><span class="linenos">250</span></a>
 </span><span id="AdaBoostClassifier-251"><a href="#AdaBoostClassifier-251"><span class="linenos">251</span></a>        <span class="c1"># training</span>
 </span><span id="AdaBoostClassifier-252"><a href="#AdaBoostClassifier-252"><span class="linenos">252</span></a>        <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
@@ -365,7 +365,7 @@
 </span><span id="AdaBoostClassifier-279"><a href="#AdaBoostClassifier-279"><span class="linenos">279</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier-280"><a href="#AdaBoostClassifier-280"><span class="linenos">280</span></a>            <span class="n">pbar</span> <span class="o">=</span> <span class="n">Progbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier-281"><a href="#AdaBoostClassifier-281"><span class="linenos">281</span></a>
-</span><span id="AdaBoostClassifier-282"><a href="#AdaBoostClassifier-282"><span class="linenos">282</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SAMME&quot;</span><span class="p">:</span>
+</span><span id="AdaBoostClassifier-282"><a href="#AdaBoostClassifier-282"><span class="linenos">282</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"SAMME"</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier-283"><a href="#AdaBoostClassifier-283"><span class="linenos">283</span></a>            <span class="n">err_m</span> <span class="o">=</span> <span class="mf">1e6</span>
 </span><span id="AdaBoostClassifier-284"><a href="#AdaBoostClassifier-284"><span class="linenos">284</span></a>            <span class="n">err_bound</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span>
 </span><span id="AdaBoostClassifier-285"><a href="#AdaBoostClassifier-285"><span class="linenos">285</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">alpha_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
@@ -418,7 +418,7 @@
 </span><span id="AdaBoostClassifier-332"><a href="#AdaBoostClassifier-332"><span class="linenos">332</span></a>
 </span><span id="AdaBoostClassifier-333"><a href="#AdaBoostClassifier-333"><span class="linenos">333</span></a>            <span class="k">return</span> <span class="bp">self</span>
 </span><span id="AdaBoostClassifier-334"><a href="#AdaBoostClassifier-334"><span class="linenos">334</span></a>
-</span><span id="AdaBoostClassifier-335"><a href="#AdaBoostClassifier-335"><span class="linenos">335</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SAMME.R&quot;</span><span class="p">:</span>
+</span><span id="AdaBoostClassifier-335"><a href="#AdaBoostClassifier-335"><span class="linenos">335</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"SAMME.R"</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier-336"><a href="#AdaBoostClassifier-336"><span class="linenos">336</span></a>            <span class="n">Y</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">one_hot_encode2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier-337"><a href="#AdaBoostClassifier-337"><span class="linenos">337</span></a>
 </span><span id="AdaBoostClassifier-338"><a href="#AdaBoostClassifier-338"><span class="linenos">338</span></a>            <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -461,7 +461,7 @@
 </span><span id="AdaBoostClassifier-375"><a href="#AdaBoostClassifier-375"><span class="linenos">375</span></a>            <span class="k">return</span> <span class="bp">self</span>
 </span><span id="AdaBoostClassifier-376"><a href="#AdaBoostClassifier-376"><span class="linenos">376</span></a>
 </span><span id="AdaBoostClassifier-377"><a href="#AdaBoostClassifier-377"><span class="linenos">377</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier-378"><a href="#AdaBoostClassifier-378"><span class="linenos">378</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
+</span><span id="AdaBoostClassifier-378"><a href="#AdaBoostClassifier-378"><span class="linenos">378</span></a><span class="w">        </span><span class="sd">"""Predict test data X.</span>
 </span><span id="AdaBoostClassifier-379"><a href="#AdaBoostClassifier-379"><span class="linenos">379</span></a>
 </span><span id="AdaBoostClassifier-380"><a href="#AdaBoostClassifier-380"><span class="linenos">380</span></a><span class="sd">        Parameters:</span>
 </span><span id="AdaBoostClassifier-381"><a href="#AdaBoostClassifier-381"><span class="linenos">381</span></a>
@@ -475,11 +475,11 @@
 </span><span id="AdaBoostClassifier-389"><a href="#AdaBoostClassifier-389"><span class="linenos">389</span></a><span class="sd">        Returns:</span>
 </span><span id="AdaBoostClassifier-390"><a href="#AdaBoostClassifier-390"><span class="linenos">390</span></a>
 </span><span id="AdaBoostClassifier-391"><a href="#AdaBoostClassifier-391"><span class="linenos">391</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="AdaBoostClassifier-392"><a href="#AdaBoostClassifier-392"><span class="linenos">392</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier-392"><a href="#AdaBoostClassifier-392"><span class="linenos">392</span></a><span class="sd">        """</span>
 </span><span id="AdaBoostClassifier-393"><a href="#AdaBoostClassifier-393"><span class="linenos">393</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier-394"><a href="#AdaBoostClassifier-394"><span class="linenos">394</span></a>
 </span><span id="AdaBoostClassifier-395"><a href="#AdaBoostClassifier-395"><span class="linenos">395</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier-396"><a href="#AdaBoostClassifier-396"><span class="linenos">396</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
+</span><span id="AdaBoostClassifier-396"><a href="#AdaBoostClassifier-396"><span class="linenos">396</span></a><span class="w">        </span><span class="sd">"""Predict probabilities for test data X.</span>
 </span><span id="AdaBoostClassifier-397"><a href="#AdaBoostClassifier-397"><span class="linenos">397</span></a>
 </span><span id="AdaBoostClassifier-398"><a href="#AdaBoostClassifier-398"><span class="linenos">398</span></a><span class="sd">        Parameters:</span>
 </span><span id="AdaBoostClassifier-399"><a href="#AdaBoostClassifier-399"><span class="linenos">399</span></a>
@@ -494,11 +494,11 @@
 </span><span id="AdaBoostClassifier-408"><a href="#AdaBoostClassifier-408"><span class="linenos">408</span></a>
 </span><span id="AdaBoostClassifier-409"><a href="#AdaBoostClassifier-409"><span class="linenos">409</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
 </span><span id="AdaBoostClassifier-410"><a href="#AdaBoostClassifier-410"><span class="linenos">410</span></a>
-</span><span id="AdaBoostClassifier-411"><a href="#AdaBoostClassifier-411"><span class="linenos">411</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier-411"><a href="#AdaBoostClassifier-411"><span class="linenos">411</span></a><span class="sd">        """</span>
 </span><span id="AdaBoostClassifier-412"><a href="#AdaBoostClassifier-412"><span class="linenos">412</span></a>
 </span><span id="AdaBoostClassifier-413"><a href="#AdaBoostClassifier-413"><span class="linenos">413</span></a>        <span class="n">n_iter</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_learners_</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier-414"><a href="#AdaBoostClassifier-414"><span class="linenos">414</span></a>
-</span><span id="AdaBoostClassifier-415"><a href="#AdaBoostClassifier-415"><span class="linenos">415</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SAMME&quot;</span><span class="p">:</span>
+</span><span id="AdaBoostClassifier-415"><a href="#AdaBoostClassifier-415"><span class="linenos">415</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"SAMME"</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier-416"><a href="#AdaBoostClassifier-416"><span class="linenos">416</span></a>            <span class="n">ensemble_learner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span>
 </span><span id="AdaBoostClassifier-417"><a href="#AdaBoostClassifier-417"><span class="linenos">417</span></a>
 </span><span id="AdaBoostClassifier-418"><a href="#AdaBoostClassifier-418"><span class="linenos">418</span></a>            <span class="c1"># if self.verbose == 1:</span>
@@ -523,7 +523,7 @@
 </span><span id="AdaBoostClassifier-437"><a href="#AdaBoostClassifier-437"><span class="linenos">437</span></a>
 </span><span id="AdaBoostClassifier-438"><a href="#AdaBoostClassifier-438"><span class="linenos">438</span></a>            <span class="k">return</span> <span class="n">expit_ensemble_learner</span> <span class="o">/</span> <span class="n">sum_ensemble</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
 </span><span id="AdaBoostClassifier-439"><a href="#AdaBoostClassifier-439"><span class="linenos">439</span></a>
-</span><span id="AdaBoostClassifier-440"><a href="#AdaBoostClassifier-440"><span class="linenos">440</span></a>        <span class="c1"># if self.method == &quot;SAMME.R&quot;:</span>
+</span><span id="AdaBoostClassifier-440"><a href="#AdaBoostClassifier-440"><span class="linenos">440</span></a>        <span class="c1"># if self.method == "SAMME.R":</span>
 </span><span id="AdaBoostClassifier-441"><a href="#AdaBoostClassifier-441"><span class="linenos">441</span></a>        <span class="n">ensemble_learner</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="AdaBoostClassifier-442"><a href="#AdaBoostClassifier-442"><span class="linenos">442</span></a>
 </span><span id="AdaBoostClassifier-443"><a href="#AdaBoostClassifier-443"><span class="linenos">443</span></a>        <span class="c1"># if self.verbose == 1:</span>
@@ -556,7 +556,7 @@
 </span><span id="AdaBoostClassifier-470"><a href="#AdaBoostClassifier-470"><span class="linenos">470</span></a>
 </span><span id="AdaBoostClassifier-471"><a href="#AdaBoostClassifier-471"><span class="linenos">471</span></a>    <span class="nd">@property</span>
 </span><span id="AdaBoostClassifier-472"><a href="#AdaBoostClassifier-472"><span class="linenos">472</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_estimator_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier-473"><a href="#AdaBoostClassifier-473"><span class="linenos">473</span></a>        <span class="k">return</span> <span class="s2">&quot;classifier&quot;</span>
+</span><span id="AdaBoostClassifier-473"><a href="#AdaBoostClassifier-473"><span class="linenos">473</span></a>        <span class="k">return</span> <span class="s2">"classifier"</span>
 </span></pre></div>
 
 
@@ -670,7 +670,7 @@ base_learners_: dict
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
 <span class="c1"># SAMME.R</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">,</span> <span class="n">multi_class</span> <span class="o">=</span> <span class="s1">&#39;ovr&#39;</span><span class="p">,</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">'liblinear'</span><span class="p">,</span> <span class="n">multi_class</span> <span class="o">=</span> <span class="s1">'ovr'</span><span class="p">,</span>
                         <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">fit_obj</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span>
                                 <span class="n">n_hidden_features</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mf">11.22338867</span><span class="p">),</span>
@@ -678,17 +678,17 @@ base_learners_: dict
                                 <span class="n">n_estimators</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01126343</span><span class="p">,</span>
                                 <span class="n">col_sample</span><span class="o">=</span><span class="mf">0.72684326</span><span class="p">,</span> <span class="n">row_sample</span><span class="o">=</span><span class="mf">0.86429443</span><span class="p">,</span>
                                 <span class="n">dropout</span><span class="o">=</span><span class="mf">0.63078613</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                <span class="n">type_clust</span><span class="o">=</span><span class="s2">&quot;gmm&quot;</span><span class="p">,</span>
+                                <span class="n">type_clust</span><span class="o">=</span><span class="s2">"gmm"</span><span class="p">,</span>
                                 <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">123</span><span class="p">,</span>
-                                <span class="n">method</span><span class="o">=</span><span class="s2">&quot;SAMME.R&quot;</span><span class="p">)</span>
+                                <span class="n">method</span><span class="o">=</span><span class="s2">"SAMME.R"</span><span class="p">)</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">fit_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Elapsed </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fit_obj</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Elapsed </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">preds</span> <span class="o">=</span> <span class="n">fit_obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
@@ -710,7 +710,7 @@ base_learners_: dict
     </div>
     <a class="headerlink" href="#AdaBoostClassifier.fit"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AdaBoostClassifier.fit-216"><a href="#AdaBoostClassifier.fit-216"><span class="linenos">216</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier.fit-217"><a href="#AdaBoostClassifier.fit-217"><span class="linenos">217</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit Boosting model to training data (X, y).</span>
+</span><span id="AdaBoostClassifier.fit-217"><a href="#AdaBoostClassifier.fit-217"><span class="linenos">217</span></a><span class="w">        </span><span class="sd">"""Fit Boosting model to training data (X, y).</span>
 </span><span id="AdaBoostClassifier.fit-218"><a href="#AdaBoostClassifier.fit-218"><span class="linenos">218</span></a>
 </span><span id="AdaBoostClassifier.fit-219"><a href="#AdaBoostClassifier.fit-219"><span class="linenos">219</span></a><span class="sd">        Parameters:</span>
 </span><span id="AdaBoostClassifier.fit-220"><a href="#AdaBoostClassifier.fit-220"><span class="linenos">220</span></a>
@@ -727,22 +727,22 @@ base_learners_: dict
 </span><span id="AdaBoostClassifier.fit-231"><a href="#AdaBoostClassifier.fit-231"><span class="linenos">231</span></a><span class="sd">        Returns:</span>
 </span><span id="AdaBoostClassifier.fit-232"><a href="#AdaBoostClassifier.fit-232"><span class="linenos">232</span></a>
 </span><span id="AdaBoostClassifier.fit-233"><a href="#AdaBoostClassifier.fit-233"><span class="linenos">233</span></a><span class="sd">             self: object</span>
-</span><span id="AdaBoostClassifier.fit-234"><a href="#AdaBoostClassifier.fit-234"><span class="linenos">234</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier.fit-234"><a href="#AdaBoostClassifier.fit-234"><span class="linenos">234</span></a><span class="sd">        """</span>
 </span><span id="AdaBoostClassifier.fit-235"><a href="#AdaBoostClassifier.fit-235"><span class="linenos">235</span></a>
-</span><span id="AdaBoostClassifier.fit-236"><a href="#AdaBoostClassifier.fit-236"><span class="linenos">236</span></a>        <span class="k">assert</span> <span class="n">mx</span><span class="o">.</span><span class="n">is_factor</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">&quot;y must contain only integers&quot;</span>
+</span><span id="AdaBoostClassifier.fit-236"><a href="#AdaBoostClassifier.fit-236"><span class="linenos">236</span></a>        <span class="k">assert</span> <span class="n">mx</span><span class="o">.</span><span class="n">is_factor</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="s2">"y must contain only integers"</span>
 </span><span id="AdaBoostClassifier.fit-237"><a href="#AdaBoostClassifier.fit-237"><span class="linenos">237</span></a>
 </span><span id="AdaBoostClassifier.fit-238"><a href="#AdaBoostClassifier.fit-238"><span class="linenos">238</span></a>        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">(</span>
-</span><span id="AdaBoostClassifier.fit-239"><a href="#AdaBoostClassifier.fit-239"><span class="linenos">239</span></a>            <span class="s2">&quot;SAMME&quot;</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier.fit-240"><a href="#AdaBoostClassifier.fit-240"><span class="linenos">240</span></a>            <span class="s2">&quot;SAMME.R&quot;</span><span class="p">,</span>
-</span><span id="AdaBoostClassifier.fit-241"><a href="#AdaBoostClassifier.fit-241"><span class="linenos">241</span></a>        <span class="p">),</span> <span class="s2">&quot;`method` must be either &#39;SAMME&#39; or &#39;SAMME.R&#39;&quot;</span>
+</span><span id="AdaBoostClassifier.fit-239"><a href="#AdaBoostClassifier.fit-239"><span class="linenos">239</span></a>            <span class="s2">"SAMME"</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier.fit-240"><a href="#AdaBoostClassifier.fit-240"><span class="linenos">240</span></a>            <span class="s2">"SAMME.R"</span><span class="p">,</span>
+</span><span id="AdaBoostClassifier.fit-241"><a href="#AdaBoostClassifier.fit-241"><span class="linenos">241</span></a>        <span class="p">),</span> <span class="s2">"`method` must be either 'SAMME' or 'SAMME.R'"</span>
 </span><span id="AdaBoostClassifier.fit-242"><a href="#AdaBoostClassifier.fit-242"><span class="linenos">242</span></a>
 </span><span id="AdaBoostClassifier.fit-243"><a href="#AdaBoostClassifier.fit-243"><span class="linenos">243</span></a>        <span class="k">assert</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reg_lambda</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
 </span><span id="AdaBoostClassifier.fit-244"><a href="#AdaBoostClassifier.fit-244"><span class="linenos">244</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">reg_lambda</span> <span class="o">&gt;=</span> <span class="mi">0</span>
-</span><span id="AdaBoostClassifier.fit-245"><a href="#AdaBoostClassifier.fit-245"><span class="linenos">245</span></a>        <span class="p">),</span> <span class="s2">&quot;must have self.reg_lambda &lt;= 1 &amp;  self.reg_lambda &gt;= 0&quot;</span>
+</span><span id="AdaBoostClassifier.fit-245"><a href="#AdaBoostClassifier.fit-245"><span class="linenos">245</span></a>        <span class="p">),</span> <span class="s2">"must have self.reg_lambda &lt;= 1 &amp;  self.reg_lambda &gt;= 0"</span>
 </span><span id="AdaBoostClassifier.fit-246"><a href="#AdaBoostClassifier.fit-246"><span class="linenos">246</span></a>
 </span><span id="AdaBoostClassifier.fit-247"><a href="#AdaBoostClassifier.fit-247"><span class="linenos">247</span></a>        <span class="k">assert</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reg_alpha</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
 </span><span id="AdaBoostClassifier.fit-248"><a href="#AdaBoostClassifier.fit-248"><span class="linenos">248</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">reg_alpha</span> <span class="o">&gt;=</span> <span class="mi">0</span>
-</span><span id="AdaBoostClassifier.fit-249"><a href="#AdaBoostClassifier.fit-249"><span class="linenos">249</span></a>        <span class="p">),</span> <span class="s2">&quot;must have self.reg_alpha &lt;= 1 &amp;  self.reg_alpha &gt;= 0&quot;</span>
+</span><span id="AdaBoostClassifier.fit-249"><a href="#AdaBoostClassifier.fit-249"><span class="linenos">249</span></a>        <span class="p">),</span> <span class="s2">"must have self.reg_alpha &lt;= 1 &amp;  self.reg_alpha &gt;= 0"</span>
 </span><span id="AdaBoostClassifier.fit-250"><a href="#AdaBoostClassifier.fit-250"><span class="linenos">250</span></a>
 </span><span id="AdaBoostClassifier.fit-251"><a href="#AdaBoostClassifier.fit-251"><span class="linenos">251</span></a>        <span class="c1"># training</span>
 </span><span id="AdaBoostClassifier.fit-252"><a href="#AdaBoostClassifier.fit-252"><span class="linenos">252</span></a>        <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
@@ -775,7 +775,7 @@ base_learners_: dict
 </span><span id="AdaBoostClassifier.fit-279"><a href="#AdaBoostClassifier.fit-279"><span class="linenos">279</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier.fit-280"><a href="#AdaBoostClassifier.fit-280"><span class="linenos">280</span></a>            <span class="n">pbar</span> <span class="o">=</span> <span class="n">Progbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_estimators</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier.fit-281"><a href="#AdaBoostClassifier.fit-281"><span class="linenos">281</span></a>
-</span><span id="AdaBoostClassifier.fit-282"><a href="#AdaBoostClassifier.fit-282"><span class="linenos">282</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SAMME&quot;</span><span class="p">:</span>
+</span><span id="AdaBoostClassifier.fit-282"><a href="#AdaBoostClassifier.fit-282"><span class="linenos">282</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"SAMME"</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier.fit-283"><a href="#AdaBoostClassifier.fit-283"><span class="linenos">283</span></a>            <span class="n">err_m</span> <span class="o">=</span> <span class="mf">1e6</span>
 </span><span id="AdaBoostClassifier.fit-284"><a href="#AdaBoostClassifier.fit-284"><span class="linenos">284</span></a>            <span class="n">err_bound</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span>
 </span><span id="AdaBoostClassifier.fit-285"><a href="#AdaBoostClassifier.fit-285"><span class="linenos">285</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">alpha_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
@@ -828,7 +828,7 @@ base_learners_: dict
 </span><span id="AdaBoostClassifier.fit-332"><a href="#AdaBoostClassifier.fit-332"><span class="linenos">332</span></a>
 </span><span id="AdaBoostClassifier.fit-333"><a href="#AdaBoostClassifier.fit-333"><span class="linenos">333</span></a>            <span class="k">return</span> <span class="bp">self</span>
 </span><span id="AdaBoostClassifier.fit-334"><a href="#AdaBoostClassifier.fit-334"><span class="linenos">334</span></a>
-</span><span id="AdaBoostClassifier.fit-335"><a href="#AdaBoostClassifier.fit-335"><span class="linenos">335</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SAMME.R&quot;</span><span class="p">:</span>
+</span><span id="AdaBoostClassifier.fit-335"><a href="#AdaBoostClassifier.fit-335"><span class="linenos">335</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"SAMME.R"</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier.fit-336"><a href="#AdaBoostClassifier.fit-336"><span class="linenos">336</span></a>            <span class="n">Y</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">one_hot_encode2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier.fit-337"><a href="#AdaBoostClassifier.fit-337"><span class="linenos">337</span></a>
 </span><span id="AdaBoostClassifier.fit-338"><a href="#AdaBoostClassifier.fit-338"><span class="linenos">338</span></a>            <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -907,7 +907,7 @@ y: array-like, shape = [n_samples]
     </div>
     <a class="headerlink" href="#AdaBoostClassifier.predict"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AdaBoostClassifier.predict-377"><a href="#AdaBoostClassifier.predict-377"><span class="linenos">377</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier.predict-378"><a href="#AdaBoostClassifier.predict-378"><span class="linenos">378</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict test data X.</span>
+</span><span id="AdaBoostClassifier.predict-378"><a href="#AdaBoostClassifier.predict-378"><span class="linenos">378</span></a><span class="w">        </span><span class="sd">"""Predict test data X.</span>
 </span><span id="AdaBoostClassifier.predict-379"><a href="#AdaBoostClassifier.predict-379"><span class="linenos">379</span></a>
 </span><span id="AdaBoostClassifier.predict-380"><a href="#AdaBoostClassifier.predict-380"><span class="linenos">380</span></a><span class="sd">        Parameters:</span>
 </span><span id="AdaBoostClassifier.predict-381"><a href="#AdaBoostClassifier.predict-381"><span class="linenos">381</span></a>
@@ -921,7 +921,7 @@ y: array-like, shape = [n_samples]
 </span><span id="AdaBoostClassifier.predict-389"><a href="#AdaBoostClassifier.predict-389"><span class="linenos">389</span></a><span class="sd">        Returns:</span>
 </span><span id="AdaBoostClassifier.predict-390"><a href="#AdaBoostClassifier.predict-390"><span class="linenos">390</span></a>
 </span><span id="AdaBoostClassifier.predict-391"><a href="#AdaBoostClassifier.predict-391"><span class="linenos">391</span></a><span class="sd">            model predictions: {array-like}</span>
-</span><span id="AdaBoostClassifier.predict-392"><a href="#AdaBoostClassifier.predict-392"><span class="linenos">392</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier.predict-392"><a href="#AdaBoostClassifier.predict-392"><span class="linenos">392</span></a><span class="sd">        """</span>
 </span><span id="AdaBoostClassifier.predict-393"><a href="#AdaBoostClassifier.predict-393"><span class="linenos">393</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span></pre></div>
 
@@ -958,7 +958,7 @@ y: array-like, shape = [n_samples]
     </div>
     <a class="headerlink" href="#AdaBoostClassifier.predict_proba"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="AdaBoostClassifier.predict_proba-395"><a href="#AdaBoostClassifier.predict_proba-395"><span class="linenos">395</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="AdaBoostClassifier.predict_proba-396"><a href="#AdaBoostClassifier.predict_proba-396"><span class="linenos">396</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict probabilities for test data X.</span>
+</span><span id="AdaBoostClassifier.predict_proba-396"><a href="#AdaBoostClassifier.predict_proba-396"><span class="linenos">396</span></a><span class="w">        </span><span class="sd">"""Predict probabilities for test data X.</span>
 </span><span id="AdaBoostClassifier.predict_proba-397"><a href="#AdaBoostClassifier.predict_proba-397"><span class="linenos">397</span></a>
 </span><span id="AdaBoostClassifier.predict_proba-398"><a href="#AdaBoostClassifier.predict_proba-398"><span class="linenos">398</span></a><span class="sd">        Parameters:</span>
 </span><span id="AdaBoostClassifier.predict_proba-399"><a href="#AdaBoostClassifier.predict_proba-399"><span class="linenos">399</span></a>
@@ -973,11 +973,11 @@ y: array-like, shape = [n_samples]
 </span><span id="AdaBoostClassifier.predict_proba-408"><a href="#AdaBoostClassifier.predict_proba-408"><span class="linenos">408</span></a>
 </span><span id="AdaBoostClassifier.predict_proba-409"><a href="#AdaBoostClassifier.predict_proba-409"><span class="linenos">409</span></a><span class="sd">            probability estimates for test data: {array-like}</span>
 </span><span id="AdaBoostClassifier.predict_proba-410"><a href="#AdaBoostClassifier.predict_proba-410"><span class="linenos">410</span></a>
-</span><span id="AdaBoostClassifier.predict_proba-411"><a href="#AdaBoostClassifier.predict_proba-411"><span class="linenos">411</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdaBoostClassifier.predict_proba-411"><a href="#AdaBoostClassifier.predict_proba-411"><span class="linenos">411</span></a><span class="sd">        """</span>
 </span><span id="AdaBoostClassifier.predict_proba-412"><a href="#AdaBoostClassifier.predict_proba-412"><span class="linenos">412</span></a>
 </span><span id="AdaBoostClassifier.predict_proba-413"><a href="#AdaBoostClassifier.predict_proba-413"><span class="linenos">413</span></a>        <span class="n">n_iter</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_learners_</span><span class="p">)</span>
 </span><span id="AdaBoostClassifier.predict_proba-414"><a href="#AdaBoostClassifier.predict_proba-414"><span class="linenos">414</span></a>
-</span><span id="AdaBoostClassifier.predict_proba-415"><a href="#AdaBoostClassifier.predict_proba-415"><span class="linenos">415</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SAMME&quot;</span><span class="p">:</span>
+</span><span id="AdaBoostClassifier.predict_proba-415"><a href="#AdaBoostClassifier.predict_proba-415"><span class="linenos">415</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">"SAMME"</span><span class="p">:</span>
 </span><span id="AdaBoostClassifier.predict_proba-416"><a href="#AdaBoostClassifier.predict_proba-416"><span class="linenos">416</span></a>            <span class="n">ensemble_learner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes</span><span class="p">))</span>
 </span><span id="AdaBoostClassifier.predict_proba-417"><a href="#AdaBoostClassifier.predict_proba-417"><span class="linenos">417</span></a>
 </span><span id="AdaBoostClassifier.predict_proba-418"><a href="#AdaBoostClassifier.predict_proba-418"><span class="linenos">418</span></a>            <span class="c1"># if self.verbose == 1:</span>
@@ -1002,7 +1002,7 @@ y: array-like, shape = [n_samples]
 </span><span id="AdaBoostClassifier.predict_proba-437"><a href="#AdaBoostClassifier.predict_proba-437"><span class="linenos">437</span></a>
 </span><span id="AdaBoostClassifier.predict_proba-438"><a href="#AdaBoostClassifier.predict_proba-438"><span class="linenos">438</span></a>            <span class="k">return</span> <span class="n">expit_ensemble_learner</span> <span class="o">/</span> <span class="n">sum_ensemble</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
 </span><span id="AdaBoostClassifier.predict_proba-439"><a href="#AdaBoostClassifier.predict_proba-439"><span class="linenos">439</span></a>
-</span><span id="AdaBoostClassifier.predict_proba-440"><a href="#AdaBoostClassifier.predict_proba-440"><span class="linenos">440</span></a>        <span class="c1"># if self.method == &quot;SAMME.R&quot;:</span>
+</span><span id="AdaBoostClassifier.predict_proba-440"><a href="#AdaBoostClassifier.predict_proba-440"><span class="linenos">440</span></a>        <span class="c1"># if self.method == "SAMME.R":</span>
 </span><span id="AdaBoostClassifier.predict_proba-441"><a href="#AdaBoostClassifier.predict_proba-441"><span class="linenos">441</span></a>        <span class="n">ensemble_learner</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="AdaBoostClassifier.predict_proba-442"><a href="#AdaBoostClassifier.predict_proba-442"><span class="linenos">442</span></a>
 </span><span id="AdaBoostClassifier.predict_proba-443"><a href="#AdaBoostClassifier.predict_proba-443"><span class="linenos">443</span></a>        <span class="c1"># if self.verbose == 1:</span>

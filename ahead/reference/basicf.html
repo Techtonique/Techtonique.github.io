@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ahead</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.36.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.39.0</span>
       </span>
     </div>
 
@@ -80,7 +80,7 @@
       <a href="../articles/generic-conformal.html">Generic forecasting and conformal prediction</a>
     </li>
     <li>
-      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast</a>
+      <a href="../articles/glmthetaf-anymodel.html">Generalized Linear Model Theta Forecast for any model</a>
     </li>
     <li>
       <a href="../articles/glmthetaf-attention-conformal.html">Generalized Linear Model Theta Forecast with attention - conformal uncertainty</a>
@@ -225,77 +225,47 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/" class="external-link">fpp2</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: fpp2</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Attaching packages</span> ────────────────────────────────────────────── fpp2 2.5 ──</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.5.2      <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">fma      </span> 2.5   </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forecast </span> 8.24.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">expsmooth</span> 2.3   </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, h<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="basicf-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, method<span class="op">=</span><span class="st">"rw"</span>, h<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="basicf-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># block bootstrap</span></span></span>
 <span class="r-in"><span><span class="va">res3</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, h<span class="op">=</span><span class="fl">10</span>, type_pi <span class="op">=</span> <span class="st">"bootstrap"</span>, B<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in"><span><span class="va">res5</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, h<span class="op">=</span><span class="fl">10</span>, type_pi <span class="op">=</span> <span class="st">"blockbootstrap"</span>, B<span class="op">=</span><span class="fl">10</span>,</span></span>
 <span class="r-in"><span>                      block_length <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">res3</span><span class="op">$</span><span class="va">sims</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Quotes TV.advert</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> May 2005  9.69184  6.340490</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Jun 2005  9.12098  6.272510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Jul 2005 12.97065  7.212725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Aug 2005 12.97065  7.212725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sep 2005 13.28780  8.402730</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Oct 2005 15.88901  9.844505</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nov 2005 12.30076  7.963540</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dec 2005 12.93375  8.244881</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Jan 2006 12.64484  7.920675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Feb 2006 15.93515  8.957255</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">res5</span><span class="op">$</span><span class="va">sims</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Quotes TV.advert</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> May 2005 12.97065  7.212725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Jun 2005 15.38714  9.443570</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Jul 2005 13.22957  7.534250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Aug 2005 12.97065  7.212725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sep 2005 11.72288  6.415215</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Oct 2005 10.06177  5.806990</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nov 2005 10.82279  6.203600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dec 2005 13.28707  7.586430</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Jan 2006  9.69184  6.340490</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Feb 2006 10.30415  6.939995</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res3</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res5</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="basicf-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># moving block bootstrap</span></span></span>
 <span class="r-in"><span><span class="va">res6</span> <span class="op">&lt;-</span> <span class="fu">ahead</span><span class="fu">::</span><span class="fu">basicf</span><span class="op">(</span><span class="fu">fpp2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/fpp2/man/insurance.html" class="external-link">insurance</a></span>, h<span class="op">=</span><span class="fl">10</span>,</span></span>
 <span class="r-in"><span>                      type_pi <span class="op">=</span> <span class="st">"movingblockbootstrap"</span>, B<span class="op">=</span><span class="fl">10</span>,</span></span>
 <span class="r-in"><span>                      block_length <span class="op">=</span> <span class="fl">4</span>, method <span class="op">=</span> <span class="st">"rw"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |=======                                                               |  10%  |                                                                              |==============                                                        |  20%  |                                                                              |=====================                                                 |  30%  |                                                                              |============================                                          |  40%  |                                                                              |===================================                                   |  50%  |                                                                              |==========================================                            |  60%  |                                                                              |=================================================                     |  70%  |                                                                              |========================================================              |  80%  |                                                                              |===============================================================       |  90%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res6</span>, <span class="st">"Quotes"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res6</span>, <span class="st">"TV.advert"</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="basicf-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
