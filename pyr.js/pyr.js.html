@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pyr.js documentation</title>
+    <meta name="description" content="pyr.js: Python and R in HTML pages, with one script tag, powered by Pyodide and webR.">
+    <style>/* pdoc theme (https://pdoc.dev), as used across techtonique.github.io. */
+/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}
+/*! theme.css */:root{--pdoc-background:#212529;}.pdoc{--text:#f7f7f7;--muted:#9d9d9d;--link:#58a6ff;--link-hover:#3989ff;--code:#333;--active:#555;--accent:#343434;--accent2:#555;--nav-hover:rgba(0, 0, 0, 0.1);--name:#77C1FF;--def:#0cdd0c;--annotation:#00c037;}
+/*! syntax-highlighting.css */pre{line-height:125%;}span.linenos{color:inherit; background-color:transparent; padding-left:5px; padding-right:20px;}.pdoc-code .hll{background-color:#49483e}.pdoc-code{background:#272822; color:#f8f8f2}.pdoc-code .c{color:#75715e}.pdoc-code .err{color:#960050; background-color:#1e0010}.pdoc-code .esc{color:#f8f8f2}.pdoc-code .g{color:#f8f8f2}.pdoc-code .k{color:#66d9ef}.pdoc-code .l{color:#ae81ff}.pdoc-code .n{color:#f8f8f2}.pdoc-code .o{color:#f92672}.pdoc-code .x{color:#f8f8f2}.pdoc-code .p{color:#f8f8f2}.pdoc-code .ch{color:#75715e}.pdoc-code .cm{color:#75715e}.pdoc-code .cp{color:#75715e}.pdoc-code .cpf{color:#75715e}.pdoc-code .c1{color:#75715e}.pdoc-code .cs{color:#75715e}.pdoc-code .gd{color:#f92672}.pdoc-code .ge{color:#f8f8f2; font-style:italic}.pdoc-code .gr{color:#f8f8f2}.pdoc-code .gh{color:#f8f8f2}.pdoc-code .gi{color:#a6e22e}.pdoc-code .go{color:#66d9ef}.pdoc-code .gp{color:#f92672; font-weight:bold}.pdoc-code .gs{color:#f8f8f2; font-weight:bold}.pdoc-code .gu{color:#75715e}.pdoc-code .gt{color:#f8f8f2}.pdoc-code .kc{color:#66d9ef}.pdoc-code .kd{color:#66d9ef}.pdoc-code .kn{color:#f92672}.pdoc-code .kp{color:#66d9ef}.pdoc-code .kr{color:#66d9ef}.pdoc-code .kt{color:#66d9ef}.pdoc-code .ld{color:#e6db74}.pdoc-code .m{color:#ae81ff}.pdoc-code .s{color:#e6db74}.pdoc-code .na{color:#a6e22e}.pdoc-code .nb{color:#f8f8f2}.pdoc-code .nc{color:#a6e22e}.pdoc-code .no{color:#66d9ef}.pdoc-code .nd{color:#a6e22e}.pdoc-code .ni{color:#f8f8f2}.pdoc-code .ne{color:#a6e22e}.pdoc-code .nf{color:#a6e22e}.pdoc-code .nl{color:#f8f8f2}.pdoc-code .nn{color:#f8f8f2}.pdoc-code .nx{color:#a6e22e}.pdoc-code .py{color:#f8f8f2}.pdoc-code .nt{color:#f92672}.pdoc-code .nv{color:#f8f8f2}.pdoc-code .ow{color:#f92672}.pdoc-code .w{color:#f8f8f2}.pdoc-code .mb{color:#ae81ff}.pdoc-code .mf{color:#ae81ff}.pdoc-code .mh{color:#ae81ff}.pdoc-code .mi{color:#ae81ff}.pdoc-code .mo{color:#ae81ff}.pdoc-code .sa{color:#e6db74}.pdoc-code .sb{color:#e6db74}.pdoc-code .sc{color:#e6db74}.pdoc-code .dl{color:#e6db74}.pdoc-code .sd{color:#e6db74}.pdoc-code .s2{color:#e6db74}.pdoc-code .se{color:#ae81ff}.pdoc-code .sh{color:#e6db74}.pdoc-code .si{color:#e6db74}.pdoc-code .sx{color:#e6db74}.pdoc-code .sr{color:#e6db74}.pdoc-code .s1{color:#e6db74}.pdoc-code .ss{color:#e6db74}.pdoc-code .bp{color:#f8f8f2}.pdoc-code .fm{color:#a6e22e}.pdoc-code .vc{color:#f8f8f2}.pdoc-code .vg{color:#f8f8f2}.pdoc-code .vi{color:#f8f8f2}.pdoc-code .vm{color:#f8f8f2}
+/*! layout.css */html, body{width:100%;height:100%;}html, main{scroll-behavior:smooth;}body{background-color:var(--pdoc-background);}@media (max-width:769px){#navtoggle{cursor:pointer;position:absolute;width:50px;height:40px;top:1rem;right:1rem;border-color:var(--text);color:var(--text);display:flex;opacity:0.8;z-index:999;}#navtoggle:hover{opacity:1;}#togglestate + div{display:none;}#togglestate:checked + div{display:inherit;}main, header{padding:2rem 3vw;}header + main{margin-top:-3rem;}.git-button{display:none !important;}nav input[type="search"]{max-width:77%;}nav input[type="search"]:first-child{margin-top:-6px;}nav input[type="search"]:valid ~ *{display:none !important;}}@media (min-width:770px){:root{--sidebar-width:clamp(12.5rem, 28vw, 22rem);}nav{position:fixed;overflow:auto;height:100vh;width:var(--sidebar-width);}main, header{padding:3rem 2rem 3rem calc(var(--sidebar-width) + 3rem);width:calc(54rem + var(--sidebar-width));max-width:100%;}header + main{margin-top:-4rem;}#navtoggle{display:none;}}#togglestate{position:absolute;height:0;opacity:0;}nav.pdoc{--pad:clamp(0.5rem, 2vw, 1.75rem);--indent:1.5rem;background-color:var(--accent);border-right:1px solid var(--accent2);box-shadow:0 0 20px rgba(50, 50, 50, .2) inset;padding:0 0 0 var(--pad);overflow-wrap:anywhere;scrollbar-width:thin; scrollbar-color:var(--accent2) transparent; z-index:1}nav.pdoc::-webkit-scrollbar{width:.4rem; }nav.pdoc::-webkit-scrollbar-thumb{background-color:var(--accent2); }nav.pdoc > div{padding:var(--pad) 0;}nav.pdoc .module-list-button{display:inline-flex;align-items:center;color:var(--text);border-color:var(--muted);margin-bottom:1rem;}nav.pdoc .module-list-button:hover{border-color:var(--text);}nav.pdoc input[type=search]{display:block;outline-offset:0;width:calc(100% - var(--pad));}nav.pdoc .logo{max-width:calc(100% - var(--pad));max-height:35vh;display:block;margin:0 auto 1rem;transform:translate(calc(-.5 * var(--pad)), 0);}nav.pdoc ul{list-style:none;padding-left:0;}nav.pdoc > div > ul{margin-left:calc(0px - var(--pad));}nav.pdoc li a{padding:.2rem 0 .2rem calc(var(--pad) + var(--indent));}nav.pdoc > div > ul > li > a{padding-left:var(--pad);}nav.pdoc li{transition:all 100ms;}nav.pdoc li:hover{background-color:var(--nav-hover);}nav.pdoc a, nav.pdoc a:hover{color:var(--text);}nav.pdoc a{display:block;}nav.pdoc > h2:first-of-type{margin-top:1.5rem;}nav.pdoc .class:before{content:"class ";color:var(--muted);}nav.pdoc .function:after{content:"()";color:var(--muted);}nav.pdoc footer:before{content:"";display:block;width:calc(100% - var(--pad));border-top:solid var(--accent2) 1px;margin-top:1.5rem;padding-top:.5rem;}nav.pdoc footer{font-size:small;}
+/*! content.css */.pdoc{color:var(--text);box-sizing:border-box;line-height:1.5;background:none;}.pdoc .pdoc-button{cursor:pointer;display:inline-block;border:solid black 1px;border-radius:2px;font-size:.75rem;padding:calc(0.5em - 1px) 1em;transition:100ms all;}.pdoc .alert{padding:1rem 1rem 1rem calc(1.5rem + 24px);border:1px solid transparent;border-radius:.25rem;background-repeat:no-repeat;background-position:.75rem center;margin-bottom:1rem;}.pdoc .alert > em{display:none;}.pdoc .alert > *:last-child{margin-bottom:0;}.pdoc .alert.note{color:#084298;background-color:#cfe2ff;border-color:#b6d4fe;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23084298%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2016A8%208%200%201%200%208%200a8%208%200%200%200%200%2016zm.93-9.412-1%204.705c-.07.34.029.533.304.533.194%200%20.487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703%200-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381%202.29-.287zM8%205.5a1%201%200%201%201%200-2%201%201%200%200%201%200%202z%22/%3E%3C/svg%3E");}.pdoc .alert.tip{color:#0a3622;background-color:#d1e7dd;border-color:#a3cfbb;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%230a3622%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2%206a6%206%200%201%201%2010.174%204.31c-.203.196-.359.4-.453.619l-.762%201.769A.5.5%200%200%201%2010.5%2013a.5.5%200%200%201%200%201%20.5.5%200%200%201%200%201l-.224.447a1%201%200%200%201-.894.553H6.618a1%201%200%200%201-.894-.553L5.5%2015a.5.5%200%200%201%200-1%20.5.5%200%200%201%200-1%20.5.5%200%200%201-.46-.302l-.761-1.77a2%202%200%200%200-.453-.618A5.98%205.98%200%200%201%202%206m6-5a5%205%200%200%200-3.479%208.592c.263.254.514.564.676.941L5.83%2012h4.342l.632-1.467c.162-.377.413-.687.676-.941A5%205%200%200%200%208%201%22/%3E%3C/svg%3E");}.pdoc .alert.important{color:#055160;background-color:#cff4fc;border-color:#9eeaf9;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23055160%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M2%200a2%202%200%200%200-2%202v12a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V2a2%202%200%200%200-2-2zm6%204c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%204.995A.905.905%200%200%201%208%204m.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E");}.pdoc .alert.warning{color:#664d03;background-color:#fff3cd;border-color:#ffecb5;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23664d03%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8.982%201.566a1.13%201.13%200%200%200-1.96%200L.165%2013.233c-.457.778.091%201.767.98%201.767h13.713c.889%200%201.438-.99.98-1.767L8.982%201.566zM8%205c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%205.995A.905.905%200%200%201%208%205zm.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2z%22/%3E%3C/svg%3E");}.pdoc .alert.caution{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M11.46.146A.5.5%200%200%200%2011.107%200H4.893a.5.5%200%200%200-.353.146L.146%204.54A.5.5%200%200%200%200%204.893v6.214a.5.5%200%200%200%20.146.353l4.394%204.394a.5.5%200%200%200%20.353.146h6.214a.5.5%200%200%200%20.353-.146l4.394-4.394a.5.5%200%200%200%20.146-.353V4.893a.5.5%200%200%200-.146-.353zM8%204c.535%200%20.954.462.9.995l-.35%203.507a.552.552%200%200%201-1.1%200L7.1%204.995A.905.905%200%200%201%208%204m.002%206a1%201%200%201%201%200%202%201%201%200%200%201%200-2%22/%3E%3C/svg%3E");}.pdoc .alert.danger{color:#842029;background-color:#f8d7da;border-color:#f5c2c7;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%23842029%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M5.52.359A.5.5%200%200%201%206%200h4a.5.5%200%200%201%20.474.658L8.694%206H12.5a.5.5%200%200%201%20.395.807l-7%209a.5.5%200%200%201-.873-.454L6.823%209.5H3.5a.5.5%200%200%201-.48-.641l2.5-8.5z%22/%3E%3C/svg%3E");}.pdoc .visually-hidden{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0, 0, 0, 0) !important;white-space:nowrap !important;border:0 !important;}.pdoc h1, .pdoc h2, .pdoc h3{font-weight:300;margin:.3em 0;padding:.2em 0;}.pdoc > section:not(.module-info) h1{font-size:1.5rem;font-weight:500;}.pdoc > section:not(.module-info) h2{font-size:1.4rem;font-weight:500;}.pdoc > section:not(.module-info) h3{font-size:1.3rem;font-weight:500;}.pdoc > section:not(.module-info) h4{font-size:1.2rem;}.pdoc > section:not(.module-info) h5{font-size:1.1rem;}.pdoc a{text-decoration:none;color:var(--link);}.pdoc a:hover{color:var(--link-hover);}.pdoc blockquote{margin-left:2rem;}.pdoc pre{border-top:1px solid var(--accent2);border-bottom:1px solid var(--accent2);margin-top:0;margin-bottom:1em;padding:.5rem 0 .5rem .5rem;overflow-x:auto;background-color:var(--code);}.pdoc code{color:var(--text);padding:.2em .4em;margin:0;font-size:85%;background-color:var(--accent);border-radius:6px;}.pdoc a > code{color:inherit;}.pdoc pre > code{display:inline-block;font-size:inherit;background:none;border:none;padding:0;}.pdoc > section:not(.module-info){margin-bottom:1.5rem;}.pdoc .modulename{margin-top:0;font-weight:bold;}.pdoc .modulename a{color:var(--link);transition:100ms all;}.pdoc .git-button{float:right;border:solid var(--link) 1px;}.pdoc .git-button:hover{background-color:var(--link);color:var(--pdoc-background);}.view-source-toggle-state,.view-source-toggle-state ~ .pdoc-code{display:none;}.view-source-toggle-state:checked ~ .pdoc-code{display:block;}.view-source-button{display:inline-block;float:right;font-size:.75rem;line-height:1.5rem;color:var(--muted);padding:0 .4rem 0 1.3rem;cursor:pointer;text-indent:-2px;}.view-source-button > span{visibility:hidden;}.module-info .view-source-button{float:none;display:flex;justify-content:flex-end;margin:-1.2rem .4rem -.2rem 0;}.view-source-button::before{position:absolute;content:"View Source";display:list-item;list-style-type:disclosure-closed;}.view-source-toggle-state:checked ~ .attr .view-source-button::before,.view-source-toggle-state:checked ~ .view-source-button::before{list-style-type:disclosure-open;}.pdoc .docstring{margin-bottom:1.5rem;}.pdoc section:not(.module-info) .docstring{margin-left:clamp(0rem, 5vw - 2rem, 1rem);}.pdoc .docstring .pdoc-code{margin-left:1em;margin-right:1em;}.pdoc h1:target,.pdoc h2:target,.pdoc h3:target,.pdoc h4:target,.pdoc h5:target,.pdoc h6:target,.pdoc .pdoc-code > pre > span:target{background-color:var(--active);box-shadow:-1rem 0 0 0 var(--active);}.pdoc .pdoc-code > pre > span:target{display:block;}.pdoc div:target > .attr,.pdoc section:target > .attr,.pdoc dd:target > a{background-color:var(--active);}.pdoc *{scroll-margin:2rem;}.pdoc .pdoc-code .linenos{user-select:none;}.pdoc .attr:hover{filter:contrast(0.95);}.pdoc section, .pdoc .classattr{position:relative;}.pdoc .headerlink{--width:clamp(1rem, 3vw, 2rem);position:absolute;top:0;left:calc(0rem - var(--width));transition:all 100ms ease-in-out;opacity:0;}.pdoc .headerlink::before{content:"#";display:block;text-align:center;width:var(--width);height:2.3rem;line-height:2.3rem;font-size:1.5rem;}.pdoc .attr:hover ~ .headerlink,.pdoc *:target > .headerlink,.pdoc .headerlink:hover{opacity:1;}.pdoc .attr{display:block;margin:.5rem 0 .5rem;padding:.4rem .4rem .4rem 1rem;background-color:var(--accent);overflow-x:auto;}.pdoc .classattr{margin-left:2rem;}.pdoc .decorator-deprecated{color:#842029;}.pdoc .decorator-deprecated ~ span{filter:grayscale(1) opacity(0.8);}.pdoc .name{color:var(--name);font-weight:bold;}.pdoc .def{color:var(--def);font-weight:bold;}.pdoc .signature{background-color:transparent;}.pdoc .param, .pdoc .return-annotation{white-space:pre;}.pdoc .signature.multiline .param{display:block;}.pdoc .signature.condensed .param{display:inline-block;}.pdoc .annotation{color:var(--annotation);}.pdoc .view-value-toggle-state,.pdoc .view-value-toggle-state ~ .default_value{display:none;}.pdoc .view-value-toggle-state:checked ~ .default_value{display:inherit;}.pdoc .view-value-button{font-size:.5rem;vertical-align:middle;border-style:dashed;margin-top:-0.1rem;}.pdoc .view-value-button:hover{background:white;}.pdoc .view-value-button::before{content:"show";text-align:center;width:2.2em;display:inline-block;}.pdoc .view-value-toggle-state:checked ~ .view-value-button::before{content:"hide";}.pdoc .inherited{margin-left:2rem;}.pdoc .inherited dt{font-weight:700;}.pdoc .inherited dt, .pdoc .inherited dd{display:inline;margin-left:0;margin-bottom:.5rem;}.pdoc .inherited dd:not(:last-child):after{content:", ";}.pdoc .inherited .class:before{content:"class ";}.pdoc .inherited .function a:after{content:"()";}.pdoc .search-result .docstring{overflow:auto;max-height:25vh;}.pdoc .search-result.focused > .attr{background-color:var(--active);}.pdoc .attribution{margin-top:2rem;display:block;opacity:0.5;transition:all 200ms;filter:grayscale(100%);}.pdoc .attribution:hover{opacity:1;filter:grayscale(0%);}.pdoc .attribution img{margin-left:5px;height:27px;vertical-align:bottom;width:50px;transition:all 200ms;}.pdoc table{display:block;width:max-content;max-width:100%;overflow:auto;margin-bottom:1rem;}.pdoc table th{font-weight:600;}.pdoc table th, .pdoc table td{padding:6px 13px;border:1px solid var(--accent2);}
+</style>
+    <style>
+main.pdoc h2.group { margin-top: 2.5rem; padding-bottom: .3rem; border-bottom: 1px solid var(--accent2); }
+main.pdoc .version { color: var(--muted); font-size: 1rem; margin-left: .5rem; }
+.pdoc table { border-collapse: collapse; margin: 1rem 0; }
+.pdoc th, .pdoc td { border: 1px solid var(--accent2); padding: .35rem .7rem; text-align: left; vertical-align: top; }
+.pdoc th { background: var(--accent); }
+nav.pdoc .group-link { font-weight: bold; }
+nav.pdoc .links { margin-top: 1.5rem; font-size: .9rem; }
+nav.pdoc .links a { display: block; }
+.pyr-demo { border: 1px solid var(--accent2); border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; }
+.pyr-demo input, .pyr-demo button { margin: 0 .3rem; }
+.pyr-demo input:not([type=range]) { background: var(--code); color: var(--text); border: 1px solid var(--accent2); padding: .1rem .4rem; }
+html:not([data-pyr="ready"]) .pyr-demo [py-click], html:not([data-pyr="ready"]) .pyr-demo [py-input],
+html:not([data-pyr="ready"]) .pyr-demo [r-input] { opacity: .45; pointer-events: none; }
+.pyr-demo #pyr-status { color: var(--muted); margin-left: .5rem; }
+.pyr-output { background: var(--code); padding: .5rem .8rem; border-radius: 4px; }
+.pyr-error { color: #ff7b72; white-space: pre-wrap; }
+.pyr-plot { width: 420px; max-width: 100%; height: auto; border-radius: 4px; background: #fff; }
+</style>
+</head>
+<body>
+    <nav class="pdoc">
+        <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
+        <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
+        <div>
+            <input type="search" placeholder="Search..." role="searchbox" aria-label="search">
+            <h2>Documentation</h2>
+            <ul class="memberlist"><li class="group"><a class="group-link" href="#try-it-live">Try it live</a><ul class="memberlist"><li data-text="run the examples on this page &lt;div class=&quot;pyr-demo&quot;&gt; &lt;p&gt;&lt;button id=&quot;pyr-load&quot; class=&quot;pdoc-button&quot;&gt;load python and r, then run the examples&lt;/button&gt; &lt;span id=&quot;pyr-status&quot;&gt;not loaded. this downloads pyodide and webr (cached afterwards).&lt;/span&gt;&lt;/p&gt; &lt;p&gt;&lt;b&gt;python counter&lt;/b&gt;: &lt;code id=&quot;count&quot;&gt;count = 0&lt;/code&gt; &lt;button py-click=&quot;add_one()&quot; py-out=&quot;count&quot;&gt;add&lt;/button&gt; &lt;button py-click=&quot;reset()&quot; py-out=&quot;count&quot;&gt;reset&lt;/button&gt;&lt;/p&gt; &lt;p&gt;&lt;b&gt;python reacting to typing&lt;/b&gt;: &lt;input placeholder=&quot;your name&quot; py-input=&quot;greet(_value)&quot; py-out=&quot;greeting&quot;&gt; &lt;span id=&quot;greeting&quot;&gt;&lt;/span&gt;&lt;/p&gt; &lt;script type=&quot;text/python&quot;&gt; count = 0 def add_one(): global count count += 1 return f&quot;count = {count}&quot; def reset(): global count count = 0 return &quot;count = 0&quot; def greet(name): return f&quot;hello, {name or &#x27;stranger&#x27;}!&quot; &lt;/script&gt; &lt;p&gt;&lt;b&gt;r, printed like the console&lt;/b&gt;:&lt;/p&gt; &lt;script type=&quot;text/r&quot;&gt; coef(lm(mpg ~ wt, data = mtcars)) &lt;/script&gt; &lt;p&gt;&lt;b&gt;r plot driven by a slider&lt;/b&gt;: &lt;input type=&quot;range&quot; min=&quot;10&quot; max=&quot;500&quot; value=&quot;100&quot; r-input=&quot;hist(rnorm(as.numeric(.value)), main = paste(.value, &#x27;random normals&#x27;), col = &#x27;steelblue&#x27;, border = &#x27;white&#x27;)&quot; r-out=&quot;demo-plot&quot;&gt;&lt;/p&gt; &lt;div id=&quot;demo-plot&quot;&gt; &lt;script type=&quot;text/r&quot;&gt; hist(rnorm(100), main = &quot;100 random normals&quot;, col = &quot;steelblue&quot;, border = &quot;white&quot;) &lt;/script&gt; &lt;/div&gt; &lt;/div&gt; "><a class="variable" href="#run-the-examples-on-this-page">Run the examples on this page</a></li></ul></li><li class="group"><a class="group-link" href="#getting-started">Getting started</a><ul class="memberlist"><li data-text="from a cdn ```html &lt;script src=&quot;https://cdn.jsdelivr.net/gh/techtonique/pyr.js@v0.1.0/pyr.js&quot; integrity=&quot;sha384-hash&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt; ``` tagged versions on jsdelivr never change, so you can pin one with an `integrity` hash, computed with `openssl dgst -sha384 -binary pyr.js | openssl base64 -a`. replace `.js` with `.min.js` for a minified copy. "><a class="variable" href="#from-a-cdn">From a CDN</a></li><li data-text="on your own site copy `pyr.js` next to your pages and load it with `&lt;script src=&quot;pyr.js&quot;&gt;&lt;/script&gt;`. a copy on the same site as the pages enables the shared mode, where python survives page reloads (see [where code runs](#where-code-runs)). "><a class="variable" href="#on-your-own-site">On your own site</a></li><li data-text="from disk put `pyr.js` next to an html file and open the file directly (double-click). this works without any server. pages opened this way can&#x27;t read other local files, so keep python and r code inside the page. "><a class="variable" href="#from-disk">From disk</a></li></ul></li><li class="group"><a class="group-link" href="#code-blocks">Code blocks</a><ul class="memberlist"><li data-text="`&lt;script type=&quot;text/python&quot;&gt;` python code, inline or from a file with `src=&quot;app.py&quot;` (served pages only). blocks run in page order and share variables with the other python blocks of the page. what a block prints, and the value of its last line (as in jupyter), appear right after the block. packages it imports (`numpy`, `pandas`, ...) are downloaded and loaded automatically. ```html &lt;script type=&quot;text/python&quot;&gt; import statistics xs = [1, 2, 3, 4] statistics.mean(xs) # shown as 2.5 &lt;/script&gt; ``` "><a class="variable" href="#script-type-text-python">&lt;script type=&quot;text/python&quot;&gt;</a></li><li data-text="`&lt;script type=&quot;text/r&quot;&gt;` r code, inline or from a file with `src=&quot;analysis.r&quot;` (served pages only). blocks run in page order and share variables with the other r blocks of the page. output is printed like the r console, and plots appear as images right after the block. install extra packages with `webr::install(&quot;name&quot;)`; only packages built for webr are available. ```html &lt;script type=&quot;text/r&quot;&gt; fit &lt;- lm(mpg ~ wt, data = mtcars) summary(fit) plot(mtcars$wt, mtcars$mpg) &lt;/script&gt; ``` "><a class="variable" href="#script-type-text-r">&lt;script type=&quot;text/r&quot;&gt;</a></li></ul></li><li class="group"><a class="group-link" href="#attributes">Attributes</a><ul class="memberlist"><li data-text="`py-&lt;event&gt;=&quot;code&quot;` runs python when the dom event fires on this element: `py-click`, `py-input`, `py-change`, `py-submit`, `py-keyup`, ... any event name works. the code is usually a call to a function defined in a python block. for `py-submit`, the form&#x27;s default submission is prevented. ```html &lt;button py-click=&quot;add_one()&quot; py-out=&quot;count&quot;&gt;add&lt;/button&gt; &lt;select py-change=&quot;pick(_value)&quot; py-out=&quot;choice&quot;&gt;...&lt;/select&gt; ``` "><a class="variable" href="#py-event-code">py-&lt;event&gt;=&quot;code&quot;</a></li><li data-text="`r-&lt;event&gt;=&quot;code&quot;` the same for r: `r-click`, `r-input`, `r-change`, ... ```html &lt;input type=&quot;range&quot; min=&quot;10&quot; max=&quot;500&quot; r-input=&quot;hist(rnorm(as.numeric(.value)))&quot; r-out=&quot;plot&quot;&gt; ``` "><a class="variable" href="#r-event-code">r-&lt;event&gt;=&quot;code&quot;</a></li><li data-text="`py-ready=&quot;code&quot;`, `r-ready=&quot;code&quot;` runs once, as soon as the engines are ready and the code blocks have run. typically used to draw a chart when the page opens. can be combined with an event on the same element: ```html &lt;input type=&quot;range&quot; py-ready=&quot;walk(_value)&quot; py-input=&quot;walk(_value)&quot; py-then=&quot;drawwalk&quot; py-out=&quot;chart&quot;&gt; ``` "><a class="variable" href="#py-ready-code-r-ready-code">py-ready=&quot;code&quot;, r-ready=&quot;code&quot;</a></li><li data-text="`py-out=&quot;id&quot;`, `r-out=&quot;id&quot;` where the result goes: the element with this id. its content is replaced by the text output of the code (what it prints, otherwise its value), by r plots, or by the error message. text is always inserted as text, never as html. without `py-out` / `r-out`, errors appear in red next to the element. "><a class="variable" href="#py-out-id-r-out-id">py-out=&quot;id&quot;, r-out=&quot;id&quot;</a></li><li data-text="`py-then=&quot;fn&quot;`, `r-then=&quot;fn&quot;` passes the result to your javascript function as **data** instead of displaying it, for example to draw a chart. the function is looked up on `window` (dotted names such as `charts.draw` work) and called as `fn(data, element, event)`, where `element` is the `py-out` / `r-out` element if there is one, otherwise the element itself. see [data conversion](#data-conversion). ```html &lt;script&gt; function draw(rows, el) { el.replacechildren(plot.dot(rows, { x: &quot;wt&quot;, y: &quot;mpg&quot; }).plot()); } &lt;/script&gt; &lt;div r-ready=&quot;mtcars[, c(&#x27;wt&#x27;, &#x27;mpg&#x27;)]&quot; r-then=&quot;draw&quot; r-out=&quot;chart&quot;&gt;&lt;/div&gt; &lt;div id=&quot;chart&quot;&gt;&lt;/div&gt; ``` "><a class="variable" href="#py-then-fn-r-then-fn">py-then=&quot;fn&quot;, r-then=&quot;fn&quot;</a></li><li data-text="`_value`, `.value` the current value of the element that triggered the code (an input, slider or select), as text: `_value` in python, `.value` in r. convert it as needed, e.g. `int(_value)` or `as.numeric(.value)`. "><a class="variable" href="#value-value">_value, .value</a></li></ul></li><li class="group"><a class="group-link" href="#script-tag-options">Script tag options</a><ul class="memberlist"><li data-text="`data-watch` re-runs `src` files when they change, in the running interpreter, without reloading the page (checked every second). for development, on served pages. ```html &lt;script src=&quot;pyr.js&quot; data-watch&gt;&lt;/script&gt; &lt;script type=&quot;text/python&quot; src=&quot;app.py&quot;&gt;&lt;/script&gt; ``` "><a class="variable" href="#data-watch">data-watch</a></li><li data-text="`data-langs=&quot;python r&quot;` starts downloading the listed engines immediately, before the page has finished loading. without it, pyr.js looks at the page first and loads only the languages it uses. "><a class="variable" href="#data-langs-python-r">data-langs=&quot;python r&quot;</a></li><li data-text="`data-py-index=&quot;url&quot;` location of a self-hosted pyodide (its `full/` folder). default: `https://cdn.jsdelivr.net/pyodide/v314.0.7/full/`. "><a class="variable" href="#data-py-index-url">data-py-index=&quot;url&quot;</a></li><li data-text="`data-r-base=&quot;url&quot;` location of a self-hosted webr. default: `https://webr.r-wasm.org/v0.6.1/`. use webr&#x27;s release archive from github, not the npm package, which targets node and bundlers. "><a class="variable" href="#data-r-base-url">data-r-base=&quot;url&quot;</a></li></ul></li><li class="group"><a class="group-link" href="#javascript-api">JavaScript API</a><ul class="memberlist"><li data-text="`pyr.data(lang, code) → promise&lt;any&gt;` runs `code` (`lang` is `&quot;python&quot;` or `&quot;r&quot;`) and resolves with its result converted to javascript data. rejects with an `error` holding the python traceback or r error message. printed output goes to the browser console. ```js const rows = await pyr.data(&quot;r&quot;, &quot;head(mtcars[, c(&#x27;wt&#x27;, &#x27;mpg&#x27;)])&quot;); const total = await pyr.data(&quot;python&quot;, &quot;sum(range(10))&quot;); // 45 ``` "><a class="function" href="#pyr-data-lang-code-promise-any">pyr.data</a></li><li data-text="`pyr.exec(lang, code) → promise&lt;array&gt;` runs `code` and resolves with its raw output items, objects of the form `{ kind, data }`, where `kind` is `&quot;stdout&quot;`, `&quot;stderr&quot;`, `&quot;value&quot;` (text) or `&quot;image&quot;` (an `imagebitmap`, for r plots). "><a class="function" href="#pyr-exec-lang-code-promise-array">pyr.exec</a></li><li data-text="`pyr.rerun() → promise&lt;void&gt;` runs every code block of the page again, re-reading `src` files. "><a class="function" href="#pyr-rerun-promise-void">pyr.rerun</a></li><li data-text="`pyr.version` the version string, e.g. `&quot;0.1.0&quot;`. "><a class="variable" href="#pyr-version">pyr.version</a></li><li data-text="`pyr:ready` dispatched on `document` once the engines are ready, the code blocks have run and the attributes are active. `event.detail.warm` is `true` when every engine was already running (shared mode). ```js document.addeventlistener(&quot;pyr:ready&quot;, async () =&gt; { const data = await pyr.data(&quot;python&quot;, &quot;walk(200)&quot;); }); ``` "><a class="variable" href="#pyr-ready">pyr:ready</a></li><li data-text="`&lt;html data-pyr=&quot;loading|ready|error&quot;&gt;` set by pyr.js on the root element, so css can style the page while engines start: ```css html[data-pyr=&quot;loading&quot;] button { opacity: .5; pointer-events: none; } ``` "><a class="variable" href="#html-data-pyr-loading-ready-error">&lt;html data-pyr=&quot;loading|ready|error&quot;&gt;</a></li><li data-text="`.pyr-block`, `.pyr-output`, `.pyr-error`, `.pyr-plot` css classes of what pyr.js adds to the page: `.pyr-block` follows each code block and holds its output, `.pyr-output` is printed text, `.pyr-error` an error message, and `.pyr-plot` an r plot (a canvas drawn at twice its display size, so set e.g. `.pyr-plot { width: 504px; max-width: 100%; height: auto; }`). "><a class="variable" href="#pyr-block-pyr-output-pyr-error-pyr-plot">.pyr-block, .pyr-output, .pyr-error, .pyr-plot</a></li></ul></li><li class="group"><a class="group-link" href="#data-conversion">Data conversion</a><ul class="memberlist"><li data-text="python and r values in javascript how results passed with `py-then` / `r-then` or `pyr.data()` are converted: | python | r | javascript | |---|---|---| | `int`, `float`, `str`, `bool` | numeric, character, logical vector of length 1 | number, string, boolean | | `dict` | named list, named vector | object | | `list`, `tuple`, numpy array | unnamed list, vector | array | | pandas dataframe | data frame | array of row objects | | pandas series | | object (label: value) | | `none` | `null`, `na` | `null` | | `datetime`, `date` | `date`, `posixct`, factor | string | | `set` | | `set` | in r, a vector of length 1 arrives as a single value, not as an array of one element. "><a class="variable" href="#python-and-r-values-in-javascript">Python and R values in JavaScript</a></li></ul></li><li class="group"><a class="group-link" href="#where-code-runs">Where code runs</a><ul class="memberlist"><li data-text="how the page is opened | how the page is opened | python | r | |---|---|---| | from disk (double-click) | on the page | on the page, r itself in a worker | | served, pyr.js from a cdn | worker per page | worker per page | | served, pyr.js from the same site | shared worker: other tabs and reloads reuse it | worker per page | in the shared mode, each tab still has its own variables and a reload starts the page fresh; only the running interpreter is reused. keeping it alive across reloads relies on a recent chromium feature; other browsers start it again after a reload. r can&#x27;t be shared, because webr starts a worker of its own, which chrome doesn&#x27;t allow inside a shared worker. "><a class="variable" href="#how-the-page-is-opened">How the page is opened</a></li><li data-text="startup times measured locally in chromium, with the engines already in the browser cache: | situation | ready in | |---|---| | python, first start | about 3 s | | r, first start | about 2 to 4 s | | python, another tab or a reload (shared mode) | under 0.1 s | "><a class="variable" href="#startup-times">Startup times</a></li></ul></li><li class="group"><a class="group-link" href="#privacy-and-security">Privacy and security</a><ul class="memberlist"><li data-text="what leaves the browser nothing, as far as pyr.js is concerned: there is no telemetry. the cdns that serve the engines and packages see the usual request information (ip address, referring site, which files), never your data. self-host the engines to avoid even that. "><a class="variable" href="#what-leaves-the-browser">What leaves the browser</a></li><li data-text="what to keep in mind - code in a page is visible to its visitors: never put secrets (api keys, passwords) in it. - `py-out` / `r-out` insert text, never html. if a `py-then` / `r-then` function inserts results as html, sanitize them first. - pin a version and use an `integrity` hash when loading pyr.js from a cdn. - report vulnerabilities privately through [github](https://github.com/techtonique/pyr.js/security/advisories/new). "><a class="variable" href="#what-to-keep-in-mind">What to keep in mind</a></li></ul></li><li class="group"><a class="group-link" href="#examples">Examples</a><ul class="memberlist"><li data-text="example pages in the repository&#x27;s [`examples/`](https://github.com/techtonique/pyr.js/tree/main/examples) folder: - [`index.html`](https://github.com/techtonique/pyr.js/blob/main/examples/index.html): the basics, with python and r blocks, events and plots - [`charts.html`](https://github.com/techtonique/pyr.js/blob/main/examples/charts.html): python and r data drawn with observable plot - [`highcharts.html`](https://github.com/techtonique/pyr.js/blob/main/examples/highcharts.html): python data drawn with highcharts - [`watch.html`](https://github.com/techtonique/pyr.js/blob/main/examples/watch.html) with `app.py`: live editing of a python file "><a class="variable" href="#example-pages">Example pages</a></li></ul></li><li class="group"><a class="group-link" href="#license">License</a><ul class="memberlist"><li data-text="mit pyr.js is mit-licensed, copyright (c) 2026 t. moudiki (techtonique). it downloads, but does not include, [pyodide](https://pyodide.org) (mpl-2.0) and [webr](https://github.com/r-wasm/webr), with [r](https://www.r-project.org) itself under the gpl. if you self-host these, their licenses apply to the copies you distribute."><a class="variable" href="#mit">MIT</a></li></ul></li></ul>
+            <div class="links">
+                <a href="https://github.com/Techtonique/pyr.js">pyr.js on GitHub</a>
+                <a href="https://www.jsdelivr.com/package/gh/Techtonique/pyr.js">pyr.js on jsDelivr</a>
+                <a href="../index.html">All Techtonique tools</a>
+            </div>
+        </div>
+    </nav>
+    <main class="pdoc">
+        <section class="module-info">
+            <h1 class="modulename">pyr.js<span class="version">v0.1.0</span></h1>
+            <div class="docstring"><p>Python and R in HTML pages, with one script tag. No server, no build step, no install.</p>
+<p>pyr.js finds Python and R code in a page and runs it in the visitor's browser.
+<a href="https://pyodide.org">Pyodide</a> (Python) and <a href="https://docs.r-wasm.org/webr/latest/">webR</a> (R), both compiled
+to WebAssembly, do the heavy lifting; pyr.js connects them to your HTML. It is a single file of about
+460 lines, MIT-licensed, with no telemetry.</p>
+<p>Source code, examples and issues: <a href="https://github.com/Techtonique/pyr.js">github.com/Techtonique/pyr.js</a>.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/gh/Techtonique/pyr.js@v0.1.0/pyr.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"count"</span><span class="p">&gt;</span>count = 0<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">py-click</span><span class="o">=</span><span class="s">"add_one()"</span> <span class="na">py-out</span><span class="o">=</span><span class="s">"count"</span><span class="p">&gt;</span>Add<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/python"</span><span class="p">&gt;</span>
+<span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
+
+<span class="nx">def</span><span class="w"> </span><span class="nx">add_one</span><span class="p">()</span><span class="o">:</span>
+<span class="w">    </span><span class="nb">global</span><span class="w"> </span><span class="nx">count</span>
+<span class="w">    </span><span class="nx">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">f</span><span class="s2">"count = {count}"</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Save this as an <code>.html</code> file and double-click it. The first visit downloads Python (several MB,
+cached by the browser afterwards).</p></div>
+        </section>
+        <h2 class="group" id="try-it-live">Try it live</h2>
+<section id="run-the-examples-on-this-page">
+<div class="attr variable">
+    <span class="def">demo</span>
+    <span class="name">Run the examples on this page</span>
+</div>
+<a class="headerlink" href="#run-the-examples-on-this-page"></a>
+<div class="docstring"><div class="pyr-demo">
+<p><button id="pyr-load" class="pdoc-button">Load Python and R, then run the examples</button>
+<span id="pyr-status">Not loaded. This downloads Pyodide and webR (cached afterwards).</span></p>
+
+<p><b>Python counter</b>: <code id="count">count = 0</code>
+<button py-click="add_one()" py-out="count">Add</button>
+<button py-click="reset()" py-out="count">Reset</button></p>
+
+<p><b>Python reacting to typing</b>:
+<input placeholder="Your name" py-input="greet(_value)" py-out="greeting"> <span id="greeting"></span></p>
+
+<script type="text/python">
+count = 0
+
+def add_one():
+    global count
+    count += 1
+    return f"count = {count}"
+
+def reset():
+    global count
+    count = 0
+    return "count = 0"
+
+def greet(name):
+    return f"Hello, {name or 'stranger'}!"
+</script>
+
+<p><b>R, printed like the console</b>:</p>
+<script type="text/r">
+coef(lm(mpg ~ wt, data = mtcars))
+</script>
+
+<p><b>R plot driven by a slider</b>: <input type="range" min="10" max="500" value="100"
+   r-input="hist(rnorm(as.numeric(.value)), main = paste(.value, 'random normals'), col = 'steelblue', border = 'white')"
+   r-out="demo-plot"></p>
+<div id="demo-plot">
+<script type="text/r">
+hist(rnorm(100), main = "100 random normals", col = "steelblue", border = "white")
+</script>
+</div>
+</div></div>
+</section>
+<h2 class="group" id="getting-started">Getting started</h2>
+<section id="from-a-cdn">
+<div class="attr variable">
+    <span class="def">install</span>
+    <span class="name">From a CDN</span>
+</div>
+<a class="headerlink" href="#from-a-cdn"></a>
+<div class="docstring"><div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/gh/Techtonique/pyr.js@v0.1.0/pyr.js"</span>
+        <span class="na">integrity</span><span class="o">=</span><span class="s">"sha384-HASH"</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">"anonymous"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Tagged versions on jsDelivr never change, so you can pin one with an <code>integrity</code> hash, computed with
+<code>openssl dgst -sha384 -binary pyr.js | openssl base64 -A</code>. Replace <code>.js</code> with <code>.min.js</code> for a minified copy.</p></div>
+</section>
+<section id="on-your-own-site">
+<div class="attr variable">
+    <span class="def">install</span>
+    <span class="name">On your own site</span>
+</div>
+<a class="headerlink" href="#on-your-own-site"></a>
+<div class="docstring"><p>Copy <code>pyr.js</code> next to your pages and load it with <code>&lt;script src="pyr.js"&gt;&lt;/script&gt;</code>. A copy on the same
+site as the pages enables the shared mode, where Python survives page reloads
+(see <a href="#where-code-runs">Where code runs</a>).</p></div>
+</section>
+<section id="from-disk">
+<div class="attr variable">
+    <span class="def">install</span>
+    <span class="name">From disk</span>
+</div>
+<a class="headerlink" href="#from-disk"></a>
+<div class="docstring"><p>Put <code>pyr.js</code> next to an HTML file and open the file directly (double-click). This works without any
+server. Pages opened this way can't read other local files, so keep Python and R code inside the page.</p></div>
+</section>
+<h2 class="group" id="code-blocks">Code blocks</h2>
+<section id="script-type-text-python">
+<div class="attr variable">
+    <span class="def">element</span>
+    <span class="name">&lt;script type=&quot;text/python&quot;&gt;</span>
+</div>
+<a class="headerlink" href="#script-type-text-python"></a>
+<div class="docstring"><p>Python code, inline or from a file with <code>src="app.py"</code> (served pages only).</p>
+<p>Blocks run in page order and share variables with the other Python blocks of the page. What a block
+prints, and the value of its last line (as in Jupyter), appear right after the block. Packages it imports
+(<code>numpy</code>, <code>pandas</code>, ...) are downloaded and loaded automatically.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/python"</span><span class="p">&gt;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">statistics</span>
+<span class="nx">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">]</span>
+<span class="nx">statistics</span><span class="p">.</span><span class="nx">mean</span><span class="p">(</span><span class="nx">xs</span><span class="p">)</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">shown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="mf">2.5</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<section id="script-type-text-r">
+<div class="attr variable">
+    <span class="def">element</span>
+    <span class="name">&lt;script type=&quot;text/r&quot;&gt;</span>
+</div>
+<a class="headerlink" href="#script-type-text-r"></a>
+<div class="docstring"><p>R code, inline or from a file with <code>src="analysis.R"</code> (served pages only).</p>
+<p>Blocks run in page order and share variables with the other R blocks of the page. Output is printed like
+the R console, and plots appear as images right after the block. Install extra packages with
+<code>webr::install("name")</code>; only packages built for webR are available.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/r"</span><span class="p">&gt;</span>
+<span class="nx">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">lm</span><span class="p">(</span><span class="nx">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nx">wt</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mtcars</span><span class="p">)</span>
+<span class="nx">summary</span><span class="p">(</span><span class="nx">fit</span><span class="p">)</span>
+<span class="nx">plot</span><span class="p">(</span><span class="nx">mtcars$wt</span><span class="p">,</span><span class="w"> </span><span class="nx">mtcars$mpg</span><span class="p">)</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<h2 class="group" id="attributes">Attributes</h2>
+<section id="py-event-code">
+<div class="attr variable">
+    <span class="def">attribute</span>
+    <span class="name">py-&lt;event&gt;=&quot;code&quot;</span>
+</div>
+<a class="headerlink" href="#py-event-code"></a>
+<div class="docstring"><p>Runs Python when the DOM event fires on this element: <code>py-click</code>, <code>py-input</code>, <code>py-change</code>, <code>py-submit</code>,
+<code>py-keyup</code>, ... any event name works. The code is usually a call to a function defined in a Python block.
+For <code>py-submit</code>, the form's default submission is prevented.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">py-click</span><span class="o">=</span><span class="s">"add_one()"</span> <span class="na">py-out</span><span class="o">=</span><span class="s">"count"</span><span class="p">&gt;</span>Add<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">py-change</span><span class="o">=</span><span class="s">"pick(_value)"</span> <span class="na">py-out</span><span class="o">=</span><span class="s">"choice"</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<section id="r-event-code">
+<div class="attr variable">
+    <span class="def">attribute</span>
+    <span class="name">r-&lt;event&gt;=&quot;code&quot;</span>
+</div>
+<a class="headerlink" href="#r-event-code"></a>
+<div class="docstring"><p>The same for R: <code>r-click</code>, <code>r-input</code>, <code>r-change</code>, ...</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"range"</span> <span class="na">min</span><span class="o">=</span><span class="s">"10"</span> <span class="na">max</span><span class="o">=</span><span class="s">"500"</span> <span class="na">r-input</span><span class="o">=</span><span class="s">"hist(rnorm(as.numeric(.value)))"</span> <span class="na">r-out</span><span class="o">=</span><span class="s">"plot"</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<section id="py-ready-code-r-ready-code">
+<div class="attr variable">
+    <span class="def">attribute</span>
+    <span class="name">py-ready=&quot;code&quot;, r-ready=&quot;code&quot;</span>
+</div>
+<a class="headerlink" href="#py-ready-code-r-ready-code"></a>
+<div class="docstring"><p>Runs once, as soon as the engines are ready and the code blocks have run. Typically used to draw a
+chart when the page opens. Can be combined with an event on the same element:</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"range"</span> <span class="na">py-ready</span><span class="o">=</span><span class="s">"walk(_value)"</span> <span class="na">py-input</span><span class="o">=</span><span class="s">"walk(_value)"</span> <span class="na">py-then</span><span class="o">=</span><span class="s">"drawWalk"</span> <span class="na">py-out</span><span class="o">=</span><span class="s">"chart"</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<section id="py-out-id-r-out-id">
+<div class="attr variable">
+    <span class="def">attribute</span>
+    <span class="name">py-out=&quot;id&quot;, r-out=&quot;id&quot;</span>
+</div>
+<a class="headerlink" href="#py-out-id-r-out-id"></a>
+<div class="docstring"><p>Where the result goes: the element with this id. Its content is replaced by the text output of the code
+(what it prints, otherwise its value), by R plots, or by the error message. Text is always inserted as text,
+never as HTML. Without <code>py-out</code> / <code>r-out</code>, errors appear in red next to the element.</p></div>
+</section>
+<section id="py-then-fn-r-then-fn">
+<div class="attr variable">
+    <span class="def">attribute</span>
+    <span class="name">py-then=&quot;fn&quot;, r-then=&quot;fn&quot;</span>
+</div>
+<a class="headerlink" href="#py-then-fn-r-then-fn"></a>
+<div class="docstring"><p>Passes the result to your JavaScript function as <strong>data</strong> instead of displaying it, for example to draw a
+chart. The function is looked up on <code>window</code> (dotted names such as <code>charts.draw</code> work) and called as
+<code>fn(data, element, event)</code>, where <code>element</code> is the <code>py-out</code> / <code>r-out</code> element if there is one, otherwise
+the element itself. See <a href="#data-conversion">Data conversion</a>.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">(</span><span class="nx">rows</span><span class="p">,</span><span class="w"> </span><span class="nx">el</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">el</span><span class="p">.</span><span class="nx">replaceChildren</span><span class="p">(</span><span class="nx">Plot</span><span class="p">.</span><span class="nx">dot</span><span class="p">(</span><span class="nx">rows</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">"wt"</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">"mpg"</span><span class="w"> </span><span class="p">}).</span><span class="nx">plot</span><span class="p">());</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">r-ready</span><span class="o">=</span><span class="s">"mtcars[, c('wt', 'mpg')]"</span> <span class="na">r-then</span><span class="o">=</span><span class="s">"draw"</span> <span class="na">r-out</span><span class="o">=</span><span class="s">"chart"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"chart"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<section id="value-value">
+<div class="attr variable">
+    <span class="def">variable</span>
+    <span class="name">_value, .value</span>
+</div>
+<a class="headerlink" href="#value-value"></a>
+<div class="docstring"><p>The current value of the element that triggered the code (an input, slider or select), as text:
+<code>_value</code> in Python, <code>.value</code> in R. Convert it as needed, e.g. <code>int(_value)</code> or <code>as.numeric(.value)</code>.</p></div>
+</section>
+<h2 class="group" id="script-tag-options">Script tag options</h2>
+<section id="data-watch">
+<div class="attr variable">
+    <span class="def">option</span>
+    <span class="name">data-watch</span>
+</div>
+<a class="headerlink" href="#data-watch"></a>
+<div class="docstring"><p>Re-runs <code>src</code> files when they change, in the running interpreter, without reloading the page
+(checked every second). For development, on served pages.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"pyr.js"</span> <span class="na">data-watch</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/python"</span> <span class="na">src</span><span class="o">=</span><span class="s">"app.py"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div></div>
+</section>
+<section id="data-langs-python-r">
+<div class="attr variable">
+    <span class="def">option</span>
+    <span class="name">data-langs=&quot;python r&quot;</span>
+</div>
+<a class="headerlink" href="#data-langs-python-r"></a>
+<div class="docstring"><p>Starts downloading the listed engines immediately, before the page has finished loading. Without it, pyr.js
+looks at the page first and loads only the languages it uses.</p></div>
+</section>
+<section id="data-py-index-url">
+<div class="attr variable">
+    <span class="def">option</span>
+    <span class="name">data-py-index=&quot;url&quot;</span>
+</div>
+<a class="headerlink" href="#data-py-index-url"></a>
+<div class="docstring"><p>Location of a self-hosted Pyodide (its <code>full/</code> folder). Default:
+<code>https://cdn.jsdelivr.net/pyodide/v314.0.7/full/</code>.</p></div>
+</section>
+<section id="data-r-base-url">
+<div class="attr variable">
+    <span class="def">option</span>
+    <span class="name">data-r-base=&quot;url&quot;</span>
+</div>
+<a class="headerlink" href="#data-r-base-url"></a>
+<div class="docstring"><p>Location of a self-hosted webR. Default: <code>https://webr.r-wasm.org/v0.6.1/</code>. Use webR's release archive
+from GitHub, not the npm package, which targets Node and bundlers.</p></div>
+</section>
+<h2 class="group" id="javascript-api">JavaScript API</h2>
+<section id="pyr-data-lang-code-promise-any">
+<div class="attr function">
+    <span class="def">function</span>
+    <span class="name">pyr.data(lang, code) → Promise&lt;any&gt;</span>
+</div>
+<a class="headerlink" href="#pyr-data-lang-code-promise-any"></a>
+<div class="docstring"><p>Runs <code>code</code> (<code>lang</code> is <code>"python"</code> or <code>"r"</code>) and resolves with its result converted to JavaScript data.
+Rejects with an <code>Error</code> holding the Python traceback or R error message. Printed output goes to the
+browser console.</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pyr</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span><span class="w"> </span><span class="s2">"head(mtcars[, c('wt', 'mpg')])"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pyr</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sum(range(10))"</span><span class="p">);</span><span class="w">   </span><span class="c1">// 45</span>
+</code></pre></div></div>
+</section>
+<section id="pyr-exec-lang-code-promise-array">
+<div class="attr function">
+    <span class="def">function</span>
+    <span class="name">pyr.exec(lang, code) → Promise&lt;Array&gt;</span>
+</div>
+<a class="headerlink" href="#pyr-exec-lang-code-promise-array"></a>
+<div class="docstring"><p>Runs <code>code</code> and resolves with its raw output items, objects of the form <code>{ kind, data }</code>, where <code>kind</code> is
+<code>"stdout"</code>, <code>"stderr"</code>, <code>"value"</code> (text) or <code>"image"</code> (an <code>ImageBitmap</code>, for R plots).</p></div>
+</section>
+<section id="pyr-rerun-promise-void">
+<div class="attr function">
+    <span class="def">function</span>
+    <span class="name">pyr.rerun() → Promise&lt;void&gt;</span>
+</div>
+<a class="headerlink" href="#pyr-rerun-promise-void"></a>
+<div class="docstring"><p>Runs every code block of the page again, re-reading <code>src</code> files.</p></div>
+</section>
+<section id="pyr-version">
+<div class="attr variable">
+    <span class="def">variable</span>
+    <span class="name">pyr.version</span>
+</div>
+<a class="headerlink" href="#pyr-version"></a>
+<div class="docstring"><p>The version string, e.g. <code>"0.1.0"</code>.</p></div>
+</section>
+<section id="pyr-ready">
+<div class="attr variable">
+    <span class="def">event</span>
+    <span class="name">pyr:ready</span>
+</div>
+<a class="headerlink" href="#pyr-ready"></a>
+<div class="docstring"><p>Dispatched on <code>document</code> once the engines are ready, the code blocks have run and the attributes are
+active. <code>event.detail.warm</code> is <code>true</code> when every engine was already running (shared mode).</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"pyr:ready"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pyr</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">"python"</span><span class="p">,</span><span class="w"> </span><span class="s2">"walk(200)"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+</section>
+<section id="html-data-pyr-loading-ready-error">
+<div class="attr variable">
+    <span class="def">attribute</span>
+    <span class="name">&lt;html data-pyr=&quot;loading|ready|error&quot;&gt;</span>
+</div>
+<a class="headerlink" href="#html-data-pyr-loading-ready-error"></a>
+<div class="docstring"><p>Set by pyr.js on the root element, so CSS can style the page while engines start:</p>
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="nt">html</span><span class="o">[</span><span class="nt">data-pyr</span><span class="o">=</span><span class="s2">"loading"</span><span class="o">]</span><span class="w"> </span><span class="nt">button</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">.5</span><span class="p">;</span><span class="w"> </span><span class="k">pointer-events</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></div>
+</section>
+<section id="pyr-block-pyr-output-pyr-error-pyr-plot">
+<div class="attr variable">
+    <span class="def">class</span>
+    <span class="name">.pyr-block, .pyr-output, .pyr-error, .pyr-plot</span>
+</div>
+<a class="headerlink" href="#pyr-block-pyr-output-pyr-error-pyr-plot"></a>
+<div class="docstring"><p>CSS classes of what pyr.js adds to the page: <code>.pyr-block</code> follows each code block and holds its output,
+<code>.pyr-output</code> is printed text, <code>.pyr-error</code> an error message, and <code>.pyr-plot</code> an R plot (a canvas drawn at
+twice its display size, so set e.g. <code>.pyr-plot { width: 504px; max-width: 100%; height: auto; }</code>).</p></div>
+</section>
+<h2 class="group" id="data-conversion">Data conversion</h2>
+<section id="python-and-r-values-in-javascript">
+<div class="attr variable">
+    <span class="def">table</span>
+    <span class="name">Python and R values in JavaScript</span>
+</div>
+<a class="headerlink" href="#python-and-r-values-in-javascript"></a>
+<div class="docstring"><p>How results passed with <code>py-then</code> / <code>r-then</code> or <code>pyr.data()</code> are converted:</p>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>R</th>
+<th>JavaScript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code></td>
+<td>numeric, character, logical vector of length 1</td>
+<td>number, string, boolean</td>
+</tr>
+<tr>
+<td><code>dict</code></td>
+<td>named list, named vector</td>
+<td>object</td>
+</tr>
+<tr>
+<td><code>list</code>, <code>tuple</code>, numpy array</td>
+<td>unnamed list, vector</td>
+<td>array</td>
+</tr>
+<tr>
+<td>pandas DataFrame</td>
+<td>data frame</td>
+<td>array of row objects</td>
+</tr>
+<tr>
+<td>pandas Series</td>
+<td></td>
+<td>object (label: value)</td>
+</tr>
+<tr>
+<td><code>None</code></td>
+<td><code>NULL</code>, <code>NA</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>datetime</code>, <code>date</code></td>
+<td><code>Date</code>, <code>POSIXct</code>, factor</td>
+<td>string</td>
+</tr>
+<tr>
+<td><code>set</code></td>
+<td></td>
+<td><code>Set</code></td>
+</tr>
+</tbody>
+</table>
+<p>In R, a vector of length 1 arrives as a single value, not as an array of one element.</p></div>
+</section>
+<h2 class="group" id="where-code-runs">Where code runs</h2>
+<section id="how-the-page-is-opened">
+<div class="attr variable">
+    <span class="def">table</span>
+    <span class="name">How the page is opened</span>
+</div>
+<a class="headerlink" href="#how-the-page-is-opened"></a>
+<div class="docstring"><table>
+<thead>
+<tr>
+<th>How the page is opened</th>
+<th>Python</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>From disk (double-click)</td>
+<td>On the page</td>
+<td>On the page, R itself in a worker</td>
+</tr>
+<tr>
+<td>Served, pyr.js from a CDN</td>
+<td>Worker per page</td>
+<td>Worker per page</td>
+</tr>
+<tr>
+<td>Served, pyr.js from the same site</td>
+<td>Shared worker: other tabs and reloads reuse it</td>
+<td>Worker per page</td>
+</tr>
+</tbody>
+</table>
+<p>In the shared mode, each tab still has its own variables and a reload starts the page fresh; only the
+running interpreter is reused. Keeping it alive across reloads relies on a recent Chromium feature;
+other browsers start it again after a reload. R can't be shared, because webR starts a worker of its own,
+which Chrome doesn't allow inside a shared worker.</p></div>
+</section>
+<section id="startup-times">
+<div class="attr variable">
+    <span class="def">table</span>
+    <span class="name">Startup times</span>
+</div>
+<a class="headerlink" href="#startup-times"></a>
+<div class="docstring"><p>Measured locally in Chromium, with the engines already in the browser cache:</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Ready in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python, first start</td>
+<td>about 3 s</td>
+</tr>
+<tr>
+<td>R, first start</td>
+<td>about 2 to 4 s</td>
+</tr>
+<tr>
+<td>Python, another tab or a reload (shared mode)</td>
+<td>under 0.1 s</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<h2 class="group" id="privacy-and-security">Privacy and security</h2>
+<section id="what-leaves-the-browser">
+<div class="attr variable">
+    <span class="def">note</span>
+    <span class="name">What leaves the browser</span>
+</div>
+<a class="headerlink" href="#what-leaves-the-browser"></a>
+<div class="docstring"><p>Nothing, as far as pyr.js is concerned: there is no telemetry. The CDNs that serve the engines and
+packages see the usual request information (IP address, referring site, which files), never your data.
+Self-host the engines to avoid even that.</p></div>
+</section>
+<section id="what-to-keep-in-mind">
+<div class="attr variable">
+    <span class="def">note</span>
+    <span class="name">What to keep in mind</span>
+</div>
+<a class="headerlink" href="#what-to-keep-in-mind"></a>
+<div class="docstring"><ul>
+<li>Code in a page is visible to its visitors: never put secrets (API keys, passwords) in it.</li>
+<li><code>py-out</code> / <code>r-out</code> insert text, never HTML. If a <code>py-then</code> / <code>r-then</code> function inserts results as
+  HTML, sanitize them first.</li>
+<li>Pin a version and use an <code>integrity</code> hash when loading pyr.js from a CDN.</li>
+<li>Report vulnerabilities privately through
+  <a href="https://github.com/Techtonique/pyr.js/security/advisories/new">GitHub</a>.</li>
+</ul></div>
+</section>
+<h2 class="group" id="examples">Examples</h2>
+<section id="example-pages">
+<div class="attr variable">
+    <span class="def">link</span>
+    <span class="name">Example pages</span>
+</div>
+<a class="headerlink" href="#example-pages"></a>
+<div class="docstring"><p>In the repository's <a href="https://github.com/Techtonique/pyr.js/tree/main/examples"><code>examples/</code></a> folder:</p>
+<ul>
+<li><a href="https://github.com/Techtonique/pyr.js/blob/main/examples/index.html"><code>index.html</code></a>: the basics, with Python and R blocks, events and plots</li>
+<li><a href="https://github.com/Techtonique/pyr.js/blob/main/examples/charts.html"><code>charts.html</code></a>: Python and R data drawn with Observable Plot</li>
+<li><a href="https://github.com/Techtonique/pyr.js/blob/main/examples/highcharts.html"><code>highcharts.html</code></a>: Python data drawn with Highcharts</li>
+<li><a href="https://github.com/Techtonique/pyr.js/blob/main/examples/watch.html"><code>watch.html</code></a> with <code>app.py</code>: live editing of a Python file</li>
+</ul></div>
+</section>
+<h2 class="group" id="license">License</h2>
+<section id="mit">
+<div class="attr variable">
+    <span class="def">note</span>
+    <span class="name">MIT</span>
+</div>
+<a class="headerlink" href="#mit"></a>
+<div class="docstring"><p>pyr.js is MIT-licensed, copyright (c) 2026 T. Moudiki (Techtonique). It downloads, but does not include,
+<a href="https://pyodide.org">Pyodide</a> (MPL-2.0) and <a href="https://github.com/r-wasm/webr">webR</a>, with
+<a href="https://www.r-project.org">R</a> itself under the GPL. If you self-host these, their licenses apply to the
+copies you distribute.</p></div>
+</section>
+    </main>
+<script>
+// Search: filter the navigation by entry name and text.
+const search = document.querySelector('nav.pdoc input[type=search]');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  for (const li of document.querySelectorAll('nav.pdoc li[data-text]')) {
+    li.hidden = q && !li.dataset.text.includes(q);
+  }
+  for (const group of document.querySelectorAll('nav.pdoc li.group')) {
+    group.hidden = q && ![...group.querySelectorAll('li[data-text]')].some(li => !li.hidden);
+  }
+});
+// Live examples: load pyr.js only when asked, since it downloads Python and R.
+const load = document.getElementById('pyr-load');
+const status = document.getElementById('pyr-status');
+load?.addEventListener('click', () => {
+  load.disabled = true;
+  status.textContent = 'Loading Python and R...';
+  new MutationObserver(() => {
+    const state = document.documentElement.dataset.pyr;
+    if (state === 'ready') status.textContent = 'Ready: try the examples below.';
+    if (state === 'error') status.textContent = 'Could not load the engines (see the message at the end of the page).';
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-pyr'] });
+  const s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/gh/Techtonique/pyr.js@v0.1.0/pyr.js';
+  
+  document.head.append(s);
+});
+</script>
+</body>
+</html>
